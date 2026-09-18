@@ -71,7 +71,7 @@ export function evaluate(expr: string): number {
 export const calculator: Tool = {
   name: 'calculator',
   description:
-    '精确计算数学表达式。支持 + - * / % ^ 括号，以及 sum(a,b,...) avg() min() max() abs() round(x, digits) sqrt()。例如 "sum(1200, 850.5, 300)" 或 "(3+4)*2"。',
+    '精确计算数学表达式。运算符: + - * / % ^ 与括号。优先级从高到低: 括号/函数 > 一元负号 > ^(幂，右结合: 2^3^2 = 2^9) > * / %(同级，左结合) > + -。% 为取余而非百分比。函数: sum(a,b,...) avg() min() max() abs() round(x, digits) sqrt()。例: "sum(1200, 850.5, 300)"、"(3+4)*2"、"round(10/3, 2)"。',
   permission: 'read',
   idempotent: true,
   inputSchema: {

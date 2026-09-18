@@ -21,7 +21,7 @@ export function createUser(name: string, email: string): User {
   return user;
 }
 
-// TODO: 实现分页
+// TODO(alice): 实现分页，见 docs/adr/001-storage.md
 export function listUsers(): User[] {
   return users;
 }

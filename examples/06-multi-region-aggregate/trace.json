@@ -1,0 +1,1762 @@
+{
+  "meta": {
+    "provider": "mock",
+    "workspace": "workspace"
+  },
+  "startedAt": 1789764921700,
+  "events": [
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "user",
+      "task": "汇总 data/regions 下所有地区的销售额（注意货币符号与退款），生成 report-regions.md。",
+      "ts": 1789764921700
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "制定计划。",
+      "ts": 1789764921700
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 1,
+      "text": "制定计划。",
+      "toolCalls": [
+        {
+          "id": "mock_1",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "列出 data/regions 下的文件",
+                "status": "in_progress"
+              },
+              {
+                "id": 2,
+                "title": "并行读取并归一化金额",
+                "status": "pending"
+              },
+              {
+                "id": 3,
+                "title": "分地区求和与总计",
+                "status": "pending"
+              },
+              {
+                "id": 4,
+                "title": "写入报告",
+                "status": "pending"
+              }
+            ]
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 29,
+        "outputTokens": 80
+      },
+      "durationMs": 6,
+      "ts": 1789764921706
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_1",
+        "name": "update_plan",
+        "input": {
+          "steps": [
+            {
+              "id": 1,
+              "title": "列出 data/regions 下的文件",
+              "status": "in_progress"
+            },
+            {
+              "id": 2,
+              "title": "并行读取并归一化金额",
+              "status": "pending"
+            },
+            {
+              "id": 3,
+              "title": "分地区求和与总计",
+              "status": "pending"
+            },
+            {
+              "id": 4,
+              "title": "写入报告",
+              "status": "pending"
+            }
+          ]
+        }
+      },
+      "ts": 1789764921707
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "plan",
+      "step": 1,
+      "plan": [
+        {
+          "id": 1,
+          "title": "列出 data/regions 下的文件",
+          "status": "in_progress"
+        },
+        {
+          "id": 2,
+          "title": "并行读取并归一化金额",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "分地区求和与总计",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "写入报告",
+          "status": "pending"
+        }
+      ],
+      "ts": 1789764921707
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_1",
+      "name": "update_plan",
+      "result": {
+        "ok": true,
+        "output": "计划已更新（0/4 完成）"
+      },
+      "durationMs": 0,
+      "ts": 1789764921707
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "先看有哪些地",
+      "ts": 1789764921707
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "区文件。",
+      "ts": 1789764921712
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 2,
+      "text": "先看有哪些地区文件。",
+      "toolCalls": [
+        {
+          "id": "mock_2",
+          "name": "list_files",
+          "input": {
+            "path": "data/regions"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 172,
+        "outputTokens": 80
+      },
+      "durationMs": 11,
+      "ts": 1789764921718
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_2",
+        "name": "list_files",
+        "input": {
+          "path": "data/regions"
+        }
+      },
+      "ts": 1789764921718
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_2",
+      "name": "list_files",
+      "result": {
+        "ok": true,
+        "output": "data/regions/east.txt\ndata/regions/north.csv\ndata/regions/south.csv"
+      },
+      "durationMs": 1,
+      "ts": 1789764921719
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "3 个文件互",
+      "ts": 1789764921719
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "不依赖，一轮",
+      "ts": 1789764921724
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "并行读取。",
+      "ts": 1789764921730
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 3,
+      "text": "3 个文件互不依赖，一轮并行读取。",
+      "toolCalls": [
+        {
+          "id": "mock_3",
+          "name": "read_file",
+          "input": {
+            "path": "data/regions/east.txt"
+          }
+        },
+        {
+          "id": "mock_4",
+          "name": "read_file",
+          "input": {
+            "path": "data/regions/north.csv"
+          }
+        },
+        {
+          "id": "mock_5",
+          "name": "read_file",
+          "input": {
+            "path": "data/regions/south.csv"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 270,
+        "outputTokens": 80
+      },
+      "durationMs": 17,
+      "ts": 1789764921736
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_3",
+        "name": "read_file",
+        "input": {
+          "path": "data/regions/east.txt"
+        }
+      },
+      "ts": 1789764921736
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_4",
+        "name": "read_file",
+        "input": {
+          "path": "data/regions/north.csv"
+        }
+      },
+      "ts": 1789764921736
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_5",
+        "name": "read_file",
+        "input": {
+          "path": "data/regions/south.csv"
+        }
+      },
+      "ts": 1789764921736
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_4",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "region,product,amount\nnorth,Widget A,\"¥1,200.00\"\nnorth,Widget B,¥850.50\nnorth,Gadget X,\"¥3,200.00\"\nnorth,Refund #1001,-¥200.00\n"
+      },
+      "durationMs": 1,
+      "ts": 1789764921737
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_5",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "region,product,amount\nsouth,Widget A,980\nsouth,Gadget Y,415.25\nsouth,Service Plan,1,999.00\nsouth,Bundle Pack,2750\n"
+      },
+      "durationMs": 1,
+      "ts": 1789764921737
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_3",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "# 东区（手工录入，格式不规范）\nWidget A ....... 1500\nGadget X ....... 2,100.5\nService Plan ... 待确认\nRefund #2002 ... -300\n"
+      },
+      "durationMs": 1,
+      "ts": 1789764921737
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "归一化完成（",
+      "ts": 1789764921738
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "去掉 ¥ 与",
+      "ts": 1789764921744
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "千分位、退款",
+      "ts": 1789764921750
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "为负数，跳过",
+      "ts": 1789764921755
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 1 条无法",
+      "ts": 1789764921761
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "解析）。分地",
+      "ts": 1789764921766
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "区并行求和，",
+      "ts": 1789764921772
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "再求总计。",
+      "ts": 1789764921777
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 4,
+      "text": "归一化完成（去掉 ¥ 与千分位、退款为负数，跳过 1 条无法解析）。分地区并行求和，再求总计。",
+      "toolCalls": [
+        {
+          "id": "mock_6",
+          "name": "calculator",
+          "input": {
+            "expression": "sum(1500, 2100.5, -300)"
+          }
+        },
+        {
+          "id": "mock_7",
+          "name": "calculator",
+          "input": {
+            "expression": "sum(1200, 850.5, 3200, -200)"
+          }
+        },
+        {
+          "id": "mock_8",
+          "name": "calculator",
+          "input": {
+            "expression": "sum(980, 415.25, 1999, 2750)"
+          }
+        },
+        {
+          "id": "mock_9",
+          "name": "calculator",
+          "input": {
+            "expression": "sum(1500, 2100.5, -300, 1200, 850.5, 3200, -200, 980, 415.25, 1999, 2750)"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 572,
+        "outputTokens": 80
+      },
+      "durationMs": 46,
+      "ts": 1789764921783
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_6",
+        "name": "calculator",
+        "input": {
+          "expression": "sum(1500, 2100.5, -300)"
+        }
+      },
+      "ts": 1789764921783
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_7",
+        "name": "calculator",
+        "input": {
+          "expression": "sum(1200, 850.5, 3200, -200)"
+        }
+      },
+      "ts": 1789764921783
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_8",
+        "name": "calculator",
+        "input": {
+          "expression": "sum(980, 415.25, 1999, 2750)"
+        }
+      },
+      "ts": 1789764921783
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_9",
+        "name": "calculator",
+        "input": {
+          "expression": "sum(1500, 2100.5, -300, 1200, 850.5, 3200, -200, 980, 415.25, 1999, 2750)"
+        }
+      },
+      "ts": 1789764921784
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_6",
+      "name": "calculator",
+      "result": {
+        "ok": true,
+        "output": "sum(1500, 2100.5, -300) = 3300.5"
+      },
+      "durationMs": 1,
+      "ts": 1789764921784
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_7",
+      "name": "calculator",
+      "result": {
+        "ok": true,
+        "output": "sum(1200, 850.5, 3200, -200) = 5050.5"
+      },
+      "durationMs": 1,
+      "ts": 1789764921784
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_8",
+      "name": "calculator",
+      "result": {
+        "ok": true,
+        "output": "sum(980, 415.25, 1999, 2750) = 6144.25"
+      },
+      "durationMs": 1,
+      "ts": 1789764921784
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_9",
+      "name": "calculator",
+      "result": {
+        "ok": true,
+        "output": "sum(1500, 2100.5, -300, 1200, 850.5, 3200, -200, 980, 415.25, 1999, 2750) = 14495.25"
+      },
+      "durationMs": 0,
+      "ts": 1789764921784
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "写入报告。",
+      "ts": 1789764921784
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 5,
+      "text": "写入报告。",
+      "toolCalls": [
+        {
+          "id": "mock_10",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "列出 data/regions 下的文件",
+                "status": "done"
+              },
+              {
+                "id": 2,
+                "title": "并行读取并归一化金额",
+                "status": "done"
+              },
+              {
+                "id": 3,
+                "title": "分地区求和与总计",
+                "status": "done",
+                "note": "合计 14495.25"
+              },
+              {
+                "id": 4,
+                "title": "写入报告",
+                "status": "in_progress"
+              }
+            ]
+          }
+        },
+        {
+          "id": "mock_11",
+          "name": "write_file",
+          "input": {
+            "path": "report-regions.md",
+            "content": "# 地区销售汇总\n\n| 地区 | 文件 | 有效记录 | 销售额 |\n|---|---|---|---|\n| east | data/regions/east.txt | 3 | 3300.5 |\n| north | data/regions/north.csv | 4 | 5050.5 |\n| south | data/regions/south.csv | 4 | 6144.25 |\n| **合计** | | 11 | **14495.25** |\n\n## 处理说明\n\n- 金额去除 ¥ 与千分位分隔符；`Refund` 行为负数计入\n- 跳过无法解析的记录:\n  - data/regions/east.txt: `Service Plan ... 待确认`\n"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 908,
+        "outputTokens": 80
+      },
+      "durationMs": 6,
+      "ts": 1789764921790
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 5,
+      "call": {
+        "id": "mock_10",
+        "name": "update_plan",
+        "input": {
+          "steps": [
+            {
+              "id": 1,
+              "title": "列出 data/regions 下的文件",
+              "status": "done"
+            },
+            {
+              "id": 2,
+              "title": "并行读取并归一化金额",
+              "status": "done"
+            },
+            {
+              "id": 3,
+              "title": "分地区求和与总计",
+              "status": "done",
+              "note": "合计 14495.25"
+            },
+            {
+              "id": 4,
+              "title": "写入报告",
+              "status": "in_progress"
+            }
+          ]
+        }
+      },
+      "ts": 1789764921790
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "plan",
+      "step": 5,
+      "plan": [
+        {
+          "id": 1,
+          "title": "列出 data/regions 下的文件",
+          "status": "done"
+        },
+        {
+          "id": 2,
+          "title": "并行读取并归一化金额",
+          "status": "done"
+        },
+        {
+          "id": 3,
+          "title": "分地区求和与总计",
+          "status": "done",
+          "note": "合计 14495.25"
+        },
+        {
+          "id": 4,
+          "title": "写入报告",
+          "status": "in_progress"
+        }
+      ],
+      "ts": 1789764921790
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 5,
+      "callId": "mock_10",
+      "name": "update_plan",
+      "result": {
+        "ok": true,
+        "output": "计划已更新（3/4 完成）"
+      },
+      "durationMs": 0,
+      "ts": 1789764921790
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 5,
+      "call": {
+        "id": "mock_11",
+        "name": "write_file",
+        "input": {
+          "path": "report-regions.md",
+          "content": "# 地区销售汇总\n\n| 地区 | 文件 | 有效记录 | 销售额 |\n|---|---|---|---|\n| east | data/regions/east.txt | 3 | 3300.5 |\n| north | data/regions/north.csv | 4 | 5050.5 |\n| south | data/regions/south.csv | 4 | 6144.25 |\n| **合计** | | 11 | **14495.25** |\n\n## 处理说明\n\n- 金额去除 ¥ 与千分位分隔符；`Refund` 行为负数计入\n- 跳过无法解析的记录:\n  - data/regions/east.txt: `Service Plan ... 待确认`\n"
+        }
+      },
+      "ts": 1789764921790
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 5,
+      "callId": "mock_11",
+      "name": "write_file",
+      "result": {
+        "ok": true,
+        "output": "已写入 report-regions.md (442 bytes)"
+      },
+      "durationMs": 1,
+      "ts": 1789764921791
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "完成。3 个",
+      "ts": 1789764921791
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "地区合计 1",
+      "ts": 1789764921797
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "4495.2",
+      "ts": 1789764921802
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "5（east",
+      "ts": 1789764921807
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": " 3300.",
+      "ts": 1789764921813
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "5，nort",
+      "ts": 1789764921819
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "h 5050",
+      "ts": 1789764921825
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": ".5，sou",
+      "ts": 1789764921831
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "th 614",
+      "ts": 1789764921836
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "4.25），",
+      "ts": 1789764921842
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "报告已写入 ",
+      "ts": 1789764921848
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "report",
+      "ts": 1789764921853
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "-regio",
+      "ts": 1789764921859
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "ns.md。",
+      "ts": 1789764921865
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 6,
+      "text": "完成。3 个地区合计 14495.25（east 3300.5，north 5050.5，south 6144.25），报告已写入 report-regions.md。",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 1236,
+        "outputTokens": 80
+      },
+      "durationMs": 80,
+      "ts": 1789764921871
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "final",
+      "answer": "完成。3 个地区合计 14495.25（east 3300.5，north 5050.5，south 6144.25），报告已写入 report-regions.md。",
+      "reason": "completed",
+      "steps": 6,
+      "usage": {
+        "inputTokens": 3187,
+        "outputTokens": 480
+      },
+      "ts": 1789764921871
+    }
+  ],
+  "tree": {
+    "agent": "main",
+    "depth": 0,
+    "events": [
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "user",
+        "task": "汇总 data/regions 下所有地区的销售额（注意货币符号与退款），生成 report-regions.md。",
+        "ts": 1789764921700
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "制定计划。",
+        "ts": 1789764921700
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 1,
+        "text": "制定计划。",
+        "toolCalls": [
+          {
+            "id": "mock_1",
+            "name": "update_plan",
+            "input": {
+              "steps": [
+                {
+                  "id": 1,
+                  "title": "列出 data/regions 下的文件",
+                  "status": "in_progress"
+                },
+                {
+                  "id": 2,
+                  "title": "并行读取并归一化金额",
+                  "status": "pending"
+                },
+                {
+                  "id": 3,
+                  "title": "分地区求和与总计",
+                  "status": "pending"
+                },
+                {
+                  "id": 4,
+                  "title": "写入报告",
+                  "status": "pending"
+                }
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 29,
+          "outputTokens": 80
+        },
+        "durationMs": 6,
+        "ts": 1789764921706
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 1,
+        "call": {
+          "id": "mock_1",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "列出 data/regions 下的文件",
+                "status": "in_progress"
+              },
+              {
+                "id": 2,
+                "title": "并行读取并归一化金额",
+                "status": "pending"
+              },
+              {
+                "id": 3,
+                "title": "分地区求和与总计",
+                "status": "pending"
+              },
+              {
+                "id": 4,
+                "title": "写入报告",
+                "status": "pending"
+              }
+            ]
+          }
+        },
+        "ts": 1789764921707
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "plan",
+        "step": 1,
+        "plan": [
+          {
+            "id": 1,
+            "title": "列出 data/regions 下的文件",
+            "status": "in_progress"
+          },
+          {
+            "id": 2,
+            "title": "并行读取并归一化金额",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "分地区求和与总计",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "写入报告",
+            "status": "pending"
+          }
+        ],
+        "ts": 1789764921707
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 1,
+        "callId": "mock_1",
+        "name": "update_plan",
+        "result": {
+          "ok": true,
+          "output": "计划已更新（0/4 完成）"
+        },
+        "durationMs": 0,
+        "ts": 1789764921707
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "先看有哪些地",
+        "ts": 1789764921707
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "区文件。",
+        "ts": 1789764921712
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 2,
+        "text": "先看有哪些地区文件。",
+        "toolCalls": [
+          {
+            "id": "mock_2",
+            "name": "list_files",
+            "input": {
+              "path": "data/regions"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 172,
+          "outputTokens": 80
+        },
+        "durationMs": 11,
+        "ts": 1789764921718
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 2,
+        "call": {
+          "id": "mock_2",
+          "name": "list_files",
+          "input": {
+            "path": "data/regions"
+          }
+        },
+        "ts": 1789764921718
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 2,
+        "callId": "mock_2",
+        "name": "list_files",
+        "result": {
+          "ok": true,
+          "output": "data/regions/east.txt\ndata/regions/north.csv\ndata/regions/south.csv"
+        },
+        "durationMs": 1,
+        "ts": 1789764921719
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "3 个文件互",
+        "ts": 1789764921719
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "不依赖，一轮",
+        "ts": 1789764921724
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "并行读取。",
+        "ts": 1789764921730
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 3,
+        "text": "3 个文件互不依赖，一轮并行读取。",
+        "toolCalls": [
+          {
+            "id": "mock_3",
+            "name": "read_file",
+            "input": {
+              "path": "data/regions/east.txt"
+            }
+          },
+          {
+            "id": "mock_4",
+            "name": "read_file",
+            "input": {
+              "path": "data/regions/north.csv"
+            }
+          },
+          {
+            "id": "mock_5",
+            "name": "read_file",
+            "input": {
+              "path": "data/regions/south.csv"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 270,
+          "outputTokens": 80
+        },
+        "durationMs": 17,
+        "ts": 1789764921736
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_3",
+          "name": "read_file",
+          "input": {
+            "path": "data/regions/east.txt"
+          }
+        },
+        "ts": 1789764921736
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_4",
+          "name": "read_file",
+          "input": {
+            "path": "data/regions/north.csv"
+          }
+        },
+        "ts": 1789764921736
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_5",
+          "name": "read_file",
+          "input": {
+            "path": "data/regions/south.csv"
+          }
+        },
+        "ts": 1789764921736
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_4",
+        "name": "read_file",
+        "result": {
+          "ok": true,
+          "output": "region,product,amount\nnorth,Widget A,\"¥1,200.00\"\nnorth,Widget B,¥850.50\nnorth,Gadget X,\"¥3,200.00\"\nnorth,Refund #1001,-¥200.00\n"
+        },
+        "durationMs": 1,
+        "ts": 1789764921737
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_5",
+        "name": "read_file",
+        "result": {
+          "ok": true,
+          "output": "region,product,amount\nsouth,Widget A,980\nsouth,Gadget Y,415.25\nsouth,Service Plan,1,999.00\nsouth,Bundle Pack,2750\n"
+        },
+        "durationMs": 1,
+        "ts": 1789764921737
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_3",
+        "name": "read_file",
+        "result": {
+          "ok": true,
+          "output": "# 东区（手工录入，格式不规范）\nWidget A ....... 1500\nGadget X ....... 2,100.5\nService Plan ... 待确认\nRefund #2002 ... -300\n"
+        },
+        "durationMs": 1,
+        "ts": 1789764921737
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "归一化完成（",
+        "ts": 1789764921738
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "去掉 ¥ 与",
+        "ts": 1789764921744
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "千分位、退款",
+        "ts": 1789764921750
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "为负数，跳过",
+        "ts": 1789764921755
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 1 条无法",
+        "ts": 1789764921761
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "解析）。分地",
+        "ts": 1789764921766
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "区并行求和，",
+        "ts": 1789764921772
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "再求总计。",
+        "ts": 1789764921777
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 4,
+        "text": "归一化完成（去掉 ¥ 与千分位、退款为负数，跳过 1 条无法解析）。分地区并行求和，再求总计。",
+        "toolCalls": [
+          {
+            "id": "mock_6",
+            "name": "calculator",
+            "input": {
+              "expression": "sum(1500, 2100.5, -300)"
+            }
+          },
+          {
+            "id": "mock_7",
+            "name": "calculator",
+            "input": {
+              "expression": "sum(1200, 850.5, 3200, -200)"
+            }
+          },
+          {
+            "id": "mock_8",
+            "name": "calculator",
+            "input": {
+              "expression": "sum(980, 415.25, 1999, 2750)"
+            }
+          },
+          {
+            "id": "mock_9",
+            "name": "calculator",
+            "input": {
+              "expression": "sum(1500, 2100.5, -300, 1200, 850.5, 3200, -200, 980, 415.25, 1999, 2750)"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 572,
+          "outputTokens": 80
+        },
+        "durationMs": 46,
+        "ts": 1789764921783
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_6",
+          "name": "calculator",
+          "input": {
+            "expression": "sum(1500, 2100.5, -300)"
+          }
+        },
+        "ts": 1789764921783
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_7",
+          "name": "calculator",
+          "input": {
+            "expression": "sum(1200, 850.5, 3200, -200)"
+          }
+        },
+        "ts": 1789764921783
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_8",
+          "name": "calculator",
+          "input": {
+            "expression": "sum(980, 415.25, 1999, 2750)"
+          }
+        },
+        "ts": 1789764921783
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_9",
+          "name": "calculator",
+          "input": {
+            "expression": "sum(1500, 2100.5, -300, 1200, 850.5, 3200, -200, 980, 415.25, 1999, 2750)"
+          }
+        },
+        "ts": 1789764921784
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_6",
+        "name": "calculator",
+        "result": {
+          "ok": true,
+          "output": "sum(1500, 2100.5, -300) = 3300.5"
+        },
+        "durationMs": 1,
+        "ts": 1789764921784
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_7",
+        "name": "calculator",
+        "result": {
+          "ok": true,
+          "output": "sum(1200, 850.5, 3200, -200) = 5050.5"
+        },
+        "durationMs": 1,
+        "ts": 1789764921784
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_8",
+        "name": "calculator",
+        "result": {
+          "ok": true,
+          "output": "sum(980, 415.25, 1999, 2750) = 6144.25"
+        },
+        "durationMs": 1,
+        "ts": 1789764921784
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_9",
+        "name": "calculator",
+        "result": {
+          "ok": true,
+          "output": "sum(1500, 2100.5, -300, 1200, 850.5, 3200, -200, 980, 415.25, 1999, 2750) = 14495.25"
+        },
+        "durationMs": 0,
+        "ts": 1789764921784
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "写入报告。",
+        "ts": 1789764921784
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 5,
+        "text": "写入报告。",
+        "toolCalls": [
+          {
+            "id": "mock_10",
+            "name": "update_plan",
+            "input": {
+              "steps": [
+                {
+                  "id": 1,
+                  "title": "列出 data/regions 下的文件",
+                  "status": "done"
+                },
+                {
+                  "id": 2,
+                  "title": "并行读取并归一化金额",
+                  "status": "done"
+                },
+                {
+                  "id": 3,
+                  "title": "分地区求和与总计",
+                  "status": "done",
+                  "note": "合计 14495.25"
+                },
+                {
+                  "id": 4,
+                  "title": "写入报告",
+                  "status": "in_progress"
+                }
+              ]
+            }
+          },
+          {
+            "id": "mock_11",
+            "name": "write_file",
+            "input": {
+              "path": "report-regions.md",
+              "content": "# 地区销售汇总\n\n| 地区 | 文件 | 有效记录 | 销售额 |\n|---|---|---|---|\n| east | data/regions/east.txt | 3 | 3300.5 |\n| north | data/regions/north.csv | 4 | 5050.5 |\n| south | data/regions/south.csv | 4 | 6144.25 |\n| **合计** | | 11 | **14495.25** |\n\n## 处理说明\n\n- 金额去除 ¥ 与千分位分隔符；`Refund` 行为负数计入\n- 跳过无法解析的记录:\n  - data/regions/east.txt: `Service Plan ... 待确认`\n"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 908,
+          "outputTokens": 80
+        },
+        "durationMs": 6,
+        "ts": 1789764921790
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 5,
+        "call": {
+          "id": "mock_10",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "列出 data/regions 下的文件",
+                "status": "done"
+              },
+              {
+                "id": 2,
+                "title": "并行读取并归一化金额",
+                "status": "done"
+              },
+              {
+                "id": 3,
+                "title": "分地区求和与总计",
+                "status": "done",
+                "note": "合计 14495.25"
+              },
+              {
+                "id": 4,
+                "title": "写入报告",
+                "status": "in_progress"
+              }
+            ]
+          }
+        },
+        "ts": 1789764921790
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "plan",
+        "step": 5,
+        "plan": [
+          {
+            "id": 1,
+            "title": "列出 data/regions 下的文件",
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "并行读取并归一化金额",
+            "status": "done"
+          },
+          {
+            "id": 3,
+            "title": "分地区求和与总计",
+            "status": "done",
+            "note": "合计 14495.25"
+          },
+          {
+            "id": 4,
+            "title": "写入报告",
+            "status": "in_progress"
+          }
+        ],
+        "ts": 1789764921790
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 5,
+        "callId": "mock_10",
+        "name": "update_plan",
+        "result": {
+          "ok": true,
+          "output": "计划已更新（3/4 完成）"
+        },
+        "durationMs": 0,
+        "ts": 1789764921790
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 5,
+        "call": {
+          "id": "mock_11",
+          "name": "write_file",
+          "input": {
+            "path": "report-regions.md",
+            "content": "# 地区销售汇总\n\n| 地区 | 文件 | 有效记录 | 销售额 |\n|---|---|---|---|\n| east | data/regions/east.txt | 3 | 3300.5 |\n| north | data/regions/north.csv | 4 | 5050.5 |\n| south | data/regions/south.csv | 4 | 6144.25 |\n| **合计** | | 11 | **14495.25** |\n\n## 处理说明\n\n- 金额去除 ¥ 与千分位分隔符；`Refund` 行为负数计入\n- 跳过无法解析的记录:\n  - data/regions/east.txt: `Service Plan ... 待确认`\n"
+          }
+        },
+        "ts": 1789764921790
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 5,
+        "callId": "mock_11",
+        "name": "write_file",
+        "result": {
+          "ok": true,
+          "output": "已写入 report-regions.md (442 bytes)"
+        },
+        "durationMs": 1,
+        "ts": 1789764921791
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "完成。3 个",
+        "ts": 1789764921791
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "地区合计 1",
+        "ts": 1789764921797
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "4495.2",
+        "ts": 1789764921802
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "5（east",
+        "ts": 1789764921807
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": " 3300.",
+        "ts": 1789764921813
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "5，nort",
+        "ts": 1789764921819
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "h 5050",
+        "ts": 1789764921825
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": ".5，sou",
+        "ts": 1789764921831
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "th 614",
+        "ts": 1789764921836
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "4.25），",
+        "ts": 1789764921842
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "报告已写入 ",
+        "ts": 1789764921848
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "report",
+        "ts": 1789764921853
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "-regio",
+        "ts": 1789764921859
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "ns.md。",
+        "ts": 1789764921865
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 6,
+        "text": "完成。3 个地区合计 14495.25（east 3300.5，north 5050.5，south 6144.25），报告已写入 report-regions.md。",
+        "toolCalls": [],
+        "usage": {
+          "inputTokens": 1236,
+          "outputTokens": 80
+        },
+        "durationMs": 80,
+        "ts": 1789764921871
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "final",
+        "answer": "完成。3 个地区合计 14495.25（east 3300.5，north 5050.5，south 6144.25），报告已写入 report-regions.md。",
+        "reason": "completed",
+        "steps": 6,
+        "usage": {
+          "inputTokens": 3187,
+          "outputTokens": 480
+        },
+        "ts": 1789764921871
+      }
+    ],
+    "children": []
+  }
+}

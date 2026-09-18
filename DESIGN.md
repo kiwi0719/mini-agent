@@ -89,7 +89,9 @@ type ToolResult = { ok: true; output: string } | { ok: false; error: string };
 | 文件不存在 / 越权路径 | 返回 `is_error` 结果，模型可改用 list_files/search_text 探索 |
 | 工具抛异常 / 超时 | 捕获后返回错误。**重试边界**：仅当工具幂等（read 类）且错误为瞬时错误（timeout、EBUSY/EAGAIN/EMFILE 等）时自动重试 1 次；文件不存在、越界、二进制、参数错误等确定性错误一律不重试，直接回传模型 |
 | LLM API 错误 | 指数退避重试 3 次（429/5xx），否则终止并输出已完成部分 |
-| 连续 3 轮全部失败 | 提前结束，输出诊断 |
+| 持续失败 | 两条线：一轮内失败数 ≥ 成功数记为“失败轮”，连续 3 轮 → 终止；或单个调用连续失败 6 次 → 终止（防止模型每轮夹一个必成功的调用绕过轮级判定） |
+| 重复调用 | 连续 3 轮指纹相同 → 注入一次提示；提醒后再重复 2 轮 → 以 `stuck_loop` 终止（见 §4.6） |
+| 外部中止 | `AbortSignal`：步与步之间检查，并传给 LLM 请求与工具；以 `aborted` 结束并保存 Trace |
 
 ## 4.5 Context 压缩
 
@@ -100,13 +102,24 @@ type ToolResult = { ok: true; output: string } | { ok: false; error: string };
 | 触发条件 | 每次追加 tool result 后估算上下文大小（`JSON.stringify(messages).length` 字符数，粗略近似 token），超过 `compressThresholdChars`（默认 60k 字符 ≈ 15-20k token）时触发 |
 | 压缩对象 | **只压缩 tool result 的内容**。user 任务、assistant 的文字与 tool_call 结构一律不动，保证 `tool_use ↔ tool_result` 配对完整，API 不会报错 |
 | 保留窗口 | 最近 2 条 tool 消息保持原文；更早的 tool result 若超过 400 字符则截断为前 400 字符 + `[已压缩，原始 N 字符]` 标记 |
-| 幂等性 | 已压缩的结果再次压缩不会变化；可反复触发 |
+| 不可变更新 | 压缩生成**新的** tool 消息对象替换旧的，绝不原地修改已交给 Provider 的对象；被压缩的条目带 `compressed: true` 标记。Provider 即使缓存了转换结果也不会失同步 |
+| 可观测 | 触发时发 `compressed` 事件（节省字符数、当前大小），CLI / Trace / Web 均展示。examples/07 读入 151KB changelog 后触发，节省约 65k 字符 |
 | 不做的事 | 不调用 LLM 做摘要（成本与不确定性）；不删除消息（避免破坏配对） |
 | 局限 | 截断可能丢失后半段关键信息；模型如需可重新调用 read_file（这也是让 read 类工具幂等的原因） |
 
 ## 4.6 重复调用检测
 
-对每一轮的全部 tool call 计算指纹：`(name, 规范化后的 input JSON)` 排序拼接后取 **sha1**。连续 3 轮指纹相同即判定为死循环倾向，向上下文注入一条系统提示要求换策略；再叠加 `maxSteps` 硬上限兜底。用哈希而非原始字符串比较，避免在内存中保留和比较大段参数文本（例如 write_file 的整篇内容）。
+对每一轮的全部 tool call 计算指纹：`(name, 规范化后的 input JSON)` 排序拼接后取 **sha1**。用哈希而非原始字符串比较，避免在内存中保留和比较大段参数文本（例如 write_file 的整篇内容）。
+
+状态机：连续 3 轮指纹相同 → 注入**一次** `system` 消息提醒（记录已提醒的指纹，不重复注入）→ 若模型换了策略（指纹变化）则重置 → 若提醒后又连续 2 轮相同 → `stuck_loop` 终止。examples/09 演示了一个“固执”模型轮询锁文件被终止的完整过程（5 步结束，而不是耗满 15 步）。
+
+## 4.7 一轮内多个调用的执行顺序
+
+模型一轮可发出多个 tool call。执行分两组：**read 权限工具并行**（`Promise.all`，包含 delegate，因此多个子 Agent 天然并行）；**write 工具在只读组完成后串行**，避免同一轮内对同一文件的写入竞争。结果按原调用顺序回填，保证 `tool_use ↔ tool_result` 一一对应。examples/06 中一轮并行读取 3 个地区文件、一轮并行执行 4 个 calculator。
+
+## 4.8 运行中系统提示
+
+内部消息格式新增 `system` 角色，用于重复调用告警等运行中注入。OpenAI 兼容接口直接映射为对话中的 `system` 消息；Anthropic Messages API 没有对话中 system 角色，映射为带 `<system_notice>` 标记的 user 消息。Provider 各自选择最合适的表达，Agent 不关心。
 
 ## 5. LLM Provider
 
@@ -149,7 +162,13 @@ interface LLMProvider {
 
 ### 6.2 Sub Agent
 
-`delegate(task)` 在同一进程内 new 一个 `Agent`，共享 LLM 与 ToolRegistry，但拥有独立 Context、更小的 `maxSteps`，且 `depth+1`。`maxDepth` 默认 1，子 Agent 的工具列表中不再包含 `delegate`，从结构上杜绝无限递归。子 Agent 的 token 计入父 Agent 总量；子 Agent 的最终答案作为 tool result 返回父 Agent。
+`delegate(task, allow_write?)` 在同一进程内 new 一个 `Agent`，共享 LLM 与 ToolRegistry，但拥有独立 Context、更小的 `maxSteps`，且 `depth+1`。`maxDepth` 默认 1，子 Agent 的工具列表中不再包含 `delegate`，从结构上杜绝无限递归。子 Agent 的 token 计入父 Agent 总量；子 Agent 的最终答案作为 tool result 返回父 Agent。
+
+**权限只能收窄**：子 Agent 默认只读（`subAgentAllowWrite=false`）；父 Agent 可在 delegate 时传 `allow_write: true`，但最终权限是 `父.allowWrite && 请求值`，不能超过父级。examples/10 演示：首个子 Agent 写入被拒 → 报告需要写权限 → 父 Agent 修订计划、授予 `allow_write` 并行重派。
+
+**父子关系可追溯**：子 Agent 的每个事件带 `parent`（父 Agent id）与 `parentCallId`（派生它的 delegate 调用 id）。`Trace.toTree()` 把线性事件流还原为树；Markdown 里子 Agent 的过程嵌套渲染在对应 delegate 调用之下的折叠块中，而不是与父级事件按时间交错。
+
+**可查询状态**：`Agent.getState()` 返回当前 step、plan、已激活工具、usage、失败计数、结束原因的快照，不再只存在于闭包里。
 
 ### 6.3 Tool Search
 
@@ -165,31 +184,50 @@ Provider 接口增加可选 `onDelta`。Anthropic 用 `client.messages.stream()`
 - `GET /` 返回 `web/index.html`（**Vue 3** via CDN，单文件，免构建）；
 - `POST /api/run` 接收任务，以 **SSE** 流式推送 Agent 事件：`decision` / `tool_call` / `tool_result` / `final` / `usage`；
 - 前端按时间线渲染事件卡片（子 Agent 事件缩进并标紫色），实时展示 Trace、当前 Plan、统计（步数/工具调用/失败/子 Agent/tokens）、workspace 文件浏览；流式文字有打字机效果；
+- **队列与多线程**（`src/job-queue.ts`）：任务进入 FIFO 队列，最多 `AGENT_WORKERS`（默认 2）个同时运行，每个 Agent 跑在独立的 `worker_threads` 线程里，事件经 `parentPort` 回传主线程再转 SSE；排队中的任务实时收到位置变化；
+- **及时中止**：前端“中止”按钮调用 `POST /api/jobs/:id/abort`；SSE 连接断开（关页面）由服务端 `res 'close'` 捕获后同样触发中止。排队中的任务直接移出队列；运行中的先发 abort 消息让 Agent 通过 `AbortSignal` 优雅停止并保存 `aborted` Trace，3 秒内未退出则 `worker.terminate()` 硬杀；
+- `GET /api/jobs` 查看运行中 / 排队中的任务。
 - Agent 核心通过 `onEvent` 回调向 CLI、Trace 文件、SSE 三方广播，前端不含任何业务逻辑。
 
 ## 7. 测试 workspace 与任务
 
-```
-workspace/
-├── README.md            # 含 TODO、文字说明
-├── src/user.ts          # TODO + FIXME + 代码
-├── src/order.ts         # FIXME + 数字
-├── docs/design.md       # TODO + 引用了不存在的文件 docs/api.md
-├── data/sales.txt       # 销售数据（含一行脏数据）
-└── data/broken.bin      # 二进制文件，read_file 会失败
-```
+workspace 由 `scripts/gen-workspace.ts` 确定性生成（`pnpm test` 会先重新生成），刻意包含以下“陷阱”：
 
-任务：
-1. **搜索并汇总**：找出所有 TODO/FIXME，按文件分类生成 `todo-report.md`。
-2. **读取 + 计算 + 报告**：读 `data/sales.txt`，求销售额之和，写入 `report.md`。
-3. **多步 + 容错**：读取 `docs/design.md` 中提到的文件并核对是否存在，生成 `docs/check.md`（其中 `docs/api.md` 不存在，需处理失败）。
+| 材料 | 目的 |
+|---|---|
+| `src/**` 5 个 ts 文件、`config/app.yaml`、`docs/**` | `// TODO:`、`/* TODO */`、`# TODO:`、`TODO(alice):` 多种写法 |
+| `todoList` 变量、“TODOS 统一在 issue 跟踪”、“不是 TODO 注释” | **假阳性**，宽松正则会误报 |
+| `node_modules/fake-lib/index.js` 含 TODO | 搜索必须忽略 |
+| `data/sales.txt` 含 `N/A` | 脏数据 |
+| `data/regions/*.csv|txt` | 三种格式：带引号的 `"¥1,200.00"`、未加引号的千分位 `1,999.00`（破坏 CSV 列数）、点线对齐的手工文本、负数退款、“待确认” |
+| `docs/changelog.md` 151KB | 低于 read_file 上限但读入后**触发 Context 压缩**；49 条 BREAKING 涉及已删除的文件 |
+| `data/huge.log` 252KB | **超过 read_file 上限**，必须改用 search_text；ERROR 行 > 500 条，一次搜索会**截断** |
+| `docs/design.md` 引用 `docs/api.md`（不存在）、`data/archive.bin`（二进制） | 失败处理 |
+| `data/lock.txt` 永远 `PENDING` | 诱导死循环 |
+| 无任何汇率信息 | 任务所需信息不在 workspace，应判断无法完成 |
+
+11 个任务（`scripts/run-examples.ts`，每个带自动校验）：
+
+| # | 任务 | 验证的机制 |
+|---|---|---|
+| 01 | 找出所有 TODO 按文件分类生成报告 | Plan；搜索结果含假阳性后**精化正则重搜**；只对源码文件并行派子 Agent |
+| 02 | 读 sales.txt 求和写报告 | Tool Search 激活 csv_parse；脏数据；calculator |
+| 03 | 核对 design.md 引用文件 | 2 次工具失败后**修订计划**继续 |
+| 04 | 无写权限生成报告 | 权限拒绝 → 明确报告 |
+| 05 | 读 `../../etc/passwd` | 沙箱拒绝 + 未知任务兜底 |
+| 06 | 汇总 data/regions 三地区销售额 | **一轮并行读 3 文件**、格式归一、**一轮并行 4 个 calculator**，合计 14495.25 |
+| 07 | 整理 changelog 的 BREAKING 并核对文件 | 大文件 → **Context 压缩触发**；并行核对 8 文件其中 2 缺失 |
+| 08 | 统计 huge.log 每类 ERROR | read_file **超限** → search_text；结果**截断** → 改为分类型并行搜索；计数与生成器答案一致 |
+| 09 | 等待 lock.txt 就绪 | 模拟固执模型：3 轮重复 → 提醒 → 再 2 轮 → **stuck_loop 终止** |
+| 10 | 子 Agent 为每个源码文件生成摘要 | 子 Agent **默认只读写失败** → 父 Agent 授予 allow_write 并行重派 |
+| 11 | 销售额换算美元 | 信息缺失 → 搜索确认 → **明确拒绝猜测、不生成报告** |
 
 ## 8. 当前实现最大限制
 
-1. **真实模型未经充分验证**：开发环境中的 Anthropic key 无效，全部端到端结果来自 Mock LLM。Anthropic / OpenAI 兼容 Provider 的协议转换按官方文档实现并通过类型检查，但真实模型的行为（是否主动用 update_plan、是否会在失败后换策略）取决于模型能力与 prompt，需要拿到 key 后跑 `pnpm test anthropic` 复验。
+1. **真实模型未经充分验证**：开发环境中的 Anthropic key 无效，全部端到端结果来自 Mock LLM。11 个用例验证的是**框架机制**（并行、压缩、终止、权限、沙箱、Tool Search）在这些场景下行为正确，而不是模型的判断力。Anthropic / OpenAI 兼容 Provider 的协议转换按官方文档实现并通过类型检查，但真实模型的行为（是否主动用 update_plan、是否会在失败后换策略）取决于模型能力与 prompt，需要拿到 key 后跑 `pnpm test anthropic` 复验。
 2. **Mock LLM 不泛化**：它是针对 3 类任务的规则脚本，只用于验证 Loop、工具、失败路径与各增强项的机制，不能证明"自主判断"能力。
 3. **Context 压缩粗粒度**：字符数近似 token、简单截断，可能丢关键信息；没有 LLM 摘要。
-4. **子 Agent 串行执行**、深度固定为 1，没有并行与结果合并策略。
+4. **子 Agent 深度固定为 1**，没有结果合并策略（同一轮的多个 delegate 已并行）；框架不参与“该不该分”的判断（讨论过三种方案：按上下文大小提示、按子 Agent 实际步数事后提醒、delegate 加 expected_steps 门槛，均未实现）。
 5. **Tool Search 是关键词打分**而非语义检索，工具数量大时召回不稳定。
-6. **单进程、无持久化**：任务中断不能恢复；Web 端同时只跑一个任务、没有鉴权。
+6. **无持久化、无鉴权**：任务中断不能恢复；多个任务共享同一个 workspace，写同名文件会互相覆盖（队列只限并发数，不做文件级隔离）。
 7. **计划由模型自觉维护**：框架不校验计划与实际行为是否一致，弱模型可能制定计划后不更新。

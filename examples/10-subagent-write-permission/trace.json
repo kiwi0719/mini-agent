@@ -1,0 +1,5893 @@
+{
+  "meta": {
+    "provider": "mock",
+    "workspace": "workspace"
+  },
+  "startedAt": 1789764922471,
+  "events": [
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "user",
+      "task": "用子 Agent 为 src 下每个 .ts 文件生成摘要，写入 docs/summaries/<文件名>.md。",
+      "ts": 1789764922471
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "制定计划。",
+      "ts": 1789764922471
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 1,
+      "text": "制定计划。",
+      "toolCalls": [
+        {
+          "id": "mock_1",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "列出 src 下的 ts 文件",
+                "status": "in_progress"
+              },
+              {
+                "id": 2,
+                "title": "委派子 Agent 生成摘要",
+                "status": "pending"
+              },
+              {
+                "id": 3,
+                "title": "汇总",
+                "status": "pending"
+              }
+            ]
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 29,
+        "outputTokens": 80
+      },
+      "durationMs": 6,
+      "ts": 1789764922477
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_1",
+        "name": "update_plan",
+        "input": {
+          "steps": [
+            {
+              "id": 1,
+              "title": "列出 src 下的 ts 文件",
+              "status": "in_progress"
+            },
+            {
+              "id": 2,
+              "title": "委派子 Agent 生成摘要",
+              "status": "pending"
+            },
+            {
+              "id": 3,
+              "title": "汇总",
+              "status": "pending"
+            }
+          ]
+        }
+      },
+      "ts": 1789764922477
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "plan",
+      "step": 1,
+      "plan": [
+        {
+          "id": 1,
+          "title": "列出 src 下的 ts 文件",
+          "status": "in_progress"
+        },
+        {
+          "id": 2,
+          "title": "委派子 Agent 生成摘要",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "汇总",
+          "status": "pending"
+        }
+      ],
+      "ts": 1789764922477
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_1",
+      "name": "update_plan",
+      "result": {
+        "ok": true,
+        "output": "计划已更新（0/3 完成）"
+      },
+      "durationMs": 0,
+      "ts": 1789764922477
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "列出源码文件",
+      "ts": 1789764922477
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "。",
+      "ts": 1789764922483
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 2,
+      "text": "列出源码文件。",
+      "toolCalls": [
+        {
+          "id": "mock_2",
+          "name": "list_files",
+          "input": {
+            "path": "src"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 155,
+        "outputTokens": 80
+      },
+      "durationMs": 12,
+      "ts": 1789764922489
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_2",
+        "name": "list_files",
+        "input": {
+          "path": "src"
+        }
+      },
+      "ts": 1789764922489
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_2",
+      "name": "list_files",
+      "result": {
+        "ok": true,
+        "output": "src/order.ts\nsrc/payment.ts\nsrc/user.ts\nsrc/utils/format.ts\nsrc/utils/validate.ts"
+      },
+      "durationMs": 0,
+      "ts": 1789764922489
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "5 个文件。",
+      "ts": 1789764922490
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "先委派一个试",
+      "ts": 1789764922495
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "试。",
+      "ts": 1789764922501
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 3,
+      "text": "5 个文件。先委派一个试试。",
+      "toolCalls": [
+        {
+          "id": "mock_3",
+          "name": "delegate",
+          "input": {
+            "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 255,
+        "outputTokens": 80
+      },
+      "durationMs": 18,
+      "ts": 1789764922507
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_3",
+        "name": "delegate",
+        "input": {
+          "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md"
+        }
+      },
+      "ts": 1789764922507
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "user",
+      "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md",
+      "ts": 1789764922507
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 1,
+      "text": "读取 src",
+      "ts": 1789764922507
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 1,
+      "text": "/order",
+      "ts": 1789764922513
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 1,
+      "text": ".ts。",
+      "ts": 1789764922518
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "decision",
+      "step": 1,
+      "text": "读取 src/order.ts。",
+      "toolCalls": [
+        {
+          "id": "mock_4",
+          "name": "read_file",
+          "input": {
+            "path": "src/order.ts"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 26,
+        "outputTokens": 80
+      },
+      "durationMs": 17,
+      "ts": 1789764922524
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_4",
+        "name": "read_file",
+        "input": {
+          "path": "src/order.ts"
+        }
+      },
+      "ts": 1789764922524
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_4",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "import type { User } from './user.ts';\n\nexport interface Order {\n  id: string;\n  user: User;\n  amount: number;\n  status: 'pending' | 'paid' | 'shipped';\n}\n\nconst TAX_RATE = 0.13;\nconst FREE_SHIPPING_THRESHOLD = 500;\n\n// FIXME: 浮点运算精度问题，金额应使用整数分\nexport function totalWithTax(order: Order): number {\n  return order.amount * (1 + TAX_RATE);\n}\n\nexport function shippingFee(order: Order): number {\n  return order.amount >= FREE_SHIPPING_THRESHOLD ? 0 : 20;\n}\n\n/* TODO: 订单状态机校验（pending → paid → shipped） */\nexport function advance(order: Order): Order {\n  return order;\n}\n"
+      },
+      "durationMs": 0,
+      "ts": 1789764922524
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 2,
+      "text": "生成摘要写入",
+      "ts": 1789764922525
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 2,
+      "text": " docs/",
+      "ts": 1789764922531
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 2,
+      "text": "summar",
+      "ts": 1789764922537
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 2,
+      "text": "ies/or",
+      "ts": 1789764922542
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 2,
+      "text": "der.md",
+      "ts": 1789764922548
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 2,
+      "text": "。",
+      "ts": 1789764922554
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "decision",
+      "step": 2,
+      "text": "生成摘要写入 docs/summaries/order.md。",
+      "toolCalls": [
+        {
+          "id": "mock_5",
+          "name": "write_file",
+          "input": {
+            "path": "docs/summaries/order.md",
+            "content": "# src/order.ts\n\n- 行数: 26\n- 导出: Order, totalWithTax, shippingFee, advance\n- TODO/FIXME: 2 处\n"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 300,
+        "outputTokens": 80
+      },
+      "durationMs": 35,
+      "ts": 1789764922559
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_5",
+        "name": "write_file",
+        "input": {
+          "path": "docs/summaries/order.md",
+          "content": "# src/order.ts\n\n- 行数: 26\n- 导出: Order, totalWithTax, shippingFee, advance\n- TODO/FIXME: 2 处\n"
+        }
+      },
+      "ts": 1789764922559
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_5",
+      "name": "write_file",
+      "result": {
+        "ok": false,
+        "error": "工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)"
+      },
+      "durationMs": 0,
+      "ts": 1789764922559
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 3,
+      "text": "摘要已生成但",
+      "ts": 1789764922560
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 3,
+      "text": "写入失败：工",
+      "ts": 1789764922565
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 3,
+      "text": "具 \"wri",
+      "ts": 1789764922571
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 3,
+      "text": "te_fil",
+      "ts": 1789764922576
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 3,
+      "text": "e\" 需要写",
+      "ts": 1789764922582
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 3,
+      "text": "权限，当前未",
+      "ts": 1789764922588
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 3,
+      "text": "授权 (--",
+      "ts": 1789764922594
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 3,
+      "text": "allow-",
+      "ts": 1789764922599
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 3,
+      "text": "write)",
+      "ts": 1789764922605
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 3,
+      "text": "。需要父 A",
+      "ts": 1789764922611
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 3,
+      "text": "gent 授",
+      "ts": 1789764922616
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "delta",
+      "step": 3,
+      "text": "予写权限。",
+      "ts": 1789764922622
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "decision",
+      "step": 3,
+      "text": "摘要已生成但写入失败：工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)。需要父 Agent 授予写权限。",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 438,
+        "outputTokens": 80
+      },
+      "durationMs": 68,
+      "ts": 1789764922628
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_3",
+      "type": "final",
+      "answer": "摘要已生成但写入失败：工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)。需要父 Agent 授予写权限。",
+      "reason": "completed",
+      "steps": 3,
+      "usage": {
+        "inputTokens": 764,
+        "outputTokens": 240
+      },
+      "ts": 1789764922628
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_3",
+      "name": "delegate",
+      "result": {
+        "ok": true,
+        "output": "[子 Agent 用 3 步完成]\n摘要已生成但写入失败：工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)。需要父 Agent 授予写权限。"
+      },
+      "durationMs": 121,
+      "ts": 1789764922628
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "子 Agen",
+      "ts": 1789764922629
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "t 报告没有",
+      "ts": 1789764922634
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "写权限（默认",
+      "ts": 1789764922640
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "只读）。这个",
+      "ts": 1789764922646
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "子任务确实需",
+      "ts": 1789764922652
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "要写文件，重",
+      "ts": 1789764922657
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "派时授予 a",
+      "ts": 1789764922662
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "llow_w",
+      "ts": 1789764922667
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "rite，其",
+      "ts": 1789764922673
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "余文件同一轮",
+      "ts": 1789764922679
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "并行委派。",
+      "ts": 1789764922684
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 4,
+      "text": "子 Agent 报告没有写权限（默认只读）。这个子任务确实需要写文件，重派时授予 allow_write，其余文件同一轮并行委派。",
+      "toolCalls": [
+        {
+          "id": "mock_6",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "列出 src 下的 ts 文件",
+                "status": "done"
+              },
+              {
+                "id": 2,
+                "title": "委派子 Agent 生成摘要",
+                "status": "in_progress",
+                "note": "首个子 Agent 因只读失败，改为授予写权限"
+              },
+              {
+                "id": 3,
+                "title": "汇总",
+                "status": "pending"
+              }
+            ],
+            "reason": "子 Agent 默认只读，需显式授权"
+          }
+        },
+        {
+          "id": "mock_7",
+          "name": "delegate",
+          "input": {
+            "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md",
+            "allow_write": true
+          }
+        },
+        {
+          "id": "mock_8",
+          "name": "delegate",
+          "input": {
+            "task": "为文件 src/payment.ts 生成摘要并写入 docs/summaries/payment.md",
+            "allow_write": true
+          }
+        },
+        {
+          "id": "mock_9",
+          "name": "delegate",
+          "input": {
+            "task": "为文件 src/user.ts 生成摘要并写入 docs/summaries/user.md",
+            "allow_write": true
+          }
+        },
+        {
+          "id": "mock_10",
+          "name": "delegate",
+          "input": {
+            "task": "为文件 src/utils/format.ts 生成摘要并写入 docs/summaries/utils-format.md",
+            "allow_write": true
+          }
+        },
+        {
+          "id": "mock_11",
+          "name": "delegate",
+          "input": {
+            "task": "为文件 src/utils/validate.ts 生成摘要并写入 docs/summaries/utils-validate.md",
+            "allow_write": true
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 373,
+        "outputTokens": 80
+      },
+      "durationMs": 62,
+      "ts": 1789764922690
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_6",
+        "name": "update_plan",
+        "input": {
+          "steps": [
+            {
+              "id": 1,
+              "title": "列出 src 下的 ts 文件",
+              "status": "done"
+            },
+            {
+              "id": 2,
+              "title": "委派子 Agent 生成摘要",
+              "status": "in_progress",
+              "note": "首个子 Agent 因只读失败，改为授予写权限"
+            },
+            {
+              "id": 3,
+              "title": "汇总",
+              "status": "pending"
+            }
+          ],
+          "reason": "子 Agent 默认只读，需显式授权"
+        }
+      },
+      "ts": 1789764922690
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "plan",
+      "step": 4,
+      "plan": [
+        {
+          "id": 1,
+          "title": "列出 src 下的 ts 文件",
+          "status": "done"
+        },
+        {
+          "id": 2,
+          "title": "委派子 Agent 生成摘要",
+          "status": "in_progress",
+          "note": "首个子 Agent 因只读失败，改为授予写权限"
+        },
+        {
+          "id": 3,
+          "title": "汇总",
+          "status": "pending"
+        }
+      ],
+      "ts": 1789764922690
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_7",
+        "name": "delegate",
+        "input": {
+          "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md",
+          "allow_write": true
+        }
+      },
+      "ts": 1789764922690
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "user",
+      "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md",
+      "ts": 1789764922690
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 1,
+      "text": "读取 src",
+      "ts": 1789764922690
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_8",
+        "name": "delegate",
+        "input": {
+          "task": "为文件 src/payment.ts 生成摘要并写入 docs/summaries/payment.md",
+          "allow_write": true
+        }
+      },
+      "ts": 1789764922690
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "user",
+      "task": "为文件 src/payment.ts 生成摘要并写入 docs/summaries/payment.md",
+      "ts": 1789764922690
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 1,
+      "text": "读取 src",
+      "ts": 1789764922690
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_9",
+        "name": "delegate",
+        "input": {
+          "task": "为文件 src/user.ts 生成摘要并写入 docs/summaries/user.md",
+          "allow_write": true
+        }
+      },
+      "ts": 1789764922690
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "user",
+      "task": "为文件 src/user.ts 生成摘要并写入 docs/summaries/user.md",
+      "ts": 1789764922690
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 1,
+      "text": "读取 src",
+      "ts": 1789764922690
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_10",
+        "name": "delegate",
+        "input": {
+          "task": "为文件 src/utils/format.ts 生成摘要并写入 docs/summaries/utils-format.md",
+          "allow_write": true
+        }
+      },
+      "ts": 1789764922690
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "user",
+      "task": "为文件 src/utils/format.ts 生成摘要并写入 docs/summaries/utils-format.md",
+      "ts": 1789764922690
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 1,
+      "text": "读取 src",
+      "ts": 1789764922690
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_11",
+        "name": "delegate",
+        "input": {
+          "task": "为文件 src/utils/validate.ts 生成摘要并写入 docs/summaries/utils-validate.md",
+          "allow_write": true
+        }
+      },
+      "ts": 1789764922690
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "user",
+      "task": "为文件 src/utils/validate.ts 生成摘要并写入 docs/summaries/utils-validate.md",
+      "ts": 1789764922690
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 1,
+      "text": "读取 src",
+      "ts": 1789764922690
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_6",
+      "name": "update_plan",
+      "result": {
+        "ok": true,
+        "output": "计划已更新（1/3 完成），原因: 子 Agent 默认只读，需显式授权"
+      },
+      "durationMs": 0,
+      "ts": 1789764922690
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 1,
+      "text": "/order",
+      "ts": 1789764922696
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 1,
+      "text": "/payme",
+      "ts": 1789764922696
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 1,
+      "text": "/user.",
+      "ts": 1789764922696
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 1,
+      "text": "/utils",
+      "ts": 1789764922696
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 1,
+      "text": "/utils",
+      "ts": 1789764922696
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 1,
+      "text": ".ts。",
+      "ts": 1789764922702
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 1,
+      "text": "nt.ts。",
+      "ts": 1789764922702
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 1,
+      "text": "ts。",
+      "ts": 1789764922702
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 1,
+      "text": "/forma",
+      "ts": 1789764922702
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 1,
+      "text": "/valid",
+      "ts": 1789764922702
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "decision",
+      "step": 1,
+      "text": "读取 src/order.ts。",
+      "toolCalls": [
+        {
+          "id": "mock_12",
+          "name": "read_file",
+          "input": {
+            "path": "src/order.ts"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 26,
+        "outputTokens": 80
+      },
+      "durationMs": 17,
+      "ts": 1789764922707
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_12",
+        "name": "read_file",
+        "input": {
+          "path": "src/order.ts"
+        }
+      },
+      "ts": 1789764922707
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "decision",
+      "step": 1,
+      "text": "读取 src/payment.ts。",
+      "toolCalls": [
+        {
+          "id": "mock_13",
+          "name": "read_file",
+          "input": {
+            "path": "src/payment.ts"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 27,
+        "outputTokens": 80
+      },
+      "durationMs": 18,
+      "ts": 1789764922708
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_13",
+        "name": "read_file",
+        "input": {
+          "path": "src/payment.ts"
+        }
+      },
+      "ts": 1789764922708
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "decision",
+      "step": 1,
+      "text": "读取 src/user.ts。",
+      "toolCalls": [
+        {
+          "id": "mock_14",
+          "name": "read_file",
+          "input": {
+            "path": "src/user.ts"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 25,
+        "outputTokens": 80
+      },
+      "durationMs": 18,
+      "ts": 1789764922708
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_14",
+        "name": "read_file",
+        "input": {
+          "path": "src/user.ts"
+        }
+      },
+      "ts": 1789764922708
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 1,
+      "text": "t.ts。",
+      "ts": 1789764922708
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 1,
+      "text": "ate.ts",
+      "ts": 1789764922708
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_12",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "import type { User } from './user.ts';\n\nexport interface Order {\n  id: string;\n  user: User;\n  amount: number;\n  status: 'pending' | 'paid' | 'shipped';\n}\n\nconst TAX_RATE = 0.13;\nconst FREE_SHIPPING_THRESHOLD = 500;\n\n// FIXME: 浮点运算精度问题，金额应使用整数分\nexport function totalWithTax(order: Order): number {\n  return order.amount * (1 + TAX_RATE);\n}\n\nexport function shippingFee(order: Order): number {\n  return order.amount >= FREE_SHIPPING_THRESHOLD ? 0 : 20;\n}\n\n/* TODO: 订单状态机校验（pending → paid → shipped） */\nexport function advance(order: Order): Order {\n  return order;\n}\n"
+      },
+      "durationMs": 1,
+      "ts": 1789764922708
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 2,
+      "text": "生成摘要写入",
+      "ts": 1789764922708
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_13",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "import type { Order } from './order.ts';\n\nexport type Provider = 'alipay' | 'wechat' | 'card';\n\nconst todoList: string[] = []; // 待处理的支付回调队列（不是 TODO 注释）\n\nexport async function charge(order: Order, provider: Provider): Promise<boolean> {\n  // TODO: 幂等键，防止重复扣款\n  todoList.push(order.id);\n  return true;\n}\n\nexport function refund(order: Order): number {\n  // FIXME: 退款没有校验订单状态是否为 paid\n  return -order.amount;\n}\n"
+      },
+      "durationMs": 0,
+      "ts": 1789764922708
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 2,
+      "text": "生成摘要写入",
+      "ts": 1789764922708
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_14",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "export interface User {\n  id: number;\n  name: string;\n  email: string;\n}\n\nconst users: User[] = [\n  { id: 1, name: 'Alice', email: 'alice@example.com' },\n  { id: 2, name: 'Bob', email: 'bob@example.com' },\n];\n\n// TODO: 接入真实数据库，替换内存数组\nexport function findUser(id: number): User | undefined {\n  return users.find((u) => u.id === id);\n}\n\n// FIXME: 没有校验 email 格式\nexport function createUser(name: string, email: string): User {\n  const user = { id: users.length + 1, name, email };\n  users.push(user);\n  return user;\n}\n\n// TODO(alice): 实现分页，见 docs/adr/001-storage.md\nexport function listUsers(): User[] {\n  return users;\n}\n"
+      },
+      "durationMs": 0,
+      "ts": 1789764922708
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 2,
+      "text": "生成摘要写入",
+      "ts": 1789764922709
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "decision",
+      "step": 1,
+      "text": "读取 src/utils/format.ts。",
+      "toolCalls": [
+        {
+          "id": "mock_15",
+          "name": "read_file",
+          "input": {
+            "path": "src/utils/format.ts"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 31,
+        "outputTokens": 80
+      },
+      "durationMs": 23,
+      "ts": 1789764922713
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_15",
+        "name": "read_file",
+        "input": {
+          "path": "src/utils/format.ts"
+        }
+      },
+      "ts": 1789764922713
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 1,
+      "text": "。",
+      "ts": 1789764922714
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 2,
+      "text": " docs/",
+      "ts": 1789764922714
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 2,
+      "text": " docs/",
+      "ts": 1789764922714
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 2,
+      "text": " docs/",
+      "ts": 1789764922714
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_15",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "/** 把 \"¥1,200.50\" / \"1200.5\" / \"1,200\" 统一解析为数字；无法解析返回 NaN */\nexport function parseAmount(s: string): number {\n  return Number(s.replace(/[¥$,\\s]/g, ''));\n}\n\nexport function formatCNY(n: number): string {\n  return '¥' + n.toFixed(2);\n}\n"
+      },
+      "durationMs": 1,
+      "ts": 1789764922714
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 2,
+      "text": "生成摘要写入",
+      "ts": 1789764922714
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "decision",
+      "step": 1,
+      "text": "读取 src/utils/validate.ts。",
+      "toolCalls": [
+        {
+          "id": "mock_16",
+          "name": "read_file",
+          "input": {
+            "path": "src/utils/validate.ts"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 32,
+        "outputTokens": 80
+      },
+      "durationMs": 29,
+      "ts": 1789764922719
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_16",
+        "name": "read_file",
+        "input": {
+          "path": "src/utils/validate.ts"
+        }
+      },
+      "ts": 1789764922719
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 2,
+      "text": "summar",
+      "ts": 1789764922719
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 2,
+      "text": "summar",
+      "ts": 1789764922719
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 2,
+      "text": "summar",
+      "ts": 1789764922719
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_16",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "export function isEmail(s: string): boolean {\n  return /^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(s);\n}\n\n// TODO: 手机号校验支持国际区号\nexport function isPhone(s: string): boolean {\n  return /^1\\d{10}$/.test(s);\n}\n"
+      },
+      "durationMs": 1,
+      "ts": 1789764922720
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 2,
+      "text": "生成摘要写入",
+      "ts": 1789764922720
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 2,
+      "text": " docs/",
+      "ts": 1789764922721
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 2,
+      "text": "ies/or",
+      "ts": 1789764922725
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 2,
+      "text": "ies/pa",
+      "ts": 1789764922725
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 2,
+      "text": "ies/us",
+      "ts": 1789764922725
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 2,
+      "text": " docs/",
+      "ts": 1789764922725
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 2,
+      "text": "summar",
+      "ts": 1789764922725
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 2,
+      "text": "der.md",
+      "ts": 1789764922731
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 2,
+      "text": "yment.",
+      "ts": 1789764922731
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 2,
+      "text": "er.md。",
+      "ts": 1789764922731
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 2,
+      "text": "summar",
+      "ts": 1789764922731
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 2,
+      "text": "ies/ut",
+      "ts": 1789764922731
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 2,
+      "text": "。",
+      "ts": 1789764922737
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 2,
+      "text": "md。",
+      "ts": 1789764922737
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "decision",
+      "step": 2,
+      "text": "生成摘要写入 docs/summaries/user.md。",
+      "toolCalls": [
+        {
+          "id": "mock_19",
+          "name": "write_file",
+          "input": {
+            "path": "docs/summaries/user.md",
+            "content": "# src/user.ts\n\n- 行数: 28\n- 导出: User, findUser, createUser, listUsers\n- TODO/FIXME: 3 处\n"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 317,
+        "outputTokens": 80
+      },
+      "durationMs": 28,
+      "ts": 1789764922737
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_19",
+        "name": "write_file",
+        "input": {
+          "path": "docs/summaries/user.md",
+          "content": "# src/user.ts\n\n- 行数: 28\n- 导出: User, findUser, createUser, listUsers\n- TODO/FIXME: 3 处\n"
+        }
+      },
+      "ts": 1789764922737
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 2,
+      "text": "ies/ut",
+      "ts": 1789764922737
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 2,
+      "text": "ils-fo",
+      "ts": 1789764922737
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_19",
+      "name": "write_file",
+      "result": {
+        "ok": true,
+        "output": "已写入 docs/summaries/user.md (96 bytes)"
+      },
+      "durationMs": 1,
+      "ts": 1789764922738
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 3,
+      "text": "已写入 do",
+      "ts": 1789764922738
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "decision",
+      "step": 2,
+      "text": "生成摘要写入 docs/summaries/order.md。",
+      "toolCalls": [
+        {
+          "id": "mock_17",
+          "name": "write_file",
+          "input": {
+            "path": "docs/summaries/order.md",
+            "content": "# src/order.ts\n\n- 行数: 26\n- 导出: Order, totalWithTax, shippingFee, advance\n- TODO/FIXME: 2 处\n"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 301,
+        "outputTokens": 80
+      },
+      "durationMs": 34,
+      "ts": 1789764922742
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_17",
+        "name": "write_file",
+        "input": {
+          "path": "docs/summaries/order.md",
+          "content": "# src/order.ts\n\n- 行数: 26\n- 导出: Order, totalWithTax, shippingFee, advance\n- TODO/FIXME: 2 处\n"
+        }
+      },
+      "ts": 1789764922742
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "decision",
+      "step": 2,
+      "text": "生成摘要写入 docs/summaries/payment.md。",
+      "toolCalls": [
+        {
+          "id": "mock_18",
+          "name": "write_file",
+          "input": {
+            "path": "docs/summaries/payment.md",
+            "content": "# src/payment.ts\n\n- 行数: 17\n- 导出: Provider, charge, refund\n- TODO/FIXME: 3 处\n"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 248,
+        "outputTokens": 80
+      },
+      "durationMs": 34,
+      "ts": 1789764922742
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_18",
+        "name": "write_file",
+        "input": {
+          "path": "docs/summaries/payment.md",
+          "content": "# src/payment.ts\n\n- 行数: 17\n- 导出: Provider, charge, refund\n- TODO/FIXME: 3 处\n"
+        }
+      },
+      "ts": 1789764922742
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 2,
+      "text": "ils-va",
+      "ts": 1789764922742
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 2,
+      "text": "rmat.m",
+      "ts": 1789764922742
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_17",
+      "name": "write_file",
+      "result": {
+        "ok": true,
+        "output": "已写入 docs/summaries/order.md (101 bytes)"
+      },
+      "durationMs": 0,
+      "ts": 1789764922742
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 3,
+      "text": "已写入 do",
+      "ts": 1789764922742
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_18",
+      "name": "write_file",
+      "result": {
+        "ok": true,
+        "output": "已写入 docs/summaries/payment.md (86 bytes)"
+      },
+      "durationMs": 0,
+      "ts": 1789764922742
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 3,
+      "text": "已写入 do",
+      "ts": 1789764922742
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 3,
+      "text": "cs/sum",
+      "ts": 1789764922744
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 2,
+      "text": "lidate",
+      "ts": 1789764922747
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 2,
+      "text": "d。",
+      "ts": 1789764922747
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 3,
+      "text": "cs/sum",
+      "ts": 1789764922747
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 3,
+      "text": "cs/sum",
+      "ts": 1789764922747
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 3,
+      "text": "maries",
+      "ts": 1789764922748
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 2,
+      "text": ".md。",
+      "ts": 1789764922752
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "decision",
+      "step": 2,
+      "text": "生成摘要写入 docs/summaries/utils-format.md。",
+      "toolCalls": [
+        {
+          "id": "mock_20",
+          "name": "write_file",
+          "input": {
+            "path": "docs/summaries/utils-format.md",
+            "content": "# src/utils/format.ts\n\n- 行数: 9\n- 导出: parseAmount, formatCNY\n- TODO/FIXME: 0 处\n"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 196,
+        "outputTokens": 80
+      },
+      "durationMs": 39,
+      "ts": 1789764922753
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_20",
+        "name": "write_file",
+        "input": {
+          "path": "docs/summaries/utils-format.md",
+          "content": "# src/utils/format.ts\n\n- 行数: 9\n- 导出: parseAmount, formatCNY\n- TODO/FIXME: 0 处\n"
+        }
+      },
+      "ts": 1789764922753
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 3,
+      "text": "maries",
+      "ts": 1789764922753
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 3,
+      "text": "maries",
+      "ts": 1789764922753
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_20",
+      "name": "write_file",
+      "result": {
+        "ok": true,
+        "output": "已写入 docs/summaries/utils-format.md (88 bytes)"
+      },
+      "durationMs": 1,
+      "ts": 1789764922754
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "已写入 do",
+      "ts": 1789764922754
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 3,
+      "text": "/user.",
+      "ts": 1789764922754
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "decision",
+      "step": 2,
+      "text": "生成摘要写入 docs/summaries/utils-validate.md。",
+      "toolCalls": [
+        {
+          "id": "mock_21",
+          "name": "write_file",
+          "input": {
+            "path": "docs/summaries/utils-validate.md",
+            "content": "# src/utils/validate.ts\n\n- 行数: 9\n- 导出: isEmail, isPhone\n- TODO/FIXME: 1 处\n"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 185,
+        "outputTokens": 80
+      },
+      "durationMs": 37,
+      "ts": 1789764922757
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_21",
+        "name": "write_file",
+        "input": {
+          "path": "docs/summaries/utils-validate.md",
+          "content": "# src/utils/validate.ts\n\n- 行数: 9\n- 导出: isEmail, isPhone\n- TODO/FIXME: 1 处\n"
+        }
+      },
+      "ts": 1789764922757
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_21",
+      "name": "write_file",
+      "result": {
+        "ok": true,
+        "output": "已写入 docs/summaries/utils-validate.md (84 bytes)"
+      },
+      "durationMs": 0,
+      "ts": 1789764922757
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 3,
+      "text": "已写入 do",
+      "ts": 1789764922758
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 3,
+      "text": "/order",
+      "ts": 1789764922759
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 3,
+      "text": "/payme",
+      "ts": 1789764922759
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "cs/sum",
+      "ts": 1789764922760
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 3,
+      "text": "md（src",
+      "ts": 1789764922760
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 3,
+      "text": "cs/sum",
+      "ts": 1789764922763
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 3,
+      "text": ".md（sr",
+      "ts": 1789764922764
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 3,
+      "text": "nt.md（",
+      "ts": 1789764922764
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "maries",
+      "ts": 1789764922766
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 3,
+      "text": "/user.",
+      "ts": 1789764922766
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 3,
+      "text": "maries",
+      "ts": 1789764922767
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 3,
+      "text": "c/orde",
+      "ts": 1789764922769
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 3,
+      "text": "src/pa",
+      "ts": 1789764922769
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "/utils",
+      "ts": 1789764922772
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 3,
+      "text": "ts，导出 ",
+      "ts": 1789764922772
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 3,
+      "text": "/utils",
+      "ts": 1789764922772
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 3,
+      "text": "r.ts，导",
+      "ts": 1789764922773
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 3,
+      "text": "yment.",
+      "ts": 1789764922773
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "-forma",
+      "ts": 1789764922778
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 3,
+      "text": "4 项）。",
+      "ts": 1789764922778
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 3,
+      "text": "-valid",
+      "ts": 1789764922778
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 3,
+      "text": "出 4 项）",
+      "ts": 1789764922779
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 3,
+      "text": "ts，导出 ",
+      "ts": 1789764922779
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "t.md（s",
+      "ts": 1789764922783
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "decision",
+      "step": 3,
+      "text": "已写入 docs/summaries/user.md（src/user.ts，导出 4 项）。",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 451,
+        "outputTokens": 80
+      },
+      "durationMs": 46,
+      "ts": 1789764922784
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "final",
+      "answer": "已写入 docs/summaries/user.md（src/user.ts，导出 4 项）。",
+      "reason": "completed",
+      "steps": 3,
+      "usage": {
+        "inputTokens": 793,
+        "outputTokens": 240
+      },
+      "ts": 1789764922784
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_9",
+      "name": "delegate",
+      "result": {
+        "ok": true,
+        "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/user.md（src/user.ts，导出 4 项）。"
+      },
+      "durationMs": 94,
+      "ts": 1789764922784
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 3,
+      "text": "ate.md",
+      "ts": 1789764922784
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 3,
+      "text": "。",
+      "ts": 1789764922784
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "delta",
+      "step": 3,
+      "text": "3 项）。",
+      "ts": 1789764922784
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "rc/uti",
+      "ts": 1789764922788
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 3,
+      "text": "（src/u",
+      "ts": 1789764922790
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "decision",
+      "step": 3,
+      "text": "已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 437,
+        "outputTokens": 80
+      },
+      "durationMs": 48,
+      "ts": 1789764922790
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "final",
+      "answer": "已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。",
+      "reason": "completed",
+      "steps": 3,
+      "usage": {
+        "inputTokens": 764,
+        "outputTokens": 240
+      },
+      "ts": 1789764922790
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_7",
+      "name": "delegate",
+      "result": {
+        "ok": true,
+        "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。"
+      },
+      "durationMs": 100,
+      "ts": 1789764922790
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "decision",
+      "step": 3,
+      "text": "已写入 docs/summaries/payment.md（src/payment.ts，导出 3 项）。",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 381,
+        "outputTokens": 80
+      },
+      "durationMs": 48,
+      "ts": 1789764922790
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_8",
+      "type": "final",
+      "answer": "已写入 docs/summaries/payment.md（src/payment.ts，导出 3 项）。",
+      "reason": "completed",
+      "steps": 3,
+      "usage": {
+        "inputTokens": 656,
+        "outputTokens": 240
+      },
+      "ts": 1789764922790
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_8",
+      "name": "delegate",
+      "result": {
+        "ok": true,
+        "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/payment.md（src/payment.ts，导出 3 项）。"
+      },
+      "durationMs": 100,
+      "ts": 1789764922790
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "ls/for",
+      "ts": 1789764922793
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 3,
+      "text": "tils/v",
+      "ts": 1789764922795
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "mat.ts",
+      "ts": 1789764922799
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 3,
+      "text": "alidat",
+      "ts": 1789764922799
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "，导出 2 ",
+      "ts": 1789764922805
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 3,
+      "text": "e.ts，导",
+      "ts": 1789764922805
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "项）。",
+      "ts": 1789764922811
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 3,
+      "text": "出 2 项）",
+      "ts": 1789764922811
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "decision",
+      "step": 3,
+      "text": "已写入 docs/summaries/utils-format.md（src/utils/format.ts，导出 2 项）。",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 335,
+        "outputTokens": 80
+      },
+      "durationMs": 62,
+      "ts": 1789764922816
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "final",
+      "answer": "已写入 docs/summaries/utils-format.md（src/utils/format.ts，导出 2 项）。",
+      "reason": "completed",
+      "steps": 3,
+      "usage": {
+        "inputTokens": 562,
+        "outputTokens": 240
+      },
+      "ts": 1789764922816
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_10",
+      "name": "delegate",
+      "result": {
+        "ok": true,
+        "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/utils-format.md（src/utils/format.ts，导出 2 项）。"
+      },
+      "durationMs": 126,
+      "ts": 1789764922816
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 3,
+      "text": "。",
+      "ts": 1789764922816
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "decision",
+      "step": 3,
+      "text": "已写入 docs/summaries/utils-validate.md（src/utils/validate.ts，导出 2 项）。",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 324,
+        "outputTokens": 80
+      },
+      "durationMs": 64,
+      "ts": 1789764922822
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "final",
+      "answer": "已写入 docs/summaries/utils-validate.md（src/utils/validate.ts，导出 2 项）。",
+      "reason": "completed",
+      "steps": 3,
+      "usage": {
+        "inputTokens": 541,
+        "outputTokens": 240
+      },
+      "ts": 1789764922822
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_11",
+      "name": "delegate",
+      "result": {
+        "ok": true,
+        "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/utils-validate.md（src/utils/validate.ts，导出 2 项）。"
+      },
+      "durationMs": 132,
+      "ts": 1789764922822
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "完成。5 个",
+      "ts": 1789764922823
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "源码文件的摘",
+      "ts": 1789764922829
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "要已由子 A",
+      "ts": 1789764922834
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "gent 写",
+      "ts": 1789764922840
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "入 docs",
+      "ts": 1789764922846
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "/summa",
+      "ts": 1789764922851
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ries/（",
+      "ts": 1789764922857
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "首次委派因子",
+      "ts": 1789764922863
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " Agent",
+      "ts": 1789764922869
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " 默认只读失",
+      "ts": 1789764922874
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "败，授予 a",
+      "ts": 1789764922880
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "llow_w",
+      "ts": 1789764922885
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "rite 后",
+      "ts": 1789764922891
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "重派成功；共",
+      "ts": 1789764922897
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " 6 次委派",
+      "ts": 1789764922903
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "）。",
+      "ts": 1789764922908
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 5,
+      "text": "完成。5 个源码文件的摘要已由子 Agent 写入 docs/summaries/（首次委派因子 Agent 默认只读失败，授予 allow_write 后重派成功；共 6 次委派）。",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 1004,
+        "outputTokens": 80
+      },
+      "durationMs": 92,
+      "ts": 1789764922914
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "final",
+      "answer": "完成。5 个源码文件的摘要已由子 Agent 写入 docs/summaries/（首次委派因子 Agent 默认只读失败，授予 allow_write 后重派成功；共 6 次委派）。",
+      "reason": "completed",
+      "steps": 5,
+      "usage": {
+        "inputTokens": 5896,
+        "outputTokens": 1840
+      },
+      "ts": 1789764922914
+    }
+  ],
+  "tree": {
+    "agent": "main",
+    "depth": 0,
+    "events": [
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "user",
+        "task": "用子 Agent 为 src 下每个 .ts 文件生成摘要，写入 docs/summaries/<文件名>.md。",
+        "ts": 1789764922471
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "制定计划。",
+        "ts": 1789764922471
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 1,
+        "text": "制定计划。",
+        "toolCalls": [
+          {
+            "id": "mock_1",
+            "name": "update_plan",
+            "input": {
+              "steps": [
+                {
+                  "id": 1,
+                  "title": "列出 src 下的 ts 文件",
+                  "status": "in_progress"
+                },
+                {
+                  "id": 2,
+                  "title": "委派子 Agent 生成摘要",
+                  "status": "pending"
+                },
+                {
+                  "id": 3,
+                  "title": "汇总",
+                  "status": "pending"
+                }
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 29,
+          "outputTokens": 80
+        },
+        "durationMs": 6,
+        "ts": 1789764922477
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 1,
+        "call": {
+          "id": "mock_1",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "列出 src 下的 ts 文件",
+                "status": "in_progress"
+              },
+              {
+                "id": 2,
+                "title": "委派子 Agent 生成摘要",
+                "status": "pending"
+              },
+              {
+                "id": 3,
+                "title": "汇总",
+                "status": "pending"
+              }
+            ]
+          }
+        },
+        "ts": 1789764922477
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "plan",
+        "step": 1,
+        "plan": [
+          {
+            "id": 1,
+            "title": "列出 src 下的 ts 文件",
+            "status": "in_progress"
+          },
+          {
+            "id": 2,
+            "title": "委派子 Agent 生成摘要",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "汇总",
+            "status": "pending"
+          }
+        ],
+        "ts": 1789764922477
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 1,
+        "callId": "mock_1",
+        "name": "update_plan",
+        "result": {
+          "ok": true,
+          "output": "计划已更新（0/3 完成）"
+        },
+        "durationMs": 0,
+        "ts": 1789764922477
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "列出源码文件",
+        "ts": 1789764922477
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "。",
+        "ts": 1789764922483
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 2,
+        "text": "列出源码文件。",
+        "toolCalls": [
+          {
+            "id": "mock_2",
+            "name": "list_files",
+            "input": {
+              "path": "src"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 155,
+          "outputTokens": 80
+        },
+        "durationMs": 12,
+        "ts": 1789764922489
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 2,
+        "call": {
+          "id": "mock_2",
+          "name": "list_files",
+          "input": {
+            "path": "src"
+          }
+        },
+        "ts": 1789764922489
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 2,
+        "callId": "mock_2",
+        "name": "list_files",
+        "result": {
+          "ok": true,
+          "output": "src/order.ts\nsrc/payment.ts\nsrc/user.ts\nsrc/utils/format.ts\nsrc/utils/validate.ts"
+        },
+        "durationMs": 0,
+        "ts": 1789764922489
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "5 个文件。",
+        "ts": 1789764922490
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "先委派一个试",
+        "ts": 1789764922495
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "试。",
+        "ts": 1789764922501
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 3,
+        "text": "5 个文件。先委派一个试试。",
+        "toolCalls": [
+          {
+            "id": "mock_3",
+            "name": "delegate",
+            "input": {
+              "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 255,
+          "outputTokens": 80
+        },
+        "durationMs": 18,
+        "ts": 1789764922507
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_3",
+          "name": "delegate",
+          "input": {
+            "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md"
+          }
+        },
+        "ts": 1789764922507
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_3",
+        "name": "delegate",
+        "result": {
+          "ok": true,
+          "output": "[子 Agent 用 3 步完成]\n摘要已生成但写入失败：工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)。需要父 Agent 授予写权限。"
+        },
+        "durationMs": 121,
+        "ts": 1789764922628
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "子 Agen",
+        "ts": 1789764922629
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "t 报告没有",
+        "ts": 1789764922634
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "写权限（默认",
+        "ts": 1789764922640
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "只读）。这个",
+        "ts": 1789764922646
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "子任务确实需",
+        "ts": 1789764922652
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "要写文件，重",
+        "ts": 1789764922657
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "派时授予 a",
+        "ts": 1789764922662
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "llow_w",
+        "ts": 1789764922667
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "rite，其",
+        "ts": 1789764922673
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "余文件同一轮",
+        "ts": 1789764922679
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "并行委派。",
+        "ts": 1789764922684
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 4,
+        "text": "子 Agent 报告没有写权限（默认只读）。这个子任务确实需要写文件，重派时授予 allow_write，其余文件同一轮并行委派。",
+        "toolCalls": [
+          {
+            "id": "mock_6",
+            "name": "update_plan",
+            "input": {
+              "steps": [
+                {
+                  "id": 1,
+                  "title": "列出 src 下的 ts 文件",
+                  "status": "done"
+                },
+                {
+                  "id": 2,
+                  "title": "委派子 Agent 生成摘要",
+                  "status": "in_progress",
+                  "note": "首个子 Agent 因只读失败，改为授予写权限"
+                },
+                {
+                  "id": 3,
+                  "title": "汇总",
+                  "status": "pending"
+                }
+              ],
+              "reason": "子 Agent 默认只读，需显式授权"
+            }
+          },
+          {
+            "id": "mock_7",
+            "name": "delegate",
+            "input": {
+              "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md",
+              "allow_write": true
+            }
+          },
+          {
+            "id": "mock_8",
+            "name": "delegate",
+            "input": {
+              "task": "为文件 src/payment.ts 生成摘要并写入 docs/summaries/payment.md",
+              "allow_write": true
+            }
+          },
+          {
+            "id": "mock_9",
+            "name": "delegate",
+            "input": {
+              "task": "为文件 src/user.ts 生成摘要并写入 docs/summaries/user.md",
+              "allow_write": true
+            }
+          },
+          {
+            "id": "mock_10",
+            "name": "delegate",
+            "input": {
+              "task": "为文件 src/utils/format.ts 生成摘要并写入 docs/summaries/utils-format.md",
+              "allow_write": true
+            }
+          },
+          {
+            "id": "mock_11",
+            "name": "delegate",
+            "input": {
+              "task": "为文件 src/utils/validate.ts 生成摘要并写入 docs/summaries/utils-validate.md",
+              "allow_write": true
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 373,
+          "outputTokens": 80
+        },
+        "durationMs": 62,
+        "ts": 1789764922690
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_6",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "列出 src 下的 ts 文件",
+                "status": "done"
+              },
+              {
+                "id": 2,
+                "title": "委派子 Agent 生成摘要",
+                "status": "in_progress",
+                "note": "首个子 Agent 因只读失败，改为授予写权限"
+              },
+              {
+                "id": 3,
+                "title": "汇总",
+                "status": "pending"
+              }
+            ],
+            "reason": "子 Agent 默认只读，需显式授权"
+          }
+        },
+        "ts": 1789764922690
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "plan",
+        "step": 4,
+        "plan": [
+          {
+            "id": 1,
+            "title": "列出 src 下的 ts 文件",
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "委派子 Agent 生成摘要",
+            "status": "in_progress",
+            "note": "首个子 Agent 因只读失败，改为授予写权限"
+          },
+          {
+            "id": 3,
+            "title": "汇总",
+            "status": "pending"
+          }
+        ],
+        "ts": 1789764922690
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_7",
+          "name": "delegate",
+          "input": {
+            "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md",
+            "allow_write": true
+          }
+        },
+        "ts": 1789764922690
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_8",
+          "name": "delegate",
+          "input": {
+            "task": "为文件 src/payment.ts 生成摘要并写入 docs/summaries/payment.md",
+            "allow_write": true
+          }
+        },
+        "ts": 1789764922690
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_9",
+          "name": "delegate",
+          "input": {
+            "task": "为文件 src/user.ts 生成摘要并写入 docs/summaries/user.md",
+            "allow_write": true
+          }
+        },
+        "ts": 1789764922690
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_10",
+          "name": "delegate",
+          "input": {
+            "task": "为文件 src/utils/format.ts 生成摘要并写入 docs/summaries/utils-format.md",
+            "allow_write": true
+          }
+        },
+        "ts": 1789764922690
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_11",
+          "name": "delegate",
+          "input": {
+            "task": "为文件 src/utils/validate.ts 生成摘要并写入 docs/summaries/utils-validate.md",
+            "allow_write": true
+          }
+        },
+        "ts": 1789764922690
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_6",
+        "name": "update_plan",
+        "result": {
+          "ok": true,
+          "output": "计划已更新（1/3 完成），原因: 子 Agent 默认只读，需显式授权"
+        },
+        "durationMs": 0,
+        "ts": 1789764922690
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_9",
+        "name": "delegate",
+        "result": {
+          "ok": true,
+          "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/user.md（src/user.ts，导出 4 项）。"
+        },
+        "durationMs": 94,
+        "ts": 1789764922784
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_7",
+        "name": "delegate",
+        "result": {
+          "ok": true,
+          "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。"
+        },
+        "durationMs": 100,
+        "ts": 1789764922790
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_8",
+        "name": "delegate",
+        "result": {
+          "ok": true,
+          "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/payment.md（src/payment.ts，导出 3 项）。"
+        },
+        "durationMs": 100,
+        "ts": 1789764922790
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_10",
+        "name": "delegate",
+        "result": {
+          "ok": true,
+          "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/utils-format.md（src/utils/format.ts，导出 2 项）。"
+        },
+        "durationMs": 126,
+        "ts": 1789764922816
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_11",
+        "name": "delegate",
+        "result": {
+          "ok": true,
+          "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/utils-validate.md（src/utils/validate.ts，导出 2 项）。"
+        },
+        "durationMs": 132,
+        "ts": 1789764922822
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "完成。5 个",
+        "ts": 1789764922823
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "源码文件的摘",
+        "ts": 1789764922829
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "要已由子 A",
+        "ts": 1789764922834
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "gent 写",
+        "ts": 1789764922840
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "入 docs",
+        "ts": 1789764922846
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "/summa",
+        "ts": 1789764922851
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ries/（",
+        "ts": 1789764922857
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "首次委派因子",
+        "ts": 1789764922863
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " Agent",
+        "ts": 1789764922869
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " 默认只读失",
+        "ts": 1789764922874
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "败，授予 a",
+        "ts": 1789764922880
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "llow_w",
+        "ts": 1789764922885
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "rite 后",
+        "ts": 1789764922891
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "重派成功；共",
+        "ts": 1789764922897
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " 6 次委派",
+        "ts": 1789764922903
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "）。",
+        "ts": 1789764922908
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 5,
+        "text": "完成。5 个源码文件的摘要已由子 Agent 写入 docs/summaries/（首次委派因子 Agent 默认只读失败，授予 allow_write 后重派成功；共 6 次委派）。",
+        "toolCalls": [],
+        "usage": {
+          "inputTokens": 1004,
+          "outputTokens": 80
+        },
+        "durationMs": 92,
+        "ts": 1789764922914
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "final",
+        "answer": "完成。5 个源码文件的摘要已由子 Agent 写入 docs/summaries/（首次委派因子 Agent 默认只读失败，授予 allow_write 后重派成功；共 6 次委派）。",
+        "reason": "completed",
+        "steps": 5,
+        "usage": {
+          "inputTokens": 5896,
+          "outputTokens": 1840
+        },
+        "ts": 1789764922914
+      }
+    ],
+    "children": [
+      {
+        "agent": "sub-1",
+        "depth": 1,
+        "parentCallId": "mock_3",
+        "events": [
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "user",
+            "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md",
+            "ts": 1789764922507
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 1,
+            "text": "读取 src",
+            "ts": 1789764922507
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 1,
+            "text": "/order",
+            "ts": 1789764922513
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 1,
+            "text": ".ts。",
+            "ts": 1789764922518
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "decision",
+            "step": 1,
+            "text": "读取 src/order.ts。",
+            "toolCalls": [
+              {
+                "id": "mock_4",
+                "name": "read_file",
+                "input": {
+                  "path": "src/order.ts"
+                }
+              }
+            ],
+            "usage": {
+              "inputTokens": 26,
+              "outputTokens": 80
+            },
+            "durationMs": 17,
+            "ts": 1789764922524
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "tool_call",
+            "step": 1,
+            "call": {
+              "id": "mock_4",
+              "name": "read_file",
+              "input": {
+                "path": "src/order.ts"
+              }
+            },
+            "ts": 1789764922524
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "tool_result",
+            "step": 1,
+            "callId": "mock_4",
+            "name": "read_file",
+            "result": {
+              "ok": true,
+              "output": "import type { User } from './user.ts';\n\nexport interface Order {\n  id: string;\n  user: User;\n  amount: number;\n  status: 'pending' | 'paid' | 'shipped';\n}\n\nconst TAX_RATE = 0.13;\nconst FREE_SHIPPING_THRESHOLD = 500;\n\n// FIXME: 浮点运算精度问题，金额应使用整数分\nexport function totalWithTax(order: Order): number {\n  return order.amount * (1 + TAX_RATE);\n}\n\nexport function shippingFee(order: Order): number {\n  return order.amount >= FREE_SHIPPING_THRESHOLD ? 0 : 20;\n}\n\n/* TODO: 订单状态机校验（pending → paid → shipped） */\nexport function advance(order: Order): Order {\n  return order;\n}\n"
+            },
+            "durationMs": 0,
+            "ts": 1789764922524
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 2,
+            "text": "生成摘要写入",
+            "ts": 1789764922525
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 2,
+            "text": " docs/",
+            "ts": 1789764922531
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 2,
+            "text": "summar",
+            "ts": 1789764922537
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 2,
+            "text": "ies/or",
+            "ts": 1789764922542
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 2,
+            "text": "der.md",
+            "ts": 1789764922548
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 2,
+            "text": "。",
+            "ts": 1789764922554
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "decision",
+            "step": 2,
+            "text": "生成摘要写入 docs/summaries/order.md。",
+            "toolCalls": [
+              {
+                "id": "mock_5",
+                "name": "write_file",
+                "input": {
+                  "path": "docs/summaries/order.md",
+                  "content": "# src/order.ts\n\n- 行数: 26\n- 导出: Order, totalWithTax, shippingFee, advance\n- TODO/FIXME: 2 处\n"
+                }
+              }
+            ],
+            "usage": {
+              "inputTokens": 300,
+              "outputTokens": 80
+            },
+            "durationMs": 35,
+            "ts": 1789764922559
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "tool_call",
+            "step": 2,
+            "call": {
+              "id": "mock_5",
+              "name": "write_file",
+              "input": {
+                "path": "docs/summaries/order.md",
+                "content": "# src/order.ts\n\n- 行数: 26\n- 导出: Order, totalWithTax, shippingFee, advance\n- TODO/FIXME: 2 处\n"
+              }
+            },
+            "ts": 1789764922559
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "tool_result",
+            "step": 2,
+            "callId": "mock_5",
+            "name": "write_file",
+            "result": {
+              "ok": false,
+              "error": "工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)"
+            },
+            "durationMs": 0,
+            "ts": 1789764922559
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 3,
+            "text": "摘要已生成但",
+            "ts": 1789764922560
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 3,
+            "text": "写入失败：工",
+            "ts": 1789764922565
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 3,
+            "text": "具 \"wri",
+            "ts": 1789764922571
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 3,
+            "text": "te_fil",
+            "ts": 1789764922576
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 3,
+            "text": "e\" 需要写",
+            "ts": 1789764922582
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 3,
+            "text": "权限，当前未",
+            "ts": 1789764922588
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 3,
+            "text": "授权 (--",
+            "ts": 1789764922594
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 3,
+            "text": "allow-",
+            "ts": 1789764922599
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 3,
+            "text": "write)",
+            "ts": 1789764922605
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 3,
+            "text": "。需要父 A",
+            "ts": 1789764922611
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 3,
+            "text": "gent 授",
+            "ts": 1789764922616
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "delta",
+            "step": 3,
+            "text": "予写权限。",
+            "ts": 1789764922622
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "decision",
+            "step": 3,
+            "text": "摘要已生成但写入失败：工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)。需要父 Agent 授予写权限。",
+            "toolCalls": [],
+            "usage": {
+              "inputTokens": 438,
+              "outputTokens": 80
+            },
+            "durationMs": 68,
+            "ts": 1789764922628
+          },
+          {
+            "agent": "sub-1",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_3",
+            "type": "final",
+            "answer": "摘要已生成但写入失败：工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)。需要父 Agent 授予写权限。",
+            "reason": "completed",
+            "steps": 3,
+            "usage": {
+              "inputTokens": 764,
+              "outputTokens": 240
+            },
+            "ts": 1789764922628
+          }
+        ],
+        "children": []
+      },
+      {
+        "agent": "sub-2",
+        "depth": 1,
+        "parentCallId": "mock_7",
+        "events": [
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "user",
+            "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md",
+            "ts": 1789764922690
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 1,
+            "text": "读取 src",
+            "ts": 1789764922690
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 1,
+            "text": "/order",
+            "ts": 1789764922696
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 1,
+            "text": ".ts。",
+            "ts": 1789764922702
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "decision",
+            "step": 1,
+            "text": "读取 src/order.ts。",
+            "toolCalls": [
+              {
+                "id": "mock_12",
+                "name": "read_file",
+                "input": {
+                  "path": "src/order.ts"
+                }
+              }
+            ],
+            "usage": {
+              "inputTokens": 26,
+              "outputTokens": 80
+            },
+            "durationMs": 17,
+            "ts": 1789764922707
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "tool_call",
+            "step": 1,
+            "call": {
+              "id": "mock_12",
+              "name": "read_file",
+              "input": {
+                "path": "src/order.ts"
+              }
+            },
+            "ts": 1789764922707
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "tool_result",
+            "step": 1,
+            "callId": "mock_12",
+            "name": "read_file",
+            "result": {
+              "ok": true,
+              "output": "import type { User } from './user.ts';\n\nexport interface Order {\n  id: string;\n  user: User;\n  amount: number;\n  status: 'pending' | 'paid' | 'shipped';\n}\n\nconst TAX_RATE = 0.13;\nconst FREE_SHIPPING_THRESHOLD = 500;\n\n// FIXME: 浮点运算精度问题，金额应使用整数分\nexport function totalWithTax(order: Order): number {\n  return order.amount * (1 + TAX_RATE);\n}\n\nexport function shippingFee(order: Order): number {\n  return order.amount >= FREE_SHIPPING_THRESHOLD ? 0 : 20;\n}\n\n/* TODO: 订单状态机校验（pending → paid → shipped） */\nexport function advance(order: Order): Order {\n  return order;\n}\n"
+            },
+            "durationMs": 1,
+            "ts": 1789764922708
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 2,
+            "text": "生成摘要写入",
+            "ts": 1789764922708
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 2,
+            "text": " docs/",
+            "ts": 1789764922714
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 2,
+            "text": "summar",
+            "ts": 1789764922719
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 2,
+            "text": "ies/or",
+            "ts": 1789764922725
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 2,
+            "text": "der.md",
+            "ts": 1789764922731
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 2,
+            "text": "。",
+            "ts": 1789764922737
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "decision",
+            "step": 2,
+            "text": "生成摘要写入 docs/summaries/order.md。",
+            "toolCalls": [
+              {
+                "id": "mock_17",
+                "name": "write_file",
+                "input": {
+                  "path": "docs/summaries/order.md",
+                  "content": "# src/order.ts\n\n- 行数: 26\n- 导出: Order, totalWithTax, shippingFee, advance\n- TODO/FIXME: 2 处\n"
+                }
+              }
+            ],
+            "usage": {
+              "inputTokens": 301,
+              "outputTokens": 80
+            },
+            "durationMs": 34,
+            "ts": 1789764922742
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "tool_call",
+            "step": 2,
+            "call": {
+              "id": "mock_17",
+              "name": "write_file",
+              "input": {
+                "path": "docs/summaries/order.md",
+                "content": "# src/order.ts\n\n- 行数: 26\n- 导出: Order, totalWithTax, shippingFee, advance\n- TODO/FIXME: 2 处\n"
+              }
+            },
+            "ts": 1789764922742
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "tool_result",
+            "step": 2,
+            "callId": "mock_17",
+            "name": "write_file",
+            "result": {
+              "ok": true,
+              "output": "已写入 docs/summaries/order.md (101 bytes)"
+            },
+            "durationMs": 0,
+            "ts": 1789764922742
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 3,
+            "text": "已写入 do",
+            "ts": 1789764922742
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 3,
+            "text": "cs/sum",
+            "ts": 1789764922747
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 3,
+            "text": "maries",
+            "ts": 1789764922753
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 3,
+            "text": "/order",
+            "ts": 1789764922759
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 3,
+            "text": ".md（sr",
+            "ts": 1789764922764
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 3,
+            "text": "c/orde",
+            "ts": 1789764922769
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 3,
+            "text": "r.ts，导",
+            "ts": 1789764922773
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 3,
+            "text": "出 4 项）",
+            "ts": 1789764922779
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "delta",
+            "step": 3,
+            "text": "。",
+            "ts": 1789764922784
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "decision",
+            "step": 3,
+            "text": "已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。",
+            "toolCalls": [],
+            "usage": {
+              "inputTokens": 437,
+              "outputTokens": 80
+            },
+            "durationMs": 48,
+            "ts": 1789764922790
+          },
+          {
+            "agent": "sub-2",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_7",
+            "type": "final",
+            "answer": "已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。",
+            "reason": "completed",
+            "steps": 3,
+            "usage": {
+              "inputTokens": 764,
+              "outputTokens": 240
+            },
+            "ts": 1789764922790
+          }
+        ],
+        "children": []
+      },
+      {
+        "agent": "sub-3",
+        "depth": 1,
+        "parentCallId": "mock_8",
+        "events": [
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "user",
+            "task": "为文件 src/payment.ts 生成摘要并写入 docs/summaries/payment.md",
+            "ts": 1789764922690
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 1,
+            "text": "读取 src",
+            "ts": 1789764922690
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 1,
+            "text": "/payme",
+            "ts": 1789764922696
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 1,
+            "text": "nt.ts。",
+            "ts": 1789764922702
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "decision",
+            "step": 1,
+            "text": "读取 src/payment.ts。",
+            "toolCalls": [
+              {
+                "id": "mock_13",
+                "name": "read_file",
+                "input": {
+                  "path": "src/payment.ts"
+                }
+              }
+            ],
+            "usage": {
+              "inputTokens": 27,
+              "outputTokens": 80
+            },
+            "durationMs": 18,
+            "ts": 1789764922708
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "tool_call",
+            "step": 1,
+            "call": {
+              "id": "mock_13",
+              "name": "read_file",
+              "input": {
+                "path": "src/payment.ts"
+              }
+            },
+            "ts": 1789764922708
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "tool_result",
+            "step": 1,
+            "callId": "mock_13",
+            "name": "read_file",
+            "result": {
+              "ok": true,
+              "output": "import type { Order } from './order.ts';\n\nexport type Provider = 'alipay' | 'wechat' | 'card';\n\nconst todoList: string[] = []; // 待处理的支付回调队列（不是 TODO 注释）\n\nexport async function charge(order: Order, provider: Provider): Promise<boolean> {\n  // TODO: 幂等键，防止重复扣款\n  todoList.push(order.id);\n  return true;\n}\n\nexport function refund(order: Order): number {\n  // FIXME: 退款没有校验订单状态是否为 paid\n  return -order.amount;\n}\n"
+            },
+            "durationMs": 0,
+            "ts": 1789764922708
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 2,
+            "text": "生成摘要写入",
+            "ts": 1789764922708
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 2,
+            "text": " docs/",
+            "ts": 1789764922714
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 2,
+            "text": "summar",
+            "ts": 1789764922719
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 2,
+            "text": "ies/pa",
+            "ts": 1789764922725
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 2,
+            "text": "yment.",
+            "ts": 1789764922731
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 2,
+            "text": "md。",
+            "ts": 1789764922737
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "decision",
+            "step": 2,
+            "text": "生成摘要写入 docs/summaries/payment.md。",
+            "toolCalls": [
+              {
+                "id": "mock_18",
+                "name": "write_file",
+                "input": {
+                  "path": "docs/summaries/payment.md",
+                  "content": "# src/payment.ts\n\n- 行数: 17\n- 导出: Provider, charge, refund\n- TODO/FIXME: 3 处\n"
+                }
+              }
+            ],
+            "usage": {
+              "inputTokens": 248,
+              "outputTokens": 80
+            },
+            "durationMs": 34,
+            "ts": 1789764922742
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "tool_call",
+            "step": 2,
+            "call": {
+              "id": "mock_18",
+              "name": "write_file",
+              "input": {
+                "path": "docs/summaries/payment.md",
+                "content": "# src/payment.ts\n\n- 行数: 17\n- 导出: Provider, charge, refund\n- TODO/FIXME: 3 处\n"
+              }
+            },
+            "ts": 1789764922742
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "tool_result",
+            "step": 2,
+            "callId": "mock_18",
+            "name": "write_file",
+            "result": {
+              "ok": true,
+              "output": "已写入 docs/summaries/payment.md (86 bytes)"
+            },
+            "durationMs": 0,
+            "ts": 1789764922742
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 3,
+            "text": "已写入 do",
+            "ts": 1789764922742
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 3,
+            "text": "cs/sum",
+            "ts": 1789764922747
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 3,
+            "text": "maries",
+            "ts": 1789764922753
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 3,
+            "text": "/payme",
+            "ts": 1789764922759
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 3,
+            "text": "nt.md（",
+            "ts": 1789764922764
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 3,
+            "text": "src/pa",
+            "ts": 1789764922769
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 3,
+            "text": "yment.",
+            "ts": 1789764922773
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 3,
+            "text": "ts，导出 ",
+            "ts": 1789764922779
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "delta",
+            "step": 3,
+            "text": "3 项）。",
+            "ts": 1789764922784
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "decision",
+            "step": 3,
+            "text": "已写入 docs/summaries/payment.md（src/payment.ts，导出 3 项）。",
+            "toolCalls": [],
+            "usage": {
+              "inputTokens": 381,
+              "outputTokens": 80
+            },
+            "durationMs": 48,
+            "ts": 1789764922790
+          },
+          {
+            "agent": "sub-3",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_8",
+            "type": "final",
+            "answer": "已写入 docs/summaries/payment.md（src/payment.ts，导出 3 项）。",
+            "reason": "completed",
+            "steps": 3,
+            "usage": {
+              "inputTokens": 656,
+              "outputTokens": 240
+            },
+            "ts": 1789764922790
+          }
+        ],
+        "children": []
+      },
+      {
+        "agent": "sub-4",
+        "depth": 1,
+        "parentCallId": "mock_9",
+        "events": [
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "user",
+            "task": "为文件 src/user.ts 生成摘要并写入 docs/summaries/user.md",
+            "ts": 1789764922690
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 1,
+            "text": "读取 src",
+            "ts": 1789764922690
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 1,
+            "text": "/user.",
+            "ts": 1789764922696
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 1,
+            "text": "ts。",
+            "ts": 1789764922702
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "decision",
+            "step": 1,
+            "text": "读取 src/user.ts。",
+            "toolCalls": [
+              {
+                "id": "mock_14",
+                "name": "read_file",
+                "input": {
+                  "path": "src/user.ts"
+                }
+              }
+            ],
+            "usage": {
+              "inputTokens": 25,
+              "outputTokens": 80
+            },
+            "durationMs": 18,
+            "ts": 1789764922708
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "tool_call",
+            "step": 1,
+            "call": {
+              "id": "mock_14",
+              "name": "read_file",
+              "input": {
+                "path": "src/user.ts"
+              }
+            },
+            "ts": 1789764922708
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "tool_result",
+            "step": 1,
+            "callId": "mock_14",
+            "name": "read_file",
+            "result": {
+              "ok": true,
+              "output": "export interface User {\n  id: number;\n  name: string;\n  email: string;\n}\n\nconst users: User[] = [\n  { id: 1, name: 'Alice', email: 'alice@example.com' },\n  { id: 2, name: 'Bob', email: 'bob@example.com' },\n];\n\n// TODO: 接入真实数据库，替换内存数组\nexport function findUser(id: number): User | undefined {\n  return users.find((u) => u.id === id);\n}\n\n// FIXME: 没有校验 email 格式\nexport function createUser(name: string, email: string): User {\n  const user = { id: users.length + 1, name, email };\n  users.push(user);\n  return user;\n}\n\n// TODO(alice): 实现分页，见 docs/adr/001-storage.md\nexport function listUsers(): User[] {\n  return users;\n}\n"
+            },
+            "durationMs": 0,
+            "ts": 1789764922708
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 2,
+            "text": "生成摘要写入",
+            "ts": 1789764922709
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 2,
+            "text": " docs/",
+            "ts": 1789764922714
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 2,
+            "text": "summar",
+            "ts": 1789764922719
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 2,
+            "text": "ies/us",
+            "ts": 1789764922725
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 2,
+            "text": "er.md。",
+            "ts": 1789764922731
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "decision",
+            "step": 2,
+            "text": "生成摘要写入 docs/summaries/user.md。",
+            "toolCalls": [
+              {
+                "id": "mock_19",
+                "name": "write_file",
+                "input": {
+                  "path": "docs/summaries/user.md",
+                  "content": "# src/user.ts\n\n- 行数: 28\n- 导出: User, findUser, createUser, listUsers\n- TODO/FIXME: 3 处\n"
+                }
+              }
+            ],
+            "usage": {
+              "inputTokens": 317,
+              "outputTokens": 80
+            },
+            "durationMs": 28,
+            "ts": 1789764922737
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "tool_call",
+            "step": 2,
+            "call": {
+              "id": "mock_19",
+              "name": "write_file",
+              "input": {
+                "path": "docs/summaries/user.md",
+                "content": "# src/user.ts\n\n- 行数: 28\n- 导出: User, findUser, createUser, listUsers\n- TODO/FIXME: 3 处\n"
+              }
+            },
+            "ts": 1789764922737
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "tool_result",
+            "step": 2,
+            "callId": "mock_19",
+            "name": "write_file",
+            "result": {
+              "ok": true,
+              "output": "已写入 docs/summaries/user.md (96 bytes)"
+            },
+            "durationMs": 1,
+            "ts": 1789764922738
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 3,
+            "text": "已写入 do",
+            "ts": 1789764922738
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 3,
+            "text": "cs/sum",
+            "ts": 1789764922744
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 3,
+            "text": "maries",
+            "ts": 1789764922748
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 3,
+            "text": "/user.",
+            "ts": 1789764922754
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 3,
+            "text": "md（src",
+            "ts": 1789764922760
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 3,
+            "text": "/user.",
+            "ts": 1789764922766
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 3,
+            "text": "ts，导出 ",
+            "ts": 1789764922772
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "delta",
+            "step": 3,
+            "text": "4 项）。",
+            "ts": 1789764922778
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "decision",
+            "step": 3,
+            "text": "已写入 docs/summaries/user.md（src/user.ts，导出 4 项）。",
+            "toolCalls": [],
+            "usage": {
+              "inputTokens": 451,
+              "outputTokens": 80
+            },
+            "durationMs": 46,
+            "ts": 1789764922784
+          },
+          {
+            "agent": "sub-4",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_9",
+            "type": "final",
+            "answer": "已写入 docs/summaries/user.md（src/user.ts，导出 4 项）。",
+            "reason": "completed",
+            "steps": 3,
+            "usage": {
+              "inputTokens": 793,
+              "outputTokens": 240
+            },
+            "ts": 1789764922784
+          }
+        ],
+        "children": []
+      },
+      {
+        "agent": "sub-5",
+        "depth": 1,
+        "parentCallId": "mock_10",
+        "events": [
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "user",
+            "task": "为文件 src/utils/format.ts 生成摘要并写入 docs/summaries/utils-format.md",
+            "ts": 1789764922690
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 1,
+            "text": "读取 src",
+            "ts": 1789764922690
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 1,
+            "text": "/utils",
+            "ts": 1789764922696
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 1,
+            "text": "/forma",
+            "ts": 1789764922702
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 1,
+            "text": "t.ts。",
+            "ts": 1789764922708
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "decision",
+            "step": 1,
+            "text": "读取 src/utils/format.ts。",
+            "toolCalls": [
+              {
+                "id": "mock_15",
+                "name": "read_file",
+                "input": {
+                  "path": "src/utils/format.ts"
+                }
+              }
+            ],
+            "usage": {
+              "inputTokens": 31,
+              "outputTokens": 80
+            },
+            "durationMs": 23,
+            "ts": 1789764922713
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "tool_call",
+            "step": 1,
+            "call": {
+              "id": "mock_15",
+              "name": "read_file",
+              "input": {
+                "path": "src/utils/format.ts"
+              }
+            },
+            "ts": 1789764922713
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "tool_result",
+            "step": 1,
+            "callId": "mock_15",
+            "name": "read_file",
+            "result": {
+              "ok": true,
+              "output": "/** 把 \"¥1,200.50\" / \"1200.5\" / \"1,200\" 统一解析为数字；无法解析返回 NaN */\nexport function parseAmount(s: string): number {\n  return Number(s.replace(/[¥$,\\s]/g, ''));\n}\n\nexport function formatCNY(n: number): string {\n  return '¥' + n.toFixed(2);\n}\n"
+            },
+            "durationMs": 1,
+            "ts": 1789764922714
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 2,
+            "text": "生成摘要写入",
+            "ts": 1789764922714
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 2,
+            "text": " docs/",
+            "ts": 1789764922721
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 2,
+            "text": "summar",
+            "ts": 1789764922725
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 2,
+            "text": "ies/ut",
+            "ts": 1789764922731
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 2,
+            "text": "ils-fo",
+            "ts": 1789764922737
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 2,
+            "text": "rmat.m",
+            "ts": 1789764922742
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 2,
+            "text": "d。",
+            "ts": 1789764922747
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "decision",
+            "step": 2,
+            "text": "生成摘要写入 docs/summaries/utils-format.md。",
+            "toolCalls": [
+              {
+                "id": "mock_20",
+                "name": "write_file",
+                "input": {
+                  "path": "docs/summaries/utils-format.md",
+                  "content": "# src/utils/format.ts\n\n- 行数: 9\n- 导出: parseAmount, formatCNY\n- TODO/FIXME: 0 处\n"
+                }
+              }
+            ],
+            "usage": {
+              "inputTokens": 196,
+              "outputTokens": 80
+            },
+            "durationMs": 39,
+            "ts": 1789764922753
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "tool_call",
+            "step": 2,
+            "call": {
+              "id": "mock_20",
+              "name": "write_file",
+              "input": {
+                "path": "docs/summaries/utils-format.md",
+                "content": "# src/utils/format.ts\n\n- 行数: 9\n- 导出: parseAmount, formatCNY\n- TODO/FIXME: 0 处\n"
+              }
+            },
+            "ts": 1789764922753
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "tool_result",
+            "step": 2,
+            "callId": "mock_20",
+            "name": "write_file",
+            "result": {
+              "ok": true,
+              "output": "已写入 docs/summaries/utils-format.md (88 bytes)"
+            },
+            "durationMs": 1,
+            "ts": 1789764922754
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 3,
+            "text": "已写入 do",
+            "ts": 1789764922754
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 3,
+            "text": "cs/sum",
+            "ts": 1789764922760
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 3,
+            "text": "maries",
+            "ts": 1789764922766
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 3,
+            "text": "/utils",
+            "ts": 1789764922772
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 3,
+            "text": "-forma",
+            "ts": 1789764922778
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 3,
+            "text": "t.md（s",
+            "ts": 1789764922783
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 3,
+            "text": "rc/uti",
+            "ts": 1789764922788
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 3,
+            "text": "ls/for",
+            "ts": 1789764922793
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 3,
+            "text": "mat.ts",
+            "ts": 1789764922799
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 3,
+            "text": "，导出 2 ",
+            "ts": 1789764922805
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "delta",
+            "step": 3,
+            "text": "项）。",
+            "ts": 1789764922811
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "decision",
+            "step": 3,
+            "text": "已写入 docs/summaries/utils-format.md（src/utils/format.ts，导出 2 项）。",
+            "toolCalls": [],
+            "usage": {
+              "inputTokens": 335,
+              "outputTokens": 80
+            },
+            "durationMs": 62,
+            "ts": 1789764922816
+          },
+          {
+            "agent": "sub-5",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_10",
+            "type": "final",
+            "answer": "已写入 docs/summaries/utils-format.md（src/utils/format.ts，导出 2 项）。",
+            "reason": "completed",
+            "steps": 3,
+            "usage": {
+              "inputTokens": 562,
+              "outputTokens": 240
+            },
+            "ts": 1789764922816
+          }
+        ],
+        "children": []
+      },
+      {
+        "agent": "sub-6",
+        "depth": 1,
+        "parentCallId": "mock_11",
+        "events": [
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "user",
+            "task": "为文件 src/utils/validate.ts 生成摘要并写入 docs/summaries/utils-validate.md",
+            "ts": 1789764922690
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 1,
+            "text": "读取 src",
+            "ts": 1789764922690
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 1,
+            "text": "/utils",
+            "ts": 1789764922696
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 1,
+            "text": "/valid",
+            "ts": 1789764922702
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 1,
+            "text": "ate.ts",
+            "ts": 1789764922708
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 1,
+            "text": "。",
+            "ts": 1789764922714
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "decision",
+            "step": 1,
+            "text": "读取 src/utils/validate.ts。",
+            "toolCalls": [
+              {
+                "id": "mock_16",
+                "name": "read_file",
+                "input": {
+                  "path": "src/utils/validate.ts"
+                }
+              }
+            ],
+            "usage": {
+              "inputTokens": 32,
+              "outputTokens": 80
+            },
+            "durationMs": 29,
+            "ts": 1789764922719
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "tool_call",
+            "step": 1,
+            "call": {
+              "id": "mock_16",
+              "name": "read_file",
+              "input": {
+                "path": "src/utils/validate.ts"
+              }
+            },
+            "ts": 1789764922719
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "tool_result",
+            "step": 1,
+            "callId": "mock_16",
+            "name": "read_file",
+            "result": {
+              "ok": true,
+              "output": "export function isEmail(s: string): boolean {\n  return /^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(s);\n}\n\n// TODO: 手机号校验支持国际区号\nexport function isPhone(s: string): boolean {\n  return /^1\\d{10}$/.test(s);\n}\n"
+            },
+            "durationMs": 1,
+            "ts": 1789764922720
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 2,
+            "text": "生成摘要写入",
+            "ts": 1789764922720
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 2,
+            "text": " docs/",
+            "ts": 1789764922725
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 2,
+            "text": "summar",
+            "ts": 1789764922731
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 2,
+            "text": "ies/ut",
+            "ts": 1789764922737
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 2,
+            "text": "ils-va",
+            "ts": 1789764922742
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 2,
+            "text": "lidate",
+            "ts": 1789764922747
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 2,
+            "text": ".md。",
+            "ts": 1789764922752
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "decision",
+            "step": 2,
+            "text": "生成摘要写入 docs/summaries/utils-validate.md。",
+            "toolCalls": [
+              {
+                "id": "mock_21",
+                "name": "write_file",
+                "input": {
+                  "path": "docs/summaries/utils-validate.md",
+                  "content": "# src/utils/validate.ts\n\n- 行数: 9\n- 导出: isEmail, isPhone\n- TODO/FIXME: 1 处\n"
+                }
+              }
+            ],
+            "usage": {
+              "inputTokens": 185,
+              "outputTokens": 80
+            },
+            "durationMs": 37,
+            "ts": 1789764922757
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "tool_call",
+            "step": 2,
+            "call": {
+              "id": "mock_21",
+              "name": "write_file",
+              "input": {
+                "path": "docs/summaries/utils-validate.md",
+                "content": "# src/utils/validate.ts\n\n- 行数: 9\n- 导出: isEmail, isPhone\n- TODO/FIXME: 1 处\n"
+              }
+            },
+            "ts": 1789764922757
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "tool_result",
+            "step": 2,
+            "callId": "mock_21",
+            "name": "write_file",
+            "result": {
+              "ok": true,
+              "output": "已写入 docs/summaries/utils-validate.md (84 bytes)"
+            },
+            "durationMs": 0,
+            "ts": 1789764922757
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 3,
+            "text": "已写入 do",
+            "ts": 1789764922758
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 3,
+            "text": "cs/sum",
+            "ts": 1789764922763
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 3,
+            "text": "maries",
+            "ts": 1789764922767
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 3,
+            "text": "/utils",
+            "ts": 1789764922772
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 3,
+            "text": "-valid",
+            "ts": 1789764922778
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 3,
+            "text": "ate.md",
+            "ts": 1789764922784
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 3,
+            "text": "（src/u",
+            "ts": 1789764922790
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 3,
+            "text": "tils/v",
+            "ts": 1789764922795
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 3,
+            "text": "alidat",
+            "ts": 1789764922799
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 3,
+            "text": "e.ts，导",
+            "ts": 1789764922805
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 3,
+            "text": "出 2 项）",
+            "ts": 1789764922811
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "delta",
+            "step": 3,
+            "text": "。",
+            "ts": 1789764922816
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "decision",
+            "step": 3,
+            "text": "已写入 docs/summaries/utils-validate.md（src/utils/validate.ts，导出 2 项）。",
+            "toolCalls": [],
+            "usage": {
+              "inputTokens": 324,
+              "outputTokens": 80
+            },
+            "durationMs": 64,
+            "ts": 1789764922822
+          },
+          {
+            "agent": "sub-6",
+            "depth": 1,
+            "parent": "main",
+            "parentCallId": "mock_11",
+            "type": "final",
+            "answer": "已写入 docs/summaries/utils-validate.md（src/utils/validate.ts，导出 2 项）。",
+            "reason": "completed",
+            "steps": 3,
+            "usage": {
+              "inputTokens": 541,
+              "outputTokens": 240
+            },
+            "ts": 1789764922822
+          }
+        ],
+        "children": []
+      }
+    ]
+  }
+}

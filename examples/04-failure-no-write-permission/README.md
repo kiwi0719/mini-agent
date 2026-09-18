@@ -6,7 +6,9 @@
 
 > 找出所有 TODO 并生成 todo-report.md
 
-**结果**: completed · 8 steps · 12 tool calls · 1 failures · 4 sub agents · tokens 6725/1280 · 678ms
+**校验**: ✅ 通过
+
+**结果**: completed · 6 steps · 13 tool calls · 1 failures · 4 sub agents · tokens 8572/1120 · 349ms
 
 **最终答案**:
 

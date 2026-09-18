@@ -108,7 +108,7 @@ export const listFiles: Tool = {
 export const searchText: Tool = {
   name: 'search_text',
   description:
-    '在 workspace 内递归搜索文本（支持正则，如 "TODO|FIXME"）。返回 JSON: {total, truncated, files_scanned, matches:[{file,line,text}]}。可用 path 限定子目录，用 file_pattern 按扩展名过滤（如 "*.ts"）。',
+    '在 workspace 内搜索文本（支持正则，如 "TODO|FIXME"）。返回 JSON: {total, truncated, files_scanned, matches:[{file,line,text}]}。path 可以是目录（递归）或单个文件；file_pattern 按扩展名过滤（如 "*.ts"）。适合读取超过 read_file 上限的大文件中的特定行。',
   permission: 'read',
   idempotent: true,
   inputSchema: {
@@ -131,16 +131,19 @@ export const searchText: Tool = {
       return { ok: false, error: `非法正则 "${input.pattern}": ${(e as Error).message}` };
     }
     const abs = resolveInWorkspace(ctx.workspace, input.path ?? '.');
+    let isFile = false;
     try {
-      await fs.access(abs);
+      isFile = (await fs.stat(abs)).isFile();
     } catch {
-      return { ok: false, error: `目录不存在: ${input.path}` };
+      return { ok: false, error: `路径不存在: ${input.path}` };
     }
     const ext = input.file_pattern?.match(/^\*\.(\w+)$/)?.[1];
     const max = input.max_results ?? 200;
     const hits: { file: string; line: number; text: string }[] = [];
     let scanned = 0;
-    for await (const f of walk(abs)) {
+    // path 可以是目录（递归）也可以是单个文件
+    const targets = isFile ? (async function* () { yield abs; })() : walk(abs);
+    for await (const f of targets) {
       if (ext && !f.endsWith('.' + ext)) continue;
       const buf = await fs.readFile(f);
       if (looksBinary(buf)) continue;

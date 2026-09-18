@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T20:25:20.723Z
+- time: 2026-09-18T20:55:20.059Z
 
 ## 👤 User
 
@@ -48,7 +48,7 @@ _LLM 18ms · tokens in 27 / out 80_
 - [ ] 2. 逐文件分析（委派子 Agent） — pending
 - [ ] 3. 生成分类报告 — pending
 
-### ✅ Tool Result: `update_plan` (0ms)
+### ✅ Tool Result: `update_plan` (1ms)
 
 ```
 计划已更新（0/3 完成）
@@ -60,7 +60,7 @@ _LLM 18ms · tokens in 27 / out 80_
 
 → 决定调用 1 个工具: search_text
 
-_LLM 17ms · tokens in 157 / out 80_
+_LLM 18ms · tokens in 157 / out 80_
 
 ### 🔧 Tool Call: `search_text`
 
@@ -74,29 +74,54 @@ _LLM 17ms · tokens in 157 / out 80_
 
 ```
 {
- "total": 9,
+ "total": 19,
  "truncated": false,
- "files_scanned": 5,
+ "files_scanned": 17,
  "matches": [
   {
    "file": "README.md",
-   "line": 12,
+   "line": 14,
    "text": "TODO: 补充部署说明"
   },
   {
    "file": "README.md",
-   "line": 13,
+   "line": 15,
    "text": "TODO: 添加 CI 配置"
   },
   {
-   "file": "docs/design.md",
+   "file": "README.md",
    "line": 17,
+   "text": "注意：本项目的 TODOS 统一在 issue 跟踪，代码里的 TODO 注释仅作临时标记。"
+  },
+  {
+   "file": "config/app.yaml",
+   "line": 4,
+   "text": "# TODO: 生产环境改成从环境变量读取"
+  },
+  {
+   "file": "config/app.yaml",
+   "line": 7,
+   "text": "enabled: false   # FIXME: 缓存开关未接入代码"
+  },
+  {
+   "file": "docs/adr/001-storage.md",
+   "line": 9,
+   "text": "- TODO: 设计分页接口"
+  },
+  {
+   "file": "docs/adr/002-cache.md",
+   "line": 8,
+   "text": "FIXME: 配置项 cache.enabled 在 `config/app.yaml` 中存在但代码未读取"
+  },
+  {
+   "file": "docs/design.md",
+   "line": 19,
    "text": "TODO: 补充部署架构图"
   },
   {
    "file": "docs/design.md",
-   "line": 18,
-   "text": "TODO: 评估是否引入 Redis 缓存"
+   "line": 20,
+   "text": "TODO: 评估是否引入 Redis 缓存（见 002）"
   },
   {
    "file": "src/order.ts",
@@ -106,7 +131,113 @@ _LLM 17ms · tokens in 157 / out 80_
   {
    "file": "src/order.ts",
    "line": 22,
-   "text": "// TODO: 订单状态机校验（pending → paid → shipped）"
+   "text": "/* TODO: 订单状态机校验（pending → paid → shipped） */"
+  },
+  {
+   "file": "src/payment.ts",
+   "line": 5,
+   "text": "const todoList: string[] = []; // 待处理的支付回调队列（不是 TODO 注释）"
+  },
+  {
+   "file": "src/payment.ts",
+   "line": 8,
+   "text": "// TODO: 幂等键，防止重复扣款"
+  },
+  {
+   "file": "src/payment.ts",
+   "line": 9,
+   "text": "todoList.push(order.id);"
+  },
+  {
+   "file": "src/payment.ts",
+   "line": 14,
+   "text": "// FIXME: 退款没有校验订单状态是否为 paid"
+…[截断 386 字符]
+```
+
+## 🧠 Agent Decision (step 3)
+
+结果里混入了 3 条假阳性（如 TODOS、todoList），用更严格的正则重新搜索。
+
+→ 决定调用 1 个工具: search_text
+
+_LLM 45ms · tokens in 964 / out 80_
+
+### 🔧 Tool Call: `search_text`
+
+```json
+{
+  "pattern": "\\b(TODO|FIXME)\\b(\\([^)]*\\))?:"
+}
+```
+
+### ✅ Tool Result: `search_text` (3ms)
+
+```
+{
+ "total": 16,
+ "truncated": false,
+ "files_scanned": 17,
+ "matches": [
+  {
+   "file": "README.md",
+   "line": 14,
+   "text": "TODO: 补充部署说明"
+  },
+  {
+   "file": "README.md",
+   "line": 15,
+   "text": "TODO: 添加 CI 配置"
+  },
+  {
+   "file": "config/app.yaml",
+   "line": 4,
+   "text": "# TODO: 生产环境改成从环境变量读取"
+  },
+  {
+   "file": "config/app.yaml",
+   "line": 7,
+   "text": "enabled: false   # FIXME: 缓存开关未接入代码"
+  },
+  {
+   "file": "docs/adr/001-storage.md",
+   "line": 9,
+   "text": "- TODO: 设计分页接口"
+  },
+  {
+   "file": "docs/adr/002-cache.md",
+   "line": 8,
+   "text": "FIXME: 配置项 cache.enabled 在 `config/app.yaml` 中存在但代码未读取"
+  },
+  {
+   "file": "docs/design.md",
+   "line": 19,
+   "text": "TODO: 补充部署架构图"
+  },
+  {
+   "file": "docs/design.md",
+   "line": 20,
+   "text": "TODO: 评估是否引入 Redis 缓存（见 002）"
+  },
+  {
+   "file": "src/order.ts",
+   "line": 13,
+   "text": "// FIXME: 浮点运算精度问题，金额应使用整数分"
+  },
+  {
+   "file": "src/order.ts",
+   "line": 22,
+   "text": "/* TODO: 订单状态机校验（pending → paid → shipped） */"
+  },
+  {
+   "file": "src/payment.ts",
+   "line": 8,
+   "text": "// TODO: 幂等键，防止重复扣款"
+  },
+  {
+   "file": "src/payment.ts",
+   "line": 14,
+   "text": "// FIXME: 退款没有校验订单状态是否为 paid"
   },
   {
    "file": "src/user.ts",
@@ -121,189 +252,20 @@ _LLM 17ms · tokens in 157 / out 80_
   {
    "file": "src/user.ts",
    "line": 24,
-   "text": "// TODO: 实现分页"
-  }
- ]
-}
-```
-
-## 🧠 Agent Decision (step 3)
-
-找到 9 处，分布在 4 个文件。委派子 Agent 分析 README.md。
-
-→ 决定调用 1 个工具: delegate
-
-_LLM 40ms · tokens in 566 / out 80_
-
-### 🔧 Tool Call: `delegate`
-
-```json
-{
-  "task": "分析文件 README.md：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
-}
-```
-
-### 🤖 Sub Agent sub-1 接到任务
-
-```
-分析文件 README.md：读取它并列出其中所有 TODO/FIXME 行（含行号）。
-```
-
-## 🧠 Agent Decision [sub-1] (step 1)
-
-读取 README.md。
-
-→ 决定调用 1 个工具: read_file
-
-_LLM 17ms · tokens in 25 / out 80_
-
-### 🔧 Tool Call [sub-1]: `read_file`
-
-```json
-{
-  "path": "README.md"
-}
-```
-
-### ✅ Tool Result [sub-1]: `read_file` (1ms)
-
-```
-# Demo Project
-
-这是一个用于测试 Mini Agent 的示例项目。
-
-## 模块
-
-- `src/user.ts` 用户模块
-- `src/order.ts` 订单模块
-- `docs/design.md` 设计文档
-- `data/sales.txt` 销售数据
-
-TODO: 补充部署说明
-TODO: 添加 CI 配置
-
-```
-
-## 🧠 Agent Decision [sub-1] (step 2)
-
-README.md 中共 2 项:
-- L12: TODO: 补充部署说明
-- L13: TODO: 添加 CI 配置
-
-_LLM 56ms · tokens in 161 / out 80_
-
-### 🤖 Sub Agent sub-1 结束 (completed, 2 steps)
-
-README.md 中共 2 项:
-- L12: TODO: 补充部署说明
-- L13: TODO: 添加 CI 配置
-
-### ✅ Tool Result: `delegate` (74ms)
-
-```
-[子 Agent 用 2 步完成]
-README.md 中共 2 项:
-- L12: TODO: 补充部署说明
-- L13: TODO: 添加 CI 配置
+   "text": "// TODO(alice): 实现分页，见 docs/adr/001-storage.md"
+  },
+  {
+   "file": "src/utils/vali
+…[截断 66 字符]
 ```
 
 ## 🧠 Agent Decision (step 4)
 
-找到 9 处，分布在 4 个文件。委派子 Agent 分析 docs/design.md。
+确认 16 处，分布在 9 个文件。其中 4 个源码文件并行委派子 Agent 读取上下文。
 
-→ 决定调用 1 个工具: delegate
+→ 决定调用 4 个工具: delegate, delegate, delegate, delegate
 
-_LLM 46ms · tokens in 688 / out 80_
-
-### 🔧 Tool Call: `delegate`
-
-```json
-{
-  "task": "分析文件 docs/design.md：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
-}
-```
-
-### 🤖 Sub Agent sub-2 接到任务
-
-```
-分析文件 docs/design.md：读取它并列出其中所有 TODO/FIXME 行（含行号）。
-```
-
-## 🧠 Agent Decision [sub-2] (step 1)
-
-读取 docs/design.md。
-
-→ 决定调用 1 个工具: read_file
-
-_LLM 17ms · tokens in 26 / out 80_
-
-### 🔧 Tool Call [sub-2]: `read_file`
-
-```json
-{
-  "path": "docs/design.md"
-}
-```
-
-### ✅ Tool Result [sub-2]: `read_file` (1ms)
-
-```
-# 系统设计
-
-## 概述
-
-系统由用户模块与订单模块组成，数据暂存内存。
-
-## 模块
-
-- 用户模块：`src/user.ts`
-- 订单模块：`src/order.ts`
-- API 文档：`docs/api.md`（待编写）
-- 销售数据：`data/sales.txt`
-- 历史归档：`data/archive.bin`
-
-## 待办
-
-TODO: 补充部署架构图
-TODO: 评估是否引入 Redis 缓存
-
-## 非功能需求
-
-- 响应时间 P99 < 200ms
-- 可用性 99.9%
-
-```
-
-## 🧠 Agent Decision [sub-2] (step 2)
-
-docs/design.md 中共 2 项:
-- L17: TODO: 补充部署架构图
-- L18: TODO: 评估是否引入 Redis 缓存
-
-_LLM 69ms · tokens in 197 / out 80_
-
-### 🤖 Sub Agent sub-2 结束 (completed, 2 steps)
-
-docs/design.md 中共 2 项:
-- L17: TODO: 补充部署架构图
-- L18: TODO: 评估是否引入 Redis 缓存
-
-### ✅ Tool Result: `delegate` (87ms)
-
-```
-[子 Agent 用 2 步完成]
-docs/design.md 中共 2 项:
-- L17: TODO: 补充部署架构图
-- L18: TODO: 评估是否引入 Redis 缓存
-```
-
-## 🧠 Agent Decision (step 5)
-
-找到 9 处，分布在 4 个文件。委派子 Agent 分析 src/order.ts。
-
-→ 决定调用 1 个工具: delegate
-
-_LLM 46ms · tokens in 817 / out 80_
+_LLM 45ms · tokens in 1667 / out 80_
 
 ### 🔧 Tool Call: `delegate`
 
@@ -313,21 +275,23 @@ _LLM 46ms · tokens in 817 / out 80_
 }
 ```
 
-### 🤖 Sub Agent sub-3 接到任务
+<details><summary>🤖 Sub Agent <b>sub-1</b>（2 steps）</summary>
+
+### 🤖 Sub Agent sub-1 接到任务
 
 ```
 分析文件 src/order.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。
 ```
 
-## 🧠 Agent Decision [sub-3] (step 1)
+## 🧠 Agent Decision [sub-1] (step 1)
 
 读取 src/order.ts。
 
 → 决定调用 1 个工具: read_file
 
-_LLM 18ms · tokens in 26 / out 80_
+_LLM 17ms · tokens in 26 / out 80_
 
-### 🔧 Tool Call [sub-3]: `read_file`
+### 🔧 Tool Call [sub-1]: `read_file`
 
 ```json
 {
@@ -335,7 +299,7 @@ _LLM 18ms · tokens in 26 / out 80_
 }
 ```
 
-### ✅ Tool Result [sub-3]: `read_file` (1ms)
+### ✅ Tool Result [sub-1]: `read_file` (0ms)
 
 ```
 import type { User } from './user.ts';
@@ -359,43 +323,98 @@ export function shippingFee(order: Order): number {
   return order.amount >= FREE_SHIPPING_THRESHOLD ? 0 : 20;
 }
 
-// TODO: 订单状态机校验（pending → paid → shipped）
+/* TODO: 订单状态机校验（pending → paid → shipped） */
 export function advance(order: Order): Order {
   return order;
 }
 
 ```
 
-## 🧠 Agent Decision [sub-3] (step 2)
+## 🧠 Agent Decision [sub-1] (step 2)
 
 src/order.ts 中共 2 项:
 - L13: FIXME: 浮点运算精度问题，金额应使用整数分
-- L22: TODO: 订单状态机校验（pending → paid → shipped）
+- L22: /* TODO: 订单状态机校验（pending → paid → shipped） */
 
-_LLM 97ms · tokens in 299 / out 80_
+_LLM 101ms · tokens in 300 / out 80_
 
-### 🤖 Sub Agent sub-3 结束 (completed, 2 steps)
+### 🤖 Sub Agent sub-1 结束 (completed, 2 steps)
 
 src/order.ts 中共 2 项:
 - L13: FIXME: 浮点运算精度问题，金额应使用整数分
-- L22: TODO: 订单状态机校验（pending → paid → shipped）
+- L22: /* TODO: 订单状态机校验（pending → paid → shipped） */
 
-### ✅ Tool Result: `delegate` (116ms)
+</details>
+
+### 🔧 Tool Call: `delegate`
+
+```json
+{
+  "task": "分析文件 src/payment.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+}
+```
+
+<details><summary>🤖 Sub Agent <b>sub-2</b>（2 steps）</summary>
+
+### 🤖 Sub Agent sub-2 接到任务
 
 ```
-[子 Agent 用 2 步完成]
-src/order.ts 中共 2 项:
-- L13: FIXME: 浮点运算精度问题，金额应使用整数分
-- L22: TODO: 订单状态机校验（pending → paid → shipped）
+分析文件 src/payment.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。
 ```
 
-## 🧠 Agent Decision (step 6)
+## 🧠 Agent Decision [sub-2] (step 1)
 
-找到 9 处，分布在 4 个文件。委派子 Agent 分析 src/user.ts。
+读取 src/payment.ts。
 
-→ 决定调用 1 个工具: delegate
+→ 决定调用 1 个工具: read_file
 
-_LLM 41ms · tokens in 954 / out 80_
+_LLM 17ms · tokens in 26 / out 80_
+
+### 🔧 Tool Call [sub-2]: `read_file`
+
+```json
+{
+  "path": "src/payment.ts"
+}
+```
+
+### ✅ Tool Result [sub-2]: `read_file` (1ms)
+
+```
+import type { Order } from './order.ts';
+
+export type Provider = 'alipay' | 'wechat' | 'card';
+
+const todoList: string[] = []; // 待处理的支付回调队列（不是 TODO 注释）
+
+export async function charge(order: Order, provider: Provider): Promise<boolean> {
+  // TODO: 幂等键，防止重复扣款
+  todoList.push(order.id);
+  return true;
+}
+
+export function refund(order: Order): number {
+  // FIXME: 退款没有校验订单状态是否为 paid
+  return -order.amount;
+}
+
+```
+
+## 🧠 Agent Decision [sub-2] (step 2)
+
+src/payment.ts 中共 2 项:
+- L8: TODO: 幂等键，防止重复扣款
+- L14: FIXME: 退款没有校验订单状态是否为 paid
+
+_LLM 71ms · tokens in 246 / out 80_
+
+### 🤖 Sub Agent sub-2 结束 (completed, 2 steps)
+
+src/payment.ts 中共 2 项:
+- L8: TODO: 幂等键，防止重复扣款
+- L14: FIXME: 退款没有校验订单状态是否为 paid
+
+</details>
 
 ### 🔧 Tool Call: `delegate`
 
@@ -405,21 +424,23 @@ _LLM 41ms · tokens in 954 / out 80_
 }
 ```
 
-### 🤖 Sub Agent sub-4 接到任务
+<details><summary>🤖 Sub Agent <b>sub-3</b>（2 steps）</summary>
+
+### 🤖 Sub Agent sub-3 接到任务
 
 ```
 分析文件 src/user.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。
 ```
 
-## 🧠 Agent Decision [sub-4] (step 1)
+## 🧠 Agent Decision [sub-3] (step 1)
 
 读取 src/user.ts。
 
 → 决定调用 1 个工具: read_file
 
-_LLM 18ms · tokens in 25 / out 80_
+_LLM 17ms · tokens in 25 / out 80_
 
-### 🔧 Tool Call [sub-4]: `read_file`
+### 🔧 Tool Call [sub-3]: `read_file`
 
 ```json
 {
@@ -427,7 +448,7 @@ _LLM 18ms · tokens in 25 / out 80_
 }
 ```
 
-### ✅ Tool Result [sub-4]: `read_file` (1ms)
+### ✅ Tool Result [sub-3]: `read_file` (1ms)
 
 ```
 export interface User {
@@ -453,46 +474,134 @@ export function createUser(name: string, email: string): User {
   return user;
 }
 
-// TODO: 实现分页
+// TODO(alice): 实现分页，见 docs/adr/001-storage.md
 export function listUsers(): User[] {
   return users;
 }
 
 ```
 
-## 🧠 Agent Decision [sub-4] (step 2)
+## 🧠 Agent Decision [sub-3] (step 2)
 
 src/user.ts 中共 3 项:
 - L12: TODO: 接入真实数据库，替换内存数组
 - L17: FIXME: 没有校验 email 格式
-- L24: TODO: 实现分页
+- L24: TODO(alice): 实现分页，见 docs/adr/001-storage.md
 
-_LLM 92ms · tokens in 306 / out 80_
+_LLM 117ms · tokens in 317 / out 80_
+
+### 🤖 Sub Agent sub-3 结束 (completed, 2 steps)
+
+src/user.ts 中共 3 项:
+- L12: TODO: 接入真实数据库，替换内存数组
+- L17: FIXME: 没有校验 email 格式
+- L24: TODO(alice): 实现分页，见 docs/adr/001-storage.md
+
+</details>
+
+### 🔧 Tool Call: `delegate`
+
+```json
+{
+  "task": "分析文件 src/utils/validate.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+}
+```
+
+<details><summary>🤖 Sub Agent <b>sub-4</b>（2 steps）</summary>
+
+### 🤖 Sub Agent sub-4 接到任务
+
+```
+分析文件 src/utils/validate.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。
+```
+
+## 🧠 Agent Decision [sub-4] (step 1)
+
+读取 src/utils/validate.ts。
+
+→ 决定调用 1 个工具: read_file
+
+_LLM 29ms · tokens in 29 / out 80_
+
+### 🔧 Tool Call [sub-4]: `read_file`
+
+```json
+{
+  "path": "src/utils/validate.ts"
+}
+```
+
+### ✅ Tool Result [sub-4]: `read_file` (0ms)
+
+```
+export function isEmail(s: string): boolean {
+  return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(s);
+}
+
+// TODO: 手机号校验支持国际区号
+export function isPhone(s: string): boolean {
+  return /^1\d{10}$/.test(s);
+}
+
+```
+
+## 🧠 Agent Decision [sub-4] (step 2)
+
+src/utils/validate.ts 中共 1 项:
+- L5: TODO: 手机号校验支持国际区号
+
+_LLM 50ms · tokens in 182 / out 80_
 
 ### 🤖 Sub Agent sub-4 结束 (completed, 2 steps)
 
-src/user.ts 中共 3 项:
-- L12: TODO: 接入真实数据库，替换内存数组
-- L17: FIXME: 没有校验 email 格式
-- L24: TODO: 实现分页
+src/utils/validate.ts 中共 1 项:
+- L5: TODO: 手机号校验支持国际区号
 
-### ✅ Tool Result: `delegate` (111ms)
+</details>
+
+### ✅ Tool Result: `delegate` (79ms)
+
+```
+[子 Agent 用 2 步完成]
+src/utils/validate.ts 中共 1 项:
+- L5: TODO: 手机号校验支持国际区号
+```
+
+### ✅ Tool Result: `delegate` (90ms)
+
+```
+[子 Agent 用 2 步完成]
+src/payment.ts 中共 2 项:
+- L8: TODO: 幂等键，防止重复扣款
+- L14: FIXME: 退款没有校验订单状态是否为 paid
+```
+
+### ✅ Tool Result: `delegate` (119ms)
+
+```
+[子 Agent 用 2 步完成]
+src/order.ts 中共 2 项:
+- L13: FIXME: 浮点运算精度问题，金额应使用整数分
+- L22: /* TODO: 订单状态机校验（pending → paid → shipped） */
+```
+
+### ✅ Tool Result: `delegate` (135ms)
 
 ```
 [子 Agent 用 2 步完成]
 src/user.ts 中共 3 项:
 - L12: TODO: 接入真实数据库，替换内存数组
 - L17: FIXME: 没有校验 email 格式
-- L24: TODO: 实现分页
+- L24: TODO(alice): 实现分页，见 docs/adr/001-storage.md
 ```
 
-## 🧠 Agent Decision (step 7)
+## 🧠 Agent Decision (step 5)
 
 子 Agent 全部返回，更新计划并生成报告。
 
 → 决定调用 2 个工具: update_plan, write_file
 
-_LLM 23ms · tokens in 1089 / out 80_
+_LLM 23ms · tokens in 2089 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -519,7 +628,7 @@ _LLM 23ms · tokens in 1089 / out 80_
 }
 ```
 
-### 📋 Plan (step 7)
+### 📋 Plan (step 5)
 
 - [x] 1. 搜索所有 TODO/FIXME — done
 - [x] 2. 逐文件分析（委派子 Agent） — done (4 个子 Agent)
@@ -536,22 +645,22 @@ _LLM 23ms · tokens in 1089 / out 80_
 ```json
 {
   "path": "todo-report.md",
-  "content": "# TODO / FIXME 报告\n\n共 9 项，分布在 4 个文件。\n\n## README.md\n\n- L12: TODO: 补充部署说明\n- L13: TODO: 添加 CI 配置\n\n## docs/design.md\n\n- L17: TODO: 补充部署架构图\n- L18: TODO: 评估是否引入 Redis 缓存\n\n## src/order.ts\n\n- L13: FIXME: 浮点运算精度问题，金额应使用整数分\n- L22: TODO: 订单状态机校验（pending → paid → shipped）\n\n## src/user.ts\n\n- L12: TODO: 接入真实数据库，替换内存数组\n- L17: FIXME: 没有校验 email 格式\n- L24: TODO: 实现分页\n\n"
+  "content": "# TODO / FIXME 报告\n\n共 16 项，分布在 9 个文件。\n\n## README.md\n\n- L14: TODO: 补充部署说明\n- L15: TODO: 添加 CI 配置\n\n## config/app.yaml\n\n- L4: # TODO: 生产环境改成从环境变量读取\n- L7: enabled: false   # FIXME: 缓存开关未接入代码\n\n## docs/adr/001-storage.md\n\n- L9: - TODO: 设计分页接口\n\n## docs/adr/002-cache.md\n\n- L8: FIXME: 配置项 cache.enabled 在 `config/app.yaml` 中存在但代码未读取\n\n## docs/design.md\n\n- L19: TODO: 补充部署架构图\n- L20: TODO: 评估是否引入 Redis 缓存（见 002）\n\n## src/order.ts\n\n- L13: FIXME: 浮点运算精度问题，金额应使用整数分\n- L22: /* TODO: 订单状态机校验（pending → paid → shipped） */\n\n## src/payment.ts\n\n- L8: TODO: 幂等键，防止重复扣款\n- L14: FIXME: 退款没有校验订单状态是否为 paid\n\n## src/user.ts\n\n- L12: TODO: 接入真实数据库，替换内存数组\n- L17: FIXME: 没有校验 email 格式\n- L24: TODO(alice): 实现分页，见 docs/adr/001-storage.md\n\n## src/utils/validate.ts\n\n- L5: TODO: 手机号校验支持国际区号\n\n"
 }
 ```
 
 ### ✅ Tool Result: `write_file` (2ms)
 
 ```
-已写入 todo-report.md (530 bytes)
+已写入 todo-report.md (1093 bytes)
 ```
 
-## 🧠 Agent Decision (step 8)
+## 🧠 Agent Decision (step 6)
 
-完成。共找到 9 处 TODO/FIXME，分布在 4 个文件（README.md, docs/design.md, src/order.ts, src/user.ts），已由 4 个子 Agent 分析并汇总到 todo-report.md。
+完成。严格匹配到 16 处 TODO/FIXME（排除了 todoList/TODOS 等假阳性），分布在 9 个文件，4 个源码文件由子 Agent 并行分析，报告已写入 todo-report.md。
 
-_LLM 121ms · tokens in 1416 / out 80_
+_LLM 95ms · tokens in 2558 / out 80_
 
-## 🏁 Final Answer (completed, 8 steps, tokens in 6779 / out 1280)
+## 🏁 Final Answer (completed, 6 steps, tokens in 8613 / out 1120)
 
-完成。共找到 9 处 TODO/FIXME，分布在 4 个文件（README.md, docs/design.md, src/order.ts, src/user.ts），已由 4 个子 Agent 分析并汇总到 todo-report.md。
+完成。严格匹配到 16 处 TODO/FIXME（排除了 todoList/TODOS 等假阳性），分布在 9 个文件，4 个源码文件由子 Agent 并行分析，报告已写入 todo-report.md。

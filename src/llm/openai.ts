@@ -17,7 +17,7 @@ export class OpenAICompatProvider implements LLMProvider {
     this.name = `openai-compat:${this.model}`;
   }
 
-  async chat(system: string, messages: Message[], tools: ToolSchema[], onDelta?: (t: string) => void): Promise<LLMResponse> {
+  async chat(system: string, messages: readonly Message[], tools: ToolSchema[], onDelta?: (t: string) => void, signal?: AbortSignal): Promise<LLMResponse> {
     const body = {
       model: this.model,
       messages: [{ role: 'system', content: system }, ...toOpenAI(messages)],
@@ -26,7 +26,7 @@ export class OpenAICompatProvider implements LLMProvider {
       stream: true,
       stream_options: { include_usage: true },
     };
-    const res = await this.post('/chat/completions', body);
+    const res = await this.post('/chat/completions', body, 0, signal);
 
     // 解析 SSE：拼接文字增量与 tool_calls 参数片段
     let text = '';
@@ -59,27 +59,28 @@ export class OpenAICompatProvider implements LLMProvider {
     return { text, toolCalls, stopReason: finish, usage };
   }
 
-  private async post(path: string, body: unknown, attempt = 0): Promise<Response> {
+  private async post(path: string, body: unknown, attempt = 0, signal?: AbortSignal): Promise<Response> {
     const res = await fetch(this.baseUrl + path, {
       method: 'POST',
       headers: { 'content-type': 'application/json', authorization: `Bearer ${this.apiKey}` },
       body: JSON.stringify(body),
-      signal: AbortSignal.timeout(120_000),
+      signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(120_000)]) : AbortSignal.timeout(120_000),
     }).catch((e) => { throw new Error(`LLM 网络错误: ${e.message}`); });
     if (res.ok) return res;
     const text = await res.text();
     if ((res.status === 429 || res.status >= 500) && attempt < 3) {
       await new Promise((r) => setTimeout(r, 1000 * 2 ** attempt));
-      return this.post(path, body, attempt + 1);
+      return this.post(path, body, attempt + 1, signal);
     }
     throw new Error(`LLM API ${res.status}: ${text.slice(0, 300)}`);
   }
 }
 
-function toOpenAI(messages: Message[]): any[] {
+function toOpenAI(messages: readonly Message[]): any[] {
   const out: any[] = [];
   for (const m of messages) {
     if (m.role === 'user') out.push({ role: 'user', content: m.content });
+    else if (m.role === 'system') out.push({ role: 'system', content: m.content }); // 原生支持对话中 system
     else if (m.role === 'assistant') {
       out.push({
         role: 'assistant',

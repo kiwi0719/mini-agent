@@ -1,0 +1,732 @@
+{
+  "meta": {
+    "provider": "mock",
+    "workspace": "workspace"
+  },
+  "startedAt": 1789764922413,
+  "events": [
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "user",
+      "task": "等待 data/lock.txt 的 STATUS 变为 READY 后，把 data/sales.txt 的合计写入 report.md。",
+      "ts": 1789764922413
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "先检查锁状态",
+      "ts": 1789764922413
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "。",
+      "ts": 1789764922418
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 1,
+      "text": "先检查锁状态。",
+      "toolCalls": [
+        {
+          "id": "mock_1",
+          "name": "read_file",
+          "input": {
+            "path": "data/lock.txt"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 33,
+        "outputTokens": 80
+      },
+      "durationMs": 10,
+      "ts": 1789764922423
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_1",
+        "name": "read_file",
+        "input": {
+          "path": "data/lock.txt"
+        }
+      },
+      "ts": 1789764922423
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_1",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "STATUS=PENDING\n# 由外部系统在数据导入完成后改为 READY（本 workspace 中永远不会发生）\n"
+      },
+      "durationMs": 1,
+      "ts": 1789764922424
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "还没就绪，再",
+      "ts": 1789764922424
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "检查一次。",
+      "ts": 1789764922429
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 2,
+      "text": "还没就绪，再检查一次。",
+      "toolCalls": [
+        {
+          "id": "mock_2",
+          "name": "read_file",
+          "input": {
+            "path": "data/lock.txt"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 128,
+        "outputTokens": 80
+      },
+      "durationMs": 10,
+      "ts": 1789764922434
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_2",
+        "name": "read_file",
+        "input": {
+          "path": "data/lock.txt"
+        }
+      },
+      "ts": 1789764922435
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_2",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "STATUS=PENDING\n# 由外部系统在数据导入完成后改为 READY（本 workspace 中永远不会发生）\n"
+      },
+      "durationMs": 0,
+      "ts": 1789764922435
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "还没就绪，再",
+      "ts": 1789764922435
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "检查一次。",
+      "ts": 1789764922440
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 3,
+      "text": "还没就绪，再检查一次。",
+      "toolCalls": [
+        {
+          "id": "mock_3",
+          "name": "read_file",
+          "input": {
+            "path": "data/lock.txt"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 225,
+        "outputTokens": 80
+      },
+      "durationMs": 11,
+      "ts": 1789764922446
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_3",
+        "name": "read_file",
+        "input": {
+          "path": "data/lock.txt"
+        }
+      },
+      "ts": 1789764922446
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_3",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "STATUS=PENDING\n# 由外部系统在数据导入完成后改为 READY（本 workspace 中永远不会发生）\n"
+      },
+      "durationMs": 0,
+      "ts": 1789764922446
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "notice",
+      "step": 3,
+      "message": "检测到连续 3 次完全相同的工具调用，请更换策略或直接给出结论。",
+      "ts": 1789764922447
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "还没就绪，再",
+      "ts": 1789764922447
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "检查一次。",
+      "ts": 1789764922452
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 4,
+      "text": "还没就绪，再检查一次。",
+      "toolCalls": [
+        {
+          "id": "mock_4",
+          "name": "read_file",
+          "input": {
+            "path": "data/lock.txt"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 342,
+        "outputTokens": 80
+      },
+      "durationMs": 11,
+      "ts": 1789764922458
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_4",
+        "name": "read_file",
+        "input": {
+          "path": "data/lock.txt"
+        }
+      },
+      "ts": 1789764922458
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_4",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "STATUS=PENDING\n# 由外部系统在数据导入完成后改为 READY（本 workspace 中永远不会发生）\n"
+      },
+      "durationMs": 0,
+      "ts": 1789764922458
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "还没就绪，再",
+      "ts": 1789764922458
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "检查一次。",
+      "ts": 1789764922464
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 5,
+      "text": "还没就绪，再检查一次。",
+      "toolCalls": [
+        {
+          "id": "mock_5",
+          "name": "read_file",
+          "input": {
+            "path": "data/lock.txt"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 438,
+        "outputTokens": 80
+      },
+      "durationMs": 12,
+      "ts": 1789764922470
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 5,
+      "call": {
+        "id": "mock_5",
+        "name": "read_file",
+        "input": {
+          "path": "data/lock.txt"
+        }
+      },
+      "ts": 1789764922470
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 5,
+      "callId": "mock_5",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "STATUS=PENDING\n# 由外部系统在数据导入完成后改为 READY（本 workspace 中永远不会发生）\n"
+      },
+      "durationMs": 0,
+      "ts": 1789764922470
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "final",
+      "answer": "提醒后仍连续重复相同的工具调用（read_file），判定为死循环，任务中止。",
+      "reason": "stuck_loop",
+      "steps": 5,
+      "usage": {
+        "inputTokens": 1166,
+        "outputTokens": 400
+      },
+      "ts": 1789764922470
+    }
+  ],
+  "tree": {
+    "agent": "main",
+    "depth": 0,
+    "events": [
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "user",
+        "task": "等待 data/lock.txt 的 STATUS 变为 READY 后，把 data/sales.txt 的合计写入 report.md。",
+        "ts": 1789764922413
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "先检查锁状态",
+        "ts": 1789764922413
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "。",
+        "ts": 1789764922418
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 1,
+        "text": "先检查锁状态。",
+        "toolCalls": [
+          {
+            "id": "mock_1",
+            "name": "read_file",
+            "input": {
+              "path": "data/lock.txt"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 33,
+          "outputTokens": 80
+        },
+        "durationMs": 10,
+        "ts": 1789764922423
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 1,
+        "call": {
+          "id": "mock_1",
+          "name": "read_file",
+          "input": {
+            "path": "data/lock.txt"
+          }
+        },
+        "ts": 1789764922423
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 1,
+        "callId": "mock_1",
+        "name": "read_file",
+        "result": {
+          "ok": true,
+          "output": "STATUS=PENDING\n# 由外部系统在数据导入完成后改为 READY（本 workspace 中永远不会发生）\n"
+        },
+        "durationMs": 1,
+        "ts": 1789764922424
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "还没就绪，再",
+        "ts": 1789764922424
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "检查一次。",
+        "ts": 1789764922429
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 2,
+        "text": "还没就绪，再检查一次。",
+        "toolCalls": [
+          {
+            "id": "mock_2",
+            "name": "read_file",
+            "input": {
+              "path": "data/lock.txt"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 128,
+          "outputTokens": 80
+        },
+        "durationMs": 10,
+        "ts": 1789764922434
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 2,
+        "call": {
+          "id": "mock_2",
+          "name": "read_file",
+          "input": {
+            "path": "data/lock.txt"
+          }
+        },
+        "ts": 1789764922435
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 2,
+        "callId": "mock_2",
+        "name": "read_file",
+        "result": {
+          "ok": true,
+          "output": "STATUS=PENDING\n# 由外部系统在数据导入完成后改为 READY（本 workspace 中永远不会发生）\n"
+        },
+        "durationMs": 0,
+        "ts": 1789764922435
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "还没就绪，再",
+        "ts": 1789764922435
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "检查一次。",
+        "ts": 1789764922440
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 3,
+        "text": "还没就绪，再检查一次。",
+        "toolCalls": [
+          {
+            "id": "mock_3",
+            "name": "read_file",
+            "input": {
+              "path": "data/lock.txt"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 225,
+          "outputTokens": 80
+        },
+        "durationMs": 11,
+        "ts": 1789764922446
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_3",
+          "name": "read_file",
+          "input": {
+            "path": "data/lock.txt"
+          }
+        },
+        "ts": 1789764922446
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_3",
+        "name": "read_file",
+        "result": {
+          "ok": true,
+          "output": "STATUS=PENDING\n# 由外部系统在数据导入完成后改为 READY（本 workspace 中永远不会发生）\n"
+        },
+        "durationMs": 0,
+        "ts": 1789764922446
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "notice",
+        "step": 3,
+        "message": "检测到连续 3 次完全相同的工具调用，请更换策略或直接给出结论。",
+        "ts": 1789764922447
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "还没就绪，再",
+        "ts": 1789764922447
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "检查一次。",
+        "ts": 1789764922452
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 4,
+        "text": "还没就绪，再检查一次。",
+        "toolCalls": [
+          {
+            "id": "mock_4",
+            "name": "read_file",
+            "input": {
+              "path": "data/lock.txt"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 342,
+          "outputTokens": 80
+        },
+        "durationMs": 11,
+        "ts": 1789764922458
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_4",
+          "name": "read_file",
+          "input": {
+            "path": "data/lock.txt"
+          }
+        },
+        "ts": 1789764922458
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_4",
+        "name": "read_file",
+        "result": {
+          "ok": true,
+          "output": "STATUS=PENDING\n# 由外部系统在数据导入完成后改为 READY（本 workspace 中永远不会发生）\n"
+        },
+        "durationMs": 0,
+        "ts": 1789764922458
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "还没就绪，再",
+        "ts": 1789764922458
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "检查一次。",
+        "ts": 1789764922464
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 5,
+        "text": "还没就绪，再检查一次。",
+        "toolCalls": [
+          {
+            "id": "mock_5",
+            "name": "read_file",
+            "input": {
+              "path": "data/lock.txt"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 438,
+          "outputTokens": 80
+        },
+        "durationMs": 12,
+        "ts": 1789764922470
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 5,
+        "call": {
+          "id": "mock_5",
+          "name": "read_file",
+          "input": {
+            "path": "data/lock.txt"
+          }
+        },
+        "ts": 1789764922470
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 5,
+        "callId": "mock_5",
+        "name": "read_file",
+        "result": {
+          "ok": true,
+          "output": "STATUS=PENDING\n# 由外部系统在数据导入完成后改为 READY（本 workspace 中永远不会发生）\n"
+        },
+        "durationMs": 0,
+        "ts": 1789764922470
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "final",
+        "answer": "提醒后仍连续重复相同的工具调用（read_file），判定为死循环，任务中止。",
+        "reason": "stuck_loop",
+        "steps": 5,
+        "usage": {
+          "inputTokens": 1166,
+          "outputTokens": 400
+        },
+        "ts": 1789764922470
+      }
+    ],
+    "children": []
+  }
+}

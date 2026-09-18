@@ -65,17 +65,20 @@ export const searchTools: Tool = {
 export const delegate: Tool = {
   name: 'delegate',
   description:
-    '把一个独立、边界清晰的子任务委派给子 Agent 执行（它拥有同样的文件工具与独立上下文），返回子 Agent 的最终答案。适合并行的重复性分析（例如“逐个文件分析”），子任务描述必须自包含。',
+    '把一个独立、边界清晰的子任务委派给子 Agent 执行（它拥有同样的文件工具与独立上下文，默认只读），返回子 Agent 的最终答案。同一轮发出的多个 delegate 会并行执行。适合可重复的分析（例如“逐个文件分析”），子任务描述必须自包含。',
   permission: 'read',
   inputSchema: {
     type: 'object',
-    properties: { task: { type: 'string', description: '自包含的子任务描述' } },
+    properties: {
+      task: { type: 'string', description: '自包含的子任务描述' },
+      allow_write: { type: 'boolean', description: '是否允许子 Agent 写文件，默认 false（只读）。仅在子任务确实需要产出文件时开启' },
+    },
     required: ['task'],
     additionalProperties: false,
   },
-  async execute(input: { task: string }, ctx) {
+  async execute(input: { task: string; allow_write?: boolean }, ctx) {
     if (!ctx.runtime) return { ok: false, error: 'delegate 需要 Agent 运行时' };
-    const r = await ctx.runtime.delegate(input.task);
+    const r = await ctx.runtime.delegate(input.task, ctx.callId ?? '', { allowWrite: input.allow_write });
     if (r.reason !== 'completed') return { ok: false, error: `子 Agent 未能完成 (${r.reason}, ${r.steps} steps): ${r.answer}` };
     return { ok: true, output: `[子 Agent 用 ${r.steps} 步完成]\n${r.answer}` };
   },

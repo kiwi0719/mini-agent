@@ -1,12 +1,14 @@
 # 02-read-calc-report
 
-**类型**: 读取、计算并生成报告（Tool Search + calculator + 脏数据处理）
+**类型**: 读取、计算并生成报告：Tool Search 激活 csv_parse + calculator + 脏数据
 
 **任务**:
 
 > 读取 data/sales.txt 中的数据，计算所有产品销售额之和，并把计算结果写入 report.md。
 
-**结果**: completed · 6 steps · 6 tool calls · 0 failures · 0 sub agents · tokens 2412/480 · 164ms
+**校验**: ✅ 通过
+
+**结果**: completed · 6 steps · 6 tool calls · 0 failures · 0 sub agents · tokens 2412/480 · 162ms
 
 **最终答案**:
 

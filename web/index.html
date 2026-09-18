@@ -57,7 +57,9 @@
     <h1>🤖 Mini Agent</h1>
     <span class="badge" v-if="info">provider: <b>{{ meta.provider || form.provider }}</b> · workspace: {{ info.workspace }}</span>
     <span style="flex:1"></span>
-    <span class="badge" v-if="running">运行中… step {{ currentStep }}</span>
+    <span class="badge" v-if="job.status==='queued'">排队中，前面还有 {{ job.position }} 个任务</span>
+    <span class="badge" v-if="running && job.status==='running'">运行中… step {{ currentStep }}</span>
+    <span class="badge" v-if="info">workers: {{ info.concurrency }}</span>
   </header>
   <main>
     <!-- 左：任务输入 -->
@@ -72,7 +74,8 @@
       <label class="row" style="margin-top:10px"><input type="checkbox" v-model="form.allowWrite" style="width:auto" :disabled="running"> 允许 write_file</label>
       <div class="row" style="margin-top:12px">
         <button @click="run" :disabled="running || !form.task.trim()">▶ 运行</button>
-        <button class="ghost" @click="clear" :disabled="running">清空</button>
+        <button class="ghost" @click="abort" v-if="running" style="border-color:var(--err);color:var(--err)">⏹ 中止</button>
+        <button class="ghost" @click="clear" :disabled="running" v-else>清空</button>
       </div>
       <h3>示例任务</h3>
       <div class="examples"><button class="ghost" v-for="ex in examples" @click="form.task = ex" :disabled="running">{{ ex }}</button></div>
@@ -113,6 +116,9 @@
         </template>
         <template v-else-if="e.type==='tools_activated'">
           <div class="head"><span class="tag">🔍 Tool Search</span></div><div>激活扩展工具: <b>{{ e.names.join(', ') }}</b></div>
+        </template>
+        <template v-else-if="e.type==='compressed'">
+          <div class="head"><span class="tag">🗜 Context 压缩</span><b>step {{ e.step }}</b></div><div>节省 {{ e.savedChars }} 字符，当前上下文 {{ e.sizeChars }} 字符</div>
         </template>
         <template v-else-if="e.type==='notice'">
           <div class="head"><span class="tag">⚠️ Notice</span></div><div>{{ e.message }}</div>
@@ -159,6 +165,8 @@ createApp({
   setup() {
     const info = ref(null), events = ref([]), running = ref(false), files = ref([]), viewing = ref(null), lastTrace = ref(null), bottom = ref(null);
     const meta = reactive({ provider: '' });
+    const job = reactive({ id: null, status: null, position: 0 });
+    let controller = null;
     const form = reactive({ task: '', provider: 'mock', maxSteps: 15, allowWrite: true });
     const examples = [
       '找出 workspace 目录中所有 TODO，按照文件进行分类并生成 todo-report.md。',
@@ -194,12 +202,23 @@ createApp({
       events.value.push(e);
     }
 
+    // 中止：先调 abort 接口（排队中移除 / 运行中优雅停止），再断开 SSE（服务端断连也会触发中止）
+    async function abort() {
+      if (job.id) await fetch('/api/jobs/' + job.id + '/abort', { method: 'POST' });
+      controller?.abort();
+    }
+
     async function run() {
-      clear(); running.value = true; meta.provider = '';
-      const res = await fetch('/api/run', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(form) });
+      clear(); running.value = true; meta.provider = ''; Object.assign(job, { id: null, status: null, position: 0 });
+      controller = new AbortController();
+      let res;
+      try { res = await fetch('/api/run', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(form), signal: controller.signal }); }
+      catch (e) { running.value = false; return; }
       const reader = res.body.getReader(); const dec = new TextDecoder(); let buf = '';
       while (true) {
-        const { value, done } = await reader.read(); if (done) break;
+        let chunk_;
+        try { chunk_ = await reader.read(); } catch { events.value.push({ type: 'error', depth: 0, message: '已中止' }); break; }
+        const { value, done } = chunk_; if (done) break;
         buf += dec.decode(value, { stream: true });
         let idx;
         while ((idx = buf.indexOf('\n\n')) >= 0) {
@@ -207,7 +226,8 @@ createApp({
           const ev = /^event: (.*)$/m.exec(chunk)?.[1]; const data = /^data: (.*)$/m.exec(chunk)?.[1];
           if (!ev || !data) continue;
           const obj = JSON.parse(data);
-          if (ev === 'meta') meta.provider = obj.provider;
+          if (ev === 'job') Object.assign(job, obj);
+          else if (ev === 'meta') meta.provider = obj.provider;
           else if (ev === 'agent') { handle(obj); scroll(); }
           else if (ev === 'done') lastTrace.value = obj.trace;
           else if (ev === 'error') events.value.push({ type: 'error', depth: 0, message: obj.message });
@@ -219,7 +239,7 @@ createApp({
     const icon = s => ({ done: '✔', in_progress: '▶', blocked: '✖', skipped: '↷', pending: '·' }[s] || '·');
     const cardClass = e => e.type === 'decision' ? 'decision' : e.type === 'final' ? (e.reason === 'completed' ? 'final' : 'final bad') : e.type === 'notice' ? 'notice' : '';
     onMounted(() => { loadInfo(); loadFiles(); });
-    return { info, events, visibleEvents, running, files, viewing, lastTrace, bottom, meta, form, examples, currentStep, toolCalls, failures, subAgents, usage, plan, loadFiles, openFile, clear, run, pretty, icon, cardClass };
+    return { info, events, visibleEvents, running, job, abort, files, viewing, lastTrace, bottom, meta, form, examples, currentStep, toolCalls, failures, subAgents, usage, plan, loadFiles, openFile, clear, run, pretty, icon, cardClass };
   }
 }).mount('#app');
 </script>

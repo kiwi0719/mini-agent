@@ -19,7 +19,7 @@ export function shippingFee(order: Order): number {
   return order.amount >= FREE_SHIPPING_THRESHOLD ? 0 : 20;
 }
 
-// TODO: 订单状态机校验（pending → paid → shipped）
+/* TODO: 订单状态机校验（pending → paid → shipped） */
 export function advance(order: Order): Order {
   return order;
 }

@@ -16,7 +16,7 @@ export class AnthropicProvider implements LLMProvider {
     this.name = `anthropic:${model}`;
   }
 
-  async chat(system: string, messages: Message[], tools: ToolSchema[], onDelta?: (t: string) => void): Promise<LLMResponse> {
+  async chat(system: string, messages: readonly Message[], tools: ToolSchema[], onDelta?: (t: string) => void, signal?: AbortSignal): Promise<LLMResponse> {
     // 流式：文字增量实时回传给 Agent；最终用 finalMessage() 拿完整消息（含 tool_use 块）
     const stream = this.client.messages.stream({
       model: this.model,
@@ -24,7 +24,7 @@ export class AnthropicProvider implements LLMProvider {
       system,
       tools: tools.map((t) => ({ name: t.name, description: t.description, input_schema: t.input_schema })),
       messages: toAnthropic(messages),
-    });
+    }, { signal });
     if (onDelta) stream.on('text', onDelta);
     const resp = await stream.finalMessage();
 
@@ -43,9 +43,11 @@ export class AnthropicProvider implements LLMProvider {
   }
 }
 
-function toAnthropic(messages: Message[]): Anthropic.MessageParam[] {
+function toAnthropic(messages: readonly Message[]): Anthropic.MessageParam[] {
   return messages.map((m): Anthropic.MessageParam => {
     if (m.role === 'user') return { role: 'user', content: m.content };
+    // Messages API 没有对话中的 system 角色，用带明确标记的 user 消息承载
+    if (m.role === 'system') return { role: 'user', content: `<system_notice>${m.content}</system_notice>` };
     if (m.role === 'assistant') {
       const content: Anthropic.ContentBlockParam[] = [];
       if (m.content) content.push({ type: 'text', text: m.content });

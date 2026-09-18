@@ -48,7 +48,9 @@ export class ToolRegistry {
   /**
    * 解析参数 → 校验 → 权限 → 超时 → 执行。任何失败都以 ToolResult 形式返回，不抛异常。
    */
-  async execute(call: ToolCall, ctx: ToolContext, timeoutMs: number): Promise<ToolResult> {
+  async execute(call: ToolCall, baseCtx: ToolContext, timeoutMs: number): Promise<ToolResult> {
+    const ctx: ToolContext = { ...baseCtx, callId: call.id };
+    if (ctx.signal?.aborted) return { ok: false, error: '任务已被中止' };
     const tool = this.tools.get(call.name);
     if (!tool) {
       return { ok: false, error: `未知工具 "${call.name}"。可用工具: ${this.names().join(', ')}` };

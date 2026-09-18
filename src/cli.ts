@@ -59,6 +59,7 @@ const onEvent = (e: AgentEvent) => {
       break;
     case 'plan': log(`${ind}   📋 Plan: ` + e.plan.map((p) => `${p.status === 'done' ? '✔' : p.status === 'blocked' ? '✖' : p.status === 'in_progress' ? '▶' : '·'} ${p.title}`).join(' | ')); break;
     case 'tools_activated': log(`${ind}   🔍 激活工具: ${e.names.join(', ')}`); break;
+    case 'compressed': log(`${ind}   🗜 Context 压缩: -${e.savedChars} 字符 → ${e.sizeChars}`); break;
     case 'tool_call': log(`${ind}   🔧 ${e.call.name} ${JSON.stringify(e.call.input).slice(0, 200)}`); break;
     case 'tool_result': {
       const body = e.result.ok ? e.result.output : e.result.error;
@@ -74,9 +75,14 @@ const onEvent = (e: AgentEvent) => {
   }
 };
 
+const ac = new AbortController();
+let sigints = 0;
+process.on('SIGINT', () => { if (++sigints === 1) { console.error('\n⏹ 收到 Ctrl+C，正在优雅中止（再按一次强制退出）…'); ac.abort(); } else process.exit(130); });
+
 const agent = new Agent(llm, createDefaultRegistry(), workspace, {
   maxSteps: Number(values['max-steps']),
   allowWrite: !values['no-write'],
+  signal: ac.signal,
   onEvent,
 });
 

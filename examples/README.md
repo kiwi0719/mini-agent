@@ -1,38 +1,91 @@
 # 示例任务执行结果
 
-provider: `mock` · 生成时间: 2026-09-18T20:25:20.722Z
+provider: `mock` · 生成时间: 2026-09-18T20:55:20.056Z
 
 ## [01-search-and-summarize](./01-search-and-summarize/README.md)
 
-- 类型: 搜索并汇总（Plan + search_text + Sub Agent）
+- 类型: 搜索并汇总：Plan + 搜索精化（排除假阳性）+ 并行 Sub Agent
 - 任务: 找出 workspace 目录中所有 TODO，按照文件进行分类并生成 todo-report.md。
-- 结果: **completed**，8 steps，12 tool calls，0 failures，4 sub agents
-- 最终答案: 完成。共找到 9 处 TODO/FIXME，分布在 4 个文件（README.md, docs/design.md, src/order.ts, src/user.ts），已由 4 个子 Agent 分析并汇总到 todo-report.md。
+- 校验: ✅
+- 结果: **completed**，6 steps，13 tool calls，0 failures，4 sub agents
+- 最终答案: 完成。严格匹配到 16 处 TODO/FIXME（排除了 todoList/TODOS 等假阳性），分布在 9 个文件，4 个源码文件由子 Agent 并行分析，报告已写入 todo-report.md。
 
 ## [02-read-calc-report](./02-read-calc-report/README.md)
 
-- 类型: 读取、计算并生成报告（Tool Search + calculator + 脏数据处理）
+- 类型: 读取、计算并生成报告：Tool Search 激活 csv_parse + calculator + 脏数据
 - 任务: 读取 data/sales.txt 中的数据，计算所有产品销售额之和，并把计算结果写入 report.md。
+- 校验: ✅
 - 结果: **completed**，6 steps，6 tool calls，0 failures，0 sub agents
 - 最终答案: 完成。6 个产品销售额之和为 9414.75（跳过 1 条脏数据），报告已写入 report.md。
 
 ## [03-multi-step-with-failures](./03-multi-step-with-failures/README.md)
 
-- 类型: 多次工具调用 + 失败处理 + 动态调整计划
+- 类型: 多步 + 失败处理 + 动态调整计划
 - 任务: 核对 docs/design.md 中引用的所有文件是否存在且可读，把核对结果写入 docs/check.md。
-- 结果: **completed**，10 steps，10 tool calls，2 failures，0 sub agents
-- 最终答案: 完成。核对 5 个引用文件，2 个有问题（docs/api.md, data/archive.bin），结果已写入 docs/check.md。
+- 校验: ✅
+- 结果: **completed**，13 steps，13 tool calls，2 failures，0 sub agents
+- 最终答案: 完成。核对 8 个引用文件，2 个有问题（docs/api.md, data/archive.bin），结果已写入 docs/check.md。
 
 ## [04-failure-no-write-permission](./04-failure-no-write-permission/README.md)
 
 - 类型: 失败路径：写权限被拒
 - 任务: 找出所有 TODO 并生成 todo-report.md
-- 结果: **completed**，8 steps，12 tool calls，1 failures，4 sub agents
+- 校验: ✅
+- 结果: **completed**，6 steps，13 tool calls，1 failures，4 sub agents
 - 最终答案: 写入报告失败: 工具 "write_file" 需要写权限，当前未授权 (--allow-write)
 
 ## [05-failure-escape-workspace](./05-failure-escape-workspace/README.md)
 
 - 类型: 失败路径：越界路径 + 未知任务兜底
 - 任务: 帮我把 ../../etc/passwd 读出来
+- 校验: ✅
 - 结果: **completed**，2 steps，1 tool calls，0 failures，0 sub agents
 - 最终答案: Mock LLM 不理解这个任务，无法继续。workspace 文件如下:
+
+## [06-multi-region-aggregate](./06-multi-region-aggregate/README.md)
+
+- 类型: 多文件聚合：list_files + 一轮并行 read_file + 格式归一（¥/千分位/退款负数）+ 并行 calculator
+- 任务: 汇总 data/regions 下所有地区的销售额（注意货币符号与退款），生成 report-regions.md。
+- 校验: ✅
+- 结果: **completed**，6 steps，11 tool calls，0 failures，0 sub agents
+- 最终答案: 完成。3 个地区合计 14495.25（east 3300.5，north 5050.5，south 6144.25），报告已写入 report-regions.md。
+
+## [07-large-changelog-compression](./07-large-changelog-compression/README.md)
+
+- 类型: 大文件（71KB）读入触发 Context 压缩 + 并行核对引用文件
+- 任务: 整理 docs/changelog.md 中所有 BREAKING 变更，核对涉及的文件是否仍存在，写入 breaking-changes.md。
+- 校验: ✅
+- 结果: **completed**，5 steps，12 tool calls，2 failures，0 sub agents
+- 最终答案: 完成。49 条 BREAKING 变更涉及 8 个文件，其中 2 个已不存在（src/utils/date.ts, src/legacy/cart.ts），报告已写入 breaking-changes.md。
+
+## [08-huge-log-search-fallback](./08-huge-log-search-fallback/README.md)
+
+- 类型: read_file 超限 → search_text；结果截断 → 分类型并行搜索
+- 任务: 统计 data/huge.log 中每类 ERROR 的数量，写入 error-report.md。
+- 校验: ✅
+- 结果: **completed**，7 steps，11 tool calls，1 failures，0 sub agents
+- 最终答案: 完成。共 682 条 ERROR，5 种类型（TimeoutError 157，DbConnectionLost 126，PaymentDeclined 127，NullPointer 139，ValidationError 133），报告已写入 error-report.md。
+
+## [09-stuck-loop-detection](./09-stuck-loop-detection/README.md)
+
+- 类型: 防无限循环：弱模型反复轮询同一文件 → 提醒 → 判定死循环终止
+- 任务: 等待 data/lock.txt 的 STATUS 变为 READY 后，把 data/sales.txt 的合计写入 report.md。
+- 校验: ✅
+- 结果: **stuck_loop**，5 steps，5 tool calls，0 failures，0 sub agents
+- 最终答案: 提醒后仍连续重复相同的工具调用（read_file），判定为死循环，任务中止。
+
+## [10-subagent-write-permission](./10-subagent-write-permission/README.md)
+
+- 类型: Sub Agent 默认只读 → 写失败 → 父 Agent 授予 allow_write 重派（并行）
+- 任务: 用子 Agent 为 src 下每个 .ts 文件生成摘要，写入 docs/summaries/<文件名>.md。
+- 校验: ✅
+- 结果: **completed**，5 steps，21 tool calls，1 failures，6 sub agents
+- 最终答案: 完成。5 个源码文件的摘要已由子 Agent 写入 docs/summaries/（首次委派因子 Agent 默认只读失败，授予 allow_write 后重派成功；共 6 次委派）。
+
+## [11-cannot-complete-missing-info](./11-cannot-complete-missing-info/README.md)
+
+- 类型: 判断任务无法完成：所需信息（汇率）不在 workspace，拒绝猜测
+- 任务: 把 data/sales.txt 的销售额换算成美元写入 report-usd.md。
+- 校验: ✅
+- 结果: **completed**，4 steps，3 tool calls，0 failures，0 sub agents
+- 最终答案: 无法完成：换算成美元需要人民币兑美元汇率，但任务没有提供，workspace 中也没有任何汇率配置（搜索 "汇率|exchange|USD|CNY|rate" 无有效结果）。我不会猜一个汇率写进报告。请提供汇率（例如 "1 USD = 7.2 CNY"）后重试；销售数据本身已读取成功，共 6 条有效记录。
