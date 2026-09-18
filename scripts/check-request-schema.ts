@@ -1,9 +1,12 @@
 /**
- * 离线校验：不连任何模型，直接检查三种 flavor（openai / vllm / ollama）组装出的请求体
- * 以及 Anthropic 的工具定义是否符合各自的 API 约定。用法: node scripts/check-request-schema.ts
+ * 离线校验：不连任何模型，直接检查各 Provider 组装出的请求体是否符合对应 API 的约定。
+ * 覆盖 OpenAI 兼容的三种 flavor（openai / vllm / ollama）与 Anthropic 格式的全部 preset
+ * （anthropic / kimi / glm / deepseek / minimax / custom），以及全部工具的 JSON Schema。
+ * 用法: node scripts/check-request-schema.ts
  */
 import { Ajv } from 'ajv';
 import { OpenAICompatProvider, type Flavor } from '../src/llm/openai.ts';
+import { AnthropicProvider, ANTHROPIC_PRESETS, normalizeBase, type AnthropicPreset } from '../src/llm/anthropic.ts';
 import { createDefaultRegistry } from '../src/tools/index.ts';
 import { SYSTEM_PROMPT } from '../src/agent.ts';
 import type { Message } from '../src/types.ts';
@@ -81,11 +84,81 @@ for (const flavor of Object.keys(expectations) as Flavor[]) {
   check(JSON.stringify(body).length > 0 && !JSON.stringify(body).includes('undefined'), '序列化后不含 undefined 字面量');
 }
 
-// ---------- 3. Anthropic 工具定义形状 ----------
-console.log('\n[3] Anthropic tools');
-for (const t of tools) {
-  check(t.input_schema.type === 'object', `${t.name}: input_schema.type=object`);
-  check(!('parameters' in (t as any)), `${t.name}: 不应带 OpenAI 的 parameters 字段名`);
+// ---------- 3. Anthropic 格式：每个 preset 的请求体 / 头 / baseUrl 归一化 ----------
+for (const preset of Object.keys(ANTHROPIC_PRESETS) as AnthropicPreset[]) {
+  console.log(`\n[3] preset=${preset}`);
+  const d = ANTHROPIC_PRESETS[preset];
+  // 显式传入每个字段（包括空的 authToken），避免读到宿主机的 ANTHROPIC_* 环境变量导致断言不可复现
+  const p = new AnthropicProvider({ preset, apiKey: 'sk-test', authToken: '', model: d.model || 'test-model', baseUrl: d.baseUrl || 'https://gw.example.com' });
+  const body = p.buildRequestBody(SYSTEM_PROMPT, history, tools) as any;
+  const headers = p.buildHeaders();
+
+  // 顶层字段：Anthropic 的 system 是独立字段，不是 messages[0]
+  check(typeof body.model === 'string' && body.model.length > 0, 'model 非空');
+  check(typeof body.max_tokens === 'number' && body.max_tokens > 0, 'max_tokens 必填且为正数（Anthropic 与 OpenAI 的关键差异）');
+  check(body.system === SYSTEM_PROMPT, 'system 应为顶层字段');
+  check(!body.messages.some((m: any) => m.role === 'system'), 'messages 里不应出现 system 角色（Anthropic 不支持）');
+  check(body.messages.every((m: any) => m.role === 'user' || m.role === 'assistant'), 'messages 角色只能是 user / assistant');
+  check(!('tool_choice' in body), '未强制工具选择时不应发送 tool_choice');
+  check(!('stream_options' in body), 'stream_options 是 OpenAI 扩展，不应出现在 Anthropic 请求里');
+
+  // 工具形状：Anthropic 用 input_schema，且没有 type/function 包装
+  check(Array.isArray(body.tools) && body.tools.length === tools.length, 'tools 数量');
+  for (const t of body.tools) {
+    check(t.input_schema?.type === 'object', `${t.name}: input_schema.type=object`);
+    check(!('parameters' in t), `${t.name}: 不应带 OpenAI 的 parameters 字段名`);
+    check(!('type' in t) && !('function' in t), `${t.name}: 不应带 OpenAI 的 type/function 包装`);
+    check(typeof t.name === 'string' && typeof t.description === 'string', `${t.name}: name/description`);
+  }
+
+  // tool_use / tool_result 配对：assistant 的 tool_use.input 必须是对象（不是 JSON 字符串，这点与 OpenAI 相反）
+  const asst = body.messages.find((m: any) => m.role === 'assistant');
+  const toolUses = asst.content.filter((b: any) => b.type === 'tool_use');
+  check(toolUses.length === 2, 'assistant 应含 2 个 tool_use 块');
+  for (const tu of toolUses) {
+    check(typeof tu.id === 'string' && tu.id.length > 0, 'tool_use 需有 id');
+    check(tu.input !== null && typeof tu.input === 'object' && !Array.isArray(tu.input), 'tool_use.input 必须是对象（Anthropic 与 OpenAI 的 arguments 字符串相反）');
+  }
+  check(asst.content.length > 0, 'assistant.content 不可为空数组（部分兼容端点会拒绝）');
+
+  // tool_result 必须在 user 消息里，且 id 与前面的 tool_use 对应
+  const resultMsg = body.messages.find((m: any) => Array.isArray(m.content) && m.content.some((b: any) => b.type === 'tool_result'));
+  check(resultMsg?.role === 'user', 'tool_result 必须放在 user 消息中');
+  const useIds = new Set(toolUses.map((t: any) => t.id));
+  for (const b of resultMsg.content) {
+    check(b.type === 'tool_result', 'tool_result 消息内不应混入其他块类型');
+    check(useIds.has(b.tool_use_id), `tool_use_id ${b.tool_use_id} 必须对应前面的 tool_use`);
+    check(typeof b.content === 'string', 'tool_result.content 应为字符串');
+  }
+  check(resultMsg.content.some((b: any) => b.is_error === true), '失败的工具结果应带 is_error: true');
+
+  // 运行中注入的 system 提示：Anthropic 无对话内 system 角色，应降级为带标记的 user 消息
+  check(body.messages.some((m: any) => m.role === 'user' && typeof m.content === 'string' && m.content.includes('<system_notice>')), 'system 注入应降级为带 <system_notice> 标记的 user 消息');
+
+  // 请求头
+  check(headers['anthropic-version'] === '2023-06-01', 'anthropic-version 头');
+  check(headers['x-api-key'] === 'sk-test', 'x-api-key 头（官方只看这个）');
+  check(headers.authorization === 'Bearer sk-test', '只给 apiKey 时，Authorization 也用它兜底（部分网关只看 Bearer）');
+  // 反向：只给 authToken（只认 Bearer 的网关），x-api-key 也要用它兜底
+  const tokenOnly = new AnthropicProvider({ preset, apiKey: '', authToken: 'tok-test', model: d.model || 'test-model', baseUrl: d.baseUrl || 'https://gw.example.com' }).buildHeaders();
+  check(tokenOnly['x-api-key'] === 'tok-test' && tokenOnly.authorization === 'Bearer tok-test', '只给 authToken 时两种头都用它');
+  check(headers['content-type'] === 'application/json', 'content-type 头');
+
+  check(!JSON.stringify(body).includes('undefined'), '序列化后不含 undefined 字面量');
+}
+
+// ---------- 4. baseUrl 归一化：各种写法都要落到 …/v1 ----------
+console.log('\n[4] baseUrl 归一化');
+for (const [input, want] of [
+  ['https://api.anthropic.com', 'https://api.anthropic.com/v1'],
+  ['https://api.anthropic.com/', 'https://api.anthropic.com/v1'],
+  ['https://api.moonshot.cn/anthropic', 'https://api.moonshot.cn/anthropic/v1'],
+  ['https://gw.example.com/v1', 'https://gw.example.com/v1'],
+  ['https://gw.example.com/v1/messages', 'https://gw.example.com/v1'],
+  ['https://gw.example.com/v1/', 'https://gw.example.com/v1'],
+] as [string, string][]) {
+  const got = normalizeBase(input);
+  check(got === want, `normalizeBase("${input}") 期望 "${want}"，实际 "${got}"`);
 }
 
 console.log(failures ? `\n✘ ${failures} 项不通过` : '\n✔ 全部通过');

@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createDefaultRegistry } from './tools/index.ts';
 import { JobQueue } from './job-queue.ts';
+import { ANTHROPIC_PRESETS } from './llm/anthropic.ts';
 import { FLAVOR_DEFAULTS } from './llm/openai.ts';
 import type { LLMConfig } from './llm/index.ts';
 
@@ -24,7 +25,7 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.method === 'GET' && url.pathname === '/api/info') {
-    return json(res, { providers: ['mock', 'local', 'openai', 'anthropic'], defaultProvider: process.env.LLM_PROVIDER ?? 'mock', flavorDefaults: FLAVOR_DEFAULTS, workspace: WORKSPACE, concurrency: CONCURRENCY, tools: createDefaultRegistry().all().map((t) => ({ name: t.name, description: t.description, permission: t.permission, deferred: !!t.deferred })) });
+    return json(res, { providers: ['mock', 'local', 'openai', 'anthropic'], defaultProvider: process.env.LLM_PROVIDER ?? 'mock', flavorDefaults: FLAVOR_DEFAULTS, anthropicPresets: ANTHROPIC_PRESETS, workspace: WORKSPACE, concurrency: CONCURRENCY, tools: createDefaultRegistry().all().map((t) => ({ name: t.name, description: t.description, permission: t.permission, deferred: !!t.deferred })) });
   }
 
   if (req.method === 'GET' && url.pathname === '/api/jobs') return json(res, queue.snapshot());
@@ -36,7 +37,12 @@ const server = http.createServer(async (req, res) => {
     const key = url.searchParams.get('apiKey') ?? '';
     if (!/^https?:\/\//.test(base)) return json(res, { error: 'baseUrl 必须是 http(s) 地址' }, 400);
     try {
-      const r = await fetch(base + '/models', { headers: key ? { authorization: `Bearer ${key}` } : {}, signal: AbortSignal.timeout(5000) });
+      // Anthropic 格式的端点走 GET {base}/v1/models，鉴权头两种都带；OpenAI 格式走 {base}/models
+      const anthropic = url.searchParams.get('format') === 'anthropic';
+      const target = anthropic ? base.replace(/\/v\d+$/, '') + '/v1/models' : base + '/models';
+      const headers: Record<string, string> = key ? { authorization: `Bearer ${key}`, 'x-api-key': key } : {};
+      if (anthropic) headers['anthropic-version'] = '2023-06-01';
+      const r = await fetch(target, { headers, signal: AbortSignal.timeout(5000) });
       if (!r.ok) return json(res, { error: `${r.status} ${await r.text()}`.slice(0, 300) }, 502);
       const j: any = await r.json();
       return json(res, { models: (j.data ?? j.models ?? []).map((m: any) => m.id ?? m.name).filter(Boolean) });
@@ -81,7 +87,7 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(200, { 'content-type': 'text/event-stream', 'cache-control': 'no-cache', connection: 'keep-alive' });
     const send = (event: string, data: unknown) => { if (!res.writableEnded) res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`); };
 
-    const llm: LLMConfig | undefined = payload.llm && { flavor: payload.llm.flavor, baseUrl: payload.llm.baseUrl || undefined, model: payload.llm.model || undefined, apiKey: payload.llm.apiKey || undefined, stream: payload.llm.stream };
+    const llm: LLMConfig | undefined = payload.llm && { flavor: payload.llm.flavor, baseUrl: payload.llm.baseUrl || undefined, model: payload.llm.model || undefined, apiKey: payload.llm.apiKey || undefined, stream: payload.llm.stream , preset: (payload.llm as any).preset || undefined, authToken: (payload.llm as any).authToken || undefined, maxTokens: Number((payload.llm as any).maxTokens) || undefined };
     const job = queue.submit({ task: payload.task, provider: payload.provider, llm, maxSteps: payload.maxSteps, allowWrite: payload.allowWrite ?? true, workspace: WORKSPACE, traceDir: TRACE_DIR });
     send('job', { id: job.id, status: job.status, position: queue.position(job.id) });
 

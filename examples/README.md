@@ -1,6 +1,6 @@
 # 示例任务执行结果
 
-provider: `mock` · 生成时间: 2026-09-18T20:59:21.271Z
+provider: `mock` · 生成时间: 2026-09-18T21:17:52.613Z
 
 ## [01-search-and-summarize](./01-search-and-summarize/README.md)
 
@@ -118,7 +118,7 @@ provider: `mock` · 生成时间: 2026-09-18T20:59:21.271Z
 
 - 类型: K8s：OOMKilled → previous 日志 → runbook/case → propose_fix → apply_fix（写）→ verify_fix → 复盘报告
 - 任务: 帮我分析 job-123 为什么失败，并修复它。
-- 校验: ❌ 修复后未确认恢复
+- 校验: ✅
 - 结果: **completed**，9 steps，15 tool calls，0 failures，0 sub agents
 - 最终答案: ## 故障现象
 

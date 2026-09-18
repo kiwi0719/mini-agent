@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T20:59:58.091Z
+- time: 2026-09-18T21:17:53.025Z
 
 ## 👤 User
 
@@ -72,7 +72,7 @@ _LLM 23ms · tokens in 150 / out 80_
 
 > 🔍 Tool Search 激活: csv_parse
 
-### ✅ Tool Result: `search_tools` (0ms)
+### ✅ Tool Result: `search_tools` (1ms)
 
 ```
 找到并激活 1 个工具，下一轮即可调用:
@@ -98,7 +98,7 @@ _LLM 28ms · tokens in 265 / out 80_
 }
 ```
 
-### ✅ Tool Result: `csv_parse` (0ms)
+### ✅ Tool Result: `csv_parse` (1ms)
 
 ```
 {
@@ -155,7 +155,7 @@ _LLM 40ms · tokens in 489 / out 80_
 }
 ```
 
-### ✅ Tool Result: `calculator` (0ms)
+### ✅ Tool Result: `calculator` (1ms)
 
 ```
 sum(1200, 850.5, 3200, 415.25, 999, 2750) = 9414.75
@@ -225,7 +225,7 @@ _LLM 6ms · tokens in 603 / out 80_
 
 完成。6 个产品销售额之和为 9414.75（跳过 1 条脏数据），报告已写入 report.md。
 
-_LLM 50ms · tokens in 877 / out 80_
+_LLM 51ms · tokens in 877 / out 80_
 
 ## 🏁 Final Answer (completed, 6 steps, tokens in 2412 / out 480)
 

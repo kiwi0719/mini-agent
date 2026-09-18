@@ -81,6 +81,26 @@
           <select v-model="form.provider" :disabled="running"><option v-for="p in (info?.providers||['mock'])" :value="p">{{ providerLabel(p) }}</option></select></div>
         <div style="width:90px"><label>Max steps</label><input type="number" v-model.number="form.maxSteps" min="1" max="50" :disabled="running"></div>
       </div>
+      <!-- Anthropic 格式：官方 / 网关中转 / 各厂商兼容端点 -->
+      <div v-if="form.provider==='anthropic'" class="local">
+        <label>端点预设</label>
+        <select v-model="form.llm.preset" :disabled="running" @change="applyPresetDefaults">
+          <option v-for="(d,k) in (info?.anthropicPresets||{})" :value="k">{{ d.label }}</option>
+        </select>
+        <label>API Base URL <span style="color:var(--muted)">（可写到域名 / …/anthropic / …/v1）</span></label>
+        <input v-model="form.llm.baseUrl" :placeholder="presetDefault('baseUrl') || 'https://your-gateway.example.com'" :disabled="running" spellcheck="false">
+        <label>模型 <button class="ghost" style="padding:1px 8px;font-size:11px;margin-left:6px" @click="fetchModels" :disabled="running||modelsLoading">{{ modelsLoading ? '获取中…' : '获取模型列表' }}</button></label>
+        <input v-model="form.llm.model" list="model-list" :placeholder="presetDefault('model') || '例如 claude-sonnet-5 / kimi-k2 / glm-4.5'" :disabled="running" spellcheck="false">
+        <datalist id="model-list"><option v-for="m in models" :value="m"></option></datalist>
+        <div v-if="modelsError" style="color:var(--err);font-size:12px;margin-top:4px">{{ modelsError }}</div>
+        <div v-else-if="models.length" style="color:var(--muted);font-size:12px;margin-top:4px">已获取 {{ models.length }} 个模型</div>
+        <label>API Key <span style="color:var(--muted)">（同时作为 x-api-key 与 Bearer 发送；留空用服务端 ANTHROPIC_API_KEY / AUTH_TOKEN）</span></label>
+        <input v-model="form.llm.apiKey" type="password" :disabled="running" autocomplete="off">
+        <div class="row" style="gap:12px;margin-top:8px">
+          <label class="row"><input type="checkbox" v-model="form.llm.stream" style="width:auto" :disabled="running"> 流式 <span style="color:var(--muted)">（中转对 SSE 处理不稳时关掉）</span></label>
+          <label class="row" style="flex:1">max_tokens <input v-model="form.llm.maxTokens" type="number" :placeholder="String(presetDefault('maxTokens')||8192)" :disabled="running" style="width:90px;margin-left:6px"></label>
+        </div>
+      </div>
       <!-- 本地模型 / OpenAI 兼容接口的连接参数 -->
       <div v-if="form.provider==='local' || form.provider==='openai'" class="local">
         <div class="row" v-if="form.provider==='local'">
@@ -206,17 +226,20 @@ createApp({
     const meta = reactive({ provider: '' });
     const job = reactive({ id: null, status: null, position: 0 });
     let controller = null;
-    const form = reactive({ task: '', provider: 'mock', maxSteps: 15, allowWrite: true, llm: { flavor: 'ollama', baseUrl: '', model: '', apiKey: '', stream: false } });
+    const form = reactive({ task: '', provider: 'mock', maxSteps: 15, allowWrite: true, llm: { flavor: 'ollama', preset: 'anthropic', baseUrl: '', model: '', apiKey: '', stream: false, maxTokens: '' } });
     const models = ref([]), modelsLoading = ref(false), modelsError = ref('');
-    const providerLabel = p => ({ mock: 'mock（无需 API）', local: '本地模型 (Ollama / vLLM)', openai: 'OpenAI 兼容云端接口', anthropic: 'Anthropic' }[p] || p);
+    const providerLabel = p => ({ mock: 'mock（无需 API）', local: '本地模型 (Ollama / vLLM)', openai: 'OpenAI 兼容云端接口', anthropic: 'Anthropic 格式（官方 / 网关 / Kimi / GLM / DeepSeek / MiniMax）' }[p] || p);
     const flavorDefault = k => { const f = form.provider === 'openai' ? 'openai' : form.llm.flavor; return info.value?.flavorDefaults?.[f]?.[k] ?? ''; };
+    const presetDefault = k => info.value?.anthropicPresets?.[form.llm.preset]?.[k] ?? '';
+    function applyPresetDefaults() { const d = info.value?.anthropicPresets?.[form.llm.preset]; if (!d) return; form.llm.baseUrl = d.baseUrl; form.llm.model = d.model; form.llm.maxTokens = d.maxTokens; form.llm.stream = true; models.value = []; modelsError.value = ''; }
     // 切换服务类型时把地址 / 模型 / 流式恢复为该类型的默认值
     function applyFlavorDefaults() { const d = info.value?.flavorDefaults?.[form.llm.flavor]; if (!d) return; form.llm.baseUrl = d.baseUrl; form.llm.model = d.model; form.llm.stream = d.stream; models.value = []; modelsError.value = ''; }
     async function fetchModels() {
       modelsLoading.value = true; modelsError.value = ''; models.value = [];
-      const base = form.llm.baseUrl || flavorDefault('baseUrl');
+      const isA = form.provider === 'anthropic';
+      const base = form.llm.baseUrl || (isA ? presetDefault('baseUrl') : flavorDefault('baseUrl'));
       try {
-        const r = await fetch('/api/models?baseUrl=' + encodeURIComponent(base) + '&apiKey=' + encodeURIComponent(form.llm.apiKey || ''));
+        const r = await fetch('/api/models?baseUrl=' + encodeURIComponent(base) + '&apiKey=' + encodeURIComponent(form.llm.apiKey || '') + (isA ? '&format=anthropic' : ''));
         const j = await r.json();
         if (j.error) modelsError.value = j.error; else { models.value = j.models; if (!form.llm.model && j.models.length) form.llm.model = j.models[0]; }
       } catch (e) { modelsError.value = String(e); }
@@ -273,6 +296,7 @@ createApp({
       // openai provider 走 flavor=openai；local 用面板里选的 flavor；其余 provider 不带 llm 参数
       const payload = { task: form.task, provider: form.provider, maxSteps: form.maxSteps, allowWrite: form.allowWrite };
       if (form.provider === 'local' || form.provider === 'openai') payload.llm = { ...form.llm, flavor: form.provider === 'openai' ? 'openai' : form.llm.flavor };
+      if (form.provider === 'anthropic') payload.llm = { preset: form.llm.preset, baseUrl: form.llm.baseUrl, model: form.llm.model, apiKey: form.llm.apiKey, stream: form.llm.stream, maxTokens: form.llm.maxTokens };
       try { res = await fetch('/api/run', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload), signal: controller.signal }); }
       catch (e) { running.value = false; return; }
       const reader = res.body.getReader(); const dec = new TextDecoder(); let buf = '';
@@ -311,7 +335,7 @@ createApp({
     const icon = s => ({ done: '✔', in_progress: '▶', blocked: '✖', skipped: '↷', pending: '·' }[s] || '·');
     const cardClass = e => e.type === 'decision' ? 'decision' : e.type === 'final' ? (e.reason === 'completed' ? 'final' : 'final bad') : e.type === 'notice' ? 'notice' : '';
     onMounted(() => { loadInfo(); loadFiles(); });
-    return { info, events, visibleEvents, running, job, abort, models, modelsLoading, modelsError, providerLabel, flavorDefault, applyFlavorDefaults, fetchModels, files, viewing, lastTrace, bottom, meta, form, examples, currentStep, toolCalls, failures, subAgents, usage, plan, loadFiles, openFile, clear, run, pretty, icon, cardClass, sections, secClass };
+    return { info, events, visibleEvents, running, job, abort, models, modelsLoading, modelsError, providerLabel, flavorDefault, applyFlavorDefaults, fetchModels, files, viewing, lastTrace, bottom, meta, form, examples, currentStep, toolCalls, failures, subAgents, usage, plan, loadFiles, openFile, clear, run, pretty, icon, cardClass, sections, secClass, presetDefault, applyPresetDefaults };
   }
 }).mount('#app');
 </script>

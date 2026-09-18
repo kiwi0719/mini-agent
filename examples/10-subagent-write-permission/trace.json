@@ -3,14 +3,14 @@
     "provider": "mock",
     "workspace": "workspace"
   },
-  "startedAt": 1789765200208,
+  "startedAt": 1789766275150,
   "events": [
     {
       "agent": "main",
       "depth": 0,
       "type": "user",
       "task": "用子 Agent 为 src 下每个 .ts 文件生成摘要，写入 docs/summaries/<文件名>.md。",
-      "ts": 1789765200208
+      "ts": 1789766275150
     },
     {
       "agent": "main",
@@ -18,7 +18,7 @@
       "type": "delta",
       "step": 1,
       "text": "制定计划。",
-      "ts": 1789765200208
+      "ts": 1789766275150
     },
     {
       "agent": "main",
@@ -56,7 +56,7 @@
         "outputTokens": 80
       },
       "durationMs": 6,
-      "ts": 1789765200214
+      "ts": 1789766275156
     },
     {
       "agent": "main",
@@ -86,7 +86,7 @@
           ]
         }
       },
-      "ts": 1789765200214
+      "ts": 1789766275156
     },
     {
       "agent": "main",
@@ -110,7 +110,7 @@
           "status": "pending"
         }
       ],
-      "ts": 1789765200214
+      "ts": 1789766275156
     },
     {
       "agent": "main",
@@ -124,7 +124,7 @@
         "output": "计划已更新（0/3 完成）"
       },
       "durationMs": 0,
-      "ts": 1789765200214
+      "ts": 1789766275156
     },
     {
       "agent": "main",
@@ -132,7 +132,7 @@
       "type": "delta",
       "step": 2,
       "text": "列出源码文件",
-      "ts": 1789765200214
+      "ts": 1789766275156
     },
     {
       "agent": "main",
@@ -140,7 +140,7 @@
       "type": "delta",
       "step": 2,
       "text": "。",
-      "ts": 1789765200219
+      "ts": 1789766275161
     },
     {
       "agent": "main",
@@ -161,8 +161,8 @@
         "inputTokens": 155,
         "outputTokens": 80
       },
-      "durationMs": 10,
-      "ts": 1789765200224
+      "durationMs": 11,
+      "ts": 1789766275167
     },
     {
       "agent": "main",
@@ -176,7 +176,7 @@
           "path": "src"
         }
       },
-      "ts": 1789765200224
+      "ts": 1789766275167
     },
     {
       "agent": "main",
@@ -190,7 +190,7 @@
         "output": "src/order.ts\nsrc/payment.ts\nsrc/user.ts\nsrc/utils/format.ts\nsrc/utils/validate.ts"
       },
       "durationMs": 0,
-      "ts": 1789765200224
+      "ts": 1789766275167
     },
     {
       "agent": "main",
@@ -198,7 +198,7 @@
       "type": "delta",
       "step": 3,
       "text": "5 个文件。",
-      "ts": 1789765200225
+      "ts": 1789766275168
     },
     {
       "agent": "main",
@@ -206,7 +206,7 @@
       "type": "delta",
       "step": 3,
       "text": "先委派一个试",
-      "ts": 1789765200230
+      "ts": 1789766275173
     },
     {
       "agent": "main",
@@ -214,7 +214,7 @@
       "type": "delta",
       "step": 3,
       "text": "试。",
-      "ts": 1789765200235
+      "ts": 1789766275179
     },
     {
       "agent": "main",
@@ -235,8 +235,8 @@
         "inputTokens": 255,
         "outputTokens": 80
       },
-      "durationMs": 16,
-      "ts": 1789765200241
+      "durationMs": 18,
+      "ts": 1789766275185
     },
     {
       "agent": "main",
@@ -250,7 +250,7 @@
           "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md"
         }
       },
-      "ts": 1789765200241
+      "ts": 1789766275185
     },
     {
       "agent": "sub-1",
@@ -259,7 +259,7 @@
       "parentCallId": "mock_3",
       "type": "user",
       "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md",
-      "ts": 1789765200241
+      "ts": 1789766275185
     },
     {
       "agent": "sub-1",
@@ -269,7 +269,7 @@
       "type": "delta",
       "step": 1,
       "text": "读取 src",
-      "ts": 1789765200241
+      "ts": 1789766275185
     },
     {
       "agent": "sub-1",
@@ -279,7 +279,7 @@
       "type": "delta",
       "step": 1,
       "text": "/order",
-      "ts": 1789765200247
+      "ts": 1789766275191
     },
     {
       "agent": "sub-1",
@@ -289,7 +289,7 @@
       "type": "delta",
       "step": 1,
       "text": ".ts。",
-      "ts": 1789765200252
+      "ts": 1789766275196
     },
     {
       "agent": "sub-1",
@@ -312,8 +312,8 @@
         "inputTokens": 26,
         "outputTokens": 80
       },
-      "durationMs": 17,
-      "ts": 1789765200258
+      "durationMs": 16,
+      "ts": 1789766275201
     },
     {
       "agent": "sub-1",
@@ -329,7 +329,7 @@
           "path": "src/order.ts"
         }
       },
-      "ts": 1789765200258
+      "ts": 1789766275201
     },
     {
       "agent": "sub-1",
@@ -345,7 +345,7 @@
         "output": "import type { User } from './user.ts';\n\nexport interface Order {\n  id: string;\n  user: User;\n  amount: number;\n  status: 'pending' | 'paid' | 'shipped';\n}\n\nconst TAX_RATE = 0.13;\nconst FREE_SHIPPING_THRESHOLD = 500;\n\n// FIXME: 浮点运算精度问题，金额应使用整数分\nexport function totalWithTax(order: Order): number {\n  return order.amount * (1 + TAX_RATE);\n}\n\nexport function shippingFee(order: Order): number {\n  return order.amount >= FREE_SHIPPING_THRESHOLD ? 0 : 20;\n}\n\n/* TODO: 订单状态机校验（pending → paid → shipped） */\nexport function advance(order: Order): Order {\n  return order;\n}\n"
       },
       "durationMs": 0,
-      "ts": 1789765200258
+      "ts": 1789766275201
     },
     {
       "agent": "sub-1",
@@ -355,7 +355,7 @@
       "type": "delta",
       "step": 2,
       "text": "生成摘要写入",
-      "ts": 1789765200259
+      "ts": 1789766275202
     },
     {
       "agent": "sub-1",
@@ -365,7 +365,7 @@
       "type": "delta",
       "step": 2,
       "text": " docs/",
-      "ts": 1789765200265
+      "ts": 1789766275207
     },
     {
       "agent": "sub-1",
@@ -375,7 +375,7 @@
       "type": "delta",
       "step": 2,
       "text": "summar",
-      "ts": 1789765200270
+      "ts": 1789766275213
     },
     {
       "agent": "sub-1",
@@ -385,7 +385,7 @@
       "type": "delta",
       "step": 2,
       "text": "ies/or",
-      "ts": 1789765200276
+      "ts": 1789766275219
     },
     {
       "agent": "sub-1",
@@ -395,7 +395,7 @@
       "type": "delta",
       "step": 2,
       "text": "der.md",
-      "ts": 1789765200282
+      "ts": 1789766275225
     },
     {
       "agent": "sub-1",
@@ -405,7 +405,7 @@
       "type": "delta",
       "step": 2,
       "text": "。",
-      "ts": 1789765200288
+      "ts": 1789766275230
     },
     {
       "agent": "sub-1",
@@ -430,7 +430,7 @@
         "outputTokens": 80
       },
       "durationMs": 35,
-      "ts": 1789765200293
+      "ts": 1789766275236
     },
     {
       "agent": "sub-1",
@@ -447,7 +447,7 @@
           "content": "# src/order.ts\n\n- 行数: 26\n- 导出: Order, totalWithTax, shippingFee, advance\n- TODO/FIXME: 2 处\n"
         }
       },
-      "ts": 1789765200293
+      "ts": 1789766275236
     },
     {
       "agent": "sub-1",
@@ -463,7 +463,7 @@
         "error": "工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)"
       },
       "durationMs": 0,
-      "ts": 1789765200293
+      "ts": 1789766275236
     },
     {
       "agent": "sub-1",
@@ -473,7 +473,7 @@
       "type": "delta",
       "step": 3,
       "text": "摘要已生成但",
-      "ts": 1789765200293
+      "ts": 1789766275236
     },
     {
       "agent": "sub-1",
@@ -483,7 +483,7 @@
       "type": "delta",
       "step": 3,
       "text": "写入失败：工",
-      "ts": 1789765200299
+      "ts": 1789766275242
     },
     {
       "agent": "sub-1",
@@ -493,7 +493,7 @@
       "type": "delta",
       "step": 3,
       "text": "具 \"wri",
-      "ts": 1789765200305
+      "ts": 1789766275248
     },
     {
       "agent": "sub-1",
@@ -503,7 +503,7 @@
       "type": "delta",
       "step": 3,
       "text": "te_fil",
-      "ts": 1789765200310
+      "ts": 1789766275254
     },
     {
       "agent": "sub-1",
@@ -513,7 +513,7 @@
       "type": "delta",
       "step": 3,
       "text": "e\" 需要写",
-      "ts": 1789765200316
+      "ts": 1789766275259
     },
     {
       "agent": "sub-1",
@@ -523,7 +523,7 @@
       "type": "delta",
       "step": 3,
       "text": "权限，当前未",
-      "ts": 1789765200322
+      "ts": 1789766275265
     },
     {
       "agent": "sub-1",
@@ -533,7 +533,7 @@
       "type": "delta",
       "step": 3,
       "text": "授权 (--",
-      "ts": 1789765200327
+      "ts": 1789766275271
     },
     {
       "agent": "sub-1",
@@ -543,7 +543,7 @@
       "type": "delta",
       "step": 3,
       "text": "allow-",
-      "ts": 1789765200333
+      "ts": 1789766275277
     },
     {
       "agent": "sub-1",
@@ -553,7 +553,7 @@
       "type": "delta",
       "step": 3,
       "text": "write)",
-      "ts": 1789765200339
+      "ts": 1789766275282
     },
     {
       "agent": "sub-1",
@@ -563,7 +563,7 @@
       "type": "delta",
       "step": 3,
       "text": "。需要父 A",
-      "ts": 1789765200344
+      "ts": 1789766275288
     },
     {
       "agent": "sub-1",
@@ -573,7 +573,7 @@
       "type": "delta",
       "step": 3,
       "text": "gent 授",
-      "ts": 1789765200350
+      "ts": 1789766275293
     },
     {
       "agent": "sub-1",
@@ -583,7 +583,7 @@
       "type": "delta",
       "step": 3,
       "text": "予写权限。",
-      "ts": 1789765200355
+      "ts": 1789766275299
     },
     {
       "agent": "sub-1",
@@ -598,8 +598,8 @@
         "inputTokens": 438,
         "outputTokens": 80
       },
-      "durationMs": 68,
-      "ts": 1789765200361
+      "durationMs": 69,
+      "ts": 1789766275305
     },
     {
       "agent": "sub-1",
@@ -614,7 +614,7 @@
         "inputTokens": 764,
         "outputTokens": 240
       },
-      "ts": 1789765200361
+      "ts": 1789766275305
     },
     {
       "agent": "main",
@@ -628,7 +628,7 @@
         "output": "[子 Agent 用 3 步完成]\n摘要已生成但写入失败：工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)。需要父 Agent 授予写权限。"
       },
       "durationMs": 120,
-      "ts": 1789765200361
+      "ts": 1789766275305
     },
     {
       "agent": "main",
@@ -636,7 +636,7 @@
       "type": "delta",
       "step": 4,
       "text": "子 Agen",
-      "ts": 1789765200362
+      "ts": 1789766275306
     },
     {
       "agent": "main",
@@ -644,7 +644,7 @@
       "type": "delta",
       "step": 4,
       "text": "t 报告没有",
-      "ts": 1789765200368
+      "ts": 1789766275312
     },
     {
       "agent": "main",
@@ -652,7 +652,7 @@
       "type": "delta",
       "step": 4,
       "text": "写权限（默认",
-      "ts": 1789765200374
+      "ts": 1789766275317
     },
     {
       "agent": "main",
@@ -660,7 +660,7 @@
       "type": "delta",
       "step": 4,
       "text": "只读）。这个",
-      "ts": 1789765200379
+      "ts": 1789766275323
     },
     {
       "agent": "main",
@@ -668,7 +668,7 @@
       "type": "delta",
       "step": 4,
       "text": "子任务确实需",
-      "ts": 1789765200385
+      "ts": 1789766275329
     },
     {
       "agent": "main",
@@ -676,7 +676,7 @@
       "type": "delta",
       "step": 4,
       "text": "要写文件，重",
-      "ts": 1789765200391
+      "ts": 1789766275334
     },
     {
       "agent": "main",
@@ -684,7 +684,7 @@
       "type": "delta",
       "step": 4,
       "text": "派时授予 a",
-      "ts": 1789765200397
+      "ts": 1789766275340
     },
     {
       "agent": "main",
@@ -692,7 +692,7 @@
       "type": "delta",
       "step": 4,
       "text": "llow_w",
-      "ts": 1789765200402
+      "ts": 1789766275346
     },
     {
       "agent": "main",
@@ -700,7 +700,7 @@
       "type": "delta",
       "step": 4,
       "text": "rite，其",
-      "ts": 1789765200408
+      "ts": 1789766275351
     },
     {
       "agent": "main",
@@ -708,7 +708,7 @@
       "type": "delta",
       "step": 4,
       "text": "余文件同一轮",
-      "ts": 1789765200414
+      "ts": 1789766275357
     },
     {
       "agent": "main",
@@ -716,7 +716,7 @@
       "type": "delta",
       "step": 4,
       "text": "并行委派。",
-      "ts": 1789765200419
+      "ts": 1789766275363
     },
     {
       "agent": "main",
@@ -795,8 +795,8 @@
         "inputTokens": 373,
         "outputTokens": 80
       },
-      "durationMs": 64,
-      "ts": 1789765200425
+      "durationMs": 63,
+      "ts": 1789766275368
     },
     {
       "agent": "main",
@@ -828,7 +828,7 @@
           "reason": "子 Agent 默认只读，需显式授权"
         }
       },
-      "ts": 1789765200425
+      "ts": 1789766275368
     },
     {
       "agent": "main",
@@ -853,7 +853,7 @@
           "status": "pending"
         }
       ],
-      "ts": 1789765200425
+      "ts": 1789766275368
     },
     {
       "agent": "main",
@@ -868,7 +868,7 @@
           "allow_write": true
         }
       },
-      "ts": 1789765200425
+      "ts": 1789766275368
     },
     {
       "agent": "sub-2",
@@ -877,7 +877,7 @@
       "parentCallId": "mock_7",
       "type": "user",
       "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md",
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "sub-2",
@@ -887,7 +887,7 @@
       "type": "delta",
       "step": 1,
       "text": "读取 src",
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "main",
@@ -902,7 +902,7 @@
           "allow_write": true
         }
       },
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "sub-3",
@@ -911,7 +911,7 @@
       "parentCallId": "mock_8",
       "type": "user",
       "task": "为文件 src/payment.ts 生成摘要并写入 docs/summaries/payment.md",
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "sub-3",
@@ -921,7 +921,7 @@
       "type": "delta",
       "step": 1,
       "text": "读取 src",
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "main",
@@ -936,7 +936,7 @@
           "allow_write": true
         }
       },
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "sub-4",
@@ -945,7 +945,7 @@
       "parentCallId": "mock_9",
       "type": "user",
       "task": "为文件 src/user.ts 生成摘要并写入 docs/summaries/user.md",
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "sub-4",
@@ -955,7 +955,7 @@
       "type": "delta",
       "step": 1,
       "text": "读取 src",
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "main",
@@ -970,7 +970,7 @@
           "allow_write": true
         }
       },
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "sub-5",
@@ -979,7 +979,7 @@
       "parentCallId": "mock_10",
       "type": "user",
       "task": "为文件 src/utils/format.ts 生成摘要并写入 docs/summaries/utils-format.md",
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "sub-5",
@@ -989,7 +989,7 @@
       "type": "delta",
       "step": 1,
       "text": "读取 src",
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "main",
@@ -1004,7 +1004,7 @@
           "allow_write": true
         }
       },
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "sub-6",
@@ -1013,7 +1013,7 @@
       "parentCallId": "mock_11",
       "type": "user",
       "task": "为文件 src/utils/validate.ts 生成摘要并写入 docs/summaries/utils-validate.md",
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "sub-6",
@@ -1023,7 +1023,7 @@
       "type": "delta",
       "step": 1,
       "text": "读取 src",
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "main",
@@ -1037,7 +1037,7 @@
         "output": "计划已更新（1/3 完成），原因: 子 Agent 默认只读，需显式授权"
       },
       "durationMs": 1,
-      "ts": 1789765200426
+      "ts": 1789766275369
     },
     {
       "agent": "sub-2",
@@ -1047,7 +1047,7 @@
       "type": "delta",
       "step": 1,
       "text": "/order",
-      "ts": 1789765200432
+      "ts": 1789766275374
     },
     {
       "agent": "sub-3",
@@ -1057,7 +1057,7 @@
       "type": "delta",
       "step": 1,
       "text": "/payme",
-      "ts": 1789765200432
+      "ts": 1789766275374
     },
     {
       "agent": "sub-4",
@@ -1067,7 +1067,7 @@
       "type": "delta",
       "step": 1,
       "text": "/user.",
-      "ts": 1789765200432
+      "ts": 1789766275374
     },
     {
       "agent": "sub-5",
@@ -1077,7 +1077,7 @@
       "type": "delta",
       "step": 1,
       "text": "/utils",
-      "ts": 1789765200432
+      "ts": 1789766275374
     },
     {
       "agent": "sub-6",
@@ -1087,7 +1087,7 @@
       "type": "delta",
       "step": 1,
       "text": "/utils",
-      "ts": 1789765200432
+      "ts": 1789766275374
     },
     {
       "agent": "sub-2",
@@ -1097,7 +1097,7 @@
       "type": "delta",
       "step": 1,
       "text": ".ts。",
-      "ts": 1789765200437
+      "ts": 1789766275379
     },
     {
       "agent": "sub-3",
@@ -1107,7 +1107,7 @@
       "type": "delta",
       "step": 1,
       "text": "nt.ts。",
-      "ts": 1789765200437
+      "ts": 1789766275379
     },
     {
       "agent": "sub-4",
@@ -1117,7 +1117,7 @@
       "type": "delta",
       "step": 1,
       "text": "ts。",
-      "ts": 1789765200437
+      "ts": 1789766275379
     },
     {
       "agent": "sub-5",
@@ -1127,7 +1127,7 @@
       "type": "delta",
       "step": 1,
       "text": "/forma",
-      "ts": 1789765200437
+      "ts": 1789766275379
     },
     {
       "agent": "sub-6",
@@ -1137,7 +1137,7 @@
       "type": "delta",
       "step": 1,
       "text": "/valid",
-      "ts": 1789765200437
+      "ts": 1789766275379
     },
     {
       "agent": "sub-2",
@@ -1161,7 +1161,7 @@
         "outputTokens": 80
       },
       "durationMs": 16,
-      "ts": 1789765200442
+      "ts": 1789766275385
     },
     {
       "agent": "sub-2",
@@ -1177,7 +1177,7 @@
           "path": "src/order.ts"
         }
       },
-      "ts": 1789765200442
+      "ts": 1789766275385
     },
     {
       "agent": "sub-3",
@@ -1201,7 +1201,7 @@
         "outputTokens": 80
       },
       "durationMs": 16,
-      "ts": 1789765200442
+      "ts": 1789766275385
     },
     {
       "agent": "sub-3",
@@ -1217,7 +1217,7 @@
           "path": "src/payment.ts"
         }
       },
-      "ts": 1789765200442
+      "ts": 1789766275385
     },
     {
       "agent": "sub-4",
@@ -1241,7 +1241,7 @@
         "outputTokens": 80
       },
       "durationMs": 16,
-      "ts": 1789765200442
+      "ts": 1789766275385
     },
     {
       "agent": "sub-4",
@@ -1257,7 +1257,7 @@
           "path": "src/user.ts"
         }
       },
-      "ts": 1789765200442
+      "ts": 1789766275385
     },
     {
       "agent": "sub-5",
@@ -1267,7 +1267,7 @@
       "type": "delta",
       "step": 1,
       "text": "t.ts。",
-      "ts": 1789765200442
+      "ts": 1789766275385
     },
     {
       "agent": "sub-6",
@@ -1277,33 +1277,7 @@
       "type": "delta",
       "step": 1,
       "text": "ate.ts",
-      "ts": 1789765200442
-    },
-    {
-      "agent": "sub-4",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_9",
-      "type": "tool_result",
-      "step": 1,
-      "callId": "mock_14",
-      "name": "read_file",
-      "result": {
-        "ok": true,
-        "output": "export interface User {\n  id: number;\n  name: string;\n  email: string;\n}\n\nconst users: User[] = [\n  { id: 1, name: 'Alice', email: 'alice@example.com' },\n  { id: 2, name: 'Bob', email: 'bob@example.com' },\n];\n\n// TODO: 接入真实数据库，替换内存数组\nexport function findUser(id: number): User | undefined {\n  return users.find((u) => u.id === id);\n}\n\n// FIXME: 没有校验 email 格式\nexport function createUser(name: string, email: string): User {\n  const user = { id: users.length + 1, name, email };\n  users.push(user);\n  return user;\n}\n\n// TODO(alice): 实现分页，见 docs/adr/001-storage.md\nexport function listUsers(): User[] {\n  return users;\n}\n"
-      },
-      "durationMs": 1,
-      "ts": 1789765200443
-    },
-    {
-      "agent": "sub-4",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_9",
-      "type": "delta",
-      "step": 2,
-      "text": "生成摘要写入",
-      "ts": 1789765200443
+      "ts": 1789766275385
     },
     {
       "agent": "sub-2",
@@ -1318,8 +1292,8 @@
         "ok": true,
         "output": "import type { User } from './user.ts';\n\nexport interface Order {\n  id: string;\n  user: User;\n  amount: number;\n  status: 'pending' | 'paid' | 'shipped';\n}\n\nconst TAX_RATE = 0.13;\nconst FREE_SHIPPING_THRESHOLD = 500;\n\n// FIXME: 浮点运算精度问题，金额应使用整数分\nexport function totalWithTax(order: Order): number {\n  return order.amount * (1 + TAX_RATE);\n}\n\nexport function shippingFee(order: Order): number {\n  return order.amount >= FREE_SHIPPING_THRESHOLD ? 0 : 20;\n}\n\n/* TODO: 订单状态机校验（pending → paid → shipped） */\nexport function advance(order: Order): Order {\n  return order;\n}\n"
       },
-      "durationMs": 1,
-      "ts": 1789765200443
+      "durationMs": 0,
+      "ts": 1789766275385
     },
     {
       "agent": "sub-2",
@@ -1329,7 +1303,33 @@
       "type": "delta",
       "step": 2,
       "text": "生成摘要写入",
-      "ts": 1789765200443
+      "ts": 1789766275385
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_14",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "export interface User {\n  id: number;\n  name: string;\n  email: string;\n}\n\nconst users: User[] = [\n  { id: 1, name: 'Alice', email: 'alice@example.com' },\n  { id: 2, name: 'Bob', email: 'bob@example.com' },\n];\n\n// TODO: 接入真实数据库，替换内存数组\nexport function findUser(id: number): User | undefined {\n  return users.find((u) => u.id === id);\n}\n\n// FIXME: 没有校验 email 格式\nexport function createUser(name: string, email: string): User {\n  const user = { id: users.length + 1, name, email };\n  users.push(user);\n  return user;\n}\n\n// TODO(alice): 实现分页，见 docs/adr/001-storage.md\nexport function listUsers(): User[] {\n  return users;\n}\n"
+      },
+      "durationMs": 0,
+      "ts": 1789766275385
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 2,
+      "text": "生成摘要写入",
+      "ts": 1789766275385
     },
     {
       "agent": "sub-3",
@@ -1344,8 +1344,8 @@
         "ok": true,
         "output": "import type { Order } from './order.ts';\n\nexport type Provider = 'alipay' | 'wechat' | 'card';\n\nconst todoList: string[] = []; // 待处理的支付回调队列（不是 TODO 注释）\n\nexport async function charge(order: Order, provider: Provider): Promise<boolean> {\n  // TODO: 幂等键，防止重复扣款\n  todoList.push(order.id);\n  return true;\n}\n\nexport function refund(order: Order): number {\n  // FIXME: 退款没有校验订单状态是否为 paid\n  return -order.amount;\n}\n"
       },
-      "durationMs": 1,
-      "ts": 1789765200443
+      "durationMs": 0,
+      "ts": 1789766275385
     },
     {
       "agent": "sub-3",
@@ -1355,7 +1355,7 @@
       "type": "delta",
       "step": 2,
       "text": "生成摘要写入",
-      "ts": 1789765200443
+      "ts": 1789766275385
     },
     {
       "agent": "sub-5",
@@ -1379,7 +1379,7 @@
         "outputTokens": 80
       },
       "durationMs": 22,
-      "ts": 1789765200448
+      "ts": 1789766275391
     },
     {
       "agent": "sub-5",
@@ -1395,7 +1395,7 @@
           "path": "src/utils/format.ts"
         }
       },
-      "ts": 1789765200448
+      "ts": 1789766275391
     },
     {
       "agent": "sub-6",
@@ -1405,17 +1405,7 @@
       "type": "delta",
       "step": 1,
       "text": "。",
-      "ts": 1789765200448
-    },
-    {
-      "agent": "sub-4",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_9",
-      "type": "delta",
-      "step": 2,
-      "text": " docs/",
-      "ts": 1789765200448
+      "ts": 1789766275391
     },
     {
       "agent": "sub-2",
@@ -1425,7 +1415,17 @@
       "type": "delta",
       "step": 2,
       "text": " docs/",
-      "ts": 1789765200448
+      "ts": 1789766275391
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 2,
+      "text": " docs/",
+      "ts": 1789766275391
     },
     {
       "agent": "sub-3",
@@ -1435,7 +1435,7 @@
       "type": "delta",
       "step": 2,
       "text": " docs/",
-      "ts": 1789765200448
+      "ts": 1789766275391
     },
     {
       "agent": "sub-5",
@@ -1451,7 +1451,7 @@
         "output": "/** 把 \"¥1,200.50\" / \"1200.5\" / \"1,200\" 统一解析为数字；无法解析返回 NaN */\nexport function parseAmount(s: string): number {\n  return Number(s.replace(/[¥$,\\s]/g, ''));\n}\n\nexport function formatCNY(n: number): string {\n  return '¥' + n.toFixed(2);\n}\n"
       },
       "durationMs": 0,
-      "ts": 1789765200448
+      "ts": 1789766275391
     },
     {
       "agent": "sub-5",
@@ -1461,7 +1461,7 @@
       "type": "delta",
       "step": 2,
       "text": "生成摘要写入",
-      "ts": 1789765200448
+      "ts": 1789766275391
     },
     {
       "agent": "sub-6",
@@ -1485,7 +1485,7 @@
         "outputTokens": 80
       },
       "durationMs": 28,
-      "ts": 1789765200454
+      "ts": 1789766275397
     },
     {
       "agent": "sub-6",
@@ -1501,17 +1501,7 @@
           "path": "src/utils/validate.ts"
         }
       },
-      "ts": 1789765200454
-    },
-    {
-      "agent": "sub-4",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_9",
-      "type": "delta",
-      "step": 2,
-      "text": "summar",
-      "ts": 1789765200454
+      "ts": 1789766275397
     },
     {
       "agent": "sub-2",
@@ -1521,7 +1511,17 @@
       "type": "delta",
       "step": 2,
       "text": "summar",
-      "ts": 1789765200454
+      "ts": 1789766275397
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 2,
+      "text": "summar",
+      "ts": 1789766275397
     },
     {
       "agent": "sub-3",
@@ -1531,7 +1531,7 @@
       "type": "delta",
       "step": 2,
       "text": "summar",
-      "ts": 1789765200454
+      "ts": 1789766275397
     },
     {
       "agent": "sub-5",
@@ -1541,7 +1541,7 @@
       "type": "delta",
       "step": 2,
       "text": " docs/",
-      "ts": 1789765200454
+      "ts": 1789766275397
     },
     {
       "agent": "sub-6",
@@ -1556,8 +1556,8 @@
         "ok": true,
         "output": "export function isEmail(s: string): boolean {\n  return /^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(s);\n}\n\n// TODO: 手机号校验支持国际区号\nexport function isPhone(s: string): boolean {\n  return /^1\\d{10}$/.test(s);\n}\n"
       },
-      "durationMs": 1,
-      "ts": 1789765200455
+      "durationMs": 0,
+      "ts": 1789766275397
     },
     {
       "agent": "sub-6",
@@ -1567,17 +1567,7 @@
       "type": "delta",
       "step": 2,
       "text": "生成摘要写入",
-      "ts": 1789765200455
-    },
-    {
-      "agent": "sub-4",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_9",
-      "type": "delta",
-      "step": 2,
-      "text": "ies/us",
-      "ts": 1789765200459
+      "ts": 1789766275397
     },
     {
       "agent": "sub-2",
@@ -1587,7 +1577,17 @@
       "type": "delta",
       "step": 2,
       "text": "ies/or",
-      "ts": 1789765200459
+      "ts": 1789766275403
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 2,
+      "text": "ies/us",
+      "ts": 1789766275403
     },
     {
       "agent": "sub-3",
@@ -1597,7 +1597,7 @@
       "type": "delta",
       "step": 2,
       "text": "ies/pa",
-      "ts": 1789765200459
+      "ts": 1789766275403
     },
     {
       "agent": "sub-5",
@@ -1607,7 +1607,7 @@
       "type": "delta",
       "step": 2,
       "text": "summar",
-      "ts": 1789765200459
+      "ts": 1789766275403
     },
     {
       "agent": "sub-6",
@@ -1617,17 +1617,7 @@
       "type": "delta",
       "step": 2,
       "text": " docs/",
-      "ts": 1789765200459
-    },
-    {
-      "agent": "sub-4",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_9",
-      "type": "delta",
-      "step": 2,
-      "text": "er.md。",
-      "ts": 1789765200464
+      "ts": 1789766275403
     },
     {
       "agent": "sub-2",
@@ -1637,7 +1627,17 @@
       "type": "delta",
       "step": 2,
       "text": "der.md",
-      "ts": 1789765200464
+      "ts": 1789766275408
+    },
+    {
+      "agent": "sub-4",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_9",
+      "type": "delta",
+      "step": 2,
+      "text": "er.md。",
+      "ts": 1789766275408
     },
     {
       "agent": "sub-3",
@@ -1647,7 +1647,7 @@
       "type": "delta",
       "step": 2,
       "text": "yment.",
-      "ts": 1789765200464
+      "ts": 1789766275408
     },
     {
       "agent": "sub-5",
@@ -1657,7 +1657,7 @@
       "type": "delta",
       "step": 2,
       "text": "ies/ut",
-      "ts": 1789765200464
+      "ts": 1789766275408
     },
     {
       "agent": "sub-6",
@@ -1667,7 +1667,17 @@
       "type": "delta",
       "step": 2,
       "text": "summar",
-      "ts": 1789765200465
+      "ts": 1789766275408
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 2,
+      "text": "。",
+      "ts": 1789766275414
     },
     {
       "agent": "sub-4",
@@ -1679,7 +1689,7 @@
       "text": "生成摘要写入 docs/summaries/user.md。",
       "toolCalls": [
         {
-          "id": "mock_17",
+          "id": "mock_18",
           "name": "write_file",
           "input": {
             "path": "docs/summaries/user.md",
@@ -1691,8 +1701,8 @@
         "inputTokens": 317,
         "outputTokens": 80
       },
-      "durationMs": 27,
-      "ts": 1789765200470
+      "durationMs": 29,
+      "ts": 1789766275414
     },
     {
       "agent": "sub-4",
@@ -1702,24 +1712,14 @@
       "type": "tool_call",
       "step": 2,
       "call": {
-        "id": "mock_17",
+        "id": "mock_18",
         "name": "write_file",
         "input": {
           "path": "docs/summaries/user.md",
           "content": "# src/user.ts\n\n- 行数: 28\n- 导出: User, findUser, createUser, listUsers\n- TODO/FIXME: 3 处\n"
         }
       },
-      "ts": 1789765200470
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_7",
-      "type": "delta",
-      "step": 2,
-      "text": "。",
-      "ts": 1789765200470
+      "ts": 1789766275414
     },
     {
       "agent": "sub-3",
@@ -1729,7 +1729,7 @@
       "type": "delta",
       "step": 2,
       "text": "md。",
-      "ts": 1789765200470
+      "ts": 1789766275414
     },
     {
       "agent": "sub-5",
@@ -1739,7 +1739,7 @@
       "type": "delta",
       "step": 2,
       "text": "ils-fo",
-      "ts": 1789765200470
+      "ts": 1789766275414
     },
     {
       "agent": "sub-6",
@@ -1749,7 +1749,7 @@
       "type": "delta",
       "step": 2,
       "text": "ies/ut",
-      "ts": 1789765200470
+      "ts": 1789766275414
     },
     {
       "agent": "sub-4",
@@ -1758,14 +1758,14 @@
       "parentCallId": "mock_9",
       "type": "tool_result",
       "step": 2,
-      "callId": "mock_17",
+      "callId": "mock_18",
       "name": "write_file",
       "result": {
         "ok": true,
         "output": "已写入 docs/summaries/user.md (96 bytes)"
       },
       "durationMs": 1,
-      "ts": 1789765200471
+      "ts": 1789766275415
     },
     {
       "agent": "sub-4",
@@ -1775,7 +1775,7 @@
       "type": "delta",
       "step": 3,
       "text": "已写入 do",
-      "ts": 1789765200471
+      "ts": 1789766275415
     },
     {
       "agent": "sub-2",
@@ -1787,7 +1787,7 @@
       "text": "生成摘要写入 docs/summaries/order.md。",
       "toolCalls": [
         {
-          "id": "mock_18",
+          "id": "mock_17",
           "name": "write_file",
           "input": {
             "path": "docs/summaries/order.md",
@@ -1799,8 +1799,8 @@
         "inputTokens": 301,
         "outputTokens": 80
       },
-      "durationMs": 33,
-      "ts": 1789765200476
+      "durationMs": 35,
+      "ts": 1789766275420
     },
     {
       "agent": "sub-2",
@@ -1810,14 +1810,14 @@
       "type": "tool_call",
       "step": 2,
       "call": {
-        "id": "mock_18",
+        "id": "mock_17",
         "name": "write_file",
         "input": {
           "path": "docs/summaries/order.md",
           "content": "# src/order.ts\n\n- 行数: 26\n- 导出: Order, totalWithTax, shippingFee, advance\n- TODO/FIXME: 2 处\n"
         }
       },
-      "ts": 1789765200476
+      "ts": 1789766275420
     },
     {
       "agent": "sub-3",
@@ -1841,8 +1841,8 @@
         "inputTokens": 248,
         "outputTokens": 80
       },
-      "durationMs": 33,
-      "ts": 1789765200476
+      "durationMs": 35,
+      "ts": 1789766275420
     },
     {
       "agent": "sub-3",
@@ -1859,7 +1859,7 @@
           "content": "# src/payment.ts\n\n- 行数: 17\n- 导出: Provider, charge, refund\n- TODO/FIXME: 3 处\n"
         }
       },
-      "ts": 1789765200476
+      "ts": 1789766275420
     },
     {
       "agent": "sub-5",
@@ -1869,7 +1869,7 @@
       "type": "delta",
       "step": 2,
       "text": "rmat.m",
-      "ts": 1789765200476
+      "ts": 1789766275420
     },
     {
       "agent": "sub-6",
@@ -1879,7 +1879,7 @@
       "type": "delta",
       "step": 2,
       "text": "ils-va",
-      "ts": 1789765200476
+      "ts": 1789766275420
     },
     {
       "agent": "sub-4",
@@ -1889,33 +1889,7 @@
       "type": "delta",
       "step": 3,
       "text": "cs/sum",
-      "ts": 1789765200476
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_7",
-      "type": "tool_result",
-      "step": 2,
-      "callId": "mock_18",
-      "name": "write_file",
-      "result": {
-        "ok": true,
-        "output": "已写入 docs/summaries/order.md (101 bytes)"
-      },
-      "durationMs": 1,
-      "ts": 1789765200477
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_7",
-      "type": "delta",
-      "step": 3,
-      "text": "已写入 do",
-      "ts": 1789765200477
+      "ts": 1789766275420
     },
     {
       "agent": "sub-3",
@@ -1930,8 +1904,8 @@
         "ok": true,
         "output": "已写入 docs/summaries/payment.md (86 bytes)"
       },
-      "durationMs": 1,
-      "ts": 1789765200477
+      "durationMs": 0,
+      "ts": 1789766275420
     },
     {
       "agent": "sub-3",
@@ -1941,7 +1915,33 @@
       "type": "delta",
       "step": 3,
       "text": "已写入 do",
-      "ts": 1789765200477
+      "ts": 1789766275420
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_17",
+      "name": "write_file",
+      "result": {
+        "ok": true,
+        "output": "已写入 docs/summaries/order.md (101 bytes)"
+      },
+      "durationMs": 0,
+      "ts": 1789766275420
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 3,
+      "text": "已写入 do",
+      "ts": 1789766275420
     },
     {
       "agent": "sub-5",
@@ -1951,7 +1951,7 @@
       "type": "delta",
       "step": 2,
       "text": "d。",
-      "ts": 1789765200482
+      "ts": 1789766275425
     },
     {
       "agent": "sub-6",
@@ -1961,7 +1961,7 @@
       "type": "delta",
       "step": 2,
       "text": "lidate",
-      "ts": 1789765200482
+      "ts": 1789766275425
     },
     {
       "agent": "sub-4",
@@ -1971,17 +1971,7 @@
       "type": "delta",
       "step": 3,
       "text": "maries",
-      "ts": 1789765200482
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_7",
-      "type": "delta",
-      "step": 3,
-      "text": "cs/sum",
-      "ts": 1789765200482
+      "ts": 1789766275425
     },
     {
       "agent": "sub-3",
@@ -1991,7 +1981,17 @@
       "type": "delta",
       "step": 3,
       "text": "cs/sum",
-      "ts": 1789765200482
+      "ts": 1789766275425
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 3,
+      "text": "cs/sum",
+      "ts": 1789766275425
     },
     {
       "agent": "sub-5",
@@ -2015,8 +2015,8 @@
         "inputTokens": 196,
         "outputTokens": 80
       },
-      "durationMs": 39,
-      "ts": 1789765200487
+      "durationMs": 40,
+      "ts": 1789766275431
     },
     {
       "agent": "sub-5",
@@ -2033,7 +2033,7 @@
           "content": "# src/utils/format.ts\n\n- 行数: 9\n- 导出: parseAmount, formatCNY\n- TODO/FIXME: 0 处\n"
         }
       },
-      "ts": 1789765200487
+      "ts": 1789766275431
     },
     {
       "agent": "sub-6",
@@ -2043,7 +2043,7 @@
       "type": "delta",
       "step": 2,
       "text": ".md。",
-      "ts": 1789765200487
+      "ts": 1789766275431
     },
     {
       "agent": "sub-4",
@@ -2053,17 +2053,7 @@
       "type": "delta",
       "step": 3,
       "text": "/user.",
-      "ts": 1789765200487
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_7",
-      "type": "delta",
-      "step": 3,
-      "text": "maries",
-      "ts": 1789765200487
+      "ts": 1789766275431
     },
     {
       "agent": "sub-3",
@@ -2073,7 +2063,17 @@
       "type": "delta",
       "step": 3,
       "text": "maries",
-      "ts": 1789765200487
+      "ts": 1789766275431
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "delta",
+      "step": 3,
+      "text": "maries",
+      "ts": 1789766275431
     },
     {
       "agent": "sub-5",
@@ -2088,8 +2088,8 @@
         "ok": true,
         "output": "已写入 docs/summaries/utils-format.md (88 bytes)"
       },
-      "durationMs": 0,
-      "ts": 1789765200487
+      "durationMs": 1,
+      "ts": 1789766275432
     },
     {
       "agent": "sub-5",
@@ -2099,7 +2099,7 @@
       "type": "delta",
       "step": 3,
       "text": "已写入 do",
-      "ts": 1789765200487
+      "ts": 1789766275432
     },
     {
       "agent": "sub-6",
@@ -2123,8 +2123,8 @@
         "inputTokens": 185,
         "outputTokens": 80
       },
-      "durationMs": 38,
-      "ts": 1789765200493
+      "durationMs": 39,
+      "ts": 1789766275436
     },
     {
       "agent": "sub-6",
@@ -2141,7 +2141,7 @@
           "content": "# src/utils/validate.ts\n\n- 行数: 9\n- 导出: isEmail, isPhone\n- TODO/FIXME: 1 处\n"
         }
       },
-      "ts": 1789765200493
+      "ts": 1789766275436
     },
     {
       "agent": "sub-4",
@@ -2151,17 +2151,7 @@
       "type": "delta",
       "step": 3,
       "text": "md（src",
-      "ts": 1789765200493
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_7",
-      "type": "delta",
-      "step": 3,
-      "text": "/order",
-      "ts": 1789765200493
+      "ts": 1789766275436
     },
     {
       "agent": "sub-3",
@@ -2171,17 +2161,17 @@
       "type": "delta",
       "step": 3,
       "text": "/payme",
-      "ts": 1789765200493
+      "ts": 1789766275436
     },
     {
-      "agent": "sub-5",
+      "agent": "sub-2",
       "depth": 1,
       "parent": "main",
-      "parentCallId": "mock_10",
+      "parentCallId": "mock_7",
       "type": "delta",
       "step": 3,
-      "text": "cs/sum",
-      "ts": 1789765200493
+      "text": "/order",
+      "ts": 1789766275436
     },
     {
       "agent": "sub-6",
@@ -2197,7 +2187,7 @@
         "output": "已写入 docs/summaries/utils-validate.md (84 bytes)"
       },
       "durationMs": 0,
-      "ts": 1789765200493
+      "ts": 1789766275436
     },
     {
       "agent": "sub-6",
@@ -2207,7 +2197,17 @@
       "type": "delta",
       "step": 3,
       "text": "已写入 do",
-      "ts": 1789765200493
+      "ts": 1789766275436
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "cs/sum",
+      "ts": 1789766275437
     },
     {
       "agent": "sub-4",
@@ -2217,17 +2217,7 @@
       "type": "delta",
       "step": 3,
       "text": "/user.",
-      "ts": 1789765200498
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_7",
-      "type": "delta",
-      "step": 3,
-      "text": ".md（sr",
-      "ts": 1789765200498
+      "ts": 1789766275442
     },
     {
       "agent": "sub-3",
@@ -2237,17 +2227,17 @@
       "type": "delta",
       "step": 3,
       "text": "nt.md（",
-      "ts": 1789765200498
+      "ts": 1789766275442
     },
     {
-      "agent": "sub-5",
+      "agent": "sub-2",
       "depth": 1,
       "parent": "main",
-      "parentCallId": "mock_10",
+      "parentCallId": "mock_7",
       "type": "delta",
       "step": 3,
-      "text": "maries",
-      "ts": 1789765200498
+      "text": ".md（sr",
+      "ts": 1789766275442
     },
     {
       "agent": "sub-6",
@@ -2257,7 +2247,17 @@
       "type": "delta",
       "step": 3,
       "text": "cs/sum",
-      "ts": 1789765200499
+      "ts": 1789766275442
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "maries",
+      "ts": 1789766275442
     },
     {
       "agent": "sub-4",
@@ -2267,17 +2267,7 @@
       "type": "delta",
       "step": 3,
       "text": "ts，导出 ",
-      "ts": 1789765200504
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_7",
-      "type": "delta",
-      "step": 3,
-      "text": "c/orde",
-      "ts": 1789765200504
+      "ts": 1789766275447
     },
     {
       "agent": "sub-3",
@@ -2287,17 +2277,17 @@
       "type": "delta",
       "step": 3,
       "text": "src/pa",
-      "ts": 1789765200504
+      "ts": 1789766275447
     },
     {
-      "agent": "sub-5",
+      "agent": "sub-2",
       "depth": 1,
       "parent": "main",
-      "parentCallId": "mock_10",
+      "parentCallId": "mock_7",
       "type": "delta",
       "step": 3,
-      "text": "/utils",
-      "ts": 1789765200504
+      "text": "c/orde",
+      "ts": 1789766275447
     },
     {
       "agent": "sub-6",
@@ -2307,7 +2297,17 @@
       "type": "delta",
       "step": 3,
       "text": "maries",
-      "ts": 1789765200504
+      "ts": 1789766275447
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "/utils",
+      "ts": 1789766275447
     },
     {
       "agent": "sub-4",
@@ -2317,17 +2317,7 @@
       "type": "delta",
       "step": 3,
       "text": "4 项）。",
-      "ts": 1789765200510
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_7",
-      "type": "delta",
-      "step": 3,
-      "text": "r.ts，导",
-      "ts": 1789765200510
+      "ts": 1789766275453
     },
     {
       "agent": "sub-3",
@@ -2337,17 +2327,17 @@
       "type": "delta",
       "step": 3,
       "text": "yment.",
-      "ts": 1789765200510
+      "ts": 1789766275453
     },
     {
-      "agent": "sub-5",
+      "agent": "sub-2",
       "depth": 1,
       "parent": "main",
-      "parentCallId": "mock_10",
+      "parentCallId": "mock_7",
       "type": "delta",
       "step": 3,
-      "text": "-forma",
-      "ts": 1789765200510
+      "text": "r.ts，导",
+      "ts": 1789766275453
     },
     {
       "agent": "sub-6",
@@ -2357,7 +2347,17 @@
       "type": "delta",
       "step": 3,
       "text": "/utils",
-      "ts": 1789765200510
+      "ts": 1789766275453
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "-forma",
+      "ts": 1789766275453
     },
     {
       "agent": "sub-4",
@@ -2373,7 +2373,7 @@
         "outputTokens": 80
       },
       "durationMs": 44,
-      "ts": 1789765200515
+      "ts": 1789766275459
     },
     {
       "agent": "sub-4",
@@ -2388,7 +2388,7 @@
         "inputTokens": 793,
         "outputTokens": 240
       },
-      "ts": 1789765200515
+      "ts": 1789766275459
     },
     {
       "agent": "main",
@@ -2401,18 +2401,8 @@
         "ok": true,
         "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/user.md（src/user.ts，导出 4 项）。"
       },
-      "durationMs": 89,
-      "ts": 1789765200515
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_7",
-      "type": "delta",
-      "step": 3,
-      "text": "出 4 项）",
-      "ts": 1789765200515
+      "durationMs": 90,
+      "ts": 1789766275459
     },
     {
       "agent": "sub-3",
@@ -2422,17 +2412,17 @@
       "type": "delta",
       "step": 3,
       "text": "ts，导出 ",
-      "ts": 1789765200515
+      "ts": 1789766275459
     },
     {
-      "agent": "sub-5",
+      "agent": "sub-2",
       "depth": 1,
       "parent": "main",
-      "parentCallId": "mock_10",
+      "parentCallId": "mock_7",
       "type": "delta",
       "step": 3,
-      "text": "t.md（s",
-      "ts": 1789765200515
+      "text": "出 4 项）",
+      "ts": 1789766275459
     },
     {
       "agent": "sub-6",
@@ -2442,17 +2432,17 @@
       "type": "delta",
       "step": 3,
       "text": "-valid",
-      "ts": 1789765200515
+      "ts": 1789766275459
     },
     {
-      "agent": "sub-2",
+      "agent": "sub-5",
       "depth": 1,
       "parent": "main",
-      "parentCallId": "mock_7",
+      "parentCallId": "mock_10",
       "type": "delta",
       "step": 3,
-      "text": "。",
-      "ts": 1789765200520
+      "text": "t.md（s",
+      "ts": 1789766275459
     },
     {
       "agent": "sub-3",
@@ -2462,17 +2452,17 @@
       "type": "delta",
       "step": 3,
       "text": "3 项）。",
-      "ts": 1789765200520
+      "ts": 1789766275464
     },
     {
-      "agent": "sub-5",
+      "agent": "sub-2",
       "depth": 1,
       "parent": "main",
-      "parentCallId": "mock_10",
+      "parentCallId": "mock_7",
       "type": "delta",
       "step": 3,
-      "text": "rc/uti",
-      "ts": 1789765200520
+      "text": "。",
+      "ts": 1789766275464
     },
     {
       "agent": "sub-6",
@@ -2482,52 +2472,17 @@
       "type": "delta",
       "step": 3,
       "text": "ate.md",
-      "ts": 1789765200520
+      "ts": 1789766275464
     },
     {
-      "agent": "sub-2",
+      "agent": "sub-5",
       "depth": 1,
       "parent": "main",
-      "parentCallId": "mock_7",
-      "type": "decision",
+      "parentCallId": "mock_10",
+      "type": "delta",
       "step": 3,
-      "text": "已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。",
-      "toolCalls": [],
-      "usage": {
-        "inputTokens": 437,
-        "outputTokens": 80
-      },
-      "durationMs": 49,
-      "ts": 1789765200526
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_7",
-      "type": "final",
-      "answer": "已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。",
-      "reason": "completed",
-      "steps": 3,
-      "usage": {
-        "inputTokens": 764,
-        "outputTokens": 240
-      },
-      "ts": 1789765200526
-    },
-    {
-      "agent": "main",
-      "depth": 0,
-      "type": "tool_result",
-      "step": 4,
-      "callId": "mock_7",
-      "name": "delegate",
-      "result": {
-        "ok": true,
-        "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。"
-      },
-      "durationMs": 101,
-      "ts": 1789765200526
+      "text": "rc/uti",
+      "ts": 1789766275464
     },
     {
       "agent": "sub-3",
@@ -2542,8 +2497,8 @@
         "inputTokens": 381,
         "outputTokens": 80
       },
-      "durationMs": 49,
-      "ts": 1789765200526
+      "durationMs": 50,
+      "ts": 1789766275470
     },
     {
       "agent": "sub-3",
@@ -2558,7 +2513,7 @@
         "inputTokens": 656,
         "outputTokens": 240
       },
-      "ts": 1789765200526
+      "ts": 1789766275470
     },
     {
       "agent": "main",
@@ -2571,18 +2526,53 @@
         "ok": true,
         "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/payment.md（src/payment.ts，导出 3 项）。"
       },
-      "durationMs": 100,
-      "ts": 1789765200526
+      "durationMs": 101,
+      "ts": 1789766275470
     },
     {
-      "agent": "sub-5",
+      "agent": "sub-2",
       "depth": 1,
       "parent": "main",
-      "parentCallId": "mock_10",
-      "type": "delta",
+      "parentCallId": "mock_7",
+      "type": "decision",
       "step": 3,
-      "text": "ls/for",
-      "ts": 1789765200526
+      "text": "已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 437,
+        "outputTokens": 80
+      },
+      "durationMs": 50,
+      "ts": 1789766275470
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_7",
+      "type": "final",
+      "answer": "已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。",
+      "reason": "completed",
+      "steps": 3,
+      "usage": {
+        "inputTokens": 764,
+        "outputTokens": 240
+      },
+      "ts": 1789766275470
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_7",
+      "name": "delegate",
+      "result": {
+        "ok": true,
+        "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。"
+      },
+      "durationMs": 102,
+      "ts": 1789766275470
     },
     {
       "agent": "sub-6",
@@ -2592,7 +2582,7 @@
       "type": "delta",
       "step": 3,
       "text": "（src/u",
-      "ts": 1789765200526
+      "ts": 1789766275470
     },
     {
       "agent": "sub-5",
@@ -2601,8 +2591,8 @@
       "parentCallId": "mock_10",
       "type": "delta",
       "step": 3,
-      "text": "mat.ts",
-      "ts": 1789765200531
+      "text": "ls/for",
+      "ts": 1789766275470
     },
     {
       "agent": "sub-6",
@@ -2612,7 +2602,7 @@
       "type": "delta",
       "step": 3,
       "text": "tils/v",
-      "ts": 1789765200531
+      "ts": 1789766275476
     },
     {
       "agent": "sub-5",
@@ -2621,8 +2611,8 @@
       "parentCallId": "mock_10",
       "type": "delta",
       "step": 3,
-      "text": "，导出 2 ",
-      "ts": 1789765200537
+      "text": "mat.ts",
+      "ts": 1789766275476
     },
     {
       "agent": "sub-6",
@@ -2632,7 +2622,7 @@
       "type": "delta",
       "step": 3,
       "text": "alidat",
-      "ts": 1789765200537
+      "ts": 1789766275482
     },
     {
       "agent": "sub-5",
@@ -2641,8 +2631,8 @@
       "parentCallId": "mock_10",
       "type": "delta",
       "step": 3,
-      "text": "项）。",
-      "ts": 1789765200543
+      "text": "，导出 2 ",
+      "ts": 1789766275482
     },
     {
       "agent": "sub-6",
@@ -2652,7 +2642,27 @@
       "type": "delta",
       "step": 3,
       "text": "e.ts，导",
-      "ts": 1789765200543
+      "ts": 1789766275487
+    },
+    {
+      "agent": "sub-5",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_10",
+      "type": "delta",
+      "step": 3,
+      "text": "项）。",
+      "ts": 1789766275487
+    },
+    {
+      "agent": "sub-6",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_11",
+      "type": "delta",
+      "step": 3,
+      "text": "出 2 项）",
+      "ts": 1789766275493
     },
     {
       "agent": "sub-5",
@@ -2668,7 +2678,7 @@
         "outputTokens": 80
       },
       "durationMs": 61,
-      "ts": 1789765200548
+      "ts": 1789766275493
     },
     {
       "agent": "sub-5",
@@ -2683,7 +2693,7 @@
         "inputTokens": 562,
         "outputTokens": 240
       },
-      "ts": 1789765200548
+      "ts": 1789766275493
     },
     {
       "agent": "main",
@@ -2696,18 +2706,8 @@
         "ok": true,
         "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/utils-format.md（src/utils/format.ts，导出 2 项）。"
       },
-      "durationMs": 123,
-      "ts": 1789765200549
-    },
-    {
-      "agent": "sub-6",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_11",
-      "type": "delta",
-      "step": 3,
-      "text": "出 2 项）",
-      "ts": 1789765200549
+      "durationMs": 124,
+      "ts": 1789766275493
     },
     {
       "agent": "sub-6",
@@ -2717,7 +2717,7 @@
       "type": "delta",
       "step": 3,
       "text": "。",
-      "ts": 1789765200554
+      "ts": 1789766275499
     },
     {
       "agent": "sub-6",
@@ -2732,8 +2732,8 @@
         "inputTokens": 324,
         "outputTokens": 80
       },
-      "durationMs": 67,
-      "ts": 1789765200560
+      "durationMs": 68,
+      "ts": 1789766275504
     },
     {
       "agent": "sub-6",
@@ -2748,7 +2748,7 @@
         "inputTokens": 541,
         "outputTokens": 240
       },
-      "ts": 1789765200560
+      "ts": 1789766275504
     },
     {
       "agent": "main",
@@ -2761,8 +2761,8 @@
         "ok": true,
         "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/utils-validate.md（src/utils/validate.ts，导出 2 项）。"
       },
-      "durationMs": 134,
-      "ts": 1789765200560
+      "durationMs": 135,
+      "ts": 1789766275504
     },
     {
       "agent": "main",
@@ -2770,7 +2770,7 @@
       "type": "delta",
       "step": 5,
       "text": "完成。5 个",
-      "ts": 1789765200561
+      "ts": 1789766275505
     },
     {
       "agent": "main",
@@ -2778,7 +2778,7 @@
       "type": "delta",
       "step": 5,
       "text": "源码文件的摘",
-      "ts": 1789765200566
+      "ts": 1789766275511
     },
     {
       "agent": "main",
@@ -2786,7 +2786,7 @@
       "type": "delta",
       "step": 5,
       "text": "要已由子 A",
-      "ts": 1789765200572
+      "ts": 1789766275516
     },
     {
       "agent": "main",
@@ -2794,7 +2794,7 @@
       "type": "delta",
       "step": 5,
       "text": "gent 写",
-      "ts": 1789765200578
+      "ts": 1789766275522
     },
     {
       "agent": "main",
@@ -2802,7 +2802,7 @@
       "type": "delta",
       "step": 5,
       "text": "入 docs",
-      "ts": 1789765200583
+      "ts": 1789766275528
     },
     {
       "agent": "main",
@@ -2810,7 +2810,7 @@
       "type": "delta",
       "step": 5,
       "text": "/summa",
-      "ts": 1789765200589
+      "ts": 1789766275533
     },
     {
       "agent": "main",
@@ -2818,7 +2818,7 @@
       "type": "delta",
       "step": 5,
       "text": "ries/（",
-      "ts": 1789765200595
+      "ts": 1789766275539
     },
     {
       "agent": "main",
@@ -2826,7 +2826,7 @@
       "type": "delta",
       "step": 5,
       "text": "首次委派因子",
-      "ts": 1789765200601
+      "ts": 1789766275545
     },
     {
       "agent": "main",
@@ -2834,7 +2834,7 @@
       "type": "delta",
       "step": 5,
       "text": " Agent",
-      "ts": 1789765200606
+      "ts": 1789766275550
     },
     {
       "agent": "main",
@@ -2842,7 +2842,7 @@
       "type": "delta",
       "step": 5,
       "text": " 默认只读失",
-      "ts": 1789765200612
+      "ts": 1789766275556
     },
     {
       "agent": "main",
@@ -2850,7 +2850,7 @@
       "type": "delta",
       "step": 5,
       "text": "败，授予 a",
-      "ts": 1789765200617
+      "ts": 1789766275561
     },
     {
       "agent": "main",
@@ -2858,7 +2858,7 @@
       "type": "delta",
       "step": 5,
       "text": "llow_w",
-      "ts": 1789765200623
+      "ts": 1789766275567
     },
     {
       "agent": "main",
@@ -2866,7 +2866,7 @@
       "type": "delta",
       "step": 5,
       "text": "rite 后",
-      "ts": 1789765200629
+      "ts": 1789766275573
     },
     {
       "agent": "main",
@@ -2874,7 +2874,7 @@
       "type": "delta",
       "step": 5,
       "text": "重派成功；共",
-      "ts": 1789765200634
+      "ts": 1789766275578
     },
     {
       "agent": "main",
@@ -2882,7 +2882,7 @@
       "type": "delta",
       "step": 5,
       "text": " 6 次委派",
-      "ts": 1789765200640
+      "ts": 1789766275584
     },
     {
       "agent": "main",
@@ -2890,7 +2890,7 @@
       "type": "delta",
       "step": 5,
       "text": "）。",
-      "ts": 1789765200646
+      "ts": 1789766275590
     },
     {
       "agent": "main",
@@ -2903,8 +2903,8 @@
         "inputTokens": 1004,
         "outputTokens": 80
       },
-      "durationMs": 92,
-      "ts": 1789765200652
+      "durationMs": 91,
+      "ts": 1789766275595
     },
     {
       "agent": "main",
@@ -2917,7 +2917,7 @@
         "inputTokens": 5896,
         "outputTokens": 1840
       },
-      "ts": 1789765200652
+      "ts": 1789766275595
     }
   ],
   "tree": {
@@ -2929,7 +2929,7 @@
         "depth": 0,
         "type": "user",
         "task": "用子 Agent 为 src 下每个 .ts 文件生成摘要，写入 docs/summaries/<文件名>.md。",
-        "ts": 1789765200208
+        "ts": 1789766275150
       },
       {
         "agent": "main",
@@ -2937,7 +2937,7 @@
         "type": "delta",
         "step": 1,
         "text": "制定计划。",
-        "ts": 1789765200208
+        "ts": 1789766275150
       },
       {
         "agent": "main",
@@ -2975,7 +2975,7 @@
           "outputTokens": 80
         },
         "durationMs": 6,
-        "ts": 1789765200214
+        "ts": 1789766275156
       },
       {
         "agent": "main",
@@ -3005,7 +3005,7 @@
             ]
           }
         },
-        "ts": 1789765200214
+        "ts": 1789766275156
       },
       {
         "agent": "main",
@@ -3029,7 +3029,7 @@
             "status": "pending"
           }
         ],
-        "ts": 1789765200214
+        "ts": 1789766275156
       },
       {
         "agent": "main",
@@ -3043,7 +3043,7 @@
           "output": "计划已更新（0/3 完成）"
         },
         "durationMs": 0,
-        "ts": 1789765200214
+        "ts": 1789766275156
       },
       {
         "agent": "main",
@@ -3051,7 +3051,7 @@
         "type": "delta",
         "step": 2,
         "text": "列出源码文件",
-        "ts": 1789765200214
+        "ts": 1789766275156
       },
       {
         "agent": "main",
@@ -3059,7 +3059,7 @@
         "type": "delta",
         "step": 2,
         "text": "。",
-        "ts": 1789765200219
+        "ts": 1789766275161
       },
       {
         "agent": "main",
@@ -3080,8 +3080,8 @@
           "inputTokens": 155,
           "outputTokens": 80
         },
-        "durationMs": 10,
-        "ts": 1789765200224
+        "durationMs": 11,
+        "ts": 1789766275167
       },
       {
         "agent": "main",
@@ -3095,7 +3095,7 @@
             "path": "src"
           }
         },
-        "ts": 1789765200224
+        "ts": 1789766275167
       },
       {
         "agent": "main",
@@ -3109,7 +3109,7 @@
           "output": "src/order.ts\nsrc/payment.ts\nsrc/user.ts\nsrc/utils/format.ts\nsrc/utils/validate.ts"
         },
         "durationMs": 0,
-        "ts": 1789765200224
+        "ts": 1789766275167
       },
       {
         "agent": "main",
@@ -3117,7 +3117,7 @@
         "type": "delta",
         "step": 3,
         "text": "5 个文件。",
-        "ts": 1789765200225
+        "ts": 1789766275168
       },
       {
         "agent": "main",
@@ -3125,7 +3125,7 @@
         "type": "delta",
         "step": 3,
         "text": "先委派一个试",
-        "ts": 1789765200230
+        "ts": 1789766275173
       },
       {
         "agent": "main",
@@ -3133,7 +3133,7 @@
         "type": "delta",
         "step": 3,
         "text": "试。",
-        "ts": 1789765200235
+        "ts": 1789766275179
       },
       {
         "agent": "main",
@@ -3154,8 +3154,8 @@
           "inputTokens": 255,
           "outputTokens": 80
         },
-        "durationMs": 16,
-        "ts": 1789765200241
+        "durationMs": 18,
+        "ts": 1789766275185
       },
       {
         "agent": "main",
@@ -3169,7 +3169,7 @@
             "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md"
           }
         },
-        "ts": 1789765200241
+        "ts": 1789766275185
       },
       {
         "agent": "main",
@@ -3183,7 +3183,7 @@
           "output": "[子 Agent 用 3 步完成]\n摘要已生成但写入失败：工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)。需要父 Agent 授予写权限。"
         },
         "durationMs": 120,
-        "ts": 1789765200361
+        "ts": 1789766275305
       },
       {
         "agent": "main",
@@ -3191,7 +3191,7 @@
         "type": "delta",
         "step": 4,
         "text": "子 Agen",
-        "ts": 1789765200362
+        "ts": 1789766275306
       },
       {
         "agent": "main",
@@ -3199,7 +3199,7 @@
         "type": "delta",
         "step": 4,
         "text": "t 报告没有",
-        "ts": 1789765200368
+        "ts": 1789766275312
       },
       {
         "agent": "main",
@@ -3207,7 +3207,7 @@
         "type": "delta",
         "step": 4,
         "text": "写权限（默认",
-        "ts": 1789765200374
+        "ts": 1789766275317
       },
       {
         "agent": "main",
@@ -3215,7 +3215,7 @@
         "type": "delta",
         "step": 4,
         "text": "只读）。这个",
-        "ts": 1789765200379
+        "ts": 1789766275323
       },
       {
         "agent": "main",
@@ -3223,7 +3223,7 @@
         "type": "delta",
         "step": 4,
         "text": "子任务确实需",
-        "ts": 1789765200385
+        "ts": 1789766275329
       },
       {
         "agent": "main",
@@ -3231,7 +3231,7 @@
         "type": "delta",
         "step": 4,
         "text": "要写文件，重",
-        "ts": 1789765200391
+        "ts": 1789766275334
       },
       {
         "agent": "main",
@@ -3239,7 +3239,7 @@
         "type": "delta",
         "step": 4,
         "text": "派时授予 a",
-        "ts": 1789765200397
+        "ts": 1789766275340
       },
       {
         "agent": "main",
@@ -3247,7 +3247,7 @@
         "type": "delta",
         "step": 4,
         "text": "llow_w",
-        "ts": 1789765200402
+        "ts": 1789766275346
       },
       {
         "agent": "main",
@@ -3255,7 +3255,7 @@
         "type": "delta",
         "step": 4,
         "text": "rite，其",
-        "ts": 1789765200408
+        "ts": 1789766275351
       },
       {
         "agent": "main",
@@ -3263,7 +3263,7 @@
         "type": "delta",
         "step": 4,
         "text": "余文件同一轮",
-        "ts": 1789765200414
+        "ts": 1789766275357
       },
       {
         "agent": "main",
@@ -3271,7 +3271,7 @@
         "type": "delta",
         "step": 4,
         "text": "并行委派。",
-        "ts": 1789765200419
+        "ts": 1789766275363
       },
       {
         "agent": "main",
@@ -3350,8 +3350,8 @@
           "inputTokens": 373,
           "outputTokens": 80
         },
-        "durationMs": 64,
-        "ts": 1789765200425
+        "durationMs": 63,
+        "ts": 1789766275368
       },
       {
         "agent": "main",
@@ -3383,7 +3383,7 @@
             "reason": "子 Agent 默认只读，需显式授权"
           }
         },
-        "ts": 1789765200425
+        "ts": 1789766275368
       },
       {
         "agent": "main",
@@ -3408,7 +3408,7 @@
             "status": "pending"
           }
         ],
-        "ts": 1789765200425
+        "ts": 1789766275368
       },
       {
         "agent": "main",
@@ -3423,7 +3423,7 @@
             "allow_write": true
           }
         },
-        "ts": 1789765200425
+        "ts": 1789766275368
       },
       {
         "agent": "main",
@@ -3438,7 +3438,7 @@
             "allow_write": true
           }
         },
-        "ts": 1789765200426
+        "ts": 1789766275369
       },
       {
         "agent": "main",
@@ -3453,7 +3453,7 @@
             "allow_write": true
           }
         },
-        "ts": 1789765200426
+        "ts": 1789766275369
       },
       {
         "agent": "main",
@@ -3468,7 +3468,7 @@
             "allow_write": true
           }
         },
-        "ts": 1789765200426
+        "ts": 1789766275369
       },
       {
         "agent": "main",
@@ -3483,7 +3483,7 @@
             "allow_write": true
           }
         },
-        "ts": 1789765200426
+        "ts": 1789766275369
       },
       {
         "agent": "main",
@@ -3497,7 +3497,7 @@
           "output": "计划已更新（1/3 完成），原因: 子 Agent 默认只读，需显式授权"
         },
         "durationMs": 1,
-        "ts": 1789765200426
+        "ts": 1789766275369
       },
       {
         "agent": "main",
@@ -3510,22 +3510,8 @@
           "ok": true,
           "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/user.md（src/user.ts，导出 4 项）。"
         },
-        "durationMs": 89,
-        "ts": 1789765200515
-      },
-      {
-        "agent": "main",
-        "depth": 0,
-        "type": "tool_result",
-        "step": 4,
-        "callId": "mock_7",
-        "name": "delegate",
-        "result": {
-          "ok": true,
-          "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。"
-        },
-        "durationMs": 101,
-        "ts": 1789765200526
+        "durationMs": 90,
+        "ts": 1789766275459
       },
       {
         "agent": "main",
@@ -3538,8 +3524,22 @@
           "ok": true,
           "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/payment.md（src/payment.ts，导出 3 项）。"
         },
-        "durationMs": 100,
-        "ts": 1789765200526
+        "durationMs": 101,
+        "ts": 1789766275470
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_7",
+        "name": "delegate",
+        "result": {
+          "ok": true,
+          "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/order.md（src/order.ts，导出 4 项）。"
+        },
+        "durationMs": 102,
+        "ts": 1789766275470
       },
       {
         "agent": "main",
@@ -3552,8 +3552,8 @@
           "ok": true,
           "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/utils-format.md（src/utils/format.ts，导出 2 项）。"
         },
-        "durationMs": 123,
-        "ts": 1789765200549
+        "durationMs": 124,
+        "ts": 1789766275493
       },
       {
         "agent": "main",
@@ -3566,8 +3566,8 @@
           "ok": true,
           "output": "[子 Agent 用 3 步完成]\n已写入 docs/summaries/utils-validate.md（src/utils/validate.ts，导出 2 项）。"
         },
-        "durationMs": 134,
-        "ts": 1789765200560
+        "durationMs": 135,
+        "ts": 1789766275504
       },
       {
         "agent": "main",
@@ -3575,7 +3575,7 @@
         "type": "delta",
         "step": 5,
         "text": "完成。5 个",
-        "ts": 1789765200561
+        "ts": 1789766275505
       },
       {
         "agent": "main",
@@ -3583,7 +3583,7 @@
         "type": "delta",
         "step": 5,
         "text": "源码文件的摘",
-        "ts": 1789765200566
+        "ts": 1789766275511
       },
       {
         "agent": "main",
@@ -3591,7 +3591,7 @@
         "type": "delta",
         "step": 5,
         "text": "要已由子 A",
-        "ts": 1789765200572
+        "ts": 1789766275516
       },
       {
         "agent": "main",
@@ -3599,7 +3599,7 @@
         "type": "delta",
         "step": 5,
         "text": "gent 写",
-        "ts": 1789765200578
+        "ts": 1789766275522
       },
       {
         "agent": "main",
@@ -3607,7 +3607,7 @@
         "type": "delta",
         "step": 5,
         "text": "入 docs",
-        "ts": 1789765200583
+        "ts": 1789766275528
       },
       {
         "agent": "main",
@@ -3615,7 +3615,7 @@
         "type": "delta",
         "step": 5,
         "text": "/summa",
-        "ts": 1789765200589
+        "ts": 1789766275533
       },
       {
         "agent": "main",
@@ -3623,7 +3623,7 @@
         "type": "delta",
         "step": 5,
         "text": "ries/（",
-        "ts": 1789765200595
+        "ts": 1789766275539
       },
       {
         "agent": "main",
@@ -3631,7 +3631,7 @@
         "type": "delta",
         "step": 5,
         "text": "首次委派因子",
-        "ts": 1789765200601
+        "ts": 1789766275545
       },
       {
         "agent": "main",
@@ -3639,7 +3639,7 @@
         "type": "delta",
         "step": 5,
         "text": " Agent",
-        "ts": 1789765200606
+        "ts": 1789766275550
       },
       {
         "agent": "main",
@@ -3647,7 +3647,7 @@
         "type": "delta",
         "step": 5,
         "text": " 默认只读失",
-        "ts": 1789765200612
+        "ts": 1789766275556
       },
       {
         "agent": "main",
@@ -3655,7 +3655,7 @@
         "type": "delta",
         "step": 5,
         "text": "败，授予 a",
-        "ts": 1789765200617
+        "ts": 1789766275561
       },
       {
         "agent": "main",
@@ -3663,7 +3663,7 @@
         "type": "delta",
         "step": 5,
         "text": "llow_w",
-        "ts": 1789765200623
+        "ts": 1789766275567
       },
       {
         "agent": "main",
@@ -3671,7 +3671,7 @@
         "type": "delta",
         "step": 5,
         "text": "rite 后",
-        "ts": 1789765200629
+        "ts": 1789766275573
       },
       {
         "agent": "main",
@@ -3679,7 +3679,7 @@
         "type": "delta",
         "step": 5,
         "text": "重派成功；共",
-        "ts": 1789765200634
+        "ts": 1789766275578
       },
       {
         "agent": "main",
@@ -3687,7 +3687,7 @@
         "type": "delta",
         "step": 5,
         "text": " 6 次委派",
-        "ts": 1789765200640
+        "ts": 1789766275584
       },
       {
         "agent": "main",
@@ -3695,7 +3695,7 @@
         "type": "delta",
         "step": 5,
         "text": "）。",
-        "ts": 1789765200646
+        "ts": 1789766275590
       },
       {
         "agent": "main",
@@ -3708,8 +3708,8 @@
           "inputTokens": 1004,
           "outputTokens": 80
         },
-        "durationMs": 92,
-        "ts": 1789765200652
+        "durationMs": 91,
+        "ts": 1789766275595
       },
       {
         "agent": "main",
@@ -3722,7 +3722,7 @@
           "inputTokens": 5896,
           "outputTokens": 1840
         },
-        "ts": 1789765200652
+        "ts": 1789766275595
       }
     ],
     "children": [
@@ -3738,7 +3738,7 @@
             "parentCallId": "mock_3",
             "type": "user",
             "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md",
-            "ts": 1789765200241
+            "ts": 1789766275185
           },
           {
             "agent": "sub-1",
@@ -3748,7 +3748,7 @@
             "type": "delta",
             "step": 1,
             "text": "读取 src",
-            "ts": 1789765200241
+            "ts": 1789766275185
           },
           {
             "agent": "sub-1",
@@ -3758,7 +3758,7 @@
             "type": "delta",
             "step": 1,
             "text": "/order",
-            "ts": 1789765200247
+            "ts": 1789766275191
           },
           {
             "agent": "sub-1",
@@ -3768,7 +3768,7 @@
             "type": "delta",
             "step": 1,
             "text": ".ts。",
-            "ts": 1789765200252
+            "ts": 1789766275196
           },
           {
             "agent": "sub-1",
@@ -3791,8 +3791,8 @@
               "inputTokens": 26,
               "outputTokens": 80
             },
-            "durationMs": 17,
-            "ts": 1789765200258
+            "durationMs": 16,
+            "ts": 1789766275201
           },
           {
             "agent": "sub-1",
@@ -3808,7 +3808,7 @@
                 "path": "src/order.ts"
               }
             },
-            "ts": 1789765200258
+            "ts": 1789766275201
           },
           {
             "agent": "sub-1",
@@ -3824,7 +3824,7 @@
               "output": "import type { User } from './user.ts';\n\nexport interface Order {\n  id: string;\n  user: User;\n  amount: number;\n  status: 'pending' | 'paid' | 'shipped';\n}\n\nconst TAX_RATE = 0.13;\nconst FREE_SHIPPING_THRESHOLD = 500;\n\n// FIXME: 浮点运算精度问题，金额应使用整数分\nexport function totalWithTax(order: Order): number {\n  return order.amount * (1 + TAX_RATE);\n}\n\nexport function shippingFee(order: Order): number {\n  return order.amount >= FREE_SHIPPING_THRESHOLD ? 0 : 20;\n}\n\n/* TODO: 订单状态机校验（pending → paid → shipped） */\nexport function advance(order: Order): Order {\n  return order;\n}\n"
             },
             "durationMs": 0,
-            "ts": 1789765200258
+            "ts": 1789766275201
           },
           {
             "agent": "sub-1",
@@ -3834,7 +3834,7 @@
             "type": "delta",
             "step": 2,
             "text": "生成摘要写入",
-            "ts": 1789765200259
+            "ts": 1789766275202
           },
           {
             "agent": "sub-1",
@@ -3844,7 +3844,7 @@
             "type": "delta",
             "step": 2,
             "text": " docs/",
-            "ts": 1789765200265
+            "ts": 1789766275207
           },
           {
             "agent": "sub-1",
@@ -3854,7 +3854,7 @@
             "type": "delta",
             "step": 2,
             "text": "summar",
-            "ts": 1789765200270
+            "ts": 1789766275213
           },
           {
             "agent": "sub-1",
@@ -3864,7 +3864,7 @@
             "type": "delta",
             "step": 2,
             "text": "ies/or",
-            "ts": 1789765200276
+            "ts": 1789766275219
           },
           {
             "agent": "sub-1",
@@ -3874,7 +3874,7 @@
             "type": "delta",
             "step": 2,
             "text": "der.md",
-            "ts": 1789765200282
+            "ts": 1789766275225
           },
           {
             "agent": "sub-1",
@@ -3884,7 +3884,7 @@
             "type": "delta",
             "step": 2,
             "text": "。",
-            "ts": 1789765200288
+            "ts": 1789766275230
           },
           {
             "agent": "sub-1",
@@ -3909,7 +3909,7 @@
               "outputTokens": 80
             },
             "durationMs": 35,
-            "ts": 1789765200293
+            "ts": 1789766275236
           },
           {
             "agent": "sub-1",
@@ -3926,7 +3926,7 @@
                 "content": "# src/order.ts\n\n- 行数: 26\n- 导出: Order, totalWithTax, shippingFee, advance\n- TODO/FIXME: 2 处\n"
               }
             },
-            "ts": 1789765200293
+            "ts": 1789766275236
           },
           {
             "agent": "sub-1",
@@ -3942,7 +3942,7 @@
               "error": "工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)"
             },
             "durationMs": 0,
-            "ts": 1789765200293
+            "ts": 1789766275236
           },
           {
             "agent": "sub-1",
@@ -3952,7 +3952,7 @@
             "type": "delta",
             "step": 3,
             "text": "摘要已生成但",
-            "ts": 1789765200293
+            "ts": 1789766275236
           },
           {
             "agent": "sub-1",
@@ -3962,7 +3962,7 @@
             "type": "delta",
             "step": 3,
             "text": "写入失败：工",
-            "ts": 1789765200299
+            "ts": 1789766275242
           },
           {
             "agent": "sub-1",
@@ -3972,7 +3972,7 @@
             "type": "delta",
             "step": 3,
             "text": "具 \"wri",
-            "ts": 1789765200305
+            "ts": 1789766275248
           },
           {
             "agent": "sub-1",
@@ -3982,7 +3982,7 @@
             "type": "delta",
             "step": 3,
             "text": "te_fil",
-            "ts": 1789765200310
+            "ts": 1789766275254
           },
           {
             "agent": "sub-1",
@@ -3992,7 +3992,7 @@
             "type": "delta",
             "step": 3,
             "text": "e\" 需要写",
-            "ts": 1789765200316
+            "ts": 1789766275259
           },
           {
             "agent": "sub-1",
@@ -4002,7 +4002,7 @@
             "type": "delta",
             "step": 3,
             "text": "权限，当前未",
-            "ts": 1789765200322
+            "ts": 1789766275265
           },
           {
             "agent": "sub-1",
@@ -4012,7 +4012,7 @@
             "type": "delta",
             "step": 3,
             "text": "授权 (--",
-            "ts": 1789765200327
+            "ts": 1789766275271
           },
           {
             "agent": "sub-1",
@@ -4022,7 +4022,7 @@
             "type": "delta",
             "step": 3,
             "text": "allow-",
-            "ts": 1789765200333
+            "ts": 1789766275277
           },
           {
             "agent": "sub-1",
@@ -4032,7 +4032,7 @@
             "type": "delta",
             "step": 3,
             "text": "write)",
-            "ts": 1789765200339
+            "ts": 1789766275282
           },
           {
             "agent": "sub-1",
@@ -4042,7 +4042,7 @@
             "type": "delta",
             "step": 3,
             "text": "。需要父 A",
-            "ts": 1789765200344
+            "ts": 1789766275288
           },
           {
             "agent": "sub-1",
@@ -4052,7 +4052,7 @@
             "type": "delta",
             "step": 3,
             "text": "gent 授",
-            "ts": 1789765200350
+            "ts": 1789766275293
           },
           {
             "agent": "sub-1",
@@ -4062,7 +4062,7 @@
             "type": "delta",
             "step": 3,
             "text": "予写权限。",
-            "ts": 1789765200355
+            "ts": 1789766275299
           },
           {
             "agent": "sub-1",
@@ -4077,8 +4077,8 @@
               "inputTokens": 438,
               "outputTokens": 80
             },
-            "durationMs": 68,
-            "ts": 1789765200361
+            "durationMs": 69,
+            "ts": 1789766275305
           },
           {
             "agent": "sub-1",
@@ -4093,7 +4093,7 @@
               "inputTokens": 764,
               "outputTokens": 240
             },
-            "ts": 1789765200361
+            "ts": 1789766275305
           }
         ],
         "children": []
@@ -4110,7 +4110,7 @@
             "parentCallId": "mock_7",
             "type": "user",
             "task": "为文件 src/order.ts 生成摘要并写入 docs/summaries/order.md",
-            "ts": 1789765200426
+            "ts": 1789766275369
           },
           {
             "agent": "sub-2",
@@ -4120,7 +4120,7 @@
             "type": "delta",
             "step": 1,
             "text": "读取 src",
-            "ts": 1789765200426
+            "ts": 1789766275369
           },
           {
             "agent": "sub-2",
@@ -4130,7 +4130,7 @@
             "type": "delta",
             "step": 1,
             "text": "/order",
-            "ts": 1789765200432
+            "ts": 1789766275374
           },
           {
             "agent": "sub-2",
@@ -4140,7 +4140,7 @@
             "type": "delta",
             "step": 1,
             "text": ".ts。",
-            "ts": 1789765200437
+            "ts": 1789766275379
           },
           {
             "agent": "sub-2",
@@ -4164,7 +4164,7 @@
               "outputTokens": 80
             },
             "durationMs": 16,
-            "ts": 1789765200442
+            "ts": 1789766275385
           },
           {
             "agent": "sub-2",
@@ -4180,7 +4180,7 @@
                 "path": "src/order.ts"
               }
             },
-            "ts": 1789765200442
+            "ts": 1789766275385
           },
           {
             "agent": "sub-2",
@@ -4195,8 +4195,8 @@
               "ok": true,
               "output": "import type { User } from './user.ts';\n\nexport interface Order {\n  id: string;\n  user: User;\n  amount: number;\n  status: 'pending' | 'paid' | 'shipped';\n}\n\nconst TAX_RATE = 0.13;\nconst FREE_SHIPPING_THRESHOLD = 500;\n\n// FIXME: 浮点运算精度问题，金额应使用整数分\nexport function totalWithTax(order: Order): number {\n  return order.amount * (1 + TAX_RATE);\n}\n\nexport function shippingFee(order: Order): number {\n  return order.amount >= FREE_SHIPPING_THRESHOLD ? 0 : 20;\n}\n\n/* TODO: 订单状态机校验（pending → paid → shipped） */\nexport function advance(order: Order): Order {\n  return order;\n}\n"
             },
-            "durationMs": 1,
-            "ts": 1789765200443
+            "durationMs": 0,
+            "ts": 1789766275385
           },
           {
             "agent": "sub-2",
@@ -4206,7 +4206,7 @@
             "type": "delta",
             "step": 2,
             "text": "生成摘要写入",
-            "ts": 1789765200443
+            "ts": 1789766275385
           },
           {
             "agent": "sub-2",
@@ -4216,7 +4216,7 @@
             "type": "delta",
             "step": 2,
             "text": " docs/",
-            "ts": 1789765200448
+            "ts": 1789766275391
           },
           {
             "agent": "sub-2",
@@ -4226,7 +4226,7 @@
             "type": "delta",
             "step": 2,
             "text": "summar",
-            "ts": 1789765200454
+            "ts": 1789766275397
           },
           {
             "agent": "sub-2",
@@ -4236,7 +4236,7 @@
             "type": "delta",
             "step": 2,
             "text": "ies/or",
-            "ts": 1789765200459
+            "ts": 1789766275403
           },
           {
             "agent": "sub-2",
@@ -4246,7 +4246,7 @@
             "type": "delta",
             "step": 2,
             "text": "der.md",
-            "ts": 1789765200464
+            "ts": 1789766275408
           },
           {
             "agent": "sub-2",
@@ -4256,7 +4256,7 @@
             "type": "delta",
             "step": 2,
             "text": "。",
-            "ts": 1789765200470
+            "ts": 1789766275414
           },
           {
             "agent": "sub-2",
@@ -4268,7 +4268,7 @@
             "text": "生成摘要写入 docs/summaries/order.md。",
             "toolCalls": [
               {
-                "id": "mock_18",
+                "id": "mock_17",
                 "name": "write_file",
                 "input": {
                   "path": "docs/summaries/order.md",
@@ -4280,8 +4280,8 @@
               "inputTokens": 301,
               "outputTokens": 80
             },
-            "durationMs": 33,
-            "ts": 1789765200476
+            "durationMs": 35,
+            "ts": 1789766275420
           },
           {
             "agent": "sub-2",
@@ -4291,14 +4291,14 @@
             "type": "tool_call",
             "step": 2,
             "call": {
-              "id": "mock_18",
+              "id": "mock_17",
               "name": "write_file",
               "input": {
                 "path": "docs/summaries/order.md",
                 "content": "# src/order.ts\n\n- 行数: 26\n- 导出: Order, totalWithTax, shippingFee, advance\n- TODO/FIXME: 2 处\n"
               }
             },
-            "ts": 1789765200476
+            "ts": 1789766275420
           },
           {
             "agent": "sub-2",
@@ -4307,14 +4307,14 @@
             "parentCallId": "mock_7",
             "type": "tool_result",
             "step": 2,
-            "callId": "mock_18",
+            "callId": "mock_17",
             "name": "write_file",
             "result": {
               "ok": true,
               "output": "已写入 docs/summaries/order.md (101 bytes)"
             },
-            "durationMs": 1,
-            "ts": 1789765200477
+            "durationMs": 0,
+            "ts": 1789766275420
           },
           {
             "agent": "sub-2",
@@ -4324,7 +4324,7 @@
             "type": "delta",
             "step": 3,
             "text": "已写入 do",
-            "ts": 1789765200477
+            "ts": 1789766275420
           },
           {
             "agent": "sub-2",
@@ -4334,7 +4334,7 @@
             "type": "delta",
             "step": 3,
             "text": "cs/sum",
-            "ts": 1789765200482
+            "ts": 1789766275425
           },
           {
             "agent": "sub-2",
@@ -4344,7 +4344,7 @@
             "type": "delta",
             "step": 3,
             "text": "maries",
-            "ts": 1789765200487
+            "ts": 1789766275431
           },
           {
             "agent": "sub-2",
@@ -4354,7 +4354,7 @@
             "type": "delta",
             "step": 3,
             "text": "/order",
-            "ts": 1789765200493
+            "ts": 1789766275436
           },
           {
             "agent": "sub-2",
@@ -4364,7 +4364,7 @@
             "type": "delta",
             "step": 3,
             "text": ".md（sr",
-            "ts": 1789765200498
+            "ts": 1789766275442
           },
           {
             "agent": "sub-2",
@@ -4374,7 +4374,7 @@
             "type": "delta",
             "step": 3,
             "text": "c/orde",
-            "ts": 1789765200504
+            "ts": 1789766275447
           },
           {
             "agent": "sub-2",
@@ -4384,7 +4384,7 @@
             "type": "delta",
             "step": 3,
             "text": "r.ts，导",
-            "ts": 1789765200510
+            "ts": 1789766275453
           },
           {
             "agent": "sub-2",
@@ -4394,7 +4394,7 @@
             "type": "delta",
             "step": 3,
             "text": "出 4 项）",
-            "ts": 1789765200515
+            "ts": 1789766275459
           },
           {
             "agent": "sub-2",
@@ -4404,7 +4404,7 @@
             "type": "delta",
             "step": 3,
             "text": "。",
-            "ts": 1789765200520
+            "ts": 1789766275464
           },
           {
             "agent": "sub-2",
@@ -4419,8 +4419,8 @@
               "inputTokens": 437,
               "outputTokens": 80
             },
-            "durationMs": 49,
-            "ts": 1789765200526
+            "durationMs": 50,
+            "ts": 1789766275470
           },
           {
             "agent": "sub-2",
@@ -4435,7 +4435,7 @@
               "inputTokens": 764,
               "outputTokens": 240
             },
-            "ts": 1789765200526
+            "ts": 1789766275470
           }
         ],
         "children": []
@@ -4452,7 +4452,7 @@
             "parentCallId": "mock_8",
             "type": "user",
             "task": "为文件 src/payment.ts 生成摘要并写入 docs/summaries/payment.md",
-            "ts": 1789765200426
+            "ts": 1789766275369
           },
           {
             "agent": "sub-3",
@@ -4462,7 +4462,7 @@
             "type": "delta",
             "step": 1,
             "text": "读取 src",
-            "ts": 1789765200426
+            "ts": 1789766275369
           },
           {
             "agent": "sub-3",
@@ -4472,7 +4472,7 @@
             "type": "delta",
             "step": 1,
             "text": "/payme",
-            "ts": 1789765200432
+            "ts": 1789766275374
           },
           {
             "agent": "sub-3",
@@ -4482,7 +4482,7 @@
             "type": "delta",
             "step": 1,
             "text": "nt.ts。",
-            "ts": 1789765200437
+            "ts": 1789766275379
           },
           {
             "agent": "sub-3",
@@ -4506,7 +4506,7 @@
               "outputTokens": 80
             },
             "durationMs": 16,
-            "ts": 1789765200442
+            "ts": 1789766275385
           },
           {
             "agent": "sub-3",
@@ -4522,7 +4522,7 @@
                 "path": "src/payment.ts"
               }
             },
-            "ts": 1789765200442
+            "ts": 1789766275385
           },
           {
             "agent": "sub-3",
@@ -4537,8 +4537,8 @@
               "ok": true,
               "output": "import type { Order } from './order.ts';\n\nexport type Provider = 'alipay' | 'wechat' | 'card';\n\nconst todoList: string[] = []; // 待处理的支付回调队列（不是 TODO 注释）\n\nexport async function charge(order: Order, provider: Provider): Promise<boolean> {\n  // TODO: 幂等键，防止重复扣款\n  todoList.push(order.id);\n  return true;\n}\n\nexport function refund(order: Order): number {\n  // FIXME: 退款没有校验订单状态是否为 paid\n  return -order.amount;\n}\n"
             },
-            "durationMs": 1,
-            "ts": 1789765200443
+            "durationMs": 0,
+            "ts": 1789766275385
           },
           {
             "agent": "sub-3",
@@ -4548,7 +4548,7 @@
             "type": "delta",
             "step": 2,
             "text": "生成摘要写入",
-            "ts": 1789765200443
+            "ts": 1789766275385
           },
           {
             "agent": "sub-3",
@@ -4558,7 +4558,7 @@
             "type": "delta",
             "step": 2,
             "text": " docs/",
-            "ts": 1789765200448
+            "ts": 1789766275391
           },
           {
             "agent": "sub-3",
@@ -4568,7 +4568,7 @@
             "type": "delta",
             "step": 2,
             "text": "summar",
-            "ts": 1789765200454
+            "ts": 1789766275397
           },
           {
             "agent": "sub-3",
@@ -4578,7 +4578,7 @@
             "type": "delta",
             "step": 2,
             "text": "ies/pa",
-            "ts": 1789765200459
+            "ts": 1789766275403
           },
           {
             "agent": "sub-3",
@@ -4588,7 +4588,7 @@
             "type": "delta",
             "step": 2,
             "text": "yment.",
-            "ts": 1789765200464
+            "ts": 1789766275408
           },
           {
             "agent": "sub-3",
@@ -4598,7 +4598,7 @@
             "type": "delta",
             "step": 2,
             "text": "md。",
-            "ts": 1789765200470
+            "ts": 1789766275414
           },
           {
             "agent": "sub-3",
@@ -4622,8 +4622,8 @@
               "inputTokens": 248,
               "outputTokens": 80
             },
-            "durationMs": 33,
-            "ts": 1789765200476
+            "durationMs": 35,
+            "ts": 1789766275420
           },
           {
             "agent": "sub-3",
@@ -4640,7 +4640,7 @@
                 "content": "# src/payment.ts\n\n- 行数: 17\n- 导出: Provider, charge, refund\n- TODO/FIXME: 3 处\n"
               }
             },
-            "ts": 1789765200476
+            "ts": 1789766275420
           },
           {
             "agent": "sub-3",
@@ -4655,8 +4655,8 @@
               "ok": true,
               "output": "已写入 docs/summaries/payment.md (86 bytes)"
             },
-            "durationMs": 1,
-            "ts": 1789765200477
+            "durationMs": 0,
+            "ts": 1789766275420
           },
           {
             "agent": "sub-3",
@@ -4666,7 +4666,7 @@
             "type": "delta",
             "step": 3,
             "text": "已写入 do",
-            "ts": 1789765200477
+            "ts": 1789766275420
           },
           {
             "agent": "sub-3",
@@ -4676,7 +4676,7 @@
             "type": "delta",
             "step": 3,
             "text": "cs/sum",
-            "ts": 1789765200482
+            "ts": 1789766275425
           },
           {
             "agent": "sub-3",
@@ -4686,7 +4686,7 @@
             "type": "delta",
             "step": 3,
             "text": "maries",
-            "ts": 1789765200487
+            "ts": 1789766275431
           },
           {
             "agent": "sub-3",
@@ -4696,7 +4696,7 @@
             "type": "delta",
             "step": 3,
             "text": "/payme",
-            "ts": 1789765200493
+            "ts": 1789766275436
           },
           {
             "agent": "sub-3",
@@ -4706,7 +4706,7 @@
             "type": "delta",
             "step": 3,
             "text": "nt.md（",
-            "ts": 1789765200498
+            "ts": 1789766275442
           },
           {
             "agent": "sub-3",
@@ -4716,7 +4716,7 @@
             "type": "delta",
             "step": 3,
             "text": "src/pa",
-            "ts": 1789765200504
+            "ts": 1789766275447
           },
           {
             "agent": "sub-3",
@@ -4726,7 +4726,7 @@
             "type": "delta",
             "step": 3,
             "text": "yment.",
-            "ts": 1789765200510
+            "ts": 1789766275453
           },
           {
             "agent": "sub-3",
@@ -4736,7 +4736,7 @@
             "type": "delta",
             "step": 3,
             "text": "ts，导出 ",
-            "ts": 1789765200515
+            "ts": 1789766275459
           },
           {
             "agent": "sub-3",
@@ -4746,7 +4746,7 @@
             "type": "delta",
             "step": 3,
             "text": "3 项）。",
-            "ts": 1789765200520
+            "ts": 1789766275464
           },
           {
             "agent": "sub-3",
@@ -4761,8 +4761,8 @@
               "inputTokens": 381,
               "outputTokens": 80
             },
-            "durationMs": 49,
-            "ts": 1789765200526
+            "durationMs": 50,
+            "ts": 1789766275470
           },
           {
             "agent": "sub-3",
@@ -4777,7 +4777,7 @@
               "inputTokens": 656,
               "outputTokens": 240
             },
-            "ts": 1789765200526
+            "ts": 1789766275470
           }
         ],
         "children": []
@@ -4794,7 +4794,7 @@
             "parentCallId": "mock_9",
             "type": "user",
             "task": "为文件 src/user.ts 生成摘要并写入 docs/summaries/user.md",
-            "ts": 1789765200426
+            "ts": 1789766275369
           },
           {
             "agent": "sub-4",
@@ -4804,7 +4804,7 @@
             "type": "delta",
             "step": 1,
             "text": "读取 src",
-            "ts": 1789765200426
+            "ts": 1789766275369
           },
           {
             "agent": "sub-4",
@@ -4814,7 +4814,7 @@
             "type": "delta",
             "step": 1,
             "text": "/user.",
-            "ts": 1789765200432
+            "ts": 1789766275374
           },
           {
             "agent": "sub-4",
@@ -4824,7 +4824,7 @@
             "type": "delta",
             "step": 1,
             "text": "ts。",
-            "ts": 1789765200437
+            "ts": 1789766275379
           },
           {
             "agent": "sub-4",
@@ -4848,7 +4848,7 @@
               "outputTokens": 80
             },
             "durationMs": 16,
-            "ts": 1789765200442
+            "ts": 1789766275385
           },
           {
             "agent": "sub-4",
@@ -4864,7 +4864,7 @@
                 "path": "src/user.ts"
               }
             },
-            "ts": 1789765200442
+            "ts": 1789766275385
           },
           {
             "agent": "sub-4",
@@ -4879,8 +4879,8 @@
               "ok": true,
               "output": "export interface User {\n  id: number;\n  name: string;\n  email: string;\n}\n\nconst users: User[] = [\n  { id: 1, name: 'Alice', email: 'alice@example.com' },\n  { id: 2, name: 'Bob', email: 'bob@example.com' },\n];\n\n// TODO: 接入真实数据库，替换内存数组\nexport function findUser(id: number): User | undefined {\n  return users.find((u) => u.id === id);\n}\n\n// FIXME: 没有校验 email 格式\nexport function createUser(name: string, email: string): User {\n  const user = { id: users.length + 1, name, email };\n  users.push(user);\n  return user;\n}\n\n// TODO(alice): 实现分页，见 docs/adr/001-storage.md\nexport function listUsers(): User[] {\n  return users;\n}\n"
             },
-            "durationMs": 1,
-            "ts": 1789765200443
+            "durationMs": 0,
+            "ts": 1789766275385
           },
           {
             "agent": "sub-4",
@@ -4890,7 +4890,7 @@
             "type": "delta",
             "step": 2,
             "text": "生成摘要写入",
-            "ts": 1789765200443
+            "ts": 1789766275385
           },
           {
             "agent": "sub-4",
@@ -4900,7 +4900,7 @@
             "type": "delta",
             "step": 2,
             "text": " docs/",
-            "ts": 1789765200448
+            "ts": 1789766275391
           },
           {
             "agent": "sub-4",
@@ -4910,7 +4910,7 @@
             "type": "delta",
             "step": 2,
             "text": "summar",
-            "ts": 1789765200454
+            "ts": 1789766275397
           },
           {
             "agent": "sub-4",
@@ -4920,7 +4920,7 @@
             "type": "delta",
             "step": 2,
             "text": "ies/us",
-            "ts": 1789765200459
+            "ts": 1789766275403
           },
           {
             "agent": "sub-4",
@@ -4930,7 +4930,7 @@
             "type": "delta",
             "step": 2,
             "text": "er.md。",
-            "ts": 1789765200464
+            "ts": 1789766275408
           },
           {
             "agent": "sub-4",
@@ -4942,7 +4942,7 @@
             "text": "生成摘要写入 docs/summaries/user.md。",
             "toolCalls": [
               {
-                "id": "mock_17",
+                "id": "mock_18",
                 "name": "write_file",
                 "input": {
                   "path": "docs/summaries/user.md",
@@ -4954,8 +4954,8 @@
               "inputTokens": 317,
               "outputTokens": 80
             },
-            "durationMs": 27,
-            "ts": 1789765200470
+            "durationMs": 29,
+            "ts": 1789766275414
           },
           {
             "agent": "sub-4",
@@ -4965,14 +4965,14 @@
             "type": "tool_call",
             "step": 2,
             "call": {
-              "id": "mock_17",
+              "id": "mock_18",
               "name": "write_file",
               "input": {
                 "path": "docs/summaries/user.md",
                 "content": "# src/user.ts\n\n- 行数: 28\n- 导出: User, findUser, createUser, listUsers\n- TODO/FIXME: 3 处\n"
               }
             },
-            "ts": 1789765200470
+            "ts": 1789766275414
           },
           {
             "agent": "sub-4",
@@ -4981,14 +4981,14 @@
             "parentCallId": "mock_9",
             "type": "tool_result",
             "step": 2,
-            "callId": "mock_17",
+            "callId": "mock_18",
             "name": "write_file",
             "result": {
               "ok": true,
               "output": "已写入 docs/summaries/user.md (96 bytes)"
             },
             "durationMs": 1,
-            "ts": 1789765200471
+            "ts": 1789766275415
           },
           {
             "agent": "sub-4",
@@ -4998,7 +4998,7 @@
             "type": "delta",
             "step": 3,
             "text": "已写入 do",
-            "ts": 1789765200471
+            "ts": 1789766275415
           },
           {
             "agent": "sub-4",
@@ -5008,7 +5008,7 @@
             "type": "delta",
             "step": 3,
             "text": "cs/sum",
-            "ts": 1789765200476
+            "ts": 1789766275420
           },
           {
             "agent": "sub-4",
@@ -5018,7 +5018,7 @@
             "type": "delta",
             "step": 3,
             "text": "maries",
-            "ts": 1789765200482
+            "ts": 1789766275425
           },
           {
             "agent": "sub-4",
@@ -5028,7 +5028,7 @@
             "type": "delta",
             "step": 3,
             "text": "/user.",
-            "ts": 1789765200487
+            "ts": 1789766275431
           },
           {
             "agent": "sub-4",
@@ -5038,7 +5038,7 @@
             "type": "delta",
             "step": 3,
             "text": "md（src",
-            "ts": 1789765200493
+            "ts": 1789766275436
           },
           {
             "agent": "sub-4",
@@ -5048,7 +5048,7 @@
             "type": "delta",
             "step": 3,
             "text": "/user.",
-            "ts": 1789765200498
+            "ts": 1789766275442
           },
           {
             "agent": "sub-4",
@@ -5058,7 +5058,7 @@
             "type": "delta",
             "step": 3,
             "text": "ts，导出 ",
-            "ts": 1789765200504
+            "ts": 1789766275447
           },
           {
             "agent": "sub-4",
@@ -5068,7 +5068,7 @@
             "type": "delta",
             "step": 3,
             "text": "4 项）。",
-            "ts": 1789765200510
+            "ts": 1789766275453
           },
           {
             "agent": "sub-4",
@@ -5084,7 +5084,7 @@
               "outputTokens": 80
             },
             "durationMs": 44,
-            "ts": 1789765200515
+            "ts": 1789766275459
           },
           {
             "agent": "sub-4",
@@ -5099,7 +5099,7 @@
               "inputTokens": 793,
               "outputTokens": 240
             },
-            "ts": 1789765200515
+            "ts": 1789766275459
           }
         ],
         "children": []
@@ -5116,7 +5116,7 @@
             "parentCallId": "mock_10",
             "type": "user",
             "task": "为文件 src/utils/format.ts 生成摘要并写入 docs/summaries/utils-format.md",
-            "ts": 1789765200426
+            "ts": 1789766275369
           },
           {
             "agent": "sub-5",
@@ -5126,7 +5126,7 @@
             "type": "delta",
             "step": 1,
             "text": "读取 src",
-            "ts": 1789765200426
+            "ts": 1789766275369
           },
           {
             "agent": "sub-5",
@@ -5136,7 +5136,7 @@
             "type": "delta",
             "step": 1,
             "text": "/utils",
-            "ts": 1789765200432
+            "ts": 1789766275374
           },
           {
             "agent": "sub-5",
@@ -5146,7 +5146,7 @@
             "type": "delta",
             "step": 1,
             "text": "/forma",
-            "ts": 1789765200437
+            "ts": 1789766275379
           },
           {
             "agent": "sub-5",
@@ -5156,7 +5156,7 @@
             "type": "delta",
             "step": 1,
             "text": "t.ts。",
-            "ts": 1789765200442
+            "ts": 1789766275385
           },
           {
             "agent": "sub-5",
@@ -5180,7 +5180,7 @@
               "outputTokens": 80
             },
             "durationMs": 22,
-            "ts": 1789765200448
+            "ts": 1789766275391
           },
           {
             "agent": "sub-5",
@@ -5196,7 +5196,7 @@
                 "path": "src/utils/format.ts"
               }
             },
-            "ts": 1789765200448
+            "ts": 1789766275391
           },
           {
             "agent": "sub-5",
@@ -5212,7 +5212,7 @@
               "output": "/** 把 \"¥1,200.50\" / \"1200.5\" / \"1,200\" 统一解析为数字；无法解析返回 NaN */\nexport function parseAmount(s: string): number {\n  return Number(s.replace(/[¥$,\\s]/g, ''));\n}\n\nexport function formatCNY(n: number): string {\n  return '¥' + n.toFixed(2);\n}\n"
             },
             "durationMs": 0,
-            "ts": 1789765200448
+            "ts": 1789766275391
           },
           {
             "agent": "sub-5",
@@ -5222,7 +5222,7 @@
             "type": "delta",
             "step": 2,
             "text": "生成摘要写入",
-            "ts": 1789765200448
+            "ts": 1789766275391
           },
           {
             "agent": "sub-5",
@@ -5232,7 +5232,7 @@
             "type": "delta",
             "step": 2,
             "text": " docs/",
-            "ts": 1789765200454
+            "ts": 1789766275397
           },
           {
             "agent": "sub-5",
@@ -5242,7 +5242,7 @@
             "type": "delta",
             "step": 2,
             "text": "summar",
-            "ts": 1789765200459
+            "ts": 1789766275403
           },
           {
             "agent": "sub-5",
@@ -5252,7 +5252,7 @@
             "type": "delta",
             "step": 2,
             "text": "ies/ut",
-            "ts": 1789765200464
+            "ts": 1789766275408
           },
           {
             "agent": "sub-5",
@@ -5262,7 +5262,7 @@
             "type": "delta",
             "step": 2,
             "text": "ils-fo",
-            "ts": 1789765200470
+            "ts": 1789766275414
           },
           {
             "agent": "sub-5",
@@ -5272,7 +5272,7 @@
             "type": "delta",
             "step": 2,
             "text": "rmat.m",
-            "ts": 1789765200476
+            "ts": 1789766275420
           },
           {
             "agent": "sub-5",
@@ -5282,7 +5282,7 @@
             "type": "delta",
             "step": 2,
             "text": "d。",
-            "ts": 1789765200482
+            "ts": 1789766275425
           },
           {
             "agent": "sub-5",
@@ -5306,8 +5306,8 @@
               "inputTokens": 196,
               "outputTokens": 80
             },
-            "durationMs": 39,
-            "ts": 1789765200487
+            "durationMs": 40,
+            "ts": 1789766275431
           },
           {
             "agent": "sub-5",
@@ -5324,7 +5324,7 @@
                 "content": "# src/utils/format.ts\n\n- 行数: 9\n- 导出: parseAmount, formatCNY\n- TODO/FIXME: 0 处\n"
               }
             },
-            "ts": 1789765200487
+            "ts": 1789766275431
           },
           {
             "agent": "sub-5",
@@ -5339,8 +5339,8 @@
               "ok": true,
               "output": "已写入 docs/summaries/utils-format.md (88 bytes)"
             },
-            "durationMs": 0,
-            "ts": 1789765200487
+            "durationMs": 1,
+            "ts": 1789766275432
           },
           {
             "agent": "sub-5",
@@ -5350,7 +5350,7 @@
             "type": "delta",
             "step": 3,
             "text": "已写入 do",
-            "ts": 1789765200487
+            "ts": 1789766275432
           },
           {
             "agent": "sub-5",
@@ -5360,7 +5360,7 @@
             "type": "delta",
             "step": 3,
             "text": "cs/sum",
-            "ts": 1789765200493
+            "ts": 1789766275437
           },
           {
             "agent": "sub-5",
@@ -5370,7 +5370,7 @@
             "type": "delta",
             "step": 3,
             "text": "maries",
-            "ts": 1789765200498
+            "ts": 1789766275442
           },
           {
             "agent": "sub-5",
@@ -5380,7 +5380,7 @@
             "type": "delta",
             "step": 3,
             "text": "/utils",
-            "ts": 1789765200504
+            "ts": 1789766275447
           },
           {
             "agent": "sub-5",
@@ -5390,7 +5390,7 @@
             "type": "delta",
             "step": 3,
             "text": "-forma",
-            "ts": 1789765200510
+            "ts": 1789766275453
           },
           {
             "agent": "sub-5",
@@ -5400,7 +5400,7 @@
             "type": "delta",
             "step": 3,
             "text": "t.md（s",
-            "ts": 1789765200515
+            "ts": 1789766275459
           },
           {
             "agent": "sub-5",
@@ -5410,7 +5410,7 @@
             "type": "delta",
             "step": 3,
             "text": "rc/uti",
-            "ts": 1789765200520
+            "ts": 1789766275464
           },
           {
             "agent": "sub-5",
@@ -5420,7 +5420,7 @@
             "type": "delta",
             "step": 3,
             "text": "ls/for",
-            "ts": 1789765200526
+            "ts": 1789766275470
           },
           {
             "agent": "sub-5",
@@ -5430,7 +5430,7 @@
             "type": "delta",
             "step": 3,
             "text": "mat.ts",
-            "ts": 1789765200531
+            "ts": 1789766275476
           },
           {
             "agent": "sub-5",
@@ -5440,7 +5440,7 @@
             "type": "delta",
             "step": 3,
             "text": "，导出 2 ",
-            "ts": 1789765200537
+            "ts": 1789766275482
           },
           {
             "agent": "sub-5",
@@ -5450,7 +5450,7 @@
             "type": "delta",
             "step": 3,
             "text": "项）。",
-            "ts": 1789765200543
+            "ts": 1789766275487
           },
           {
             "agent": "sub-5",
@@ -5466,7 +5466,7 @@
               "outputTokens": 80
             },
             "durationMs": 61,
-            "ts": 1789765200548
+            "ts": 1789766275493
           },
           {
             "agent": "sub-5",
@@ -5481,7 +5481,7 @@
               "inputTokens": 562,
               "outputTokens": 240
             },
-            "ts": 1789765200548
+            "ts": 1789766275493
           }
         ],
         "children": []
@@ -5498,7 +5498,7 @@
             "parentCallId": "mock_11",
             "type": "user",
             "task": "为文件 src/utils/validate.ts 生成摘要并写入 docs/summaries/utils-validate.md",
-            "ts": 1789765200426
+            "ts": 1789766275369
           },
           {
             "agent": "sub-6",
@@ -5508,7 +5508,7 @@
             "type": "delta",
             "step": 1,
             "text": "读取 src",
-            "ts": 1789765200426
+            "ts": 1789766275369
           },
           {
             "agent": "sub-6",
@@ -5518,7 +5518,7 @@
             "type": "delta",
             "step": 1,
             "text": "/utils",
-            "ts": 1789765200432
+            "ts": 1789766275374
           },
           {
             "agent": "sub-6",
@@ -5528,7 +5528,7 @@
             "type": "delta",
             "step": 1,
             "text": "/valid",
-            "ts": 1789765200437
+            "ts": 1789766275379
           },
           {
             "agent": "sub-6",
@@ -5538,7 +5538,7 @@
             "type": "delta",
             "step": 1,
             "text": "ate.ts",
-            "ts": 1789765200442
+            "ts": 1789766275385
           },
           {
             "agent": "sub-6",
@@ -5548,7 +5548,7 @@
             "type": "delta",
             "step": 1,
             "text": "。",
-            "ts": 1789765200448
+            "ts": 1789766275391
           },
           {
             "agent": "sub-6",
@@ -5572,7 +5572,7 @@
               "outputTokens": 80
             },
             "durationMs": 28,
-            "ts": 1789765200454
+            "ts": 1789766275397
           },
           {
             "agent": "sub-6",
@@ -5588,7 +5588,7 @@
                 "path": "src/utils/validate.ts"
               }
             },
-            "ts": 1789765200454
+            "ts": 1789766275397
           },
           {
             "agent": "sub-6",
@@ -5603,8 +5603,8 @@
               "ok": true,
               "output": "export function isEmail(s: string): boolean {\n  return /^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(s);\n}\n\n// TODO: 手机号校验支持国际区号\nexport function isPhone(s: string): boolean {\n  return /^1\\d{10}$/.test(s);\n}\n"
             },
-            "durationMs": 1,
-            "ts": 1789765200455
+            "durationMs": 0,
+            "ts": 1789766275397
           },
           {
             "agent": "sub-6",
@@ -5614,7 +5614,7 @@
             "type": "delta",
             "step": 2,
             "text": "生成摘要写入",
-            "ts": 1789765200455
+            "ts": 1789766275397
           },
           {
             "agent": "sub-6",
@@ -5624,7 +5624,7 @@
             "type": "delta",
             "step": 2,
             "text": " docs/",
-            "ts": 1789765200459
+            "ts": 1789766275403
           },
           {
             "agent": "sub-6",
@@ -5634,7 +5634,7 @@
             "type": "delta",
             "step": 2,
             "text": "summar",
-            "ts": 1789765200465
+            "ts": 1789766275408
           },
           {
             "agent": "sub-6",
@@ -5644,7 +5644,7 @@
             "type": "delta",
             "step": 2,
             "text": "ies/ut",
-            "ts": 1789765200470
+            "ts": 1789766275414
           },
           {
             "agent": "sub-6",
@@ -5654,7 +5654,7 @@
             "type": "delta",
             "step": 2,
             "text": "ils-va",
-            "ts": 1789765200476
+            "ts": 1789766275420
           },
           {
             "agent": "sub-6",
@@ -5664,7 +5664,7 @@
             "type": "delta",
             "step": 2,
             "text": "lidate",
-            "ts": 1789765200482
+            "ts": 1789766275425
           },
           {
             "agent": "sub-6",
@@ -5674,7 +5674,7 @@
             "type": "delta",
             "step": 2,
             "text": ".md。",
-            "ts": 1789765200487
+            "ts": 1789766275431
           },
           {
             "agent": "sub-6",
@@ -5698,8 +5698,8 @@
               "inputTokens": 185,
               "outputTokens": 80
             },
-            "durationMs": 38,
-            "ts": 1789765200493
+            "durationMs": 39,
+            "ts": 1789766275436
           },
           {
             "agent": "sub-6",
@@ -5716,7 +5716,7 @@
                 "content": "# src/utils/validate.ts\n\n- 行数: 9\n- 导出: isEmail, isPhone\n- TODO/FIXME: 1 处\n"
               }
             },
-            "ts": 1789765200493
+            "ts": 1789766275436
           },
           {
             "agent": "sub-6",
@@ -5732,7 +5732,7 @@
               "output": "已写入 docs/summaries/utils-validate.md (84 bytes)"
             },
             "durationMs": 0,
-            "ts": 1789765200493
+            "ts": 1789766275436
           },
           {
             "agent": "sub-6",
@@ -5742,7 +5742,7 @@
             "type": "delta",
             "step": 3,
             "text": "已写入 do",
-            "ts": 1789765200493
+            "ts": 1789766275436
           },
           {
             "agent": "sub-6",
@@ -5752,7 +5752,7 @@
             "type": "delta",
             "step": 3,
             "text": "cs/sum",
-            "ts": 1789765200499
+            "ts": 1789766275442
           },
           {
             "agent": "sub-6",
@@ -5762,7 +5762,7 @@
             "type": "delta",
             "step": 3,
             "text": "maries",
-            "ts": 1789765200504
+            "ts": 1789766275447
           },
           {
             "agent": "sub-6",
@@ -5772,7 +5772,7 @@
             "type": "delta",
             "step": 3,
             "text": "/utils",
-            "ts": 1789765200510
+            "ts": 1789766275453
           },
           {
             "agent": "sub-6",
@@ -5782,7 +5782,7 @@
             "type": "delta",
             "step": 3,
             "text": "-valid",
-            "ts": 1789765200515
+            "ts": 1789766275459
           },
           {
             "agent": "sub-6",
@@ -5792,7 +5792,7 @@
             "type": "delta",
             "step": 3,
             "text": "ate.md",
-            "ts": 1789765200520
+            "ts": 1789766275464
           },
           {
             "agent": "sub-6",
@@ -5802,7 +5802,7 @@
             "type": "delta",
             "step": 3,
             "text": "（src/u",
-            "ts": 1789765200526
+            "ts": 1789766275470
           },
           {
             "agent": "sub-6",
@@ -5812,7 +5812,7 @@
             "type": "delta",
             "step": 3,
             "text": "tils/v",
-            "ts": 1789765200531
+            "ts": 1789766275476
           },
           {
             "agent": "sub-6",
@@ -5822,7 +5822,7 @@
             "type": "delta",
             "step": 3,
             "text": "alidat",
-            "ts": 1789765200537
+            "ts": 1789766275482
           },
           {
             "agent": "sub-6",
@@ -5832,7 +5832,7 @@
             "type": "delta",
             "step": 3,
             "text": "e.ts，导",
-            "ts": 1789765200543
+            "ts": 1789766275487
           },
           {
             "agent": "sub-6",
@@ -5842,7 +5842,7 @@
             "type": "delta",
             "step": 3,
             "text": "出 2 项）",
-            "ts": 1789765200549
+            "ts": 1789766275493
           },
           {
             "agent": "sub-6",
@@ -5852,7 +5852,7 @@
             "type": "delta",
             "step": 3,
             "text": "。",
-            "ts": 1789765200554
+            "ts": 1789766275499
           },
           {
             "agent": "sub-6",
@@ -5867,8 +5867,8 @@
               "inputTokens": 324,
               "outputTokens": 80
             },
-            "durationMs": 67,
-            "ts": 1789765200560
+            "durationMs": 68,
+            "ts": 1789766275504
           },
           {
             "agent": "sub-6",
@@ -5883,7 +5883,7 @@
               "inputTokens": 541,
               "outputTokens": 240
             },
-            "ts": 1789765200560
+            "ts": 1789766275504
           }
         ],
         "children": []

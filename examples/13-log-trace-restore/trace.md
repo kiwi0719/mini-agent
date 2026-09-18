@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:00:01.463Z
+- time: 2026-09-18T21:17:56.403Z
 
 ## 👤 User
 
@@ -16,7 +16,7 @@
 
 → 决定调用 1 个工具: log_trace
 
-_LLM 23ms · tokens in 23 / out 80_
+_LLM 22ms · tokens in 23 / out 80_
 
 ### 🔧 Tool Call: `log_trace`
 
@@ -29,7 +29,7 @@ _LLM 23ms · tokens in 23 / out 80_
 }
 ```
 
-### ✅ Tool Result: `log_trace` (33ms)
+### ✅ Tool Result: `log_trace` (28ms)
 
 ```
 {
@@ -95,7 +95,7 @@ traceId=t00002 的链路（6 条日志，状态 FAILED）：
   logs/app.log:11 2026-08-10 10:00:03.929 ERROR [InventoryService] [traceId=t00002] request failed error=timeout upstream=Notification
   logs/app.log:12 2026-08-10 10:00:03.942 ERROR [Gateway] [traceId=t00002] request failed status=504 totalCost=3256ms
 
-_LLM 1032ms · tokens in 629 / out 80_
+_LLM 1028ms · tokens in 629 / out 80_
 
 ## 🏁 Final Answer (completed, 2 steps, tokens in 652 / out 160)
 

@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:00:05.187Z
+- time: 2026-09-18T21:18:00.076Z
 
 ## 👤 User
 
@@ -16,7 +16,7 @@
 
 → 决定调用 1 个工具: update_plan
 
-_LLM 29ms · tokens in 16 / out 80_
+_LLM 28ms · tokens in 16 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -77,7 +77,7 @@ _LLM 12ms · tokens in 174 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_pod` (2ms)
+### ✅ Tool Result: `get_pod` (1ms)
 
 ```
 {
@@ -149,7 +149,7 @@ Pod 信号：phase=Failed；容器 sync 终止原因=Error exitCode=1；conditio
 
 → 决定调用 5 个工具: update_plan, get_pod_events, get_node, get_metrics, get_logs
 
-_LLM 130ms · tokens in 656 / out 80_
+_LLM 129ms · tokens in 656 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -240,7 +240,7 @@ _LLM 130ms · tokens in 656 / out 80_
 }
 ```
 
-### ❌ Tool Result: `get_logs` (2ms)
+### ❌ Tool Result: `get_logs` (1ms)
 
 ```
 没有上一个容器实例的日志（容器未重启过）
@@ -327,7 +327,7 @@ _LLM 28ms · tokens in 1404 / out 80_
 }
 ```
 
-### ✅ Tool Result: `search_cases` (2ms)
+### ✅ Tool Result: `search_cases` (0ms)
 
 ```
 {
@@ -362,7 +362,7 @@ _LLM 28ms · tokens in 1404 / out 80_
 }
 ```
 
-### ✅ Tool Result: `search_runbook` (3ms)
+### ✅ Tool Result: `search_runbook` (2ms)
 
 ```
 {
@@ -412,7 +412,7 @@ Pod job-128 phase=Failed，容器以 exitCode=1 退出（reason=Error），但�
 ## 证据不足说明
 Event 已被清理（没有找到 Event（可能已超过保留期被清理，默认 1 小时））、容器日志为空、指标不可用，节点状态正常。exitCode=1 只能说明应用自身退出失败，无法区分是代码错误、输入数据问题还是依赖故障。
 
-_LLM 670ms · tokens in 2316 / out 80_
+_LLM 671ms · tokens in 2316 / out 80_
 
 ## 🏁 Final Answer (completed, 5 steps, tokens in 4566 / out 400)
 

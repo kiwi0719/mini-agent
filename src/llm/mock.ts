@@ -1,4 +1,5 @@
 import type { LLMProvider, LLMResponse, Message, ToolSchema, ToolCall, PlanStep } from '../types.ts';
+import { logScenario, k8sScenario } from './mock-scenarios.ts';
 
 /**
  * 规则驱动的 Mock LLM，用于无 API 条件下验证 Agent Loop 及全部增强项
@@ -61,6 +62,11 @@ export class MockLLM implements LLMProvider {
       if (!wr.ok) return reply(`摘要已生成但写入失败：${wr.error}。需要父 Agent 授予写权限。`);
       return reply(`已写入 ${dst}（${src}，导出 ${(r.output.match(/export /g) ?? []).length} 项）。`);
     }
+
+    // ---------- 任务 D / E（放在其他剧本之前：日志分析任务会被任务 H 的 /日志/ 误匹配）：日志分析、K8s 故障诊断（见 mock-scenarios.ts） ----------
+    const helpers = { call, reply, plan, has, last, available };
+    const ext = (await logScenario(task, h, helpers)) ?? (await k8sScenario(task, h, helpers));
+    if (ext) return ext;
 
     // ---------- 任务 A：TODO / FIXME 汇总（Plan + search_text 精化 + Sub Agent） ----------
     if (/todo|fixme/i.test(task) && !/摘要/.test(task)) {

@@ -61,10 +61,20 @@ pnpm agent -- -p mock "找出 workspace 目录中所有 TODO，按照文件进�
 ### 2. 接真实模型
 
 ```bash
-# Anthropic（默认模型 claude-opus-5，可用 ANTHROPIC_MODEL 覆盖）
-export ANTHROPIC_API_KEY=sk-ant-...
+# Anthropic 格式（不依赖官方 SDK，直接调 /v1/messages）——官方、网关中转、各厂商的 Anthropic 兼容端点都走这一个 provider
+export ANTHROPIC_API_KEY=sk-ant-...                 # 官方；默认模型 claude-opus-5，可用 ANTHROPIC_MODEL 覆盖
 pnpm agent -- -p anthropic "读取 data/sales.txt 中的数据，计算所有产品销售额之和，并把计算结果写入 report.md。"
+
+# 厂商兼容端点：--preset 带出默认地址 / 模型 / max_tokens（kimi | glm | deepseek | minimax）
+pnpm agent -- -p anthropic --preset kimi --api-key sk-... "…"
+pnpm agent -- -p anthropic --preset glm --api-key ... --model glm-4.5 "…"
+
+# 企业网关 / 中转：任意地址（可写到域名、…/anthropic 或 …/v1）；只认 Bearer 的网关用 --auth-token；SSE 不稳就关流式
+pnpm agent -- -p anthropic --preset custom --base-url https://gw.example.com/anthropic --auth-token xxx --model claude-sonnet-5 --max-tokens 8192 "…"
+export ANTHROPIC_BASE_URL=... ANTHROPIC_AUTH_TOKEN=... ANTHROPIC_PRESET=custom ANTHROPIC_STREAM=false   # 等价的环境变量
 ```
+
+兼容性处理见 [DESIGN.md §5](./DESIGN.md#5-llm-provider)：两种鉴权头同时发送、路径归一化、按响应 content-type 决定流式/JSON 解析、容忍第三方实现的偏差（tool_use.input 直接给全 / 缺 usage / 多出 thinking 块 / 只有 data 行的 SSE）、429/529/5xx 退避重试。
 
 ```bash
 # 任意 OpenAI 兼容接口（DeepSeek / Qwen / Ollama / vLLM …）
@@ -85,7 +95,7 @@ pnpm agent -- -p local --flavor ollama --model qwen2.5:7b "找出所有 TODO 并
 pnpm agent -- -p local --flavor vllm --base-url http://localhost:8000/v1 --model Qwen/Qwen2.5-7B-Instruct "…"
 ```
 
-也可以设置 `LLM_PROVIDER=anthropic|openai|local|mock`、`LLM_FLAVOR=ollama|vllm|openai`、`OPENAI_BASE_URL`、`OPENAI_MODEL`、`OPENAI_API_KEY` 作为默认值。
+也可以设置 `LLM_PROVIDER=anthropic|openai|local|mock`、`LLM_FLAVOR=ollama|vllm|openai`、`OPENAI_BASE_URL`、`OPENAI_MODEL`、`OPENAI_API_KEY`、`ANTHROPIC_BASE_URL`、`ANTHROPIC_API_KEY` / `ANTHROPIC_AUTH_TOKEN`、`ANTHROPIC_MODEL`、`ANTHROPIC_PRESET`、`ANTHROPIC_MAX_TOKENS`、`ANTHROPIC_STREAM` 作为默认值。
 
 三种 OpenAI 兼容口味的请求差异（详见 DESIGN.md §5）：
 
@@ -129,7 +139,15 @@ node src/cli.ts [选项] "<任务描述>"
 
 ## 测试 workspace
 
-由 `scripts/gen-workspace.ts` 确定性生成（`pnpm test` 自动执行；也可 `node scripts/gen-workspace.ts` 手动重置）。约 20 个文件，刻意包含：多种写法的 TODO/FIXME 与 `todoList`/`TODOS` 假阳性、`node_modules` 干扰、三种格式不一的地区销售数据（¥、千分位、负数退款、脏行）、151KB 的 changelog（读入触发 Context 压缩）、252KB 的日志（超过 read_file 上限）、引用不存在文件与二进制文件的文档、永远不就绪的锁文件、以及“任务需要但 workspace 里没有”的信息（汇率）。详见 [DESIGN.md §7](./DESIGN.md#7-测试-workspace-与任务)。
+由三个脚本确定性生成，`pnpm test` 会自动依次执行（也可单独运行）：
+
+```bash
+node scripts/gen-workspace.ts   # 基础材料：TODO/FIXME、销售数据、大文件、陷阱
+node scripts/gen-logs.ts 10000  # workspace/logs/app.log（日志分析题）
+node scripts/gen-k8s.ts         # workspace/k8s/（Mock K8s 集群，故障诊断题）
+```
+
+生成物已提交进仓库，clone 下来即可直接阅读测试材料，不必先跑脚本。基础材料部分：约 20 个文件，刻意包含：多种写法的 TODO/FIXME 与 `todoList`/`TODOS` 假阳性、`node_modules` 干扰、三种格式不一的地区销售数据（¥、千分位、负数退款、脏行）、151KB 的 changelog（读入触发 Context 压缩）、252KB 的日志（超过 read_file 上限）、引用不存在文件与二进制文件的文档、永远不就绪的锁文件、以及“任务需要但 workspace 里没有”的信息（汇率）。详见 [DESIGN.md §7](./DESIGN.md#7-测试-workspace-与任务)。
 
 ## 测试任务与结果（21/21 自动校验通过）
 
@@ -174,7 +192,7 @@ src/
 ├── job-queue.ts        任务队列 + Worker 线程池 + 中止
 ├── worker.ts           Worker 线程入口
 ├── llm/
-│   ├── anthropic.ts    Anthropic Messages API（流式）
+│   ├── anthropic.ts    Anthropic Messages API 兼容层（官方 / 网关 / Kimi / GLM / DeepSeek / MiniMax；fetch 直连，流式 + 非流式）
 │   ├── openai.ts       OpenAI 兼容接口：openai / vllm / ollama 三种 flavor，流式或非流式
 │   ├── mock.ts         规则驱动 Mock LLM
 │   └── index.ts        Provider 工厂

@@ -45,12 +45,36 @@ const TASKS: { id: string; type: string; task: string; outputs: string[]; allowW
     verify: (r, t) => { const n = fs.existsSync(path.join(WORKSPACE, 'docs/summaries')) ? fs.readdirSync(path.join(WORKSPACE, 'docs/summaries')).length : 0; if (n !== 5) return `期望 5 个摘要，实际 ${n}`; return t.events.some((e) => e.type === 'tool_result' && e.depth > 0 && !e.result.ok && /写权限/.test(e.result.error)) ? null : '子 Agent 首次写入未被拒'; } },
   { id: '11-cannot-complete-missing-info', type: '判断任务无法完成：所需信息（汇率）不在 workspace，拒绝猜测', task: '把 data/sales.txt 的销售额换算成美元写入 report-usd.md。', outputs: [],
     verify: (r) => !ws('report-usd.md') && /无法完成/.test(r.answer) && /汇率/.test(r.answer) ? null : '应明确说明无法完成且不生成报告' },
+  // ---- 日志分析（scripts/gen-logs.ts 生成 workspace/logs/app.log） ----
+  { id: '12-log-analysis-report', type: '日志分析：一轮并行 stats/latency/errors/timeline → 并行 log_trace 还原代表链路 → Markdown 报告（区分统计事实与推断）', task: '分析 logs/app.log，生成 logs/report.md，重点说明错误和慢请求。', outputs: ['logs/report.md'],
+    verify: (r, t) => { const md = ws('logs/report.md'); if (!/\| P95 \|/.test(md) || !/\| P99 \|/.test(md)) return '报告缺少 P95/P99'; if (!/ERROR 比例/.test(md)) return '缺少模块 ERROR 比例'; if (!/候选原因（推测）/.test(md)) return '缺少问题归纳'; if (!/无法解析/.test(md)) return '缺少数据质量'; const par = t.events.some((e) => e.type === 'decision' && e.toolCalls.filter((c) => c.name.startsWith('log_')).length >= 4); return par ? null : '统计工具未并行调用'; } },
+  { id: '13-log-trace-restore', type: '日志分析：按 traceId 还原完整链路', task: '还原 traceId=t00002 的完整链路（logs/app.log）。', outputs: [],
+    verify: (r) => /t00002/.test(r.answer) && /模块顺序/.test(r.answer) && /→/.test(r.answer) ? null : '未还原链路' },
+  { id: '14-log-file-missing', type: '日志分析失败路径：文件不存在 → list_files 确认 → 明确终止', task: '分析 logs/nope.log 并生成 logs/nope-report.md。', outputs: [],
+    verify: (r, t) => r.reason === 'completed' && /无法读取|不存在/.test(r.answer) && t.events.some((e) => e.type === 'tool_call' && e.call.name === 'list_files') ? null : '未按失败路径处理' },
+  // ---- K8s 故障诊断（scripts/gen-k8s.ts 生成 workspace/k8s/ Mock 集群） ----
+  { id: '15-k8s-oom-with-fix', type: 'K8s：OOMKilled → previous 日志 → runbook/case → propose_fix → apply_fix（写）→ verify_fix → 复盘报告', task: '帮我分析 job-123 为什么失败，并修复它。', outputs: ['k8s/postmortem-job-123.md'],
+    verify: (r, t) => { const names = t.events.filter((e) => e.type === 'tool_call').map((e) => e.call.name); for (const n of ['get_pod', 'get_pod_events', 'get_node', 'get_metrics', 'get_logs', 'search_runbook', 'propose_fix', 'apply_fix', 'verify_fix']) if (!names.includes(n)) return `未调用 ${n}`; if (!t.events.some((e) => e.type === 'tool_call' && e.call.name === 'get_logs' && (e.call.input as any).previous)) return '未读取 previous 日志'; if (!/## 已确认事实/.test(r.answer) || !/## 可能原因/.test(r.answer) || !/置信度 高/.test(r.answer)) return '结论结构不完整'; if (!/OOMKilled/.test(r.answer)) return '未识别 OOM'; if (!/recovered=true/.test(r.answer)) return '修复后未确认恢复'; return ws('k8s/postmortem-job-123.md') ? null : '未生成复盘报告'; } },
+  { id: '16-k8s-insufficient-evidence', type: 'K8s：Event 已清理 / 日志为空 / 无指标 → 不强行下结论，说明还缺什么', task: '帮我分析 job-128 为什么失败。', outputs: [],
+    verify: (r) => /证据不足/.test(r.answer) && /现有证据不足以给出原因/.test(r.answer) && !/置信度 高/.test(r.answer) ? null : '证据不足场景仍给出了结论' },
+  { id: '17-k8s-net-timeout-no-write', type: 'K8s：连接超时诊断 + 修复需人工确认（无写权限 → apply_fix 被拒 → 转为待确认建议）', task: '帮我分析 api-worker-7 为什么不 ready，并修复。', outputs: [], allowWrite: false,
+    verify: (r, t) => { if (!t.events.some((e) => e.type === 'tool_result' && e.name === 'apply_fix' && !e.result.ok)) return 'apply_fix 未被拒'; if (!/dial tcp|i\/o timeout/.test(r.answer)) return '未引用日志证据'; return /待人工确认执行/.test(r.answer) ? null : '被拒后未转为建议'; } },
+  { id: '18-k8s-node-notready', type: 'K8s：Node NotReady（日志取不到、指标中断本身就是证据）', task: '帮我分析 job-124 为什么失败。', outputs: [],
+    verify: (r, t) => t.events.some((e) => e.type === 'tool_result' && e.name === 'get_logs' && !e.result.ok) && /NotReady|失去心跳/.test(r.answer) && /过期缓存/.test(r.answer) ? null : '未识别节点失联' },
+  { id: '19-k8s-scheduling-failed', type: 'K8s：Scheduling Failed（Pending + FailedScheduling message 逐节点原因）', task: '帮我分析 job-125 为什么失败。', outputs: [],
+    verify: (r) => /Pending/.test(r.answer) && /FailedScheduling/.test(r.answer) && /cpu=6/.test(r.answer) ? null : '未识别调度失败' },
+  { id: '20-k8s-disk-pressure', type: 'K8s：DiskPressure 驱逐（Evicted message + Node condition + 日志 no space left）', task: '帮我分析 job-126 为什么失败。', outputs: [],
+    verify: (r) => /Evicted/.test(r.answer) && /DiskPressure/.test(r.answer) && /no space left/.test(r.answer) ? null : '未识别磁盘压力' },
+  { id: '21-k8s-gpu-xid-nccl', type: 'K8s（AI Infra）：GPU Xid 79 → NCCL timeout，区分硬件根因与次生现象', task: '帮我分析 train-job-7 为什么失败。', outputs: [],
+    verify: (r) => /Xid 79/.test(r.answer) && /NCCL/.test(r.answer) && /置信度 低/.test(r.answer) ? null : '未区分 Xid 根因与 NCCL 次生' },
 ];
 
 // 重新生成 workspace（确定性）
 execFileSync(process.execPath, [path.join(import.meta.dirname, 'gen-workspace.ts')], { stdio: 'inherit' });
+execFileSync(process.execPath, [path.join(import.meta.dirname, 'gen-logs.ts'), '10000'], { stdio: 'inherit' });   // 日志分析测试数据
+execFileSync(process.execPath, [path.join(import.meta.dirname, 'gen-k8s.ts')], { stdio: 'inherit' });             // Mock K8s 集群
 fs.mkdirSync(OUT, { recursive: true });
-const GENERATED = ['todo-report.md', 'report.md', 'docs/check.md', 'report-regions.md', 'breaking-changes.md', 'error-report.md', 'report-usd.md', 'docs/summaries'];
+const GENERATED = ['todo-report.md', 'report.md', 'docs/check.md', 'report-regions.md', 'breaking-changes.md', 'error-report.md', 'report-usd.md', 'docs/summaries', 'logs/report.md', 'k8s/postmortem-job-123.md', 'k8s/applied.json'];
 
 let failedCount = 0;
 const summary: string[] = [`# 示例任务执行结果\n\nprovider: \`${provider}\` · 生成时间: ${new Date().toISOString()}\n`];

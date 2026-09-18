@@ -15,6 +15,9 @@ const { values, positionals } = parseArgs({
     'base-url': { type: 'string' },
     model: { type: 'string' },
     'api-key': { type: 'string' },
+    preset: { type: 'string' },
+    'auth-token': { type: 'string' },
+    'max-tokens': { type: 'string' },
     'llm-stream': { type: 'boolean' },
     'max-steps': { type: 'string', default: '15' },
     'no-write': { type: 'boolean', default: false },
@@ -36,6 +39,9 @@ if (values.help || !task) {
       --base-url <url>    OpenAI 兼容接口地址，如 http://localhost:11434/v1
       --model <name>      模型名
       --api-key <key>     可选；Ollama 忽略，vLLM 视启动参数
+      --preset <name>     anthropic 端点预设: anthropic | kimi | glm | deepseek | minimax | custom
+      --auth-token <tok>  只认 Authorization: Bearer 的 Anthropic 格式网关（也可用 ANTHROPIC_AUTH_TOKEN）
+      --max-tokens <n>    anthropic 的 max_tokens（各厂商上限不同，默认按预设）
       --llm-stream        强制流式（Ollama 默认非流式）
       --max-steps <n>     最大轮数 (默认 15)
       --no-write          禁止 write_file
@@ -46,13 +52,19 @@ if (values.help || !task) {
 }
 
 const workspace = path.resolve(values.workspace!);
-const llm = createProvider(values.provider, {
+let llm;
+try {
+  llm = createProvider(values.provider, {
   flavor: values.flavor as any,
   baseUrl: values['base-url'],
   model: values.model,
   apiKey: values['api-key'],
+  preset: values.preset as any,
+  authToken: values['auth-token'],
+  maxTokens: values['max-tokens'] ? Number(values['max-tokens']) : undefined,
   stream: values['llm-stream'],
-});
+  });
+} catch (e) { console.error(`✖ LLM 配置错误: ${(e as Error).message}`); process.exit(2); }
 const trace = new Trace({ provider: llm.name, workspace });
 const log = (s: string) => { if (!values.quiet) console.log(s); };
 

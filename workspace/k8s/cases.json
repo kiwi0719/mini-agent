@@ -1,0 +1,73 @@
+[
+  {
+    "id": "CASE-2026-041",
+    "date": "2026-07-03",
+    "symptoms": "report job OOMKilled exitCode 137 restartCount 增长 memory 峰值接近 limit 512Mi BackOff",
+    "rootCause": "月末数据量翻倍，整表加载进内存超过 limit",
+    "fix": "memory limit 512Mi → 2Gi，并改为分批读取",
+    "tags": [
+      "OOMKilled",
+      "memory",
+      "job"
+    ]
+  },
+  {
+    "id": "CASE-2026-052",
+    "date": "2026-07-19",
+    "symptoms": "node Ready Unknown 心跳停止 kubelet 不可达 pod NodeNotReady TaintManagerEviction logs i/o timeout 10250",
+    "rootCause": "云厂商宿主机故障导致节点失联",
+    "fix": "cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点",
+    "tags": [
+      "NodeNotReady",
+      "node"
+    ]
+  },
+  {
+    "id": "CASE-2026-058",
+    "date": "2026-08-02",
+    "symptoms": "Pending FailedScheduling Insufficient cpu untolerated taint",
+    "rootCause": "Job 申请 6 核 CPU，集群单节点最多 4 核",
+    "fix": "降低 cpu request 到 3 核",
+    "tags": [
+      "FailedScheduling",
+      "Pending",
+      "cpu"
+    ]
+  },
+  {
+    "id": "CASE-2026-063",
+    "date": "2026-08-15",
+    "symptoms": "Evicted ephemeral-storage DiskPressure no space left on device exporter",
+    "rootCause": "导出任务把 40GiB 中间文件写到容器临时目录",
+    "fix": "清理节点磁盘，输出改写 PVC，设置 ephemeral-storage limit",
+    "tags": [
+      "DiskPressure",
+      "Evicted",
+      "storage"
+    ]
+  },
+  {
+    "id": "CASE-2026-071",
+    "date": "2026-08-28",
+    "symptoms": "Readiness probe failed 503 dial tcp 5432 i/o timeout payment-db",
+    "rootCause": "payment-db 所在节点 NetworkPolicy 变更后拒绝了 default 命名空间流量",
+    "fix": "回滚 NetworkPolicy",
+    "tags": [
+      "network",
+      "timeout",
+      "readiness"
+    ]
+  },
+  {
+    "id": "CASE-2026-077",
+    "date": "2026-09-05",
+    "symptoms": "NVRM Xid 79 GPU has fallen off the bus NCCL timeout AllReduce training aborted",
+    "rootCause": "GPU 硬件故障（PCIe 掉卡）",
+    "fix": "cordon gpu 节点，更换 GPU，从 checkpoint 恢复训练",
+    "tags": [
+      "gpu",
+      "xid",
+      "nccl"
+    ]
+  }
+]

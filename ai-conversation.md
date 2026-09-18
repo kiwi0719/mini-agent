@@ -77,91 +77,6 @@
 
 **留档**：`scripts/run-examples.ts` 重置 workspace、跑 5 个任务（3 个正向 + 2 个失败路径）、把 README / 生成文件 / trace.md / trace.json 写入 `examples/`；编写 README.md、AI_USAGE.md、更新 DESIGN.md（增强项表、§6.1–6.4、限制重写）；提交并推送。
 
-## 7. 设计答辩：Sub Agent
-
-**候选人**：
-> subagent怎么设计的？
-
-**AI**：解释 `delegate` 是普通工具、通过 `runtime.delegate()` new 一个同类 Agent（独立 Context、更小 maxSteps、depth+1、maxDepth=1、到顶的 Agent 工具列表里过滤掉 delegate 防递归）、事件带 agent/depth、token 计入父级、delegate 超时按 `toolTimeoutMs × subAgentMaxSteps × 3` 放大。同时主动列出取舍：串行执行、深度固定 1、无结果合并策略、子 Agent 权限未收窄。
-
-**候选人**：
-> 怎么设计上限的
-
-**AI**：列出 8 层上限（maxSteps、连续失败阈值、重复调用哈希、工具超时、重试上限、嵌套深度、子 Agent 独立步数预算、资源类上限），并说明没做的：总 token/耗时预算、单轮 tool call 数量上限、参数微调的伪重复。
-
-**候选人**：
-> 怎么确定分的 不是每个任务都适合分sub吧
-
-**AI**：承认"分不分"完全交给模型，框架只提供工具描述、成本结构与硬约束；坦言 examples/01 里 Mock 分出 4 个子 Agent 主要是演示机制，真实模型未必会这么做。给出三个可加的框架侧信号：delegate 前检查父级 Context 大小、按子 Agent 实际步数事后提醒、delegate 加 `expected_steps` 参数。
-
-**候选人**：
-> 这三个都是可行的解决方案 第二个可能稍差一点 不要应用
-
-**AI**：不动代码。同意第二个最弱（事后才起作用，且"步数少"不等于"分得不合理"）。并记下偏好：以后先列方案，由候选人决定哪些落地。
-
-## 8. 架构 Review（候选人要求 AI 自查）
-
-**候选人**：
-> 再给我讲下现在的详细架构 我看看有没有什么问题
-
-**AI**：按入口层（CLI / Server / Web）→ Agent 核心 → Context → Tool 层 → LLM 层 → Trace 讲完数据流，然后自报 14 个问题：
-
-1. Context 压缩直接改 tool result 字符串，与 Provider 的兼容靠约定
-2. runtime 是闭包、状态是局部变量，Agent 没有可查询的当前状态
-3. 父子 Agent 事件混在同一回调，Trace 线性交错
-4. `addNotice` 用 user 角色注入系统提示，OpenAI 兼容接口本可用 system
-5. 一轮内多个 tool call 串行执行
-6. 连续失败按"整轮全失败"判定，夹一个必成功调用即可绕过
-7. 重复检测只匹配完全相同，且提示会重复注入
-8. 子 Agent 继承父级全部权限
-9. calculator 运算符结合性未写进描述
-10. Web 端无并发控制，多个请求同时写同一 workspace
-11. SSE 客户端断开后 Agent 不中止
-12. Context 大小按字符数估算，中英文 token 比例漂移
-13. Tool Search 只是子串打分
-14. Mock 的 collect() 每次全量扫描历史，O(n²)
-
-**候选人**：
-> 1-9都修复 然后10加排队和多线程吧 11 要及时中止  12不是很重要  14要把时间空间复杂度降下来 13我门讨论下解决方案
-
-**AI**：1–9、14 改核心；10 做任务队列 + Worker 线程；11 做客户端断开即 abort；12 跳过；13 先讨论不动代码。
-
-**候选人**（AI 修改中插话）：
-> 然后有个很致命的问题 现在的用例太简单了
-
-**AI**：修改 agent / context / registry / server / 各 provider / web，新增 `job-queue.ts`（任务排队）与 `worker.ts`（Worker 线程跑 Agent），重启服务并用并发请求测试排队、Worker 线程和中止行为。
-- 首轮并发测试后修正若干问题，重启后队列能正确排空。
-- 断开中止测试一度"不可判定"：Mock 半秒内跑完，客户端来不及断开。AI 加了 `MOCK_DELAY_MS` 开关让 Mock 变慢，再验证 abort。
-- 针对"用例太简单"：新写 `scripts/gen-workspace.ts` 确定性生成更难的 workspace：多层目录与多种注释形式的 TODO/FIXME 及 `todoList`/`TODOS` 假阳性、多份格式不一致的数据文件（表头 / 货币符号 / 千分位 / 负数退款 / 脏行）、超过 read_file 上限的大日志（迫使改用 search_text）、接近上限的大 changelog（触发 Context 压缩）、文档互相引用与引用缺失文件、二进制文件、所需信息不在 workspace 内的任务（汇率，Agent 应判断无法完成）、永远不会就绪的锁文件（诱导死循环）。
-- `run-examples.ts` 改为每个任务带自动 `verify` 断言（例如 TODO 报告条数须为 16 且不含 `todoList`/`TODOS` 假阳性、多区域合计 14495.25 且必须有一轮并行读取 3 个文件、大 changelog 必须触发 `compressed` 事件、错误计数须与生成脚本写出的 `.workspace-expected.json` 一致），新增 6 个示例：06 多区域聚合、07 大 changelog 压缩、08 大日志 search 回退、09 卡死循环检测、10 子 Agent 写权限、11 信息缺失无法完成。
-- 首轮运行 4 个 verify 失败，AI 逐个对照 report 与 trace 判断问题出在 Mock、验证器还是 Agent。（进行中）
-
-## 9. 第二个线程：把"日志分析"与"K8s SRE Agent"两题作为工具接入
-
-**候选人**（新开线程，粘贴"应用运行日志智能分析"与"Kubernetes 故障诊断 SRE Agent"两道题）：
-> 这两个能当工具加进来吗 分析下 记得存聊天记录 如果可以 就直接 帮我设计方案
-
-**AI**：
-- 先读现有项目（DESIGN.md、`registry.ts`、`types.ts`、deferred 工具写法、Mock LLM 结构、git 状态），确认扩展点：Tool 接口 + deferred/search_tools + permission + Trace + Web 时间线。
-- 结论：两题都能作为 **工具包（tool pack）** 接入，不必另起项目。K8s 题要求的“Agent 自己决定查什么 / 保存诊断过程 / 展示工具调用与结果”正是现有 Loop + Trace + Web 已做的；日志题输入是 workspace 文件，走 read 权限与沙箱即可。
-- 写出 `DESIGN-EXTENSIONS.md`：
-  - 横切改动：按 pack 注册（`--pack` / `AGENT_PACKS`）、结构化最终答案 + 前端结果卡片、Mock LLM 新场景。
-  - 日志包：流式容错解析器（ok / partial / malformed 三级）、5 个 deferred 只读工具（`log_stats` / `log_latency` / `log_trace` / `log_errors` / `log_timeline`）、报告模板、`scripts/gen-logs.ts` 的剧本占比设计。
-  - K8s 包：`ClusterSource` 接口 + Mock 实现（fixture 目录按场景组织，可换真实 kubectl/Prometheus）、5 个必选工具、5 类故障 + 1 个"证据不足"场景的证据链表、诊断结论固定章节（故障现象 / 关键证据 / 已确认事实 / 可能原因含置信度 / 处理建议 / 证据不足说明）、加分项映射（runbook 检索、历史 case、propose_fix→apply_fix 走 write 权限人工确认、verify_fix、复盘报告、GPU Xid/NCCL 场景）。
-  - 实施顺序与风险（仍无可用 key，端到端只能靠 Mock 演示）。
-- 未写任何实现代码，等候选人挑选范围后再动手。
-- 并提醒：ai-conversation.md 与 examples/ 正被另一个会话同时修改，提交前最好只保留一个会话在写仓库。
-
-**候选人**：
-> 做 不止是低成本的 不用工具包和开放注册 就那几个工具而已 然后我没有k8s先做 给我一个替代方案
-
-**AI**：
-- 推翻自己方案里的 `--pack` 开关设计：不做工具包，直接把这几个工具注册进现有 Registry。
-- 加分项全做，只排除需要真实环境的 Prometheus / Loki / OpenTelemetry。
-- 没有 K8s 的替代方案：`ClusterSource` 接口 + 读取 workspace 下 JSON fixture 的 Mock 实现；将来有 kind/minikube 时换成 kubectl 实现，工具代码不动。
-- 实施顺序：日志工具 + 生成脚本 → Mock 集群 + K8s 工具 + 场景生成 → 注册 / 系统提示 → Mock LLM 剧本 → 前端结果卡片 → 示例与文档。
-- 已写出 `src/tools/log-tools.ts`、`scripts/gen-logs.ts`、`src/tools/k8s-tools.ts` 与 `src/tools/k8s/`（ClusterSource + Mock），正在写场景生成器（集群 fixture、runbook、历史 case）与工具注册、系统提示模板。（进行中）
-
 ## 7. 追问 Sub Agent 设计
 
 **候选人**：
@@ -216,7 +131,102 @@
 
 **AI**：写 `gen-workspace.ts` 生成带陷阱的 workspace；新增 6 个任务（多地区聚合、大文件压缩、超限日志、死循环、子 Agent 写权限、信息缺失），原任务 01 增加“假阳性后精化正则”；每个任务加自动校验。首轮 7/11 通过，逐个定位（假阳性正则、验证期望过期、输出文件名误取、search_text 不支持文件路径、中文字节数误判压缩阈值）后 11/11。
 
----
+**提交**：commit `ae2f057` 推送。除第 13 条外全部处理完。
+
+**第 13 条 Tool Search 语义化，AI 给出 4 个方向等候选人定**：(1) 工具加 `tags`，按 tags + 名称 + 描述做中文 bigram BM25，零依赖；(2) 无命中时把全部 deferred 工具名称与一句描述回给模型让它挑；(3) embedding 检索（需接 Voyage / OpenAI，外部依赖偏重）；(4) 分层目录，适合上百工具。AI 建议 1+2 组合，未动代码。
+
+**候选人**：
+> 正常来说是要1/3的但是 是demo 还是2吧 在md里说明 因为接reranker和embedding太麻烦了
+
+**AI**：实现方案 2（commit `c231847`）：关键词未命中时返回全部未激活扩展工具目录（名称 + 一句描述），提示模型用准确名称再调一次即激活；探针测试 "表格数据处理" 未命中得到目录、再查 "csv_parse" 激活成功。DESIGN.md §6.3 写明取舍：生产应做 tags + BM25 或 embedding + reranker，demo 里工具个位数且 Anthropic 无 embedding 接口，外部依赖成本高于收益。
+
+同时 AI 主动报告一个情况：探针测试的工具列表里出现了它没写的 `log_stats`、`get_pod`、`apply_fix` 等，查明是另一个 Claude 会话在同一仓库工作。两个后果：上一次提交用了 `git add -A`，把对方尚在编写的 `log-tools.ts`、`k8s-tools.ts` 等一并推上去了；`gen-workspace.ts` 原来整目录删除 workspace 再重建，`pnpm test` 每跑一次就清掉对方的 `workspace/logs` 与 `workspace/k8s`。AI 已把生成脚本改为只清理自己生成的子树，本次只暂存自己改的文件，并建议两边用 git worktree 或约定提交责任人，询问已推上去的对方文件是回退还是保留。
+
+**候选人**：
+> 不用你就commit你的就行
+
+**AI**：只提交自己重新生成的 examples 轨迹（`4a4829c`），对方在工作区的修改不动。至此该线程原任务全部完成。
+
+## 9. 第二个线程：把"日志分析"与"K8s SRE Agent"两题作为工具接入
+
+**候选人**（新开线程，粘贴"应用运行日志智能分析"与"Kubernetes 故障诊断 SRE Agent"两道题）：
+> 这两个能当工具加进来吗 分析下 记得存聊天记录 如果可以 就直接 帮我设计方案
+
+**AI**：
+- 先读现有项目（DESIGN.md、`registry.ts`、`types.ts`、deferred 工具写法、Mock LLM 结构、git 状态），确认扩展点：Tool 接口 + deferred/search_tools + permission + Trace + Web 时间线。
+- 结论：两题都能作为 **工具包（tool pack）** 接入，不必另起项目。K8s 题要求的“Agent 自己决定查什么 / 保存诊断过程 / 展示工具调用与结果”正是现有 Loop + Trace + Web 已做的；日志题输入是 workspace 文件，走 read 权限与沙箱即可。
+- 写出 `DESIGN-EXTENSIONS.md`：
+  - 横切改动：按 pack 注册（`--pack` / `AGENT_PACKS`）、结构化最终答案 + 前端结果卡片、Mock LLM 新场景。
+  - 日志包：流式容错解析器（ok / partial / malformed 三级）、5 个 deferred 只读工具（`log_stats` / `log_latency` / `log_trace` / `log_errors` / `log_timeline`）、报告模板、`scripts/gen-logs.ts` 的剧本占比设计。
+  - K8s 包：`ClusterSource` 接口 + Mock 实现（fixture 目录按场景组织，可换真实 kubectl/Prometheus）、5 个必选工具、5 类故障 + 1 个"证据不足"场景的证据链表、诊断结论固定章节（故障现象 / 关键证据 / 已确认事实 / 可能原因含置信度 / 处理建议 / 证据不足说明）、加分项映射（runbook 检索、历史 case、propose_fix→apply_fix 走 write 权限人工确认、verify_fix、复盘报告、GPU Xid/NCCL 场景）。
+  - 实施顺序与风险（仍无可用 key，端到端只能靠 Mock 演示）。
+- 未写任何实现代码，等候选人挑选范围后再动手。
+- 并提醒：ai-conversation.md 与 examples/ 正被另一个会话同时修改，提交前最好只保留一个会话在写仓库。
+
+**候选人**：
+> 做 不止是低成本的 不用工具包和开放注册 就那几个工具而已 然后我没有k8s先做 给我一个替代方案
+
+**AI**：
+- 推翻自己方案里的 `--pack` 开关设计：不做工具包，直接把这几个工具注册进现有 Registry。
+- 加分项全做，只排除需要真实环境的 Prometheus / Loki / OpenTelemetry。
+- 没有 K8s 的替代方案：`ClusterSource` 接口 + 读取 workspace 下 JSON fixture 的 Mock 实现；将来有 kind/minikube 时换成 kubectl 实现，工具代码不动。
+- 实施顺序：日志工具 + 生成脚本 → Mock 集群 + K8s 工具 + 场景生成 → 注册 / 系统提示 → Mock LLM 剧本 → 前端结果卡片 → 示例与文档。
+
+## 10. 实现：直接注册工具，全部加分项，Mock 集群替代真实 K8s
+
+**候选人**：
+> 做 不止是低成本的 不用工具包和开放注册 就那几个工具而已 然后我没有k8s先做 给我一个替代方案
+
+**AI**：
+- 理解为：全部实现；不做 pack/开关，15 个新工具直接进 `createDefaultRegistry`；加分项全做（Prometheus/Loki/OTel 除外，需要真实环境）；没有集群 → Mock 集群作为替代方案。
+- 日志：`log-tools.ts`（流式容错解析，ok/partial/malformed 三级；5 个工具）、`gen-logs.ts`（1 万行，8 模块，6 种剧本按权重，10:08–10:11 集中投放 DB 故障）。冒烟测试后修了故障窗口越界、状态码被归一化两处。
+- K8s：`k8s/cluster.ts`（`ClusterSource` 接口 + Mock，修复动作叠加到后续查询）、`k8s-tools.ts`（5 必选 + 5 加分）、`gen-k8s.ts`（4 节点 8 Pod：OOM / NotReady / 调度失败 / DiskPressure / 连接超时 / 证据不足 / GPU Xid+NCCL，每个场景带干扰项；5 份 runbook；6 个历史 Case）。系统提示加第 9/10 条与固定输出结构。
+- Mock LLM 剧本放独立文件 `mock-scenarios.ts`，插到其他剧本之前（另一会话新增的任务 H 用 `/日志/` 匹配会截胡）。修了 3 个问题：GPU 场景没读 previous 日志、证据不足场景把弱相关 runbook 当证据、最后一步丢失 verify_fix 结果。
+- Web：最终答案按 `## ` 分区渲染成诊断卡片，证据带来源标签；浏览器里跑 job-123 验证无报错。
+- 示例 12–21 带自动校验，`pnpm test` 21/21 通过。
+- 期间另一会话重建 workspace 清掉了 logs/ 与 k8s/，示例脚本改为 gen-workspace 后自动补生成。
+- 文档：README（工具表、示例表、结构）、DESIGN-EXTENSIONS（改为"已实现"并记录与初稿差异）、AI_USAGE、本文件。
+
+**候选人**：
+> anthropic也别只兼容官方接口了 改吧  要兼容别的
+
+**AI**：把 `anthropic.ts` 从依赖官方 SDK 改为直接 `fetch` `POST {base}/v1/messages`，并移除 `@anthropic-ai/sdk` 依赖，使其可指向官方、企业网关 / 中转，以及 Kimi、智谱 GLM、DeepSeek、MiniMax 等厂商的 Anthropic 兼容端点：
+- 预设 `preset`（anthropic / kimi / glm / deepseek / minimax / custom），各带默认 baseUrl / model / maxTokens；custom 必须自填地址。
+- 鉴权同时发 `x-api-key` 与 `Authorization: Bearer`（部分网关只认后者）；baseUrl 写到域名、`/anthropic` 或 `/v1` 都归一化到 `/v1/messages`。
+- 流式解析容忍第三方常见偏差（tool_use.input 在 start 里已给全、partial_json 为空、缺 usage、多出 thinking 块、事件名缺失）；也支持 `stream:false` 直接解 JSON。
+- Web 端加 Anthropic 面板：预设切换带出地址 / 模型 / max_tokens。dev server 是改动前启动的进程，预设下拉一度为空，重启后正常；进程里没有 key 时配置错误正确显示在时间线。类型检查通过，真实打一次官方接口验证错误透出。（收尾中：更新文档并重跑测试）
+
+## 12. 交付物复核
+
+**候选人**（重新粘贴完整题目与 9 项交付物要求）：
+> 复核下哪没完成 包括新增的设计
+
+**AI**：（进行中）逐项对照题目复核仓库现状，包括另一个会话新增的日志 / K8s 部分。
+
+## 11. 本地模型兼容（Ollama / vLLM）
+
+**候选人**：
+> 本地模型 也要兼容所以前端加个选项 然后下面要有输入api baseurl 然后 要兼容ollama和vllm吧 字段你设计下 可以检索资料  别的不做了 然后也不用跑本地验证 我性能不够 确保schema不传错就行
+
+**AI**：查阅 Ollama 与 vLLM 的 OpenAI 兼容接口后实现（commit `ea8ef0e`）：
+- `OpenAICompatProvider` 加 `flavor`（openai | vllm | ollama）并按 flavor 设默认值；Ollama 不发 `tool_choice` / `stream_options`，默认非流式。
+- 新 provider 类型 `local`；CLI 加 `--flavor / --base-url / --model / --api-key / --llm-stream`。
+- Web 端加本地模型面板：flavor、base URL、model（可从 `/models` 拉取）、key、stream；server 加 `GET /api/models` 代理，LLM 配置透传给 worker。
+- 按候选人要求不跑本地模型，改写 `scripts/check-request-schema.ts` 离线校验三种 flavor 的请求体与全部 26 个工具 schema，全部通过；浏览器里验证面板切换 flavor 自动填默认值、模型拉取失败时报错清晰、vLLM 提示显示。
+- 只提交自己的文件，并把另一会话在 web/index.html 上的未提交修改恢复回工作区。
+
+
+## 11. Anthropic Provider 兼容第三方
+
+**候选人**：
+> anthropic也别只兼容官方接口了 改吧  要兼容别的
+
+**AI**：
+- 读现有 `anthropic.ts`（官方 SDK `messages.stream()`）与 OpenAI 兼容层的 flavor 设计，决定对齐做法：去 SDK、fetch 直连、preset 表。
+- 重写 `src/llm/anthropic.ts`：预设 anthropic / kimi / glm / deepseek / minimax / custom；双鉴权头；baseUrl 归一化；流式与非流式两条解析路径，按响应 content-type 选择；容忍第三方偏差；429/529/5xx 重试；`buildRequestBody` 纯函数便于离线校验。
+- 接线：`createProvider` 透传 preset / authToken / maxTokens；CLI 新增 `--preset --auth-token --max-tokens` 并把配置错误改为友好退出；服务端 `/api/info` 返回预设表、`/api/models` 支持 Anthropic 格式（`/v1/models` + 双头）；Web 面板新增端点预设、地址、模型、Key、流式开关、max_tokens。
+- 验证：假的 Anthropic 兼容服务覆盖 6 组用例全部通过；真实请求官方接口 401 正确透出；浏览器里预设切换带出默认值、缺 key 的错误显示在时间线。`pnpm remove @anthropic-ai/sdk`。
+- 文档：README 用法、DESIGN §5 兼容性规则、AI_USAGE、本文件。
 
 ## 候选人对 AI 的指导方式小结
 

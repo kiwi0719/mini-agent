@@ -8,7 +8,7 @@
 
 **校验**: ✅ 通过
 
-**结果**: completed · 6 steps · 13 tool calls · 0 failures · 4 sub agents · tokens 8613/1120 · 413ms
+**结果**: completed · 6 steps · 13 tool calls · 0 failures · 4 sub agents · tokens 8613/1120 · 394ms
 
 **最终答案**:
 

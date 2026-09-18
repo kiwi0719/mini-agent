@@ -1,6 +1,21 @@
 # 扩展方案：日志分析工具包 + Kubernetes 故障诊断工具包
 
-> 状态：设计稿，未实现。目标是把两道新题目作为 **工具包（tool pack）** 接入现有 Mini Agent，而不是另起两个项目。
+> 状态：**已实现**（2026-09-19）。两道新题目作为普通工具直接注册进现有 Mini Agent，不另起项目。
+> 与初稿的差异：候选人否决了"工具包 + 注册开关"，改为直接注册；所有加分项都做了（除需要真实环境的 Prometheus / Loki / OTel）；没有 K8s 集群，用 Mock 集群替代（§3.1）。
+
+## 实现速览
+
+| 文件 | 内容 |
+|---|---|
+| `src/tools/log-tools.ts` | 容错解析器 + `log_stats` `log_latency` `log_trace` `log_errors` `log_timeline` |
+| `scripts/gen-logs.ts` | 测试日志生成（1 万行，剧本占比见 §2.4） |
+| `src/tools/k8s/cluster.ts` | `ClusterSource` 接口 + `MockClusterSource`（fixture + 修复动作叠加） |
+| `src/tools/k8s-tools.ts` | `get_pod` `get_pod_events` `get_node` `get_metrics` `get_logs` + `search_runbook` `search_cases` `propose_fix` `apply_fix` `verify_fix` |
+| `scripts/gen-k8s.ts` | Mock 集群：4 节点、8 Pod（7 个故障场景）、5 份 runbook、6 个历史 Case |
+| `src/agent.ts` | 系统提示新增第 9/10 条：日志分析流程、K8s 诊断固定输出结构 |
+| `src/llm/mock-scenarios.ts` | Mock LLM 的两个剧本（启发式诊断，仅用于演示 Loop 与工具） |
+| `web/index.html` | 最终答案按 `## ` 区块渲染为诊断结果卡片，证据带 [Pod/Event/Node/Metric/Log/Runbook/Case] 标签 |
+| `scripts/run-examples.ts` | 新增示例 12–21（全部带自动校验） |
 
 ## 0. 可行性结论
 
@@ -19,39 +34,32 @@
 - **Web SSE 时间线**：工具调用与结果已可视化；只需新增一个“诊断结果卡片”。
 - **permission: 'write'**：K8s 加分项“修复动作执行前需要人工确认”直接映射为 write 类工具 + `allowWrite` 门控。
 
-需要新增的横切能力（两个包共用）：
+需要新增的横切能力：
 
-1. **结构化最终答案**：Agent 最终回答目前是纯文本。新增约定：工具包任务的最终答案以 Markdown 固定章节输出，前端按章节渲染（详见 §3.4）。
-2. **工具包注册开关**：`createDefaultRegistry({ packs: ['logs', 'k8s'] })`，CLI `--pack` / 环境变量 `AGENT_PACKS`，避免默认注册表膨胀。
-3. **Mock LLM 新场景**：当前无有效 key，端到端验证仍要靠 Mock 脚本，两个包各加 1–2 条脚本化路径。
+1. **结构化最终答案**：K8s 诊断任务的最终答案以 Markdown 固定章节输出，前端按章节渲染（详见 §3.4）。
+2. ~~工具包注册开关~~：候选人决定直接注册（15 个新工具始终对模型可见，`createDefaultRegistry` 一处注册）。
+3. **Mock LLM 新场景**：当前无有效 key，端到端验证靠 Mock 脚本（`mock-scenarios.ts`）。
 
 ## 1. 目录规划
 
 ```
 src/tools/
-├── logs/                    # 日志分析工具包
-│   ├── parser.ts            # 行解析器（容错、格式变化）
-│   ├── stats.ts             # 级别/模块统计、耗时分位
-│   ├── tools.ts             # log_scan / log_stats / log_latency / log_trace / log_errors
-│   └── index.ts             # registerLogsPack(registry)
-├── k8s/                     # K8s 诊断工具包
-│   ├── mock-cluster.ts      # 从 workspace/k8s/<scenario>/ 读取 fixture 的数据源
-│   ├── tools.ts             # get_pod / get_pod_events / get_node / get_metrics / get_logs
-│   ├── knowledge.ts         # search_runbook（故障知识库，加分项）
-│   ├── remediation.ts       # propose_fix / apply_fix / verify_fix（加分项，write 权限）
-│   └── index.ts             # registerK8sPack(registry)
+├── log-tools.ts             # 解析器 + 5 个日志工具
+├── k8s-tools.ts             # 10 个 K8s 工具
+└── k8s/cluster.ts           # ClusterSource 接口 + MockClusterSource
 scripts/
 ├── gen-logs.ts              # 测试日志生成脚本（题目要求提交）
-└── gen-k8s-scenarios.ts     # 生成 5 类故障的 Mock 集群数据
+└── gen-k8s.ts               # 生成 Mock 集群（7 个场景）+ runbooks + cases
 workspace/
-├── logs/app-2026-08-10.log  # 生成的日志（1 万行左右）
-└── k8s/                     # 每个故障场景一个目录
-    ├── oom-job-123/{pods.json,events.json,nodes.json,metrics.json,logs/*.log}
-    ├── node-notready/…
-    ├── sched-failed/…
-    ├── disk-pressure/…
-    └── net-timeout/…
+├── logs/app.log             # 生成的日志（1 万行）
+└── k8s/
+    ├── cluster.json         # 一个集群：nodes / pods / events / metrics / logs / remediations
+    ├── applied.json         # apply_fix 记录（运行时生成）
+    ├── runbooks/*.md        # 知识库（oom / node / scheduling / network / gpu）
+    └── cases.json           # 历史 Case
 ```
+
+实际实现把所有场景放进**同一个 Mock 集群**（不同 Pod 名），比"每场景一个目录"更接近真实：Agent 面对的是一个有 8 个 Pod、4 个节点的集群，要靠 Pod 名和证据自己找。
 
 ## 2. 日志分析工具包
 
@@ -77,7 +85,7 @@ workspace/
 | `log_latency` | paths, `field?`(默认 totalCost/cost), `group_by?`(module) | avg / p50 / p95 / p99 / max、样本数、Top N 慢请求 `[{traceId, module, cost, ts}]` | 4、Top N 慢请求 |
 | `log_trace` | paths, traceId | 该 traceId 全部日志按时间排序，附 span 摘要（起止、总耗时、涉及模块、是否含 ERROR） | 5 |
 | `log_errors` | paths, `top?` | 错误归一化聚类：把 message 中的数字 / id / traceId 替换为占位符后分组，输出 `{pattern, count, modules, sampleTraceIds, firstSeen, lastSeen}` | 6、7、相似错误聚类、自动发现异常模式 |
-| `log_timeline` | paths, `bucket?`(1m) | 按时间桶统计 各级别数量与 p95，用于趋势与“错误集中在哪个时段” | 时间趋势分析 |
+| `log_timeline` | paths, `bucket_seconds?`(60) | 按时间桶统计各级别数量与 p95，并用 mean+2σ 标出 ERROR 突增桶 | 时间趋势分析、自动发现异常模式 |
 
 分位数计算：全量收集耗时数组后排序取分位（1–2 万行没有压力）；`log_latency` 预留 `reservoir` 参数以便超大文件改用蓄水池采样。
 
@@ -110,9 +118,9 @@ workspace/
 
 ## 3. Kubernetes 故障诊断工具包
 
-### 3.1 Mock 数据源（mock-cluster.ts）
+### 3.1 没有 K8s 集群的替代方案：Mock 数据源（k8s/cluster.ts）
 
-数据全部来自 workspace 下的 JSON / 日志文件，每个故障场景一个目录；工具通过 `scenario`（默认由环境变量 `K8S_SCENARIO` 或任务里指定）+ 资源名定位。这样：
+数据全部来自 `workspace/k8s/cluster.json`（由 `scripts/gen-k8s.ts` 确定性生成），工具按 namespace + 资源名定位。这样：
 
 - 不需要真实集群；
 - 数据经过沙箱路径检查；
@@ -150,7 +158,11 @@ interface ClusterSource {
 | DiskPressure | phase=Failed, reason=Evicted | Evicted: The node had condition: [DiskPressure] | DiskPressure=True, ephemeral-storage 使用 97% | 正常 | 日志末尾 `no space left on device` |
 | 网络/服务连接超时 | Running，就绪探针失败 | Unhealthy: readiness probe failed | 正常 | CPU 低 | `dial tcp 10.0.5.12:5432: i/o timeout` 连续出现 |
 
-每个场景再各放一个**干扰项**（例如 OOM 场景里 Node 也有一条无关的 WARN），并额外准备一个 **证据不足场景**（Pod Failed，events 已过期被清理，日志为空）用来测试“不强行下结论”。
+每个场景再各放一个**干扰项**（例如 OOM 场景里有一条无关的 SandboxChanged Event，DiskPressure 场景里有 DNSConfigForming），并额外准备 **证据不足场景**（job-128：Failed exitCode=1，Event 已清理，日志为空，无指标）用来测试"不强行下结论"，以及 **GPU 场景**（train-job-7：previous 日志里 NVRM Xid 79 → NCCL AllReduce timeout，GPU 利用率骤降）。
+
+**修复闭环的模拟**：`cluster.json` 里每个 Pod 带 `remediations[]`（动作、说明、风险、等价 kubectl 命令、执行后的 Pod/Node/Event 状态）。`apply_fix` 把动作记入 `applied.json`，之后 `get_pod` / `get_node` / `verify_fix` 读取时叠加该状态，于是"修复后自动检查是否恢复"是真的重新查询而不是假装。
+
+**接真实集群**：实现 `ClusterSource` 的 `KubectlSource`（`kubectl get -o json` / metrics-server / `kubectl logs`）或 Prometheus/Loki 版本，`createClusterSource()` 按环境变量切换；工具与 Agent 代码不变。这是本次没做的部分。
 
 ### 3.4 诊断结论的结构化输出
 
@@ -187,17 +199,13 @@ interface ClusterSource {
 | Prometheus / Loki / OTel | `ClusterSource` 的另一实现，只在有真实环境时做 | 高，本次不做 |
 | GPU Xid / NCCL | 追加第 6 类场景：`get_logs` 出现 `NVRM: Xid (PCI:…): 79` + `NCCL WARN … timeout`，runbook 里放对应条目 | 中 |
 
-## 4. 实施顺序
+## 4. 实施结果
 
-1. 注册表按 pack 注册 + CLI/Web 的 pack 开关；结构化最终答案的前端卡片。
-2. 日志包：parser → 5 个工具 → gen-logs.ts → Mock LLM 脚本 → 示例 `examples/06-log-analysis`。
-3. K8s 包：mock-cluster → 5 个工具 → gen-k8s-scenarios.ts（5 类 + 1 个证据不足）→ 系统提示与输出模板 → Mock LLM 脚本 → 示例 `examples/07-k8s-oom`、`examples/08-k8s-insufficient-evidence`。
-4. 加分项按 §3.6 表从低成本到高成本挑选。
-5. README / DESIGN.md / AI_USAGE.md / ai-conversation.md 更新。
+按 §1–§3 实现，示例 12–21（见 `examples/`）全部自动校验通过；Web 端新增诊断结果卡片。加分项：知识库检索、历史 Case、propose/apply/verify 修复闭环（apply 走写权限 = 人工确认）、复盘报告、GPU Xid/NCCL 场景均已实现；Prometheus / Loki / OTel 未做（需要真实环境，接口已预留）。
 
 ## 5. 风险与限制
 
-- **仍然没有可用的模型 key**：Agent“自主决定查什么”的效果只能靠 Mock 脚本演示，真实模型行为待验证；Mock 脚本会明确标注是演示路径。
+- **仍然没有可用的模型 key**：Agent"自主决定查什么"的效果只能靠 Mock 脚本演示；`mock-scenarios.ts` 里的 `diagnose()` 是启发式规则，不代表真实模型的推理。系统提示里的第 9/10 条是给真实模型的流程与输出约束，未经真实模型验证。
 - **Mock 集群与真实集群差距**：数据是静态快照，没有时间推进；`verify_fix` 是切换目录模拟。
 - **日志解析器只面向题目给的格式族**：字段顺序变化可容错，但完全不同的格式（JSON 日志）需要另加解析器分支。
 - **Web 端仍是单任务无鉴权**，沿用现有限制。

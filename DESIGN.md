@@ -15,16 +15,31 @@
                            │    5. Trace 记录每一步                  │
                            └────┬───────────┬───────────┬────────────┘
                                 │           │           │
-                        ┌───────▼──┐  ┌─────▼─────┐ ┌───▼────────┐
-                        │ LLM      │  │ Tool      │ │ Context    │
-                        │ Provider │  │ Registry  │ │ (messages, │
-                        │ anthropic│  │ read_file │ │ 压缩策略)  │
-                        │ openai-  │  │ write_file│ └────────────┘
-                        │ compat   │  │search_text│
-                        │ mock     │  │calculator │
-                        └──────────┘  │ list_files│
-                                      └───────────┘
+                        ┌───────▼──┐  ┌─────▼──────────────┐ ┌───▼────────┐
+                        │ LLM      │  │ Tool Registry      │ │ Context    │
+                        │ Provider │  │ ┌────────────────┐ │ │ (messages, │
+                        │ anthropic│  │ │核心 5 个        │ │ │ 压缩策略)  │
+                        │ (+预设)  │  │ │read/write_file │ │ └────────────┘
+                        │ openai / │  │ │search_text     │ │
+                        │ local    │  │ │calculator      │ │
+                        │ (flavor) │  │ │list_files      │ │
+                        │ mock     │  │ ├────────────────┤ │
+                        └──────────┘  │ │Agent 级 3 个    │ │
+                                      │ │update_plan     │ │
+                                      │ │search_tools    │ │
+                                      │ │delegate        │ │
+                                      │ ├────────────────┤ │
+                                      │ │deferred 3 个    │ │
+                                      │ │(Tool Search)   │ │
+                                      │ ├────────────────┤ │
+                                      │ │扩展工具包       │ │
+                                      │ │log_* 5 个       │ │
+                                      │ │K8s 10 个        │ │
+                                      │ └────────────────┘ │
+                                      └────────────────────┘
 ```
+
+> 扩展工具包（应用日志智能分析、Kubernetes 故障诊断 SRE Agent）是两道扩展题，**作为普通工具注册进同一个 Registry**，不改 Agent Loop 的任何一行。设计与实现见 [DESIGN-EXTENSIONS.md](./DESIGN-EXTENSIONS.md)。
 
 ### 职责划分
 
@@ -79,7 +94,16 @@ type ToolResult = { ok: true; output: string } | { ok: false; error: string };
 - `ToolRegistry.register(tool)`；`schemas()` 输出给 LLM；`execute(name, rawInput)` 负责：
   未知工具 → 错误；JSON 解析失败 → 错误；schema 校验失败 → 错误（带具体字段）；超时；捕获异常。
 - 所有路径类参数经过 `resolveInWorkspace()`，禁止 `..` 逃出 workspace 根目录。
-- 基础工具：`read_file`、`write_file`、`search_text`（正则/关键字，支持 glob，返回结构化 JSON `{total, truncated, files_scanned, matches:[{file,line,text}]}`）、`calculator`（安全表达式求值，不用 eval）、`list_files`。
+工具按来源分四类，**接口完全一致**，Agent 不区分：
+
+| 类别 | 工具 | 说明 |
+|---|---|---|
+| 核心 5 个 | `read_file` `write_file` `search_text` `calculator` `list_files` | `search_text` 返回结构化 JSON `{total, truncated, files_scanned, matches:[{file,line,text}]}`；`calculator` 为递归下降求值，不用 eval |
+| Agent 级 3 个 | `update_plan` `search_tools` `delegate` | 通过 `ToolContext.runtime` 访问 Agent 能力（见 §6.1–6.3） |
+| deferred 3 个 | `csv_parse` `file_info` `current_time` | 默认不进 schema 列表，需 `search_tools` 激活 |
+| 扩展工具包 15 个 | `log_*` 5 个、K8s 10 个 | 两道扩展题，见 [DESIGN-EXTENSIONS.md](./DESIGN-EXTENSIONS.md) |
+
+**扩展工具包为什么不改 Agent**：它们只是多注册了一批 `Tool`，Loop、Trace、权限、沙箱、失败处理、Plan、子 Agent 全部复用。K8s 的"人工确认"用现成的 `permission: 'write'` 表达（`apply_fix` 是写工具，`--no-write` 即只诊断不修复），不需要新机制。这是"Tool 定义"这层抽象是否成立的实际检验。
 
 ## 4. 失败处理
 
@@ -130,7 +154,7 @@ interface LLMProvider {
 }
 ```
 实现：
-- `anthropic`：官方 `@anthropic-ai/sdk`，手写 tool-use 循环（作业要求自己实现 loop，因此不用 SDK 的 toolRunner）；
+- `anthropic`：**不用官方 SDK**，直接 fetch `POST {base}/v1/messages`，因此同一个 Provider 覆盖官方、企业网关 / 中转、以及各厂商提供的 Anthropic 兼容端点（预设 `kimi` / `glm` / `deepseek` / `minimax` / `custom`，决定默认地址、模型、max_tokens 上限）。兼容性处理：① 鉴权 `x-api-key` 与 `Authorization: Bearer` 同时发（官方只看前者，部分网关只看后者；可分别来自 `ANTHROPIC_API_KEY` / `ANTHROPIC_AUTH_TOKEN`）；② baseUrl 归一化（域名 / `…/anthropic` / `…/v1` / `…/v1/messages` 都接受）；③ 按响应 `content-type` 决定 SSE 还是 JSON 解析，而不是相信自己发的 `stream` 字段（有的中转会改）；④ SSE 只看 `data:` 行，不依赖 `event:` 行；tool_use 的 input 既支持 `input_json_delta` 拼接也支持 start 里直接给全；缺 id 自动补；忽略 thinking 等未知块；usage 缺失容忍；⑤ 429 / 529 / 5xx 指数退避 3 次；⑥ 手写 tool-use 循环（作业要求自己实现 loop）。
 - `openai` / `local`：同一个 `OpenAICompatProvider`，按 **flavor** 区分 `openai`（云端兼容接口）、`vllm`、`ollama`；
 - `mock`：基于规则的脚本化 LLM，用于无 API 条件下完成端到端验证与 CI。
 
@@ -251,10 +275,12 @@ workspace 由 `scripts/gen-workspace.ts` 确定性生成（`pnpm test` 会先重
 
 ## 8. 当前实现最大限制
 
-1. **真实模型未经充分验证**：开发环境中的 Anthropic key 无效，全部端到端结果来自 Mock LLM。11 个用例验证的是**框架机制**（并行、压缩、终止、权限、沙箱、Tool Search）在这些场景下行为正确，而不是模型的判断力。Anthropic / OpenAI 兼容 Provider 的协议转换按官方文档实现并通过类型检查，但真实模型的行为（是否主动用 update_plan、是否会在失败后换策略）取决于模型能力与 prompt，需要拿到 key 后跑 `pnpm test anthropic` 复验。
-2. **Mock LLM 不泛化**：它是针对 3 类任务的规则脚本，只用于验证 Loop、工具、失败路径与各增强项的机制，不能证明"自主判断"能力。
+1. **真实模型完全未验证（最大的限制）**：开发环境中的 Anthropic key 无效、本机性能不足以跑本地模型，因此 21 个用例的端到端结果**全部来自 Mock LLM**。四条模型通路（Anthropic 格式含 5 种厂商预设、OpenAI 兼容云端、Ollama、vLLM）只做到"协议层正确"——`pnpm check-schema` 离线校验 9 种端点配置的请求体、请求头、baseUrl 归一化与 26 个工具的 JSON Schema 全部通过，但这只能保证**不会因为字段传错而失败**，不能保证任何真实模型的 tool-call 质量。拿到可用 key 后跑 `pnpm test anthropic` / `pnpm test openai` 即可复验并覆盖 examples/。
+2. **Mock LLM 不泛化，因此"自主判断"未被证明**：它是按任务关键词分派的规则脚本，只根据消息历史与最近的 tool result 决定下一步。它能证明 Loop、工具、失败路径、各增强项的机制在这些场景下行为正确（包括"搜索结果有假阳性就换正则重搜""read_file 超限就改用 search_text""证据不足就拒绝给结论"这些**决策路径存在且被正确执行**），但不能证明真实模型会自己走到这些决策上。
 3. **Context 压缩粗粒度**：字符数近似 token、简单截断，可能丢关键信息；没有 LLM 摘要。
 4. **子 Agent 深度固定为 1**，没有结果合并策略（同一轮的多个 delegate 已并行）；框架不参与“该不该分”的判断（讨论过三种方案：按上下文大小提示、按子 Agent 实际步数事后提醒、delegate 加 expected_steps 门槛，均未实现）。
 5. **Tool Search 是关键词打分 + 目录回退**而非语义检索（见 §6.3 的取舍说明），工具上百个时回退成本会变高。
 6. **无持久化、无鉴权**：任务中断不能恢复；多个任务共享同一个 workspace，写同名文件会互相覆盖（队列只限并发数，不做文件级隔离）。
 7. **计划由模型自觉维护**：框架不校验计划与实际行为是否一致，弱模型可能制定计划后不更新。
+8. **扩展工具包的数据是 Mock 的**：K8s 侧没有真实集群，`get_pod` / `get_node` / `get_metrics` 等读的是 `scripts/gen-k8s.ts` 生成的快照（数据源已抽象为 `ClusterSource`，接真实集群换实现即可，但换完是否好用未经验证）；日志侧读的是生成的 `app.log`，真实日志的格式脏乱程度远高于此。
+9. **工具数量增长后 Tool Search 的取舍会失效**：现在 26 个工具全部常驻 schema（除 3 个 deferred），每轮 prompt 里工具定义已占可观篇幅；若继续加工具包，应把扩展包整体改为 deferred 并做语义检索，而不是继续常驻。
