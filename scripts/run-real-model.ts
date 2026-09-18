@@ -37,17 +37,26 @@ const TASKS = [
     probe: '连续多次工具调用 + 2 次预期内失败（文件不存在 / 二进制）后继续' },
   { id: '11', task: '把 data/sales.txt 的销售额换算成美元写入 report-usd.md。', outputs: [],
     probe: '所需信息（汇率）不在 workspace —— 会拒绝还是编造？' },
+  // 扩展工具包各取一个，验证"多工具、结构化输出"的链路能被真实模型走通（不苛求结论准确）
+  { id: '12', task: '分析 logs/app.log，生成 logs/report.md，重点说明错误和慢请求。', outputs: ['logs/report.md'],
+    probe: '日志工具包：多个统计工具 + 按 traceId 还原链路 + 写报告' },
+  { id: '15', task: '帮我分析 job-123 为什么失败，并修复它。', outputs: [],
+    probe: 'K8s 工具包：多轮取证 → runbook/case → propose_fix → apply_fix（写）→ verify_fix' },
 ];
 
 const only = process.argv[2];
-const GENERATED = ['todo-report.md', 'report.md', 'docs/check.md', 'report-usd.md'];
+const onlyEndpoint = process.argv[3];
+const GENERATED = ['todo-report.md', 'report.md', 'docs/check.md', 'report-usd.md', 'logs/report.md', 'k8s/postmortem-job-123.md'];
 fs.mkdirSync(OUT, { recursive: true });
 const rows: string[] = [];
 
 for (const ep of ENDPOINTS) {
+  if (onlyEndpoint && !ep.id.includes(onlyEndpoint)) continue;
   for (const t of TASKS) {
     if (only && t.id !== only) continue;
     execFileSync(process.execPath, [path.join(ROOT, 'scripts/gen-workspace.ts')], { stdio: 'ignore' });
+    if (t.id === '12') execFileSync(process.execPath, [path.join(ROOT, 'scripts/gen-logs.ts'), '10000'], { stdio: 'ignore' });
+    if (t.id === '15') execFileSync(process.execPath, [path.join(ROOT, 'scripts/gen-k8s.ts')], { stdio: 'ignore' });
     for (const f of GENERATED) fs.rmSync(path.join(WORKSPACE, f), { force: true });
 
     const llm = createProvider(ep.provider, ep.cfg);

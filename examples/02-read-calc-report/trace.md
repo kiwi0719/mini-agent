@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:41:42.966Z
+- time: 2026-09-18T21:47:11.508Z
 
 ## 👤 User
 
@@ -53,7 +53,7 @@ _LLM 17ms · tokens in 28 / out 80_
 - [ ] 2. 计算销售额之和 — pending
 - [ ] 3. 写入报告 — pending
 
-### ✅ Tool Result: `update_plan` (1ms)
+### ✅ Tool Result: `update_plan` (0ms)
 
 ```
 计划已更新（0/3 完成），已预约 1 个写目标
@@ -65,7 +65,7 @@ _LLM 17ms · tokens in 28 / out 80_
 
 → 决定调用 1 个工具: search_tools
 
-_LLM 22ms · tokens in 164 / out 80_
+_LLM 23ms · tokens in 164 / out 80_
 
 ### 🔧 Tool Call: `search_tools`
 
@@ -90,7 +90,7 @@ _LLM 22ms · tokens in 164 / out 80_
 
 → 决定调用 1 个工具: csv_parse
 
-_LLM 29ms · tokens in 279 / out 80_
+_LLM 28ms · tokens in 279 / out 80_
 
 ### 🔧 Tool Call: `csv_parse`
 
@@ -103,7 +103,7 @@ _LLM 29ms · tokens in 279 / out 80_
 }
 ```
 
-### ✅ Tool Result: `csv_parse` (0ms)
+### ✅ Tool Result: `csv_parse` (1ms)
 
 ```
 {
@@ -160,7 +160,7 @@ _LLM 40ms · tokens in 503 / out 80_
 }
 ```
 
-### ✅ Tool Result: `calculator` (2ms)
+### ✅ Tool Result: `calculator` (1ms)
 
 ```
 sum(1200, 850.5, 3200, 415.25, 999, 2750) = 9414.75
@@ -220,7 +220,7 @@ _LLM 6ms · tokens in 617 / out 80_
 }
 ```
 
-### ✅ Tool Result: `write_file` (2ms)
+### ✅ Tool Result: `write_file` (0ms)
 
 ```
 已写入 report.md (309 bytes)

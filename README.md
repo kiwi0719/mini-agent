@@ -214,6 +214,7 @@ src/
     └── agent-tools.ts  update_plan / search_tools / delegate
 web/index.html          Vue 3 前端
 workspace/              测试材料
-scripts/                gen-workspace.ts（生成测试材料）/ run-examples.ts（跑任务并校验）/ check-request-schema.ts（离线校验请求体）/ reset-workspace.ts
+scripts/                gen-workspace.ts · gen-logs.ts · gen-k8s.ts（生成测试材料）/ run-examples.ts（Mock 用例并校验）
+                        run-real-model.ts（真实模型实跑）/ check-request-schema.ts（离线校验请求体）/ audit-trace.ts（Trace 数值溯源审计）
 examples/               任务执行结果与 Trace
 ```

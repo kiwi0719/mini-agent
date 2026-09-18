@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:41:55.890Z
+- time: 2026-09-18T21:47:24.462Z
 
 ## 👤 User
 
@@ -77,7 +77,7 @@ _LLM 12ms · tokens in 174 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_pod` (1ms)
+### ✅ Tool Result: `get_pod` (2ms)
 
 ```
 {
@@ -150,7 +150,7 @@ Pod 信号：phase=Failed reason=Evicted；容器 exporter 终止原因=Containe
 
 → 决定调用 5 个工具: update_plan, get_pod_events, get_node, get_metrics, get_logs
 
-_LLM 171ms · tokens in 736 / out 80_
+_LLM 172ms · tokens in 736 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -226,13 +226,13 @@ _LLM 171ms · tokens in 736 / out 80_
 }
 ```
 
-### ✅ Tool Result: `update_plan` (2ms)
+### ✅ Tool Result: `update_plan` (1ms)
 
 ```
 计划已更新（1/4 完成）
 ```
 
-### ✅ Tool Result: `get_metrics` (2ms)
+### ✅ Tool Result: `get_metrics` (1ms)
 
 ```
 {
@@ -332,7 +332,7 @@ _LLM 171ms · tokens in 736 / out 80_
 …[截断 4001 字符]
 ```
 
-### ❌ Tool Result: `get_logs` (3ms)
+### ❌ Tool Result: `get_logs` (2ms)
 
 ```
 没有上一个容器实例的日志（容器未重启过）
@@ -392,7 +392,7 @@ _LLM 171ms · tokens in 736 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_pod_events` (5ms)
+### ✅ Tool Result: `get_pod_events` (4ms)
 
 ```
 {
@@ -449,7 +449,7 @@ _LLM 171ms · tokens in 736 / out 80_
 
 → 决定调用 3 个工具: update_plan, search_runbook, search_cases
 
-_LLM 45ms · tokens in 4122 / out 80_
+_LLM 46ms · tokens in 4122 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -505,13 +505,13 @@ _LLM 45ms · tokens in 4122 / out 80_
 }
 ```
 
-### ✅ Tool Result: `update_plan` (1ms)
+### ✅ Tool Result: `update_plan` (0ms)
 
 ```
 计划已更新（2/4 完成）
 ```
 
-### ✅ Tool Result: `search_cases` (0ms)
+### ✅ Tool Result: `search_cases` (1ms)
 
 ```
 {
@@ -546,7 +546,7 @@ _LLM 45ms · tokens in 4122 / out 80_
 }
 ```
 
-### ✅ Tool Result: `search_runbook` (2ms)
+### ✅ Tool Result: `search_runbook` (1ms)
 
 ```
 {
@@ -604,7 +604,7 @@ Pod job-126 被 kubelet 驱逐（phase=Failed reason=Evicted），节点 node-3 
 ## 证据不足说明
 无
 
-_LLM 1708ms · tokens in 5074 / out 80_
+_LLM 1693ms · tokens in 5074 / out 80_
 
 ## 🏁 Final Answer (completed, 5 steps, tokens in 10122 / out 400)
 

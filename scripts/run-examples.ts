@@ -23,7 +23,7 @@ const expected = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, '.wor
 const ws = (f: string) => fs.existsSync(path.join(WORKSPACE, f)) ? fs.readFileSync(path.join(WORKSPACE, f), 'utf8') : '';
 type Verify = (r: AgentRunResult, t: TraceT) => string | null; // 返回 null 表示通过，否则是失败原因
 
-const TASKS: { id: string; type: string; task: string; outputs: string[]; allowWrite?: boolean; concurrentTwin?: boolean; verify: Verify }[] = [
+const TASKS: { id: string; type: string; task: string; outputs: string[]; allowWrite?: boolean; concurrentTwin?: boolean; caveat?: string; verify: Verify }[] = [
   { id: '01-search-and-summarize', type: '搜索并汇总：Plan + 搜索精化（排除假阳性）+ 并行 Sub Agent', task: '找出 workspace 目录中所有 TODO，按照文件进行分类并生成 todo-report.md。', outputs: ['todo-report.md'],
     verify: (r) => { const md = ws('todo-report.md'); if (!md) return '未生成报告'; if (/todoList|TODOS/.test(md)) return '报告包含假阳性'; if (/node_modules/.test(md)) return '扫描了 node_modules'; const n = (md.match(/^- L\d+/gm) ?? []).length; return n === 16 ? null : `期望 16 条，实际 ${n}`; } },
   { id: '02-read-calc-report', type: '读取、计算并生成报告：Tool Search 激活 csv_parse + calculator + 脏数据', task: '读取 data/sales.txt 中的数据，计算所有产品销售额之和，并把计算结果写入 report.md。', outputs: ['report.md'],
@@ -45,6 +45,7 @@ const TASKS: { id: string; type: string; task: string; outputs: string[]; allowW
   { id: '10-subagent-write-permission', type: 'Sub Agent 默认只读 → 写失败 → 父 Agent 授予 allow_write 重派（并行）', task: '用子 Agent 为 src 下每个 .ts 文件生成摘要，写入 docs/summaries/<文件名>.md。', outputs: [],
     verify: (r, t) => { const n = fs.existsSync(path.join(WORKSPACE, 'docs/summaries')) ? fs.readdirSync(path.join(WORKSPACE, 'docs/summaries')).length : 0; if (n !== 5) return `期望 5 个摘要，实际 ${n}`; return t.events.some((e) => e.type === 'tool_result' && e.depth > 0 && !e.result.ok && /写权限/.test(e.result.error)) ? null : '子 Agent 首次写入未被拒'; } },
   { id: '11-cannot-complete-missing-info', type: '判断任务无法完成：所需信息（汇率）不在 workspace，拒绝猜测', task: '把 data/sales.txt 的销售额换算成美元写入 report-usd.md。', outputs: [],
+    caveat: '本用例由 Mock LLM 演示，证明的是**框架支持"拒绝猜测"这条路径**，不是"Agent 一定会拒绝"。真实模型实测：`claude-haiku-4.5` 会主动搜索汇率、找不到就拒绝；`gpt-4o-mini` 仍然编造汇率并写出报告。对照见 [examples/real-model](../real-model/README.md#ab给系统提示加一条数值溯源规则)。',
     verify: (r) => !ws('report-usd.md') && /无法完成/.test(r.answer) && /汇率/.test(r.answer) ? null : '应明确说明无法完成且不生成报告' },
   // ---- 日志分析（scripts/gen-logs.ts 生成 workspace/logs/app.log） ----
   { id: '12-log-analysis-report', type: '日志分析：一轮并行 stats/latency/errors/timeline → 并行 log_trace 还原代表链路 → Markdown 报告（区分统计事实与推断）', task: '分析 logs/app.log，生成 logs/report.md，重点说明错误和慢请求。', outputs: ['logs/report.md'],
@@ -119,7 +120,7 @@ for (const t of TASKS) {
   const failures = trace.events.filter((e) => e.type === 'tool_result' && !e.result.ok).length;
   const subs = new Set(trace.events.filter((e) => e.depth > 0).map((e) => e.agent)).size;
   const verdict = t.verify(r, trace);
-  const md = `# ${t.id}\n\n**类型**: ${t.type}\n\n**任务**:\n\n> ${t.task}\n\n**校验**: ${verdict ? `❌ ${verdict}` : '✅ 通过'}\n\n**结果**: ${r.reason} · ${r.steps} steps · ${toolCalls} tool calls · ${failures} failures · ${subs} sub agents · tokens ${r.usage.inputTokens}/${r.usage.outputTokens} · ${Date.now() - t0}ms\n\n**最终答案**:\n\n${r.answer}\n\n**生成文件**: ${produced.map((f) => `[${f}](./${path.basename(f)})`).join(', ') || '（无）'}\n\n**完整 Trace**: [trace.md](./trace.md) · [trace.json](./trace.json)\n`;
+  const md = `# ${t.id}\n\n**类型**: ${t.type}\n\n**任务**:\n\n> ${t.task}\n\n${t.caveat ? `> ⚠️ ${t.caveat}\n\n` : ''}**校验**: ${verdict ? `❌ ${verdict}` : '✅ 通过'}\n\n**结果**: ${r.reason} · ${r.steps} steps · ${toolCalls} tool calls · ${failures} failures · ${subs} sub agents · tokens ${r.usage.inputTokens}/${r.usage.outputTokens} · ${Date.now() - t0}ms\n\n**最终答案**:\n\n${r.answer}\n\n**生成文件**: ${produced.map((f) => `[${f}](./${path.basename(f)})`).join(', ') || '（无）'}\n\n**完整 Trace**: [trace.md](./trace.md) · [trace.json](./trace.json)\n`;
   fs.writeFileSync(path.join(dir, 'README.md'), md);
   summary.push(`## [${t.id}](./${t.id}/README.md)\n\n- 类型: ${t.type}\n- 任务: ${t.task}\n- 校验: ${verdict ? `❌ ${verdict}` : '✅'}\n- 结果: **${r.reason}**，${r.steps} steps，${toolCalls} tool calls，${failures} failures，${subs} sub agents\n- 最终答案: ${r.answer.split('\n')[0]}\n`);
   console.log(`${verdict ? '✘' : '✔'} ${t.id}: ${r.reason} (${r.steps} steps, ${toolCalls} calls, ${failures} failed, ${subs} subs)${verdict ? '  ← ' + verdict : ''}`);

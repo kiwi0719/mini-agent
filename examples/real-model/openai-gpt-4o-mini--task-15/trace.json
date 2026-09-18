@@ -1,0 +1,6928 @@
+{
+  "meta": {
+    "provider": "openai:openai/gpt-4o-mini",
+    "workspace": "workspace"
+  },
+  "startedAt": 1789767996395,
+  "events": [
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "user",
+      "task": "帮我分析 job-123 为什么失败，并修复它。",
+      "ts": 1789767996411
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 1,
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "call_GiaB13aZcHsFmGeMHQvxbUBD",
+          "name": "get_pod",
+          "input": {
+            "name": "job-123"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 3513,
+        "outputTokens": 17
+      },
+      "durationMs": 1363,
+      "ts": 1789767997774
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "call_GiaB13aZcHsFmGeMHQvxbUBD",
+        "name": "get_pod",
+        "input": {
+          "name": "job-123"
+        }
+      },
+      "ts": 1789767997774
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 1,
+      "callId": "call_GiaB13aZcHsFmGeMHQvxbUBD",
+      "name": "get_pod",
+      "result": {
+        "ok": true,
+        "output": "{\n \"namespace\": \"default\",\n \"name\": \"job-123\",\n \"phase\": \"Running\",\n \"nodeName\": \"node-1\",\n \"startTime\": \"2026-09-18T08:00:00.000Z\",\n \"labels\": {\n  \"app\": \"report-builder\",\n  \"job-name\": \"job-123\"\n },\n \"resources\": {\n  \"requests\": {\n   \"cpu\": \"500m\",\n   \"memory\": \"256Mi\"\n  },\n  \"limits\": {\n   \"cpu\": \"1\",\n   \"memory\": \"512Mi\"\n  }\n },\n \"containers\": [\n  {\n   \"name\": \"report-builder\",\n   \"image\": \"registry.local/report-builder:1.4.2\",\n   \"ready\": false,\n   \"restartCount\": 5,\n   \"state\": {\n    \"waiting\": {\n     \"reason\": \"CrashLoopBackOff\",\n     \"message\": \"back-off 2m40s restarting failed container\"\n    }\n   },\n   \"lastState\": {\n    \"terminated\": {\n     \"reason\": \"OOMKilled\",\n     \"exitCode\": 137,\n     \"startedAt\": \"2026-09-18T08:40:00.000Z\",\n     \"finishedAt\": \"2026-09-18T08:44:00.000Z\"\n    }\n   }\n  }\n ],\n \"conditions\": [\n  {\n   \"type\": \"PodScheduled\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"Initialized\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"ContainersReady\",\n   \"status\": \"False\",\n   \"reason\": \"ContainersNotReady\",\n   \"message\": \"containers with unready status: [report-builder]\"\n  },\n  {\n   \"type\": \"Ready\",\n   \"status\": \"False\",\n   \"reason\": \"ContainersNotReady\"\n  }\n ],\n \"signals\": [\n  \"容器 report-builder 终止原因=OOMKilled exitCode=137\",\n  \"容器 report-builder 重启 5 次\",\n  \"容器 report-builder waiting=CrashLoopBackOff\",\n  \"容器 report-builder 未 Ready\",\n  \"condition ContainersReady=False (ContainersNotReady)\",\n  \"condition Ready=False (ContainersNotReady)\"\n ]\n}"
+      },
+      "durationMs": 2,
+      "ts": 1789767997776
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 2,
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "call_UHHQ72Y2mexjZisTiI5ZLSch",
+          "name": "get_logs",
+          "input": {
+            "name": "job-123",
+            "namespace": "default",
+            "previous": true
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 4016,
+        "outputTokens": 24
+      },
+      "durationMs": 1259,
+      "ts": 1789767999035
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "call_UHHQ72Y2mexjZisTiI5ZLSch",
+        "name": "get_logs",
+        "input": {
+          "name": "job-123",
+          "namespace": "default",
+          "previous": true
+        }
+      },
+      "ts": 1789767999035
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 2,
+      "callId": "call_UHHQ72Y2mexjZisTiI5ZLSch",
+      "name": "get_logs",
+      "result": {
+        "ok": true,
+        "output": "{\n \"previous\": true,\n \"lines\": 6,\n \"highlights\": [],\n \"log\": \"2026-09-18T08:40:02Z INFO  report-builder starting, version 1.4.2\\n2026-09-18T08:40:02Z INFO  loading dataset /data/orders-2026-09.parquet (3.9 GB)\\n2026-09-18T08:40:21Z INFO  loaded 1200000 rows into memory\\n2026-09-18T08:41:30Z INFO  loaded 8400000 rows into memory\\n2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit\\n2026-09-18T08:44:01Z INFO  building pivot table (this may take a while)\"\n}"
+      },
+      "durationMs": 3,
+      "ts": 1789767999038
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 3,
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "call_Mpa7iDL0rl7cafDiUpmGmYSr",
+          "name": "propose_fix",
+          "input": {
+            "name": "job-123",
+            "namespace": "default",
+            "diagnosis": "OOMKilled"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 4232,
+        "outputTokens": 27
+      },
+      "durationMs": 1198,
+      "ts": 1789768000236
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "call_Mpa7iDL0rl7cafDiUpmGmYSr",
+        "name": "propose_fix",
+        "input": {
+          "name": "job-123",
+          "namespace": "default",
+          "diagnosis": "OOMKilled"
+        }
+      },
+      "ts": 1789768000237
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "call_Mpa7iDL0rl7cafDiUpmGmYSr",
+      "name": "propose_fix",
+      "result": {
+        "ok": true,
+        "output": "{\n \"pod\": \"default/job-123\",\n \"note\": \"执行任一方案前需人工确认：apply_fix 是写操作，未授权写权限时会被拒绝。\",\n \"proposals\": [\n  {\n   \"action\": \"increase_memory_limit\",\n   \"description\": \"把容器 memory limit 从 512Mi 提高到 2Gi（request 同步到 1Gi）并重建 Pod\",\n   \"risk\": \"low\",\n   \"command\": \"kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi\",\n   \"relevance\": 0,\n   \"applied\": false\n  },\n  {\n   \"action\": \"restart_pod\",\n   \"description\": \"仅删除 Pod 让其重建（不解决内存不足，大概率再次 OOM）\",\n   \"risk\": \"medium\",\n   \"command\": \"kubectl delete pod job-123\",\n   \"relevance\": 0,\n   \"applied\": false\n  }\n ]\n}"
+      },
+      "durationMs": 3,
+      "ts": 1789768000240
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "##",
+      "ts": 1789768001255
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 故",
+      "ts": 1789768001255
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "障",
+      "ts": 1789768001255
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "现",
+      "ts": 1789768001255
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "象",
+      "ts": 1789768001288
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\n",
+      "ts": 1789768001288
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Pod",
+      "ts": 1789768001288
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " `",
+      "ts": 1789768001288
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "job",
+      "ts": 1789768001318
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "-",
+      "ts": 1789768001319
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "123",
+      "ts": 1789768001319
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "`",
+      "ts": 1789768001319
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 在",
+      "ts": 1789768001378
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "运行",
+      "ts": 1789768001378
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "期间",
+      "ts": 1789768001378
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "由于",
+      "ts": 1789768001378
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "内",
+      "ts": 1789768001427
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "存",
+      "ts": 1789768001427
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "不足",
+      "ts": 1789768001427
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "而",
+      "ts": 1789768001427
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "终",
+      "ts": 1789768001454
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "止",
+      "ts": 1789768001455
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "。\n\n",
+      "ts": 1789768001455
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "##",
+      "ts": 1789768001455
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768001470
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "关键",
+      "ts": 1789768001470
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "证",
+      "ts": 1789768001470
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "据",
+      "ts": 1789768001470
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\n",
+      "ts": 1789768001534
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "-",
+      "ts": 1789768001534
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " **",
+      "ts": 1789768001534
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "容",
+      "ts": 1789768001534
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "器",
+      "ts": 1789768001570
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "状态",
+      "ts": 1789768001570
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "**",
+      "ts": 1789768001570
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": ":",
+      "ts": 1789768001571
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " \"",
+      "ts": 1789768001595
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "waiting",
+      "ts": 1789768001595
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\":",
+      "ts": 1789768001595
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " {\"",
+      "ts": 1789768001595
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "reason",
+      "ts": 1789768001633
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\":",
+      "ts": 1789768001633
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " \"",
+      "ts": 1789768001633
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Crash",
+      "ts": 1789768001633
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Loop",
+      "ts": 1789768001656
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Back",
+      "ts": 1789768001656
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Off",
+      "ts": 1789768001656
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\",",
+      "ts": 1789768001656
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " \"",
+      "ts": 1789768001693
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "message",
+      "ts": 1789768001693
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\":",
+      "ts": 1789768001693
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " \"",
+      "ts": 1789768001693
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "back",
+      "ts": 1789768001724
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "-off",
+      "ts": 1789768001724
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768001724
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "2",
+      "ts": 1789768001724
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "m",
+      "ts": 1789768001751
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "40",
+      "ts": 1789768001751
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "s",
+      "ts": 1789768001752
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " restarting",
+      "ts": 1789768001752
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " failed",
+      "ts": 1789768001789
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " container",
+      "ts": 1789768001789
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\"}",
+      "ts": 1789768001789
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "（",
+      "ts": 1789768001790
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "从",
+      "ts": 1789768001834
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " `",
+      "ts": 1789768001834
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "get",
+      "ts": 1789768001834
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "_p",
+      "ts": 1789768001834
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "od",
+      "ts": 1789768001880
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "`",
+      "ts": 1789768001880
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 获取",
+      "ts": 1789768001880
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "的",
+      "ts": 1789768001880
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "状态",
+      "ts": 1789768001913
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "）\n",
+      "ts": 1789768001913
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "-",
+      "ts": 1789768001913
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " **",
+      "ts": 1789768001913
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "最近",
+      "ts": 1789768001938
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "一次",
+      "ts": 1789768001938
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "终",
+      "ts": 1789768001938
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "止",
+      "ts": 1789768001938
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "原因",
+      "ts": 1789768001971
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "**",
+      "ts": 1789768001971
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": ":",
+      "ts": 1789768001971
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " \"",
+      "ts": 1789768001971
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "OOM",
+      "ts": 1789768002001
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Killed",
+      "ts": 1789768002001
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\"",
+      "ts": 1789768002001
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " exit",
+      "ts": 1789768002001
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Code",
+      "ts": 1789768002047
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "=",
+      "ts": 1789768002047
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "137",
+      "ts": 1789768002047
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "（",
+      "ts": 1789768002047
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "从",
+      "ts": 1789768002077
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " `",
+      "ts": 1789768002077
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "get",
+      "ts": 1789768002077
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "_p",
+      "ts": 1789768002077
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "od",
+      "ts": 1789768002112
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "`",
+      "ts": 1789768002112
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 获取",
+      "ts": 1789768002112
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "的",
+      "ts": 1789768002112
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "状态",
+      "ts": 1789768002143
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "）\n",
+      "ts": 1789768002143
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "-",
+      "ts": 1789768002143
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " **",
+      "ts": 1789768002143
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "日志",
+      "ts": 1789768002173
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "**",
+      "ts": 1789768002174
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": ":",
+      "ts": 1789768002174
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " \"",
+      "ts": 1789768002174
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "heap",
+      "ts": 1789768002205
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " usage",
+      "ts": 1789768002205
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768002205
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "498",
+      "ts": 1789768002205
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " Mi",
+      "ts": 1789768002256
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "B",
+      "ts": 1789768002257
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " of",
+      "ts": 1789768002257
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768002257
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "512",
+      "ts": 1789768002277
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " Mi",
+      "ts": 1789768002277
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "B",
+      "ts": 1789768002277
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " limit",
+      "ts": 1789768002277
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\"",
+      "ts": 1789768002300
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "（",
+      "ts": 1789768002301
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "从",
+      "ts": 1789768002301
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " `",
+      "ts": 1789768002301
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "get",
+      "ts": 1789768002336
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "_logs",
+      "ts": 1789768002336
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "`",
+      "ts": 1789768002336
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 获取",
+      "ts": 1789768002336
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "的",
+      "ts": 1789768002378
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "日志",
+      "ts": 1789768002378
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "）\n\n",
+      "ts": 1789768002379
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "##",
+      "ts": 1789768002379
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 已",
+      "ts": 1789768002410
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "确认",
+      "ts": 1789768002410
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "事实",
+      "ts": 1789768002410
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\n",
+      "ts": 1789768002410
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "1",
+      "ts": 1789768002452
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": ".",
+      "ts": 1789768002452
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 容",
+      "ts": 1789768002452
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "器",
+      "ts": 1789768002452
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " `",
+      "ts": 1789768002518
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "report",
+      "ts": 1789768002518
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "-builder",
+      "ts": 1789768002518
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "`",
+      "ts": 1789768002518
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 在",
+      "ts": 1789768002534
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "尝",
+      "ts": 1789768002534
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "试",
+      "ts": 1789768002534
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "加载",
+      "ts": 1789768002534
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "数据",
+      "ts": 1789768002543
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "时",
+      "ts": 1789768002543
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "达",
+      "ts": 1789768002544
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "到了",
+      "ts": 1789768002544
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "内",
+      "ts": 1789768002576
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "存",
+      "ts": 1789768002576
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "限制",
+      "ts": 1789768002576
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "，",
+      "ts": 1789768002576
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "导致",
+      "ts": 1789768002597
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "其",
+      "ts": 1789768002597
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "被",
+      "ts": 1789768002597
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "操作",
+      "ts": 1789768002597
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "系统",
+      "ts": 1789768002623
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "杀",
+      "ts": 1789768002623
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "掉",
+      "ts": 1789768002623
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "（",
+      "ts": 1789768002623
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "OOM",
+      "ts": 1789768002662
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Killed",
+      "ts": 1789768002663
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "）。\n",
+      "ts": 1789768002663
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "2",
+      "ts": 1789768002663
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": ".",
+      "ts": 1789768002689
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 容",
+      "ts": 1789768002690
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "器",
+      "ts": 1789768002690
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "目前",
+      "ts": 1789768002690
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "处",
+      "ts": 1789768002726
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "于",
+      "ts": 1789768002726
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "重",
+      "ts": 1789768002726
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "启",
+      "ts": 1789768002726
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "循环",
+      "ts": 1789768002803
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "状态",
+      "ts": 1789768002803
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "（",
+      "ts": 1789768002803
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Crash",
+      "ts": 1789768002803
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Loop",
+      "ts": 1789768002812
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Back",
+      "ts": 1789768002813
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Off",
+      "ts": 1789768002813
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "），",
+      "ts": 1789768002813
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "已经",
+      "ts": 1789768002822
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "重",
+      "ts": 1789768002822
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "启",
+      "ts": 1789768002822
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "了",
+      "ts": 1789768002822
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "5",
+      "ts": 1789768002851
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "次",
+      "ts": 1789768002851
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "。\n\n",
+      "ts": 1789768002851
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "##",
+      "ts": 1789768002851
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768002884
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "可能",
+      "ts": 1789768002884
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "原因",
+      "ts": 1789768002884
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "（",
+      "ts": 1789768002884
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "推",
+      "ts": 1789768002925
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "测",
+      "ts": 1789768002926
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "）\n",
+      "ts": 1789768002926
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "-",
+      "ts": 1789768002926
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 容",
+      "ts": 1789768002951
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "器",
+      "ts": 1789768002951
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "的",
+      "ts": 1789768002951
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "内",
+      "ts": 1789768002951
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "存",
+      "ts": 1789768002974
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "限制",
+      "ts": 1789768002974
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "（",
+      "ts": 1789768002974
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "512",
+      "ts": 1789768002974
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " Mi",
+      "ts": 1789768003018
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "B",
+      "ts": 1789768003018
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "）",
+      "ts": 1789768003018
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "不足",
+      "ts": 1789768003018
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "以",
+      "ts": 1789768003103
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "处理",
+      "ts": 1789768003103
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "加载",
+      "ts": 1789768003103
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "的数据",
+      "ts": 1789768003103
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "（",
+      "ts": 1789768003114
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "3",
+      "ts": 1789768003114
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": ".",
+      "ts": 1789768003114
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "9",
+      "ts": 1789768003114
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " GB",
+      "ts": 1789768003123
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "），",
+      "ts": 1789768003123
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "导致",
+      "ts": 1789768003123
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "内",
+      "ts": 1789768003123
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "存",
+      "ts": 1789768003132
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "耗",
+      "ts": 1789768003132
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "尽",
+      "ts": 1789768003132
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "。\n",
+      "ts": 1789768003166
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768003166
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " -",
+      "ts": 1789768003167
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768003167
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "置信",
+      "ts": 1789768003210
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "度",
+      "ts": 1789768003210
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "：",
+      "ts": 1789768003210
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "高",
+      "ts": 1789768003210
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\n",
+      "ts": 1789768003224
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768003224
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " -",
+      "ts": 1789768003224
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768003224
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "依据",
+      "ts": 1789768003281
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "：",
+      "ts": 1789768003281
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "日志",
+      "ts": 1789768003282
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "显示",
+      "ts": 1789768003282
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "在",
+      "ts": 1789768003361
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "达到",
+      "ts": 1789768003361
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "内",
+      "ts": 1789768003361
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "存",
+      "ts": 1789768003361
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "限制",
+      "ts": 1789768003372
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "时",
+      "ts": 1789768003372
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "正在",
+      "ts": 1789768003373
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "执行",
+      "ts": 1789768003373
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "内",
+      "ts": 1789768003378
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "存",
+      "ts": 1789768003378
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "密",
+      "ts": 1789768003378
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "集",
+      "ts": 1789768003378
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "型",
+      "ts": 1789768003387
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "操作",
+      "ts": 1789768003387
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "。\n\n",
+      "ts": 1789768003387
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "##",
+      "ts": 1789768003387
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768003393
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "处理",
+      "ts": 1789768003393
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "建议",
+      "ts": 1789768003393
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\n",
+      "ts": 1789768003393
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "-",
+      "ts": 1789768003430
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " **",
+      "ts": 1789768003430
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "方案",
+      "ts": 1789768003430
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "**",
+      "ts": 1789768003430
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": ":",
+      "ts": 1789768003459
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 增",
+      "ts": 1789768003460
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "加",
+      "ts": 1789768003460
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "容",
+      "ts": 1789768003460
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "器",
+      "ts": 1789768003485
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "的",
+      "ts": 1789768003485
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "内",
+      "ts": 1789768003485
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "存",
+      "ts": 1789768003485
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "限制",
+      "ts": 1789768003545
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "，将",
+      "ts": 1789768003545
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "内",
+      "ts": 1789768003545
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "存",
+      "ts": 1789768003545
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "限制",
+      "ts": 1789768003588
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "从",
+      "ts": 1789768003588
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768003588
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "512",
+      "ts": 1789768003588
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " Mi",
+      "ts": 1789768003620
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "B",
+      "ts": 1789768003620
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 提",
+      "ts": 1789768003620
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "高",
+      "ts": 1789768003620
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "到",
+      "ts": 1789768003654
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768003654
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "2",
+      "ts": 1789768003654
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " Gi",
+      "ts": 1789768003654
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "B",
+      "ts": 1789768003684
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "，并",
+      "ts": 1789768003684
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "将",
+      "ts": 1789768003684
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "请求",
+      "ts": 1789768003684
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "内",
+      "ts": 1789768003711
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "存",
+      "ts": 1789768003711
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "同步",
+      "ts": 1789768003711
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "调整",
+      "ts": 1789768003711
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "为",
+      "ts": 1789768003728
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768003728
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "1",
+      "ts": 1789768003728
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " Gi",
+      "ts": 1789768003728
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "B",
+      "ts": 1789768003778
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "。",
+      "ts": 1789768003778
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "命",
+      "ts": 1789768003778
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "令",
+      "ts": 1789768003778
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "如下",
+      "ts": 1789768003797
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "：\n",
+      "ts": 1789768003797
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768003798
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ```",
+      "ts": 1789768003798
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "bash",
+      "ts": 1789768003836
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\n",
+      "ts": 1789768003836
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768003836
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " kub",
+      "ts": 1789768003836
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "ectl",
+      "ts": 1789768003874
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " set",
+      "ts": 1789768003874
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " resources",
+      "ts": 1789768003874
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " job",
+      "ts": 1789768003874
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "/job",
+      "ts": 1789768003901
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "-",
+      "ts": 1789768003901
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "123",
+      "ts": 1789768003901
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " --",
+      "ts": 1789768003901
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "limits",
+      "ts": 1789768003925
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "=",
+      "ts": 1789768003926
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "memory",
+      "ts": 1789768003926
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "=",
+      "ts": 1789768003926
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "2",
+      "ts": 1789768003959
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Gi",
+      "ts": 1789768003959
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " --",
+      "ts": 1789768003959
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "requests",
+      "ts": 1789768003959
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "=",
+      "ts": 1789768003985
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "memory",
+      "ts": 1789768003985
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "=",
+      "ts": 1789768003985
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "1",
+      "ts": 1789768003985
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Gi",
+      "ts": 1789768004003
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\n",
+      "ts": 1789768004003
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768004003
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ```\n",
+      "ts": 1789768004003
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768004039
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " -",
+      "ts": 1789768004039
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 风",
+      "ts": 1789768004039
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "险",
+      "ts": 1789768004039
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": ":",
+      "ts": 1789768004077
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768004077
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "低",
+      "ts": 1789768004077
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "（",
+      "ts": 1789768004077
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "此",
+      "ts": 1789768004186
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "操作",
+      "ts": 1789768004186
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "可以",
+      "ts": 1789768004186
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "防",
+      "ts": 1789768004186
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "止",
+      "ts": 1789768004311
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " O",
+      "ts": 1789768004311
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "OM",
+      "ts": 1789768004311
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " 问",
+      "ts": 1789768004311
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "题",
+      "ts": 1789768004356
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "再次",
+      "ts": 1789768004356
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "发生",
+      "ts": 1789768004356
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "）\n\n",
+      "ts": 1789768004356
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "-",
+      "ts": 1789768004403
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " **",
+      "ts": 1789768004403
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "替",
+      "ts": 1789768004403
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "代",
+      "ts": 1789768004403
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "方案",
+      "ts": 1789768004435
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "**",
+      "ts": 1789768004435
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": ":",
+      "ts": 1789768004435
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768004435
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "仅",
+      "ts": 1789768004474
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "删除",
+      "ts": 1789768004474
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "当前",
+      "ts": 1789768004474
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " Pod",
+      "ts": 1789768004474
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "，让",
+      "ts": 1789768004504
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "其",
+      "ts": 1789768004504
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "重",
+      "ts": 1789768004504
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "建",
+      "ts": 1789768004504
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "（",
+      "ts": 1789768004535
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "风险",
+      "ts": 1789768004535
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "中",
+      "ts": 1789768004536
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "等",
+      "ts": 1789768004536
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "，",
+      "ts": 1789768004563
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "可能",
+      "ts": 1789768004563
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "会",
+      "ts": 1789768004563
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "再次",
+      "ts": 1789768004563
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " O",
+      "ts": 1789768004590
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "OM",
+      "ts": 1789768004590
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "）\n\n",
+      "ts": 1789768004590
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "##",
+      "ts": 1789768004590
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": " ",
+      "ts": 1789768004624
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "证",
+      "ts": 1789768004624
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "据",
+      "ts": 1789768004624
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "不足",
+      "ts": 1789768004624
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "说明",
+      "ts": 1789768004655
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\n",
+      "ts": 1789768004655
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "无",
+      "ts": 1789768004656
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "\n\n",
+      "ts": 1789768004656
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "请",
+      "ts": 1789768004682
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "确认",
+      "ts": 1789768004683
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "是否",
+      "ts": 1789768004683
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "执行",
+      "ts": 1789768004683
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "增加",
+      "ts": 1789768004709
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "内",
+      "ts": 1789768004709
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "存",
+      "ts": 1789768004709
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "限制",
+      "ts": 1789768004709
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "的",
+      "ts": 1789768004759
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "修",
+      "ts": 1789768004759
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "复",
+      "ts": 1789768004759
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "动作",
+      "ts": 1789768004759
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "。",
+      "ts": 1789768004788
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 4,
+      "text": "## 故障现象\nPod `job-123` 在运行期间由于内存不足而终止。\n\n## 关键证据\n- **容器状态**: \"waiting\": {\"reason\": \"CrashLoopBackOff\", \"message\": \"back-off 2m40s restarting failed container\"}（从 `get_pod` 获取的状态）\n- **最近一次终止原因**: \"OOMKilled\" exitCode=137（从 `get_pod` 获取的状态）\n- **日志**: \"heap usage 498 MiB of 512 MiB limit\"（从 `get_logs` 获取的日志）\n\n## 已确认事实\n1. 容器 `report-builder` 在尝试加载数据时达到了内存限制，导致其被操作系统杀掉（OOMKilled）。\n2. 容器目前处于重启循环状态（CrashLoopBackOff），已经重启了5次。\n\n## 可能原因（推测）\n- 容器的内存限制（512 MiB）不足以处理加载的数据（3.9 GB），导致内存耗尽。\n  - 置信度：高\n  - 依据：日志显示在达到内存限制时正在执行内存密集型操作。\n\n## 处理建议\n- **方案**: 增加容器的内存限制，将内存限制从 512 MiB 提高到 2 GiB，并将请求内存同步调整为 1 GiB。命令如下：\n  ```bash\n  kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi\n  ```\n  - 风险: 低（此操作可以防止 OOM 问题再次发生）\n\n- **替代方案**: 仅删除当前 Pod，让其重建（风险中等，可能会再次 OOM）\n\n## 证据不足说明\n无\n\n请确认是否执行增加内存限制的修复动作。",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 4485,
+        "outputTokens": 416
+      },
+      "durationMs": 4569,
+      "ts": 1789768004809
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "final",
+      "answer": "## 故障现象\nPod `job-123` 在运行期间由于内存不足而终止。\n\n## 关键证据\n- **容器状态**: \"waiting\": {\"reason\": \"CrashLoopBackOff\", \"message\": \"back-off 2m40s restarting failed container\"}（从 `get_pod` 获取的状态）\n- **最近一次终止原因**: \"OOMKilled\" exitCode=137（从 `get_pod` 获取的状态）\n- **日志**: \"heap usage 498 MiB of 512 MiB limit\"（从 `get_logs` 获取的日志）\n\n## 已确认事实\n1. 容器 `report-builder` 在尝试加载数据时达到了内存限制，导致其被操作系统杀掉（OOMKilled）。\n2. 容器目前处于重启循环状态（CrashLoopBackOff），已经重启了5次。\n\n## 可能原因（推测）\n- 容器的内存限制（512 MiB）不足以处理加载的数据（3.9 GB），导致内存耗尽。\n  - 置信度：高\n  - 依据：日志显示在达到内存限制时正在执行内存密集型操作。\n\n## 处理建议\n- **方案**: 增加容器的内存限制，将内存限制从 512 MiB 提高到 2 GiB，并将请求内存同步调整为 1 GiB。命令如下：\n  ```bash\n  kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi\n  ```\n  - 风险: 低（此操作可以防止 OOM 问题再次发生）\n\n- **替代方案**: 仅删除当前 Pod，让其重建（风险中等，可能会再次 OOM）\n\n## 证据不足说明\n无\n\n请确认是否执行增加内存限制的修复动作。",
+      "reason": "completed",
+      "steps": 4,
+      "usage": {
+        "inputTokens": 16246,
+        "outputTokens": 484
+      },
+      "ts": 1789768004809
+    }
+  ],
+  "tree": {
+    "agent": "main",
+    "depth": 0,
+    "events": [
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "user",
+        "task": "帮我分析 job-123 为什么失败，并修复它。",
+        "ts": 1789767996411
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 1,
+        "text": "",
+        "toolCalls": [
+          {
+            "id": "call_GiaB13aZcHsFmGeMHQvxbUBD",
+            "name": "get_pod",
+            "input": {
+              "name": "job-123"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 3513,
+          "outputTokens": 17
+        },
+        "durationMs": 1363,
+        "ts": 1789767997774
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 1,
+        "call": {
+          "id": "call_GiaB13aZcHsFmGeMHQvxbUBD",
+          "name": "get_pod",
+          "input": {
+            "name": "job-123"
+          }
+        },
+        "ts": 1789767997774
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 1,
+        "callId": "call_GiaB13aZcHsFmGeMHQvxbUBD",
+        "name": "get_pod",
+        "result": {
+          "ok": true,
+          "output": "{\n \"namespace\": \"default\",\n \"name\": \"job-123\",\n \"phase\": \"Running\",\n \"nodeName\": \"node-1\",\n \"startTime\": \"2026-09-18T08:00:00.000Z\",\n \"labels\": {\n  \"app\": \"report-builder\",\n  \"job-name\": \"job-123\"\n },\n \"resources\": {\n  \"requests\": {\n   \"cpu\": \"500m\",\n   \"memory\": \"256Mi\"\n  },\n  \"limits\": {\n   \"cpu\": \"1\",\n   \"memory\": \"512Mi\"\n  }\n },\n \"containers\": [\n  {\n   \"name\": \"report-builder\",\n   \"image\": \"registry.local/report-builder:1.4.2\",\n   \"ready\": false,\n   \"restartCount\": 5,\n   \"state\": {\n    \"waiting\": {\n     \"reason\": \"CrashLoopBackOff\",\n     \"message\": \"back-off 2m40s restarting failed container\"\n    }\n   },\n   \"lastState\": {\n    \"terminated\": {\n     \"reason\": \"OOMKilled\",\n     \"exitCode\": 137,\n     \"startedAt\": \"2026-09-18T08:40:00.000Z\",\n     \"finishedAt\": \"2026-09-18T08:44:00.000Z\"\n    }\n   }\n  }\n ],\n \"conditions\": [\n  {\n   \"type\": \"PodScheduled\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"Initialized\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"ContainersReady\",\n   \"status\": \"False\",\n   \"reason\": \"ContainersNotReady\",\n   \"message\": \"containers with unready status: [report-builder]\"\n  },\n  {\n   \"type\": \"Ready\",\n   \"status\": \"False\",\n   \"reason\": \"ContainersNotReady\"\n  }\n ],\n \"signals\": [\n  \"容器 report-builder 终止原因=OOMKilled exitCode=137\",\n  \"容器 report-builder 重启 5 次\",\n  \"容器 report-builder waiting=CrashLoopBackOff\",\n  \"容器 report-builder 未 Ready\",\n  \"condition ContainersReady=False (ContainersNotReady)\",\n  \"condition Ready=False (ContainersNotReady)\"\n ]\n}"
+        },
+        "durationMs": 2,
+        "ts": 1789767997776
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 2,
+        "text": "",
+        "toolCalls": [
+          {
+            "id": "call_UHHQ72Y2mexjZisTiI5ZLSch",
+            "name": "get_logs",
+            "input": {
+              "name": "job-123",
+              "namespace": "default",
+              "previous": true
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 4016,
+          "outputTokens": 24
+        },
+        "durationMs": 1259,
+        "ts": 1789767999035
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 2,
+        "call": {
+          "id": "call_UHHQ72Y2mexjZisTiI5ZLSch",
+          "name": "get_logs",
+          "input": {
+            "name": "job-123",
+            "namespace": "default",
+            "previous": true
+          }
+        },
+        "ts": 1789767999035
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 2,
+        "callId": "call_UHHQ72Y2mexjZisTiI5ZLSch",
+        "name": "get_logs",
+        "result": {
+          "ok": true,
+          "output": "{\n \"previous\": true,\n \"lines\": 6,\n \"highlights\": [],\n \"log\": \"2026-09-18T08:40:02Z INFO  report-builder starting, version 1.4.2\\n2026-09-18T08:40:02Z INFO  loading dataset /data/orders-2026-09.parquet (3.9 GB)\\n2026-09-18T08:40:21Z INFO  loaded 1200000 rows into memory\\n2026-09-18T08:41:30Z INFO  loaded 8400000 rows into memory\\n2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit\\n2026-09-18T08:44:01Z INFO  building pivot table (this may take a while)\"\n}"
+        },
+        "durationMs": 3,
+        "ts": 1789767999038
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 3,
+        "text": "",
+        "toolCalls": [
+          {
+            "id": "call_Mpa7iDL0rl7cafDiUpmGmYSr",
+            "name": "propose_fix",
+            "input": {
+              "name": "job-123",
+              "namespace": "default",
+              "diagnosis": "OOMKilled"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 4232,
+          "outputTokens": 27
+        },
+        "durationMs": 1198,
+        "ts": 1789768000236
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "call_Mpa7iDL0rl7cafDiUpmGmYSr",
+          "name": "propose_fix",
+          "input": {
+            "name": "job-123",
+            "namespace": "default",
+            "diagnosis": "OOMKilled"
+          }
+        },
+        "ts": 1789768000237
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "call_Mpa7iDL0rl7cafDiUpmGmYSr",
+        "name": "propose_fix",
+        "result": {
+          "ok": true,
+          "output": "{\n \"pod\": \"default/job-123\",\n \"note\": \"执行任一方案前需人工确认：apply_fix 是写操作，未授权写权限时会被拒绝。\",\n \"proposals\": [\n  {\n   \"action\": \"increase_memory_limit\",\n   \"description\": \"把容器 memory limit 从 512Mi 提高到 2Gi（request 同步到 1Gi）并重建 Pod\",\n   \"risk\": \"low\",\n   \"command\": \"kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi\",\n   \"relevance\": 0,\n   \"applied\": false\n  },\n  {\n   \"action\": \"restart_pod\",\n   \"description\": \"仅删除 Pod 让其重建（不解决内存不足，大概率再次 OOM）\",\n   \"risk\": \"medium\",\n   \"command\": \"kubectl delete pod job-123\",\n   \"relevance\": 0,\n   \"applied\": false\n  }\n ]\n}"
+        },
+        "durationMs": 3,
+        "ts": 1789768000240
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "##",
+        "ts": 1789768001255
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 故",
+        "ts": 1789768001255
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "障",
+        "ts": 1789768001255
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "现",
+        "ts": 1789768001255
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "象",
+        "ts": 1789768001288
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\n",
+        "ts": 1789768001288
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Pod",
+        "ts": 1789768001288
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " `",
+        "ts": 1789768001288
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "job",
+        "ts": 1789768001318
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "-",
+        "ts": 1789768001319
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "123",
+        "ts": 1789768001319
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "`",
+        "ts": 1789768001319
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 在",
+        "ts": 1789768001378
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "运行",
+        "ts": 1789768001378
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "期间",
+        "ts": 1789768001378
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "由于",
+        "ts": 1789768001378
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "内",
+        "ts": 1789768001427
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "存",
+        "ts": 1789768001427
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "不足",
+        "ts": 1789768001427
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "而",
+        "ts": 1789768001427
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "终",
+        "ts": 1789768001454
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "止",
+        "ts": 1789768001455
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "。\n\n",
+        "ts": 1789768001455
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "##",
+        "ts": 1789768001455
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768001470
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "关键",
+        "ts": 1789768001470
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "证",
+        "ts": 1789768001470
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "据",
+        "ts": 1789768001470
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\n",
+        "ts": 1789768001534
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "-",
+        "ts": 1789768001534
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " **",
+        "ts": 1789768001534
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "容",
+        "ts": 1789768001534
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "器",
+        "ts": 1789768001570
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "状态",
+        "ts": 1789768001570
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "**",
+        "ts": 1789768001570
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": ":",
+        "ts": 1789768001571
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " \"",
+        "ts": 1789768001595
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "waiting",
+        "ts": 1789768001595
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\":",
+        "ts": 1789768001595
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " {\"",
+        "ts": 1789768001595
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "reason",
+        "ts": 1789768001633
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\":",
+        "ts": 1789768001633
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " \"",
+        "ts": 1789768001633
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Crash",
+        "ts": 1789768001633
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Loop",
+        "ts": 1789768001656
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Back",
+        "ts": 1789768001656
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Off",
+        "ts": 1789768001656
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\",",
+        "ts": 1789768001656
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " \"",
+        "ts": 1789768001693
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "message",
+        "ts": 1789768001693
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\":",
+        "ts": 1789768001693
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " \"",
+        "ts": 1789768001693
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "back",
+        "ts": 1789768001724
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "-off",
+        "ts": 1789768001724
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768001724
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "2",
+        "ts": 1789768001724
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "m",
+        "ts": 1789768001751
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "40",
+        "ts": 1789768001751
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "s",
+        "ts": 1789768001752
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " restarting",
+        "ts": 1789768001752
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " failed",
+        "ts": 1789768001789
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " container",
+        "ts": 1789768001789
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\"}",
+        "ts": 1789768001789
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "（",
+        "ts": 1789768001790
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "从",
+        "ts": 1789768001834
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " `",
+        "ts": 1789768001834
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "get",
+        "ts": 1789768001834
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "_p",
+        "ts": 1789768001834
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "od",
+        "ts": 1789768001880
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "`",
+        "ts": 1789768001880
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 获取",
+        "ts": 1789768001880
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "的",
+        "ts": 1789768001880
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "状态",
+        "ts": 1789768001913
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "）\n",
+        "ts": 1789768001913
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "-",
+        "ts": 1789768001913
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " **",
+        "ts": 1789768001913
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "最近",
+        "ts": 1789768001938
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "一次",
+        "ts": 1789768001938
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "终",
+        "ts": 1789768001938
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "止",
+        "ts": 1789768001938
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "原因",
+        "ts": 1789768001971
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "**",
+        "ts": 1789768001971
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": ":",
+        "ts": 1789768001971
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " \"",
+        "ts": 1789768001971
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "OOM",
+        "ts": 1789768002001
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Killed",
+        "ts": 1789768002001
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\"",
+        "ts": 1789768002001
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " exit",
+        "ts": 1789768002001
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Code",
+        "ts": 1789768002047
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "=",
+        "ts": 1789768002047
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "137",
+        "ts": 1789768002047
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "（",
+        "ts": 1789768002047
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "从",
+        "ts": 1789768002077
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " `",
+        "ts": 1789768002077
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "get",
+        "ts": 1789768002077
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "_p",
+        "ts": 1789768002077
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "od",
+        "ts": 1789768002112
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "`",
+        "ts": 1789768002112
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 获取",
+        "ts": 1789768002112
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "的",
+        "ts": 1789768002112
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "状态",
+        "ts": 1789768002143
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "）\n",
+        "ts": 1789768002143
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "-",
+        "ts": 1789768002143
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " **",
+        "ts": 1789768002143
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "日志",
+        "ts": 1789768002173
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "**",
+        "ts": 1789768002174
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": ":",
+        "ts": 1789768002174
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " \"",
+        "ts": 1789768002174
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "heap",
+        "ts": 1789768002205
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " usage",
+        "ts": 1789768002205
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768002205
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "498",
+        "ts": 1789768002205
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " Mi",
+        "ts": 1789768002256
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "B",
+        "ts": 1789768002257
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " of",
+        "ts": 1789768002257
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768002257
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "512",
+        "ts": 1789768002277
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " Mi",
+        "ts": 1789768002277
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "B",
+        "ts": 1789768002277
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " limit",
+        "ts": 1789768002277
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\"",
+        "ts": 1789768002300
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "（",
+        "ts": 1789768002301
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "从",
+        "ts": 1789768002301
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " `",
+        "ts": 1789768002301
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "get",
+        "ts": 1789768002336
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "_logs",
+        "ts": 1789768002336
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "`",
+        "ts": 1789768002336
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 获取",
+        "ts": 1789768002336
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "的",
+        "ts": 1789768002378
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "日志",
+        "ts": 1789768002378
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "）\n\n",
+        "ts": 1789768002379
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "##",
+        "ts": 1789768002379
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 已",
+        "ts": 1789768002410
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "确认",
+        "ts": 1789768002410
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "事实",
+        "ts": 1789768002410
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\n",
+        "ts": 1789768002410
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "1",
+        "ts": 1789768002452
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": ".",
+        "ts": 1789768002452
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 容",
+        "ts": 1789768002452
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "器",
+        "ts": 1789768002452
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " `",
+        "ts": 1789768002518
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "report",
+        "ts": 1789768002518
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "-builder",
+        "ts": 1789768002518
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "`",
+        "ts": 1789768002518
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 在",
+        "ts": 1789768002534
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "尝",
+        "ts": 1789768002534
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "试",
+        "ts": 1789768002534
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "加载",
+        "ts": 1789768002534
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "数据",
+        "ts": 1789768002543
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "时",
+        "ts": 1789768002543
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "达",
+        "ts": 1789768002544
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "到了",
+        "ts": 1789768002544
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "内",
+        "ts": 1789768002576
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "存",
+        "ts": 1789768002576
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "限制",
+        "ts": 1789768002576
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "，",
+        "ts": 1789768002576
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "导致",
+        "ts": 1789768002597
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "其",
+        "ts": 1789768002597
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "被",
+        "ts": 1789768002597
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "操作",
+        "ts": 1789768002597
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "系统",
+        "ts": 1789768002623
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "杀",
+        "ts": 1789768002623
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "掉",
+        "ts": 1789768002623
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "（",
+        "ts": 1789768002623
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "OOM",
+        "ts": 1789768002662
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Killed",
+        "ts": 1789768002663
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "）。\n",
+        "ts": 1789768002663
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "2",
+        "ts": 1789768002663
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": ".",
+        "ts": 1789768002689
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 容",
+        "ts": 1789768002690
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "器",
+        "ts": 1789768002690
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "目前",
+        "ts": 1789768002690
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "处",
+        "ts": 1789768002726
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "于",
+        "ts": 1789768002726
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "重",
+        "ts": 1789768002726
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "启",
+        "ts": 1789768002726
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "循环",
+        "ts": 1789768002803
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "状态",
+        "ts": 1789768002803
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "（",
+        "ts": 1789768002803
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Crash",
+        "ts": 1789768002803
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Loop",
+        "ts": 1789768002812
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Back",
+        "ts": 1789768002813
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Off",
+        "ts": 1789768002813
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "），",
+        "ts": 1789768002813
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "已经",
+        "ts": 1789768002822
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "重",
+        "ts": 1789768002822
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "启",
+        "ts": 1789768002822
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "了",
+        "ts": 1789768002822
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "5",
+        "ts": 1789768002851
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "次",
+        "ts": 1789768002851
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "。\n\n",
+        "ts": 1789768002851
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "##",
+        "ts": 1789768002851
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768002884
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "可能",
+        "ts": 1789768002884
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "原因",
+        "ts": 1789768002884
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "（",
+        "ts": 1789768002884
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "推",
+        "ts": 1789768002925
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "测",
+        "ts": 1789768002926
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "）\n",
+        "ts": 1789768002926
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "-",
+        "ts": 1789768002926
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 容",
+        "ts": 1789768002951
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "器",
+        "ts": 1789768002951
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "的",
+        "ts": 1789768002951
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "内",
+        "ts": 1789768002951
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "存",
+        "ts": 1789768002974
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "限制",
+        "ts": 1789768002974
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "（",
+        "ts": 1789768002974
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "512",
+        "ts": 1789768002974
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " Mi",
+        "ts": 1789768003018
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "B",
+        "ts": 1789768003018
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "）",
+        "ts": 1789768003018
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "不足",
+        "ts": 1789768003018
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "以",
+        "ts": 1789768003103
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "处理",
+        "ts": 1789768003103
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "加载",
+        "ts": 1789768003103
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "的数据",
+        "ts": 1789768003103
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "（",
+        "ts": 1789768003114
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "3",
+        "ts": 1789768003114
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": ".",
+        "ts": 1789768003114
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "9",
+        "ts": 1789768003114
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " GB",
+        "ts": 1789768003123
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "），",
+        "ts": 1789768003123
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "导致",
+        "ts": 1789768003123
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "内",
+        "ts": 1789768003123
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "存",
+        "ts": 1789768003132
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "耗",
+        "ts": 1789768003132
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "尽",
+        "ts": 1789768003132
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "。\n",
+        "ts": 1789768003166
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768003166
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " -",
+        "ts": 1789768003167
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768003167
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "置信",
+        "ts": 1789768003210
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "度",
+        "ts": 1789768003210
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "：",
+        "ts": 1789768003210
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "高",
+        "ts": 1789768003210
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\n",
+        "ts": 1789768003224
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768003224
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " -",
+        "ts": 1789768003224
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768003224
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "依据",
+        "ts": 1789768003281
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "：",
+        "ts": 1789768003281
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "日志",
+        "ts": 1789768003282
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "显示",
+        "ts": 1789768003282
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "在",
+        "ts": 1789768003361
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "达到",
+        "ts": 1789768003361
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "内",
+        "ts": 1789768003361
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "存",
+        "ts": 1789768003361
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "限制",
+        "ts": 1789768003372
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "时",
+        "ts": 1789768003372
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "正在",
+        "ts": 1789768003373
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "执行",
+        "ts": 1789768003373
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "内",
+        "ts": 1789768003378
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "存",
+        "ts": 1789768003378
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "密",
+        "ts": 1789768003378
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "集",
+        "ts": 1789768003378
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "型",
+        "ts": 1789768003387
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "操作",
+        "ts": 1789768003387
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "。\n\n",
+        "ts": 1789768003387
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "##",
+        "ts": 1789768003387
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768003393
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "处理",
+        "ts": 1789768003393
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "建议",
+        "ts": 1789768003393
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\n",
+        "ts": 1789768003393
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "-",
+        "ts": 1789768003430
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " **",
+        "ts": 1789768003430
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "方案",
+        "ts": 1789768003430
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "**",
+        "ts": 1789768003430
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": ":",
+        "ts": 1789768003459
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 增",
+        "ts": 1789768003460
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "加",
+        "ts": 1789768003460
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "容",
+        "ts": 1789768003460
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "器",
+        "ts": 1789768003485
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "的",
+        "ts": 1789768003485
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "内",
+        "ts": 1789768003485
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "存",
+        "ts": 1789768003485
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "限制",
+        "ts": 1789768003545
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "，将",
+        "ts": 1789768003545
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "内",
+        "ts": 1789768003545
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "存",
+        "ts": 1789768003545
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "限制",
+        "ts": 1789768003588
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "从",
+        "ts": 1789768003588
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768003588
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "512",
+        "ts": 1789768003588
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " Mi",
+        "ts": 1789768003620
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "B",
+        "ts": 1789768003620
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 提",
+        "ts": 1789768003620
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "高",
+        "ts": 1789768003620
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "到",
+        "ts": 1789768003654
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768003654
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "2",
+        "ts": 1789768003654
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " Gi",
+        "ts": 1789768003654
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "B",
+        "ts": 1789768003684
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "，并",
+        "ts": 1789768003684
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "将",
+        "ts": 1789768003684
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "请求",
+        "ts": 1789768003684
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "内",
+        "ts": 1789768003711
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "存",
+        "ts": 1789768003711
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "同步",
+        "ts": 1789768003711
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "调整",
+        "ts": 1789768003711
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "为",
+        "ts": 1789768003728
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768003728
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "1",
+        "ts": 1789768003728
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " Gi",
+        "ts": 1789768003728
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "B",
+        "ts": 1789768003778
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "。",
+        "ts": 1789768003778
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "命",
+        "ts": 1789768003778
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "令",
+        "ts": 1789768003778
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "如下",
+        "ts": 1789768003797
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "：\n",
+        "ts": 1789768003797
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768003798
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ```",
+        "ts": 1789768003798
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "bash",
+        "ts": 1789768003836
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\n",
+        "ts": 1789768003836
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768003836
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " kub",
+        "ts": 1789768003836
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "ectl",
+        "ts": 1789768003874
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " set",
+        "ts": 1789768003874
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " resources",
+        "ts": 1789768003874
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " job",
+        "ts": 1789768003874
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "/job",
+        "ts": 1789768003901
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "-",
+        "ts": 1789768003901
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "123",
+        "ts": 1789768003901
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " --",
+        "ts": 1789768003901
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "limits",
+        "ts": 1789768003925
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "=",
+        "ts": 1789768003926
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "memory",
+        "ts": 1789768003926
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "=",
+        "ts": 1789768003926
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "2",
+        "ts": 1789768003959
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Gi",
+        "ts": 1789768003959
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " --",
+        "ts": 1789768003959
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "requests",
+        "ts": 1789768003959
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "=",
+        "ts": 1789768003985
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "memory",
+        "ts": 1789768003985
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "=",
+        "ts": 1789768003985
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "1",
+        "ts": 1789768003985
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Gi",
+        "ts": 1789768004003
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\n",
+        "ts": 1789768004003
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768004003
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ```\n",
+        "ts": 1789768004003
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768004039
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " -",
+        "ts": 1789768004039
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 风",
+        "ts": 1789768004039
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "险",
+        "ts": 1789768004039
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": ":",
+        "ts": 1789768004077
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768004077
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "低",
+        "ts": 1789768004077
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "（",
+        "ts": 1789768004077
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "此",
+        "ts": 1789768004186
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "操作",
+        "ts": 1789768004186
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "可以",
+        "ts": 1789768004186
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "防",
+        "ts": 1789768004186
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "止",
+        "ts": 1789768004311
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " O",
+        "ts": 1789768004311
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "OM",
+        "ts": 1789768004311
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " 问",
+        "ts": 1789768004311
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "题",
+        "ts": 1789768004356
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "再次",
+        "ts": 1789768004356
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "发生",
+        "ts": 1789768004356
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "）\n\n",
+        "ts": 1789768004356
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "-",
+        "ts": 1789768004403
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " **",
+        "ts": 1789768004403
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "替",
+        "ts": 1789768004403
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "代",
+        "ts": 1789768004403
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "方案",
+        "ts": 1789768004435
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "**",
+        "ts": 1789768004435
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": ":",
+        "ts": 1789768004435
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768004435
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "仅",
+        "ts": 1789768004474
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "删除",
+        "ts": 1789768004474
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "当前",
+        "ts": 1789768004474
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " Pod",
+        "ts": 1789768004474
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "，让",
+        "ts": 1789768004504
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "其",
+        "ts": 1789768004504
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "重",
+        "ts": 1789768004504
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "建",
+        "ts": 1789768004504
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "（",
+        "ts": 1789768004535
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "风险",
+        "ts": 1789768004535
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "中",
+        "ts": 1789768004536
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "等",
+        "ts": 1789768004536
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "，",
+        "ts": 1789768004563
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "可能",
+        "ts": 1789768004563
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "会",
+        "ts": 1789768004563
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "再次",
+        "ts": 1789768004563
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " O",
+        "ts": 1789768004590
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "OM",
+        "ts": 1789768004590
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "）\n\n",
+        "ts": 1789768004590
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "##",
+        "ts": 1789768004590
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": " ",
+        "ts": 1789768004624
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "证",
+        "ts": 1789768004624
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "据",
+        "ts": 1789768004624
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "不足",
+        "ts": 1789768004624
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "说明",
+        "ts": 1789768004655
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\n",
+        "ts": 1789768004655
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "无",
+        "ts": 1789768004656
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "\n\n",
+        "ts": 1789768004656
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "请",
+        "ts": 1789768004682
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "确认",
+        "ts": 1789768004683
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "是否",
+        "ts": 1789768004683
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "执行",
+        "ts": 1789768004683
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "增加",
+        "ts": 1789768004709
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "内",
+        "ts": 1789768004709
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "存",
+        "ts": 1789768004709
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "限制",
+        "ts": 1789768004709
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "的",
+        "ts": 1789768004759
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "修",
+        "ts": 1789768004759
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "复",
+        "ts": 1789768004759
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "动作",
+        "ts": 1789768004759
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "。",
+        "ts": 1789768004788
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 4,
+        "text": "## 故障现象\nPod `job-123` 在运行期间由于内存不足而终止。\n\n## 关键证据\n- **容器状态**: \"waiting\": {\"reason\": \"CrashLoopBackOff\", \"message\": \"back-off 2m40s restarting failed container\"}（从 `get_pod` 获取的状态）\n- **最近一次终止原因**: \"OOMKilled\" exitCode=137（从 `get_pod` 获取的状态）\n- **日志**: \"heap usage 498 MiB of 512 MiB limit\"（从 `get_logs` 获取的日志）\n\n## 已确认事实\n1. 容器 `report-builder` 在尝试加载数据时达到了内存限制，导致其被操作系统杀掉（OOMKilled）。\n2. 容器目前处于重启循环状态（CrashLoopBackOff），已经重启了5次。\n\n## 可能原因（推测）\n- 容器的内存限制（512 MiB）不足以处理加载的数据（3.9 GB），导致内存耗尽。\n  - 置信度：高\n  - 依据：日志显示在达到内存限制时正在执行内存密集型操作。\n\n## 处理建议\n- **方案**: 增加容器的内存限制，将内存限制从 512 MiB 提高到 2 GiB，并将请求内存同步调整为 1 GiB。命令如下：\n  ```bash\n  kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi\n  ```\n  - 风险: 低（此操作可以防止 OOM 问题再次发生）\n\n- **替代方案**: 仅删除当前 Pod，让其重建（风险中等，可能会再次 OOM）\n\n## 证据不足说明\n无\n\n请确认是否执行增加内存限制的修复动作。",
+        "toolCalls": [],
+        "usage": {
+          "inputTokens": 4485,
+          "outputTokens": 416
+        },
+        "durationMs": 4569,
+        "ts": 1789768004809
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "final",
+        "answer": "## 故障现象\nPod `job-123` 在运行期间由于内存不足而终止。\n\n## 关键证据\n- **容器状态**: \"waiting\": {\"reason\": \"CrashLoopBackOff\", \"message\": \"back-off 2m40s restarting failed container\"}（从 `get_pod` 获取的状态）\n- **最近一次终止原因**: \"OOMKilled\" exitCode=137（从 `get_pod` 获取的状态）\n- **日志**: \"heap usage 498 MiB of 512 MiB limit\"（从 `get_logs` 获取的日志）\n\n## 已确认事实\n1. 容器 `report-builder` 在尝试加载数据时达到了内存限制，导致其被操作系统杀掉（OOMKilled）。\n2. 容器目前处于重启循环状态（CrashLoopBackOff），已经重启了5次。\n\n## 可能原因（推测）\n- 容器的内存限制（512 MiB）不足以处理加载的数据（3.9 GB），导致内存耗尽。\n  - 置信度：高\n  - 依据：日志显示在达到内存限制时正在执行内存密集型操作。\n\n## 处理建议\n- **方案**: 增加容器的内存限制，将内存限制从 512 MiB 提高到 2 GiB，并将请求内存同步调整为 1 GiB。命令如下：\n  ```bash\n  kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi\n  ```\n  - 风险: 低（此操作可以防止 OOM 问题再次发生）\n\n- **替代方案**: 仅删除当前 Pod，让其重建（风险中等，可能会再次 OOM）\n\n## 证据不足说明\n无\n\n请确认是否执行增加内存限制的修复动作。",
+        "reason": "completed",
+        "steps": 4,
+        "usage": {
+          "inputTokens": 16246,
+          "outputTokens": 484
+        },
+        "ts": 1789768004809
+      }
+    ],
+    "children": []
+  }
+}

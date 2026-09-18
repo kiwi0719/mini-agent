@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:41:45.104Z
+- time: 2026-09-18T21:47:13.682Z
 
 ## 👤 User
 
@@ -26,7 +26,7 @@ _LLM 11ms · tokens in 33 / out 80_
 }
 ```
 
-### ✅ Tool Result: `read_file` (0ms)
+### ✅ Tool Result: `read_file` (1ms)
 
 ```
 STATUS=PENDING
@@ -50,7 +50,7 @@ _LLM 11ms · tokens in 128 / out 80_
 }
 ```
 
-### ✅ Tool Result: `read_file` (0ms)
+### ✅ Tool Result: `read_file` (1ms)
 
 ```
 STATUS=PENDING
@@ -64,7 +64,7 @@ STATUS=PENDING
 
 → 决定调用 1 个工具: read_file
 
-_LLM 12ms · tokens in 225 / out 80_
+_LLM 11ms · tokens in 225 / out 80_
 
 ### 🔧 Tool Call: `read_file`
 
@@ -74,7 +74,7 @@ _LLM 12ms · tokens in 225 / out 80_
 }
 ```
 
-### ✅ Tool Result: `read_file` (0ms)
+### ✅ Tool Result: `read_file` (1ms)
 
 ```
 STATUS=PENDING
@@ -90,7 +90,7 @@ STATUS=PENDING
 
 → 决定调用 1 个工具: read_file
 
-_LLM 10ms · tokens in 342 / out 80_
+_LLM 11ms · tokens in 342 / out 80_
 
 ### 🔧 Tool Call: `read_file`
 
@@ -124,7 +124,7 @@ _LLM 12ms · tokens in 438 / out 80_
 }
 ```
 
-### ✅ Tool Result: `read_file` (0ms)
+### ✅ Tool Result: `read_file` (1ms)
 
 ```
 STATUS=PENDING
