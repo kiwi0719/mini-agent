@@ -6,7 +6,8 @@
 User → Agent Decision → Tool Call → Tool Result → Agent Decision → … → Final Answer
 ```
 
-- 📄 [设计说明 DESIGN.md](./DESIGN.md)（Agent Loop、Tool 定义、结束判定、防无限循环、失败处理、职责划分、限制）
+- ⭐ [**设计说明（七个必答问题）DESIGN-QA.md**](./DESIGN-QA.md)（Agent Loop / Tool 定义 / 结束判定 / 防无限调用 / 失败处理 / 职责划分 / 最大限制，逐条作答）
+- 📄 [DESIGN.md](./DESIGN.md)（完整设计，按模块组织：Loop、Tool、Context、失败处理、各增强项的实现与取舍）
 - 🤝 [AI_USAGE.md](./AI_USAGE.md)（AI 参与环节、关键设计决策、AI 的错误判断与修正）
 - 💬 [ai-conversation.md](./ai-conversation.md)（与 AI Coding 工具的完整对话过程）
 - 🧩 [DESIGN-EXTENSIONS.md](./DESIGN-EXTENSIONS.md)（扩展：应用日志智能分析 + Kubernetes 故障诊断 SRE Agent，两道题作为工具接入的设计与实现说明）

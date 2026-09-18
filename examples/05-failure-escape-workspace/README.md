@@ -8,11 +8,12 @@
 
 **校验**: ✅ 通过
 
-**结果**: completed · 2 steps · 1 tool calls · 0 failures · 0 sub agents · tokens 280/160 · 535ms
+**结果**: completed · 2 steps · 1 tool calls · 0 failures · 0 sub agents · tokens 284/160 · 535ms
 
 **最终答案**:
 
 Mock LLM 不理解这个任务，无法继续。workspace 文件如下:
+.DS_Store
 README.md
 config/app.yaml
 data/archive.bin

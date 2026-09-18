@@ -1,6 +1,8 @@
 # Mini Agent 设计说明
 
 > 一个能够自主调用工具完成任务的最小化 AI Agent（TypeScript / Node.js，CLI）。
+>
+> **找题目要求的七个必答问题？** 直接看 [DESIGN-QA.md](./DESIGN-QA.md)——它逐条作答并链回本文的对应章节。本文是完整设计，按模块组织。
 
 ## 1. 总体架构
 

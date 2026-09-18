@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:49:07.667Z
+- time: 2026-09-18T21:51:23.000Z
 
 ## 👤 User
 
@@ -16,7 +16,7 @@
 
 → 决定调用 1 个工具: read_file
 
-_LLM 12ms · tokens in 33 / out 80_
+_LLM 10ms · tokens in 33 / out 80_
 
 ### 🔧 Tool Call: `read_file`
 
@@ -50,7 +50,7 @@ _LLM 12ms · tokens in 128 / out 80_
 }
 ```
 
-### ✅ Tool Result: `read_file` (1ms)
+### ✅ Tool Result: `read_file` (0ms)
 
 ```
 STATUS=PENDING
@@ -124,7 +124,7 @@ _LLM 11ms · tokens in 438 / out 80_
 }
 ```
 
-### ✅ Tool Result: `read_file` (0ms)
+### ✅ Tool Result: `read_file` (2ms)
 
 ```
 STATUS=PENDING

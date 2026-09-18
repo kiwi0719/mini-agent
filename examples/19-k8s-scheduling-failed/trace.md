@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:49:17.078Z
+- time: 2026-09-18T21:51:32.328Z
 
 ## 👤 User
 
@@ -16,7 +16,7 @@
 
 → 决定调用 1 个工具: update_plan
 
-_LLM 27ms · tokens in 16 / out 80_
+_LLM 29ms · tokens in 16 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -77,7 +77,7 @@ _LLM 11ms · tokens in 174 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_pod` (0ms)
+### ✅ Tool Result: `get_pod` (1ms)
 
 ```
 {
@@ -135,7 +135,7 @@ Pod 信号：phase=Pending；容器 scorer waiting=ContainerCreating；condition
 
 → 决定调用 5 个工具: update_plan, get_pod_events, get_node, get_metrics, get_logs
 
-_LLM 131ms · tokens in 646 / out 80_
+_LLM 130ms · tokens in 646 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -209,13 +209,13 @@ _LLM 131ms · tokens in 646 / out 80_
 }
 ```
 
-### ✅ Tool Result: `update_plan` (0ms)
+### ✅ Tool Result: `update_plan` (1ms)
 
 ```
 计划已更新（1/4 完成）
 ```
 
-### ✅ Tool Result: `get_logs` (0ms)
+### ✅ Tool Result: `get_logs` (1ms)
 
 ```
 {
@@ -235,7 +235,7 @@ _LLM 131ms · tokens in 646 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_pod_events` (1ms)
+### ✅ Tool Result: `get_pod_events` (2ms)
 
 ```
 {
@@ -254,7 +254,7 @@ _LLM 131ms · tokens in 646 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_node` (1ms)
+### ✅ Tool Result: `get_node` (3ms)
 
 ```
 {
@@ -492,7 +492,7 @@ Pod job-125 一直 Pending，调度器找不到满足条件的节点。
 ## 证据不足说明
 无
 
-_LLM 1186ms · tokens in 2772 / out 80_
+_LLM 1180ms · tokens in 2772 / out 80_
 
 ## 🏁 Final Answer (completed, 5 steps, tokens in 5448 / out 400)
 

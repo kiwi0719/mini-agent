@@ -1,6 +1,6 @@
 # 故障复盘：default/job-123
 
-- 时间：2026-09-18T21:49:11.370Z
+- 时间：2026-09-18T21:51:26.620Z
 - 分类：OOMKilled（容器内存超过 limit）
 - 修复动作：increase_memory_limit（kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi）
 - 复查结果：已恢复
