@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:47:18.723Z
+- time: 2026-09-18T21:49:12.779Z
 
 ## 👤 User
 
@@ -16,7 +16,7 @@
 
 → 决定调用 1 个工具: update_plan
 
-_LLM 29ms · tokens in 16 / out 80_
+_LLM 28ms · tokens in 16 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -66,7 +66,7 @@ _LLM 29ms · tokens in 16 / out 80_
 
 → 决定调用 1 个工具: get_pod
 
-_LLM 11ms · tokens in 174 / out 80_
+_LLM 10ms · tokens in 174 / out 80_
 
 ### 🔧 Tool Call: `get_pod`
 
@@ -225,13 +225,19 @@ _LLM 131ms · tokens in 656 / out 80_
 }
 ```
 
-### ✅ Tool Result: `update_plan` (1ms)
+### ✅ Tool Result: `update_plan` (0ms)
 
 ```
 计划已更新（1/4 完成）
 ```
 
-### ✅ Tool Result: `get_metrics` (1ms)
+### ❌ Tool Result: `get_logs` (1ms)
+
+```
+没有上一个容器实例的日志（容器未重启过）
+```
+
+### ✅ Tool Result: `get_metrics` (2ms)
 
 ```
 {
@@ -240,24 +246,7 @@ _LLM 131ms · tokens in 656 / out 80_
 }
 ```
 
-### ❌ Tool Result: `get_logs` (3ms)
-
-```
-没有上一个容器实例的日志（容器未重启过）
-```
-
-### ✅ Tool Result: `get_pod_events` (3ms)
-
-```
-{
- "count": 0,
- "warnings": 0,
- "note": "没有找到 Event（可能已超过保留期被清理，默认 1 小时）",
- "events": []
-}
-```
-
-### ✅ Tool Result: `get_node` (3ms)
+### ✅ Tool Result: `get_node` (2ms)
 
 ```
 {
@@ -298,6 +287,17 @@ _LLM 131ms · tokens in 656 / out 80_
  ],
  "taints": [],
  "signals": []
+}
+```
+
+### ✅ Tool Result: `get_pod_events` (2ms)
+
+```
+{
+ "count": 0,
+ "warnings": 0,
+ "note": "没有找到 Event（可能已超过保留期被清理，默认 1 小时）",
+ "events": []
 }
 ```
 
@@ -362,7 +362,7 @@ _LLM 28ms · tokens in 1404 / out 80_
 }
 ```
 
-### ✅ Tool Result: `search_runbook` (3ms)
+### ✅ Tool Result: `search_runbook` (1ms)
 
 ```
 {
@@ -412,7 +412,7 @@ Pod job-128 phase=Failed，容器以 exitCode=1 退出（reason=Error），但�
 ## 证据不足说明
 Event 已被清理（没有找到 Event（可能已超过保留期被清理，默认 1 小时））、容器日志为空、指标不可用，节点状态正常。exitCode=1 只能说明应用自身退出失败，无法区分是代码错误、输入数据问题还是依赖故障。
 
-_LLM 673ms · tokens in 2316 / out 80_
+_LLM 674ms · tokens in 2316 / out 80_
 
 ## 🏁 Final Answer (completed, 5 steps, tokens in 4566 / out 400)
 

@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:47:21.546Z
+- time: 2026-09-18T21:49:15.577Z
 
 ## 👤 User
 
@@ -231,7 +231,7 @@ _LLM 118ms · tokens in 670 / out 80_
 计划已更新（1/4 完成）
 ```
 
-### ✅ Tool Result: `get_metrics` (3ms)
+### ✅ Tool Result: `get_metrics` (1ms)
 
 ```
 {
@@ -240,7 +240,7 @@ _LLM 118ms · tokens in 670 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_node` (3ms)
+### ✅ Tool Result: `get_node` (2ms)
 
 ```
 {
@@ -297,7 +297,7 @@ _LLM 118ms · tokens in 670 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_pod_events` (4ms)
+### ✅ Tool Result: `get_pod_events` (3ms)
 
 ```
 {
@@ -340,7 +340,7 @@ _LLM 118ms · tokens in 670 / out 80_
 }
 ```
 
-### ❌ Tool Result: `get_logs` (4ms)
+### ❌ Tool Result: `get_logs` (2ms)
 
 ```
 Error from server: Get "https://10.0.2.12:10250/containerLogs/default/job-124/etl": dial tcp 10.0.2.12:10250: i/o timeout
@@ -352,7 +352,7 @@ Error from server: Get "https://10.0.2.12:10250/containerLogs/default/job-124/et
 
 → 决定调用 3 个工具: update_plan, search_runbook, search_cases
 
-_LLM 40ms · tokens in 1858 / out 80_
+_LLM 39ms · tokens in 1858 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -408,7 +408,7 @@ _LLM 40ms · tokens in 1858 / out 80_
 }
 ```
 
-### ✅ Tool Result: `update_plan` (0ms)
+### ✅ Tool Result: `update_plan` (1ms)
 
 ```
 计划已更新（2/4 完成）

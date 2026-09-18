@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:47:23.052Z
+- time: 2026-09-18T21:49:17.078Z
 
 ## 👤 User
 
@@ -16,7 +16,7 @@
 
 → 决定调用 1 个工具: update_plan
 
-_LLM 29ms · tokens in 16 / out 80_
+_LLM 27ms · tokens in 16 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -66,7 +66,7 @@ _LLM 29ms · tokens in 16 / out 80_
 
 → 决定调用 1 个工具: get_pod
 
-_LLM 12ms · tokens in 174 / out 80_
+_LLM 11ms · tokens in 174 / out 80_
 
 ### 🔧 Tool Call: `get_pod`
 
@@ -77,7 +77,7 @@ _LLM 12ms · tokens in 174 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_pod` (1ms)
+### ✅ Tool Result: `get_pod` (0ms)
 
 ```
 {
@@ -135,7 +135,7 @@ Pod 信号：phase=Pending；容器 scorer waiting=ContainerCreating；condition
 
 → 决定调用 5 个工具: update_plan, get_pod_events, get_node, get_metrics, get_logs
 
-_LLM 129ms · tokens in 646 / out 80_
+_LLM 131ms · tokens in 646 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -209,13 +209,13 @@ _LLM 129ms · tokens in 646 / out 80_
 }
 ```
 
-### ✅ Tool Result: `update_plan` (1ms)
+### ✅ Tool Result: `update_plan` (0ms)
 
 ```
 计划已更新（1/4 完成）
 ```
 
-### ✅ Tool Result: `get_logs` (2ms)
+### ✅ Tool Result: `get_logs` (0ms)
 
 ```
 {
@@ -226,7 +226,7 @@ _LLM 129ms · tokens in 646 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_metrics` (3ms)
+### ✅ Tool Result: `get_metrics` (1ms)
 
 ```
 {
@@ -235,7 +235,7 @@ _LLM 129ms · tokens in 646 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_pod_events` (4ms)
+### ✅ Tool Result: `get_pod_events` (1ms)
 
 ```
 {
@@ -254,7 +254,7 @@ _LLM 129ms · tokens in 646 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_node` (7ms)
+### ✅ Tool Result: `get_node` (1ms)
 
 ```
 {
@@ -344,7 +344,7 @@ _LLM 129ms · tokens in 646 / out 80_
 
 → 决定调用 3 个工具: update_plan, search_runbook, search_cases
 
-_LLM 45ms · tokens in 1840 / out 80_
+_LLM 46ms · tokens in 1840 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -406,7 +406,7 @@ _LLM 45ms · tokens in 1840 / out 80_
 计划已更新（2/4 完成）
 ```
 
-### ✅ Tool Result: `search_cases` (1ms)
+### ✅ Tool Result: `search_cases` (0ms)
 
 ```
 {
@@ -441,7 +441,7 @@ _LLM 45ms · tokens in 1840 / out 80_
 }
 ```
 
-### ✅ Tool Result: `search_runbook` (2ms)
+### ✅ Tool Result: `search_runbook` (1ms)
 
 ```
 {
@@ -492,7 +492,7 @@ Pod job-125 一直 Pending，调度器找不到满足条件的节点。
 ## 证据不足说明
 无
 
-_LLM 1180ms · tokens in 2772 / out 80_
+_LLM 1186ms · tokens in 2772 / out 80_
 
 ## 🏁 Final Answer (completed, 5 steps, tokens in 5448 / out 400)
 

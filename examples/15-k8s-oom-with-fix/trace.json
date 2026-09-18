@@ -3,14 +3,14 @@
     "provider": "mock",
     "workspace": "workspace"
   },
-  "startedAt": 1789768036702,
+  "startedAt": 1789768150747,
   "events": [
     {
       "agent": "main",
       "depth": 0,
       "type": "user",
       "task": "帮我分析 job-123 为什么失败，并修复它。",
-      "ts": 1789768036702
+      "ts": 1789768150747
     },
     {
       "agent": "main",
@@ -18,7 +18,7 @@
       "type": "delta",
       "step": 1,
       "text": "诊断 job",
-      "ts": 1789768036702
+      "ts": 1789768150747
     },
     {
       "agent": "main",
@@ -26,7 +26,7 @@
       "type": "delta",
       "step": 1,
       "text": "-123：先",
-      "ts": 1789768036708
+      "ts": 1789768150753
     },
     {
       "agent": "main",
@@ -34,7 +34,7 @@
       "type": "delta",
       "step": 1,
       "text": "看 Pod ",
-      "ts": 1789768036714
+      "ts": 1789768150759
     },
     {
       "agent": "main",
@@ -42,7 +42,7 @@
       "type": "delta",
       "step": 1,
       "text": "状态，再决定",
-      "ts": 1789768036719
+      "ts": 1789768150765
     },
     {
       "agent": "main",
@@ -50,7 +50,7 @@
       "type": "delta",
       "step": 1,
       "text": "查哪些信息。",
-      "ts": 1789768036725
+      "ts": 1789768150771
     },
     {
       "agent": "main",
@@ -92,8 +92,8 @@
         "inputTokens": 18,
         "outputTokens": 80
       },
-      "durationMs": 28,
-      "ts": 1789768036730
+      "durationMs": 29,
+      "ts": 1789768150776
     },
     {
       "agent": "main",
@@ -128,7 +128,7 @@
           ]
         }
       },
-      "ts": 1789768036730
+      "ts": 1789768150776
     },
     {
       "agent": "main",
@@ -157,7 +157,7 @@
           "status": "pending"
         }
       ],
-      "ts": 1789768036730
+      "ts": 1789768150776
     },
     {
       "agent": "main",
@@ -171,7 +171,7 @@
         "output": "计划已更新（0/4 完成）"
       },
       "durationMs": 0,
-      "ts": 1789768036730
+      "ts": 1789768150776
     },
     {
       "agent": "main",
@@ -179,7 +179,7 @@
       "type": "delta",
       "step": 2,
       "text": "获取 Pod",
-      "ts": 1789768036731
+      "ts": 1789768150777
     },
     {
       "agent": "main",
@@ -187,7 +187,7 @@
       "type": "delta",
       "step": 2,
       "text": " 状态。",
-      "ts": 1789768036737
+      "ts": 1789768150783
     },
     {
       "agent": "main",
@@ -210,7 +210,7 @@
         "outputTokens": 80
       },
       "durationMs": 12,
-      "ts": 1789768036742
+      "ts": 1789768150789
     },
     {
       "agent": "main",
@@ -225,7 +225,7 @@
           "namespace": "default"
         }
       },
-      "ts": 1789768036742
+      "ts": 1789768150789
     },
     {
       "agent": "main",
@@ -238,8 +238,8 @@
         "ok": true,
         "output": "{\n \"namespace\": \"default\",\n \"name\": \"job-123\",\n \"phase\": \"Running\",\n \"nodeName\": \"node-1\",\n \"startTime\": \"2026-09-18T08:00:00.000Z\",\n \"labels\": {\n  \"app\": \"report-builder\",\n  \"job-name\": \"job-123\"\n },\n \"resources\": {\n  \"requests\": {\n   \"cpu\": \"500m\",\n   \"memory\": \"256Mi\"\n  },\n  \"limits\": {\n   \"cpu\": \"1\",\n   \"memory\": \"512Mi\"\n  }\n },\n \"containers\": [\n  {\n   \"name\": \"report-builder\",\n   \"image\": \"registry.local/report-builder:1.4.2\",\n   \"ready\": false,\n   \"restartCount\": 5,\n   \"state\": {\n    \"waiting\": {\n     \"reason\": \"CrashLoopBackOff\",\n     \"message\": \"back-off 2m40s restarting failed container\"\n    }\n   },\n   \"lastState\": {\n    \"terminated\": {\n     \"reason\": \"OOMKilled\",\n     \"exitCode\": 137,\n     \"startedAt\": \"2026-09-18T08:40:00.000Z\",\n     \"finishedAt\": \"2026-09-18T08:44:00.000Z\"\n    }\n   }\n  }\n ],\n \"conditions\": [\n  {\n   \"type\": \"PodScheduled\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"Initialized\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"ContainersReady\",\n   \"status\": \"False\",\n   \"reason\": \"ContainersNotReady\",\n   \"message\": \"containers with unready status: [report-builder]\"\n  },\n  {\n   \"type\": \"Ready\",\n   \"status\": \"False\",\n   \"reason\": \"ContainersNotReady\"\n  }\n ],\n \"signals\": [\n  \"容器 report-builder 终止原因=OOMKilled exitCode=137\",\n  \"容器 report-builder 重启 5 次\",\n  \"容器 report-builder waiting=CrashLoopBackOff\",\n  \"容器 report-builder 未 Ready\",\n  \"condition ContainersReady=False (ContainersNotReady)\",\n  \"condition Ready=False (ContainersNotReady)\"\n ]\n}"
       },
-      "durationMs": 2,
-      "ts": 1789768036744
+      "durationMs": 3,
+      "ts": 1789768150792
     },
     {
       "agent": "main",
@@ -247,7 +247,7 @@
       "type": "delta",
       "step": 3,
       "text": "Pod 信号",
-      "ts": 1789768036745
+      "ts": 1789768150792
     },
     {
       "agent": "main",
@@ -255,7 +255,7 @@
       "type": "delta",
       "step": 3,
       "text": "：容器 re",
-      "ts": 1789768036751
+      "ts": 1789768150798
     },
     {
       "agent": "main",
@@ -263,7 +263,7 @@
       "type": "delta",
       "step": 3,
       "text": "port-b",
-      "ts": 1789768036756
+      "ts": 1789768150803
     },
     {
       "agent": "main",
@@ -271,7 +271,7 @@
       "type": "delta",
       "step": 3,
       "text": "uilder",
-      "ts": 1789768036761
+      "ts": 1789768150809
     },
     {
       "agent": "main",
@@ -279,7 +279,7 @@
       "type": "delta",
       "step": 3,
       "text": " 终止原因=",
-      "ts": 1789768036767
+      "ts": 1789768150815
     },
     {
       "agent": "main",
@@ -287,7 +287,7 @@
       "type": "delta",
       "step": 3,
       "text": "OOMKil",
-      "ts": 1789768036772
+      "ts": 1789768150820
     },
     {
       "agent": "main",
@@ -295,7 +295,7 @@
       "type": "delta",
       "step": 3,
       "text": "led ex",
-      "ts": 1789768036778
+      "ts": 1789768150826
     },
     {
       "agent": "main",
@@ -303,7 +303,7 @@
       "type": "delta",
       "step": 3,
       "text": "itCode",
-      "ts": 1789768036784
+      "ts": 1789768150832
     },
     {
       "agent": "main",
@@ -311,7 +311,7 @@
       "type": "delta",
       "step": 3,
       "text": "=137；容",
-      "ts": 1789768036790
+      "ts": 1789768150838
     },
     {
       "agent": "main",
@@ -319,7 +319,7 @@
       "type": "delta",
       "step": 3,
       "text": "器 repo",
-      "ts": 1789768036795
+      "ts": 1789768150843
     },
     {
       "agent": "main",
@@ -327,7 +327,7 @@
       "type": "delta",
       "step": 3,
       "text": "rt-bui",
-      "ts": 1789768036801
+      "ts": 1789768150849
     },
     {
       "agent": "main",
@@ -335,7 +335,7 @@
       "type": "delta",
       "step": 3,
       "text": "lder 重",
-      "ts": 1789768036807
+      "ts": 1789768150855
     },
     {
       "agent": "main",
@@ -343,7 +343,7 @@
       "type": "delta",
       "step": 3,
       "text": "启 5 次；",
-      "ts": 1789768036813
+      "ts": 1789768150860
     },
     {
       "agent": "main",
@@ -351,7 +351,7 @@
       "type": "delta",
       "step": 3,
       "text": "容器 rep",
-      "ts": 1789768036818
+      "ts": 1789768150866
     },
     {
       "agent": "main",
@@ -359,7 +359,7 @@
       "type": "delta",
       "step": 3,
       "text": "ort-bu",
-      "ts": 1789768036824
+      "ts": 1789768150872
     },
     {
       "agent": "main",
@@ -367,7 +367,7 @@
       "type": "delta",
       "step": 3,
       "text": "ilder ",
-      "ts": 1789768036830
+      "ts": 1789768150878
     },
     {
       "agent": "main",
@@ -375,7 +375,7 @@
       "type": "delta",
       "step": 3,
       "text": "waitin",
-      "ts": 1789768036836
+      "ts": 1789768150883
     },
     {
       "agent": "main",
@@ -383,7 +383,7 @@
       "type": "delta",
       "step": 3,
       "text": "g=Cras",
-      "ts": 1789768036841
+      "ts": 1789768150889
     },
     {
       "agent": "main",
@@ -391,7 +391,7 @@
       "type": "delta",
       "step": 3,
       "text": "hLoopB",
-      "ts": 1789768036847
+      "ts": 1789768150895
     },
     {
       "agent": "main",
@@ -399,7 +399,7 @@
       "type": "delta",
       "step": 3,
       "text": "ackOff",
-      "ts": 1789768036853
+      "ts": 1789768150900
     },
     {
       "agent": "main",
@@ -407,7 +407,7 @@
       "type": "delta",
       "step": 3,
       "text": "；容器 re",
-      "ts": 1789768036858
+      "ts": 1789768150905
     },
     {
       "agent": "main",
@@ -415,7 +415,7 @@
       "type": "delta",
       "step": 3,
       "text": "port-b",
-      "ts": 1789768036864
+      "ts": 1789768150911
     },
     {
       "agent": "main",
@@ -423,7 +423,7 @@
       "type": "delta",
       "step": 3,
       "text": "uilder",
-      "ts": 1789768036869
+      "ts": 1789768150916
     },
     {
       "agent": "main",
@@ -431,7 +431,7 @@
       "type": "delta",
       "step": 3,
       "text": " 未 Rea",
-      "ts": 1789768036874
+      "ts": 1789768150922
     },
     {
       "agent": "main",
@@ -439,7 +439,7 @@
       "type": "delta",
       "step": 3,
       "text": "dy；con",
-      "ts": 1789768036880
+      "ts": 1789768150928
     },
     {
       "agent": "main",
@@ -447,7 +447,7 @@
       "type": "delta",
       "step": 3,
       "text": "dition",
-      "ts": 1789768036885
+      "ts": 1789768150934
     },
     {
       "agent": "main",
@@ -455,7 +455,7 @@
       "type": "delta",
       "step": 3,
       "text": " Conta",
-      "ts": 1789768036891
+      "ts": 1789768150939
     },
     {
       "agent": "main",
@@ -463,7 +463,7 @@
       "type": "delta",
       "step": 3,
       "text": "inersR",
-      "ts": 1789768036897
+      "ts": 1789768150945
     },
     {
       "agent": "main",
@@ -471,7 +471,7 @@
       "type": "delta",
       "step": 3,
       "text": "eady=F",
-      "ts": 1789768036902
+      "ts": 1789768150951
     },
     {
       "agent": "main",
@@ -479,7 +479,7 @@
       "type": "delta",
       "step": 3,
       "text": "alse (",
-      "ts": 1789768036908
+      "ts": 1789768150956
     },
     {
       "agent": "main",
@@ -487,7 +487,7 @@
       "type": "delta",
       "step": 3,
       "text": "Contai",
-      "ts": 1789768036913
+      "ts": 1789768150962
     },
     {
       "agent": "main",
@@ -495,7 +495,7 @@
       "type": "delta",
       "step": 3,
       "text": "nersNo",
-      "ts": 1789768036919
+      "ts": 1789768150968
     },
     {
       "agent": "main",
@@ -503,7 +503,7 @@
       "type": "delta",
       "step": 3,
       "text": "tReady",
-      "ts": 1789768036925
+      "ts": 1789768150974
     },
     {
       "agent": "main",
@@ -511,7 +511,7 @@
       "type": "delta",
       "step": 3,
       "text": ")；cond",
-      "ts": 1789768036930
+      "ts": 1789768150979
     },
     {
       "agent": "main",
@@ -519,7 +519,7 @@
       "type": "delta",
       "step": 3,
       "text": "ition ",
-      "ts": 1789768036936
+      "ts": 1789768150985
     },
     {
       "agent": "main",
@@ -527,7 +527,7 @@
       "type": "delta",
       "step": 3,
       "text": "Ready=",
-      "ts": 1789768036942
+      "ts": 1789768150991
     },
     {
       "agent": "main",
@@ -535,7 +535,7 @@
       "type": "delta",
       "step": 3,
       "text": "False ",
-      "ts": 1789768036947
+      "ts": 1789768150996
     },
     {
       "agent": "main",
@@ -543,7 +543,7 @@
       "type": "delta",
       "step": 3,
       "text": "(Conta",
-      "ts": 1789768036953
+      "ts": 1789768151002
     },
     {
       "agent": "main",
@@ -551,7 +551,7 @@
       "type": "delta",
       "step": 3,
       "text": "inersN",
-      "ts": 1789768036958
+      "ts": 1789768151008
     },
     {
       "agent": "main",
@@ -559,7 +559,7 @@
       "type": "delta",
       "step": 3,
       "text": "otRead",
-      "ts": 1789768036964
+      "ts": 1789768151013
     },
     {
       "agent": "main",
@@ -567,7 +567,7 @@
       "type": "delta",
       "step": 3,
       "text": "y)。并行获",
-      "ts": 1789768036970
+      "ts": 1789768151019
     },
     {
       "agent": "main",
@@ -575,7 +575,7 @@
       "type": "delta",
       "step": 3,
       "text": "取 Even",
-      "ts": 1789768036975
+      "ts": 1789768151025
     },
     {
       "agent": "main",
@@ -583,7 +583,7 @@
       "type": "delta",
       "step": 3,
       "text": "t、节点 n",
-      "ts": 1789768036980
+      "ts": 1789768151031
     },
     {
       "agent": "main",
@@ -591,7 +591,7 @@
       "type": "delta",
       "step": 3,
       "text": "ode-1、",
-      "ts": 1789768036985
+      "ts": 1789768151036
     },
     {
       "agent": "main",
@@ -599,7 +599,7 @@
       "type": "delta",
       "step": 3,
       "text": "指标与上一次",
-      "ts": 1789768036991
+      "ts": 1789768151042
     },
     {
       "agent": "main",
@@ -607,7 +607,7 @@
       "type": "delta",
       "step": 3,
       "text": "崩溃前的日志",
-      "ts": 1789768036996
+      "ts": 1789768151048
     },
     {
       "agent": "main",
@@ -615,7 +615,7 @@
       "type": "delta",
       "step": 3,
       "text": "。",
-      "ts": 1789768037001
+      "ts": 1789768151053
     },
     {
       "agent": "main",
@@ -691,8 +691,8 @@
         "inputTokens": 824,
         "outputTokens": 80
       },
-      "durationMs": 262,
-      "ts": 1789768037007
+      "durationMs": 267,
+      "ts": 1789768151059
     },
     {
       "agent": "main",
@@ -727,7 +727,7 @@
           ]
         }
       },
-      "ts": 1789768037007
+      "ts": 1789768151059
     },
     {
       "agent": "main",
@@ -756,7 +756,7 @@
           "status": "pending"
         }
       ],
-      "ts": 1789768037007
+      "ts": 1789768151059
     },
     {
       "agent": "main",
@@ -771,7 +771,7 @@
           "namespace": "default"
         }
       },
-      "ts": 1789768037007
+      "ts": 1789768151059
     },
     {
       "agent": "main",
@@ -785,7 +785,7 @@
           "name": "node-1"
         }
       },
-      "ts": 1789768037008
+      "ts": 1789768151059
     },
     {
       "agent": "main",
@@ -801,7 +801,7 @@
           "window": "60m"
         }
       },
-      "ts": 1789768037009
+      "ts": 1789768151060
     },
     {
       "agent": "main",
@@ -818,7 +818,7 @@
           "tail": 100
         }
       },
-      "ts": 1789768037009
+      "ts": 1789768151060
     },
     {
       "agent": "main",
@@ -831,8 +831,8 @@
         "ok": true,
         "output": "计划已更新（1/4 完成）"
       },
-      "durationMs": 3,
-      "ts": 1789768037010
+      "durationMs": 1,
+      "ts": 1789768151060
     },
     {
       "agent": "main",
@@ -845,8 +845,8 @@
         "ok": true,
         "output": "{\n \"available\": true,\n \"window\": \"60m\",\n \"summary\": {\n  \"cpu\": {\n   \"unit\": \"cores\",\n   \"peak\": 0.5,\n   \"avg\": 0.39,\n   \"last\": 0.35,\n   \"limit\": 1,\n   \"peakPctOfLimit\": \"50%\",\n   \"samples\": 22\n  },\n  \"memory\": {\n   \"unit\": \"MiB\",\n   \"peak\": 511,\n   \"avg\": 336.55,\n   \"last\": 511,\n   \"limit\": 512,\n   \"peakPctOfLimit\": \"100%\",\n   \"samples\": 22\n  }\n },\n \"series\": {\n  \"available\": true,\n  \"window\": \"60m\",\n  \"cpu\": {\n   \"unit\": \"cores\",\n   \"limit\": 1,\n   \"request\": 0.5,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 0.3\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 0.35\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 0.45\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 0.3\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 0.35\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 0.45\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 0.3\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 0.35\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 0.45\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 0.3\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 0.35\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 0.45\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 0.3\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 0.35\n    }\n   ]\n  },\n  \"memory\": {\n   \"unit\": \"MiB\",\n   \"limit\": 512,\n   \"request\": 256,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 120\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 141\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 162\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 183\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 204\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 225\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 246\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 267\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 288\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 309\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 330\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 351\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 372\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 393\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 414\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 435\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 456\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 477\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 498\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 511\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 511\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 511\n    }\n   ]\n  }\n }\n}"
       },
-      "durationMs": 3,
-      "ts": 1789768037012
+      "durationMs": 2,
+      "ts": 1789768151062
     },
     {
       "agent": "main",
@@ -859,8 +859,8 @@
         "ok": true,
         "output": "{\n \"previous\": true,\n \"lines\": 6,\n \"highlights\": [],\n \"log\": \"2026-09-18T08:40:02Z INFO  report-builder starting, version 1.4.2\\n2026-09-18T08:40:02Z INFO  loading dataset /data/orders-2026-09.parquet (3.9 GB)\\n2026-09-18T08:40:21Z INFO  loaded 1200000 rows into memory\\n2026-09-18T08:41:30Z INFO  loaded 8400000 rows into memory\\n2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit\\n2026-09-18T08:44:01Z INFO  building pivot table (this may take a while)\"\n}"
       },
-      "durationMs": 3,
-      "ts": 1789768037012
+      "durationMs": 2,
+      "ts": 1789768151062
     },
     {
       "agent": "main",
@@ -873,8 +873,8 @@
         "ok": true,
         "output": "{\n \"count\": 5,\n \"warnings\": 1,\n \"events\": [\n  {\n   \"time\": \"2026-09-18T08:00:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Scheduled\",\n   \"message\": \"Successfully assigned default/job-123 to node-1\",\n   \"count\": 1,\n   \"source\": \"default-scheduler\"\n  },\n  {\n   \"time\": \"2026-09-18T08:00:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Pulled\",\n   \"message\": \"Container image \\\"registry.local/report-builder:1.4.2\\\" already present on machine\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:04:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Started\",\n   \"message\": \"Started container report-builder\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:30:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"SandboxChanged\",\n   \"message\": \"Pod sandbox changed, it will be killed and re-created.\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:44:00.000Z\",\n   \"type\": \"Warning\",\n   \"reason\": \"BackOff\",\n   \"message\": \"Back-off restarting failed container report-builder in pod job-123\",\n   \"count\": 12,\n   \"source\": \"kubelet\"\n  }\n ]\n}"
       },
-      "durationMs": 18,
-      "ts": 1789768037025
+      "durationMs": 17,
+      "ts": 1789768151076
     },
     {
       "agent": "main",
@@ -888,7 +888,7 @@
         "output": "{\n \"name\": \"node-1\",\n \"kubeletVersion\": \"v1.31.2\",\n \"allocatable\": {\n  \"cpu\": \"4\",\n  \"memory\": \"16Gi\",\n  \"ephemeral-storage\": \"100Gi\",\n  \"pods\": \"110\"\n },\n \"allocated\": {\n  \"cpu\": \"3200m\",\n  \"memory\": \"9Gi\"\n },\n \"conditions\": [\n  {\n   \"type\": \"Ready\",\n   \"status\": \"True\",\n   \"reason\": \"KubeletReady\",\n   \"lastHeartbeatTime\": \"2026-09-18T08:58:00.000Z\"\n  },\n  {\n   \"type\": \"MemoryPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoMemoryPressure\"\n  },\n  {\n   \"type\": \"DiskPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoDiskPressure\"\n  },\n  {\n   \"type\": \"PIDPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoPIDPressure\"\n  }\n ],\n \"taints\": [],\n \"signals\": []\n}"
       },
       "durationMs": 17,
-      "ts": 1789768037025
+      "ts": 1789768151076
     },
     {
       "agent": "main",
@@ -896,7 +896,7 @@
       "type": "delta",
       "step": 4,
       "text": "初步判断为 ",
-      "ts": 1789768037027
+      "ts": 1789768151077
     },
     {
       "agent": "main",
@@ -904,7 +904,7 @@
       "type": "delta",
       "step": 4,
       "text": "OOMKil",
-      "ts": 1789768037032
+      "ts": 1789768151083
     },
     {
       "agent": "main",
@@ -912,7 +912,7 @@
       "type": "delta",
       "step": 4,
       "text": "led（容器",
-      "ts": 1789768037038
+      "ts": 1789768151088
     },
     {
       "agent": "main",
@@ -920,7 +920,7 @@
       "type": "delta",
       "step": 4,
       "text": "内存超过 l",
-      "ts": 1789768037044
+      "ts": 1789768151094
     },
     {
       "agent": "main",
@@ -928,7 +928,7 @@
       "type": "delta",
       "step": 4,
       "text": "imit）。",
-      "ts": 1789768037050
+      "ts": 1789768151100
     },
     {
       "agent": "main",
@@ -936,7 +936,7 @@
       "type": "delta",
       "step": 4,
       "text": "对照知识库与",
-      "ts": 1789768037055
+      "ts": 1789768151105
     },
     {
       "agent": "main",
@@ -944,7 +944,7 @@
       "type": "delta",
       "step": 4,
       "text": "历史 Cas",
-      "ts": 1789768037060
+      "ts": 1789768151111
     },
     {
       "agent": "main",
@@ -952,7 +952,7 @@
       "type": "delta",
       "step": 4,
       "text": "e。",
-      "ts": 1789768037066
+      "ts": 1789768151117
     },
     {
       "agent": "main",
@@ -1010,8 +1010,8 @@
         "inputTokens": 3478,
         "outputTokens": 80
       },
-      "durationMs": 47,
-      "ts": 1789768037072
+      "durationMs": 46,
+      "ts": 1789768151122
     },
     {
       "agent": "main",
@@ -1046,7 +1046,7 @@
           ]
         }
       },
-      "ts": 1789768037072
+      "ts": 1789768151123
     },
     {
       "agent": "main",
@@ -1075,7 +1075,7 @@
           "status": "pending"
         }
       ],
-      "ts": 1789768037072
+      "ts": 1789768151123
     },
     {
       "agent": "main",
@@ -1090,7 +1090,7 @@
           "top": 2
         }
       },
-      "ts": 1789768037072
+      "ts": 1789768151123
     },
     {
       "agent": "main",
@@ -1105,7 +1105,7 @@
           "top": 2
         }
       },
-      "ts": 1789768037073
+      "ts": 1789768151123
     },
     {
       "agent": "main",
@@ -1118,8 +1118,8 @@
         "ok": true,
         "output": "计划已更新（2/4 完成）"
       },
-      "durationMs": 1,
-      "ts": 1789768037073
+      "durationMs": 0,
+      "ts": 1789768151123
     },
     {
       "agent": "main",
@@ -1133,7 +1133,7 @@
         "output": "{\n \"total\": 1,\n \"cases\": [\n  {\n   \"id\": \"CASE-2026-041\",\n   \"date\": \"2026-07-03\",\n   \"symptoms\": \"report job OOMKilled exitCode 137 restartCount 增长 memory 峰值接近 limit 512Mi BackOff\",\n   \"rootCause\": \"月末数据量翻倍，整表加载进内存超过 limit\",\n   \"fix\": \"memory limit 512Mi → 2Gi，并改为分批读取\",\n   \"tags\": [\n    \"OOMKilled\",\n    \"memory\",\n    \"job\"\n   ],\n   \"similarity\": 6\n  }\n ]\n}"
       },
       "durationMs": 1,
-      "ts": 1789768037074
+      "ts": 1789768151124
     },
     {
       "agent": "main",
@@ -1146,8 +1146,8 @@
         "ok": true,
         "output": "{\n \"query\": \"OOMKilled memory limit exitCode 137 BackOff\",\n \"total\": 4,\n \"results\": [\n  {\n   \"file\": \"k8s/runbooks/oom.md\",\n   \"title\": \"OOMKilled\",\n   \"score\": 8,\n   \"content\": \"## OOMKilled\\n症状：容器 lastState.terminated.reason=OOMKilled，exitCode=137，restartCount 持续增长，Event 出现 BackOff；内存指标峰值逼近 limit。\\n确认方法：get_pod 看终止原因；get_metrics 看 memory peak 与 limit 占比；get_logs previous=true 看崩溃前的行为（大数据集加载、缓存膨胀）。\\n处理：1) 临时提高 memory limit（保持 request≈limit 的 Guaranteed QoS）；2) 排查内存泄漏或分批处理数据；3) 配置 VPA 推荐值。\\n注意：exitCode=137 也可能是节点驱逐或手动 kill，需结合 reason 字段判断。\"\n  },\n  {\n   \"file\": \"k8s/runbooks/oom.md\",\n   \"title\": \"MemoryPressure（节点级）\",\n   \"score\": 3,\n   \"content\": \"## MemoryPressure（节点级）\\n症状：Node condition MemoryPressure=True，多个 Pod 被 Evicted，reason 含 \\\"low on resource: memory\\\"。\\n处理：驱逐低优先级 Pod、增加节点内存、设置合理的 request 避免超卖。\"\n  }\n ]\n}"
       },
-      "durationMs": 3,
-      "ts": 1789768037075
+      "durationMs": 2,
+      "ts": 1789768151125
     },
     {
       "agent": "main",
@@ -1155,7 +1155,7 @@
       "type": "delta",
       "step": 5,
       "text": "生成修复方案",
-      "ts": 1789768037075
+      "ts": 1789768151126
     },
     {
       "agent": "main",
@@ -1163,7 +1163,7 @@
       "type": "delta",
       "step": 5,
       "text": "。",
-      "ts": 1789768037081
+      "ts": 1789768151131
     },
     {
       "agent": "main",
@@ -1186,8 +1186,8 @@
         "inputTokens": 4198,
         "outputTokens": 80
       },
-      "durationMs": 12,
-      "ts": 1789768037087
+      "durationMs": 11,
+      "ts": 1789768151136
     },
     {
       "agent": "main",
@@ -1203,7 +1203,7 @@
           "diagnosis": "OOMKilled memory limit exitCode 137 BackOff"
         }
       },
-      "ts": 1789768037087
+      "ts": 1789768151136
     },
     {
       "agent": "main",
@@ -1217,7 +1217,7 @@
         "output": "{\n \"pod\": \"default/job-123\",\n \"note\": \"执行任一方案前需人工确认：apply_fix 是写操作，未授权写权限时会被拒绝。\",\n \"proposals\": [\n  {\n   \"action\": \"increase_memory_limit\",\n   \"description\": \"把容器 memory limit 从 512Mi 提高到 2Gi（request 同步到 1Gi）并重建 Pod\",\n   \"risk\": \"low\",\n   \"command\": \"kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi\",\n   \"relevance\": 2,\n   \"applied\": false\n  },\n  {\n   \"action\": \"restart_pod\",\n   \"description\": \"仅删除 Pod 让其重建（不解决内存不足，大概率再次 OOM）\",\n   \"risk\": \"medium\",\n   \"command\": \"kubectl delete pod job-123\",\n   \"relevance\": 0,\n   \"applied\": false\n  }\n ]\n}"
       },
       "durationMs": 2,
-      "ts": 1789768037089
+      "ts": 1789768151138
     },
     {
       "agent": "main",
@@ -1225,7 +1225,7 @@
       "type": "delta",
       "step": 6,
       "text": "准备执行修复",
-      "ts": 1789768037090
+      "ts": 1789768151139
     },
     {
       "agent": "main",
@@ -1233,7 +1233,7 @@
       "type": "delta",
       "step": 6,
       "text": "动作 **i",
-      "ts": 1789768037096
+      "ts": 1789768151145
     },
     {
       "agent": "main",
@@ -1241,7 +1241,7 @@
       "type": "delta",
       "step": 6,
       "text": "ncreas",
-      "ts": 1789768037101
+      "ts": 1789768151150
     },
     {
       "agent": "main",
@@ -1249,7 +1249,7 @@
       "type": "delta",
       "step": 6,
       "text": "e_memo",
-      "ts": 1789768037107
+      "ts": 1789768151156
     },
     {
       "agent": "main",
@@ -1257,7 +1257,7 @@
       "type": "delta",
       "step": 6,
       "text": "ry_lim",
-      "ts": 1789768037113
+      "ts": 1789768151162
     },
     {
       "agent": "main",
@@ -1265,7 +1265,7 @@
       "type": "delta",
       "step": 6,
       "text": "it**（风",
-      "ts": 1789768037118
+      "ts": 1789768151167
     },
     {
       "agent": "main",
@@ -1273,7 +1273,7 @@
       "type": "delta",
       "step": 6,
       "text": "险 low）",
-      "ts": 1789768037124
+      "ts": 1789768151173
     },
     {
       "agent": "main",
@@ -1281,7 +1281,7 @@
       "type": "delta",
       "step": 6,
       "text": "：把容器 m",
-      "ts": 1789768037130
+      "ts": 1789768151179
     },
     {
       "agent": "main",
@@ -1289,7 +1289,7 @@
       "type": "delta",
       "step": 6,
       "text": "emory ",
-      "ts": 1789768037135
+      "ts": 1789768151185
     },
     {
       "agent": "main",
@@ -1297,7 +1297,7 @@
       "type": "delta",
       "step": 6,
       "text": "limit ",
-      "ts": 1789768037141
+      "ts": 1789768151190
     },
     {
       "agent": "main",
@@ -1305,7 +1305,7 @@
       "type": "delta",
       "step": 6,
       "text": "从 512M",
-      "ts": 1789768037146
+      "ts": 1789768151196
     },
     {
       "agent": "main",
@@ -1313,7 +1313,7 @@
       "type": "delta",
       "step": 6,
       "text": "i 提高到 ",
-      "ts": 1789768037152
+      "ts": 1789768151202
     },
     {
       "agent": "main",
@@ -1321,7 +1321,7 @@
       "type": "delta",
       "step": 6,
       "text": "2Gi（re",
-      "ts": 1789768037158
+      "ts": 1789768151207
     },
     {
       "agent": "main",
@@ -1329,7 +1329,7 @@
       "type": "delta",
       "step": 6,
       "text": "quest ",
-      "ts": 1789768037163
+      "ts": 1789768151213
     },
     {
       "agent": "main",
@@ -1337,7 +1337,7 @@
       "type": "delta",
       "step": 6,
       "text": "同步到 1G",
-      "ts": 1789768037169
+      "ts": 1789768151219
     },
     {
       "agent": "main",
@@ -1345,7 +1345,7 @@
       "type": "delta",
       "step": 6,
       "text": "i）并重建 ",
-      "ts": 1789768037175
+      "ts": 1789768151224
     },
     {
       "agent": "main",
@@ -1353,7 +1353,7 @@
       "type": "delta",
       "step": 6,
       "text": "Pod\n等价",
-      "ts": 1789768037180
+      "ts": 1789768151230
     },
     {
       "agent": "main",
@@ -1361,7 +1361,7 @@
       "type": "delta",
       "step": 6,
       "text": "命令：`ku",
-      "ts": 1789768037186
+      "ts": 1789768151236
     },
     {
       "agent": "main",
@@ -1369,7 +1369,7 @@
       "type": "delta",
       "step": 6,
       "text": "bectl ",
-      "ts": 1789768037191
+      "ts": 1789768151241
     },
     {
       "agent": "main",
@@ -1377,7 +1377,7 @@
       "type": "delta",
       "step": 6,
       "text": "set re",
-      "ts": 1789768037197
+      "ts": 1789768151247
     },
     {
       "agent": "main",
@@ -1385,7 +1385,7 @@
       "type": "delta",
       "step": 6,
       "text": "source",
-      "ts": 1789768037202
+      "ts": 1789768151253
     },
     {
       "agent": "main",
@@ -1393,7 +1393,7 @@
       "type": "delta",
       "step": 6,
       "text": "s job/",
-      "ts": 1789768037208
+      "ts": 1789768151258
     },
     {
       "agent": "main",
@@ -1401,7 +1401,7 @@
       "type": "delta",
       "step": 6,
       "text": "job-12",
-      "ts": 1789768037214
+      "ts": 1789768151264
     },
     {
       "agent": "main",
@@ -1409,7 +1409,7 @@
       "type": "delta",
       "step": 6,
       "text": "3 --li",
-      "ts": 1789768037219
+      "ts": 1789768151270
     },
     {
       "agent": "main",
@@ -1417,7 +1417,7 @@
       "type": "delta",
       "step": 6,
       "text": "mits=m",
-      "ts": 1789768037225
+      "ts": 1789768151276
     },
     {
       "agent": "main",
@@ -1425,7 +1425,7 @@
       "type": "delta",
       "step": 6,
       "text": "emory=",
-      "ts": 1789768037230
+      "ts": 1789768151281
     },
     {
       "agent": "main",
@@ -1433,7 +1433,7 @@
       "type": "delta",
       "step": 6,
       "text": "2Gi --",
-      "ts": 1789768037236
+      "ts": 1789768151287
     },
     {
       "agent": "main",
@@ -1441,7 +1441,7 @@
       "type": "delta",
       "step": 6,
       "text": "reques",
-      "ts": 1789768037242
+      "ts": 1789768151293
     },
     {
       "agent": "main",
@@ -1449,7 +1449,7 @@
       "type": "delta",
       "step": 6,
       "text": "ts=mem",
-      "ts": 1789768037247
+      "ts": 1789768151299
     },
     {
       "agent": "main",
@@ -1457,7 +1457,7 @@
       "type": "delta",
       "step": 6,
       "text": "ory=1G",
-      "ts": 1789768037252
+      "ts": 1789768151304
     },
     {
       "agent": "main",
@@ -1465,7 +1465,7 @@
       "type": "delta",
       "step": 6,
       "text": "i`\n该动作",
-      "ts": 1789768037258
+      "ts": 1789768151310
     },
     {
       "agent": "main",
@@ -1473,7 +1473,7 @@
       "type": "delta",
       "step": 6,
       "text": "为写操作，需",
-      "ts": 1789768037263
+      "ts": 1789768151316
     },
     {
       "agent": "main",
@@ -1481,7 +1481,7 @@
       "type": "delta",
       "step": 6,
       "text": "要人工确认；",
-      "ts": 1789768037268
+      "ts": 1789768151322
     },
     {
       "agent": "main",
@@ -1489,7 +1489,7 @@
       "type": "delta",
       "step": 6,
       "text": "若未授权将被",
-      "ts": 1789768037274
+      "ts": 1789768151327
     },
     {
       "agent": "main",
@@ -1497,7 +1497,7 @@
       "type": "delta",
       "step": 6,
       "text": "拒绝并转为处",
-      "ts": 1789768037279
+      "ts": 1789768151333
     },
     {
       "agent": "main",
@@ -1505,7 +1505,7 @@
       "type": "delta",
       "step": 6,
       "text": "理建议。",
-      "ts": 1789768037285
+      "ts": 1789768151339
     },
     {
       "agent": "main",
@@ -1529,8 +1529,8 @@
         "inputTokens": 4512,
         "outputTokens": 80
       },
-      "durationMs": 202,
-      "ts": 1789768037291
+      "durationMs": 206,
+      "ts": 1789768151345
     },
     {
       "agent": "main",
@@ -1547,7 +1547,7 @@
           "confirmed_by": "user"
         }
       },
-      "ts": 1789768037291
+      "ts": 1789768151345
     },
     {
       "agent": "main",
@@ -1561,7 +1561,7 @@
         "output": "{\n \"applied\": \"increase_memory_limit\",\n \"command\": \"kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi\",\n \"description\": \"把容器 memory limit 从 512Mi 提高到 2Gi（request 同步到 1Gi）并重建 Pod\",\n \"note\": \"已执行（Mock）。请用 verify_fix 检查是否恢复。\"\n}"
       },
       "durationMs": 4,
-      "ts": 1789768037295
+      "ts": 1789768151349
     },
     {
       "agent": "main",
@@ -1569,7 +1569,7 @@
       "type": "delta",
       "step": 7,
       "text": "修复已执行，",
-      "ts": 1789768037295
+      "ts": 1789768151350
     },
     {
       "agent": "main",
@@ -1577,7 +1577,7 @@
       "type": "delta",
       "step": 7,
       "text": "复查 Pod",
-      "ts": 1789768037301
+      "ts": 1789768151355
     },
     {
       "agent": "main",
@@ -1585,7 +1585,7 @@
       "type": "delta",
       "step": 7,
       "text": " 是否恢复。",
-      "ts": 1789768037307
+      "ts": 1789768151361
     },
     {
       "agent": "main",
@@ -1608,7 +1608,7 @@
         "outputTokens": 80
       },
       "durationMs": 18,
-      "ts": 1789768037313
+      "ts": 1789768151367
     },
     {
       "agent": "main",
@@ -1623,7 +1623,7 @@
           "namespace": "default"
         }
       },
-      "ts": 1789768037313
+      "ts": 1789768151367
     },
     {
       "agent": "main",
@@ -1634,10 +1634,10 @@
       "name": "verify_fix",
       "result": {
         "ok": true,
-        "output": "{\n \"pod\": \"default/job-123\",\n \"appliedActions\": [\n  {\n   \"action\": \"increase_memory_limit\",\n   \"at\": \"2026-09-18T21:47:17.294Z\",\n   \"operator\": \"user\"\n  }\n ],\n \"phase\": \"Running\",\n \"containersReady\": [\n  \"report-builder:true\"\n ],\n \"remainingSignals\": [],\n \"nodeIssues\": [],\n \"recovered\": true\n}"
+        "output": "{\n \"pod\": \"default/job-123\",\n \"appliedActions\": [\n  {\n   \"action\": \"increase_memory_limit\",\n   \"at\": \"2026-09-18T21:49:11.348Z\",\n   \"operator\": \"user\"\n  }\n ],\n \"phase\": \"Running\",\n \"containersReady\": [\n  \"report-builder:true\"\n ],\n \"remainingSignals\": [],\n \"nodeIssues\": [],\n \"recovered\": true\n}"
       },
       "durationMs": 3,
-      "ts": 1789768037316
+      "ts": 1789768151370
     },
     {
       "agent": "main",
@@ -1645,7 +1645,7 @@
       "type": "delta",
       "step": 8,
       "text": "生成故障复盘",
-      "ts": 1789768037316
+      "ts": 1789768151371
     },
     {
       "agent": "main",
@@ -1653,7 +1653,7 @@
       "type": "delta",
       "step": 8,
       "text": "报告。",
-      "ts": 1789768037322
+      "ts": 1789768151376
     },
     {
       "agent": "main",
@@ -1696,7 +1696,7 @@
           "name": "write_file",
           "input": {
             "path": "k8s/postmortem-job-123.md",
-            "content": "# 故障复盘：default/job-123\n\n- 时间：2026-09-18T21:47:17.316Z\n- 分类：OOMKilled（容器内存超过 limit）\n- 修复动作：increase_memory_limit（kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi）\n- 复查结果：已恢复\n\n## 故障现象\nPod job-123 反复重启（restartCount=5），容器被内核 OOM Killer 杀死，处于 CrashLoopBackOff。\n\n## 关键证据\n- [Pod] 容器 report-builder lastState.terminated.reason=OOMKilled exitCode=137，restartCount=5（get_pod）\n- [Event] BackOff: Back-off restarting failed container report-builder in pod job-123（count=12，get_pod_events）\n- [Metric] memory 峰值 511MiB / limit 512MiB（100%），cpu 峰值 0.5cores（get_metrics）\n- [Log] 2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit（get_logs previous=true）\n- [Runbook] OOMKilled：症状：容器 lastState.terminated.reason=OOMKilled，exitCode=137，restartCount 持续增长，Event 出现 BackOff；内存指标峰值逼近 limit。…（search_runbook → k8s/runbooks/oom.md）\n- [Case] CASE-2026-041（2026-07-03）根因：月末数据量翻倍，整表加载进内存超过 limit；处理：memory limit 512Mi → 2Gi，并改为分批读取（search_cases）\n- [Pod] 修复后 phase=Running，containersReady=report-builder:true，recovered=true（verify_fix）\n\n## 已确认事实\n- Pod default/job-123 phase=Running，节点 node-1\n- 容器上次终止原因 OOMKilled，exitCode 137，已重启 5 次\n- Event BackOff 出现 12 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 应用工作集超过 memory limit 512Mi · 置信度 高 · 依据：terminated.reason=OOMKilled、内存峰值达 limit 的 100%、崩溃前日志显示在加载大数据集\n- 数据量增长或内存泄漏导致占用持续上升 · 置信度 中 · 依据：内存曲线单调上升而非平台期；需对比历史批次数据量\n\n## 处理建议\n- 已执行 increase_memory_limit 并复查恢复（recovered=true）。\n- 临时：把 memory limit 从 512Mi 提高（如 2Gi）并重建 Pod\n- 根本：分批加载数据 / 排查泄漏；配置 VPA 推荐值\n- 注意 exitCode 137 也可能来自驱逐，此处 reason 明确为 OOMKilled\n- 历史 Case CASE-2026-041 的处理方式可参考：memory limit 512Mi → 2Gi，并改为分批读取\n\n## 证据不足说明\n无\n\n## 改进项\n\n- 为批处理 Job 设置基于数据量的内存预估\n- 增加内存使用率 > 90% 的告警\n"
+            "content": "# 故障复盘：default/job-123\n\n- 时间：2026-09-18T21:49:11.370Z\n- 分类：OOMKilled（容器内存超过 limit）\n- 修复动作：increase_memory_limit（kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi）\n- 复查结果：已恢复\n\n## 故障现象\nPod job-123 反复重启（restartCount=5），容器被内核 OOM Killer 杀死，处于 CrashLoopBackOff。\n\n## 关键证据\n- [Pod] 容器 report-builder lastState.terminated.reason=OOMKilled exitCode=137，restartCount=5（get_pod）\n- [Event] BackOff: Back-off restarting failed container report-builder in pod job-123（count=12，get_pod_events）\n- [Metric] memory 峰值 511MiB / limit 512MiB（100%），cpu 峰值 0.5cores（get_metrics）\n- [Log] 2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit（get_logs previous=true）\n- [Runbook] OOMKilled：症状：容器 lastState.terminated.reason=OOMKilled，exitCode=137，restartCount 持续增长，Event 出现 BackOff；内存指标峰值逼近 limit。…（search_runbook → k8s/runbooks/oom.md）\n- [Case] CASE-2026-041（2026-07-03）根因：月末数据量翻倍，整表加载进内存超过 limit；处理：memory limit 512Mi → 2Gi，并改为分批读取（search_cases）\n- [Pod] 修复后 phase=Running，containersReady=report-builder:true，recovered=true（verify_fix）\n\n## 已确认事实\n- Pod default/job-123 phase=Running，节点 node-1\n- 容器上次终止原因 OOMKilled，exitCode 137，已重启 5 次\n- Event BackOff 出现 12 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 应用工作集超过 memory limit 512Mi · 置信度 高 · 依据：terminated.reason=OOMKilled、内存峰值达 limit 的 100%、崩溃前日志显示在加载大数据集\n- 数据量增长或内存泄漏导致占用持续上升 · 置信度 中 · 依据：内存曲线单调上升而非平台期；需对比历史批次数据量\n\n## 处理建议\n- 已执行 increase_memory_limit 并复查恢复（recovered=true）。\n- 临时：把 memory limit 从 512Mi 提高（如 2Gi）并重建 Pod\n- 根本：分批加载数据 / 排查泄漏；配置 VPA 推荐值\n- 注意 exitCode 137 也可能来自驱逐，此处 reason 明确为 OOMKilled\n- 历史 Case CASE-2026-041 的处理方式可参考：memory limit 512Mi → 2Gi，并改为分批读取\n\n## 证据不足说明\n无\n\n## 改进项\n\n- 为批处理 Job 设置基于数据量的内存预估\n- 增加内存使用率 > 90% 的告警\n"
           }
         }
       ],
@@ -1704,8 +1704,8 @@
         "inputTokens": 4970,
         "outputTokens": 80
       },
-      "durationMs": 11,
-      "ts": 1789768037327
+      "durationMs": 12,
+      "ts": 1789768151382
     },
     {
       "agent": "main",
@@ -1741,7 +1741,7 @@
           ]
         }
       },
-      "ts": 1789768037327
+      "ts": 1789768151382
     },
     {
       "agent": "main",
@@ -1771,7 +1771,7 @@
           "note": "已恢复"
         }
       ],
-      "ts": 1789768037328
+      "ts": 1789768151382
     },
     {
       "agent": "main",
@@ -1784,8 +1784,8 @@
         "ok": true,
         "output": "计划已更新（4/4 完成）"
       },
-      "durationMs": 1,
-      "ts": 1789768037328
+      "durationMs": 0,
+      "ts": 1789768151382
     },
     {
       "agent": "main",
@@ -1797,10 +1797,10 @@
         "name": "write_file",
         "input": {
           "path": "k8s/postmortem-job-123.md",
-          "content": "# 故障复盘：default/job-123\n\n- 时间：2026-09-18T21:47:17.316Z\n- 分类：OOMKilled（容器内存超过 limit）\n- 修复动作：increase_memory_limit（kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi）\n- 复查结果：已恢复\n\n## 故障现象\nPod job-123 反复重启（restartCount=5），容器被内核 OOM Killer 杀死，处于 CrashLoopBackOff。\n\n## 关键证据\n- [Pod] 容器 report-builder lastState.terminated.reason=OOMKilled exitCode=137，restartCount=5（get_pod）\n- [Event] BackOff: Back-off restarting failed container report-builder in pod job-123（count=12，get_pod_events）\n- [Metric] memory 峰值 511MiB / limit 512MiB（100%），cpu 峰值 0.5cores（get_metrics）\n- [Log] 2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit（get_logs previous=true）\n- [Runbook] OOMKilled：症状：容器 lastState.terminated.reason=OOMKilled，exitCode=137，restartCount 持续增长，Event 出现 BackOff；内存指标峰值逼近 limit。…（search_runbook → k8s/runbooks/oom.md）\n- [Case] CASE-2026-041（2026-07-03）根因：月末数据量翻倍，整表加载进内存超过 limit；处理：memory limit 512Mi → 2Gi，并改为分批读取（search_cases）\n- [Pod] 修复后 phase=Running，containersReady=report-builder:true，recovered=true（verify_fix）\n\n## 已确认事实\n- Pod default/job-123 phase=Running，节点 node-1\n- 容器上次终止原因 OOMKilled，exitCode 137，已重启 5 次\n- Event BackOff 出现 12 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 应用工作集超过 memory limit 512Mi · 置信度 高 · 依据：terminated.reason=OOMKilled、内存峰值达 limit 的 100%、崩溃前日志显示在加载大数据集\n- 数据量增长或内存泄漏导致占用持续上升 · 置信度 中 · 依据：内存曲线单调上升而非平台期；需对比历史批次数据量\n\n## 处理建议\n- 已执行 increase_memory_limit 并复查恢复（recovered=true）。\n- 临时：把 memory limit 从 512Mi 提高（如 2Gi）并重建 Pod\n- 根本：分批加载数据 / 排查泄漏；配置 VPA 推荐值\n- 注意 exitCode 137 也可能来自驱逐，此处 reason 明确为 OOMKilled\n- 历史 Case CASE-2026-041 的处理方式可参考：memory limit 512Mi → 2Gi，并改为分批读取\n\n## 证据不足说明\n无\n\n## 改进项\n\n- 为批处理 Job 设置基于数据量的内存预估\n- 增加内存使用率 > 90% 的告警\n"
+          "content": "# 故障复盘：default/job-123\n\n- 时间：2026-09-18T21:49:11.370Z\n- 分类：OOMKilled（容器内存超过 limit）\n- 修复动作：increase_memory_limit（kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi）\n- 复查结果：已恢复\n\n## 故障现象\nPod job-123 反复重启（restartCount=5），容器被内核 OOM Killer 杀死，处于 CrashLoopBackOff。\n\n## 关键证据\n- [Pod] 容器 report-builder lastState.terminated.reason=OOMKilled exitCode=137，restartCount=5（get_pod）\n- [Event] BackOff: Back-off restarting failed container report-builder in pod job-123（count=12，get_pod_events）\n- [Metric] memory 峰值 511MiB / limit 512MiB（100%），cpu 峰值 0.5cores（get_metrics）\n- [Log] 2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit（get_logs previous=true）\n- [Runbook] OOMKilled：症状：容器 lastState.terminated.reason=OOMKilled，exitCode=137，restartCount 持续增长，Event 出现 BackOff；内存指标峰值逼近 limit。…（search_runbook → k8s/runbooks/oom.md）\n- [Case] CASE-2026-041（2026-07-03）根因：月末数据量翻倍，整表加载进内存超过 limit；处理：memory limit 512Mi → 2Gi，并改为分批读取（search_cases）\n- [Pod] 修复后 phase=Running，containersReady=report-builder:true，recovered=true（verify_fix）\n\n## 已确认事实\n- Pod default/job-123 phase=Running，节点 node-1\n- 容器上次终止原因 OOMKilled，exitCode 137，已重启 5 次\n- Event BackOff 出现 12 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 应用工作集超过 memory limit 512Mi · 置信度 高 · 依据：terminated.reason=OOMKilled、内存峰值达 limit 的 100%、崩溃前日志显示在加载大数据集\n- 数据量增长或内存泄漏导致占用持续上升 · 置信度 中 · 依据：内存曲线单调上升而非平台期；需对比历史批次数据量\n\n## 处理建议\n- 已执行 increase_memory_limit 并复查恢复（recovered=true）。\n- 临时：把 memory limit 从 512Mi 提高（如 2Gi）并重建 Pod\n- 根本：分批加载数据 / 排查泄漏；配置 VPA 推荐值\n- 注意 exitCode 137 也可能来自驱逐，此处 reason 明确为 OOMKilled\n- 历史 Case CASE-2026-041 的处理方式可参考：memory limit 512Mi → 2Gi，并改为分批读取\n\n## 证据不足说明\n无\n\n## 改进项\n\n- 为批处理 Job 设置基于数据量的内存预估\n- 增加内存使用率 > 90% 的告警\n"
         }
       },
-      "ts": 1789768037328
+      "ts": 1789768151382
     },
     {
       "agent": "main",
@@ -1814,7 +1814,7 @@
         "output": "已写入 k8s/postmortem-job-123.md (2486 bytes)"
       },
       "durationMs": 1,
-      "ts": 1789768037329
+      "ts": 1789768151383
     },
     {
       "agent": "main",
@@ -1822,7 +1822,7 @@
       "type": "delta",
       "step": 9,
       "text": "## 故障现",
-      "ts": 1789768037330
+      "ts": 1789768151384
     },
     {
       "agent": "main",
@@ -1830,7 +1830,7 @@
       "type": "delta",
       "step": 9,
       "text": "象\nPod ",
-      "ts": 1789768037335
+      "ts": 1789768151390
     },
     {
       "agent": "main",
@@ -1838,7 +1838,7 @@
       "type": "delta",
       "step": 9,
       "text": "job-12",
-      "ts": 1789768037341
+      "ts": 1789768151395
     },
     {
       "agent": "main",
@@ -1846,7 +1846,7 @@
       "type": "delta",
       "step": 9,
       "text": "3 反复重启",
-      "ts": 1789768037347
+      "ts": 1789768151401
     },
     {
       "agent": "main",
@@ -1854,7 +1854,7 @@
       "type": "delta",
       "step": 9,
       "text": "（resta",
-      "ts": 1789768037353
+      "ts": 1789768151407
     },
     {
       "agent": "main",
@@ -1862,7 +1862,7 @@
       "type": "delta",
       "step": 9,
       "text": "rtCoun",
-      "ts": 1789768037359
+      "ts": 1789768151413
     },
     {
       "agent": "main",
@@ -1870,7 +1870,7 @@
       "type": "delta",
       "step": 9,
       "text": "t=5），容",
-      "ts": 1789768037364
+      "ts": 1789768151418
     },
     {
       "agent": "main",
@@ -1878,7 +1878,7 @@
       "type": "delta",
       "step": 9,
       "text": "器被内核 O",
-      "ts": 1789768037370
+      "ts": 1789768151424
     },
     {
       "agent": "main",
@@ -1886,7 +1886,7 @@
       "type": "delta",
       "step": 9,
       "text": "OM Kil",
-      "ts": 1789768037375
+      "ts": 1789768151430
     },
     {
       "agent": "main",
@@ -1894,7 +1894,7 @@
       "type": "delta",
       "step": 9,
       "text": "ler 杀死",
-      "ts": 1789768037381
+      "ts": 1789768151435
     },
     {
       "agent": "main",
@@ -1902,7 +1902,7 @@
       "type": "delta",
       "step": 9,
       "text": "，处于 Cr",
-      "ts": 1789768037387
+      "ts": 1789768151440
     },
     {
       "agent": "main",
@@ -1910,7 +1910,7 @@
       "type": "delta",
       "step": 9,
       "text": "ashLoo",
-      "ts": 1789768037393
+      "ts": 1789768151446
     },
     {
       "agent": "main",
@@ -1918,7 +1918,7 @@
       "type": "delta",
       "step": 9,
       "text": "pBackO",
-      "ts": 1789768037398
+      "ts": 1789768151451
     },
     {
       "agent": "main",
@@ -1926,7 +1926,7 @@
       "type": "delta",
       "step": 9,
       "text": "ff。\n\n#",
-      "ts": 1789768037403
+      "ts": 1789768151457
     },
     {
       "agent": "main",
@@ -1934,7 +1934,7 @@
       "type": "delta",
       "step": 9,
       "text": "# 关键证据",
-      "ts": 1789768037409
+      "ts": 1789768151463
     },
     {
       "agent": "main",
@@ -1942,7 +1942,7 @@
       "type": "delta",
       "step": 9,
       "text": "\n- [Po",
-      "ts": 1789768037414
+      "ts": 1789768151468
     },
     {
       "agent": "main",
@@ -1950,7 +1950,7 @@
       "type": "delta",
       "step": 9,
       "text": "d] 容器 ",
-      "ts": 1789768037420
+      "ts": 1789768151474
     },
     {
       "agent": "main",
@@ -1958,7 +1958,7 @@
       "type": "delta",
       "step": 9,
       "text": "report",
-      "ts": 1789768037426
+      "ts": 1789768151480
     },
     {
       "agent": "main",
@@ -1966,7 +1966,7 @@
       "type": "delta",
       "step": 9,
       "text": "-build",
-      "ts": 1789768037432
+      "ts": 1789768151485
     },
     {
       "agent": "main",
@@ -1974,7 +1974,7 @@
       "type": "delta",
       "step": 9,
       "text": "er las",
-      "ts": 1789768037437
+      "ts": 1789768151491
     },
     {
       "agent": "main",
@@ -1982,7 +1982,7 @@
       "type": "delta",
       "step": 9,
       "text": "tState",
-      "ts": 1789768037443
+      "ts": 1789768151496
     },
     {
       "agent": "main",
@@ -1990,7 +1990,7 @@
       "type": "delta",
       "step": 9,
       "text": ".termi",
-      "ts": 1789768037449
+      "ts": 1789768151502
     },
     {
       "agent": "main",
@@ -1998,7 +1998,7 @@
       "type": "delta",
       "step": 9,
       "text": "nated.",
-      "ts": 1789768037454
+      "ts": 1789768151508
     },
     {
       "agent": "main",
@@ -2006,7 +2006,7 @@
       "type": "delta",
       "step": 9,
       "text": "reason",
-      "ts": 1789768037460
+      "ts": 1789768151513
     },
     {
       "agent": "main",
@@ -2014,7 +2014,7 @@
       "type": "delta",
       "step": 9,
       "text": "=OOMKi",
-      "ts": 1789768037466
+      "ts": 1789768151519
     },
     {
       "agent": "main",
@@ -2022,7 +2022,7 @@
       "type": "delta",
       "step": 9,
       "text": "lled e",
-      "ts": 1789768037472
+      "ts": 1789768151525
     },
     {
       "agent": "main",
@@ -2030,7 +2030,7 @@
       "type": "delta",
       "step": 9,
       "text": "xitCod",
-      "ts": 1789768037477
+      "ts": 1789768151531
     },
     {
       "agent": "main",
@@ -2038,7 +2038,7 @@
       "type": "delta",
       "step": 9,
       "text": "e=137，",
-      "ts": 1789768037482
+      "ts": 1789768151536
     },
     {
       "agent": "main",
@@ -2046,7 +2046,7 @@
       "type": "delta",
       "step": 9,
       "text": "restar",
-      "ts": 1789768037487
+      "ts": 1789768151542
     },
     {
       "agent": "main",
@@ -2054,7 +2054,7 @@
       "type": "delta",
       "step": 9,
       "text": "tCount",
-      "ts": 1789768037493
+      "ts": 1789768151548
     },
     {
       "agent": "main",
@@ -2062,7 +2062,7 @@
       "type": "delta",
       "step": 9,
       "text": "=5（get",
-      "ts": 1789768037499
+      "ts": 1789768151553
     },
     {
       "agent": "main",
@@ -2070,7 +2070,7 @@
       "type": "delta",
       "step": 9,
       "text": "_pod）\n",
-      "ts": 1789768037505
+      "ts": 1789768151558
     },
     {
       "agent": "main",
@@ -2078,7 +2078,7 @@
       "type": "delta",
       "step": 9,
       "text": "- [Eve",
-      "ts": 1789768037510
+      "ts": 1789768151564
     },
     {
       "agent": "main",
@@ -2086,7 +2086,7 @@
       "type": "delta",
       "step": 9,
       "text": "nt] Ba",
-      "ts": 1789768037516
+      "ts": 1789768151570
     },
     {
       "agent": "main",
@@ -2094,7 +2094,7 @@
       "type": "delta",
       "step": 9,
       "text": "ckOff:",
-      "ts": 1789768037522
+      "ts": 1789768151575
     },
     {
       "agent": "main",
@@ -2102,7 +2102,7 @@
       "type": "delta",
       "step": 9,
       "text": " Back-",
-      "ts": 1789768037527
+      "ts": 1789768151581
     },
     {
       "agent": "main",
@@ -2110,7 +2110,7 @@
       "type": "delta",
       "step": 9,
       "text": "off re",
-      "ts": 1789768037533
+      "ts": 1789768151587
     },
     {
       "agent": "main",
@@ -2118,7 +2118,7 @@
       "type": "delta",
       "step": 9,
       "text": "starti",
-      "ts": 1789768037539
+      "ts": 1789768151592
     },
     {
       "agent": "main",
@@ -2126,7 +2126,7 @@
       "type": "delta",
       "step": 9,
       "text": "ng fai",
-      "ts": 1789768037545
+      "ts": 1789768151598
     },
     {
       "agent": "main",
@@ -2134,7 +2134,7 @@
       "type": "delta",
       "step": 9,
       "text": "led co",
-      "ts": 1789768037550
+      "ts": 1789768151604
     },
     {
       "agent": "main",
@@ -2142,7 +2142,7 @@
       "type": "delta",
       "step": 9,
       "text": "ntaine",
-      "ts": 1789768037556
+      "ts": 1789768151610
     },
     {
       "agent": "main",
@@ -2150,7 +2150,7 @@
       "type": "delta",
       "step": 9,
       "text": "r repo",
-      "ts": 1789768037562
+      "ts": 1789768151615
     },
     {
       "agent": "main",
@@ -2158,7 +2158,7 @@
       "type": "delta",
       "step": 9,
       "text": "rt-bui",
-      "ts": 1789768037567
+      "ts": 1789768151621
     },
     {
       "agent": "main",
@@ -2166,7 +2166,7 @@
       "type": "delta",
       "step": 9,
       "text": "lder i",
-      "ts": 1789768037573
+      "ts": 1789768151626
     },
     {
       "agent": "main",
@@ -2174,7 +2174,7 @@
       "type": "delta",
       "step": 9,
       "text": "n pod ",
-      "ts": 1789768037578
+      "ts": 1789768151632
     },
     {
       "agent": "main",
@@ -2182,7 +2182,7 @@
       "type": "delta",
       "step": 9,
       "text": "job-12",
-      "ts": 1789768037584
+      "ts": 1789768151637
     },
     {
       "agent": "main",
@@ -2190,7 +2190,7 @@
       "type": "delta",
       "step": 9,
       "text": "3（coun",
-      "ts": 1789768037590
+      "ts": 1789768151643
     },
     {
       "agent": "main",
@@ -2198,7 +2198,7 @@
       "type": "delta",
       "step": 9,
       "text": "t=12，g",
-      "ts": 1789768037596
+      "ts": 1789768151649
     },
     {
       "agent": "main",
@@ -2206,7 +2206,7 @@
       "type": "delta",
       "step": 9,
       "text": "et_pod",
-      "ts": 1789768037601
+      "ts": 1789768151654
     },
     {
       "agent": "main",
@@ -2214,7 +2214,7 @@
       "type": "delta",
       "step": 9,
       "text": "_event",
-      "ts": 1789768037607
+      "ts": 1789768151660
     },
     {
       "agent": "main",
@@ -2222,7 +2222,7 @@
       "type": "delta",
       "step": 9,
       "text": "s）\n- [",
-      "ts": 1789768037613
+      "ts": 1789768151666
     },
     {
       "agent": "main",
@@ -2230,7 +2230,7 @@
       "type": "delta",
       "step": 9,
       "text": "Metric",
-      "ts": 1789768037618
+      "ts": 1789768151671
     },
     {
       "agent": "main",
@@ -2238,7 +2238,7 @@
       "type": "delta",
       "step": 9,
       "text": "] memo",
-      "ts": 1789768037624
+      "ts": 1789768151677
     },
     {
       "agent": "main",
@@ -2246,7 +2246,7 @@
       "type": "delta",
       "step": 9,
       "text": "ry 峰值 ",
-      "ts": 1789768037629
+      "ts": 1789768151683
     },
     {
       "agent": "main",
@@ -2254,7 +2254,7 @@
       "type": "delta",
       "step": 9,
       "text": "511MiB",
-      "ts": 1789768037634
+      "ts": 1789768151688
     },
     {
       "agent": "main",
@@ -2262,7 +2262,7 @@
       "type": "delta",
       "step": 9,
       "text": " / lim",
-      "ts": 1789768037640
+      "ts": 1789768151694
     },
     {
       "agent": "main",
@@ -2270,7 +2270,7 @@
       "type": "delta",
       "step": 9,
       "text": "it 512",
-      "ts": 1789768037646
+      "ts": 1789768151700
     },
     {
       "agent": "main",
@@ -2278,7 +2278,7 @@
       "type": "delta",
       "step": 9,
       "text": "MiB（10",
-      "ts": 1789768037652
+      "ts": 1789768151706
     },
     {
       "agent": "main",
@@ -2286,7 +2286,7 @@
       "type": "delta",
       "step": 9,
       "text": "0%），cp",
-      "ts": 1789768037657
+      "ts": 1789768151711
     },
     {
       "agent": "main",
@@ -2294,7 +2294,7 @@
       "type": "delta",
       "step": 9,
       "text": "u 峰值 0",
-      "ts": 1789768037663
+      "ts": 1789768151717
     },
     {
       "agent": "main",
@@ -2302,7 +2302,7 @@
       "type": "delta",
       "step": 9,
       "text": ".5core",
-      "ts": 1789768037669
+      "ts": 1789768151723
     },
     {
       "agent": "main",
@@ -2310,7 +2310,7 @@
       "type": "delta",
       "step": 9,
       "text": "s（get_",
-      "ts": 1789768037674
+      "ts": 1789768151728
     },
     {
       "agent": "main",
@@ -2318,7 +2318,7 @@
       "type": "delta",
       "step": 9,
       "text": "metric",
-      "ts": 1789768037680
+      "ts": 1789768151734
     },
     {
       "agent": "main",
@@ -2326,7 +2326,7 @@
       "type": "delta",
       "step": 9,
       "text": "s）\n- [",
-      "ts": 1789768037686
+      "ts": 1789768151740
     },
     {
       "agent": "main",
@@ -2334,7 +2334,7 @@
       "type": "delta",
       "step": 9,
       "text": "Log] 2",
-      "ts": 1789768037691
+      "ts": 1789768151746
     },
     {
       "agent": "main",
@@ -2342,7 +2342,7 @@
       "type": "delta",
       "step": 9,
       "text": "026-09",
-      "ts": 1789768037697
+      "ts": 1789768151751
     },
     {
       "agent": "main",
@@ -2350,7 +2350,7 @@
       "type": "delta",
       "step": 9,
       "text": "-18T08",
-      "ts": 1789768037703
+      "ts": 1789768151757
     },
     {
       "agent": "main",
@@ -2358,7 +2358,7 @@
       "type": "delta",
       "step": 9,
       "text": ":43:55",
-      "ts": 1789768037708
+      "ts": 1789768151763
     },
     {
       "agent": "main",
@@ -2366,7 +2366,7 @@
       "type": "delta",
       "step": 9,
       "text": "Z WARN",
-      "ts": 1789768037714
+      "ts": 1789768151769
     },
     {
       "agent": "main",
@@ -2374,7 +2374,7 @@
       "type": "delta",
       "step": 9,
       "text": "  heap",
-      "ts": 1789768037719
+      "ts": 1789768151774
     },
     {
       "agent": "main",
@@ -2382,7 +2382,7 @@
       "type": "delta",
       "step": 9,
       "text": " usage",
-      "ts": 1789768037724
+      "ts": 1789768151779
     },
     {
       "agent": "main",
@@ -2390,7 +2390,7 @@
       "type": "delta",
       "step": 9,
       "text": " 498 M",
-      "ts": 1789768037730
+      "ts": 1789768151785
     },
     {
       "agent": "main",
@@ -2398,7 +2398,7 @@
       "type": "delta",
       "step": 9,
       "text": "iB of ",
-      "ts": 1789768037735
+      "ts": 1789768151791
     },
     {
       "agent": "main",
@@ -2406,7 +2406,7 @@
       "type": "delta",
       "step": 9,
       "text": "512 Mi",
-      "ts": 1789768037741
+      "ts": 1789768151797
     },
     {
       "agent": "main",
@@ -2414,7 +2414,7 @@
       "type": "delta",
       "step": 9,
       "text": "B limi",
-      "ts": 1789768037746
+      "ts": 1789768151802
     },
     {
       "agent": "main",
@@ -2422,7 +2422,7 @@
       "type": "delta",
       "step": 9,
       "text": "t（get_",
-      "ts": 1789768037752
+      "ts": 1789768151808
     },
     {
       "agent": "main",
@@ -2430,7 +2430,7 @@
       "type": "delta",
       "step": 9,
       "text": "logs p",
-      "ts": 1789768037757
+      "ts": 1789768151814
     },
     {
       "agent": "main",
@@ -2438,7 +2438,7 @@
       "type": "delta",
       "step": 9,
       "text": "reviou",
-      "ts": 1789768037763
+      "ts": 1789768151819
     },
     {
       "agent": "main",
@@ -2446,7 +2446,7 @@
       "type": "delta",
       "step": 9,
       "text": "s=true",
-      "ts": 1789768037769
+      "ts": 1789768151825
     },
     {
       "agent": "main",
@@ -2454,7 +2454,7 @@
       "type": "delta",
       "step": 9,
       "text": "）\n- [R",
-      "ts": 1789768037775
+      "ts": 1789768151831
     },
     {
       "agent": "main",
@@ -2462,7 +2462,7 @@
       "type": "delta",
       "step": 9,
       "text": "unbook",
-      "ts": 1789768037780
+      "ts": 1789768151836
     },
     {
       "agent": "main",
@@ -2470,7 +2470,7 @@
       "type": "delta",
       "step": 9,
       "text": "] OOMK",
-      "ts": 1789768037786
+      "ts": 1789768151842
     },
     {
       "agent": "main",
@@ -2478,7 +2478,7 @@
       "type": "delta",
       "step": 9,
       "text": "illed：",
-      "ts": 1789768037792
+      "ts": 1789768151848
     },
     {
       "agent": "main",
@@ -2486,7 +2486,7 @@
       "type": "delta",
       "step": 9,
       "text": "症状：容器 ",
-      "ts": 1789768037798
+      "ts": 1789768151853
     },
     {
       "agent": "main",
@@ -2494,7 +2494,7 @@
       "type": "delta",
       "step": 9,
       "text": "lastSt",
-      "ts": 1789768037804
+      "ts": 1789768151858
     },
     {
       "agent": "main",
@@ -2502,7 +2502,7 @@
       "type": "delta",
       "step": 9,
       "text": "ate.te",
-      "ts": 1789768037810
+      "ts": 1789768151864
     },
     {
       "agent": "main",
@@ -2510,7 +2510,7 @@
       "type": "delta",
       "step": 9,
       "text": "rminat",
-      "ts": 1789768037815
+      "ts": 1789768151869
     },
     {
       "agent": "main",
@@ -2518,7 +2518,7 @@
       "type": "delta",
       "step": 9,
       "text": "ed.rea",
-      "ts": 1789768037821
+      "ts": 1789768151875
     },
     {
       "agent": "main",
@@ -2526,7 +2526,7 @@
       "type": "delta",
       "step": 9,
       "text": "son=OO",
-      "ts": 1789768037826
+      "ts": 1789768151881
     },
     {
       "agent": "main",
@@ -2534,7 +2534,7 @@
       "type": "delta",
       "step": 9,
       "text": "MKille",
-      "ts": 1789768037831
+      "ts": 1789768151886
     },
     {
       "agent": "main",
@@ -2542,7 +2542,7 @@
       "type": "delta",
       "step": 9,
       "text": "d，exit",
-      "ts": 1789768037837
+      "ts": 1789768151892
     },
     {
       "agent": "main",
@@ -2550,7 +2550,7 @@
       "type": "delta",
       "step": 9,
       "text": "Code=1",
-      "ts": 1789768037842
+      "ts": 1789768151898
     },
     {
       "agent": "main",
@@ -2558,7 +2558,7 @@
       "type": "delta",
       "step": 9,
       "text": "37，res",
-      "ts": 1789768037848
+      "ts": 1789768151903
     },
     {
       "agent": "main",
@@ -2566,7 +2566,7 @@
       "type": "delta",
       "step": 9,
       "text": "tartCo",
-      "ts": 1789768037854
+      "ts": 1789768151909
     },
     {
       "agent": "main",
@@ -2574,7 +2574,7 @@
       "type": "delta",
       "step": 9,
       "text": "unt 持续",
-      "ts": 1789768037859
+      "ts": 1789768151915
     },
     {
       "agent": "main",
@@ -2582,7 +2582,7 @@
       "type": "delta",
       "step": 9,
       "text": "增长，Eve",
-      "ts": 1789768037865
+      "ts": 1789768151920
     },
     {
       "agent": "main",
@@ -2590,7 +2590,7 @@
       "type": "delta",
       "step": 9,
       "text": "nt 出现 ",
-      "ts": 1789768037871
+      "ts": 1789768151926
     },
     {
       "agent": "main",
@@ -2598,7 +2598,7 @@
       "type": "delta",
       "step": 9,
       "text": "BackOf",
-      "ts": 1789768037877
+      "ts": 1789768151932
     },
     {
       "agent": "main",
@@ -2606,7 +2606,7 @@
       "type": "delta",
       "step": 9,
       "text": "f；内存指标",
-      "ts": 1789768037882
+      "ts": 1789768151937
     },
     {
       "agent": "main",
@@ -2614,7 +2614,7 @@
       "type": "delta",
       "step": 9,
       "text": "峰值逼近 l",
-      "ts": 1789768037888
+      "ts": 1789768151943
     },
     {
       "agent": "main",
@@ -2622,7 +2622,7 @@
       "type": "delta",
       "step": 9,
       "text": "imit。…",
-      "ts": 1789768037893
+      "ts": 1789768151949
     },
     {
       "agent": "main",
@@ -2630,7 +2630,7 @@
       "type": "delta",
       "step": 9,
       "text": "（searc",
-      "ts": 1789768037899
+      "ts": 1789768151955
     },
     {
       "agent": "main",
@@ -2638,7 +2638,7 @@
       "type": "delta",
       "step": 9,
       "text": "h_runb",
-      "ts": 1789768037905
+      "ts": 1789768151960
     },
     {
       "agent": "main",
@@ -2646,7 +2646,7 @@
       "type": "delta",
       "step": 9,
       "text": "ook → ",
-      "ts": 1789768037910
+      "ts": 1789768151966
     },
     {
       "agent": "main",
@@ -2654,7 +2654,7 @@
       "type": "delta",
       "step": 9,
       "text": "k8s/ru",
-      "ts": 1789768037916
+      "ts": 1789768151972
     },
     {
       "agent": "main",
@@ -2662,7 +2662,7 @@
       "type": "delta",
       "step": 9,
       "text": "nbooks",
-      "ts": 1789768037921
+      "ts": 1789768151977
     },
     {
       "agent": "main",
@@ -2670,7 +2670,7 @@
       "type": "delta",
       "step": 9,
       "text": "/oom.m",
-      "ts": 1789768037927
+      "ts": 1789768151983
     },
     {
       "agent": "main",
@@ -2678,7 +2678,7 @@
       "type": "delta",
       "step": 9,
       "text": "d）\n- [",
-      "ts": 1789768037933
+      "ts": 1789768151988
     },
     {
       "agent": "main",
@@ -2686,7 +2686,7 @@
       "type": "delta",
       "step": 9,
       "text": "Case] ",
-      "ts": 1789768037938
+      "ts": 1789768151994
     },
     {
       "agent": "main",
@@ -2694,7 +2694,7 @@
       "type": "delta",
       "step": 9,
       "text": "CASE-2",
-      "ts": 1789768037944
+      "ts": 1789768152000
     },
     {
       "agent": "main",
@@ -2702,7 +2702,7 @@
       "type": "delta",
       "step": 9,
       "text": "026-04",
-      "ts": 1789768037950
+      "ts": 1789768152005
     },
     {
       "agent": "main",
@@ -2710,7 +2710,7 @@
       "type": "delta",
       "step": 9,
       "text": "1（2026",
-      "ts": 1789768037955
+      "ts": 1789768152011
     },
     {
       "agent": "main",
@@ -2718,7 +2718,7 @@
       "type": "delta",
       "step": 9,
       "text": "-07-03",
-      "ts": 1789768037961
+      "ts": 1789768152017
     },
     {
       "agent": "main",
@@ -2726,7 +2726,7 @@
       "type": "delta",
       "step": 9,
       "text": "）根因：月末",
-      "ts": 1789768037967
+      "ts": 1789768152022
     },
     {
       "agent": "main",
@@ -2734,7 +2734,7 @@
       "type": "delta",
       "step": 9,
       "text": "数据量翻倍，",
-      "ts": 1789768037972
+      "ts": 1789768152028
     },
     {
       "agent": "main",
@@ -2742,7 +2742,7 @@
       "type": "delta",
       "step": 9,
       "text": "整表加载进内",
-      "ts": 1789768037978
+      "ts": 1789768152034
     },
     {
       "agent": "main",
@@ -2750,7 +2750,7 @@
       "type": "delta",
       "step": 9,
       "text": "存超过 li",
-      "ts": 1789768037984
+      "ts": 1789768152039
     },
     {
       "agent": "main",
@@ -2758,7 +2758,7 @@
       "type": "delta",
       "step": 9,
       "text": "mit；处理",
-      "ts": 1789768037989
+      "ts": 1789768152045
     },
     {
       "agent": "main",
@@ -2766,7 +2766,7 @@
       "type": "delta",
       "step": 9,
       "text": "：memor",
-      "ts": 1789768037995
+      "ts": 1789768152051
     },
     {
       "agent": "main",
@@ -2774,7 +2774,7 @@
       "type": "delta",
       "step": 9,
       "text": "y limi",
-      "ts": 1789768038001
+      "ts": 1789768152056
     },
     {
       "agent": "main",
@@ -2782,7 +2782,7 @@
       "type": "delta",
       "step": 9,
       "text": "t 512M",
-      "ts": 1789768038007
+      "ts": 1789768152062
     },
     {
       "agent": "main",
@@ -2790,7 +2790,7 @@
       "type": "delta",
       "step": 9,
       "text": "i → 2G",
-      "ts": 1789768038012
+      "ts": 1789768152067
     },
     {
       "agent": "main",
@@ -2798,7 +2798,7 @@
       "type": "delta",
       "step": 9,
       "text": "i，并改为分",
-      "ts": 1789768038018
+      "ts": 1789768152073
     },
     {
       "agent": "main",
@@ -2806,7 +2806,7 @@
       "type": "delta",
       "step": 9,
       "text": "批读取（se",
-      "ts": 1789768038023
+      "ts": 1789768152078
     },
     {
       "agent": "main",
@@ -2814,7 +2814,7 @@
       "type": "delta",
       "step": 9,
       "text": "arch_c",
-      "ts": 1789768038029
+      "ts": 1789768152084
     },
     {
       "agent": "main",
@@ -2822,7 +2822,7 @@
       "type": "delta",
       "step": 9,
       "text": "ases）\n",
-      "ts": 1789768038035
+      "ts": 1789768152089
     },
     {
       "agent": "main",
@@ -2830,7 +2830,7 @@
       "type": "delta",
       "step": 9,
       "text": "- [Pod",
-      "ts": 1789768038040
+      "ts": 1789768152095
     },
     {
       "agent": "main",
@@ -2838,7 +2838,7 @@
       "type": "delta",
       "step": 9,
       "text": "] 修复后 ",
-      "ts": 1789768038045
+      "ts": 1789768152101
     },
     {
       "agent": "main",
@@ -2846,7 +2846,7 @@
       "type": "delta",
       "step": 9,
       "text": "phase=",
-      "ts": 1789768038051
+      "ts": 1789768152106
     },
     {
       "agent": "main",
@@ -2854,7 +2854,7 @@
       "type": "delta",
       "step": 9,
       "text": "Runnin",
-      "ts": 1789768038056
+      "ts": 1789768152112
     },
     {
       "agent": "main",
@@ -2862,7 +2862,7 @@
       "type": "delta",
       "step": 9,
       "text": "g，cont",
-      "ts": 1789768038062
+      "ts": 1789768152118
     },
     {
       "agent": "main",
@@ -2870,7 +2870,7 @@
       "type": "delta",
       "step": 9,
       "text": "ainers",
-      "ts": 1789768038068
+      "ts": 1789768152124
     },
     {
       "agent": "main",
@@ -2878,7 +2878,7 @@
       "type": "delta",
       "step": 9,
       "text": "Ready=",
-      "ts": 1789768038073
+      "ts": 1789768152129
     },
     {
       "agent": "main",
@@ -2886,7 +2886,7 @@
       "type": "delta",
       "step": 9,
       "text": "report",
-      "ts": 1789768038079
+      "ts": 1789768152135
     },
     {
       "agent": "main",
@@ -2894,7 +2894,7 @@
       "type": "delta",
       "step": 9,
       "text": "-build",
-      "ts": 1789768038085
+      "ts": 1789768152141
     },
     {
       "agent": "main",
@@ -2902,7 +2902,7 @@
       "type": "delta",
       "step": 9,
       "text": "er:tru",
-      "ts": 1789768038090
+      "ts": 1789768152147
     },
     {
       "agent": "main",
@@ -2910,7 +2910,7 @@
       "type": "delta",
       "step": 9,
       "text": "e，reco",
-      "ts": 1789768038096
+      "ts": 1789768152152
     },
     {
       "agent": "main",
@@ -2918,7 +2918,7 @@
       "type": "delta",
       "step": 9,
       "text": "vered=",
-      "ts": 1789768038101
+      "ts": 1789768152157
     },
     {
       "agent": "main",
@@ -2926,7 +2926,7 @@
       "type": "delta",
       "step": 9,
       "text": "true（v",
-      "ts": 1789768038107
+      "ts": 1789768152163
     },
     {
       "agent": "main",
@@ -2934,7 +2934,7 @@
       "type": "delta",
       "step": 9,
       "text": "erify_",
-      "ts": 1789768038113
+      "ts": 1789768152169
     },
     {
       "agent": "main",
@@ -2942,7 +2942,7 @@
       "type": "delta",
       "step": 9,
       "text": "fix）\n\n",
-      "ts": 1789768038119
+      "ts": 1789768152174
     },
     {
       "agent": "main",
@@ -2950,7 +2950,7 @@
       "type": "delta",
       "step": 9,
       "text": "## 已确认",
-      "ts": 1789768038124
+      "ts": 1789768152180
     },
     {
       "agent": "main",
@@ -2958,7 +2958,7 @@
       "type": "delta",
       "step": 9,
       "text": "事实\n- P",
-      "ts": 1789768038130
+      "ts": 1789768152185
     },
     {
       "agent": "main",
@@ -2966,7 +2966,7 @@
       "type": "delta",
       "step": 9,
       "text": "od def",
-      "ts": 1789768038136
+      "ts": 1789768152191
     },
     {
       "agent": "main",
@@ -2974,7 +2974,7 @@
       "type": "delta",
       "step": 9,
       "text": "ault/j",
-      "ts": 1789768038141
+      "ts": 1789768152197
     },
     {
       "agent": "main",
@@ -2982,7 +2982,7 @@
       "type": "delta",
       "step": 9,
       "text": "ob-123",
-      "ts": 1789768038147
+      "ts": 1789768152203
     },
     {
       "agent": "main",
@@ -2990,7 +2990,7 @@
       "type": "delta",
       "step": 9,
       "text": " phase",
-      "ts": 1789768038153
+      "ts": 1789768152208
     },
     {
       "agent": "main",
@@ -2998,7 +2998,7 @@
       "type": "delta",
       "step": 9,
       "text": "=Runni",
-      "ts": 1789768038158
+      "ts": 1789768152214
     },
     {
       "agent": "main",
@@ -3006,7 +3006,7 @@
       "type": "delta",
       "step": 9,
       "text": "ng，节点 ",
-      "ts": 1789768038164
+      "ts": 1789768152220
     },
     {
       "agent": "main",
@@ -3014,7 +3014,7 @@
       "type": "delta",
       "step": 9,
       "text": "node-1",
-      "ts": 1789768038169
+      "ts": 1789768152225
     },
     {
       "agent": "main",
@@ -3022,7 +3022,7 @@
       "type": "delta",
       "step": 9,
       "text": "\n- 容器上",
-      "ts": 1789768038175
+      "ts": 1789768152231
     },
     {
       "agent": "main",
@@ -3030,7 +3030,7 @@
       "type": "delta",
       "step": 9,
       "text": "次终止原因 ",
-      "ts": 1789768038181
+      "ts": 1789768152237
     },
     {
       "agent": "main",
@@ -3038,7 +3038,7 @@
       "type": "delta",
       "step": 9,
       "text": "OOMKil",
-      "ts": 1789768038186
+      "ts": 1789768152242
     },
     {
       "agent": "main",
@@ -3046,7 +3046,7 @@
       "type": "delta",
       "step": 9,
       "text": "led，ex",
-      "ts": 1789768038192
+      "ts": 1789768152248
     },
     {
       "agent": "main",
@@ -3054,7 +3054,7 @@
       "type": "delta",
       "step": 9,
       "text": "itCode",
-      "ts": 1789768038198
+      "ts": 1789768152254
     },
     {
       "agent": "main",
@@ -3062,7 +3062,7 @@
       "type": "delta",
       "step": 9,
       "text": " 137，已",
-      "ts": 1789768038204
+      "ts": 1789768152259
     },
     {
       "agent": "main",
@@ -3070,7 +3070,7 @@
       "type": "delta",
       "step": 9,
       "text": "重启 5 次",
-      "ts": 1789768038209
+      "ts": 1789768152265
     },
     {
       "agent": "main",
@@ -3078,7 +3078,7 @@
       "type": "delta",
       "step": 9,
       "text": "\n- Eve",
-      "ts": 1789768038215
+      "ts": 1789768152271
     },
     {
       "agent": "main",
@@ -3086,7 +3086,7 @@
       "type": "delta",
       "step": 9,
       "text": "nt Bac",
-      "ts": 1789768038221
+      "ts": 1789768152276
     },
     {
       "agent": "main",
@@ -3094,7 +3094,7 @@
       "type": "delta",
       "step": 9,
       "text": "kOff 出",
-      "ts": 1789768038227
+      "ts": 1789768152282
     },
     {
       "agent": "main",
@@ -3102,7 +3102,7 @@
       "type": "delta",
       "step": 9,
       "text": "现 12 次",
-      "ts": 1789768038232
+      "ts": 1789768152288
     },
     {
       "agent": "main",
@@ -3110,7 +3110,7 @@
       "type": "delta",
       "step": 9,
       "text": "\n- 节点 ",
-      "ts": 1789768038238
+      "ts": 1789768152294
     },
     {
       "agent": "main",
@@ -3118,7 +3118,7 @@
       "type": "delta",
       "step": 9,
       "text": "node-1",
-      "ts": 1789768038244
+      "ts": 1789768152299
     },
     {
       "agent": "main",
@@ -3126,7 +3126,7 @@
       "type": "delta",
       "step": 9,
       "text": " Ready",
-      "ts": 1789768038249
+      "ts": 1789768152305
     },
     {
       "agent": "main",
@@ -3134,7 +3134,7 @@
       "type": "delta",
       "step": 9,
       "text": "=True，",
-      "ts": 1789768038255
+      "ts": 1789768152311
     },
     {
       "agent": "main",
@@ -3142,7 +3142,7 @@
       "type": "delta",
       "step": 9,
       "text": "无资源压力\n",
-      "ts": 1789768038260
+      "ts": 1789768152316
     },
     {
       "agent": "main",
@@ -3150,7 +3150,7 @@
       "type": "delta",
       "step": 9,
       "text": "\n## 可能",
-      "ts": 1789768038266
+      "ts": 1789768152322
     },
     {
       "agent": "main",
@@ -3158,7 +3158,7 @@
       "type": "delta",
       "step": 9,
       "text": "原因（推测）",
-      "ts": 1789768038272
+      "ts": 1789768152327
     },
     {
       "agent": "main",
@@ -3166,7 +3166,7 @@
       "type": "delta",
       "step": 9,
       "text": "\n- 应用工",
-      "ts": 1789768038278
+      "ts": 1789768152333
     },
     {
       "agent": "main",
@@ -3174,7 +3174,7 @@
       "type": "delta",
       "step": 9,
       "text": "作集超过 m",
-      "ts": 1789768038283
+      "ts": 1789768152339
     },
     {
       "agent": "main",
@@ -3182,7 +3182,7 @@
       "type": "delta",
       "step": 9,
       "text": "emory ",
-      "ts": 1789768038288
+      "ts": 1789768152345
     },
     {
       "agent": "main",
@@ -3190,7 +3190,7 @@
       "type": "delta",
       "step": 9,
       "text": "limit ",
-      "ts": 1789768038294
+      "ts": 1789768152350
     },
     {
       "agent": "main",
@@ -3198,7 +3198,7 @@
       "type": "delta",
       "step": 9,
       "text": "512Mi ",
-      "ts": 1789768038299
+      "ts": 1789768152355
     },
     {
       "agent": "main",
@@ -3206,7 +3206,7 @@
       "type": "delta",
       "step": 9,
       "text": "· 置信度 ",
-      "ts": 1789768038304
+      "ts": 1789768152361
     },
     {
       "agent": "main",
@@ -3214,7 +3214,7 @@
       "type": "delta",
       "step": 9,
       "text": "高 · 依据",
-      "ts": 1789768038310
+      "ts": 1789768152366
     },
     {
       "agent": "main",
@@ -3222,7 +3222,7 @@
       "type": "delta",
       "step": 9,
       "text": "：termi",
-      "ts": 1789768038315
+      "ts": 1789768152372
     },
     {
       "agent": "main",
@@ -3230,7 +3230,7 @@
       "type": "delta",
       "step": 9,
       "text": "nated.",
-      "ts": 1789768038321
+      "ts": 1789768152377
     },
     {
       "agent": "main",
@@ -3238,7 +3238,7 @@
       "type": "delta",
       "step": 9,
       "text": "reason",
-      "ts": 1789768038326
+      "ts": 1789768152382
     },
     {
       "agent": "main",
@@ -3246,7 +3246,7 @@
       "type": "delta",
       "step": 9,
       "text": "=OOMKi",
-      "ts": 1789768038332
+      "ts": 1789768152388
     },
     {
       "agent": "main",
@@ -3254,7 +3254,7 @@
       "type": "delta",
       "step": 9,
       "text": "lled、内",
-      "ts": 1789768038338
+      "ts": 1789768152393
     },
     {
       "agent": "main",
@@ -3262,7 +3262,7 @@
       "type": "delta",
       "step": 9,
       "text": "存峰值达 l",
-      "ts": 1789768038344
+      "ts": 1789768152399
     },
     {
       "agent": "main",
@@ -3270,7 +3270,7 @@
       "type": "delta",
       "step": 9,
       "text": "imit 的",
-      "ts": 1789768038349
+      "ts": 1789768152405
     },
     {
       "agent": "main",
@@ -3278,7 +3278,7 @@
       "type": "delta",
       "step": 9,
       "text": " 100%、",
-      "ts": 1789768038355
+      "ts": 1789768152411
     },
     {
       "agent": "main",
@@ -3286,7 +3286,7 @@
       "type": "delta",
       "step": 9,
       "text": "崩溃前日志显",
-      "ts": 1789768038360
+      "ts": 1789768152416
     },
     {
       "agent": "main",
@@ -3294,7 +3294,7 @@
       "type": "delta",
       "step": 9,
       "text": "示在加载大数",
-      "ts": 1789768038366
+      "ts": 1789768152422
     },
     {
       "agent": "main",
@@ -3302,7 +3302,7 @@
       "type": "delta",
       "step": 9,
       "text": "据集\n- 数",
-      "ts": 1789768038372
+      "ts": 1789768152427
     },
     {
       "agent": "main",
@@ -3310,7 +3310,7 @@
       "type": "delta",
       "step": 9,
       "text": "据量增长或内",
-      "ts": 1789768038378
+      "ts": 1789768152433
     },
     {
       "agent": "main",
@@ -3318,7 +3318,7 @@
       "type": "delta",
       "step": 9,
       "text": "存泄漏导致占",
-      "ts": 1789768038383
+      "ts": 1789768152439
     },
     {
       "agent": "main",
@@ -3326,7 +3326,7 @@
       "type": "delta",
       "step": 9,
       "text": "用持续上升 ",
-      "ts": 1789768038389
+      "ts": 1789768152444
     },
     {
       "agent": "main",
@@ -3334,7 +3334,7 @@
       "type": "delta",
       "step": 9,
       "text": "· 置信度 ",
-      "ts": 1789768038395
+      "ts": 1789768152450
     },
     {
       "agent": "main",
@@ -3342,7 +3342,7 @@
       "type": "delta",
       "step": 9,
       "text": "中 · 依据",
-      "ts": 1789768038400
+      "ts": 1789768152455
     },
     {
       "agent": "main",
@@ -3350,7 +3350,7 @@
       "type": "delta",
       "step": 9,
       "text": "：内存曲线单",
-      "ts": 1789768038406
+      "ts": 1789768152461
     },
     {
       "agent": "main",
@@ -3358,7 +3358,7 @@
       "type": "delta",
       "step": 9,
       "text": "调上升而非平",
-      "ts": 1789768038412
+      "ts": 1789768152467
     },
     {
       "agent": "main",
@@ -3366,7 +3366,7 @@
       "type": "delta",
       "step": 9,
       "text": "台期；需对比",
-      "ts": 1789768038417
+      "ts": 1789768152473
     },
     {
       "agent": "main",
@@ -3374,7 +3374,7 @@
       "type": "delta",
       "step": 9,
       "text": "历史批次数据",
-      "ts": 1789768038423
+      "ts": 1789768152478
     },
     {
       "agent": "main",
@@ -3382,7 +3382,7 @@
       "type": "delta",
       "step": 9,
       "text": "量\n\n## ",
-      "ts": 1789768038429
+      "ts": 1789768152483
     },
     {
       "agent": "main",
@@ -3390,7 +3390,7 @@
       "type": "delta",
       "step": 9,
       "text": "处理建议\n-",
-      "ts": 1789768038434
+      "ts": 1789768152489
     },
     {
       "agent": "main",
@@ -3398,7 +3398,7 @@
       "type": "delta",
       "step": 9,
       "text": " 已执行 i",
-      "ts": 1789768038439
+      "ts": 1789768152495
     },
     {
       "agent": "main",
@@ -3406,7 +3406,7 @@
       "type": "delta",
       "step": 9,
       "text": "ncreas",
-      "ts": 1789768038445
+      "ts": 1789768152500
     },
     {
       "agent": "main",
@@ -3414,7 +3414,7 @@
       "type": "delta",
       "step": 9,
       "text": "e_memo",
-      "ts": 1789768038450
+      "ts": 1789768152506
     },
     {
       "agent": "main",
@@ -3422,7 +3422,7 @@
       "type": "delta",
       "step": 9,
       "text": "ry_lim",
-      "ts": 1789768038456
+      "ts": 1789768152512
     },
     {
       "agent": "main",
@@ -3430,7 +3430,7 @@
       "type": "delta",
       "step": 9,
       "text": "it 并复查",
-      "ts": 1789768038462
+      "ts": 1789768152517
     },
     {
       "agent": "main",
@@ -3438,7 +3438,7 @@
       "type": "delta",
       "step": 9,
       "text": "恢复（rec",
-      "ts": 1789768038467
+      "ts": 1789768152523
     },
     {
       "agent": "main",
@@ -3446,7 +3446,7 @@
       "type": "delta",
       "step": 9,
       "text": "overed",
-      "ts": 1789768038473
+      "ts": 1789768152529
     },
     {
       "agent": "main",
@@ -3454,7 +3454,7 @@
       "type": "delta",
       "step": 9,
       "text": "=true）",
-      "ts": 1789768038478
+      "ts": 1789768152535
     },
     {
       "agent": "main",
@@ -3462,7 +3462,7 @@
       "type": "delta",
       "step": 9,
       "text": "。\n- 临时",
-      "ts": 1789768038484
+      "ts": 1789768152540
     },
     {
       "agent": "main",
@@ -3470,7 +3470,7 @@
       "type": "delta",
       "step": 9,
       "text": "：把 mem",
-      "ts": 1789768038489
+      "ts": 1789768152546
     },
     {
       "agent": "main",
@@ -3478,7 +3478,7 @@
       "type": "delta",
       "step": 9,
       "text": "ory li",
-      "ts": 1789768038495
+      "ts": 1789768152552
     },
     {
       "agent": "main",
@@ -3486,7 +3486,7 @@
       "type": "delta",
       "step": 9,
       "text": "mit 从 ",
-      "ts": 1789768038501
+      "ts": 1789768152557
     },
     {
       "agent": "main",
@@ -3494,7 +3494,7 @@
       "type": "delta",
       "step": 9,
       "text": "512Mi ",
-      "ts": 1789768038506
+      "ts": 1789768152563
     },
     {
       "agent": "main",
@@ -3502,7 +3502,7 @@
       "type": "delta",
       "step": 9,
       "text": "提高（如 2",
-      "ts": 1789768038512
+      "ts": 1789768152569
     },
     {
       "agent": "main",
@@ -3510,7 +3510,7 @@
       "type": "delta",
       "step": 9,
       "text": "Gi）并重建",
-      "ts": 1789768038518
+      "ts": 1789768152575
     },
     {
       "agent": "main",
@@ -3518,7 +3518,7 @@
       "type": "delta",
       "step": 9,
       "text": " Pod\n-",
-      "ts": 1789768038524
+      "ts": 1789768152580
     },
     {
       "agent": "main",
@@ -3526,7 +3526,7 @@
       "type": "delta",
       "step": 9,
       "text": " 根本：分批",
-      "ts": 1789768038529
+      "ts": 1789768152586
     },
     {
       "agent": "main",
@@ -3534,7 +3534,7 @@
       "type": "delta",
       "step": 9,
       "text": "加载数据 /",
-      "ts": 1789768038535
+      "ts": 1789768152591
     },
     {
       "agent": "main",
@@ -3542,7 +3542,7 @@
       "type": "delta",
       "step": 9,
       "text": " 排查泄漏；",
-      "ts": 1789768038541
+      "ts": 1789768152598
     },
     {
       "agent": "main",
@@ -3550,7 +3550,7 @@
       "type": "delta",
       "step": 9,
       "text": "配置 VPA",
-      "ts": 1789768038546
+      "ts": 1789768152603
     },
     {
       "agent": "main",
@@ -3558,7 +3558,7 @@
       "type": "delta",
       "step": 9,
       "text": " 推荐值\n-",
-      "ts": 1789768038552
+      "ts": 1789768152609
     },
     {
       "agent": "main",
@@ -3566,7 +3566,7 @@
       "type": "delta",
       "step": 9,
       "text": " 注意 ex",
-      "ts": 1789768038558
+      "ts": 1789768152615
     },
     {
       "agent": "main",
@@ -3574,7 +3574,7 @@
       "type": "delta",
       "step": 9,
       "text": "itCode",
-      "ts": 1789768038563
+      "ts": 1789768152620
     },
     {
       "agent": "main",
@@ -3582,7 +3582,7 @@
       "type": "delta",
       "step": 9,
       "text": " 137 也",
-      "ts": 1789768038569
+      "ts": 1789768152626
     },
     {
       "agent": "main",
@@ -3590,7 +3590,7 @@
       "type": "delta",
       "step": 9,
       "text": "可能来自驱逐",
-      "ts": 1789768038575
+      "ts": 1789768152632
     },
     {
       "agent": "main",
@@ -3598,7 +3598,7 @@
       "type": "delta",
       "step": 9,
       "text": "，此处 re",
-      "ts": 1789768038580
+      "ts": 1789768152637
     },
     {
       "agent": "main",
@@ -3606,7 +3606,7 @@
       "type": "delta",
       "step": 9,
       "text": "ason 明",
-      "ts": 1789768038585
+      "ts": 1789768152643
     },
     {
       "agent": "main",
@@ -3614,7 +3614,7 @@
       "type": "delta",
       "step": 9,
       "text": "确为 OOM",
-      "ts": 1789768038591
+      "ts": 1789768152649
     },
     {
       "agent": "main",
@@ -3622,7 +3622,7 @@
       "type": "delta",
       "step": 9,
       "text": "Killed",
-      "ts": 1789768038597
+      "ts": 1789768152654
     },
     {
       "agent": "main",
@@ -3630,7 +3630,7 @@
       "type": "delta",
       "step": 9,
       "text": "\n- 历史 ",
-      "ts": 1789768038602
+      "ts": 1789768152660
     },
     {
       "agent": "main",
@@ -3638,7 +3638,7 @@
       "type": "delta",
       "step": 9,
       "text": "Case C",
-      "ts": 1789768038608
+      "ts": 1789768152666
     },
     {
       "agent": "main",
@@ -3646,7 +3646,7 @@
       "type": "delta",
       "step": 9,
       "text": "ASE-20",
-      "ts": 1789768038614
+      "ts": 1789768152671
     },
     {
       "agent": "main",
@@ -3654,7 +3654,7 @@
       "type": "delta",
       "step": 9,
       "text": "26-041",
-      "ts": 1789768038620
+      "ts": 1789768152677
     },
     {
       "agent": "main",
@@ -3662,7 +3662,7 @@
       "type": "delta",
       "step": 9,
       "text": " 的处理方式",
-      "ts": 1789768038625
+      "ts": 1789768152683
     },
     {
       "agent": "main",
@@ -3670,7 +3670,7 @@
       "type": "delta",
       "step": 9,
       "text": "可参考：me",
-      "ts": 1789768038631
+      "ts": 1789768152688
     },
     {
       "agent": "main",
@@ -3678,7 +3678,7 @@
       "type": "delta",
       "step": 9,
       "text": "mory l",
-      "ts": 1789768038637
+      "ts": 1789768152694
     },
     {
       "agent": "main",
@@ -3686,7 +3686,7 @@
       "type": "delta",
       "step": 9,
       "text": "imit 5",
-      "ts": 1789768038642
+      "ts": 1789768152700
     },
     {
       "agent": "main",
@@ -3694,7 +3694,7 @@
       "type": "delta",
       "step": 9,
       "text": "12Mi →",
-      "ts": 1789768038648
+      "ts": 1789768152705
     },
     {
       "agent": "main",
@@ -3702,7 +3702,7 @@
       "type": "delta",
       "step": 9,
       "text": " 2Gi，并",
-      "ts": 1789768038654
+      "ts": 1789768152711
     },
     {
       "agent": "main",
@@ -3710,7 +3710,7 @@
       "type": "delta",
       "step": 9,
       "text": "改为分批读取",
-      "ts": 1789768038660
+      "ts": 1789768152717
     },
     {
       "agent": "main",
@@ -3718,7 +3718,7 @@
       "type": "delta",
       "step": 9,
       "text": "\n- 复盘报",
-      "ts": 1789768038665
+      "ts": 1789768152723
     },
     {
       "agent": "main",
@@ -3726,7 +3726,7 @@
       "type": "delta",
       "step": 9,
       "text": "告已写入 k",
-      "ts": 1789768038671
+      "ts": 1789768152728
     },
     {
       "agent": "main",
@@ -3734,7 +3734,7 @@
       "type": "delta",
       "step": 9,
       "text": "8s/pos",
-      "ts": 1789768038677
+      "ts": 1789768152734
     },
     {
       "agent": "main",
@@ -3742,7 +3742,7 @@
       "type": "delta",
       "step": 9,
       "text": "tmorte",
-      "ts": 1789768038683
+      "ts": 1789768152740
     },
     {
       "agent": "main",
@@ -3750,7 +3750,7 @@
       "type": "delta",
       "step": 9,
       "text": "m-job-",
-      "ts": 1789768038688
+      "ts": 1789768152745
     },
     {
       "agent": "main",
@@ -3758,7 +3758,7 @@
       "type": "delta",
       "step": 9,
       "text": "123.md",
-      "ts": 1789768038693
+      "ts": 1789768152750
     },
     {
       "agent": "main",
@@ -3766,7 +3766,7 @@
       "type": "delta",
       "step": 9,
       "text": "\n\n## 证",
-      "ts": 1789768038699
+      "ts": 1789768152756
     },
     {
       "agent": "main",
@@ -3774,7 +3774,7 @@
       "type": "delta",
       "step": 9,
       "text": "据不足说明\n",
-      "ts": 1789768038705
+      "ts": 1789768152762
     },
     {
       "agent": "main",
@@ -3782,7 +3782,7 @@
       "type": "delta",
       "step": 9,
       "text": "无",
-      "ts": 1789768038711
+      "ts": 1789768152767
     },
     {
       "agent": "main",
@@ -3795,8 +3795,8 @@
         "inputTokens": 5770,
         "outputTokens": 80
       },
-      "durationMs": 1387,
-      "ts": 1789768038716
+      "durationMs": 1389,
+      "ts": 1789768152773
     },
     {
       "agent": "main",
@@ -3809,7 +3809,7 @@
         "inputTokens": 28718,
         "outputTokens": 720
       },
-      "ts": 1789768038718
+      "ts": 1789768152774
     }
   ],
   "tree": {
@@ -3821,7 +3821,7 @@
         "depth": 0,
         "type": "user",
         "task": "帮我分析 job-123 为什么失败，并修复它。",
-        "ts": 1789768036702
+        "ts": 1789768150747
       },
       {
         "agent": "main",
@@ -3829,7 +3829,7 @@
         "type": "delta",
         "step": 1,
         "text": "诊断 job",
-        "ts": 1789768036702
+        "ts": 1789768150747
       },
       {
         "agent": "main",
@@ -3837,7 +3837,7 @@
         "type": "delta",
         "step": 1,
         "text": "-123：先",
-        "ts": 1789768036708
+        "ts": 1789768150753
       },
       {
         "agent": "main",
@@ -3845,7 +3845,7 @@
         "type": "delta",
         "step": 1,
         "text": "看 Pod ",
-        "ts": 1789768036714
+        "ts": 1789768150759
       },
       {
         "agent": "main",
@@ -3853,7 +3853,7 @@
         "type": "delta",
         "step": 1,
         "text": "状态，再决定",
-        "ts": 1789768036719
+        "ts": 1789768150765
       },
       {
         "agent": "main",
@@ -3861,7 +3861,7 @@
         "type": "delta",
         "step": 1,
         "text": "查哪些信息。",
-        "ts": 1789768036725
+        "ts": 1789768150771
       },
       {
         "agent": "main",
@@ -3903,8 +3903,8 @@
           "inputTokens": 18,
           "outputTokens": 80
         },
-        "durationMs": 28,
-        "ts": 1789768036730
+        "durationMs": 29,
+        "ts": 1789768150776
       },
       {
         "agent": "main",
@@ -3939,7 +3939,7 @@
             ]
           }
         },
-        "ts": 1789768036730
+        "ts": 1789768150776
       },
       {
         "agent": "main",
@@ -3968,7 +3968,7 @@
             "status": "pending"
           }
         ],
-        "ts": 1789768036730
+        "ts": 1789768150776
       },
       {
         "agent": "main",
@@ -3982,7 +3982,7 @@
           "output": "计划已更新（0/4 完成）"
         },
         "durationMs": 0,
-        "ts": 1789768036730
+        "ts": 1789768150776
       },
       {
         "agent": "main",
@@ -3990,7 +3990,7 @@
         "type": "delta",
         "step": 2,
         "text": "获取 Pod",
-        "ts": 1789768036731
+        "ts": 1789768150777
       },
       {
         "agent": "main",
@@ -3998,7 +3998,7 @@
         "type": "delta",
         "step": 2,
         "text": " 状态。",
-        "ts": 1789768036737
+        "ts": 1789768150783
       },
       {
         "agent": "main",
@@ -4021,7 +4021,7 @@
           "outputTokens": 80
         },
         "durationMs": 12,
-        "ts": 1789768036742
+        "ts": 1789768150789
       },
       {
         "agent": "main",
@@ -4036,7 +4036,7 @@
             "namespace": "default"
           }
         },
-        "ts": 1789768036742
+        "ts": 1789768150789
       },
       {
         "agent": "main",
@@ -4049,8 +4049,8 @@
           "ok": true,
           "output": "{\n \"namespace\": \"default\",\n \"name\": \"job-123\",\n \"phase\": \"Running\",\n \"nodeName\": \"node-1\",\n \"startTime\": \"2026-09-18T08:00:00.000Z\",\n \"labels\": {\n  \"app\": \"report-builder\",\n  \"job-name\": \"job-123\"\n },\n \"resources\": {\n  \"requests\": {\n   \"cpu\": \"500m\",\n   \"memory\": \"256Mi\"\n  },\n  \"limits\": {\n   \"cpu\": \"1\",\n   \"memory\": \"512Mi\"\n  }\n },\n \"containers\": [\n  {\n   \"name\": \"report-builder\",\n   \"image\": \"registry.local/report-builder:1.4.2\",\n   \"ready\": false,\n   \"restartCount\": 5,\n   \"state\": {\n    \"waiting\": {\n     \"reason\": \"CrashLoopBackOff\",\n     \"message\": \"back-off 2m40s restarting failed container\"\n    }\n   },\n   \"lastState\": {\n    \"terminated\": {\n     \"reason\": \"OOMKilled\",\n     \"exitCode\": 137,\n     \"startedAt\": \"2026-09-18T08:40:00.000Z\",\n     \"finishedAt\": \"2026-09-18T08:44:00.000Z\"\n    }\n   }\n  }\n ],\n \"conditions\": [\n  {\n   \"type\": \"PodScheduled\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"Initialized\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"ContainersReady\",\n   \"status\": \"False\",\n   \"reason\": \"ContainersNotReady\",\n   \"message\": \"containers with unready status: [report-builder]\"\n  },\n  {\n   \"type\": \"Ready\",\n   \"status\": \"False\",\n   \"reason\": \"ContainersNotReady\"\n  }\n ],\n \"signals\": [\n  \"容器 report-builder 终止原因=OOMKilled exitCode=137\",\n  \"容器 report-builder 重启 5 次\",\n  \"容器 report-builder waiting=CrashLoopBackOff\",\n  \"容器 report-builder 未 Ready\",\n  \"condition ContainersReady=False (ContainersNotReady)\",\n  \"condition Ready=False (ContainersNotReady)\"\n ]\n}"
         },
-        "durationMs": 2,
-        "ts": 1789768036744
+        "durationMs": 3,
+        "ts": 1789768150792
       },
       {
         "agent": "main",
@@ -4058,7 +4058,7 @@
         "type": "delta",
         "step": 3,
         "text": "Pod 信号",
-        "ts": 1789768036745
+        "ts": 1789768150792
       },
       {
         "agent": "main",
@@ -4066,7 +4066,7 @@
         "type": "delta",
         "step": 3,
         "text": "：容器 re",
-        "ts": 1789768036751
+        "ts": 1789768150798
       },
       {
         "agent": "main",
@@ -4074,7 +4074,7 @@
         "type": "delta",
         "step": 3,
         "text": "port-b",
-        "ts": 1789768036756
+        "ts": 1789768150803
       },
       {
         "agent": "main",
@@ -4082,7 +4082,7 @@
         "type": "delta",
         "step": 3,
         "text": "uilder",
-        "ts": 1789768036761
+        "ts": 1789768150809
       },
       {
         "agent": "main",
@@ -4090,7 +4090,7 @@
         "type": "delta",
         "step": 3,
         "text": " 终止原因=",
-        "ts": 1789768036767
+        "ts": 1789768150815
       },
       {
         "agent": "main",
@@ -4098,7 +4098,7 @@
         "type": "delta",
         "step": 3,
         "text": "OOMKil",
-        "ts": 1789768036772
+        "ts": 1789768150820
       },
       {
         "agent": "main",
@@ -4106,7 +4106,7 @@
         "type": "delta",
         "step": 3,
         "text": "led ex",
-        "ts": 1789768036778
+        "ts": 1789768150826
       },
       {
         "agent": "main",
@@ -4114,7 +4114,7 @@
         "type": "delta",
         "step": 3,
         "text": "itCode",
-        "ts": 1789768036784
+        "ts": 1789768150832
       },
       {
         "agent": "main",
@@ -4122,7 +4122,7 @@
         "type": "delta",
         "step": 3,
         "text": "=137；容",
-        "ts": 1789768036790
+        "ts": 1789768150838
       },
       {
         "agent": "main",
@@ -4130,7 +4130,7 @@
         "type": "delta",
         "step": 3,
         "text": "器 repo",
-        "ts": 1789768036795
+        "ts": 1789768150843
       },
       {
         "agent": "main",
@@ -4138,7 +4138,7 @@
         "type": "delta",
         "step": 3,
         "text": "rt-bui",
-        "ts": 1789768036801
+        "ts": 1789768150849
       },
       {
         "agent": "main",
@@ -4146,7 +4146,7 @@
         "type": "delta",
         "step": 3,
         "text": "lder 重",
-        "ts": 1789768036807
+        "ts": 1789768150855
       },
       {
         "agent": "main",
@@ -4154,7 +4154,7 @@
         "type": "delta",
         "step": 3,
         "text": "启 5 次；",
-        "ts": 1789768036813
+        "ts": 1789768150860
       },
       {
         "agent": "main",
@@ -4162,7 +4162,7 @@
         "type": "delta",
         "step": 3,
         "text": "容器 rep",
-        "ts": 1789768036818
+        "ts": 1789768150866
       },
       {
         "agent": "main",
@@ -4170,7 +4170,7 @@
         "type": "delta",
         "step": 3,
         "text": "ort-bu",
-        "ts": 1789768036824
+        "ts": 1789768150872
       },
       {
         "agent": "main",
@@ -4178,7 +4178,7 @@
         "type": "delta",
         "step": 3,
         "text": "ilder ",
-        "ts": 1789768036830
+        "ts": 1789768150878
       },
       {
         "agent": "main",
@@ -4186,7 +4186,7 @@
         "type": "delta",
         "step": 3,
         "text": "waitin",
-        "ts": 1789768036836
+        "ts": 1789768150883
       },
       {
         "agent": "main",
@@ -4194,7 +4194,7 @@
         "type": "delta",
         "step": 3,
         "text": "g=Cras",
-        "ts": 1789768036841
+        "ts": 1789768150889
       },
       {
         "agent": "main",
@@ -4202,7 +4202,7 @@
         "type": "delta",
         "step": 3,
         "text": "hLoopB",
-        "ts": 1789768036847
+        "ts": 1789768150895
       },
       {
         "agent": "main",
@@ -4210,7 +4210,7 @@
         "type": "delta",
         "step": 3,
         "text": "ackOff",
-        "ts": 1789768036853
+        "ts": 1789768150900
       },
       {
         "agent": "main",
@@ -4218,7 +4218,7 @@
         "type": "delta",
         "step": 3,
         "text": "；容器 re",
-        "ts": 1789768036858
+        "ts": 1789768150905
       },
       {
         "agent": "main",
@@ -4226,7 +4226,7 @@
         "type": "delta",
         "step": 3,
         "text": "port-b",
-        "ts": 1789768036864
+        "ts": 1789768150911
       },
       {
         "agent": "main",
@@ -4234,7 +4234,7 @@
         "type": "delta",
         "step": 3,
         "text": "uilder",
-        "ts": 1789768036869
+        "ts": 1789768150916
       },
       {
         "agent": "main",
@@ -4242,7 +4242,7 @@
         "type": "delta",
         "step": 3,
         "text": " 未 Rea",
-        "ts": 1789768036874
+        "ts": 1789768150922
       },
       {
         "agent": "main",
@@ -4250,7 +4250,7 @@
         "type": "delta",
         "step": 3,
         "text": "dy；con",
-        "ts": 1789768036880
+        "ts": 1789768150928
       },
       {
         "agent": "main",
@@ -4258,7 +4258,7 @@
         "type": "delta",
         "step": 3,
         "text": "dition",
-        "ts": 1789768036885
+        "ts": 1789768150934
       },
       {
         "agent": "main",
@@ -4266,7 +4266,7 @@
         "type": "delta",
         "step": 3,
         "text": " Conta",
-        "ts": 1789768036891
+        "ts": 1789768150939
       },
       {
         "agent": "main",
@@ -4274,7 +4274,7 @@
         "type": "delta",
         "step": 3,
         "text": "inersR",
-        "ts": 1789768036897
+        "ts": 1789768150945
       },
       {
         "agent": "main",
@@ -4282,7 +4282,7 @@
         "type": "delta",
         "step": 3,
         "text": "eady=F",
-        "ts": 1789768036902
+        "ts": 1789768150951
       },
       {
         "agent": "main",
@@ -4290,7 +4290,7 @@
         "type": "delta",
         "step": 3,
         "text": "alse (",
-        "ts": 1789768036908
+        "ts": 1789768150956
       },
       {
         "agent": "main",
@@ -4298,7 +4298,7 @@
         "type": "delta",
         "step": 3,
         "text": "Contai",
-        "ts": 1789768036913
+        "ts": 1789768150962
       },
       {
         "agent": "main",
@@ -4306,7 +4306,7 @@
         "type": "delta",
         "step": 3,
         "text": "nersNo",
-        "ts": 1789768036919
+        "ts": 1789768150968
       },
       {
         "agent": "main",
@@ -4314,7 +4314,7 @@
         "type": "delta",
         "step": 3,
         "text": "tReady",
-        "ts": 1789768036925
+        "ts": 1789768150974
       },
       {
         "agent": "main",
@@ -4322,7 +4322,7 @@
         "type": "delta",
         "step": 3,
         "text": ")；cond",
-        "ts": 1789768036930
+        "ts": 1789768150979
       },
       {
         "agent": "main",
@@ -4330,7 +4330,7 @@
         "type": "delta",
         "step": 3,
         "text": "ition ",
-        "ts": 1789768036936
+        "ts": 1789768150985
       },
       {
         "agent": "main",
@@ -4338,7 +4338,7 @@
         "type": "delta",
         "step": 3,
         "text": "Ready=",
-        "ts": 1789768036942
+        "ts": 1789768150991
       },
       {
         "agent": "main",
@@ -4346,7 +4346,7 @@
         "type": "delta",
         "step": 3,
         "text": "False ",
-        "ts": 1789768036947
+        "ts": 1789768150996
       },
       {
         "agent": "main",
@@ -4354,7 +4354,7 @@
         "type": "delta",
         "step": 3,
         "text": "(Conta",
-        "ts": 1789768036953
+        "ts": 1789768151002
       },
       {
         "agent": "main",
@@ -4362,7 +4362,7 @@
         "type": "delta",
         "step": 3,
         "text": "inersN",
-        "ts": 1789768036958
+        "ts": 1789768151008
       },
       {
         "agent": "main",
@@ -4370,7 +4370,7 @@
         "type": "delta",
         "step": 3,
         "text": "otRead",
-        "ts": 1789768036964
+        "ts": 1789768151013
       },
       {
         "agent": "main",
@@ -4378,7 +4378,7 @@
         "type": "delta",
         "step": 3,
         "text": "y)。并行获",
-        "ts": 1789768036970
+        "ts": 1789768151019
       },
       {
         "agent": "main",
@@ -4386,7 +4386,7 @@
         "type": "delta",
         "step": 3,
         "text": "取 Even",
-        "ts": 1789768036975
+        "ts": 1789768151025
       },
       {
         "agent": "main",
@@ -4394,7 +4394,7 @@
         "type": "delta",
         "step": 3,
         "text": "t、节点 n",
-        "ts": 1789768036980
+        "ts": 1789768151031
       },
       {
         "agent": "main",
@@ -4402,7 +4402,7 @@
         "type": "delta",
         "step": 3,
         "text": "ode-1、",
-        "ts": 1789768036985
+        "ts": 1789768151036
       },
       {
         "agent": "main",
@@ -4410,7 +4410,7 @@
         "type": "delta",
         "step": 3,
         "text": "指标与上一次",
-        "ts": 1789768036991
+        "ts": 1789768151042
       },
       {
         "agent": "main",
@@ -4418,7 +4418,7 @@
         "type": "delta",
         "step": 3,
         "text": "崩溃前的日志",
-        "ts": 1789768036996
+        "ts": 1789768151048
       },
       {
         "agent": "main",
@@ -4426,7 +4426,7 @@
         "type": "delta",
         "step": 3,
         "text": "。",
-        "ts": 1789768037001
+        "ts": 1789768151053
       },
       {
         "agent": "main",
@@ -4502,8 +4502,8 @@
           "inputTokens": 824,
           "outputTokens": 80
         },
-        "durationMs": 262,
-        "ts": 1789768037007
+        "durationMs": 267,
+        "ts": 1789768151059
       },
       {
         "agent": "main",
@@ -4538,7 +4538,7 @@
             ]
           }
         },
-        "ts": 1789768037007
+        "ts": 1789768151059
       },
       {
         "agent": "main",
@@ -4567,7 +4567,7 @@
             "status": "pending"
           }
         ],
-        "ts": 1789768037007
+        "ts": 1789768151059
       },
       {
         "agent": "main",
@@ -4582,7 +4582,7 @@
             "namespace": "default"
           }
         },
-        "ts": 1789768037007
+        "ts": 1789768151059
       },
       {
         "agent": "main",
@@ -4596,7 +4596,7 @@
             "name": "node-1"
           }
         },
-        "ts": 1789768037008
+        "ts": 1789768151059
       },
       {
         "agent": "main",
@@ -4612,7 +4612,7 @@
             "window": "60m"
           }
         },
-        "ts": 1789768037009
+        "ts": 1789768151060
       },
       {
         "agent": "main",
@@ -4629,7 +4629,7 @@
             "tail": 100
           }
         },
-        "ts": 1789768037009
+        "ts": 1789768151060
       },
       {
         "agent": "main",
@@ -4642,8 +4642,8 @@
           "ok": true,
           "output": "计划已更新（1/4 完成）"
         },
-        "durationMs": 3,
-        "ts": 1789768037010
+        "durationMs": 1,
+        "ts": 1789768151060
       },
       {
         "agent": "main",
@@ -4656,8 +4656,8 @@
           "ok": true,
           "output": "{\n \"available\": true,\n \"window\": \"60m\",\n \"summary\": {\n  \"cpu\": {\n   \"unit\": \"cores\",\n   \"peak\": 0.5,\n   \"avg\": 0.39,\n   \"last\": 0.35,\n   \"limit\": 1,\n   \"peakPctOfLimit\": \"50%\",\n   \"samples\": 22\n  },\n  \"memory\": {\n   \"unit\": \"MiB\",\n   \"peak\": 511,\n   \"avg\": 336.55,\n   \"last\": 511,\n   \"limit\": 512,\n   \"peakPctOfLimit\": \"100%\",\n   \"samples\": 22\n  }\n },\n \"series\": {\n  \"available\": true,\n  \"window\": \"60m\",\n  \"cpu\": {\n   \"unit\": \"cores\",\n   \"limit\": 1,\n   \"request\": 0.5,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 0.3\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 0.35\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 0.45\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 0.3\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 0.35\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 0.45\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 0.3\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 0.35\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 0.45\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 0.3\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 0.35\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 0.45\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 0.3\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 0.35\n    }\n   ]\n  },\n  \"memory\": {\n   \"unit\": \"MiB\",\n   \"limit\": 512,\n   \"request\": 256,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 120\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 141\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 162\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 183\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 204\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 225\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 246\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 267\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 288\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 309\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 330\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 351\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 372\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 393\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 414\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 435\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 456\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 477\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 498\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 511\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 511\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 511\n    }\n   ]\n  }\n }\n}"
         },
-        "durationMs": 3,
-        "ts": 1789768037012
+        "durationMs": 2,
+        "ts": 1789768151062
       },
       {
         "agent": "main",
@@ -4670,8 +4670,8 @@
           "ok": true,
           "output": "{\n \"previous\": true,\n \"lines\": 6,\n \"highlights\": [],\n \"log\": \"2026-09-18T08:40:02Z INFO  report-builder starting, version 1.4.2\\n2026-09-18T08:40:02Z INFO  loading dataset /data/orders-2026-09.parquet (3.9 GB)\\n2026-09-18T08:40:21Z INFO  loaded 1200000 rows into memory\\n2026-09-18T08:41:30Z INFO  loaded 8400000 rows into memory\\n2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit\\n2026-09-18T08:44:01Z INFO  building pivot table (this may take a while)\"\n}"
         },
-        "durationMs": 3,
-        "ts": 1789768037012
+        "durationMs": 2,
+        "ts": 1789768151062
       },
       {
         "agent": "main",
@@ -4684,8 +4684,8 @@
           "ok": true,
           "output": "{\n \"count\": 5,\n \"warnings\": 1,\n \"events\": [\n  {\n   \"time\": \"2026-09-18T08:00:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Scheduled\",\n   \"message\": \"Successfully assigned default/job-123 to node-1\",\n   \"count\": 1,\n   \"source\": \"default-scheduler\"\n  },\n  {\n   \"time\": \"2026-09-18T08:00:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Pulled\",\n   \"message\": \"Container image \\\"registry.local/report-builder:1.4.2\\\" already present on machine\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:04:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Started\",\n   \"message\": \"Started container report-builder\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:30:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"SandboxChanged\",\n   \"message\": \"Pod sandbox changed, it will be killed and re-created.\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:44:00.000Z\",\n   \"type\": \"Warning\",\n   \"reason\": \"BackOff\",\n   \"message\": \"Back-off restarting failed container report-builder in pod job-123\",\n   \"count\": 12,\n   \"source\": \"kubelet\"\n  }\n ]\n}"
         },
-        "durationMs": 18,
-        "ts": 1789768037025
+        "durationMs": 17,
+        "ts": 1789768151076
       },
       {
         "agent": "main",
@@ -4699,7 +4699,7 @@
           "output": "{\n \"name\": \"node-1\",\n \"kubeletVersion\": \"v1.31.2\",\n \"allocatable\": {\n  \"cpu\": \"4\",\n  \"memory\": \"16Gi\",\n  \"ephemeral-storage\": \"100Gi\",\n  \"pods\": \"110\"\n },\n \"allocated\": {\n  \"cpu\": \"3200m\",\n  \"memory\": \"9Gi\"\n },\n \"conditions\": [\n  {\n   \"type\": \"Ready\",\n   \"status\": \"True\",\n   \"reason\": \"KubeletReady\",\n   \"lastHeartbeatTime\": \"2026-09-18T08:58:00.000Z\"\n  },\n  {\n   \"type\": \"MemoryPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoMemoryPressure\"\n  },\n  {\n   \"type\": \"DiskPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoDiskPressure\"\n  },\n  {\n   \"type\": \"PIDPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoPIDPressure\"\n  }\n ],\n \"taints\": [],\n \"signals\": []\n}"
         },
         "durationMs": 17,
-        "ts": 1789768037025
+        "ts": 1789768151076
       },
       {
         "agent": "main",
@@ -4707,7 +4707,7 @@
         "type": "delta",
         "step": 4,
         "text": "初步判断为 ",
-        "ts": 1789768037027
+        "ts": 1789768151077
       },
       {
         "agent": "main",
@@ -4715,7 +4715,7 @@
         "type": "delta",
         "step": 4,
         "text": "OOMKil",
-        "ts": 1789768037032
+        "ts": 1789768151083
       },
       {
         "agent": "main",
@@ -4723,7 +4723,7 @@
         "type": "delta",
         "step": 4,
         "text": "led（容器",
-        "ts": 1789768037038
+        "ts": 1789768151088
       },
       {
         "agent": "main",
@@ -4731,7 +4731,7 @@
         "type": "delta",
         "step": 4,
         "text": "内存超过 l",
-        "ts": 1789768037044
+        "ts": 1789768151094
       },
       {
         "agent": "main",
@@ -4739,7 +4739,7 @@
         "type": "delta",
         "step": 4,
         "text": "imit）。",
-        "ts": 1789768037050
+        "ts": 1789768151100
       },
       {
         "agent": "main",
@@ -4747,7 +4747,7 @@
         "type": "delta",
         "step": 4,
         "text": "对照知识库与",
-        "ts": 1789768037055
+        "ts": 1789768151105
       },
       {
         "agent": "main",
@@ -4755,7 +4755,7 @@
         "type": "delta",
         "step": 4,
         "text": "历史 Cas",
-        "ts": 1789768037060
+        "ts": 1789768151111
       },
       {
         "agent": "main",
@@ -4763,7 +4763,7 @@
         "type": "delta",
         "step": 4,
         "text": "e。",
-        "ts": 1789768037066
+        "ts": 1789768151117
       },
       {
         "agent": "main",
@@ -4821,8 +4821,8 @@
           "inputTokens": 3478,
           "outputTokens": 80
         },
-        "durationMs": 47,
-        "ts": 1789768037072
+        "durationMs": 46,
+        "ts": 1789768151122
       },
       {
         "agent": "main",
@@ -4857,7 +4857,7 @@
             ]
           }
         },
-        "ts": 1789768037072
+        "ts": 1789768151123
       },
       {
         "agent": "main",
@@ -4886,7 +4886,7 @@
             "status": "pending"
           }
         ],
-        "ts": 1789768037072
+        "ts": 1789768151123
       },
       {
         "agent": "main",
@@ -4901,7 +4901,7 @@
             "top": 2
           }
         },
-        "ts": 1789768037072
+        "ts": 1789768151123
       },
       {
         "agent": "main",
@@ -4916,7 +4916,7 @@
             "top": 2
           }
         },
-        "ts": 1789768037073
+        "ts": 1789768151123
       },
       {
         "agent": "main",
@@ -4929,8 +4929,8 @@
           "ok": true,
           "output": "计划已更新（2/4 完成）"
         },
-        "durationMs": 1,
-        "ts": 1789768037073
+        "durationMs": 0,
+        "ts": 1789768151123
       },
       {
         "agent": "main",
@@ -4944,7 +4944,7 @@
           "output": "{\n \"total\": 1,\n \"cases\": [\n  {\n   \"id\": \"CASE-2026-041\",\n   \"date\": \"2026-07-03\",\n   \"symptoms\": \"report job OOMKilled exitCode 137 restartCount 增长 memory 峰值接近 limit 512Mi BackOff\",\n   \"rootCause\": \"月末数据量翻倍，整表加载进内存超过 limit\",\n   \"fix\": \"memory limit 512Mi → 2Gi，并改为分批读取\",\n   \"tags\": [\n    \"OOMKilled\",\n    \"memory\",\n    \"job\"\n   ],\n   \"similarity\": 6\n  }\n ]\n}"
         },
         "durationMs": 1,
-        "ts": 1789768037074
+        "ts": 1789768151124
       },
       {
         "agent": "main",
@@ -4957,8 +4957,8 @@
           "ok": true,
           "output": "{\n \"query\": \"OOMKilled memory limit exitCode 137 BackOff\",\n \"total\": 4,\n \"results\": [\n  {\n   \"file\": \"k8s/runbooks/oom.md\",\n   \"title\": \"OOMKilled\",\n   \"score\": 8,\n   \"content\": \"## OOMKilled\\n症状：容器 lastState.terminated.reason=OOMKilled，exitCode=137，restartCount 持续增长，Event 出现 BackOff；内存指标峰值逼近 limit。\\n确认方法：get_pod 看终止原因；get_metrics 看 memory peak 与 limit 占比；get_logs previous=true 看崩溃前的行为（大数据集加载、缓存膨胀）。\\n处理：1) 临时提高 memory limit（保持 request≈limit 的 Guaranteed QoS）；2) 排查内存泄漏或分批处理数据；3) 配置 VPA 推荐值。\\n注意：exitCode=137 也可能是节点驱逐或手动 kill，需结合 reason 字段判断。\"\n  },\n  {\n   \"file\": \"k8s/runbooks/oom.md\",\n   \"title\": \"MemoryPressure（节点级）\",\n   \"score\": 3,\n   \"content\": \"## MemoryPressure（节点级）\\n症状：Node condition MemoryPressure=True，多个 Pod 被 Evicted，reason 含 \\\"low on resource: memory\\\"。\\n处理：驱逐低优先级 Pod、增加节点内存、设置合理的 request 避免超卖。\"\n  }\n ]\n}"
         },
-        "durationMs": 3,
-        "ts": 1789768037075
+        "durationMs": 2,
+        "ts": 1789768151125
       },
       {
         "agent": "main",
@@ -4966,7 +4966,7 @@
         "type": "delta",
         "step": 5,
         "text": "生成修复方案",
-        "ts": 1789768037075
+        "ts": 1789768151126
       },
       {
         "agent": "main",
@@ -4974,7 +4974,7 @@
         "type": "delta",
         "step": 5,
         "text": "。",
-        "ts": 1789768037081
+        "ts": 1789768151131
       },
       {
         "agent": "main",
@@ -4997,8 +4997,8 @@
           "inputTokens": 4198,
           "outputTokens": 80
         },
-        "durationMs": 12,
-        "ts": 1789768037087
+        "durationMs": 11,
+        "ts": 1789768151136
       },
       {
         "agent": "main",
@@ -5014,7 +5014,7 @@
             "diagnosis": "OOMKilled memory limit exitCode 137 BackOff"
           }
         },
-        "ts": 1789768037087
+        "ts": 1789768151136
       },
       {
         "agent": "main",
@@ -5028,7 +5028,7 @@
           "output": "{\n \"pod\": \"default/job-123\",\n \"note\": \"执行任一方案前需人工确认：apply_fix 是写操作，未授权写权限时会被拒绝。\",\n \"proposals\": [\n  {\n   \"action\": \"increase_memory_limit\",\n   \"description\": \"把容器 memory limit 从 512Mi 提高到 2Gi（request 同步到 1Gi）并重建 Pod\",\n   \"risk\": \"low\",\n   \"command\": \"kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi\",\n   \"relevance\": 2,\n   \"applied\": false\n  },\n  {\n   \"action\": \"restart_pod\",\n   \"description\": \"仅删除 Pod 让其重建（不解决内存不足，大概率再次 OOM）\",\n   \"risk\": \"medium\",\n   \"command\": \"kubectl delete pod job-123\",\n   \"relevance\": 0,\n   \"applied\": false\n  }\n ]\n}"
         },
         "durationMs": 2,
-        "ts": 1789768037089
+        "ts": 1789768151138
       },
       {
         "agent": "main",
@@ -5036,7 +5036,7 @@
         "type": "delta",
         "step": 6,
         "text": "准备执行修复",
-        "ts": 1789768037090
+        "ts": 1789768151139
       },
       {
         "agent": "main",
@@ -5044,7 +5044,7 @@
         "type": "delta",
         "step": 6,
         "text": "动作 **i",
-        "ts": 1789768037096
+        "ts": 1789768151145
       },
       {
         "agent": "main",
@@ -5052,7 +5052,7 @@
         "type": "delta",
         "step": 6,
         "text": "ncreas",
-        "ts": 1789768037101
+        "ts": 1789768151150
       },
       {
         "agent": "main",
@@ -5060,7 +5060,7 @@
         "type": "delta",
         "step": 6,
         "text": "e_memo",
-        "ts": 1789768037107
+        "ts": 1789768151156
       },
       {
         "agent": "main",
@@ -5068,7 +5068,7 @@
         "type": "delta",
         "step": 6,
         "text": "ry_lim",
-        "ts": 1789768037113
+        "ts": 1789768151162
       },
       {
         "agent": "main",
@@ -5076,7 +5076,7 @@
         "type": "delta",
         "step": 6,
         "text": "it**（风",
-        "ts": 1789768037118
+        "ts": 1789768151167
       },
       {
         "agent": "main",
@@ -5084,7 +5084,7 @@
         "type": "delta",
         "step": 6,
         "text": "险 low）",
-        "ts": 1789768037124
+        "ts": 1789768151173
       },
       {
         "agent": "main",
@@ -5092,7 +5092,7 @@
         "type": "delta",
         "step": 6,
         "text": "：把容器 m",
-        "ts": 1789768037130
+        "ts": 1789768151179
       },
       {
         "agent": "main",
@@ -5100,7 +5100,7 @@
         "type": "delta",
         "step": 6,
         "text": "emory ",
-        "ts": 1789768037135
+        "ts": 1789768151185
       },
       {
         "agent": "main",
@@ -5108,7 +5108,7 @@
         "type": "delta",
         "step": 6,
         "text": "limit ",
-        "ts": 1789768037141
+        "ts": 1789768151190
       },
       {
         "agent": "main",
@@ -5116,7 +5116,7 @@
         "type": "delta",
         "step": 6,
         "text": "从 512M",
-        "ts": 1789768037146
+        "ts": 1789768151196
       },
       {
         "agent": "main",
@@ -5124,7 +5124,7 @@
         "type": "delta",
         "step": 6,
         "text": "i 提高到 ",
-        "ts": 1789768037152
+        "ts": 1789768151202
       },
       {
         "agent": "main",
@@ -5132,7 +5132,7 @@
         "type": "delta",
         "step": 6,
         "text": "2Gi（re",
-        "ts": 1789768037158
+        "ts": 1789768151207
       },
       {
         "agent": "main",
@@ -5140,7 +5140,7 @@
         "type": "delta",
         "step": 6,
         "text": "quest ",
-        "ts": 1789768037163
+        "ts": 1789768151213
       },
       {
         "agent": "main",
@@ -5148,7 +5148,7 @@
         "type": "delta",
         "step": 6,
         "text": "同步到 1G",
-        "ts": 1789768037169
+        "ts": 1789768151219
       },
       {
         "agent": "main",
@@ -5156,7 +5156,7 @@
         "type": "delta",
         "step": 6,
         "text": "i）并重建 ",
-        "ts": 1789768037175
+        "ts": 1789768151224
       },
       {
         "agent": "main",
@@ -5164,7 +5164,7 @@
         "type": "delta",
         "step": 6,
         "text": "Pod\n等价",
-        "ts": 1789768037180
+        "ts": 1789768151230
       },
       {
         "agent": "main",
@@ -5172,7 +5172,7 @@
         "type": "delta",
         "step": 6,
         "text": "命令：`ku",
-        "ts": 1789768037186
+        "ts": 1789768151236
       },
       {
         "agent": "main",
@@ -5180,7 +5180,7 @@
         "type": "delta",
         "step": 6,
         "text": "bectl ",
-        "ts": 1789768037191
+        "ts": 1789768151241
       },
       {
         "agent": "main",
@@ -5188,7 +5188,7 @@
         "type": "delta",
         "step": 6,
         "text": "set re",
-        "ts": 1789768037197
+        "ts": 1789768151247
       },
       {
         "agent": "main",
@@ -5196,7 +5196,7 @@
         "type": "delta",
         "step": 6,
         "text": "source",
-        "ts": 1789768037202
+        "ts": 1789768151253
       },
       {
         "agent": "main",
@@ -5204,7 +5204,7 @@
         "type": "delta",
         "step": 6,
         "text": "s job/",
-        "ts": 1789768037208
+        "ts": 1789768151258
       },
       {
         "agent": "main",
@@ -5212,7 +5212,7 @@
         "type": "delta",
         "step": 6,
         "text": "job-12",
-        "ts": 1789768037214
+        "ts": 1789768151264
       },
       {
         "agent": "main",
@@ -5220,7 +5220,7 @@
         "type": "delta",
         "step": 6,
         "text": "3 --li",
-        "ts": 1789768037219
+        "ts": 1789768151270
       },
       {
         "agent": "main",
@@ -5228,7 +5228,7 @@
         "type": "delta",
         "step": 6,
         "text": "mits=m",
-        "ts": 1789768037225
+        "ts": 1789768151276
       },
       {
         "agent": "main",
@@ -5236,7 +5236,7 @@
         "type": "delta",
         "step": 6,
         "text": "emory=",
-        "ts": 1789768037230
+        "ts": 1789768151281
       },
       {
         "agent": "main",
@@ -5244,7 +5244,7 @@
         "type": "delta",
         "step": 6,
         "text": "2Gi --",
-        "ts": 1789768037236
+        "ts": 1789768151287
       },
       {
         "agent": "main",
@@ -5252,7 +5252,7 @@
         "type": "delta",
         "step": 6,
         "text": "reques",
-        "ts": 1789768037242
+        "ts": 1789768151293
       },
       {
         "agent": "main",
@@ -5260,7 +5260,7 @@
         "type": "delta",
         "step": 6,
         "text": "ts=mem",
-        "ts": 1789768037247
+        "ts": 1789768151299
       },
       {
         "agent": "main",
@@ -5268,7 +5268,7 @@
         "type": "delta",
         "step": 6,
         "text": "ory=1G",
-        "ts": 1789768037252
+        "ts": 1789768151304
       },
       {
         "agent": "main",
@@ -5276,7 +5276,7 @@
         "type": "delta",
         "step": 6,
         "text": "i`\n该动作",
-        "ts": 1789768037258
+        "ts": 1789768151310
       },
       {
         "agent": "main",
@@ -5284,7 +5284,7 @@
         "type": "delta",
         "step": 6,
         "text": "为写操作，需",
-        "ts": 1789768037263
+        "ts": 1789768151316
       },
       {
         "agent": "main",
@@ -5292,7 +5292,7 @@
         "type": "delta",
         "step": 6,
         "text": "要人工确认；",
-        "ts": 1789768037268
+        "ts": 1789768151322
       },
       {
         "agent": "main",
@@ -5300,7 +5300,7 @@
         "type": "delta",
         "step": 6,
         "text": "若未授权将被",
-        "ts": 1789768037274
+        "ts": 1789768151327
       },
       {
         "agent": "main",
@@ -5308,7 +5308,7 @@
         "type": "delta",
         "step": 6,
         "text": "拒绝并转为处",
-        "ts": 1789768037279
+        "ts": 1789768151333
       },
       {
         "agent": "main",
@@ -5316,7 +5316,7 @@
         "type": "delta",
         "step": 6,
         "text": "理建议。",
-        "ts": 1789768037285
+        "ts": 1789768151339
       },
       {
         "agent": "main",
@@ -5340,8 +5340,8 @@
           "inputTokens": 4512,
           "outputTokens": 80
         },
-        "durationMs": 202,
-        "ts": 1789768037291
+        "durationMs": 206,
+        "ts": 1789768151345
       },
       {
         "agent": "main",
@@ -5358,7 +5358,7 @@
             "confirmed_by": "user"
           }
         },
-        "ts": 1789768037291
+        "ts": 1789768151345
       },
       {
         "agent": "main",
@@ -5372,7 +5372,7 @@
           "output": "{\n \"applied\": \"increase_memory_limit\",\n \"command\": \"kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi\",\n \"description\": \"把容器 memory limit 从 512Mi 提高到 2Gi（request 同步到 1Gi）并重建 Pod\",\n \"note\": \"已执行（Mock）。请用 verify_fix 检查是否恢复。\"\n}"
         },
         "durationMs": 4,
-        "ts": 1789768037295
+        "ts": 1789768151349
       },
       {
         "agent": "main",
@@ -5380,7 +5380,7 @@
         "type": "delta",
         "step": 7,
         "text": "修复已执行，",
-        "ts": 1789768037295
+        "ts": 1789768151350
       },
       {
         "agent": "main",
@@ -5388,7 +5388,7 @@
         "type": "delta",
         "step": 7,
         "text": "复查 Pod",
-        "ts": 1789768037301
+        "ts": 1789768151355
       },
       {
         "agent": "main",
@@ -5396,7 +5396,7 @@
         "type": "delta",
         "step": 7,
         "text": " 是否恢复。",
-        "ts": 1789768037307
+        "ts": 1789768151361
       },
       {
         "agent": "main",
@@ -5419,7 +5419,7 @@
           "outputTokens": 80
         },
         "durationMs": 18,
-        "ts": 1789768037313
+        "ts": 1789768151367
       },
       {
         "agent": "main",
@@ -5434,7 +5434,7 @@
             "namespace": "default"
           }
         },
-        "ts": 1789768037313
+        "ts": 1789768151367
       },
       {
         "agent": "main",
@@ -5445,10 +5445,10 @@
         "name": "verify_fix",
         "result": {
           "ok": true,
-          "output": "{\n \"pod\": \"default/job-123\",\n \"appliedActions\": [\n  {\n   \"action\": \"increase_memory_limit\",\n   \"at\": \"2026-09-18T21:47:17.294Z\",\n   \"operator\": \"user\"\n  }\n ],\n \"phase\": \"Running\",\n \"containersReady\": [\n  \"report-builder:true\"\n ],\n \"remainingSignals\": [],\n \"nodeIssues\": [],\n \"recovered\": true\n}"
+          "output": "{\n \"pod\": \"default/job-123\",\n \"appliedActions\": [\n  {\n   \"action\": \"increase_memory_limit\",\n   \"at\": \"2026-09-18T21:49:11.348Z\",\n   \"operator\": \"user\"\n  }\n ],\n \"phase\": \"Running\",\n \"containersReady\": [\n  \"report-builder:true\"\n ],\n \"remainingSignals\": [],\n \"nodeIssues\": [],\n \"recovered\": true\n}"
         },
         "durationMs": 3,
-        "ts": 1789768037316
+        "ts": 1789768151370
       },
       {
         "agent": "main",
@@ -5456,7 +5456,7 @@
         "type": "delta",
         "step": 8,
         "text": "生成故障复盘",
-        "ts": 1789768037316
+        "ts": 1789768151371
       },
       {
         "agent": "main",
@@ -5464,7 +5464,7 @@
         "type": "delta",
         "step": 8,
         "text": "报告。",
-        "ts": 1789768037322
+        "ts": 1789768151376
       },
       {
         "agent": "main",
@@ -5507,7 +5507,7 @@
             "name": "write_file",
             "input": {
               "path": "k8s/postmortem-job-123.md",
-              "content": "# 故障复盘：default/job-123\n\n- 时间：2026-09-18T21:47:17.316Z\n- 分类：OOMKilled（容器内存超过 limit）\n- 修复动作：increase_memory_limit（kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi）\n- 复查结果：已恢复\n\n## 故障现象\nPod job-123 反复重启（restartCount=5），容器被内核 OOM Killer 杀死，处于 CrashLoopBackOff。\n\n## 关键证据\n- [Pod] 容器 report-builder lastState.terminated.reason=OOMKilled exitCode=137，restartCount=5（get_pod）\n- [Event] BackOff: Back-off restarting failed container report-builder in pod job-123（count=12，get_pod_events）\n- [Metric] memory 峰值 511MiB / limit 512MiB（100%），cpu 峰值 0.5cores（get_metrics）\n- [Log] 2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit（get_logs previous=true）\n- [Runbook] OOMKilled：症状：容器 lastState.terminated.reason=OOMKilled，exitCode=137，restartCount 持续增长，Event 出现 BackOff；内存指标峰值逼近 limit。…（search_runbook → k8s/runbooks/oom.md）\n- [Case] CASE-2026-041（2026-07-03）根因：月末数据量翻倍，整表加载进内存超过 limit；处理：memory limit 512Mi → 2Gi，并改为分批读取（search_cases）\n- [Pod] 修复后 phase=Running，containersReady=report-builder:true，recovered=true（verify_fix）\n\n## 已确认事实\n- Pod default/job-123 phase=Running，节点 node-1\n- 容器上次终止原因 OOMKilled，exitCode 137，已重启 5 次\n- Event BackOff 出现 12 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 应用工作集超过 memory limit 512Mi · 置信度 高 · 依据：terminated.reason=OOMKilled、内存峰值达 limit 的 100%、崩溃前日志显示在加载大数据集\n- 数据量增长或内存泄漏导致占用持续上升 · 置信度 中 · 依据：内存曲线单调上升而非平台期；需对比历史批次数据量\n\n## 处理建议\n- 已执行 increase_memory_limit 并复查恢复（recovered=true）。\n- 临时：把 memory limit 从 512Mi 提高（如 2Gi）并重建 Pod\n- 根本：分批加载数据 / 排查泄漏；配置 VPA 推荐值\n- 注意 exitCode 137 也可能来自驱逐，此处 reason 明确为 OOMKilled\n- 历史 Case CASE-2026-041 的处理方式可参考：memory limit 512Mi → 2Gi，并改为分批读取\n\n## 证据不足说明\n无\n\n## 改进项\n\n- 为批处理 Job 设置基于数据量的内存预估\n- 增加内存使用率 > 90% 的告警\n"
+              "content": "# 故障复盘：default/job-123\n\n- 时间：2026-09-18T21:49:11.370Z\n- 分类：OOMKilled（容器内存超过 limit）\n- 修复动作：increase_memory_limit（kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi）\n- 复查结果：已恢复\n\n## 故障现象\nPod job-123 反复重启（restartCount=5），容器被内核 OOM Killer 杀死，处于 CrashLoopBackOff。\n\n## 关键证据\n- [Pod] 容器 report-builder lastState.terminated.reason=OOMKilled exitCode=137，restartCount=5（get_pod）\n- [Event] BackOff: Back-off restarting failed container report-builder in pod job-123（count=12，get_pod_events）\n- [Metric] memory 峰值 511MiB / limit 512MiB（100%），cpu 峰值 0.5cores（get_metrics）\n- [Log] 2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit（get_logs previous=true）\n- [Runbook] OOMKilled：症状：容器 lastState.terminated.reason=OOMKilled，exitCode=137，restartCount 持续增长，Event 出现 BackOff；内存指标峰值逼近 limit。…（search_runbook → k8s/runbooks/oom.md）\n- [Case] CASE-2026-041（2026-07-03）根因：月末数据量翻倍，整表加载进内存超过 limit；处理：memory limit 512Mi → 2Gi，并改为分批读取（search_cases）\n- [Pod] 修复后 phase=Running，containersReady=report-builder:true，recovered=true（verify_fix）\n\n## 已确认事实\n- Pod default/job-123 phase=Running，节点 node-1\n- 容器上次终止原因 OOMKilled，exitCode 137，已重启 5 次\n- Event BackOff 出现 12 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 应用工作集超过 memory limit 512Mi · 置信度 高 · 依据：terminated.reason=OOMKilled、内存峰值达 limit 的 100%、崩溃前日志显示在加载大数据集\n- 数据量增长或内存泄漏导致占用持续上升 · 置信度 中 · 依据：内存曲线单调上升而非平台期；需对比历史批次数据量\n\n## 处理建议\n- 已执行 increase_memory_limit 并复查恢复（recovered=true）。\n- 临时：把 memory limit 从 512Mi 提高（如 2Gi）并重建 Pod\n- 根本：分批加载数据 / 排查泄漏；配置 VPA 推荐值\n- 注意 exitCode 137 也可能来自驱逐，此处 reason 明确为 OOMKilled\n- 历史 Case CASE-2026-041 的处理方式可参考：memory limit 512Mi → 2Gi，并改为分批读取\n\n## 证据不足说明\n无\n\n## 改进项\n\n- 为批处理 Job 设置基于数据量的内存预估\n- 增加内存使用率 > 90% 的告警\n"
             }
           }
         ],
@@ -5515,8 +5515,8 @@
           "inputTokens": 4970,
           "outputTokens": 80
         },
-        "durationMs": 11,
-        "ts": 1789768037327
+        "durationMs": 12,
+        "ts": 1789768151382
       },
       {
         "agent": "main",
@@ -5552,7 +5552,7 @@
             ]
           }
         },
-        "ts": 1789768037327
+        "ts": 1789768151382
       },
       {
         "agent": "main",
@@ -5582,7 +5582,7 @@
             "note": "已恢复"
           }
         ],
-        "ts": 1789768037328
+        "ts": 1789768151382
       },
       {
         "agent": "main",
@@ -5595,8 +5595,8 @@
           "ok": true,
           "output": "计划已更新（4/4 完成）"
         },
-        "durationMs": 1,
-        "ts": 1789768037328
+        "durationMs": 0,
+        "ts": 1789768151382
       },
       {
         "agent": "main",
@@ -5608,10 +5608,10 @@
           "name": "write_file",
           "input": {
             "path": "k8s/postmortem-job-123.md",
-            "content": "# 故障复盘：default/job-123\n\n- 时间：2026-09-18T21:47:17.316Z\n- 分类：OOMKilled（容器内存超过 limit）\n- 修复动作：increase_memory_limit（kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi）\n- 复查结果：已恢复\n\n## 故障现象\nPod job-123 反复重启（restartCount=5），容器被内核 OOM Killer 杀死，处于 CrashLoopBackOff。\n\n## 关键证据\n- [Pod] 容器 report-builder lastState.terminated.reason=OOMKilled exitCode=137，restartCount=5（get_pod）\n- [Event] BackOff: Back-off restarting failed container report-builder in pod job-123（count=12，get_pod_events）\n- [Metric] memory 峰值 511MiB / limit 512MiB（100%），cpu 峰值 0.5cores（get_metrics）\n- [Log] 2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit（get_logs previous=true）\n- [Runbook] OOMKilled：症状：容器 lastState.terminated.reason=OOMKilled，exitCode=137，restartCount 持续增长，Event 出现 BackOff；内存指标峰值逼近 limit。…（search_runbook → k8s/runbooks/oom.md）\n- [Case] CASE-2026-041（2026-07-03）根因：月末数据量翻倍，整表加载进内存超过 limit；处理：memory limit 512Mi → 2Gi，并改为分批读取（search_cases）\n- [Pod] 修复后 phase=Running，containersReady=report-builder:true，recovered=true（verify_fix）\n\n## 已确认事实\n- Pod default/job-123 phase=Running，节点 node-1\n- 容器上次终止原因 OOMKilled，exitCode 137，已重启 5 次\n- Event BackOff 出现 12 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 应用工作集超过 memory limit 512Mi · 置信度 高 · 依据：terminated.reason=OOMKilled、内存峰值达 limit 的 100%、崩溃前日志显示在加载大数据集\n- 数据量增长或内存泄漏导致占用持续上升 · 置信度 中 · 依据：内存曲线单调上升而非平台期；需对比历史批次数据量\n\n## 处理建议\n- 已执行 increase_memory_limit 并复查恢复（recovered=true）。\n- 临时：把 memory limit 从 512Mi 提高（如 2Gi）并重建 Pod\n- 根本：分批加载数据 / 排查泄漏；配置 VPA 推荐值\n- 注意 exitCode 137 也可能来自驱逐，此处 reason 明确为 OOMKilled\n- 历史 Case CASE-2026-041 的处理方式可参考：memory limit 512Mi → 2Gi，并改为分批读取\n\n## 证据不足说明\n无\n\n## 改进项\n\n- 为批处理 Job 设置基于数据量的内存预估\n- 增加内存使用率 > 90% 的告警\n"
+            "content": "# 故障复盘：default/job-123\n\n- 时间：2026-09-18T21:49:11.370Z\n- 分类：OOMKilled（容器内存超过 limit）\n- 修复动作：increase_memory_limit（kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi）\n- 复查结果：已恢复\n\n## 故障现象\nPod job-123 反复重启（restartCount=5），容器被内核 OOM Killer 杀死，处于 CrashLoopBackOff。\n\n## 关键证据\n- [Pod] 容器 report-builder lastState.terminated.reason=OOMKilled exitCode=137，restartCount=5（get_pod）\n- [Event] BackOff: Back-off restarting failed container report-builder in pod job-123（count=12，get_pod_events）\n- [Metric] memory 峰值 511MiB / limit 512MiB（100%），cpu 峰值 0.5cores（get_metrics）\n- [Log] 2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit（get_logs previous=true）\n- [Runbook] OOMKilled：症状：容器 lastState.terminated.reason=OOMKilled，exitCode=137，restartCount 持续增长，Event 出现 BackOff；内存指标峰值逼近 limit。…（search_runbook → k8s/runbooks/oom.md）\n- [Case] CASE-2026-041（2026-07-03）根因：月末数据量翻倍，整表加载进内存超过 limit；处理：memory limit 512Mi → 2Gi，并改为分批读取（search_cases）\n- [Pod] 修复后 phase=Running，containersReady=report-builder:true，recovered=true（verify_fix）\n\n## 已确认事实\n- Pod default/job-123 phase=Running，节点 node-1\n- 容器上次终止原因 OOMKilled，exitCode 137，已重启 5 次\n- Event BackOff 出现 12 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 应用工作集超过 memory limit 512Mi · 置信度 高 · 依据：terminated.reason=OOMKilled、内存峰值达 limit 的 100%、崩溃前日志显示在加载大数据集\n- 数据量增长或内存泄漏导致占用持续上升 · 置信度 中 · 依据：内存曲线单调上升而非平台期；需对比历史批次数据量\n\n## 处理建议\n- 已执行 increase_memory_limit 并复查恢复（recovered=true）。\n- 临时：把 memory limit 从 512Mi 提高（如 2Gi）并重建 Pod\n- 根本：分批加载数据 / 排查泄漏；配置 VPA 推荐值\n- 注意 exitCode 137 也可能来自驱逐，此处 reason 明确为 OOMKilled\n- 历史 Case CASE-2026-041 的处理方式可参考：memory limit 512Mi → 2Gi，并改为分批读取\n\n## 证据不足说明\n无\n\n## 改进项\n\n- 为批处理 Job 设置基于数据量的内存预估\n- 增加内存使用率 > 90% 的告警\n"
           }
         },
-        "ts": 1789768037328
+        "ts": 1789768151382
       },
       {
         "agent": "main",
@@ -5625,7 +5625,7 @@
           "output": "已写入 k8s/postmortem-job-123.md (2486 bytes)"
         },
         "durationMs": 1,
-        "ts": 1789768037329
+        "ts": 1789768151383
       },
       {
         "agent": "main",
@@ -5633,7 +5633,7 @@
         "type": "delta",
         "step": 9,
         "text": "## 故障现",
-        "ts": 1789768037330
+        "ts": 1789768151384
       },
       {
         "agent": "main",
@@ -5641,7 +5641,7 @@
         "type": "delta",
         "step": 9,
         "text": "象\nPod ",
-        "ts": 1789768037335
+        "ts": 1789768151390
       },
       {
         "agent": "main",
@@ -5649,7 +5649,7 @@
         "type": "delta",
         "step": 9,
         "text": "job-12",
-        "ts": 1789768037341
+        "ts": 1789768151395
       },
       {
         "agent": "main",
@@ -5657,7 +5657,7 @@
         "type": "delta",
         "step": 9,
         "text": "3 反复重启",
-        "ts": 1789768037347
+        "ts": 1789768151401
       },
       {
         "agent": "main",
@@ -5665,7 +5665,7 @@
         "type": "delta",
         "step": 9,
         "text": "（resta",
-        "ts": 1789768037353
+        "ts": 1789768151407
       },
       {
         "agent": "main",
@@ -5673,7 +5673,7 @@
         "type": "delta",
         "step": 9,
         "text": "rtCoun",
-        "ts": 1789768037359
+        "ts": 1789768151413
       },
       {
         "agent": "main",
@@ -5681,7 +5681,7 @@
         "type": "delta",
         "step": 9,
         "text": "t=5），容",
-        "ts": 1789768037364
+        "ts": 1789768151418
       },
       {
         "agent": "main",
@@ -5689,7 +5689,7 @@
         "type": "delta",
         "step": 9,
         "text": "器被内核 O",
-        "ts": 1789768037370
+        "ts": 1789768151424
       },
       {
         "agent": "main",
@@ -5697,7 +5697,7 @@
         "type": "delta",
         "step": 9,
         "text": "OM Kil",
-        "ts": 1789768037375
+        "ts": 1789768151430
       },
       {
         "agent": "main",
@@ -5705,7 +5705,7 @@
         "type": "delta",
         "step": 9,
         "text": "ler 杀死",
-        "ts": 1789768037381
+        "ts": 1789768151435
       },
       {
         "agent": "main",
@@ -5713,7 +5713,7 @@
         "type": "delta",
         "step": 9,
         "text": "，处于 Cr",
-        "ts": 1789768037387
+        "ts": 1789768151440
       },
       {
         "agent": "main",
@@ -5721,7 +5721,7 @@
         "type": "delta",
         "step": 9,
         "text": "ashLoo",
-        "ts": 1789768037393
+        "ts": 1789768151446
       },
       {
         "agent": "main",
@@ -5729,7 +5729,7 @@
         "type": "delta",
         "step": 9,
         "text": "pBackO",
-        "ts": 1789768037398
+        "ts": 1789768151451
       },
       {
         "agent": "main",
@@ -5737,7 +5737,7 @@
         "type": "delta",
         "step": 9,
         "text": "ff。\n\n#",
-        "ts": 1789768037403
+        "ts": 1789768151457
       },
       {
         "agent": "main",
@@ -5745,7 +5745,7 @@
         "type": "delta",
         "step": 9,
         "text": "# 关键证据",
-        "ts": 1789768037409
+        "ts": 1789768151463
       },
       {
         "agent": "main",
@@ -5753,7 +5753,7 @@
         "type": "delta",
         "step": 9,
         "text": "\n- [Po",
-        "ts": 1789768037414
+        "ts": 1789768151468
       },
       {
         "agent": "main",
@@ -5761,7 +5761,7 @@
         "type": "delta",
         "step": 9,
         "text": "d] 容器 ",
-        "ts": 1789768037420
+        "ts": 1789768151474
       },
       {
         "agent": "main",
@@ -5769,7 +5769,7 @@
         "type": "delta",
         "step": 9,
         "text": "report",
-        "ts": 1789768037426
+        "ts": 1789768151480
       },
       {
         "agent": "main",
@@ -5777,7 +5777,7 @@
         "type": "delta",
         "step": 9,
         "text": "-build",
-        "ts": 1789768037432
+        "ts": 1789768151485
       },
       {
         "agent": "main",
@@ -5785,7 +5785,7 @@
         "type": "delta",
         "step": 9,
         "text": "er las",
-        "ts": 1789768037437
+        "ts": 1789768151491
       },
       {
         "agent": "main",
@@ -5793,7 +5793,7 @@
         "type": "delta",
         "step": 9,
         "text": "tState",
-        "ts": 1789768037443
+        "ts": 1789768151496
       },
       {
         "agent": "main",
@@ -5801,7 +5801,7 @@
         "type": "delta",
         "step": 9,
         "text": ".termi",
-        "ts": 1789768037449
+        "ts": 1789768151502
       },
       {
         "agent": "main",
@@ -5809,7 +5809,7 @@
         "type": "delta",
         "step": 9,
         "text": "nated.",
-        "ts": 1789768037454
+        "ts": 1789768151508
       },
       {
         "agent": "main",
@@ -5817,7 +5817,7 @@
         "type": "delta",
         "step": 9,
         "text": "reason",
-        "ts": 1789768037460
+        "ts": 1789768151513
       },
       {
         "agent": "main",
@@ -5825,7 +5825,7 @@
         "type": "delta",
         "step": 9,
         "text": "=OOMKi",
-        "ts": 1789768037466
+        "ts": 1789768151519
       },
       {
         "agent": "main",
@@ -5833,7 +5833,7 @@
         "type": "delta",
         "step": 9,
         "text": "lled e",
-        "ts": 1789768037472
+        "ts": 1789768151525
       },
       {
         "agent": "main",
@@ -5841,7 +5841,7 @@
         "type": "delta",
         "step": 9,
         "text": "xitCod",
-        "ts": 1789768037477
+        "ts": 1789768151531
       },
       {
         "agent": "main",
@@ -5849,7 +5849,7 @@
         "type": "delta",
         "step": 9,
         "text": "e=137，",
-        "ts": 1789768037482
+        "ts": 1789768151536
       },
       {
         "agent": "main",
@@ -5857,7 +5857,7 @@
         "type": "delta",
         "step": 9,
         "text": "restar",
-        "ts": 1789768037487
+        "ts": 1789768151542
       },
       {
         "agent": "main",
@@ -5865,7 +5865,7 @@
         "type": "delta",
         "step": 9,
         "text": "tCount",
-        "ts": 1789768037493
+        "ts": 1789768151548
       },
       {
         "agent": "main",
@@ -5873,7 +5873,7 @@
         "type": "delta",
         "step": 9,
         "text": "=5（get",
-        "ts": 1789768037499
+        "ts": 1789768151553
       },
       {
         "agent": "main",
@@ -5881,7 +5881,7 @@
         "type": "delta",
         "step": 9,
         "text": "_pod）\n",
-        "ts": 1789768037505
+        "ts": 1789768151558
       },
       {
         "agent": "main",
@@ -5889,7 +5889,7 @@
         "type": "delta",
         "step": 9,
         "text": "- [Eve",
-        "ts": 1789768037510
+        "ts": 1789768151564
       },
       {
         "agent": "main",
@@ -5897,7 +5897,7 @@
         "type": "delta",
         "step": 9,
         "text": "nt] Ba",
-        "ts": 1789768037516
+        "ts": 1789768151570
       },
       {
         "agent": "main",
@@ -5905,7 +5905,7 @@
         "type": "delta",
         "step": 9,
         "text": "ckOff:",
-        "ts": 1789768037522
+        "ts": 1789768151575
       },
       {
         "agent": "main",
@@ -5913,7 +5913,7 @@
         "type": "delta",
         "step": 9,
         "text": " Back-",
-        "ts": 1789768037527
+        "ts": 1789768151581
       },
       {
         "agent": "main",
@@ -5921,7 +5921,7 @@
         "type": "delta",
         "step": 9,
         "text": "off re",
-        "ts": 1789768037533
+        "ts": 1789768151587
       },
       {
         "agent": "main",
@@ -5929,7 +5929,7 @@
         "type": "delta",
         "step": 9,
         "text": "starti",
-        "ts": 1789768037539
+        "ts": 1789768151592
       },
       {
         "agent": "main",
@@ -5937,7 +5937,7 @@
         "type": "delta",
         "step": 9,
         "text": "ng fai",
-        "ts": 1789768037545
+        "ts": 1789768151598
       },
       {
         "agent": "main",
@@ -5945,7 +5945,7 @@
         "type": "delta",
         "step": 9,
         "text": "led co",
-        "ts": 1789768037550
+        "ts": 1789768151604
       },
       {
         "agent": "main",
@@ -5953,7 +5953,7 @@
         "type": "delta",
         "step": 9,
         "text": "ntaine",
-        "ts": 1789768037556
+        "ts": 1789768151610
       },
       {
         "agent": "main",
@@ -5961,7 +5961,7 @@
         "type": "delta",
         "step": 9,
         "text": "r repo",
-        "ts": 1789768037562
+        "ts": 1789768151615
       },
       {
         "agent": "main",
@@ -5969,7 +5969,7 @@
         "type": "delta",
         "step": 9,
         "text": "rt-bui",
-        "ts": 1789768037567
+        "ts": 1789768151621
       },
       {
         "agent": "main",
@@ -5977,7 +5977,7 @@
         "type": "delta",
         "step": 9,
         "text": "lder i",
-        "ts": 1789768037573
+        "ts": 1789768151626
       },
       {
         "agent": "main",
@@ -5985,7 +5985,7 @@
         "type": "delta",
         "step": 9,
         "text": "n pod ",
-        "ts": 1789768037578
+        "ts": 1789768151632
       },
       {
         "agent": "main",
@@ -5993,7 +5993,7 @@
         "type": "delta",
         "step": 9,
         "text": "job-12",
-        "ts": 1789768037584
+        "ts": 1789768151637
       },
       {
         "agent": "main",
@@ -6001,7 +6001,7 @@
         "type": "delta",
         "step": 9,
         "text": "3（coun",
-        "ts": 1789768037590
+        "ts": 1789768151643
       },
       {
         "agent": "main",
@@ -6009,7 +6009,7 @@
         "type": "delta",
         "step": 9,
         "text": "t=12，g",
-        "ts": 1789768037596
+        "ts": 1789768151649
       },
       {
         "agent": "main",
@@ -6017,7 +6017,7 @@
         "type": "delta",
         "step": 9,
         "text": "et_pod",
-        "ts": 1789768037601
+        "ts": 1789768151654
       },
       {
         "agent": "main",
@@ -6025,7 +6025,7 @@
         "type": "delta",
         "step": 9,
         "text": "_event",
-        "ts": 1789768037607
+        "ts": 1789768151660
       },
       {
         "agent": "main",
@@ -6033,7 +6033,7 @@
         "type": "delta",
         "step": 9,
         "text": "s）\n- [",
-        "ts": 1789768037613
+        "ts": 1789768151666
       },
       {
         "agent": "main",
@@ -6041,7 +6041,7 @@
         "type": "delta",
         "step": 9,
         "text": "Metric",
-        "ts": 1789768037618
+        "ts": 1789768151671
       },
       {
         "agent": "main",
@@ -6049,7 +6049,7 @@
         "type": "delta",
         "step": 9,
         "text": "] memo",
-        "ts": 1789768037624
+        "ts": 1789768151677
       },
       {
         "agent": "main",
@@ -6057,7 +6057,7 @@
         "type": "delta",
         "step": 9,
         "text": "ry 峰值 ",
-        "ts": 1789768037629
+        "ts": 1789768151683
       },
       {
         "agent": "main",
@@ -6065,7 +6065,7 @@
         "type": "delta",
         "step": 9,
         "text": "511MiB",
-        "ts": 1789768037634
+        "ts": 1789768151688
       },
       {
         "agent": "main",
@@ -6073,7 +6073,7 @@
         "type": "delta",
         "step": 9,
         "text": " / lim",
-        "ts": 1789768037640
+        "ts": 1789768151694
       },
       {
         "agent": "main",
@@ -6081,7 +6081,7 @@
         "type": "delta",
         "step": 9,
         "text": "it 512",
-        "ts": 1789768037646
+        "ts": 1789768151700
       },
       {
         "agent": "main",
@@ -6089,7 +6089,7 @@
         "type": "delta",
         "step": 9,
         "text": "MiB（10",
-        "ts": 1789768037652
+        "ts": 1789768151706
       },
       {
         "agent": "main",
@@ -6097,7 +6097,7 @@
         "type": "delta",
         "step": 9,
         "text": "0%），cp",
-        "ts": 1789768037657
+        "ts": 1789768151711
       },
       {
         "agent": "main",
@@ -6105,7 +6105,7 @@
         "type": "delta",
         "step": 9,
         "text": "u 峰值 0",
-        "ts": 1789768037663
+        "ts": 1789768151717
       },
       {
         "agent": "main",
@@ -6113,7 +6113,7 @@
         "type": "delta",
         "step": 9,
         "text": ".5core",
-        "ts": 1789768037669
+        "ts": 1789768151723
       },
       {
         "agent": "main",
@@ -6121,7 +6121,7 @@
         "type": "delta",
         "step": 9,
         "text": "s（get_",
-        "ts": 1789768037674
+        "ts": 1789768151728
       },
       {
         "agent": "main",
@@ -6129,7 +6129,7 @@
         "type": "delta",
         "step": 9,
         "text": "metric",
-        "ts": 1789768037680
+        "ts": 1789768151734
       },
       {
         "agent": "main",
@@ -6137,7 +6137,7 @@
         "type": "delta",
         "step": 9,
         "text": "s）\n- [",
-        "ts": 1789768037686
+        "ts": 1789768151740
       },
       {
         "agent": "main",
@@ -6145,7 +6145,7 @@
         "type": "delta",
         "step": 9,
         "text": "Log] 2",
-        "ts": 1789768037691
+        "ts": 1789768151746
       },
       {
         "agent": "main",
@@ -6153,7 +6153,7 @@
         "type": "delta",
         "step": 9,
         "text": "026-09",
-        "ts": 1789768037697
+        "ts": 1789768151751
       },
       {
         "agent": "main",
@@ -6161,7 +6161,7 @@
         "type": "delta",
         "step": 9,
         "text": "-18T08",
-        "ts": 1789768037703
+        "ts": 1789768151757
       },
       {
         "agent": "main",
@@ -6169,7 +6169,7 @@
         "type": "delta",
         "step": 9,
         "text": ":43:55",
-        "ts": 1789768037708
+        "ts": 1789768151763
       },
       {
         "agent": "main",
@@ -6177,7 +6177,7 @@
         "type": "delta",
         "step": 9,
         "text": "Z WARN",
-        "ts": 1789768037714
+        "ts": 1789768151769
       },
       {
         "agent": "main",
@@ -6185,7 +6185,7 @@
         "type": "delta",
         "step": 9,
         "text": "  heap",
-        "ts": 1789768037719
+        "ts": 1789768151774
       },
       {
         "agent": "main",
@@ -6193,7 +6193,7 @@
         "type": "delta",
         "step": 9,
         "text": " usage",
-        "ts": 1789768037724
+        "ts": 1789768151779
       },
       {
         "agent": "main",
@@ -6201,7 +6201,7 @@
         "type": "delta",
         "step": 9,
         "text": " 498 M",
-        "ts": 1789768037730
+        "ts": 1789768151785
       },
       {
         "agent": "main",
@@ -6209,7 +6209,7 @@
         "type": "delta",
         "step": 9,
         "text": "iB of ",
-        "ts": 1789768037735
+        "ts": 1789768151791
       },
       {
         "agent": "main",
@@ -6217,7 +6217,7 @@
         "type": "delta",
         "step": 9,
         "text": "512 Mi",
-        "ts": 1789768037741
+        "ts": 1789768151797
       },
       {
         "agent": "main",
@@ -6225,7 +6225,7 @@
         "type": "delta",
         "step": 9,
         "text": "B limi",
-        "ts": 1789768037746
+        "ts": 1789768151802
       },
       {
         "agent": "main",
@@ -6233,7 +6233,7 @@
         "type": "delta",
         "step": 9,
         "text": "t（get_",
-        "ts": 1789768037752
+        "ts": 1789768151808
       },
       {
         "agent": "main",
@@ -6241,7 +6241,7 @@
         "type": "delta",
         "step": 9,
         "text": "logs p",
-        "ts": 1789768037757
+        "ts": 1789768151814
       },
       {
         "agent": "main",
@@ -6249,7 +6249,7 @@
         "type": "delta",
         "step": 9,
         "text": "reviou",
-        "ts": 1789768037763
+        "ts": 1789768151819
       },
       {
         "agent": "main",
@@ -6257,7 +6257,7 @@
         "type": "delta",
         "step": 9,
         "text": "s=true",
-        "ts": 1789768037769
+        "ts": 1789768151825
       },
       {
         "agent": "main",
@@ -6265,7 +6265,7 @@
         "type": "delta",
         "step": 9,
         "text": "）\n- [R",
-        "ts": 1789768037775
+        "ts": 1789768151831
       },
       {
         "agent": "main",
@@ -6273,7 +6273,7 @@
         "type": "delta",
         "step": 9,
         "text": "unbook",
-        "ts": 1789768037780
+        "ts": 1789768151836
       },
       {
         "agent": "main",
@@ -6281,7 +6281,7 @@
         "type": "delta",
         "step": 9,
         "text": "] OOMK",
-        "ts": 1789768037786
+        "ts": 1789768151842
       },
       {
         "agent": "main",
@@ -6289,7 +6289,7 @@
         "type": "delta",
         "step": 9,
         "text": "illed：",
-        "ts": 1789768037792
+        "ts": 1789768151848
       },
       {
         "agent": "main",
@@ -6297,7 +6297,7 @@
         "type": "delta",
         "step": 9,
         "text": "症状：容器 ",
-        "ts": 1789768037798
+        "ts": 1789768151853
       },
       {
         "agent": "main",
@@ -6305,7 +6305,7 @@
         "type": "delta",
         "step": 9,
         "text": "lastSt",
-        "ts": 1789768037804
+        "ts": 1789768151858
       },
       {
         "agent": "main",
@@ -6313,7 +6313,7 @@
         "type": "delta",
         "step": 9,
         "text": "ate.te",
-        "ts": 1789768037810
+        "ts": 1789768151864
       },
       {
         "agent": "main",
@@ -6321,7 +6321,7 @@
         "type": "delta",
         "step": 9,
         "text": "rminat",
-        "ts": 1789768037815
+        "ts": 1789768151869
       },
       {
         "agent": "main",
@@ -6329,7 +6329,7 @@
         "type": "delta",
         "step": 9,
         "text": "ed.rea",
-        "ts": 1789768037821
+        "ts": 1789768151875
       },
       {
         "agent": "main",
@@ -6337,7 +6337,7 @@
         "type": "delta",
         "step": 9,
         "text": "son=OO",
-        "ts": 1789768037826
+        "ts": 1789768151881
       },
       {
         "agent": "main",
@@ -6345,7 +6345,7 @@
         "type": "delta",
         "step": 9,
         "text": "MKille",
-        "ts": 1789768037831
+        "ts": 1789768151886
       },
       {
         "agent": "main",
@@ -6353,7 +6353,7 @@
         "type": "delta",
         "step": 9,
         "text": "d，exit",
-        "ts": 1789768037837
+        "ts": 1789768151892
       },
       {
         "agent": "main",
@@ -6361,7 +6361,7 @@
         "type": "delta",
         "step": 9,
         "text": "Code=1",
-        "ts": 1789768037842
+        "ts": 1789768151898
       },
       {
         "agent": "main",
@@ -6369,7 +6369,7 @@
         "type": "delta",
         "step": 9,
         "text": "37，res",
-        "ts": 1789768037848
+        "ts": 1789768151903
       },
       {
         "agent": "main",
@@ -6377,7 +6377,7 @@
         "type": "delta",
         "step": 9,
         "text": "tartCo",
-        "ts": 1789768037854
+        "ts": 1789768151909
       },
       {
         "agent": "main",
@@ -6385,7 +6385,7 @@
         "type": "delta",
         "step": 9,
         "text": "unt 持续",
-        "ts": 1789768037859
+        "ts": 1789768151915
       },
       {
         "agent": "main",
@@ -6393,7 +6393,7 @@
         "type": "delta",
         "step": 9,
         "text": "增长，Eve",
-        "ts": 1789768037865
+        "ts": 1789768151920
       },
       {
         "agent": "main",
@@ -6401,7 +6401,7 @@
         "type": "delta",
         "step": 9,
         "text": "nt 出现 ",
-        "ts": 1789768037871
+        "ts": 1789768151926
       },
       {
         "agent": "main",
@@ -6409,7 +6409,7 @@
         "type": "delta",
         "step": 9,
         "text": "BackOf",
-        "ts": 1789768037877
+        "ts": 1789768151932
       },
       {
         "agent": "main",
@@ -6417,7 +6417,7 @@
         "type": "delta",
         "step": 9,
         "text": "f；内存指标",
-        "ts": 1789768037882
+        "ts": 1789768151937
       },
       {
         "agent": "main",
@@ -6425,7 +6425,7 @@
         "type": "delta",
         "step": 9,
         "text": "峰值逼近 l",
-        "ts": 1789768037888
+        "ts": 1789768151943
       },
       {
         "agent": "main",
@@ -6433,7 +6433,7 @@
         "type": "delta",
         "step": 9,
         "text": "imit。…",
-        "ts": 1789768037893
+        "ts": 1789768151949
       },
       {
         "agent": "main",
@@ -6441,7 +6441,7 @@
         "type": "delta",
         "step": 9,
         "text": "（searc",
-        "ts": 1789768037899
+        "ts": 1789768151955
       },
       {
         "agent": "main",
@@ -6449,7 +6449,7 @@
         "type": "delta",
         "step": 9,
         "text": "h_runb",
-        "ts": 1789768037905
+        "ts": 1789768151960
       },
       {
         "agent": "main",
@@ -6457,7 +6457,7 @@
         "type": "delta",
         "step": 9,
         "text": "ook → ",
-        "ts": 1789768037910
+        "ts": 1789768151966
       },
       {
         "agent": "main",
@@ -6465,7 +6465,7 @@
         "type": "delta",
         "step": 9,
         "text": "k8s/ru",
-        "ts": 1789768037916
+        "ts": 1789768151972
       },
       {
         "agent": "main",
@@ -6473,7 +6473,7 @@
         "type": "delta",
         "step": 9,
         "text": "nbooks",
-        "ts": 1789768037921
+        "ts": 1789768151977
       },
       {
         "agent": "main",
@@ -6481,7 +6481,7 @@
         "type": "delta",
         "step": 9,
         "text": "/oom.m",
-        "ts": 1789768037927
+        "ts": 1789768151983
       },
       {
         "agent": "main",
@@ -6489,7 +6489,7 @@
         "type": "delta",
         "step": 9,
         "text": "d）\n- [",
-        "ts": 1789768037933
+        "ts": 1789768151988
       },
       {
         "agent": "main",
@@ -6497,7 +6497,7 @@
         "type": "delta",
         "step": 9,
         "text": "Case] ",
-        "ts": 1789768037938
+        "ts": 1789768151994
       },
       {
         "agent": "main",
@@ -6505,7 +6505,7 @@
         "type": "delta",
         "step": 9,
         "text": "CASE-2",
-        "ts": 1789768037944
+        "ts": 1789768152000
       },
       {
         "agent": "main",
@@ -6513,7 +6513,7 @@
         "type": "delta",
         "step": 9,
         "text": "026-04",
-        "ts": 1789768037950
+        "ts": 1789768152005
       },
       {
         "agent": "main",
@@ -6521,7 +6521,7 @@
         "type": "delta",
         "step": 9,
         "text": "1（2026",
-        "ts": 1789768037955
+        "ts": 1789768152011
       },
       {
         "agent": "main",
@@ -6529,7 +6529,7 @@
         "type": "delta",
         "step": 9,
         "text": "-07-03",
-        "ts": 1789768037961
+        "ts": 1789768152017
       },
       {
         "agent": "main",
@@ -6537,7 +6537,7 @@
         "type": "delta",
         "step": 9,
         "text": "）根因：月末",
-        "ts": 1789768037967
+        "ts": 1789768152022
       },
       {
         "agent": "main",
@@ -6545,7 +6545,7 @@
         "type": "delta",
         "step": 9,
         "text": "数据量翻倍，",
-        "ts": 1789768037972
+        "ts": 1789768152028
       },
       {
         "agent": "main",
@@ -6553,7 +6553,7 @@
         "type": "delta",
         "step": 9,
         "text": "整表加载进内",
-        "ts": 1789768037978
+        "ts": 1789768152034
       },
       {
         "agent": "main",
@@ -6561,7 +6561,7 @@
         "type": "delta",
         "step": 9,
         "text": "存超过 li",
-        "ts": 1789768037984
+        "ts": 1789768152039
       },
       {
         "agent": "main",
@@ -6569,7 +6569,7 @@
         "type": "delta",
         "step": 9,
         "text": "mit；处理",
-        "ts": 1789768037989
+        "ts": 1789768152045
       },
       {
         "agent": "main",
@@ -6577,7 +6577,7 @@
         "type": "delta",
         "step": 9,
         "text": "：memor",
-        "ts": 1789768037995
+        "ts": 1789768152051
       },
       {
         "agent": "main",
@@ -6585,7 +6585,7 @@
         "type": "delta",
         "step": 9,
         "text": "y limi",
-        "ts": 1789768038001
+        "ts": 1789768152056
       },
       {
         "agent": "main",
@@ -6593,7 +6593,7 @@
         "type": "delta",
         "step": 9,
         "text": "t 512M",
-        "ts": 1789768038007
+        "ts": 1789768152062
       },
       {
         "agent": "main",
@@ -6601,7 +6601,7 @@
         "type": "delta",
         "step": 9,
         "text": "i → 2G",
-        "ts": 1789768038012
+        "ts": 1789768152067
       },
       {
         "agent": "main",
@@ -6609,7 +6609,7 @@
         "type": "delta",
         "step": 9,
         "text": "i，并改为分",
-        "ts": 1789768038018
+        "ts": 1789768152073
       },
       {
         "agent": "main",
@@ -6617,7 +6617,7 @@
         "type": "delta",
         "step": 9,
         "text": "批读取（se",
-        "ts": 1789768038023
+        "ts": 1789768152078
       },
       {
         "agent": "main",
@@ -6625,7 +6625,7 @@
         "type": "delta",
         "step": 9,
         "text": "arch_c",
-        "ts": 1789768038029
+        "ts": 1789768152084
       },
       {
         "agent": "main",
@@ -6633,7 +6633,7 @@
         "type": "delta",
         "step": 9,
         "text": "ases）\n",
-        "ts": 1789768038035
+        "ts": 1789768152089
       },
       {
         "agent": "main",
@@ -6641,7 +6641,7 @@
         "type": "delta",
         "step": 9,
         "text": "- [Pod",
-        "ts": 1789768038040
+        "ts": 1789768152095
       },
       {
         "agent": "main",
@@ -6649,7 +6649,7 @@
         "type": "delta",
         "step": 9,
         "text": "] 修复后 ",
-        "ts": 1789768038045
+        "ts": 1789768152101
       },
       {
         "agent": "main",
@@ -6657,7 +6657,7 @@
         "type": "delta",
         "step": 9,
         "text": "phase=",
-        "ts": 1789768038051
+        "ts": 1789768152106
       },
       {
         "agent": "main",
@@ -6665,7 +6665,7 @@
         "type": "delta",
         "step": 9,
         "text": "Runnin",
-        "ts": 1789768038056
+        "ts": 1789768152112
       },
       {
         "agent": "main",
@@ -6673,7 +6673,7 @@
         "type": "delta",
         "step": 9,
         "text": "g，cont",
-        "ts": 1789768038062
+        "ts": 1789768152118
       },
       {
         "agent": "main",
@@ -6681,7 +6681,7 @@
         "type": "delta",
         "step": 9,
         "text": "ainers",
-        "ts": 1789768038068
+        "ts": 1789768152124
       },
       {
         "agent": "main",
@@ -6689,7 +6689,7 @@
         "type": "delta",
         "step": 9,
         "text": "Ready=",
-        "ts": 1789768038073
+        "ts": 1789768152129
       },
       {
         "agent": "main",
@@ -6697,7 +6697,7 @@
         "type": "delta",
         "step": 9,
         "text": "report",
-        "ts": 1789768038079
+        "ts": 1789768152135
       },
       {
         "agent": "main",
@@ -6705,7 +6705,7 @@
         "type": "delta",
         "step": 9,
         "text": "-build",
-        "ts": 1789768038085
+        "ts": 1789768152141
       },
       {
         "agent": "main",
@@ -6713,7 +6713,7 @@
         "type": "delta",
         "step": 9,
         "text": "er:tru",
-        "ts": 1789768038090
+        "ts": 1789768152147
       },
       {
         "agent": "main",
@@ -6721,7 +6721,7 @@
         "type": "delta",
         "step": 9,
         "text": "e，reco",
-        "ts": 1789768038096
+        "ts": 1789768152152
       },
       {
         "agent": "main",
@@ -6729,7 +6729,7 @@
         "type": "delta",
         "step": 9,
         "text": "vered=",
-        "ts": 1789768038101
+        "ts": 1789768152157
       },
       {
         "agent": "main",
@@ -6737,7 +6737,7 @@
         "type": "delta",
         "step": 9,
         "text": "true（v",
-        "ts": 1789768038107
+        "ts": 1789768152163
       },
       {
         "agent": "main",
@@ -6745,7 +6745,7 @@
         "type": "delta",
         "step": 9,
         "text": "erify_",
-        "ts": 1789768038113
+        "ts": 1789768152169
       },
       {
         "agent": "main",
@@ -6753,7 +6753,7 @@
         "type": "delta",
         "step": 9,
         "text": "fix）\n\n",
-        "ts": 1789768038119
+        "ts": 1789768152174
       },
       {
         "agent": "main",
@@ -6761,7 +6761,7 @@
         "type": "delta",
         "step": 9,
         "text": "## 已确认",
-        "ts": 1789768038124
+        "ts": 1789768152180
       },
       {
         "agent": "main",
@@ -6769,7 +6769,7 @@
         "type": "delta",
         "step": 9,
         "text": "事实\n- P",
-        "ts": 1789768038130
+        "ts": 1789768152185
       },
       {
         "agent": "main",
@@ -6777,7 +6777,7 @@
         "type": "delta",
         "step": 9,
         "text": "od def",
-        "ts": 1789768038136
+        "ts": 1789768152191
       },
       {
         "agent": "main",
@@ -6785,7 +6785,7 @@
         "type": "delta",
         "step": 9,
         "text": "ault/j",
-        "ts": 1789768038141
+        "ts": 1789768152197
       },
       {
         "agent": "main",
@@ -6793,7 +6793,7 @@
         "type": "delta",
         "step": 9,
         "text": "ob-123",
-        "ts": 1789768038147
+        "ts": 1789768152203
       },
       {
         "agent": "main",
@@ -6801,7 +6801,7 @@
         "type": "delta",
         "step": 9,
         "text": " phase",
-        "ts": 1789768038153
+        "ts": 1789768152208
       },
       {
         "agent": "main",
@@ -6809,7 +6809,7 @@
         "type": "delta",
         "step": 9,
         "text": "=Runni",
-        "ts": 1789768038158
+        "ts": 1789768152214
       },
       {
         "agent": "main",
@@ -6817,7 +6817,7 @@
         "type": "delta",
         "step": 9,
         "text": "ng，节点 ",
-        "ts": 1789768038164
+        "ts": 1789768152220
       },
       {
         "agent": "main",
@@ -6825,7 +6825,7 @@
         "type": "delta",
         "step": 9,
         "text": "node-1",
-        "ts": 1789768038169
+        "ts": 1789768152225
       },
       {
         "agent": "main",
@@ -6833,7 +6833,7 @@
         "type": "delta",
         "step": 9,
         "text": "\n- 容器上",
-        "ts": 1789768038175
+        "ts": 1789768152231
       },
       {
         "agent": "main",
@@ -6841,7 +6841,7 @@
         "type": "delta",
         "step": 9,
         "text": "次终止原因 ",
-        "ts": 1789768038181
+        "ts": 1789768152237
       },
       {
         "agent": "main",
@@ -6849,7 +6849,7 @@
         "type": "delta",
         "step": 9,
         "text": "OOMKil",
-        "ts": 1789768038186
+        "ts": 1789768152242
       },
       {
         "agent": "main",
@@ -6857,7 +6857,7 @@
         "type": "delta",
         "step": 9,
         "text": "led，ex",
-        "ts": 1789768038192
+        "ts": 1789768152248
       },
       {
         "agent": "main",
@@ -6865,7 +6865,7 @@
         "type": "delta",
         "step": 9,
         "text": "itCode",
-        "ts": 1789768038198
+        "ts": 1789768152254
       },
       {
         "agent": "main",
@@ -6873,7 +6873,7 @@
         "type": "delta",
         "step": 9,
         "text": " 137，已",
-        "ts": 1789768038204
+        "ts": 1789768152259
       },
       {
         "agent": "main",
@@ -6881,7 +6881,7 @@
         "type": "delta",
         "step": 9,
         "text": "重启 5 次",
-        "ts": 1789768038209
+        "ts": 1789768152265
       },
       {
         "agent": "main",
@@ -6889,7 +6889,7 @@
         "type": "delta",
         "step": 9,
         "text": "\n- Eve",
-        "ts": 1789768038215
+        "ts": 1789768152271
       },
       {
         "agent": "main",
@@ -6897,7 +6897,7 @@
         "type": "delta",
         "step": 9,
         "text": "nt Bac",
-        "ts": 1789768038221
+        "ts": 1789768152276
       },
       {
         "agent": "main",
@@ -6905,7 +6905,7 @@
         "type": "delta",
         "step": 9,
         "text": "kOff 出",
-        "ts": 1789768038227
+        "ts": 1789768152282
       },
       {
         "agent": "main",
@@ -6913,7 +6913,7 @@
         "type": "delta",
         "step": 9,
         "text": "现 12 次",
-        "ts": 1789768038232
+        "ts": 1789768152288
       },
       {
         "agent": "main",
@@ -6921,7 +6921,7 @@
         "type": "delta",
         "step": 9,
         "text": "\n- 节点 ",
-        "ts": 1789768038238
+        "ts": 1789768152294
       },
       {
         "agent": "main",
@@ -6929,7 +6929,7 @@
         "type": "delta",
         "step": 9,
         "text": "node-1",
-        "ts": 1789768038244
+        "ts": 1789768152299
       },
       {
         "agent": "main",
@@ -6937,7 +6937,7 @@
         "type": "delta",
         "step": 9,
         "text": " Ready",
-        "ts": 1789768038249
+        "ts": 1789768152305
       },
       {
         "agent": "main",
@@ -6945,7 +6945,7 @@
         "type": "delta",
         "step": 9,
         "text": "=True，",
-        "ts": 1789768038255
+        "ts": 1789768152311
       },
       {
         "agent": "main",
@@ -6953,7 +6953,7 @@
         "type": "delta",
         "step": 9,
         "text": "无资源压力\n",
-        "ts": 1789768038260
+        "ts": 1789768152316
       },
       {
         "agent": "main",
@@ -6961,7 +6961,7 @@
         "type": "delta",
         "step": 9,
         "text": "\n## 可能",
-        "ts": 1789768038266
+        "ts": 1789768152322
       },
       {
         "agent": "main",
@@ -6969,7 +6969,7 @@
         "type": "delta",
         "step": 9,
         "text": "原因（推测）",
-        "ts": 1789768038272
+        "ts": 1789768152327
       },
       {
         "agent": "main",
@@ -6977,7 +6977,7 @@
         "type": "delta",
         "step": 9,
         "text": "\n- 应用工",
-        "ts": 1789768038278
+        "ts": 1789768152333
       },
       {
         "agent": "main",
@@ -6985,7 +6985,7 @@
         "type": "delta",
         "step": 9,
         "text": "作集超过 m",
-        "ts": 1789768038283
+        "ts": 1789768152339
       },
       {
         "agent": "main",
@@ -6993,7 +6993,7 @@
         "type": "delta",
         "step": 9,
         "text": "emory ",
-        "ts": 1789768038288
+        "ts": 1789768152345
       },
       {
         "agent": "main",
@@ -7001,7 +7001,7 @@
         "type": "delta",
         "step": 9,
         "text": "limit ",
-        "ts": 1789768038294
+        "ts": 1789768152350
       },
       {
         "agent": "main",
@@ -7009,7 +7009,7 @@
         "type": "delta",
         "step": 9,
         "text": "512Mi ",
-        "ts": 1789768038299
+        "ts": 1789768152355
       },
       {
         "agent": "main",
@@ -7017,7 +7017,7 @@
         "type": "delta",
         "step": 9,
         "text": "· 置信度 ",
-        "ts": 1789768038304
+        "ts": 1789768152361
       },
       {
         "agent": "main",
@@ -7025,7 +7025,7 @@
         "type": "delta",
         "step": 9,
         "text": "高 · 依据",
-        "ts": 1789768038310
+        "ts": 1789768152366
       },
       {
         "agent": "main",
@@ -7033,7 +7033,7 @@
         "type": "delta",
         "step": 9,
         "text": "：termi",
-        "ts": 1789768038315
+        "ts": 1789768152372
       },
       {
         "agent": "main",
@@ -7041,7 +7041,7 @@
         "type": "delta",
         "step": 9,
         "text": "nated.",
-        "ts": 1789768038321
+        "ts": 1789768152377
       },
       {
         "agent": "main",
@@ -7049,7 +7049,7 @@
         "type": "delta",
         "step": 9,
         "text": "reason",
-        "ts": 1789768038326
+        "ts": 1789768152382
       },
       {
         "agent": "main",
@@ -7057,7 +7057,7 @@
         "type": "delta",
         "step": 9,
         "text": "=OOMKi",
-        "ts": 1789768038332
+        "ts": 1789768152388
       },
       {
         "agent": "main",
@@ -7065,7 +7065,7 @@
         "type": "delta",
         "step": 9,
         "text": "lled、内",
-        "ts": 1789768038338
+        "ts": 1789768152393
       },
       {
         "agent": "main",
@@ -7073,7 +7073,7 @@
         "type": "delta",
         "step": 9,
         "text": "存峰值达 l",
-        "ts": 1789768038344
+        "ts": 1789768152399
       },
       {
         "agent": "main",
@@ -7081,7 +7081,7 @@
         "type": "delta",
         "step": 9,
         "text": "imit 的",
-        "ts": 1789768038349
+        "ts": 1789768152405
       },
       {
         "agent": "main",
@@ -7089,7 +7089,7 @@
         "type": "delta",
         "step": 9,
         "text": " 100%、",
-        "ts": 1789768038355
+        "ts": 1789768152411
       },
       {
         "agent": "main",
@@ -7097,7 +7097,7 @@
         "type": "delta",
         "step": 9,
         "text": "崩溃前日志显",
-        "ts": 1789768038360
+        "ts": 1789768152416
       },
       {
         "agent": "main",
@@ -7105,7 +7105,7 @@
         "type": "delta",
         "step": 9,
         "text": "示在加载大数",
-        "ts": 1789768038366
+        "ts": 1789768152422
       },
       {
         "agent": "main",
@@ -7113,7 +7113,7 @@
         "type": "delta",
         "step": 9,
         "text": "据集\n- 数",
-        "ts": 1789768038372
+        "ts": 1789768152427
       },
       {
         "agent": "main",
@@ -7121,7 +7121,7 @@
         "type": "delta",
         "step": 9,
         "text": "据量增长或内",
-        "ts": 1789768038378
+        "ts": 1789768152433
       },
       {
         "agent": "main",
@@ -7129,7 +7129,7 @@
         "type": "delta",
         "step": 9,
         "text": "存泄漏导致占",
-        "ts": 1789768038383
+        "ts": 1789768152439
       },
       {
         "agent": "main",
@@ -7137,7 +7137,7 @@
         "type": "delta",
         "step": 9,
         "text": "用持续上升 ",
-        "ts": 1789768038389
+        "ts": 1789768152444
       },
       {
         "agent": "main",
@@ -7145,7 +7145,7 @@
         "type": "delta",
         "step": 9,
         "text": "· 置信度 ",
-        "ts": 1789768038395
+        "ts": 1789768152450
       },
       {
         "agent": "main",
@@ -7153,7 +7153,7 @@
         "type": "delta",
         "step": 9,
         "text": "中 · 依据",
-        "ts": 1789768038400
+        "ts": 1789768152455
       },
       {
         "agent": "main",
@@ -7161,7 +7161,7 @@
         "type": "delta",
         "step": 9,
         "text": "：内存曲线单",
-        "ts": 1789768038406
+        "ts": 1789768152461
       },
       {
         "agent": "main",
@@ -7169,7 +7169,7 @@
         "type": "delta",
         "step": 9,
         "text": "调上升而非平",
-        "ts": 1789768038412
+        "ts": 1789768152467
       },
       {
         "agent": "main",
@@ -7177,7 +7177,7 @@
         "type": "delta",
         "step": 9,
         "text": "台期；需对比",
-        "ts": 1789768038417
+        "ts": 1789768152473
       },
       {
         "agent": "main",
@@ -7185,7 +7185,7 @@
         "type": "delta",
         "step": 9,
         "text": "历史批次数据",
-        "ts": 1789768038423
+        "ts": 1789768152478
       },
       {
         "agent": "main",
@@ -7193,7 +7193,7 @@
         "type": "delta",
         "step": 9,
         "text": "量\n\n## ",
-        "ts": 1789768038429
+        "ts": 1789768152483
       },
       {
         "agent": "main",
@@ -7201,7 +7201,7 @@
         "type": "delta",
         "step": 9,
         "text": "处理建议\n-",
-        "ts": 1789768038434
+        "ts": 1789768152489
       },
       {
         "agent": "main",
@@ -7209,7 +7209,7 @@
         "type": "delta",
         "step": 9,
         "text": " 已执行 i",
-        "ts": 1789768038439
+        "ts": 1789768152495
       },
       {
         "agent": "main",
@@ -7217,7 +7217,7 @@
         "type": "delta",
         "step": 9,
         "text": "ncreas",
-        "ts": 1789768038445
+        "ts": 1789768152500
       },
       {
         "agent": "main",
@@ -7225,7 +7225,7 @@
         "type": "delta",
         "step": 9,
         "text": "e_memo",
-        "ts": 1789768038450
+        "ts": 1789768152506
       },
       {
         "agent": "main",
@@ -7233,7 +7233,7 @@
         "type": "delta",
         "step": 9,
         "text": "ry_lim",
-        "ts": 1789768038456
+        "ts": 1789768152512
       },
       {
         "agent": "main",
@@ -7241,7 +7241,7 @@
         "type": "delta",
         "step": 9,
         "text": "it 并复查",
-        "ts": 1789768038462
+        "ts": 1789768152517
       },
       {
         "agent": "main",
@@ -7249,7 +7249,7 @@
         "type": "delta",
         "step": 9,
         "text": "恢复（rec",
-        "ts": 1789768038467
+        "ts": 1789768152523
       },
       {
         "agent": "main",
@@ -7257,7 +7257,7 @@
         "type": "delta",
         "step": 9,
         "text": "overed",
-        "ts": 1789768038473
+        "ts": 1789768152529
       },
       {
         "agent": "main",
@@ -7265,7 +7265,7 @@
         "type": "delta",
         "step": 9,
         "text": "=true）",
-        "ts": 1789768038478
+        "ts": 1789768152535
       },
       {
         "agent": "main",
@@ -7273,7 +7273,7 @@
         "type": "delta",
         "step": 9,
         "text": "。\n- 临时",
-        "ts": 1789768038484
+        "ts": 1789768152540
       },
       {
         "agent": "main",
@@ -7281,7 +7281,7 @@
         "type": "delta",
         "step": 9,
         "text": "：把 mem",
-        "ts": 1789768038489
+        "ts": 1789768152546
       },
       {
         "agent": "main",
@@ -7289,7 +7289,7 @@
         "type": "delta",
         "step": 9,
         "text": "ory li",
-        "ts": 1789768038495
+        "ts": 1789768152552
       },
       {
         "agent": "main",
@@ -7297,7 +7297,7 @@
         "type": "delta",
         "step": 9,
         "text": "mit 从 ",
-        "ts": 1789768038501
+        "ts": 1789768152557
       },
       {
         "agent": "main",
@@ -7305,7 +7305,7 @@
         "type": "delta",
         "step": 9,
         "text": "512Mi ",
-        "ts": 1789768038506
+        "ts": 1789768152563
       },
       {
         "agent": "main",
@@ -7313,7 +7313,7 @@
         "type": "delta",
         "step": 9,
         "text": "提高（如 2",
-        "ts": 1789768038512
+        "ts": 1789768152569
       },
       {
         "agent": "main",
@@ -7321,7 +7321,7 @@
         "type": "delta",
         "step": 9,
         "text": "Gi）并重建",
-        "ts": 1789768038518
+        "ts": 1789768152575
       },
       {
         "agent": "main",
@@ -7329,7 +7329,7 @@
         "type": "delta",
         "step": 9,
         "text": " Pod\n-",
-        "ts": 1789768038524
+        "ts": 1789768152580
       },
       {
         "agent": "main",
@@ -7337,7 +7337,7 @@
         "type": "delta",
         "step": 9,
         "text": " 根本：分批",
-        "ts": 1789768038529
+        "ts": 1789768152586
       },
       {
         "agent": "main",
@@ -7345,7 +7345,7 @@
         "type": "delta",
         "step": 9,
         "text": "加载数据 /",
-        "ts": 1789768038535
+        "ts": 1789768152591
       },
       {
         "agent": "main",
@@ -7353,7 +7353,7 @@
         "type": "delta",
         "step": 9,
         "text": " 排查泄漏；",
-        "ts": 1789768038541
+        "ts": 1789768152598
       },
       {
         "agent": "main",
@@ -7361,7 +7361,7 @@
         "type": "delta",
         "step": 9,
         "text": "配置 VPA",
-        "ts": 1789768038546
+        "ts": 1789768152603
       },
       {
         "agent": "main",
@@ -7369,7 +7369,7 @@
         "type": "delta",
         "step": 9,
         "text": " 推荐值\n-",
-        "ts": 1789768038552
+        "ts": 1789768152609
       },
       {
         "agent": "main",
@@ -7377,7 +7377,7 @@
         "type": "delta",
         "step": 9,
         "text": " 注意 ex",
-        "ts": 1789768038558
+        "ts": 1789768152615
       },
       {
         "agent": "main",
@@ -7385,7 +7385,7 @@
         "type": "delta",
         "step": 9,
         "text": "itCode",
-        "ts": 1789768038563
+        "ts": 1789768152620
       },
       {
         "agent": "main",
@@ -7393,7 +7393,7 @@
         "type": "delta",
         "step": 9,
         "text": " 137 也",
-        "ts": 1789768038569
+        "ts": 1789768152626
       },
       {
         "agent": "main",
@@ -7401,7 +7401,7 @@
         "type": "delta",
         "step": 9,
         "text": "可能来自驱逐",
-        "ts": 1789768038575
+        "ts": 1789768152632
       },
       {
         "agent": "main",
@@ -7409,7 +7409,7 @@
         "type": "delta",
         "step": 9,
         "text": "，此处 re",
-        "ts": 1789768038580
+        "ts": 1789768152637
       },
       {
         "agent": "main",
@@ -7417,7 +7417,7 @@
         "type": "delta",
         "step": 9,
         "text": "ason 明",
-        "ts": 1789768038585
+        "ts": 1789768152643
       },
       {
         "agent": "main",
@@ -7425,7 +7425,7 @@
         "type": "delta",
         "step": 9,
         "text": "确为 OOM",
-        "ts": 1789768038591
+        "ts": 1789768152649
       },
       {
         "agent": "main",
@@ -7433,7 +7433,7 @@
         "type": "delta",
         "step": 9,
         "text": "Killed",
-        "ts": 1789768038597
+        "ts": 1789768152654
       },
       {
         "agent": "main",
@@ -7441,7 +7441,7 @@
         "type": "delta",
         "step": 9,
         "text": "\n- 历史 ",
-        "ts": 1789768038602
+        "ts": 1789768152660
       },
       {
         "agent": "main",
@@ -7449,7 +7449,7 @@
         "type": "delta",
         "step": 9,
         "text": "Case C",
-        "ts": 1789768038608
+        "ts": 1789768152666
       },
       {
         "agent": "main",
@@ -7457,7 +7457,7 @@
         "type": "delta",
         "step": 9,
         "text": "ASE-20",
-        "ts": 1789768038614
+        "ts": 1789768152671
       },
       {
         "agent": "main",
@@ -7465,7 +7465,7 @@
         "type": "delta",
         "step": 9,
         "text": "26-041",
-        "ts": 1789768038620
+        "ts": 1789768152677
       },
       {
         "agent": "main",
@@ -7473,7 +7473,7 @@
         "type": "delta",
         "step": 9,
         "text": " 的处理方式",
-        "ts": 1789768038625
+        "ts": 1789768152683
       },
       {
         "agent": "main",
@@ -7481,7 +7481,7 @@
         "type": "delta",
         "step": 9,
         "text": "可参考：me",
-        "ts": 1789768038631
+        "ts": 1789768152688
       },
       {
         "agent": "main",
@@ -7489,7 +7489,7 @@
         "type": "delta",
         "step": 9,
         "text": "mory l",
-        "ts": 1789768038637
+        "ts": 1789768152694
       },
       {
         "agent": "main",
@@ -7497,7 +7497,7 @@
         "type": "delta",
         "step": 9,
         "text": "imit 5",
-        "ts": 1789768038642
+        "ts": 1789768152700
       },
       {
         "agent": "main",
@@ -7505,7 +7505,7 @@
         "type": "delta",
         "step": 9,
         "text": "12Mi →",
-        "ts": 1789768038648
+        "ts": 1789768152705
       },
       {
         "agent": "main",
@@ -7513,7 +7513,7 @@
         "type": "delta",
         "step": 9,
         "text": " 2Gi，并",
-        "ts": 1789768038654
+        "ts": 1789768152711
       },
       {
         "agent": "main",
@@ -7521,7 +7521,7 @@
         "type": "delta",
         "step": 9,
         "text": "改为分批读取",
-        "ts": 1789768038660
+        "ts": 1789768152717
       },
       {
         "agent": "main",
@@ -7529,7 +7529,7 @@
         "type": "delta",
         "step": 9,
         "text": "\n- 复盘报",
-        "ts": 1789768038665
+        "ts": 1789768152723
       },
       {
         "agent": "main",
@@ -7537,7 +7537,7 @@
         "type": "delta",
         "step": 9,
         "text": "告已写入 k",
-        "ts": 1789768038671
+        "ts": 1789768152728
       },
       {
         "agent": "main",
@@ -7545,7 +7545,7 @@
         "type": "delta",
         "step": 9,
         "text": "8s/pos",
-        "ts": 1789768038677
+        "ts": 1789768152734
       },
       {
         "agent": "main",
@@ -7553,7 +7553,7 @@
         "type": "delta",
         "step": 9,
         "text": "tmorte",
-        "ts": 1789768038683
+        "ts": 1789768152740
       },
       {
         "agent": "main",
@@ -7561,7 +7561,7 @@
         "type": "delta",
         "step": 9,
         "text": "m-job-",
-        "ts": 1789768038688
+        "ts": 1789768152745
       },
       {
         "agent": "main",
@@ -7569,7 +7569,7 @@
         "type": "delta",
         "step": 9,
         "text": "123.md",
-        "ts": 1789768038693
+        "ts": 1789768152750
       },
       {
         "agent": "main",
@@ -7577,7 +7577,7 @@
         "type": "delta",
         "step": 9,
         "text": "\n\n## 证",
-        "ts": 1789768038699
+        "ts": 1789768152756
       },
       {
         "agent": "main",
@@ -7585,7 +7585,7 @@
         "type": "delta",
         "step": 9,
         "text": "据不足说明\n",
-        "ts": 1789768038705
+        "ts": 1789768152762
       },
       {
         "agent": "main",
@@ -7593,7 +7593,7 @@
         "type": "delta",
         "step": 9,
         "text": "无",
-        "ts": 1789768038711
+        "ts": 1789768152767
       },
       {
         "agent": "main",
@@ -7606,8 +7606,8 @@
           "inputTokens": 5770,
           "outputTokens": 80
         },
-        "durationMs": 1387,
-        "ts": 1789768038716
+        "durationMs": 1389,
+        "ts": 1789768152773
       },
       {
         "agent": "main",
@@ -7620,7 +7620,7 @@
           "inputTokens": 28718,
           "outputTokens": 720
         },
-        "ts": 1789768038718
+        "ts": 1789768152774
       }
     ],
     "children": []

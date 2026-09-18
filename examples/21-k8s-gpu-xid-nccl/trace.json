@@ -3,14 +3,14 @@
     "provider": "mock",
     "workspace": "workspace"
   },
-  "startedAt": 1789768046426,
+  "startedAt": 1789768160436,
   "events": [
     {
       "agent": "main",
       "depth": 0,
       "type": "user",
       "task": "帮我分析 train-job-7 为什么失败。",
-      "ts": 1789768046426
+      "ts": 1789768160436
     },
     {
       "agent": "main",
@@ -18,7 +18,7 @@
       "type": "delta",
       "step": 1,
       "text": "诊断 tra",
-      "ts": 1789768046426
+      "ts": 1789768160436
     },
     {
       "agent": "main",
@@ -26,7 +26,7 @@
       "type": "delta",
       "step": 1,
       "text": "in-job",
-      "ts": 1789768046432
+      "ts": 1789768160442
     },
     {
       "agent": "main",
@@ -34,7 +34,7 @@
       "type": "delta",
       "step": 1,
       "text": "-7：先看 ",
-      "ts": 1789768046437
+      "ts": 1789768160447
     },
     {
       "agent": "main",
@@ -42,7 +42,7 @@
       "type": "delta",
       "step": 1,
       "text": "Pod 状态",
-      "ts": 1789768046445
+      "ts": 1789768160453
     },
     {
       "agent": "main",
@@ -50,7 +50,7 @@
       "type": "delta",
       "step": 1,
       "text": "，再决定查哪",
-      "ts": 1789768046451
+      "ts": 1789768160459
     },
     {
       "agent": "main",
@@ -58,7 +58,7 @@
       "type": "delta",
       "step": 1,
       "text": "些信息。",
-      "ts": 1789768046457
+      "ts": 1789768160465
     },
     {
       "agent": "main",
@@ -100,8 +100,8 @@
         "inputTokens": 18,
         "outputTokens": 80
       },
-      "durationMs": 36,
-      "ts": 1789768046462
+      "durationMs": 34,
+      "ts": 1789768160470
     },
     {
       "agent": "main",
@@ -136,7 +136,7 @@
           ]
         }
       },
-      "ts": 1789768046462
+      "ts": 1789768160470
     },
     {
       "agent": "main",
@@ -165,7 +165,7 @@
           "status": "pending"
         }
       ],
-      "ts": 1789768046462
+      "ts": 1789768160470
     },
     {
       "agent": "main",
@@ -179,7 +179,7 @@
         "output": "计划已更新（0/4 完成）"
       },
       "durationMs": 0,
-      "ts": 1789768046462
+      "ts": 1789768160470
     },
     {
       "agent": "main",
@@ -187,7 +187,7 @@
       "type": "delta",
       "step": 2,
       "text": "获取 Pod",
-      "ts": 1789768046463
+      "ts": 1789768160471
     },
     {
       "agent": "main",
@@ -195,7 +195,7 @@
       "type": "delta",
       "step": 2,
       "text": " 状态。",
-      "ts": 1789768046468
+      "ts": 1789768160476
     },
     {
       "agent": "main",
@@ -218,7 +218,7 @@
         "outputTokens": 80
       },
       "durationMs": 11,
-      "ts": 1789768046474
+      "ts": 1789768160482
     },
     {
       "agent": "main",
@@ -233,7 +233,7 @@
           "namespace": "default"
         }
       },
-      "ts": 1789768046474
+      "ts": 1789768160482
     },
     {
       "agent": "main",
@@ -247,7 +247,7 @@
         "output": "{\n \"namespace\": \"default\",\n \"name\": \"train-job-7\",\n \"phase\": \"Running\",\n \"nodeName\": \"gpu-node-1\",\n \"startTime\": \"2026-09-18T08:00:00.000Z\",\n \"labels\": {\n  \"app\": \"llm-train\",\n  \"job-name\": \"train-job-7\"\n },\n \"resources\": {\n  \"requests\": {\n   \"cpu\": \"16\",\n   \"memory\": \"128Gi\",\n   \"nvidia.com/gpu\": \"8\"\n  },\n  \"limits\": {\n   \"cpu\": \"16\",\n   \"memory\": \"128Gi\",\n   \"nvidia.com/gpu\": \"8\"\n  }\n },\n \"containers\": [\n  {\n   \"name\": \"trainer\",\n   \"image\": \"registry.local/trainer:1.4.2\",\n   \"ready\": false,\n   \"restartCount\": 2,\n   \"state\": {\n    \"waiting\": {\n     \"reason\": \"CrashLoopBackOff\"\n    }\n   },\n   \"lastState\": {\n    \"terminated\": {\n     \"reason\": \"Error\",\n     \"exitCode\": 1,\n     \"startedAt\": \"2026-09-18T08:20:00.000Z\",\n     \"finishedAt\": \"2026-09-18T08:52:00.000Z\"\n    }\n   }\n  }\n ],\n \"conditions\": [\n  {\n   \"type\": \"PodScheduled\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"Initialized\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"ContainersReady\",\n   \"status\": \"False\",\n   \"reason\": \"ContainersNotReady\"\n  },\n  {\n   \"type\": \"Ready\",\n   \"status\": \"False\",\n   \"reason\": \"ContainersNotReady\"\n  }\n ],\n \"signals\": [\n  \"容器 trainer 终止原因=Error exitCode=1\",\n  \"容器 trainer waiting=CrashLoopBackOff\",\n  \"容器 trainer 未 Ready\",\n  \"condition ContainersReady=False (ContainersNotReady)\",\n  \"condition Ready=False (ContainersNotReady)\"\n ]\n}"
       },
       "durationMs": 1,
-      "ts": 1789768046475
+      "ts": 1789768160483
     },
     {
       "agent": "main",
@@ -255,7 +255,7 @@
       "type": "delta",
       "step": 3,
       "text": "Pod 信号",
-      "ts": 1789768046476
+      "ts": 1789768160483
     },
     {
       "agent": "main",
@@ -263,7 +263,7 @@
       "type": "delta",
       "step": 3,
       "text": "：容器 tr",
-      "ts": 1789768046481
+      "ts": 1789768160489
     },
     {
       "agent": "main",
@@ -271,7 +271,7 @@
       "type": "delta",
       "step": 3,
       "text": "ainer ",
-      "ts": 1789768046487
+      "ts": 1789768160494
     },
     {
       "agent": "main",
@@ -279,7 +279,7 @@
       "type": "delta",
       "step": 3,
       "text": "终止原因=E",
-      "ts": 1789768046493
+      "ts": 1789768160500
     },
     {
       "agent": "main",
@@ -287,7 +287,7 @@
       "type": "delta",
       "step": 3,
       "text": "rror e",
-      "ts": 1789768046499
+      "ts": 1789768160506
     },
     {
       "agent": "main",
@@ -295,7 +295,7 @@
       "type": "delta",
       "step": 3,
       "text": "xitCod",
-      "ts": 1789768046504
+      "ts": 1789768160511
     },
     {
       "agent": "main",
@@ -303,7 +303,7 @@
       "type": "delta",
       "step": 3,
       "text": "e=1；容器",
-      "ts": 1789768046509
+      "ts": 1789768160517
     },
     {
       "agent": "main",
@@ -311,7 +311,7 @@
       "type": "delta",
       "step": 3,
       "text": " train",
-      "ts": 1789768046515
+      "ts": 1789768160523
     },
     {
       "agent": "main",
@@ -319,7 +319,7 @@
       "type": "delta",
       "step": 3,
       "text": "er wai",
-      "ts": 1789768046521
+      "ts": 1789768160528
     },
     {
       "agent": "main",
@@ -327,7 +327,7 @@
       "type": "delta",
       "step": 3,
       "text": "ting=C",
-      "ts": 1789768046527
+      "ts": 1789768160534
     },
     {
       "agent": "main",
@@ -335,7 +335,7 @@
       "type": "delta",
       "step": 3,
       "text": "rashLo",
-      "ts": 1789768046532
+      "ts": 1789768160540
     },
     {
       "agent": "main",
@@ -343,7 +343,7 @@
       "type": "delta",
       "step": 3,
       "text": "opBack",
-      "ts": 1789768046538
+      "ts": 1789768160545
     },
     {
       "agent": "main",
@@ -351,7 +351,7 @@
       "type": "delta",
       "step": 3,
       "text": "Off；容器",
-      "ts": 1789768046544
+      "ts": 1789768160551
     },
     {
       "agent": "main",
@@ -359,7 +359,7 @@
       "type": "delta",
       "step": 3,
       "text": " train",
-      "ts": 1789768046549
+      "ts": 1789768160557
     },
     {
       "agent": "main",
@@ -367,7 +367,7 @@
       "type": "delta",
       "step": 3,
       "text": "er 未 R",
-      "ts": 1789768046555
+      "ts": 1789768160562
     },
     {
       "agent": "main",
@@ -375,7 +375,7 @@
       "type": "delta",
       "step": 3,
       "text": "eady；c",
-      "ts": 1789768046560
+      "ts": 1789768160568
     },
     {
       "agent": "main",
@@ -383,7 +383,7 @@
       "type": "delta",
       "step": 3,
       "text": "onditi",
-      "ts": 1789768046566
+      "ts": 1789768160574
     },
     {
       "agent": "main",
@@ -391,7 +391,7 @@
       "type": "delta",
       "step": 3,
       "text": "on Con",
-      "ts": 1789768046572
+      "ts": 1789768160580
     },
     {
       "agent": "main",
@@ -399,7 +399,7 @@
       "type": "delta",
       "step": 3,
       "text": "tainer",
-      "ts": 1789768046578
+      "ts": 1789768160584
     },
     {
       "agent": "main",
@@ -407,7 +407,7 @@
       "type": "delta",
       "step": 3,
       "text": "sReady",
-      "ts": 1789768046583
+      "ts": 1789768160590
     },
     {
       "agent": "main",
@@ -415,7 +415,7 @@
       "type": "delta",
       "step": 3,
       "text": "=False",
-      "ts": 1789768046589
+      "ts": 1789768160595
     },
     {
       "agent": "main",
@@ -423,7 +423,7 @@
       "type": "delta",
       "step": 3,
       "text": " (Cont",
-      "ts": 1789768046595
+      "ts": 1789768160601
     },
     {
       "agent": "main",
@@ -431,7 +431,7 @@
       "type": "delta",
       "step": 3,
       "text": "ainers",
-      "ts": 1789768046601
+      "ts": 1789768160607
     },
     {
       "agent": "main",
@@ -439,7 +439,7 @@
       "type": "delta",
       "step": 3,
       "text": "NotRea",
-      "ts": 1789768046606
+      "ts": 1789768160613
     },
     {
       "agent": "main",
@@ -447,7 +447,7 @@
       "type": "delta",
       "step": 3,
       "text": "dy)；co",
-      "ts": 1789768046612
+      "ts": 1789768160618
     },
     {
       "agent": "main",
@@ -455,7 +455,7 @@
       "type": "delta",
       "step": 3,
       "text": "nditio",
-      "ts": 1789768046618
+      "ts": 1789768160624
     },
     {
       "agent": "main",
@@ -463,7 +463,7 @@
       "type": "delta",
       "step": 3,
       "text": "n Read",
-      "ts": 1789768046623
+      "ts": 1789768160630
     },
     {
       "agent": "main",
@@ -471,7 +471,7 @@
       "type": "delta",
       "step": 3,
       "text": "y=Fals",
-      "ts": 1789768046629
+      "ts": 1789768160636
     },
     {
       "agent": "main",
@@ -479,7 +479,7 @@
       "type": "delta",
       "step": 3,
       "text": "e (Con",
-      "ts": 1789768046635
+      "ts": 1789768160641
     },
     {
       "agent": "main",
@@ -487,7 +487,7 @@
       "type": "delta",
       "step": 3,
       "text": "tainer",
-      "ts": 1789768046641
+      "ts": 1789768160647
     },
     {
       "agent": "main",
@@ -495,7 +495,7 @@
       "type": "delta",
       "step": 3,
       "text": "sNotRe",
-      "ts": 1789768046646
+      "ts": 1789768160652
     },
     {
       "agent": "main",
@@ -503,7 +503,7 @@
       "type": "delta",
       "step": 3,
       "text": "ady)。并",
-      "ts": 1789768046652
+      "ts": 1789768160658
     },
     {
       "agent": "main",
@@ -511,7 +511,7 @@
       "type": "delta",
       "step": 3,
       "text": "行获取 Ev",
-      "ts": 1789768046658
+      "ts": 1789768160664
     },
     {
       "agent": "main",
@@ -519,7 +519,7 @@
       "type": "delta",
       "step": 3,
       "text": "ent、节点",
-      "ts": 1789768046663
+      "ts": 1789768160669
     },
     {
       "agent": "main",
@@ -527,7 +527,7 @@
       "type": "delta",
       "step": 3,
       "text": " gpu-n",
-      "ts": 1789768046669
+      "ts": 1789768160675
     },
     {
       "agent": "main",
@@ -535,7 +535,7 @@
       "type": "delta",
       "step": 3,
       "text": "ode-1、",
-      "ts": 1789768046675
+      "ts": 1789768160681
     },
     {
       "agent": "main",
@@ -543,7 +543,7 @@
       "type": "delta",
       "step": 3,
       "text": "指标与上一次",
-      "ts": 1789768046680
+      "ts": 1789768160687
     },
     {
       "agent": "main",
@@ -551,7 +551,7 @@
       "type": "delta",
       "step": 3,
       "text": "崩溃前的日志",
-      "ts": 1789768046686
+      "ts": 1789768160692
     },
     {
       "agent": "main",
@@ -559,7 +559,7 @@
       "type": "delta",
       "step": 3,
       "text": "。",
-      "ts": 1789768046692
+      "ts": 1789768160698
     },
     {
       "agent": "main",
@@ -636,7 +636,7 @@
         "outputTokens": 80
       },
       "durationMs": 221,
-      "ts": 1789768046697
+      "ts": 1789768160704
     },
     {
       "agent": "main",
@@ -671,7 +671,7 @@
           ]
         }
       },
-      "ts": 1789768046697
+      "ts": 1789768160704
     },
     {
       "agent": "main",
@@ -700,7 +700,7 @@
           "status": "pending"
         }
       ],
-      "ts": 1789768046697
+      "ts": 1789768160704
     },
     {
       "agent": "main",
@@ -715,7 +715,7 @@
           "namespace": "default"
         }
       },
-      "ts": 1789768046697
+      "ts": 1789768160704
     },
     {
       "agent": "main",
@@ -729,7 +729,7 @@
           "name": "gpu-node-1"
         }
       },
-      "ts": 1789768046697
+      "ts": 1789768160704
     },
     {
       "agent": "main",
@@ -745,7 +745,7 @@
           "window": "60m"
         }
       },
-      "ts": 1789768046697
+      "ts": 1789768160704
     },
     {
       "agent": "main",
@@ -762,7 +762,7 @@
           "tail": 100
         }
       },
-      "ts": 1789768046697
+      "ts": 1789768160704
     },
     {
       "agent": "main",
@@ -775,8 +775,8 @@
         "ok": true,
         "output": "计划已更新（1/4 完成）"
       },
-      "durationMs": 1,
-      "ts": 1789768046698
+      "durationMs": 0,
+      "ts": 1789768160704
     },
     {
       "agent": "main",
@@ -789,8 +789,8 @@
         "ok": true,
         "output": "{\n \"available\": true,\n \"window\": \"60m\",\n \"summary\": {\n  \"cpu\": {\n   \"unit\": \"cores\",\n   \"peak\": 12,\n   \"avg\": 9.35,\n   \"last\": 0.5,\n   \"limit\": 16,\n   \"peakPctOfLimit\": \"75%\",\n   \"samples\": 26\n  },\n  \"memory\": {\n   \"unit\": \"GiB\",\n   \"peak\": 90,\n   \"avg\": 70.15,\n   \"last\": 4,\n   \"limit\": 128,\n   \"peakPctOfLimit\": \"70%\",\n   \"samples\": 26\n  },\n  \"gpu\": {\n   \"unit\": \"util%\",\n   \"peak\": 96,\n   \"avg\": 73.85,\n   \"last\": 0,\n   \"samples\": 26\n  }\n },\n \"series\": {\n  \"available\": true,\n  \"window\": \"60m\",\n  \"cpu\": {\n   \"unit\": \"cores\",\n   \"limit\": 16,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:44:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:46:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:48:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:50:00.000Z\",\n     \"v\": 0.5\n    }\n   ]\n  },\n  \"memory\": {\n   \"unit\": \"GiB\",\n   \"limit\": 128,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 4\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 4\n    },\n    {\n     \"t\": \"2026-09-18T08:44:00.000Z\",\n     \"v\": 4\n    },\n    {\n     \"t\": \"2026-09-18T08:46:00.000Z\",\n     \"v\": 4\n    },\n    {\n     \"t\": \"2026-09-18T08:48:00.000Z\",\n     \"v\": 4\n    },\n    {\n     \"t\": \"2026-09-18T08:50:00.000Z\",\n     \"v\": 4\n    }\n   ]\n  },\n  \"gpu\": {\n   \"unit\": \"util%\",\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 0\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 0\n    },\n    {\n     \"t\": \"2026-09-18T08:44:00.000Z\",\n     \"v\": 0\n    },\n    {\n     \"t\": \"2026-09-18T08:46:00.000Z\",\n     \"v\": 0\n    },\n    {\n     \"t\": \"2026-09-18T08:48:00.000Z\",\n     \"v\": 0\n    },\n    {\n     \"t\": \"2026-09-18T08:50:00.000Z\",\n     \"v\": 0\n    }\n   ]\n  }\n }\n}"
       },
-      "durationMs": 2,
-      "ts": 1789768046699
+      "durationMs": 1,
+      "ts": 1789768160705
     },
     {
       "agent": "main",
@@ -803,8 +803,8 @@
         "ok": true,
         "output": "{\n \"previous\": true,\n \"lines\": 6,\n \"highlights\": [\n  \"2026-09-18T08:51:12Z WARN  NVRM: Xid (PCI:0000:3b:00.0): 79, pid=2113, GPU has fallen off the bus.\",\n  \"2026-09-18T08:51:14Z ERROR NCCL WARN [Rank 3] Timeout(ms)=600000 in operation AllReduce\",\n  \"2026-09-18T08:51:14Z ERROR torch.distributed.DistBackendError: NCCL error: unhandled system error, NCCL version 2.21.5\",\n  \"2026-09-18T08:51:15Z ERROR training aborted at step 1244\"\n ],\n \"log\": \"2026-09-18T08:20:00Z INFO  trainer start, world_size=8, step 0\\n2026-09-18T08:40:00Z INFO  step 1200 loss=2.31 throughput=1820 tok/s\\n2026-09-18T08:51:12Z WARN  NVRM: Xid (PCI:0000:3b:00.0): 79, pid=2113, GPU has fallen off the bus.\\n2026-09-18T08:51:14Z ERROR NCCL WARN [Rank 3] Timeout(ms)=600000 in operation AllReduce\\n2026-09-18T08:51:14Z ERROR torch.distributed.DistBackendError: NCCL error: unhandled system error, NCCL version 2.21.5\\n2026-09-18T08:51:15Z ERROR training aborted at step 1244\"\n}"
       },
-      "durationMs": 3,
-      "ts": 1789768046700
+      "durationMs": 2,
+      "ts": 1789768160706
     },
     {
       "agent": "main",
@@ -817,8 +817,8 @@
         "ok": true,
         "output": "{\n \"name\": \"gpu-node-1\",\n \"kubeletVersion\": \"v1.31.2\",\n \"allocatable\": {\n  \"cpu\": \"32\",\n  \"memory\": \"256Gi\",\n  \"nvidia.com/gpu\": \"8\",\n  \"ephemeral-storage\": \"1Ti\"\n },\n \"allocated\": {\n  \"cpu\": \"24\",\n  \"memory\": \"200Gi\",\n  \"nvidia.com/gpu\": \"8\"\n },\n \"conditions\": [\n  {\n   \"type\": \"Ready\",\n   \"status\": \"True\",\n   \"reason\": \"KubeletReady\",\n   \"lastHeartbeatTime\": \"2026-09-18T08:58:00.000Z\"\n  },\n  {\n   \"type\": \"MemoryPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoMemoryPressure\"\n  },\n  {\n   \"type\": \"DiskPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoDiskPressure\"\n  },\n  {\n   \"type\": \"PIDPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoPIDPressure\"\n  }\n ],\n \"taints\": [\n  {\n   \"key\": \"nvidia.com/gpu\",\n   \"value\": \"present\",\n   \"effect\": \"NoSchedule\"\n  }\n ],\n \"signals\": [\n  \"taints: nvidia.com/gpu:NoSchedule\"\n ]\n}"
       },
-      "durationMs": 3,
-      "ts": 1789768046700
+      "durationMs": 4,
+      "ts": 1789768160708
     },
     {
       "agent": "main",
@@ -832,7 +832,7 @@
         "output": "{\n \"count\": 3,\n \"warnings\": 1,\n \"events\": [\n  {\n   \"time\": \"2026-09-18T08:00:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Scheduled\",\n   \"message\": \"Successfully assigned default/train-job-7 to gpu-node-1\",\n   \"count\": 1,\n   \"source\": \"default-scheduler\"\n  },\n  {\n   \"time\": \"2026-09-18T08:01:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Started\",\n   \"message\": \"Started container trainer\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:52:00.000Z\",\n   \"type\": \"Warning\",\n   \"reason\": \"BackOff\",\n   \"message\": \"Back-off restarting failed container trainer in pod train-job-7\",\n   \"count\": 4,\n   \"source\": \"kubelet\"\n  }\n ]\n}"
       },
       "durationMs": 4,
-      "ts": 1789768046701
+      "ts": 1789768160708
     },
     {
       "agent": "main",
@@ -840,7 +840,7 @@
       "type": "delta",
       "step": 4,
       "text": "初步判断为 ",
-      "ts": 1789768046701
+      "ts": 1789768160709
     },
     {
       "agent": "main",
@@ -848,7 +848,7 @@
       "type": "delta",
       "step": 4,
       "text": "GPU 故障",
-      "ts": 1789768046707
+      "ts": 1789768160715
     },
     {
       "agent": "main",
@@ -856,7 +856,7 @@
       "type": "delta",
       "step": 4,
       "text": "（Xid 7",
-      "ts": 1789768046713
+      "ts": 1789768160720
     },
     {
       "agent": "main",
@@ -864,7 +864,7 @@
       "type": "delta",
       "step": 4,
       "text": "9）引发 N",
-      "ts": 1789768046719
+      "ts": 1789768160726
     },
     {
       "agent": "main",
@@ -872,7 +872,7 @@
       "type": "delta",
       "step": 4,
       "text": "CCL 超时",
-      "ts": 1789768046724
+      "ts": 1789768160732
     },
     {
       "agent": "main",
@@ -880,7 +880,7 @@
       "type": "delta",
       "step": 4,
       "text": "。对照知识库",
-      "ts": 1789768046730
+      "ts": 1789768160738
     },
     {
       "agent": "main",
@@ -888,7 +888,7 @@
       "type": "delta",
       "step": 4,
       "text": "与历史 Ca",
-      "ts": 1789768046736
+      "ts": 1789768160743
     },
     {
       "agent": "main",
@@ -896,7 +896,7 @@
       "type": "delta",
       "step": 4,
       "text": "se。",
-      "ts": 1789768046741
+      "ts": 1789768160749
     },
     {
       "agent": "main",
@@ -954,8 +954,8 @@
         "inputTokens": 4340,
         "outputTokens": 80
       },
-      "durationMs": 46,
-      "ts": 1789768046747
+      "durationMs": 47,
+      "ts": 1789768160755
     },
     {
       "agent": "main",
@@ -990,7 +990,7 @@
           ]
         }
       },
-      "ts": 1789768046747
+      "ts": 1789768160755
     },
     {
       "agent": "main",
@@ -1019,7 +1019,7 @@
           "status": "pending"
         }
       ],
-      "ts": 1789768046747
+      "ts": 1789768160755
     },
     {
       "agent": "main",
@@ -1034,7 +1034,7 @@
           "top": 2
         }
       },
-      "ts": 1789768046747
+      "ts": 1789768160755
     },
     {
       "agent": "main",
@@ -1049,7 +1049,7 @@
           "top": 2
         }
       },
-      "ts": 1789768046747
+      "ts": 1789768160755
     },
     {
       "agent": "main",
@@ -1063,7 +1063,7 @@
         "output": "计划已更新（2/4 完成）"
       },
       "durationMs": 0,
-      "ts": 1789768046747
+      "ts": 1789768160755
     },
     {
       "agent": "main",
@@ -1077,7 +1077,7 @@
         "output": "{\n \"total\": 4,\n \"cases\": [\n  {\n   \"id\": \"CASE-2026-077\",\n   \"date\": \"2026-09-05\",\n   \"symptoms\": \"NVRM Xid 79 GPU has fallen off the bus NCCL timeout AllReduce training aborted\",\n   \"rootCause\": \"GPU 硬件故障（PCIe 掉卡）\",\n   \"fix\": \"cordon gpu 节点，更换 GPU，从 checkpoint 恢复训练\",\n   \"tags\": [\n    \"gpu\",\n    \"xid\",\n    \"nccl\"\n   ],\n   \"similarity\": 9\n  },\n  {\n   \"id\": \"CASE-2026-041\",\n   \"date\": \"2026-07-03\",\n   \"symptoms\": \"report job OOMKilled exitCode 137 restartCount 增长 memory 峰值接近 limit 512Mi BackOff\",\n   \"rootCause\": \"月末数据量翻倍，整表加载进内存超过 limit\",\n   \"fix\": \"memory limit 512Mi → 2Gi，并改为分批读取\",\n   \"tags\": [\n    \"OOMKilled\",\n    \"memory\",\n    \"job\"\n   ],\n   \"similarity\": 1\n  }\n ]\n}"
       },
       "durationMs": 1,
-      "ts": 1789768046748
+      "ts": 1789768160756
     },
     {
       "agent": "main",
@@ -1090,8 +1090,8 @@
         "ok": true,
         "output": "{\n \"query\": \"Xid 79 NCCL timeout GPU fallen off the bus\",\n \"total\": 6,\n \"results\": [\n  {\n   \"file\": \"k8s/runbooks/gpu.md\",\n   \"title\": \"GPU Xid 错误\",\n   \"score\": 11,\n   \"content\": \"## GPU Xid 错误\\n症状：容器或节点日志出现 \\\"NVRM: Xid (PCI:...): <code>\\\"。Xid 79 = GPU has fallen off the bus（硬件/PCIe 故障）；Xid 13/31/43 多为应用侧非法访存；Xid 48/63/64 与 ECC/页面隔离相关。\\n处理：Xid 79 需 cordon 节点、重置或更换 GPU；应用类 Xid 复现后排查 kernel。\"\n  },\n  {\n   \"file\": \"k8s/runbooks/gpu.md\",\n   \"title\": \"NCCL timeout\",\n   \"score\": 8,\n   \"content\": \"## NCCL timeout\\n症状：日志 \\\"NCCL WARN ... Timeout(ms)=... in operation AllReduce\\\"，torch.distributed DistBackendError，训练在某个 step 中止；GPU 利用率突然掉到 0。\\n确认方法：先看同一时刻是否有 Xid（硬件根因），再看网络（IB/RoCE 链路、NCCL_SOCKET_IFNAME）。\\n处理：硬件根因 → 隔离节点后从 checkpoint 恢复；网络根因 → 修复链路、调大 NCCL_TIMEOUT。\"\n  }\n ]\n}"
       },
-      "durationMs": 2,
-      "ts": 1789768046749
+      "durationMs": 1,
+      "ts": 1789768160756
     },
     {
       "agent": "main",
@@ -1099,7 +1099,7 @@
       "type": "delta",
       "step": 5,
       "text": "## 故障现",
-      "ts": 1789768046750
+      "ts": 1789768160757
     },
     {
       "agent": "main",
@@ -1107,7 +1107,7 @@
       "type": "delta",
       "step": 5,
       "text": "象\n训练任务",
-      "ts": 1789768046755
+      "ts": 1789768160763
     },
     {
       "agent": "main",
@@ -1115,7 +1115,7 @@
       "type": "delta",
       "step": 5,
       "text": " train",
-      "ts": 1789768046761
+      "ts": 1789768160768
     },
     {
       "agent": "main",
@@ -1123,7 +1123,7 @@
       "type": "delta",
       "step": 5,
       "text": "-job-7",
-      "ts": 1789768046766
+      "ts": 1789768160774
     },
     {
       "agent": "main",
@@ -1131,7 +1131,7 @@
       "type": "delta",
       "step": 5,
       "text": " 在 ste",
-      "ts": 1789768046772
+      "ts": 1789768160780
     },
     {
       "agent": "main",
@@ -1139,7 +1139,7 @@
       "type": "delta",
       "step": 5,
       "text": "p 1244",
-      "ts": 1789768046778
+      "ts": 1789768160785
     },
     {
       "agent": "main",
@@ -1147,7 +1147,7 @@
       "type": "delta",
       "step": 5,
       "text": " 中止并反复",
-      "ts": 1789768046784
+      "ts": 1789768160791
     },
     {
       "agent": "main",
@@ -1155,7 +1155,7 @@
       "type": "delta",
       "step": 5,
       "text": "重启，GPU",
-      "ts": 1789768046789
+      "ts": 1789768160797
     },
     {
       "agent": "main",
@@ -1163,7 +1163,7 @@
       "type": "delta",
       "step": 5,
       "text": " 利用率掉到",
-      "ts": 1789768046794
+      "ts": 1789768160803
     },
     {
       "agent": "main",
@@ -1171,7 +1171,7 @@
       "type": "delta",
       "step": 5,
       "text": " 0。\n\n#",
-      "ts": 1789768046800
+      "ts": 1789768160808
     },
     {
       "agent": "main",
@@ -1179,7 +1179,7 @@
       "type": "delta",
       "step": 5,
       "text": "# 关键证据",
-      "ts": 1789768046806
+      "ts": 1789768160814
     },
     {
       "agent": "main",
@@ -1187,7 +1187,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n- [Po",
-      "ts": 1789768046812
+      "ts": 1789768160820
     },
     {
       "agent": "main",
@@ -1195,7 +1195,7 @@
       "type": "delta",
       "step": 5,
       "text": "d] 容器 ",
-      "ts": 1789768046817
+      "ts": 1789768160826
     },
     {
       "agent": "main",
@@ -1203,7 +1203,7 @@
       "type": "delta",
       "step": 5,
       "text": "traine",
-      "ts": 1789768046823
+      "ts": 1789768160831
     },
     {
       "agent": "main",
@@ -1211,7 +1211,7 @@
       "type": "delta",
       "step": 5,
       "text": "r last",
-      "ts": 1789768046828
+      "ts": 1789768160837
     },
     {
       "agent": "main",
@@ -1219,7 +1219,7 @@
       "type": "delta",
       "step": 5,
       "text": "State.",
-      "ts": 1789768046834
+      "ts": 1789768160843
     },
     {
       "agent": "main",
@@ -1227,7 +1227,7 @@
       "type": "delta",
       "step": 5,
       "text": "termin",
-      "ts": 1789768046840
+      "ts": 1789768160849
     },
     {
       "agent": "main",
@@ -1235,7 +1235,7 @@
       "type": "delta",
       "step": 5,
       "text": "ated.r",
-      "ts": 1789768046846
+      "ts": 1789768160854
     },
     {
       "agent": "main",
@@ -1243,7 +1243,7 @@
       "type": "delta",
       "step": 5,
       "text": "eason=",
-      "ts": 1789768046851
+      "ts": 1789768160860
     },
     {
       "agent": "main",
@@ -1251,7 +1251,7 @@
       "type": "delta",
       "step": 5,
       "text": "Error ",
-      "ts": 1789768046857
+      "ts": 1789768160865
     },
     {
       "agent": "main",
@@ -1259,7 +1259,7 @@
       "type": "delta",
       "step": 5,
       "text": "exitCo",
-      "ts": 1789768046862
+      "ts": 1789768160871
     },
     {
       "agent": "main",
@@ -1267,7 +1267,7 @@
       "type": "delta",
       "step": 5,
       "text": "de=1，r",
-      "ts": 1789768046868
+      "ts": 1789768160877
     },
     {
       "agent": "main",
@@ -1275,7 +1275,7 @@
       "type": "delta",
       "step": 5,
       "text": "estart",
-      "ts": 1789768046874
+      "ts": 1789768160883
     },
     {
       "agent": "main",
@@ -1283,7 +1283,7 @@
       "type": "delta",
       "step": 5,
       "text": "Count=",
-      "ts": 1789768046880
+      "ts": 1789768160888
     },
     {
       "agent": "main",
@@ -1291,7 +1291,7 @@
       "type": "delta",
       "step": 5,
       "text": "2（get_",
-      "ts": 1789768046885
+      "ts": 1789768160894
     },
     {
       "agent": "main",
@@ -1299,7 +1299,7 @@
       "type": "delta",
       "step": 5,
       "text": "pod）\n-",
-      "ts": 1789768046890
+      "ts": 1789768160900
     },
     {
       "agent": "main",
@@ -1307,7 +1307,7 @@
       "type": "delta",
       "step": 5,
       "text": " [Even",
-      "ts": 1789768046895
+      "ts": 1789768160905
     },
     {
       "agent": "main",
@@ -1315,7 +1315,7 @@
       "type": "delta",
       "step": 5,
       "text": "t] Bac",
-      "ts": 1789768046901
+      "ts": 1789768160911
     },
     {
       "agent": "main",
@@ -1323,7 +1323,7 @@
       "type": "delta",
       "step": 5,
       "text": "kOff: ",
-      "ts": 1789768046907
+      "ts": 1789768160916
     },
     {
       "agent": "main",
@@ -1331,7 +1331,7 @@
       "type": "delta",
       "step": 5,
       "text": "Back-o",
-      "ts": 1789768046912
+      "ts": 1789768160922
     },
     {
       "agent": "main",
@@ -1339,7 +1339,7 @@
       "type": "delta",
       "step": 5,
       "text": "ff res",
-      "ts": 1789768046918
+      "ts": 1789768160928
     },
     {
       "agent": "main",
@@ -1347,7 +1347,7 @@
       "type": "delta",
       "step": 5,
       "text": "tartin",
-      "ts": 1789768046924
+      "ts": 1789768160933
     },
     {
       "agent": "main",
@@ -1355,7 +1355,7 @@
       "type": "delta",
       "step": 5,
       "text": "g fail",
-      "ts": 1789768046930
+      "ts": 1789768160939
     },
     {
       "agent": "main",
@@ -1363,7 +1363,7 @@
       "type": "delta",
       "step": 5,
       "text": "ed con",
-      "ts": 1789768046935
+      "ts": 1789768160944
     },
     {
       "agent": "main",
@@ -1371,7 +1371,7 @@
       "type": "delta",
       "step": 5,
       "text": "tainer",
-      "ts": 1789768046941
+      "ts": 1789768160950
     },
     {
       "agent": "main",
@@ -1379,7 +1379,7 @@
       "type": "delta",
       "step": 5,
       "text": " train",
-      "ts": 1789768046947
+      "ts": 1789768160956
     },
     {
       "agent": "main",
@@ -1387,7 +1387,7 @@
       "type": "delta",
       "step": 5,
       "text": "er in ",
-      "ts": 1789768046953
+      "ts": 1789768160962
     },
     {
       "agent": "main",
@@ -1395,7 +1395,7 @@
       "type": "delta",
       "step": 5,
       "text": "pod tr",
-      "ts": 1789768046959
+      "ts": 1789768160967
     },
     {
       "agent": "main",
@@ -1403,7 +1403,7 @@
       "type": "delta",
       "step": 5,
       "text": "ain-jo",
-      "ts": 1789768046965
+      "ts": 1789768160973
     },
     {
       "agent": "main",
@@ -1411,7 +1411,7 @@
       "type": "delta",
       "step": 5,
       "text": "b-7（co",
-      "ts": 1789768046970
+      "ts": 1789768160979
     },
     {
       "agent": "main",
@@ -1419,7 +1419,7 @@
       "type": "delta",
       "step": 5,
       "text": "unt=4，",
-      "ts": 1789768046976
+      "ts": 1789768160985
     },
     {
       "agent": "main",
@@ -1427,7 +1427,7 @@
       "type": "delta",
       "step": 5,
       "text": "get_po",
-      "ts": 1789768046982
+      "ts": 1789768160990
     },
     {
       "agent": "main",
@@ -1435,7 +1435,7 @@
       "type": "delta",
       "step": 5,
       "text": "d_even",
-      "ts": 1789768046987
+      "ts": 1789768160996
     },
     {
       "agent": "main",
@@ -1443,7 +1443,7 @@
       "type": "delta",
       "step": 5,
       "text": "ts）\n- ",
-      "ts": 1789768046993
+      "ts": 1789768161002
     },
     {
       "agent": "main",
@@ -1451,7 +1451,7 @@
       "type": "delta",
       "step": 5,
       "text": "[Node]",
-      "ts": 1789768046999
+      "ts": 1789768161007
     },
     {
       "agent": "main",
@@ -1459,7 +1459,7 @@
       "type": "delta",
       "step": 5,
       "text": " gpu-n",
-      "ts": 1789768047004
+      "ts": 1789768161013
     },
     {
       "agent": "main",
@@ -1467,7 +1467,7 @@
       "type": "delta",
       "step": 5,
       "text": "ode-1:",
-      "ts": 1789768047009
+      "ts": 1789768161017
     },
     {
       "agent": "main",
@@ -1475,7 +1475,7 @@
       "type": "delta",
       "step": 5,
       "text": " taint",
-      "ts": 1789768047015
+      "ts": 1789768161023
     },
     {
       "agent": "main",
@@ -1483,7 +1483,7 @@
       "type": "delta",
       "step": 5,
       "text": "s: nvi",
-      "ts": 1789768047020
+      "ts": 1789768161028
     },
     {
       "agent": "main",
@@ -1491,7 +1491,7 @@
       "type": "delta",
       "step": 5,
       "text": "dia.co",
-      "ts": 1789768047025
+      "ts": 1789768161034
     },
     {
       "agent": "main",
@@ -1499,7 +1499,7 @@
       "type": "delta",
       "step": 5,
       "text": "m/gpu:",
-      "ts": 1789768047031
+      "ts": 1789768161040
     },
     {
       "agent": "main",
@@ -1507,7 +1507,7 @@
       "type": "delta",
       "step": 5,
       "text": "NoSche",
-      "ts": 1789768047036
+      "ts": 1789768161045
     },
     {
       "agent": "main",
@@ -1515,7 +1515,7 @@
       "type": "delta",
       "step": 5,
       "text": "dule（g",
-      "ts": 1789768047042
+      "ts": 1789768161051
     },
     {
       "agent": "main",
@@ -1523,7 +1523,7 @@
       "type": "delta",
       "step": 5,
       "text": "et_nod",
-      "ts": 1789768047051
+      "ts": 1789768161057
     },
     {
       "agent": "main",
@@ -1531,7 +1531,7 @@
       "type": "delta",
       "step": 5,
       "text": "e）\n- [",
-      "ts": 1789768047057
+      "ts": 1789768161062
     },
     {
       "agent": "main",
@@ -1539,7 +1539,7 @@
       "type": "delta",
       "step": 5,
       "text": "Metric",
-      "ts": 1789768047063
+      "ts": 1789768161068
     },
     {
       "agent": "main",
@@ -1547,7 +1547,7 @@
       "type": "delta",
       "step": 5,
       "text": "] memo",
-      "ts": 1789768047069
+      "ts": 1789768161074
     },
     {
       "agent": "main",
@@ -1555,7 +1555,7 @@
       "type": "delta",
       "step": 5,
       "text": "ry 峰值 ",
-      "ts": 1789768047074
+      "ts": 1789768161079
     },
     {
       "agent": "main",
@@ -1563,7 +1563,7 @@
       "type": "delta",
       "step": 5,
       "text": "90GiB ",
-      "ts": 1789768047080
+      "ts": 1789768161085
     },
     {
       "agent": "main",
@@ -1571,7 +1571,7 @@
       "type": "delta",
       "step": 5,
       "text": "/ limi",
-      "ts": 1789768047086
+      "ts": 1789768161091
     },
     {
       "agent": "main",
@@ -1579,7 +1579,7 @@
       "type": "delta",
       "step": 5,
       "text": "t 128G",
-      "ts": 1789768047092
+      "ts": 1789768161096
     },
     {
       "agent": "main",
@@ -1587,7 +1587,7 @@
       "type": "delta",
       "step": 5,
       "text": "iB（70%",
-      "ts": 1789768047098
+      "ts": 1789768161102
     },
     {
       "agent": "main",
@@ -1595,7 +1595,7 @@
       "type": "delta",
       "step": 5,
       "text": "），cpu ",
-      "ts": 1789768047104
+      "ts": 1789768161108
     },
     {
       "agent": "main",
@@ -1603,7 +1603,7 @@
       "type": "delta",
       "step": 5,
       "text": "峰值 12c",
-      "ts": 1789768047110
+      "ts": 1789768161114
     },
     {
       "agent": "main",
@@ -1611,7 +1611,7 @@
       "type": "delta",
       "step": 5,
       "text": "ores（g",
-      "ts": 1789768047115
+      "ts": 1789768161119
     },
     {
       "agent": "main",
@@ -1619,7 +1619,7 @@
       "type": "delta",
       "step": 5,
       "text": "et_met",
-      "ts": 1789768047121
+      "ts": 1789768161124
     },
     {
       "agent": "main",
@@ -1627,7 +1627,7 @@
       "type": "delta",
       "step": 5,
       "text": "rics）\n",
-      "ts": 1789768047126
+      "ts": 1789768161129
     },
     {
       "agent": "main",
@@ -1635,7 +1635,7 @@
       "type": "delta",
       "step": 5,
       "text": "- [Met",
-      "ts": 1789768047132
+      "ts": 1789768161135
     },
     {
       "agent": "main",
@@ -1643,7 +1643,7 @@
       "type": "delta",
       "step": 5,
       "text": "ric] G",
-      "ts": 1789768047137
+      "ts": 1789768161141
     },
     {
       "agent": "main",
@@ -1651,7 +1651,7 @@
       "type": "delta",
       "step": 5,
       "text": "PU 利用率",
-      "ts": 1789768047143
+      "ts": 1789768161146
     },
     {
       "agent": "main",
@@ -1659,7 +1659,7 @@
       "type": "delta",
       "step": 5,
       "text": "从 96% ",
-      "ts": 1789768047149
+      "ts": 1789768161152
     },
     {
       "agent": "main",
@@ -1667,7 +1667,7 @@
       "type": "delta",
       "step": 5,
       "text": "掉到 0%（",
-      "ts": 1789768047155
+      "ts": 1789768161158
     },
     {
       "agent": "main",
@@ -1675,7 +1675,7 @@
       "type": "delta",
       "step": 5,
       "text": "get_me",
-      "ts": 1789768047161
+      "ts": 1789768161163
     },
     {
       "agent": "main",
@@ -1683,7 +1683,7 @@
       "type": "delta",
       "step": 5,
       "text": "trics）",
-      "ts": 1789768047167
+      "ts": 1789768161169
     },
     {
       "agent": "main",
@@ -1691,7 +1691,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n- [Lo",
-      "ts": 1789768047173
+      "ts": 1789768161175
     },
     {
       "agent": "main",
@@ -1699,7 +1699,7 @@
       "type": "delta",
       "step": 5,
       "text": "g] 202",
-      "ts": 1789768047178
+      "ts": 1789768161180
     },
     {
       "agent": "main",
@@ -1707,7 +1707,7 @@
       "type": "delta",
       "step": 5,
       "text": "6-09-1",
-      "ts": 1789768047184
+      "ts": 1789768161186
     },
     {
       "agent": "main",
@@ -1715,7 +1715,7 @@
       "type": "delta",
       "step": 5,
       "text": "8T08:5",
-      "ts": 1789768047190
+      "ts": 1789768161192
     },
     {
       "agent": "main",
@@ -1723,7 +1723,7 @@
       "type": "delta",
       "step": 5,
       "text": "1:12Z ",
-      "ts": 1789768047196
+      "ts": 1789768161197
     },
     {
       "agent": "main",
@@ -1731,7 +1731,7 @@
       "type": "delta",
       "step": 5,
       "text": "WARN  ",
-      "ts": 1789768047202
+      "ts": 1789768161203
     },
     {
       "agent": "main",
@@ -1739,7 +1739,7 @@
       "type": "delta",
       "step": 5,
       "text": "NVRM: ",
-      "ts": 1789768047208
+      "ts": 1789768161209
     },
     {
       "agent": "main",
@@ -1747,7 +1747,7 @@
       "type": "delta",
       "step": 5,
       "text": "Xid (P",
-      "ts": 1789768047213
+      "ts": 1789768161214
     },
     {
       "agent": "main",
@@ -1755,7 +1755,7 @@
       "type": "delta",
       "step": 5,
       "text": "CI:000",
-      "ts": 1789768047219
+      "ts": 1789768161220
     },
     {
       "agent": "main",
@@ -1763,7 +1763,7 @@
       "type": "delta",
       "step": 5,
       "text": "0:3b:0",
-      "ts": 1789768047225
+      "ts": 1789768161226
     },
     {
       "agent": "main",
@@ -1771,7 +1771,7 @@
       "type": "delta",
       "step": 5,
       "text": "0.0): ",
-      "ts": 1789768047231
+      "ts": 1789768161231
     },
     {
       "agent": "main",
@@ -1779,7 +1779,7 @@
       "type": "delta",
       "step": 5,
       "text": "79, pi",
-      "ts": 1789768047236
+      "ts": 1789768161237
     },
     {
       "agent": "main",
@@ -1787,7 +1787,7 @@
       "type": "delta",
       "step": 5,
       "text": "d=2113",
-      "ts": 1789768047242
+      "ts": 1789768161242
     },
     {
       "agent": "main",
@@ -1795,7 +1795,7 @@
       "type": "delta",
       "step": 5,
       "text": ", GPU ",
-      "ts": 1789768047248
+      "ts": 1789768161248
     },
     {
       "agent": "main",
@@ -1803,7 +1803,7 @@
       "type": "delta",
       "step": 5,
       "text": "has fa",
-      "ts": 1789768047253
+      "ts": 1789768161254
     },
     {
       "agent": "main",
@@ -1811,7 +1811,7 @@
       "type": "delta",
       "step": 5,
       "text": "llen o",
-      "ts": 1789768047259
+      "ts": 1789768161260
     },
     {
       "agent": "main",
@@ -1819,7 +1819,7 @@
       "type": "delta",
       "step": 5,
       "text": "ff the",
-      "ts": 1789768047265
+      "ts": 1789768161265
     },
     {
       "agent": "main",
@@ -1827,7 +1827,7 @@
       "type": "delta",
       "step": 5,
       "text": " bus. ",
-      "ts": 1789768047271
+      "ts": 1789768161271
     },
     {
       "agent": "main",
@@ -1835,7 +1835,7 @@
       "type": "delta",
       "step": 5,
       "text": "| 2026",
-      "ts": 1789768047276
+      "ts": 1789768161276
     },
     {
       "agent": "main",
@@ -1843,7 +1843,7 @@
       "type": "delta",
       "step": 5,
       "text": "-09-18",
-      "ts": 1789768047282
+      "ts": 1789768161282
     },
     {
       "agent": "main",
@@ -1851,7 +1851,7 @@
       "type": "delta",
       "step": 5,
       "text": "T08:51",
-      "ts": 1789768047288
+      "ts": 1789768161288
     },
     {
       "agent": "main",
@@ -1859,7 +1859,7 @@
       "type": "delta",
       "step": 5,
       "text": ":14Z E",
-      "ts": 1789768047293
+      "ts": 1789768161294
     },
     {
       "agent": "main",
@@ -1867,7 +1867,7 @@
       "type": "delta",
       "step": 5,
       "text": "RROR N",
-      "ts": 1789768047299
+      "ts": 1789768161299
     },
     {
       "agent": "main",
@@ -1875,7 +1875,7 @@
       "type": "delta",
       "step": 5,
       "text": "CCL WA",
-      "ts": 1789768047305
+      "ts": 1789768161305
     },
     {
       "agent": "main",
@@ -1883,7 +1883,7 @@
       "type": "delta",
       "step": 5,
       "text": "RN [Ra",
-      "ts": 1789768047310
+      "ts": 1789768161311
     },
     {
       "agent": "main",
@@ -1891,7 +1891,7 @@
       "type": "delta",
       "step": 5,
       "text": "nk 3] ",
-      "ts": 1789768047316
+      "ts": 1789768161316
     },
     {
       "agent": "main",
@@ -1899,7 +1899,7 @@
       "type": "delta",
       "step": 5,
       "text": "Timeou",
-      "ts": 1789768047322
+      "ts": 1789768161322
     },
     {
       "agent": "main",
@@ -1907,7 +1907,7 @@
       "type": "delta",
       "step": 5,
       "text": "t(ms)=",
-      "ts": 1789768047328
+      "ts": 1789768161328
     },
     {
       "agent": "main",
@@ -1915,7 +1915,7 @@
       "type": "delta",
       "step": 5,
       "text": "600000",
-      "ts": 1789768047333
+      "ts": 1789768161333
     },
     {
       "agent": "main",
@@ -1923,7 +1923,7 @@
       "type": "delta",
       "step": 5,
       "text": " in op",
-      "ts": 1789768047339
+      "ts": 1789768161339
     },
     {
       "agent": "main",
@@ -1931,7 +1931,7 @@
       "type": "delta",
       "step": 5,
       "text": "eratio",
-      "ts": 1789768047345
+      "ts": 1789768161345
     },
     {
       "agent": "main",
@@ -1939,7 +1939,7 @@
       "type": "delta",
       "step": 5,
       "text": "n AllR",
-      "ts": 1789768047350
+      "ts": 1789768161350
     },
     {
       "agent": "main",
@@ -1947,7 +1947,7 @@
       "type": "delta",
       "step": 5,
       "text": "educe ",
-      "ts": 1789768047355
+      "ts": 1789768161356
     },
     {
       "agent": "main",
@@ -1955,7 +1955,7 @@
       "type": "delta",
       "step": 5,
       "text": "| 2026",
-      "ts": 1789768047361
+      "ts": 1789768161362
     },
     {
       "agent": "main",
@@ -1963,7 +1963,7 @@
       "type": "delta",
       "step": 5,
       "text": "-09-18",
-      "ts": 1789768047366
+      "ts": 1789768161367
     },
     {
       "agent": "main",
@@ -1971,7 +1971,7 @@
       "type": "delta",
       "step": 5,
       "text": "T08:51",
-      "ts": 1789768047371
+      "ts": 1789768161373
     },
     {
       "agent": "main",
@@ -1979,7 +1979,7 @@
       "type": "delta",
       "step": 5,
       "text": ":14Z E",
-      "ts": 1789768047377
+      "ts": 1789768161379
     },
     {
       "agent": "main",
@@ -1987,7 +1987,7 @@
       "type": "delta",
       "step": 5,
       "text": "RROR t",
-      "ts": 1789768047382
+      "ts": 1789768161385
     },
     {
       "agent": "main",
@@ -1995,7 +1995,7 @@
       "type": "delta",
       "step": 5,
       "text": "orch.d",
-      "ts": 1789768047388
+      "ts": 1789768161389
     },
     {
       "agent": "main",
@@ -2003,7 +2003,7 @@
       "type": "delta",
       "step": 5,
       "text": "istrib",
-      "ts": 1789768047394
+      "ts": 1789768161395
     },
     {
       "agent": "main",
@@ -2011,7 +2011,7 @@
       "type": "delta",
       "step": 5,
       "text": "uted.D",
-      "ts": 1789768047400
+      "ts": 1789768161400
     },
     {
       "agent": "main",
@@ -2019,7 +2019,7 @@
       "type": "delta",
       "step": 5,
       "text": "istBac",
-      "ts": 1789768047405
+      "ts": 1789768161406
     },
     {
       "agent": "main",
@@ -2027,7 +2027,7 @@
       "type": "delta",
       "step": 5,
       "text": "kendEr",
-      "ts": 1789768047411
+      "ts": 1789768161412
     },
     {
       "agent": "main",
@@ -2035,7 +2035,7 @@
       "type": "delta",
       "step": 5,
       "text": "ror: N",
-      "ts": 1789768047417
+      "ts": 1789768161417
     },
     {
       "agent": "main",
@@ -2043,7 +2043,7 @@
       "type": "delta",
       "step": 5,
       "text": "CCL er",
-      "ts": 1789768047422
+      "ts": 1789768161423
     },
     {
       "agent": "main",
@@ -2051,7 +2051,7 @@
       "type": "delta",
       "step": 5,
       "text": "ror: u",
-      "ts": 1789768047428
+      "ts": 1789768161429
     },
     {
       "agent": "main",
@@ -2059,7 +2059,7 @@
       "type": "delta",
       "step": 5,
       "text": "nhandl",
-      "ts": 1789768047434
+      "ts": 1789768161434
     },
     {
       "agent": "main",
@@ -2067,7 +2067,7 @@
       "type": "delta",
       "step": 5,
       "text": "ed sys",
-      "ts": 1789768047439
+      "ts": 1789768161440
     },
     {
       "agent": "main",
@@ -2075,7 +2075,7 @@
       "type": "delta",
       "step": 5,
       "text": "tem er",
-      "ts": 1789768047445
+      "ts": 1789768161446
     },
     {
       "agent": "main",
@@ -2083,7 +2083,7 @@
       "type": "delta",
       "step": 5,
       "text": "ror, N",
-      "ts": 1789768047451
+      "ts": 1789768161451
     },
     {
       "agent": "main",
@@ -2091,7 +2091,7 @@
       "type": "delta",
       "step": 5,
       "text": "CCL ve",
-      "ts": 1789768047457
+      "ts": 1789768161457
     },
     {
       "agent": "main",
@@ -2099,7 +2099,7 @@
       "type": "delta",
       "step": 5,
       "text": "rsi（ge",
-      "ts": 1789768047462
+      "ts": 1789768161463
     },
     {
       "agent": "main",
@@ -2107,7 +2107,7 @@
       "type": "delta",
       "step": 5,
       "text": "t_logs",
-      "ts": 1789768047467
+      "ts": 1789768161468
     },
     {
       "agent": "main",
@@ -2115,7 +2115,7 @@
       "type": "delta",
       "step": 5,
       "text": " previ",
-      "ts": 1789768047473
+      "ts": 1789768161474
     },
     {
       "agent": "main",
@@ -2123,7 +2123,7 @@
       "type": "delta",
       "step": 5,
       "text": "ous=tr",
-      "ts": 1789768047478
+      "ts": 1789768161479
     },
     {
       "agent": "main",
@@ -2131,7 +2131,7 @@
       "type": "delta",
       "step": 5,
       "text": "ue）\n- ",
-      "ts": 1789768047484
+      "ts": 1789768161485
     },
     {
       "agent": "main",
@@ -2139,7 +2139,7 @@
       "type": "delta",
       "step": 5,
       "text": "[Runbo",
-      "ts": 1789768047490
+      "ts": 1789768161491
     },
     {
       "agent": "main",
@@ -2147,7 +2147,7 @@
       "type": "delta",
       "step": 5,
       "text": "ok] GP",
-      "ts": 1789768047495
+      "ts": 1789768161496
     },
     {
       "agent": "main",
@@ -2155,7 +2155,7 @@
       "type": "delta",
       "step": 5,
       "text": "U Xid ",
-      "ts": 1789768047501
+      "ts": 1789768161502
     },
     {
       "agent": "main",
@@ -2163,7 +2163,7 @@
       "type": "delta",
       "step": 5,
       "text": "错误：症状：",
-      "ts": 1789768047507
+      "ts": 1789768161508
     },
     {
       "agent": "main",
@@ -2171,7 +2171,7 @@
       "type": "delta",
       "step": 5,
       "text": "容器或节点日",
-      "ts": 1789768047512
+      "ts": 1789768161513
     },
     {
       "agent": "main",
@@ -2179,7 +2179,7 @@
       "type": "delta",
       "step": 5,
       "text": "志出现 \"N",
-      "ts": 1789768047518
+      "ts": 1789768161519
     },
     {
       "agent": "main",
@@ -2187,7 +2187,7 @@
       "type": "delta",
       "step": 5,
       "text": "VRM: X",
-      "ts": 1789768047524
+      "ts": 1789768161525
     },
     {
       "agent": "main",
@@ -2195,7 +2195,7 @@
       "type": "delta",
       "step": 5,
       "text": "id (PC",
-      "ts": 1789768047530
+      "ts": 1789768161530
     },
     {
       "agent": "main",
@@ -2203,7 +2203,7 @@
       "type": "delta",
       "step": 5,
       "text": "I:...)",
-      "ts": 1789768047535
+      "ts": 1789768161536
     },
     {
       "agent": "main",
@@ -2211,7 +2211,7 @@
       "type": "delta",
       "step": 5,
       "text": ": <cod",
-      "ts": 1789768047541
+      "ts": 1789768161542
     },
     {
       "agent": "main",
@@ -2219,7 +2219,7 @@
       "type": "delta",
       "step": 5,
       "text": "e>\"。Xi",
-      "ts": 1789768047547
+      "ts": 1789768161548
     },
     {
       "agent": "main",
@@ -2227,7 +2227,7 @@
       "type": "delta",
       "step": 5,
       "text": "d 79 =",
-      "ts": 1789768047552
+      "ts": 1789768161553
     },
     {
       "agent": "main",
@@ -2235,7 +2235,7 @@
       "type": "delta",
       "step": 5,
       "text": " GPU h",
-      "ts": 1789768047558
+      "ts": 1789768161559
     },
     {
       "agent": "main",
@@ -2243,7 +2243,7 @@
       "type": "delta",
       "step": 5,
       "text": "as fal",
-      "ts": 1789768047564
+      "ts": 1789768161565
     },
     {
       "agent": "main",
@@ -2251,7 +2251,7 @@
       "type": "delta",
       "step": 5,
       "text": "len of",
-      "ts": 1789768047570
+      "ts": 1789768161570
     },
     {
       "agent": "main",
@@ -2259,7 +2259,7 @@
       "type": "delta",
       "step": 5,
       "text": "f the ",
-      "ts": 1789768047575
+      "ts": 1789768161576
     },
     {
       "agent": "main",
@@ -2267,7 +2267,7 @@
       "type": "delta",
       "step": 5,
       "text": "bus（硬件",
-      "ts": 1789768047581
+      "ts": 1789768161582
     },
     {
       "agent": "main",
@@ -2275,7 +2275,7 @@
       "type": "delta",
       "step": 5,
       "text": "/PCIe ",
-      "ts": 1789768047587
+      "ts": 1789768161587
     },
     {
       "agent": "main",
@@ -2283,7 +2283,7 @@
       "type": "delta",
       "step": 5,
       "text": "故障）；Xi",
-      "ts": 1789768047592
+      "ts": 1789768161593
     },
     {
       "agent": "main",
@@ -2291,7 +2291,7 @@
       "type": "delta",
       "step": 5,
       "text": "d 13/3",
-      "ts": 1789768047598
+      "ts": 1789768161599
     },
     {
       "agent": "main",
@@ -2299,7 +2299,7 @@
       "type": "delta",
       "step": 5,
       "text": "1/43 多",
-      "ts": 1789768047603
+      "ts": 1789768161604
     },
     {
       "agent": "main",
@@ -2307,7 +2307,7 @@
       "type": "delta",
       "step": 5,
       "text": "为应用侧非法",
-      "ts": 1789768047609
+      "ts": 1789768161610
     },
     {
       "agent": "main",
@@ -2315,7 +2315,7 @@
       "type": "delta",
       "step": 5,
       "text": "访存；Xid",
-      "ts": 1789768047615
+      "ts": 1789768161616
     },
     {
       "agent": "main",
@@ -2323,7 +2323,7 @@
       "type": "delta",
       "step": 5,
       "text": " 48…（s",
-      "ts": 1789768047620
+      "ts": 1789768161622
     },
     {
       "agent": "main",
@@ -2331,7 +2331,7 @@
       "type": "delta",
       "step": 5,
       "text": "earch_",
-      "ts": 1789768047626
+      "ts": 1789768161627
     },
     {
       "agent": "main",
@@ -2339,7 +2339,7 @@
       "type": "delta",
       "step": 5,
       "text": "runboo",
-      "ts": 1789768047631
+      "ts": 1789768161633
     },
     {
       "agent": "main",
@@ -2347,7 +2347,7 @@
       "type": "delta",
       "step": 5,
       "text": "k → k8",
-      "ts": 1789768047637
+      "ts": 1789768161639
     },
     {
       "agent": "main",
@@ -2355,7 +2355,7 @@
       "type": "delta",
       "step": 5,
       "text": "s/runb",
-      "ts": 1789768047643
+      "ts": 1789768161644
     },
     {
       "agent": "main",
@@ -2363,7 +2363,7 @@
       "type": "delta",
       "step": 5,
       "text": "ooks/g",
-      "ts": 1789768047649
+      "ts": 1789768161649
     },
     {
       "agent": "main",
@@ -2371,7 +2371,7 @@
       "type": "delta",
       "step": 5,
       "text": "pu.md）",
-      "ts": 1789768047654
+      "ts": 1789768161654
     },
     {
       "agent": "main",
@@ -2379,7 +2379,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n- [Ca",
-      "ts": 1789768047660
+      "ts": 1789768161660
     },
     {
       "agent": "main",
@@ -2387,7 +2387,7 @@
       "type": "delta",
       "step": 5,
       "text": "se] CA",
-      "ts": 1789768047666
+      "ts": 1789768161666
     },
     {
       "agent": "main",
@@ -2395,7 +2395,7 @@
       "type": "delta",
       "step": 5,
       "text": "SE-202",
-      "ts": 1789768047671
+      "ts": 1789768161672
     },
     {
       "agent": "main",
@@ -2403,7 +2403,7 @@
       "type": "delta",
       "step": 5,
       "text": "6-077（",
-      "ts": 1789768047677
+      "ts": 1789768161677
     },
     {
       "agent": "main",
@@ -2411,7 +2411,7 @@
       "type": "delta",
       "step": 5,
       "text": "2026-0",
-      "ts": 1789768047683
+      "ts": 1789768161683
     },
     {
       "agent": "main",
@@ -2419,7 +2419,7 @@
       "type": "delta",
       "step": 5,
       "text": "9-05）根",
-      "ts": 1789768047689
+      "ts": 1789768161689
     },
     {
       "agent": "main",
@@ -2427,7 +2427,7 @@
       "type": "delta",
       "step": 5,
       "text": "因：GPU ",
-      "ts": 1789768047694
+      "ts": 1789768161695
     },
     {
       "agent": "main",
@@ -2435,7 +2435,7 @@
       "type": "delta",
       "step": 5,
       "text": "硬件故障（P",
-      "ts": 1789768047700
+      "ts": 1789768161700
     },
     {
       "agent": "main",
@@ -2443,7 +2443,7 @@
       "type": "delta",
       "step": 5,
       "text": "CIe 掉卡",
-      "ts": 1789768047706
+      "ts": 1789768161706
     },
     {
       "agent": "main",
@@ -2451,7 +2451,7 @@
       "type": "delta",
       "step": 5,
       "text": "）；处理：c",
-      "ts": 1789768047712
+      "ts": 1789768161712
     },
     {
       "agent": "main",
@@ -2459,7 +2459,7 @@
       "type": "delta",
       "step": 5,
       "text": "ordon ",
-      "ts": 1789768047717
+      "ts": 1789768161717
     },
     {
       "agent": "main",
@@ -2467,7 +2467,7 @@
       "type": "delta",
       "step": 5,
       "text": "gpu 节点",
-      "ts": 1789768047723
+      "ts": 1789768161723
     },
     {
       "agent": "main",
@@ -2475,7 +2475,7 @@
       "type": "delta",
       "step": 5,
       "text": "，更换 GP",
-      "ts": 1789768047729
+      "ts": 1789768161729
     },
     {
       "agent": "main",
@@ -2483,7 +2483,7 @@
       "type": "delta",
       "step": 5,
       "text": "U，从 ch",
-      "ts": 1789768047734
+      "ts": 1789768161734
     },
     {
       "agent": "main",
@@ -2491,7 +2491,7 @@
       "type": "delta",
       "step": 5,
       "text": "eckpoi",
-      "ts": 1789768047740
+      "ts": 1789768161740
     },
     {
       "agent": "main",
@@ -2499,7 +2499,7 @@
       "type": "delta",
       "step": 5,
       "text": "nt 恢复训",
-      "ts": 1789768047746
+      "ts": 1789768161746
     },
     {
       "agent": "main",
@@ -2507,7 +2507,7 @@
       "type": "delta",
       "step": 5,
       "text": "练（sear",
-      "ts": 1789768047751
+      "ts": 1789768161751
     },
     {
       "agent": "main",
@@ -2515,7 +2515,7 @@
       "type": "delta",
       "step": 5,
       "text": "ch_cas",
-      "ts": 1789768047757
+      "ts": 1789768161757
     },
     {
       "agent": "main",
@@ -2523,7 +2523,7 @@
       "type": "delta",
       "step": 5,
       "text": "es）\n\n#",
-      "ts": 1789768047762
+      "ts": 1789768161763
     },
     {
       "agent": "main",
@@ -2531,7 +2531,7 @@
       "type": "delta",
       "step": 5,
       "text": "# 已确认事",
-      "ts": 1789768047768
+      "ts": 1789768161768
     },
     {
       "agent": "main",
@@ -2539,7 +2539,7 @@
       "type": "delta",
       "step": 5,
       "text": "实\n- Po",
-      "ts": 1789768047773
+      "ts": 1789768161774
     },
     {
       "agent": "main",
@@ -2547,7 +2547,7 @@
       "type": "delta",
       "step": 5,
       "text": "d defa",
-      "ts": 1789768047779
+      "ts": 1789768161780
     },
     {
       "agent": "main",
@@ -2555,7 +2555,7 @@
       "type": "delta",
       "step": 5,
       "text": "ult/tr",
-      "ts": 1789768047785
+      "ts": 1789768161786
     },
     {
       "agent": "main",
@@ -2563,7 +2563,7 @@
       "type": "delta",
       "step": 5,
       "text": "ain-jo",
-      "ts": 1789768047791
+      "ts": 1789768161791
     },
     {
       "agent": "main",
@@ -2571,7 +2571,7 @@
       "type": "delta",
       "step": 5,
       "text": "b-7 ph",
-      "ts": 1789768047796
+      "ts": 1789768161797
     },
     {
       "agent": "main",
@@ -2579,7 +2579,7 @@
       "type": "delta",
       "step": 5,
       "text": "ase=Ru",
-      "ts": 1789768047802
+      "ts": 1789768161803
     },
     {
       "agent": "main",
@@ -2587,7 +2587,7 @@
       "type": "delta",
       "step": 5,
       "text": "nning，",
-      "ts": 1789768047807
+      "ts": 1789768161808
     },
     {
       "agent": "main",
@@ -2595,7 +2595,7 @@
       "type": "delta",
       "step": 5,
       "text": "节点 gpu",
-      "ts": 1789768047813
+      "ts": 1789768161814
     },
     {
       "agent": "main",
@@ -2603,7 +2603,7 @@
       "type": "delta",
       "step": 5,
       "text": "-node-",
-      "ts": 1789768047819
+      "ts": 1789768161820
     },
     {
       "agent": "main",
@@ -2611,7 +2611,7 @@
       "type": "delta",
       "step": 5,
       "text": "1\n- 容器",
-      "ts": 1789768047824
+      "ts": 1789768161826
     },
     {
       "agent": "main",
@@ -2619,7 +2619,7 @@
       "type": "delta",
       "step": 5,
       "text": "上次终止原因",
-      "ts": 1789768047829
+      "ts": 1789768161831
     },
     {
       "agent": "main",
@@ -2627,7 +2627,7 @@
       "type": "delta",
       "step": 5,
       "text": " Error",
-      "ts": 1789768047835
+      "ts": 1789768161837
     },
     {
       "agent": "main",
@@ -2635,7 +2635,7 @@
       "type": "delta",
       "step": 5,
       "text": "，exitC",
-      "ts": 1789768047840
+      "ts": 1789768161843
     },
     {
       "agent": "main",
@@ -2643,7 +2643,7 @@
       "type": "delta",
       "step": 5,
       "text": "ode 1，",
-      "ts": 1789768047845
+      "ts": 1789768161849
     },
     {
       "agent": "main",
@@ -2651,7 +2651,7 @@
       "type": "delta",
       "step": 5,
       "text": "已重启 2 ",
-      "ts": 1789768047851
+      "ts": 1789768161854
     },
     {
       "agent": "main",
@@ -2659,7 +2659,7 @@
       "type": "delta",
       "step": 5,
       "text": "次\n- Ev",
-      "ts": 1789768047856
+      "ts": 1789768161859
     },
     {
       "agent": "main",
@@ -2667,7 +2667,7 @@
       "type": "delta",
       "step": 5,
       "text": "ent Ba",
-      "ts": 1789768047862
+      "ts": 1789768161865
     },
     {
       "agent": "main",
@@ -2675,7 +2675,7 @@
       "type": "delta",
       "step": 5,
       "text": "ckOff ",
-      "ts": 1789768047868
+      "ts": 1789768161871
     },
     {
       "agent": "main",
@@ -2683,7 +2683,7 @@
       "type": "delta",
       "step": 5,
       "text": "出现 4 次",
-      "ts": 1789768047873
+      "ts": 1789768161877
     },
     {
       "agent": "main",
@@ -2691,7 +2691,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n- 节点 ",
-      "ts": 1789768047879
+      "ts": 1789768161882
     },
     {
       "agent": "main",
@@ -2699,7 +2699,7 @@
       "type": "delta",
       "step": 5,
       "text": "gpu-no",
-      "ts": 1789768047885
+      "ts": 1789768161888
     },
     {
       "agent": "main",
@@ -2707,7 +2707,7 @@
       "type": "delta",
       "step": 5,
       "text": "de-1 状",
-      "ts": 1789768047891
+      "ts": 1789768161894
     },
     {
       "agent": "main",
@@ -2715,7 +2715,7 @@
       "type": "delta",
       "step": 5,
       "text": "态异常：ta",
-      "ts": 1789768047896
+      "ts": 1789768161899
     },
     {
       "agent": "main",
@@ -2723,7 +2723,7 @@
       "type": "delta",
       "step": 5,
       "text": "ints: ",
-      "ts": 1789768047902
+      "ts": 1789768161905
     },
     {
       "agent": "main",
@@ -2731,7 +2731,7 @@
       "type": "delta",
       "step": 5,
       "text": "nvidia",
-      "ts": 1789768047908
+      "ts": 1789768161911
     },
     {
       "agent": "main",
@@ -2739,7 +2739,7 @@
       "type": "delta",
       "step": 5,
       "text": ".com/g",
-      "ts": 1789768047913
+      "ts": 1789768161917
     },
     {
       "agent": "main",
@@ -2747,7 +2747,7 @@
       "type": "delta",
       "step": 5,
       "text": "pu:NoS",
-      "ts": 1789768047919
+      "ts": 1789768161922
     },
     {
       "agent": "main",
@@ -2755,7 +2755,7 @@
       "type": "delta",
       "step": 5,
       "text": "chedul",
-      "ts": 1789768047925
+      "ts": 1789768161928
     },
     {
       "agent": "main",
@@ -2763,7 +2763,7 @@
       "type": "delta",
       "step": 5,
       "text": "e\n\n## ",
-      "ts": 1789768047930
+      "ts": 1789768161934
     },
     {
       "agent": "main",
@@ -2771,7 +2771,7 @@
       "type": "delta",
       "step": 5,
       "text": "可能原因（推",
-      "ts": 1789768047936
+      "ts": 1789768161939
     },
     {
       "agent": "main",
@@ -2779,7 +2779,7 @@
       "type": "delta",
       "step": 5,
       "text": "测）\n- G",
-      "ts": 1789768047941
+      "ts": 1789768161945
     },
     {
       "agent": "main",
@@ -2787,7 +2787,7 @@
       "type": "delta",
       "step": 5,
       "text": "PU PCI",
-      "ts": 1789768047947
+      "ts": 1789768161951
     },
     {
       "agent": "main",
@@ -2795,7 +2795,7 @@
       "type": "delta",
       "step": 5,
       "text": ":0000:",
-      "ts": 1789768047953
+      "ts": 1789768161956
     },
     {
       "agent": "main",
@@ -2803,7 +2803,7 @@
       "type": "delta",
       "step": 5,
       "text": "3b:00.",
-      "ts": 1789768047959
+      "ts": 1789768161962
     },
     {
       "agent": "main",
@@ -2811,7 +2811,7 @@
       "type": "delta",
       "step": 5,
       "text": "0 硬件故障",
-      "ts": 1789768047964
+      "ts": 1789768161968
     },
     {
       "agent": "main",
@@ -2819,7 +2819,7 @@
       "type": "delta",
       "step": 5,
       "text": "（Xid 7",
-      "ts": 1789768047970
+      "ts": 1789768161974
     },
     {
       "agent": "main",
@@ -2827,7 +2827,7 @@
       "type": "delta",
       "step": 5,
       "text": "9：GPU ",
-      "ts": 1789768047976
+      "ts": 1789768161979
     },
     {
       "agent": "main",
@@ -2835,7 +2835,7 @@
       "type": "delta",
       "step": 5,
       "text": "has fa",
-      "ts": 1789768047981
+      "ts": 1789768161985
     },
     {
       "agent": "main",
@@ -2843,7 +2843,7 @@
       "type": "delta",
       "step": 5,
       "text": "llen o",
-      "ts": 1789768047987
+      "ts": 1789768161991
     },
     {
       "agent": "main",
@@ -2851,7 +2851,7 @@
       "type": "delta",
       "step": 5,
       "text": "ff the",
-      "ts": 1789768047993
+      "ts": 1789768161997
     },
     {
       "agent": "main",
@@ -2859,7 +2859,7 @@
       "type": "delta",
       "step": 5,
       "text": " bus） ",
-      "ts": 1789768047999
+      "ts": 1789768162002
     },
     {
       "agent": "main",
@@ -2867,7 +2867,7 @@
       "type": "delta",
       "step": 5,
       "text": "· 置信度 ",
-      "ts": 1789768048004
+      "ts": 1789768162007
     },
     {
       "agent": "main",
@@ -2875,7 +2875,7 @@
       "type": "delta",
       "step": 5,
       "text": "高 · 依据",
-      "ts": 1789768048010
+      "ts": 1789768162013
     },
     {
       "agent": "main",
@@ -2883,7 +2883,7 @@
       "type": "delta",
       "step": 5,
       "text": "：崩溃前日志",
-      "ts": 1789768048016
+      "ts": 1789768162019
     },
     {
       "agent": "main",
@@ -2891,7 +2891,7 @@
       "type": "delta",
       "step": 5,
       "text": "先出现 NV",
-      "ts": 1789768048021
+      "ts": 1789768162024
     },
     {
       "agent": "main",
@@ -2899,7 +2899,7 @@
       "type": "delta",
       "step": 5,
       "text": "RM Xid",
-      "ts": 1789768048027
+      "ts": 1789768162029
     },
     {
       "agent": "main",
@@ -2907,7 +2907,7 @@
       "type": "delta",
       "step": 5,
       "text": " 79，随后",
-      "ts": 1789768048032
+      "ts": 1789768162035
     },
     {
       "agent": "main",
@@ -2915,7 +2915,7 @@
       "type": "delta",
       "step": 5,
       "text": " NCCL ",
-      "ts": 1789768048038
+      "ts": 1789768162041
     },
     {
       "agent": "main",
@@ -2923,7 +2923,7 @@
       "type": "delta",
       "step": 5,
       "text": "AllRed",
-      "ts": 1789768048044
+      "ts": 1789768162046
     },
     {
       "agent": "main",
@@ -2931,7 +2931,7 @@
       "type": "delta",
       "step": 5,
       "text": "uce 超时",
-      "ts": 1789768048050
+      "ts": 1789768162052
     },
     {
       "agent": "main",
@@ -2939,7 +2939,7 @@
       "type": "delta",
       "step": 5,
       "text": "与 Dist",
-      "ts": 1789768048055
+      "ts": 1789768162058
     },
     {
       "agent": "main",
@@ -2947,7 +2947,7 @@
       "type": "delta",
       "step": 5,
       "text": "Backen",
-      "ts": 1789768048061
+      "ts": 1789768162064
     },
     {
       "agent": "main",
@@ -2955,7 +2955,7 @@
       "type": "delta",
       "step": 5,
       "text": "dError",
-      "ts": 1789768048067
+      "ts": 1789768162069
     },
     {
       "agent": "main",
@@ -2963,7 +2963,7 @@
       "type": "delta",
       "step": 5,
       "text": "；GPU 利",
-      "ts": 1789768048073
+      "ts": 1789768162075
     },
     {
       "agent": "main",
@@ -2971,7 +2971,7 @@
       "type": "delta",
       "step": 5,
       "text": "用率骤降\n-",
-      "ts": 1789768048078
+      "ts": 1789768162081
     },
     {
       "agent": "main",
@@ -2979,7 +2979,7 @@
       "type": "delta",
       "step": 5,
       "text": " NCCL ",
-      "ts": 1789768048084
+      "ts": 1789768162087
     },
     {
       "agent": "main",
@@ -2987,7 +2987,7 @@
       "type": "delta",
       "step": 5,
       "text": "网络链路问题",
-      "ts": 1789768048090
+      "ts": 1789768162093
     },
     {
       "agent": "main",
@@ -2995,7 +2995,7 @@
       "type": "delta",
       "step": 5,
       "text": " · 置信度",
-      "ts": 1789768048096
+      "ts": 1789768162098
     },
     {
       "agent": "main",
@@ -3003,7 +3003,7 @@
       "type": "delta",
       "step": 5,
       "text": " 低 · 依",
-      "ts": 1789768048101
+      "ts": 1789768162104
     },
     {
       "agent": "main",
@@ -3011,7 +3011,7 @@
       "type": "delta",
       "step": 5,
       "text": "据：NCCL",
-      "ts": 1789768048107
+      "ts": 1789768162109
     },
     {
       "agent": "main",
@@ -3019,7 +3019,7 @@
       "type": "delta",
       "step": 5,
       "text": " 超时是 X",
-      "ts": 1789768048113
+      "ts": 1789768162115
     },
     {
       "agent": "main",
@@ -3027,7 +3027,7 @@
       "type": "delta",
       "step": 5,
       "text": "id 之后的",
-      "ts": 1789768048118
+      "ts": 1789768162121
     },
     {
       "agent": "main",
@@ -3035,7 +3035,7 @@
       "type": "delta",
       "step": 5,
       "text": "次生现象，无",
-      "ts": 1789768048124
+      "ts": 1789768162127
     },
     {
       "agent": "main",
@@ -3043,7 +3043,7 @@
       "type": "delta",
       "step": 5,
       "text": "独立网络错误",
-      "ts": 1789768048130
+      "ts": 1789768162132
     },
     {
       "agent": "main",
@@ -3051,7 +3051,7 @@
       "type": "delta",
       "step": 5,
       "text": "证据\n\n##",
-      "ts": 1789768048135
+      "ts": 1789768162138
     },
     {
       "agent": "main",
@@ -3059,7 +3059,7 @@
       "type": "delta",
       "step": 5,
       "text": " 处理建议\n",
-      "ts": 1789768048141
+      "ts": 1789768162144
     },
     {
       "agent": "main",
@@ -3067,7 +3067,7 @@
       "type": "delta",
       "step": 5,
       "text": "- cord",
-      "ts": 1789768048147
+      "ts": 1789768162150
     },
     {
       "agent": "main",
@@ -3075,7 +3075,7 @@
       "type": "delta",
       "step": 5,
       "text": "on gpu",
-      "ts": 1789768048152
+      "ts": 1789768162155
     },
     {
       "agent": "main",
@@ -3083,7 +3083,7 @@
       "type": "delta",
       "step": 5,
       "text": "-node-",
-      "ts": 1789768048158
+      "ts": 1789768162161
     },
     {
       "agent": "main",
@@ -3091,7 +3091,7 @@
       "type": "delta",
       "step": 5,
       "text": "1，重置或更",
-      "ts": 1789768048164
+      "ts": 1789768162167
     },
     {
       "agent": "main",
@@ -3099,7 +3099,7 @@
       "type": "delta",
       "step": 5,
       "text": "换故障 GP",
-      "ts": 1789768048170
+      "ts": 1789768162173
     },
     {
       "agent": "main",
@@ -3107,7 +3107,7 @@
       "type": "delta",
       "step": 5,
       "text": "U\n- 从 ",
-      "ts": 1789768048175
+      "ts": 1789768162178
     },
     {
       "agent": "main",
@@ -3115,7 +3115,7 @@
       "type": "delta",
       "step": 5,
       "text": "checkp",
-      "ts": 1789768048181
+      "ts": 1789768162184
     },
     {
       "agent": "main",
@@ -3123,7 +3123,7 @@
       "type": "delta",
       "step": 5,
       "text": "oint s",
-      "ts": 1789768048187
+      "ts": 1789768162190
     },
     {
       "agent": "main",
@@ -3131,7 +3131,7 @@
       "type": "delta",
       "step": 5,
       "text": "tep 12",
-      "ts": 1789768048192
+      "ts": 1789768162195
     },
     {
       "agent": "main",
@@ -3139,7 +3139,7 @@
       "type": "delta",
       "step": 5,
       "text": "00 在健康",
-      "ts": 1789768048198
+      "ts": 1789768162201
     },
     {
       "agent": "main",
@@ -3147,7 +3147,7 @@
       "type": "delta",
       "step": 5,
       "text": "节点恢复训练",
-      "ts": 1789768048204
+      "ts": 1789768162207
     },
     {
       "agent": "main",
@@ -3155,7 +3155,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n- 把该卡",
-      "ts": 1789768048210
+      "ts": 1789768162212
     },
     {
       "agent": "main",
@@ -3163,7 +3163,7 @@
       "type": "delta",
       "step": 5,
       "text": "加入硬件巡检",
-      "ts": 1789768048215
+      "ts": 1789768162218
     },
     {
       "agent": "main",
@@ -3171,7 +3171,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n- 历史 ",
-      "ts": 1789768048221
+      "ts": 1789768162224
     },
     {
       "agent": "main",
@@ -3179,7 +3179,7 @@
       "type": "delta",
       "step": 5,
       "text": "Case C",
-      "ts": 1789768048227
+      "ts": 1789768162229
     },
     {
       "agent": "main",
@@ -3187,7 +3187,7 @@
       "type": "delta",
       "step": 5,
       "text": "ASE-20",
-      "ts": 1789768048232
+      "ts": 1789768162235
     },
     {
       "agent": "main",
@@ -3195,7 +3195,7 @@
       "type": "delta",
       "step": 5,
       "text": "26-077",
-      "ts": 1789768048238
+      "ts": 1789768162241
     },
     {
       "agent": "main",
@@ -3203,7 +3203,7 @@
       "type": "delta",
       "step": 5,
       "text": " 的处理方式",
-      "ts": 1789768048244
+      "ts": 1789768162246
     },
     {
       "agent": "main",
@@ -3211,7 +3211,7 @@
       "type": "delta",
       "step": 5,
       "text": "可参考：co",
-      "ts": 1789768048249
+      "ts": 1789768162252
     },
     {
       "agent": "main",
@@ -3219,7 +3219,7 @@
       "type": "delta",
       "step": 5,
       "text": "rdon g",
-      "ts": 1789768048255
+      "ts": 1789768162258
     },
     {
       "agent": "main",
@@ -3227,7 +3227,7 @@
       "type": "delta",
       "step": 5,
       "text": "pu 节点，",
-      "ts": 1789768048261
+      "ts": 1789768162263
     },
     {
       "agent": "main",
@@ -3235,7 +3235,7 @@
       "type": "delta",
       "step": 5,
       "text": "更换 GPU",
-      "ts": 1789768048267
+      "ts": 1789768162269
     },
     {
       "agent": "main",
@@ -3243,7 +3243,7 @@
       "type": "delta",
       "step": 5,
       "text": "，从 che",
-      "ts": 1789768048272
+      "ts": 1789768162275
     },
     {
       "agent": "main",
@@ -3251,7 +3251,7 @@
       "type": "delta",
       "step": 5,
       "text": "ckpoin",
-      "ts": 1789768048278
+      "ts": 1789768162281
     },
     {
       "agent": "main",
@@ -3259,7 +3259,7 @@
       "type": "delta",
       "step": 5,
       "text": "t 恢复训练",
-      "ts": 1789768048283
+      "ts": 1789768162286
     },
     {
       "agent": "main",
@@ -3267,7 +3267,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n\n## 证",
-      "ts": 1789768048289
+      "ts": 1789768162292
     },
     {
       "agent": "main",
@@ -3275,7 +3275,7 @@
       "type": "delta",
       "step": 5,
       "text": "据不足说明\n",
-      "ts": 1789768048295
+      "ts": 1789768162298
     },
     {
       "agent": "main",
@@ -3283,7 +3283,7 @@
       "type": "delta",
       "step": 5,
       "text": "无",
-      "ts": 1789768048300
+      "ts": 1789768162303
     },
     {
       "agent": "main",
@@ -3296,8 +3296,8 @@
         "inputTokens": 5162,
         "outputTokens": 80
       },
-      "durationMs": 1556,
-      "ts": 1789768048306
+      "durationMs": 1553,
+      "ts": 1789768162309
     },
     {
       "agent": "main",
@@ -3310,7 +3310,7 @@
         "inputTokens": 10472,
         "outputTokens": 400
       },
-      "ts": 1789768048306
+      "ts": 1789768162309
     }
   ],
   "tree": {
@@ -3322,7 +3322,7 @@
         "depth": 0,
         "type": "user",
         "task": "帮我分析 train-job-7 为什么失败。",
-        "ts": 1789768046426
+        "ts": 1789768160436
       },
       {
         "agent": "main",
@@ -3330,7 +3330,7 @@
         "type": "delta",
         "step": 1,
         "text": "诊断 tra",
-        "ts": 1789768046426
+        "ts": 1789768160436
       },
       {
         "agent": "main",
@@ -3338,7 +3338,7 @@
         "type": "delta",
         "step": 1,
         "text": "in-job",
-        "ts": 1789768046432
+        "ts": 1789768160442
       },
       {
         "agent": "main",
@@ -3346,7 +3346,7 @@
         "type": "delta",
         "step": 1,
         "text": "-7：先看 ",
-        "ts": 1789768046437
+        "ts": 1789768160447
       },
       {
         "agent": "main",
@@ -3354,7 +3354,7 @@
         "type": "delta",
         "step": 1,
         "text": "Pod 状态",
-        "ts": 1789768046445
+        "ts": 1789768160453
       },
       {
         "agent": "main",
@@ -3362,7 +3362,7 @@
         "type": "delta",
         "step": 1,
         "text": "，再决定查哪",
-        "ts": 1789768046451
+        "ts": 1789768160459
       },
       {
         "agent": "main",
@@ -3370,7 +3370,7 @@
         "type": "delta",
         "step": 1,
         "text": "些信息。",
-        "ts": 1789768046457
+        "ts": 1789768160465
       },
       {
         "agent": "main",
@@ -3412,8 +3412,8 @@
           "inputTokens": 18,
           "outputTokens": 80
         },
-        "durationMs": 36,
-        "ts": 1789768046462
+        "durationMs": 34,
+        "ts": 1789768160470
       },
       {
         "agent": "main",
@@ -3448,7 +3448,7 @@
             ]
           }
         },
-        "ts": 1789768046462
+        "ts": 1789768160470
       },
       {
         "agent": "main",
@@ -3477,7 +3477,7 @@
             "status": "pending"
           }
         ],
-        "ts": 1789768046462
+        "ts": 1789768160470
       },
       {
         "agent": "main",
@@ -3491,7 +3491,7 @@
           "output": "计划已更新（0/4 完成）"
         },
         "durationMs": 0,
-        "ts": 1789768046462
+        "ts": 1789768160470
       },
       {
         "agent": "main",
@@ -3499,7 +3499,7 @@
         "type": "delta",
         "step": 2,
         "text": "获取 Pod",
-        "ts": 1789768046463
+        "ts": 1789768160471
       },
       {
         "agent": "main",
@@ -3507,7 +3507,7 @@
         "type": "delta",
         "step": 2,
         "text": " 状态。",
-        "ts": 1789768046468
+        "ts": 1789768160476
       },
       {
         "agent": "main",
@@ -3530,7 +3530,7 @@
           "outputTokens": 80
         },
         "durationMs": 11,
-        "ts": 1789768046474
+        "ts": 1789768160482
       },
       {
         "agent": "main",
@@ -3545,7 +3545,7 @@
             "namespace": "default"
           }
         },
-        "ts": 1789768046474
+        "ts": 1789768160482
       },
       {
         "agent": "main",
@@ -3559,7 +3559,7 @@
           "output": "{\n \"namespace\": \"default\",\n \"name\": \"train-job-7\",\n \"phase\": \"Running\",\n \"nodeName\": \"gpu-node-1\",\n \"startTime\": \"2026-09-18T08:00:00.000Z\",\n \"labels\": {\n  \"app\": \"llm-train\",\n  \"job-name\": \"train-job-7\"\n },\n \"resources\": {\n  \"requests\": {\n   \"cpu\": \"16\",\n   \"memory\": \"128Gi\",\n   \"nvidia.com/gpu\": \"8\"\n  },\n  \"limits\": {\n   \"cpu\": \"16\",\n   \"memory\": \"128Gi\",\n   \"nvidia.com/gpu\": \"8\"\n  }\n },\n \"containers\": [\n  {\n   \"name\": \"trainer\",\n   \"image\": \"registry.local/trainer:1.4.2\",\n   \"ready\": false,\n   \"restartCount\": 2,\n   \"state\": {\n    \"waiting\": {\n     \"reason\": \"CrashLoopBackOff\"\n    }\n   },\n   \"lastState\": {\n    \"terminated\": {\n     \"reason\": \"Error\",\n     \"exitCode\": 1,\n     \"startedAt\": \"2026-09-18T08:20:00.000Z\",\n     \"finishedAt\": \"2026-09-18T08:52:00.000Z\"\n    }\n   }\n  }\n ],\n \"conditions\": [\n  {\n   \"type\": \"PodScheduled\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"Initialized\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"ContainersReady\",\n   \"status\": \"False\",\n   \"reason\": \"ContainersNotReady\"\n  },\n  {\n   \"type\": \"Ready\",\n   \"status\": \"False\",\n   \"reason\": \"ContainersNotReady\"\n  }\n ],\n \"signals\": [\n  \"容器 trainer 终止原因=Error exitCode=1\",\n  \"容器 trainer waiting=CrashLoopBackOff\",\n  \"容器 trainer 未 Ready\",\n  \"condition ContainersReady=False (ContainersNotReady)\",\n  \"condition Ready=False (ContainersNotReady)\"\n ]\n}"
         },
         "durationMs": 1,
-        "ts": 1789768046475
+        "ts": 1789768160483
       },
       {
         "agent": "main",
@@ -3567,7 +3567,7 @@
         "type": "delta",
         "step": 3,
         "text": "Pod 信号",
-        "ts": 1789768046476
+        "ts": 1789768160483
       },
       {
         "agent": "main",
@@ -3575,7 +3575,7 @@
         "type": "delta",
         "step": 3,
         "text": "：容器 tr",
-        "ts": 1789768046481
+        "ts": 1789768160489
       },
       {
         "agent": "main",
@@ -3583,7 +3583,7 @@
         "type": "delta",
         "step": 3,
         "text": "ainer ",
-        "ts": 1789768046487
+        "ts": 1789768160494
       },
       {
         "agent": "main",
@@ -3591,7 +3591,7 @@
         "type": "delta",
         "step": 3,
         "text": "终止原因=E",
-        "ts": 1789768046493
+        "ts": 1789768160500
       },
       {
         "agent": "main",
@@ -3599,7 +3599,7 @@
         "type": "delta",
         "step": 3,
         "text": "rror e",
-        "ts": 1789768046499
+        "ts": 1789768160506
       },
       {
         "agent": "main",
@@ -3607,7 +3607,7 @@
         "type": "delta",
         "step": 3,
         "text": "xitCod",
-        "ts": 1789768046504
+        "ts": 1789768160511
       },
       {
         "agent": "main",
@@ -3615,7 +3615,7 @@
         "type": "delta",
         "step": 3,
         "text": "e=1；容器",
-        "ts": 1789768046509
+        "ts": 1789768160517
       },
       {
         "agent": "main",
@@ -3623,7 +3623,7 @@
         "type": "delta",
         "step": 3,
         "text": " train",
-        "ts": 1789768046515
+        "ts": 1789768160523
       },
       {
         "agent": "main",
@@ -3631,7 +3631,7 @@
         "type": "delta",
         "step": 3,
         "text": "er wai",
-        "ts": 1789768046521
+        "ts": 1789768160528
       },
       {
         "agent": "main",
@@ -3639,7 +3639,7 @@
         "type": "delta",
         "step": 3,
         "text": "ting=C",
-        "ts": 1789768046527
+        "ts": 1789768160534
       },
       {
         "agent": "main",
@@ -3647,7 +3647,7 @@
         "type": "delta",
         "step": 3,
         "text": "rashLo",
-        "ts": 1789768046532
+        "ts": 1789768160540
       },
       {
         "agent": "main",
@@ -3655,7 +3655,7 @@
         "type": "delta",
         "step": 3,
         "text": "opBack",
-        "ts": 1789768046538
+        "ts": 1789768160545
       },
       {
         "agent": "main",
@@ -3663,7 +3663,7 @@
         "type": "delta",
         "step": 3,
         "text": "Off；容器",
-        "ts": 1789768046544
+        "ts": 1789768160551
       },
       {
         "agent": "main",
@@ -3671,7 +3671,7 @@
         "type": "delta",
         "step": 3,
         "text": " train",
-        "ts": 1789768046549
+        "ts": 1789768160557
       },
       {
         "agent": "main",
@@ -3679,7 +3679,7 @@
         "type": "delta",
         "step": 3,
         "text": "er 未 R",
-        "ts": 1789768046555
+        "ts": 1789768160562
       },
       {
         "agent": "main",
@@ -3687,7 +3687,7 @@
         "type": "delta",
         "step": 3,
         "text": "eady；c",
-        "ts": 1789768046560
+        "ts": 1789768160568
       },
       {
         "agent": "main",
@@ -3695,7 +3695,7 @@
         "type": "delta",
         "step": 3,
         "text": "onditi",
-        "ts": 1789768046566
+        "ts": 1789768160574
       },
       {
         "agent": "main",
@@ -3703,7 +3703,7 @@
         "type": "delta",
         "step": 3,
         "text": "on Con",
-        "ts": 1789768046572
+        "ts": 1789768160580
       },
       {
         "agent": "main",
@@ -3711,7 +3711,7 @@
         "type": "delta",
         "step": 3,
         "text": "tainer",
-        "ts": 1789768046578
+        "ts": 1789768160584
       },
       {
         "agent": "main",
@@ -3719,7 +3719,7 @@
         "type": "delta",
         "step": 3,
         "text": "sReady",
-        "ts": 1789768046583
+        "ts": 1789768160590
       },
       {
         "agent": "main",
@@ -3727,7 +3727,7 @@
         "type": "delta",
         "step": 3,
         "text": "=False",
-        "ts": 1789768046589
+        "ts": 1789768160595
       },
       {
         "agent": "main",
@@ -3735,7 +3735,7 @@
         "type": "delta",
         "step": 3,
         "text": " (Cont",
-        "ts": 1789768046595
+        "ts": 1789768160601
       },
       {
         "agent": "main",
@@ -3743,7 +3743,7 @@
         "type": "delta",
         "step": 3,
         "text": "ainers",
-        "ts": 1789768046601
+        "ts": 1789768160607
       },
       {
         "agent": "main",
@@ -3751,7 +3751,7 @@
         "type": "delta",
         "step": 3,
         "text": "NotRea",
-        "ts": 1789768046606
+        "ts": 1789768160613
       },
       {
         "agent": "main",
@@ -3759,7 +3759,7 @@
         "type": "delta",
         "step": 3,
         "text": "dy)；co",
-        "ts": 1789768046612
+        "ts": 1789768160618
       },
       {
         "agent": "main",
@@ -3767,7 +3767,7 @@
         "type": "delta",
         "step": 3,
         "text": "nditio",
-        "ts": 1789768046618
+        "ts": 1789768160624
       },
       {
         "agent": "main",
@@ -3775,7 +3775,7 @@
         "type": "delta",
         "step": 3,
         "text": "n Read",
-        "ts": 1789768046623
+        "ts": 1789768160630
       },
       {
         "agent": "main",
@@ -3783,7 +3783,7 @@
         "type": "delta",
         "step": 3,
         "text": "y=Fals",
-        "ts": 1789768046629
+        "ts": 1789768160636
       },
       {
         "agent": "main",
@@ -3791,7 +3791,7 @@
         "type": "delta",
         "step": 3,
         "text": "e (Con",
-        "ts": 1789768046635
+        "ts": 1789768160641
       },
       {
         "agent": "main",
@@ -3799,7 +3799,7 @@
         "type": "delta",
         "step": 3,
         "text": "tainer",
-        "ts": 1789768046641
+        "ts": 1789768160647
       },
       {
         "agent": "main",
@@ -3807,7 +3807,7 @@
         "type": "delta",
         "step": 3,
         "text": "sNotRe",
-        "ts": 1789768046646
+        "ts": 1789768160652
       },
       {
         "agent": "main",
@@ -3815,7 +3815,7 @@
         "type": "delta",
         "step": 3,
         "text": "ady)。并",
-        "ts": 1789768046652
+        "ts": 1789768160658
       },
       {
         "agent": "main",
@@ -3823,7 +3823,7 @@
         "type": "delta",
         "step": 3,
         "text": "行获取 Ev",
-        "ts": 1789768046658
+        "ts": 1789768160664
       },
       {
         "agent": "main",
@@ -3831,7 +3831,7 @@
         "type": "delta",
         "step": 3,
         "text": "ent、节点",
-        "ts": 1789768046663
+        "ts": 1789768160669
       },
       {
         "agent": "main",
@@ -3839,7 +3839,7 @@
         "type": "delta",
         "step": 3,
         "text": " gpu-n",
-        "ts": 1789768046669
+        "ts": 1789768160675
       },
       {
         "agent": "main",
@@ -3847,7 +3847,7 @@
         "type": "delta",
         "step": 3,
         "text": "ode-1、",
-        "ts": 1789768046675
+        "ts": 1789768160681
       },
       {
         "agent": "main",
@@ -3855,7 +3855,7 @@
         "type": "delta",
         "step": 3,
         "text": "指标与上一次",
-        "ts": 1789768046680
+        "ts": 1789768160687
       },
       {
         "agent": "main",
@@ -3863,7 +3863,7 @@
         "type": "delta",
         "step": 3,
         "text": "崩溃前的日志",
-        "ts": 1789768046686
+        "ts": 1789768160692
       },
       {
         "agent": "main",
@@ -3871,7 +3871,7 @@
         "type": "delta",
         "step": 3,
         "text": "。",
-        "ts": 1789768046692
+        "ts": 1789768160698
       },
       {
         "agent": "main",
@@ -3948,7 +3948,7 @@
           "outputTokens": 80
         },
         "durationMs": 221,
-        "ts": 1789768046697
+        "ts": 1789768160704
       },
       {
         "agent": "main",
@@ -3983,7 +3983,7 @@
             ]
           }
         },
-        "ts": 1789768046697
+        "ts": 1789768160704
       },
       {
         "agent": "main",
@@ -4012,7 +4012,7 @@
             "status": "pending"
           }
         ],
-        "ts": 1789768046697
+        "ts": 1789768160704
       },
       {
         "agent": "main",
@@ -4027,7 +4027,7 @@
             "namespace": "default"
           }
         },
-        "ts": 1789768046697
+        "ts": 1789768160704
       },
       {
         "agent": "main",
@@ -4041,7 +4041,7 @@
             "name": "gpu-node-1"
           }
         },
-        "ts": 1789768046697
+        "ts": 1789768160704
       },
       {
         "agent": "main",
@@ -4057,7 +4057,7 @@
             "window": "60m"
           }
         },
-        "ts": 1789768046697
+        "ts": 1789768160704
       },
       {
         "agent": "main",
@@ -4074,7 +4074,7 @@
             "tail": 100
           }
         },
-        "ts": 1789768046697
+        "ts": 1789768160704
       },
       {
         "agent": "main",
@@ -4087,8 +4087,8 @@
           "ok": true,
           "output": "计划已更新（1/4 完成）"
         },
-        "durationMs": 1,
-        "ts": 1789768046698
+        "durationMs": 0,
+        "ts": 1789768160704
       },
       {
         "agent": "main",
@@ -4101,8 +4101,8 @@
           "ok": true,
           "output": "{\n \"available\": true,\n \"window\": \"60m\",\n \"summary\": {\n  \"cpu\": {\n   \"unit\": \"cores\",\n   \"peak\": 12,\n   \"avg\": 9.35,\n   \"last\": 0.5,\n   \"limit\": 16,\n   \"peakPctOfLimit\": \"75%\",\n   \"samples\": 26\n  },\n  \"memory\": {\n   \"unit\": \"GiB\",\n   \"peak\": 90,\n   \"avg\": 70.15,\n   \"last\": 4,\n   \"limit\": 128,\n   \"peakPctOfLimit\": \"70%\",\n   \"samples\": 26\n  },\n  \"gpu\": {\n   \"unit\": \"util%\",\n   \"peak\": 96,\n   \"avg\": 73.85,\n   \"last\": 0,\n   \"samples\": 26\n  }\n },\n \"series\": {\n  \"available\": true,\n  \"window\": \"60m\",\n  \"cpu\": {\n   \"unit\": \"cores\",\n   \"limit\": 16,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 12\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:44:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:46:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:48:00.000Z\",\n     \"v\": 0.5\n    },\n    {\n     \"t\": \"2026-09-18T08:50:00.000Z\",\n     \"v\": 0.5\n    }\n   ]\n  },\n  \"memory\": {\n   \"unit\": \"GiB\",\n   \"limit\": 128,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 90\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 4\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 4\n    },\n    {\n     \"t\": \"2026-09-18T08:44:00.000Z\",\n     \"v\": 4\n    },\n    {\n     \"t\": \"2026-09-18T08:46:00.000Z\",\n     \"v\": 4\n    },\n    {\n     \"t\": \"2026-09-18T08:48:00.000Z\",\n     \"v\": 4\n    },\n    {\n     \"t\": \"2026-09-18T08:50:00.000Z\",\n     \"v\": 4\n    }\n   ]\n  },\n  \"gpu\": {\n   \"unit\": \"util%\",\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 96\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 0\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 0\n    },\n    {\n     \"t\": \"2026-09-18T08:44:00.000Z\",\n     \"v\": 0\n    },\n    {\n     \"t\": \"2026-09-18T08:46:00.000Z\",\n     \"v\": 0\n    },\n    {\n     \"t\": \"2026-09-18T08:48:00.000Z\",\n     \"v\": 0\n    },\n    {\n     \"t\": \"2026-09-18T08:50:00.000Z\",\n     \"v\": 0\n    }\n   ]\n  }\n }\n}"
         },
-        "durationMs": 2,
-        "ts": 1789768046699
+        "durationMs": 1,
+        "ts": 1789768160705
       },
       {
         "agent": "main",
@@ -4115,8 +4115,8 @@
           "ok": true,
           "output": "{\n \"previous\": true,\n \"lines\": 6,\n \"highlights\": [\n  \"2026-09-18T08:51:12Z WARN  NVRM: Xid (PCI:0000:3b:00.0): 79, pid=2113, GPU has fallen off the bus.\",\n  \"2026-09-18T08:51:14Z ERROR NCCL WARN [Rank 3] Timeout(ms)=600000 in operation AllReduce\",\n  \"2026-09-18T08:51:14Z ERROR torch.distributed.DistBackendError: NCCL error: unhandled system error, NCCL version 2.21.5\",\n  \"2026-09-18T08:51:15Z ERROR training aborted at step 1244\"\n ],\n \"log\": \"2026-09-18T08:20:00Z INFO  trainer start, world_size=8, step 0\\n2026-09-18T08:40:00Z INFO  step 1200 loss=2.31 throughput=1820 tok/s\\n2026-09-18T08:51:12Z WARN  NVRM: Xid (PCI:0000:3b:00.0): 79, pid=2113, GPU has fallen off the bus.\\n2026-09-18T08:51:14Z ERROR NCCL WARN [Rank 3] Timeout(ms)=600000 in operation AllReduce\\n2026-09-18T08:51:14Z ERROR torch.distributed.DistBackendError: NCCL error: unhandled system error, NCCL version 2.21.5\\n2026-09-18T08:51:15Z ERROR training aborted at step 1244\"\n}"
         },
-        "durationMs": 3,
-        "ts": 1789768046700
+        "durationMs": 2,
+        "ts": 1789768160706
       },
       {
         "agent": "main",
@@ -4129,8 +4129,8 @@
           "ok": true,
           "output": "{\n \"name\": \"gpu-node-1\",\n \"kubeletVersion\": \"v1.31.2\",\n \"allocatable\": {\n  \"cpu\": \"32\",\n  \"memory\": \"256Gi\",\n  \"nvidia.com/gpu\": \"8\",\n  \"ephemeral-storage\": \"1Ti\"\n },\n \"allocated\": {\n  \"cpu\": \"24\",\n  \"memory\": \"200Gi\",\n  \"nvidia.com/gpu\": \"8\"\n },\n \"conditions\": [\n  {\n   \"type\": \"Ready\",\n   \"status\": \"True\",\n   \"reason\": \"KubeletReady\",\n   \"lastHeartbeatTime\": \"2026-09-18T08:58:00.000Z\"\n  },\n  {\n   \"type\": \"MemoryPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoMemoryPressure\"\n  },\n  {\n   \"type\": \"DiskPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoDiskPressure\"\n  },\n  {\n   \"type\": \"PIDPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoPIDPressure\"\n  }\n ],\n \"taints\": [\n  {\n   \"key\": \"nvidia.com/gpu\",\n   \"value\": \"present\",\n   \"effect\": \"NoSchedule\"\n  }\n ],\n \"signals\": [\n  \"taints: nvidia.com/gpu:NoSchedule\"\n ]\n}"
         },
-        "durationMs": 3,
-        "ts": 1789768046700
+        "durationMs": 4,
+        "ts": 1789768160708
       },
       {
         "agent": "main",
@@ -4144,7 +4144,7 @@
           "output": "{\n \"count\": 3,\n \"warnings\": 1,\n \"events\": [\n  {\n   \"time\": \"2026-09-18T08:00:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Scheduled\",\n   \"message\": \"Successfully assigned default/train-job-7 to gpu-node-1\",\n   \"count\": 1,\n   \"source\": \"default-scheduler\"\n  },\n  {\n   \"time\": \"2026-09-18T08:01:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Started\",\n   \"message\": \"Started container trainer\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:52:00.000Z\",\n   \"type\": \"Warning\",\n   \"reason\": \"BackOff\",\n   \"message\": \"Back-off restarting failed container trainer in pod train-job-7\",\n   \"count\": 4,\n   \"source\": \"kubelet\"\n  }\n ]\n}"
         },
         "durationMs": 4,
-        "ts": 1789768046701
+        "ts": 1789768160708
       },
       {
         "agent": "main",
@@ -4152,7 +4152,7 @@
         "type": "delta",
         "step": 4,
         "text": "初步判断为 ",
-        "ts": 1789768046701
+        "ts": 1789768160709
       },
       {
         "agent": "main",
@@ -4160,7 +4160,7 @@
         "type": "delta",
         "step": 4,
         "text": "GPU 故障",
-        "ts": 1789768046707
+        "ts": 1789768160715
       },
       {
         "agent": "main",
@@ -4168,7 +4168,7 @@
         "type": "delta",
         "step": 4,
         "text": "（Xid 7",
-        "ts": 1789768046713
+        "ts": 1789768160720
       },
       {
         "agent": "main",
@@ -4176,7 +4176,7 @@
         "type": "delta",
         "step": 4,
         "text": "9）引发 N",
-        "ts": 1789768046719
+        "ts": 1789768160726
       },
       {
         "agent": "main",
@@ -4184,7 +4184,7 @@
         "type": "delta",
         "step": 4,
         "text": "CCL 超时",
-        "ts": 1789768046724
+        "ts": 1789768160732
       },
       {
         "agent": "main",
@@ -4192,7 +4192,7 @@
         "type": "delta",
         "step": 4,
         "text": "。对照知识库",
-        "ts": 1789768046730
+        "ts": 1789768160738
       },
       {
         "agent": "main",
@@ -4200,7 +4200,7 @@
         "type": "delta",
         "step": 4,
         "text": "与历史 Ca",
-        "ts": 1789768046736
+        "ts": 1789768160743
       },
       {
         "agent": "main",
@@ -4208,7 +4208,7 @@
         "type": "delta",
         "step": 4,
         "text": "se。",
-        "ts": 1789768046741
+        "ts": 1789768160749
       },
       {
         "agent": "main",
@@ -4266,8 +4266,8 @@
           "inputTokens": 4340,
           "outputTokens": 80
         },
-        "durationMs": 46,
-        "ts": 1789768046747
+        "durationMs": 47,
+        "ts": 1789768160755
       },
       {
         "agent": "main",
@@ -4302,7 +4302,7 @@
             ]
           }
         },
-        "ts": 1789768046747
+        "ts": 1789768160755
       },
       {
         "agent": "main",
@@ -4331,7 +4331,7 @@
             "status": "pending"
           }
         ],
-        "ts": 1789768046747
+        "ts": 1789768160755
       },
       {
         "agent": "main",
@@ -4346,7 +4346,7 @@
             "top": 2
           }
         },
-        "ts": 1789768046747
+        "ts": 1789768160755
       },
       {
         "agent": "main",
@@ -4361,7 +4361,7 @@
             "top": 2
           }
         },
-        "ts": 1789768046747
+        "ts": 1789768160755
       },
       {
         "agent": "main",
@@ -4375,7 +4375,7 @@
           "output": "计划已更新（2/4 完成）"
         },
         "durationMs": 0,
-        "ts": 1789768046747
+        "ts": 1789768160755
       },
       {
         "agent": "main",
@@ -4389,7 +4389,7 @@
           "output": "{\n \"total\": 4,\n \"cases\": [\n  {\n   \"id\": \"CASE-2026-077\",\n   \"date\": \"2026-09-05\",\n   \"symptoms\": \"NVRM Xid 79 GPU has fallen off the bus NCCL timeout AllReduce training aborted\",\n   \"rootCause\": \"GPU 硬件故障（PCIe 掉卡）\",\n   \"fix\": \"cordon gpu 节点，更换 GPU，从 checkpoint 恢复训练\",\n   \"tags\": [\n    \"gpu\",\n    \"xid\",\n    \"nccl\"\n   ],\n   \"similarity\": 9\n  },\n  {\n   \"id\": \"CASE-2026-041\",\n   \"date\": \"2026-07-03\",\n   \"symptoms\": \"report job OOMKilled exitCode 137 restartCount 增长 memory 峰值接近 limit 512Mi BackOff\",\n   \"rootCause\": \"月末数据量翻倍，整表加载进内存超过 limit\",\n   \"fix\": \"memory limit 512Mi → 2Gi，并改为分批读取\",\n   \"tags\": [\n    \"OOMKilled\",\n    \"memory\",\n    \"job\"\n   ],\n   \"similarity\": 1\n  }\n ]\n}"
         },
         "durationMs": 1,
-        "ts": 1789768046748
+        "ts": 1789768160756
       },
       {
         "agent": "main",
@@ -4402,8 +4402,8 @@
           "ok": true,
           "output": "{\n \"query\": \"Xid 79 NCCL timeout GPU fallen off the bus\",\n \"total\": 6,\n \"results\": [\n  {\n   \"file\": \"k8s/runbooks/gpu.md\",\n   \"title\": \"GPU Xid 错误\",\n   \"score\": 11,\n   \"content\": \"## GPU Xid 错误\\n症状：容器或节点日志出现 \\\"NVRM: Xid (PCI:...): <code>\\\"。Xid 79 = GPU has fallen off the bus（硬件/PCIe 故障）；Xid 13/31/43 多为应用侧非法访存；Xid 48/63/64 与 ECC/页面隔离相关。\\n处理：Xid 79 需 cordon 节点、重置或更换 GPU；应用类 Xid 复现后排查 kernel。\"\n  },\n  {\n   \"file\": \"k8s/runbooks/gpu.md\",\n   \"title\": \"NCCL timeout\",\n   \"score\": 8,\n   \"content\": \"## NCCL timeout\\n症状：日志 \\\"NCCL WARN ... Timeout(ms)=... in operation AllReduce\\\"，torch.distributed DistBackendError，训练在某个 step 中止；GPU 利用率突然掉到 0。\\n确认方法：先看同一时刻是否有 Xid（硬件根因），再看网络（IB/RoCE 链路、NCCL_SOCKET_IFNAME）。\\n处理：硬件根因 → 隔离节点后从 checkpoint 恢复；网络根因 → 修复链路、调大 NCCL_TIMEOUT。\"\n  }\n ]\n}"
         },
-        "durationMs": 2,
-        "ts": 1789768046749
+        "durationMs": 1,
+        "ts": 1789768160756
       },
       {
         "agent": "main",
@@ -4411,7 +4411,7 @@
         "type": "delta",
         "step": 5,
         "text": "## 故障现",
-        "ts": 1789768046750
+        "ts": 1789768160757
       },
       {
         "agent": "main",
@@ -4419,7 +4419,7 @@
         "type": "delta",
         "step": 5,
         "text": "象\n训练任务",
-        "ts": 1789768046755
+        "ts": 1789768160763
       },
       {
         "agent": "main",
@@ -4427,7 +4427,7 @@
         "type": "delta",
         "step": 5,
         "text": " train",
-        "ts": 1789768046761
+        "ts": 1789768160768
       },
       {
         "agent": "main",
@@ -4435,7 +4435,7 @@
         "type": "delta",
         "step": 5,
         "text": "-job-7",
-        "ts": 1789768046766
+        "ts": 1789768160774
       },
       {
         "agent": "main",
@@ -4443,7 +4443,7 @@
         "type": "delta",
         "step": 5,
         "text": " 在 ste",
-        "ts": 1789768046772
+        "ts": 1789768160780
       },
       {
         "agent": "main",
@@ -4451,7 +4451,7 @@
         "type": "delta",
         "step": 5,
         "text": "p 1244",
-        "ts": 1789768046778
+        "ts": 1789768160785
       },
       {
         "agent": "main",
@@ -4459,7 +4459,7 @@
         "type": "delta",
         "step": 5,
         "text": " 中止并反复",
-        "ts": 1789768046784
+        "ts": 1789768160791
       },
       {
         "agent": "main",
@@ -4467,7 +4467,7 @@
         "type": "delta",
         "step": 5,
         "text": "重启，GPU",
-        "ts": 1789768046789
+        "ts": 1789768160797
       },
       {
         "agent": "main",
@@ -4475,7 +4475,7 @@
         "type": "delta",
         "step": 5,
         "text": " 利用率掉到",
-        "ts": 1789768046794
+        "ts": 1789768160803
       },
       {
         "agent": "main",
@@ -4483,7 +4483,7 @@
         "type": "delta",
         "step": 5,
         "text": " 0。\n\n#",
-        "ts": 1789768046800
+        "ts": 1789768160808
       },
       {
         "agent": "main",
@@ -4491,7 +4491,7 @@
         "type": "delta",
         "step": 5,
         "text": "# 关键证据",
-        "ts": 1789768046806
+        "ts": 1789768160814
       },
       {
         "agent": "main",
@@ -4499,7 +4499,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n- [Po",
-        "ts": 1789768046812
+        "ts": 1789768160820
       },
       {
         "agent": "main",
@@ -4507,7 +4507,7 @@
         "type": "delta",
         "step": 5,
         "text": "d] 容器 ",
-        "ts": 1789768046817
+        "ts": 1789768160826
       },
       {
         "agent": "main",
@@ -4515,7 +4515,7 @@
         "type": "delta",
         "step": 5,
         "text": "traine",
-        "ts": 1789768046823
+        "ts": 1789768160831
       },
       {
         "agent": "main",
@@ -4523,7 +4523,7 @@
         "type": "delta",
         "step": 5,
         "text": "r last",
-        "ts": 1789768046828
+        "ts": 1789768160837
       },
       {
         "agent": "main",
@@ -4531,7 +4531,7 @@
         "type": "delta",
         "step": 5,
         "text": "State.",
-        "ts": 1789768046834
+        "ts": 1789768160843
       },
       {
         "agent": "main",
@@ -4539,7 +4539,7 @@
         "type": "delta",
         "step": 5,
         "text": "termin",
-        "ts": 1789768046840
+        "ts": 1789768160849
       },
       {
         "agent": "main",
@@ -4547,7 +4547,7 @@
         "type": "delta",
         "step": 5,
         "text": "ated.r",
-        "ts": 1789768046846
+        "ts": 1789768160854
       },
       {
         "agent": "main",
@@ -4555,7 +4555,7 @@
         "type": "delta",
         "step": 5,
         "text": "eason=",
-        "ts": 1789768046851
+        "ts": 1789768160860
       },
       {
         "agent": "main",
@@ -4563,7 +4563,7 @@
         "type": "delta",
         "step": 5,
         "text": "Error ",
-        "ts": 1789768046857
+        "ts": 1789768160865
       },
       {
         "agent": "main",
@@ -4571,7 +4571,7 @@
         "type": "delta",
         "step": 5,
         "text": "exitCo",
-        "ts": 1789768046862
+        "ts": 1789768160871
       },
       {
         "agent": "main",
@@ -4579,7 +4579,7 @@
         "type": "delta",
         "step": 5,
         "text": "de=1，r",
-        "ts": 1789768046868
+        "ts": 1789768160877
       },
       {
         "agent": "main",
@@ -4587,7 +4587,7 @@
         "type": "delta",
         "step": 5,
         "text": "estart",
-        "ts": 1789768046874
+        "ts": 1789768160883
       },
       {
         "agent": "main",
@@ -4595,7 +4595,7 @@
         "type": "delta",
         "step": 5,
         "text": "Count=",
-        "ts": 1789768046880
+        "ts": 1789768160888
       },
       {
         "agent": "main",
@@ -4603,7 +4603,7 @@
         "type": "delta",
         "step": 5,
         "text": "2（get_",
-        "ts": 1789768046885
+        "ts": 1789768160894
       },
       {
         "agent": "main",
@@ -4611,7 +4611,7 @@
         "type": "delta",
         "step": 5,
         "text": "pod）\n-",
-        "ts": 1789768046890
+        "ts": 1789768160900
       },
       {
         "agent": "main",
@@ -4619,7 +4619,7 @@
         "type": "delta",
         "step": 5,
         "text": " [Even",
-        "ts": 1789768046895
+        "ts": 1789768160905
       },
       {
         "agent": "main",
@@ -4627,7 +4627,7 @@
         "type": "delta",
         "step": 5,
         "text": "t] Bac",
-        "ts": 1789768046901
+        "ts": 1789768160911
       },
       {
         "agent": "main",
@@ -4635,7 +4635,7 @@
         "type": "delta",
         "step": 5,
         "text": "kOff: ",
-        "ts": 1789768046907
+        "ts": 1789768160916
       },
       {
         "agent": "main",
@@ -4643,7 +4643,7 @@
         "type": "delta",
         "step": 5,
         "text": "Back-o",
-        "ts": 1789768046912
+        "ts": 1789768160922
       },
       {
         "agent": "main",
@@ -4651,7 +4651,7 @@
         "type": "delta",
         "step": 5,
         "text": "ff res",
-        "ts": 1789768046918
+        "ts": 1789768160928
       },
       {
         "agent": "main",
@@ -4659,7 +4659,7 @@
         "type": "delta",
         "step": 5,
         "text": "tartin",
-        "ts": 1789768046924
+        "ts": 1789768160933
       },
       {
         "agent": "main",
@@ -4667,7 +4667,7 @@
         "type": "delta",
         "step": 5,
         "text": "g fail",
-        "ts": 1789768046930
+        "ts": 1789768160939
       },
       {
         "agent": "main",
@@ -4675,7 +4675,7 @@
         "type": "delta",
         "step": 5,
         "text": "ed con",
-        "ts": 1789768046935
+        "ts": 1789768160944
       },
       {
         "agent": "main",
@@ -4683,7 +4683,7 @@
         "type": "delta",
         "step": 5,
         "text": "tainer",
-        "ts": 1789768046941
+        "ts": 1789768160950
       },
       {
         "agent": "main",
@@ -4691,7 +4691,7 @@
         "type": "delta",
         "step": 5,
         "text": " train",
-        "ts": 1789768046947
+        "ts": 1789768160956
       },
       {
         "agent": "main",
@@ -4699,7 +4699,7 @@
         "type": "delta",
         "step": 5,
         "text": "er in ",
-        "ts": 1789768046953
+        "ts": 1789768160962
       },
       {
         "agent": "main",
@@ -4707,7 +4707,7 @@
         "type": "delta",
         "step": 5,
         "text": "pod tr",
-        "ts": 1789768046959
+        "ts": 1789768160967
       },
       {
         "agent": "main",
@@ -4715,7 +4715,7 @@
         "type": "delta",
         "step": 5,
         "text": "ain-jo",
-        "ts": 1789768046965
+        "ts": 1789768160973
       },
       {
         "agent": "main",
@@ -4723,7 +4723,7 @@
         "type": "delta",
         "step": 5,
         "text": "b-7（co",
-        "ts": 1789768046970
+        "ts": 1789768160979
       },
       {
         "agent": "main",
@@ -4731,7 +4731,7 @@
         "type": "delta",
         "step": 5,
         "text": "unt=4，",
-        "ts": 1789768046976
+        "ts": 1789768160985
       },
       {
         "agent": "main",
@@ -4739,7 +4739,7 @@
         "type": "delta",
         "step": 5,
         "text": "get_po",
-        "ts": 1789768046982
+        "ts": 1789768160990
       },
       {
         "agent": "main",
@@ -4747,7 +4747,7 @@
         "type": "delta",
         "step": 5,
         "text": "d_even",
-        "ts": 1789768046987
+        "ts": 1789768160996
       },
       {
         "agent": "main",
@@ -4755,7 +4755,7 @@
         "type": "delta",
         "step": 5,
         "text": "ts）\n- ",
-        "ts": 1789768046993
+        "ts": 1789768161002
       },
       {
         "agent": "main",
@@ -4763,7 +4763,7 @@
         "type": "delta",
         "step": 5,
         "text": "[Node]",
-        "ts": 1789768046999
+        "ts": 1789768161007
       },
       {
         "agent": "main",
@@ -4771,7 +4771,7 @@
         "type": "delta",
         "step": 5,
         "text": " gpu-n",
-        "ts": 1789768047004
+        "ts": 1789768161013
       },
       {
         "agent": "main",
@@ -4779,7 +4779,7 @@
         "type": "delta",
         "step": 5,
         "text": "ode-1:",
-        "ts": 1789768047009
+        "ts": 1789768161017
       },
       {
         "agent": "main",
@@ -4787,7 +4787,7 @@
         "type": "delta",
         "step": 5,
         "text": " taint",
-        "ts": 1789768047015
+        "ts": 1789768161023
       },
       {
         "agent": "main",
@@ -4795,7 +4795,7 @@
         "type": "delta",
         "step": 5,
         "text": "s: nvi",
-        "ts": 1789768047020
+        "ts": 1789768161028
       },
       {
         "agent": "main",
@@ -4803,7 +4803,7 @@
         "type": "delta",
         "step": 5,
         "text": "dia.co",
-        "ts": 1789768047025
+        "ts": 1789768161034
       },
       {
         "agent": "main",
@@ -4811,7 +4811,7 @@
         "type": "delta",
         "step": 5,
         "text": "m/gpu:",
-        "ts": 1789768047031
+        "ts": 1789768161040
       },
       {
         "agent": "main",
@@ -4819,7 +4819,7 @@
         "type": "delta",
         "step": 5,
         "text": "NoSche",
-        "ts": 1789768047036
+        "ts": 1789768161045
       },
       {
         "agent": "main",
@@ -4827,7 +4827,7 @@
         "type": "delta",
         "step": 5,
         "text": "dule（g",
-        "ts": 1789768047042
+        "ts": 1789768161051
       },
       {
         "agent": "main",
@@ -4835,7 +4835,7 @@
         "type": "delta",
         "step": 5,
         "text": "et_nod",
-        "ts": 1789768047051
+        "ts": 1789768161057
       },
       {
         "agent": "main",
@@ -4843,7 +4843,7 @@
         "type": "delta",
         "step": 5,
         "text": "e）\n- [",
-        "ts": 1789768047057
+        "ts": 1789768161062
       },
       {
         "agent": "main",
@@ -4851,7 +4851,7 @@
         "type": "delta",
         "step": 5,
         "text": "Metric",
-        "ts": 1789768047063
+        "ts": 1789768161068
       },
       {
         "agent": "main",
@@ -4859,7 +4859,7 @@
         "type": "delta",
         "step": 5,
         "text": "] memo",
-        "ts": 1789768047069
+        "ts": 1789768161074
       },
       {
         "agent": "main",
@@ -4867,7 +4867,7 @@
         "type": "delta",
         "step": 5,
         "text": "ry 峰值 ",
-        "ts": 1789768047074
+        "ts": 1789768161079
       },
       {
         "agent": "main",
@@ -4875,7 +4875,7 @@
         "type": "delta",
         "step": 5,
         "text": "90GiB ",
-        "ts": 1789768047080
+        "ts": 1789768161085
       },
       {
         "agent": "main",
@@ -4883,7 +4883,7 @@
         "type": "delta",
         "step": 5,
         "text": "/ limi",
-        "ts": 1789768047086
+        "ts": 1789768161091
       },
       {
         "agent": "main",
@@ -4891,7 +4891,7 @@
         "type": "delta",
         "step": 5,
         "text": "t 128G",
-        "ts": 1789768047092
+        "ts": 1789768161096
       },
       {
         "agent": "main",
@@ -4899,7 +4899,7 @@
         "type": "delta",
         "step": 5,
         "text": "iB（70%",
-        "ts": 1789768047098
+        "ts": 1789768161102
       },
       {
         "agent": "main",
@@ -4907,7 +4907,7 @@
         "type": "delta",
         "step": 5,
         "text": "），cpu ",
-        "ts": 1789768047104
+        "ts": 1789768161108
       },
       {
         "agent": "main",
@@ -4915,7 +4915,7 @@
         "type": "delta",
         "step": 5,
         "text": "峰值 12c",
-        "ts": 1789768047110
+        "ts": 1789768161114
       },
       {
         "agent": "main",
@@ -4923,7 +4923,7 @@
         "type": "delta",
         "step": 5,
         "text": "ores（g",
-        "ts": 1789768047115
+        "ts": 1789768161119
       },
       {
         "agent": "main",
@@ -4931,7 +4931,7 @@
         "type": "delta",
         "step": 5,
         "text": "et_met",
-        "ts": 1789768047121
+        "ts": 1789768161124
       },
       {
         "agent": "main",
@@ -4939,7 +4939,7 @@
         "type": "delta",
         "step": 5,
         "text": "rics）\n",
-        "ts": 1789768047126
+        "ts": 1789768161129
       },
       {
         "agent": "main",
@@ -4947,7 +4947,7 @@
         "type": "delta",
         "step": 5,
         "text": "- [Met",
-        "ts": 1789768047132
+        "ts": 1789768161135
       },
       {
         "agent": "main",
@@ -4955,7 +4955,7 @@
         "type": "delta",
         "step": 5,
         "text": "ric] G",
-        "ts": 1789768047137
+        "ts": 1789768161141
       },
       {
         "agent": "main",
@@ -4963,7 +4963,7 @@
         "type": "delta",
         "step": 5,
         "text": "PU 利用率",
-        "ts": 1789768047143
+        "ts": 1789768161146
       },
       {
         "agent": "main",
@@ -4971,7 +4971,7 @@
         "type": "delta",
         "step": 5,
         "text": "从 96% ",
-        "ts": 1789768047149
+        "ts": 1789768161152
       },
       {
         "agent": "main",
@@ -4979,7 +4979,7 @@
         "type": "delta",
         "step": 5,
         "text": "掉到 0%（",
-        "ts": 1789768047155
+        "ts": 1789768161158
       },
       {
         "agent": "main",
@@ -4987,7 +4987,7 @@
         "type": "delta",
         "step": 5,
         "text": "get_me",
-        "ts": 1789768047161
+        "ts": 1789768161163
       },
       {
         "agent": "main",
@@ -4995,7 +4995,7 @@
         "type": "delta",
         "step": 5,
         "text": "trics）",
-        "ts": 1789768047167
+        "ts": 1789768161169
       },
       {
         "agent": "main",
@@ -5003,7 +5003,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n- [Lo",
-        "ts": 1789768047173
+        "ts": 1789768161175
       },
       {
         "agent": "main",
@@ -5011,7 +5011,7 @@
         "type": "delta",
         "step": 5,
         "text": "g] 202",
-        "ts": 1789768047178
+        "ts": 1789768161180
       },
       {
         "agent": "main",
@@ -5019,7 +5019,7 @@
         "type": "delta",
         "step": 5,
         "text": "6-09-1",
-        "ts": 1789768047184
+        "ts": 1789768161186
       },
       {
         "agent": "main",
@@ -5027,7 +5027,7 @@
         "type": "delta",
         "step": 5,
         "text": "8T08:5",
-        "ts": 1789768047190
+        "ts": 1789768161192
       },
       {
         "agent": "main",
@@ -5035,7 +5035,7 @@
         "type": "delta",
         "step": 5,
         "text": "1:12Z ",
-        "ts": 1789768047196
+        "ts": 1789768161197
       },
       {
         "agent": "main",
@@ -5043,7 +5043,7 @@
         "type": "delta",
         "step": 5,
         "text": "WARN  ",
-        "ts": 1789768047202
+        "ts": 1789768161203
       },
       {
         "agent": "main",
@@ -5051,7 +5051,7 @@
         "type": "delta",
         "step": 5,
         "text": "NVRM: ",
-        "ts": 1789768047208
+        "ts": 1789768161209
       },
       {
         "agent": "main",
@@ -5059,7 +5059,7 @@
         "type": "delta",
         "step": 5,
         "text": "Xid (P",
-        "ts": 1789768047213
+        "ts": 1789768161214
       },
       {
         "agent": "main",
@@ -5067,7 +5067,7 @@
         "type": "delta",
         "step": 5,
         "text": "CI:000",
-        "ts": 1789768047219
+        "ts": 1789768161220
       },
       {
         "agent": "main",
@@ -5075,7 +5075,7 @@
         "type": "delta",
         "step": 5,
         "text": "0:3b:0",
-        "ts": 1789768047225
+        "ts": 1789768161226
       },
       {
         "agent": "main",
@@ -5083,7 +5083,7 @@
         "type": "delta",
         "step": 5,
         "text": "0.0): ",
-        "ts": 1789768047231
+        "ts": 1789768161231
       },
       {
         "agent": "main",
@@ -5091,7 +5091,7 @@
         "type": "delta",
         "step": 5,
         "text": "79, pi",
-        "ts": 1789768047236
+        "ts": 1789768161237
       },
       {
         "agent": "main",
@@ -5099,7 +5099,7 @@
         "type": "delta",
         "step": 5,
         "text": "d=2113",
-        "ts": 1789768047242
+        "ts": 1789768161242
       },
       {
         "agent": "main",
@@ -5107,7 +5107,7 @@
         "type": "delta",
         "step": 5,
         "text": ", GPU ",
-        "ts": 1789768047248
+        "ts": 1789768161248
       },
       {
         "agent": "main",
@@ -5115,7 +5115,7 @@
         "type": "delta",
         "step": 5,
         "text": "has fa",
-        "ts": 1789768047253
+        "ts": 1789768161254
       },
       {
         "agent": "main",
@@ -5123,7 +5123,7 @@
         "type": "delta",
         "step": 5,
         "text": "llen o",
-        "ts": 1789768047259
+        "ts": 1789768161260
       },
       {
         "agent": "main",
@@ -5131,7 +5131,7 @@
         "type": "delta",
         "step": 5,
         "text": "ff the",
-        "ts": 1789768047265
+        "ts": 1789768161265
       },
       {
         "agent": "main",
@@ -5139,7 +5139,7 @@
         "type": "delta",
         "step": 5,
         "text": " bus. ",
-        "ts": 1789768047271
+        "ts": 1789768161271
       },
       {
         "agent": "main",
@@ -5147,7 +5147,7 @@
         "type": "delta",
         "step": 5,
         "text": "| 2026",
-        "ts": 1789768047276
+        "ts": 1789768161276
       },
       {
         "agent": "main",
@@ -5155,7 +5155,7 @@
         "type": "delta",
         "step": 5,
         "text": "-09-18",
-        "ts": 1789768047282
+        "ts": 1789768161282
       },
       {
         "agent": "main",
@@ -5163,7 +5163,7 @@
         "type": "delta",
         "step": 5,
         "text": "T08:51",
-        "ts": 1789768047288
+        "ts": 1789768161288
       },
       {
         "agent": "main",
@@ -5171,7 +5171,7 @@
         "type": "delta",
         "step": 5,
         "text": ":14Z E",
-        "ts": 1789768047293
+        "ts": 1789768161294
       },
       {
         "agent": "main",
@@ -5179,7 +5179,7 @@
         "type": "delta",
         "step": 5,
         "text": "RROR N",
-        "ts": 1789768047299
+        "ts": 1789768161299
       },
       {
         "agent": "main",
@@ -5187,7 +5187,7 @@
         "type": "delta",
         "step": 5,
         "text": "CCL WA",
-        "ts": 1789768047305
+        "ts": 1789768161305
       },
       {
         "agent": "main",
@@ -5195,7 +5195,7 @@
         "type": "delta",
         "step": 5,
         "text": "RN [Ra",
-        "ts": 1789768047310
+        "ts": 1789768161311
       },
       {
         "agent": "main",
@@ -5203,7 +5203,7 @@
         "type": "delta",
         "step": 5,
         "text": "nk 3] ",
-        "ts": 1789768047316
+        "ts": 1789768161316
       },
       {
         "agent": "main",
@@ -5211,7 +5211,7 @@
         "type": "delta",
         "step": 5,
         "text": "Timeou",
-        "ts": 1789768047322
+        "ts": 1789768161322
       },
       {
         "agent": "main",
@@ -5219,7 +5219,7 @@
         "type": "delta",
         "step": 5,
         "text": "t(ms)=",
-        "ts": 1789768047328
+        "ts": 1789768161328
       },
       {
         "agent": "main",
@@ -5227,7 +5227,7 @@
         "type": "delta",
         "step": 5,
         "text": "600000",
-        "ts": 1789768047333
+        "ts": 1789768161333
       },
       {
         "agent": "main",
@@ -5235,7 +5235,7 @@
         "type": "delta",
         "step": 5,
         "text": " in op",
-        "ts": 1789768047339
+        "ts": 1789768161339
       },
       {
         "agent": "main",
@@ -5243,7 +5243,7 @@
         "type": "delta",
         "step": 5,
         "text": "eratio",
-        "ts": 1789768047345
+        "ts": 1789768161345
       },
       {
         "agent": "main",
@@ -5251,7 +5251,7 @@
         "type": "delta",
         "step": 5,
         "text": "n AllR",
-        "ts": 1789768047350
+        "ts": 1789768161350
       },
       {
         "agent": "main",
@@ -5259,7 +5259,7 @@
         "type": "delta",
         "step": 5,
         "text": "educe ",
-        "ts": 1789768047355
+        "ts": 1789768161356
       },
       {
         "agent": "main",
@@ -5267,7 +5267,7 @@
         "type": "delta",
         "step": 5,
         "text": "| 2026",
-        "ts": 1789768047361
+        "ts": 1789768161362
       },
       {
         "agent": "main",
@@ -5275,7 +5275,7 @@
         "type": "delta",
         "step": 5,
         "text": "-09-18",
-        "ts": 1789768047366
+        "ts": 1789768161367
       },
       {
         "agent": "main",
@@ -5283,7 +5283,7 @@
         "type": "delta",
         "step": 5,
         "text": "T08:51",
-        "ts": 1789768047371
+        "ts": 1789768161373
       },
       {
         "agent": "main",
@@ -5291,7 +5291,7 @@
         "type": "delta",
         "step": 5,
         "text": ":14Z E",
-        "ts": 1789768047377
+        "ts": 1789768161379
       },
       {
         "agent": "main",
@@ -5299,7 +5299,7 @@
         "type": "delta",
         "step": 5,
         "text": "RROR t",
-        "ts": 1789768047382
+        "ts": 1789768161385
       },
       {
         "agent": "main",
@@ -5307,7 +5307,7 @@
         "type": "delta",
         "step": 5,
         "text": "orch.d",
-        "ts": 1789768047388
+        "ts": 1789768161389
       },
       {
         "agent": "main",
@@ -5315,7 +5315,7 @@
         "type": "delta",
         "step": 5,
         "text": "istrib",
-        "ts": 1789768047394
+        "ts": 1789768161395
       },
       {
         "agent": "main",
@@ -5323,7 +5323,7 @@
         "type": "delta",
         "step": 5,
         "text": "uted.D",
-        "ts": 1789768047400
+        "ts": 1789768161400
       },
       {
         "agent": "main",
@@ -5331,7 +5331,7 @@
         "type": "delta",
         "step": 5,
         "text": "istBac",
-        "ts": 1789768047405
+        "ts": 1789768161406
       },
       {
         "agent": "main",
@@ -5339,7 +5339,7 @@
         "type": "delta",
         "step": 5,
         "text": "kendEr",
-        "ts": 1789768047411
+        "ts": 1789768161412
       },
       {
         "agent": "main",
@@ -5347,7 +5347,7 @@
         "type": "delta",
         "step": 5,
         "text": "ror: N",
-        "ts": 1789768047417
+        "ts": 1789768161417
       },
       {
         "agent": "main",
@@ -5355,7 +5355,7 @@
         "type": "delta",
         "step": 5,
         "text": "CCL er",
-        "ts": 1789768047422
+        "ts": 1789768161423
       },
       {
         "agent": "main",
@@ -5363,7 +5363,7 @@
         "type": "delta",
         "step": 5,
         "text": "ror: u",
-        "ts": 1789768047428
+        "ts": 1789768161429
       },
       {
         "agent": "main",
@@ -5371,7 +5371,7 @@
         "type": "delta",
         "step": 5,
         "text": "nhandl",
-        "ts": 1789768047434
+        "ts": 1789768161434
       },
       {
         "agent": "main",
@@ -5379,7 +5379,7 @@
         "type": "delta",
         "step": 5,
         "text": "ed sys",
-        "ts": 1789768047439
+        "ts": 1789768161440
       },
       {
         "agent": "main",
@@ -5387,7 +5387,7 @@
         "type": "delta",
         "step": 5,
         "text": "tem er",
-        "ts": 1789768047445
+        "ts": 1789768161446
       },
       {
         "agent": "main",
@@ -5395,7 +5395,7 @@
         "type": "delta",
         "step": 5,
         "text": "ror, N",
-        "ts": 1789768047451
+        "ts": 1789768161451
       },
       {
         "agent": "main",
@@ -5403,7 +5403,7 @@
         "type": "delta",
         "step": 5,
         "text": "CCL ve",
-        "ts": 1789768047457
+        "ts": 1789768161457
       },
       {
         "agent": "main",
@@ -5411,7 +5411,7 @@
         "type": "delta",
         "step": 5,
         "text": "rsi（ge",
-        "ts": 1789768047462
+        "ts": 1789768161463
       },
       {
         "agent": "main",
@@ -5419,7 +5419,7 @@
         "type": "delta",
         "step": 5,
         "text": "t_logs",
-        "ts": 1789768047467
+        "ts": 1789768161468
       },
       {
         "agent": "main",
@@ -5427,7 +5427,7 @@
         "type": "delta",
         "step": 5,
         "text": " previ",
-        "ts": 1789768047473
+        "ts": 1789768161474
       },
       {
         "agent": "main",
@@ -5435,7 +5435,7 @@
         "type": "delta",
         "step": 5,
         "text": "ous=tr",
-        "ts": 1789768047478
+        "ts": 1789768161479
       },
       {
         "agent": "main",
@@ -5443,7 +5443,7 @@
         "type": "delta",
         "step": 5,
         "text": "ue）\n- ",
-        "ts": 1789768047484
+        "ts": 1789768161485
       },
       {
         "agent": "main",
@@ -5451,7 +5451,7 @@
         "type": "delta",
         "step": 5,
         "text": "[Runbo",
-        "ts": 1789768047490
+        "ts": 1789768161491
       },
       {
         "agent": "main",
@@ -5459,7 +5459,7 @@
         "type": "delta",
         "step": 5,
         "text": "ok] GP",
-        "ts": 1789768047495
+        "ts": 1789768161496
       },
       {
         "agent": "main",
@@ -5467,7 +5467,7 @@
         "type": "delta",
         "step": 5,
         "text": "U Xid ",
-        "ts": 1789768047501
+        "ts": 1789768161502
       },
       {
         "agent": "main",
@@ -5475,7 +5475,7 @@
         "type": "delta",
         "step": 5,
         "text": "错误：症状：",
-        "ts": 1789768047507
+        "ts": 1789768161508
       },
       {
         "agent": "main",
@@ -5483,7 +5483,7 @@
         "type": "delta",
         "step": 5,
         "text": "容器或节点日",
-        "ts": 1789768047512
+        "ts": 1789768161513
       },
       {
         "agent": "main",
@@ -5491,7 +5491,7 @@
         "type": "delta",
         "step": 5,
         "text": "志出现 \"N",
-        "ts": 1789768047518
+        "ts": 1789768161519
       },
       {
         "agent": "main",
@@ -5499,7 +5499,7 @@
         "type": "delta",
         "step": 5,
         "text": "VRM: X",
-        "ts": 1789768047524
+        "ts": 1789768161525
       },
       {
         "agent": "main",
@@ -5507,7 +5507,7 @@
         "type": "delta",
         "step": 5,
         "text": "id (PC",
-        "ts": 1789768047530
+        "ts": 1789768161530
       },
       {
         "agent": "main",
@@ -5515,7 +5515,7 @@
         "type": "delta",
         "step": 5,
         "text": "I:...)",
-        "ts": 1789768047535
+        "ts": 1789768161536
       },
       {
         "agent": "main",
@@ -5523,7 +5523,7 @@
         "type": "delta",
         "step": 5,
         "text": ": <cod",
-        "ts": 1789768047541
+        "ts": 1789768161542
       },
       {
         "agent": "main",
@@ -5531,7 +5531,7 @@
         "type": "delta",
         "step": 5,
         "text": "e>\"。Xi",
-        "ts": 1789768047547
+        "ts": 1789768161548
       },
       {
         "agent": "main",
@@ -5539,7 +5539,7 @@
         "type": "delta",
         "step": 5,
         "text": "d 79 =",
-        "ts": 1789768047552
+        "ts": 1789768161553
       },
       {
         "agent": "main",
@@ -5547,7 +5547,7 @@
         "type": "delta",
         "step": 5,
         "text": " GPU h",
-        "ts": 1789768047558
+        "ts": 1789768161559
       },
       {
         "agent": "main",
@@ -5555,7 +5555,7 @@
         "type": "delta",
         "step": 5,
         "text": "as fal",
-        "ts": 1789768047564
+        "ts": 1789768161565
       },
       {
         "agent": "main",
@@ -5563,7 +5563,7 @@
         "type": "delta",
         "step": 5,
         "text": "len of",
-        "ts": 1789768047570
+        "ts": 1789768161570
       },
       {
         "agent": "main",
@@ -5571,7 +5571,7 @@
         "type": "delta",
         "step": 5,
         "text": "f the ",
-        "ts": 1789768047575
+        "ts": 1789768161576
       },
       {
         "agent": "main",
@@ -5579,7 +5579,7 @@
         "type": "delta",
         "step": 5,
         "text": "bus（硬件",
-        "ts": 1789768047581
+        "ts": 1789768161582
       },
       {
         "agent": "main",
@@ -5587,7 +5587,7 @@
         "type": "delta",
         "step": 5,
         "text": "/PCIe ",
-        "ts": 1789768047587
+        "ts": 1789768161587
       },
       {
         "agent": "main",
@@ -5595,7 +5595,7 @@
         "type": "delta",
         "step": 5,
         "text": "故障）；Xi",
-        "ts": 1789768047592
+        "ts": 1789768161593
       },
       {
         "agent": "main",
@@ -5603,7 +5603,7 @@
         "type": "delta",
         "step": 5,
         "text": "d 13/3",
-        "ts": 1789768047598
+        "ts": 1789768161599
       },
       {
         "agent": "main",
@@ -5611,7 +5611,7 @@
         "type": "delta",
         "step": 5,
         "text": "1/43 多",
-        "ts": 1789768047603
+        "ts": 1789768161604
       },
       {
         "agent": "main",
@@ -5619,7 +5619,7 @@
         "type": "delta",
         "step": 5,
         "text": "为应用侧非法",
-        "ts": 1789768047609
+        "ts": 1789768161610
       },
       {
         "agent": "main",
@@ -5627,7 +5627,7 @@
         "type": "delta",
         "step": 5,
         "text": "访存；Xid",
-        "ts": 1789768047615
+        "ts": 1789768161616
       },
       {
         "agent": "main",
@@ -5635,7 +5635,7 @@
         "type": "delta",
         "step": 5,
         "text": " 48…（s",
-        "ts": 1789768047620
+        "ts": 1789768161622
       },
       {
         "agent": "main",
@@ -5643,7 +5643,7 @@
         "type": "delta",
         "step": 5,
         "text": "earch_",
-        "ts": 1789768047626
+        "ts": 1789768161627
       },
       {
         "agent": "main",
@@ -5651,7 +5651,7 @@
         "type": "delta",
         "step": 5,
         "text": "runboo",
-        "ts": 1789768047631
+        "ts": 1789768161633
       },
       {
         "agent": "main",
@@ -5659,7 +5659,7 @@
         "type": "delta",
         "step": 5,
         "text": "k → k8",
-        "ts": 1789768047637
+        "ts": 1789768161639
       },
       {
         "agent": "main",
@@ -5667,7 +5667,7 @@
         "type": "delta",
         "step": 5,
         "text": "s/runb",
-        "ts": 1789768047643
+        "ts": 1789768161644
       },
       {
         "agent": "main",
@@ -5675,7 +5675,7 @@
         "type": "delta",
         "step": 5,
         "text": "ooks/g",
-        "ts": 1789768047649
+        "ts": 1789768161649
       },
       {
         "agent": "main",
@@ -5683,7 +5683,7 @@
         "type": "delta",
         "step": 5,
         "text": "pu.md）",
-        "ts": 1789768047654
+        "ts": 1789768161654
       },
       {
         "agent": "main",
@@ -5691,7 +5691,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n- [Ca",
-        "ts": 1789768047660
+        "ts": 1789768161660
       },
       {
         "agent": "main",
@@ -5699,7 +5699,7 @@
         "type": "delta",
         "step": 5,
         "text": "se] CA",
-        "ts": 1789768047666
+        "ts": 1789768161666
       },
       {
         "agent": "main",
@@ -5707,7 +5707,7 @@
         "type": "delta",
         "step": 5,
         "text": "SE-202",
-        "ts": 1789768047671
+        "ts": 1789768161672
       },
       {
         "agent": "main",
@@ -5715,7 +5715,7 @@
         "type": "delta",
         "step": 5,
         "text": "6-077（",
-        "ts": 1789768047677
+        "ts": 1789768161677
       },
       {
         "agent": "main",
@@ -5723,7 +5723,7 @@
         "type": "delta",
         "step": 5,
         "text": "2026-0",
-        "ts": 1789768047683
+        "ts": 1789768161683
       },
       {
         "agent": "main",
@@ -5731,7 +5731,7 @@
         "type": "delta",
         "step": 5,
         "text": "9-05）根",
-        "ts": 1789768047689
+        "ts": 1789768161689
       },
       {
         "agent": "main",
@@ -5739,7 +5739,7 @@
         "type": "delta",
         "step": 5,
         "text": "因：GPU ",
-        "ts": 1789768047694
+        "ts": 1789768161695
       },
       {
         "agent": "main",
@@ -5747,7 +5747,7 @@
         "type": "delta",
         "step": 5,
         "text": "硬件故障（P",
-        "ts": 1789768047700
+        "ts": 1789768161700
       },
       {
         "agent": "main",
@@ -5755,7 +5755,7 @@
         "type": "delta",
         "step": 5,
         "text": "CIe 掉卡",
-        "ts": 1789768047706
+        "ts": 1789768161706
       },
       {
         "agent": "main",
@@ -5763,7 +5763,7 @@
         "type": "delta",
         "step": 5,
         "text": "）；处理：c",
-        "ts": 1789768047712
+        "ts": 1789768161712
       },
       {
         "agent": "main",
@@ -5771,7 +5771,7 @@
         "type": "delta",
         "step": 5,
         "text": "ordon ",
-        "ts": 1789768047717
+        "ts": 1789768161717
       },
       {
         "agent": "main",
@@ -5779,7 +5779,7 @@
         "type": "delta",
         "step": 5,
         "text": "gpu 节点",
-        "ts": 1789768047723
+        "ts": 1789768161723
       },
       {
         "agent": "main",
@@ -5787,7 +5787,7 @@
         "type": "delta",
         "step": 5,
         "text": "，更换 GP",
-        "ts": 1789768047729
+        "ts": 1789768161729
       },
       {
         "agent": "main",
@@ -5795,7 +5795,7 @@
         "type": "delta",
         "step": 5,
         "text": "U，从 ch",
-        "ts": 1789768047734
+        "ts": 1789768161734
       },
       {
         "agent": "main",
@@ -5803,7 +5803,7 @@
         "type": "delta",
         "step": 5,
         "text": "eckpoi",
-        "ts": 1789768047740
+        "ts": 1789768161740
       },
       {
         "agent": "main",
@@ -5811,7 +5811,7 @@
         "type": "delta",
         "step": 5,
         "text": "nt 恢复训",
-        "ts": 1789768047746
+        "ts": 1789768161746
       },
       {
         "agent": "main",
@@ -5819,7 +5819,7 @@
         "type": "delta",
         "step": 5,
         "text": "练（sear",
-        "ts": 1789768047751
+        "ts": 1789768161751
       },
       {
         "agent": "main",
@@ -5827,7 +5827,7 @@
         "type": "delta",
         "step": 5,
         "text": "ch_cas",
-        "ts": 1789768047757
+        "ts": 1789768161757
       },
       {
         "agent": "main",
@@ -5835,7 +5835,7 @@
         "type": "delta",
         "step": 5,
         "text": "es）\n\n#",
-        "ts": 1789768047762
+        "ts": 1789768161763
       },
       {
         "agent": "main",
@@ -5843,7 +5843,7 @@
         "type": "delta",
         "step": 5,
         "text": "# 已确认事",
-        "ts": 1789768047768
+        "ts": 1789768161768
       },
       {
         "agent": "main",
@@ -5851,7 +5851,7 @@
         "type": "delta",
         "step": 5,
         "text": "实\n- Po",
-        "ts": 1789768047773
+        "ts": 1789768161774
       },
       {
         "agent": "main",
@@ -5859,7 +5859,7 @@
         "type": "delta",
         "step": 5,
         "text": "d defa",
-        "ts": 1789768047779
+        "ts": 1789768161780
       },
       {
         "agent": "main",
@@ -5867,7 +5867,7 @@
         "type": "delta",
         "step": 5,
         "text": "ult/tr",
-        "ts": 1789768047785
+        "ts": 1789768161786
       },
       {
         "agent": "main",
@@ -5875,7 +5875,7 @@
         "type": "delta",
         "step": 5,
         "text": "ain-jo",
-        "ts": 1789768047791
+        "ts": 1789768161791
       },
       {
         "agent": "main",
@@ -5883,7 +5883,7 @@
         "type": "delta",
         "step": 5,
         "text": "b-7 ph",
-        "ts": 1789768047796
+        "ts": 1789768161797
       },
       {
         "agent": "main",
@@ -5891,7 +5891,7 @@
         "type": "delta",
         "step": 5,
         "text": "ase=Ru",
-        "ts": 1789768047802
+        "ts": 1789768161803
       },
       {
         "agent": "main",
@@ -5899,7 +5899,7 @@
         "type": "delta",
         "step": 5,
         "text": "nning，",
-        "ts": 1789768047807
+        "ts": 1789768161808
       },
       {
         "agent": "main",
@@ -5907,7 +5907,7 @@
         "type": "delta",
         "step": 5,
         "text": "节点 gpu",
-        "ts": 1789768047813
+        "ts": 1789768161814
       },
       {
         "agent": "main",
@@ -5915,7 +5915,7 @@
         "type": "delta",
         "step": 5,
         "text": "-node-",
-        "ts": 1789768047819
+        "ts": 1789768161820
       },
       {
         "agent": "main",
@@ -5923,7 +5923,7 @@
         "type": "delta",
         "step": 5,
         "text": "1\n- 容器",
-        "ts": 1789768047824
+        "ts": 1789768161826
       },
       {
         "agent": "main",
@@ -5931,7 +5931,7 @@
         "type": "delta",
         "step": 5,
         "text": "上次终止原因",
-        "ts": 1789768047829
+        "ts": 1789768161831
       },
       {
         "agent": "main",
@@ -5939,7 +5939,7 @@
         "type": "delta",
         "step": 5,
         "text": " Error",
-        "ts": 1789768047835
+        "ts": 1789768161837
       },
       {
         "agent": "main",
@@ -5947,7 +5947,7 @@
         "type": "delta",
         "step": 5,
         "text": "，exitC",
-        "ts": 1789768047840
+        "ts": 1789768161843
       },
       {
         "agent": "main",
@@ -5955,7 +5955,7 @@
         "type": "delta",
         "step": 5,
         "text": "ode 1，",
-        "ts": 1789768047845
+        "ts": 1789768161849
       },
       {
         "agent": "main",
@@ -5963,7 +5963,7 @@
         "type": "delta",
         "step": 5,
         "text": "已重启 2 ",
-        "ts": 1789768047851
+        "ts": 1789768161854
       },
       {
         "agent": "main",
@@ -5971,7 +5971,7 @@
         "type": "delta",
         "step": 5,
         "text": "次\n- Ev",
-        "ts": 1789768047856
+        "ts": 1789768161859
       },
       {
         "agent": "main",
@@ -5979,7 +5979,7 @@
         "type": "delta",
         "step": 5,
         "text": "ent Ba",
-        "ts": 1789768047862
+        "ts": 1789768161865
       },
       {
         "agent": "main",
@@ -5987,7 +5987,7 @@
         "type": "delta",
         "step": 5,
         "text": "ckOff ",
-        "ts": 1789768047868
+        "ts": 1789768161871
       },
       {
         "agent": "main",
@@ -5995,7 +5995,7 @@
         "type": "delta",
         "step": 5,
         "text": "出现 4 次",
-        "ts": 1789768047873
+        "ts": 1789768161877
       },
       {
         "agent": "main",
@@ -6003,7 +6003,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n- 节点 ",
-        "ts": 1789768047879
+        "ts": 1789768161882
       },
       {
         "agent": "main",
@@ -6011,7 +6011,7 @@
         "type": "delta",
         "step": 5,
         "text": "gpu-no",
-        "ts": 1789768047885
+        "ts": 1789768161888
       },
       {
         "agent": "main",
@@ -6019,7 +6019,7 @@
         "type": "delta",
         "step": 5,
         "text": "de-1 状",
-        "ts": 1789768047891
+        "ts": 1789768161894
       },
       {
         "agent": "main",
@@ -6027,7 +6027,7 @@
         "type": "delta",
         "step": 5,
         "text": "态异常：ta",
-        "ts": 1789768047896
+        "ts": 1789768161899
       },
       {
         "agent": "main",
@@ -6035,7 +6035,7 @@
         "type": "delta",
         "step": 5,
         "text": "ints: ",
-        "ts": 1789768047902
+        "ts": 1789768161905
       },
       {
         "agent": "main",
@@ -6043,7 +6043,7 @@
         "type": "delta",
         "step": 5,
         "text": "nvidia",
-        "ts": 1789768047908
+        "ts": 1789768161911
       },
       {
         "agent": "main",
@@ -6051,7 +6051,7 @@
         "type": "delta",
         "step": 5,
         "text": ".com/g",
-        "ts": 1789768047913
+        "ts": 1789768161917
       },
       {
         "agent": "main",
@@ -6059,7 +6059,7 @@
         "type": "delta",
         "step": 5,
         "text": "pu:NoS",
-        "ts": 1789768047919
+        "ts": 1789768161922
       },
       {
         "agent": "main",
@@ -6067,7 +6067,7 @@
         "type": "delta",
         "step": 5,
         "text": "chedul",
-        "ts": 1789768047925
+        "ts": 1789768161928
       },
       {
         "agent": "main",
@@ -6075,7 +6075,7 @@
         "type": "delta",
         "step": 5,
         "text": "e\n\n## ",
-        "ts": 1789768047930
+        "ts": 1789768161934
       },
       {
         "agent": "main",
@@ -6083,7 +6083,7 @@
         "type": "delta",
         "step": 5,
         "text": "可能原因（推",
-        "ts": 1789768047936
+        "ts": 1789768161939
       },
       {
         "agent": "main",
@@ -6091,7 +6091,7 @@
         "type": "delta",
         "step": 5,
         "text": "测）\n- G",
-        "ts": 1789768047941
+        "ts": 1789768161945
       },
       {
         "agent": "main",
@@ -6099,7 +6099,7 @@
         "type": "delta",
         "step": 5,
         "text": "PU PCI",
-        "ts": 1789768047947
+        "ts": 1789768161951
       },
       {
         "agent": "main",
@@ -6107,7 +6107,7 @@
         "type": "delta",
         "step": 5,
         "text": ":0000:",
-        "ts": 1789768047953
+        "ts": 1789768161956
       },
       {
         "agent": "main",
@@ -6115,7 +6115,7 @@
         "type": "delta",
         "step": 5,
         "text": "3b:00.",
-        "ts": 1789768047959
+        "ts": 1789768161962
       },
       {
         "agent": "main",
@@ -6123,7 +6123,7 @@
         "type": "delta",
         "step": 5,
         "text": "0 硬件故障",
-        "ts": 1789768047964
+        "ts": 1789768161968
       },
       {
         "agent": "main",
@@ -6131,7 +6131,7 @@
         "type": "delta",
         "step": 5,
         "text": "（Xid 7",
-        "ts": 1789768047970
+        "ts": 1789768161974
       },
       {
         "agent": "main",
@@ -6139,7 +6139,7 @@
         "type": "delta",
         "step": 5,
         "text": "9：GPU ",
-        "ts": 1789768047976
+        "ts": 1789768161979
       },
       {
         "agent": "main",
@@ -6147,7 +6147,7 @@
         "type": "delta",
         "step": 5,
         "text": "has fa",
-        "ts": 1789768047981
+        "ts": 1789768161985
       },
       {
         "agent": "main",
@@ -6155,7 +6155,7 @@
         "type": "delta",
         "step": 5,
         "text": "llen o",
-        "ts": 1789768047987
+        "ts": 1789768161991
       },
       {
         "agent": "main",
@@ -6163,7 +6163,7 @@
         "type": "delta",
         "step": 5,
         "text": "ff the",
-        "ts": 1789768047993
+        "ts": 1789768161997
       },
       {
         "agent": "main",
@@ -6171,7 +6171,7 @@
         "type": "delta",
         "step": 5,
         "text": " bus） ",
-        "ts": 1789768047999
+        "ts": 1789768162002
       },
       {
         "agent": "main",
@@ -6179,7 +6179,7 @@
         "type": "delta",
         "step": 5,
         "text": "· 置信度 ",
-        "ts": 1789768048004
+        "ts": 1789768162007
       },
       {
         "agent": "main",
@@ -6187,7 +6187,7 @@
         "type": "delta",
         "step": 5,
         "text": "高 · 依据",
-        "ts": 1789768048010
+        "ts": 1789768162013
       },
       {
         "agent": "main",
@@ -6195,7 +6195,7 @@
         "type": "delta",
         "step": 5,
         "text": "：崩溃前日志",
-        "ts": 1789768048016
+        "ts": 1789768162019
       },
       {
         "agent": "main",
@@ -6203,7 +6203,7 @@
         "type": "delta",
         "step": 5,
         "text": "先出现 NV",
-        "ts": 1789768048021
+        "ts": 1789768162024
       },
       {
         "agent": "main",
@@ -6211,7 +6211,7 @@
         "type": "delta",
         "step": 5,
         "text": "RM Xid",
-        "ts": 1789768048027
+        "ts": 1789768162029
       },
       {
         "agent": "main",
@@ -6219,7 +6219,7 @@
         "type": "delta",
         "step": 5,
         "text": " 79，随后",
-        "ts": 1789768048032
+        "ts": 1789768162035
       },
       {
         "agent": "main",
@@ -6227,7 +6227,7 @@
         "type": "delta",
         "step": 5,
         "text": " NCCL ",
-        "ts": 1789768048038
+        "ts": 1789768162041
       },
       {
         "agent": "main",
@@ -6235,7 +6235,7 @@
         "type": "delta",
         "step": 5,
         "text": "AllRed",
-        "ts": 1789768048044
+        "ts": 1789768162046
       },
       {
         "agent": "main",
@@ -6243,7 +6243,7 @@
         "type": "delta",
         "step": 5,
         "text": "uce 超时",
-        "ts": 1789768048050
+        "ts": 1789768162052
       },
       {
         "agent": "main",
@@ -6251,7 +6251,7 @@
         "type": "delta",
         "step": 5,
         "text": "与 Dist",
-        "ts": 1789768048055
+        "ts": 1789768162058
       },
       {
         "agent": "main",
@@ -6259,7 +6259,7 @@
         "type": "delta",
         "step": 5,
         "text": "Backen",
-        "ts": 1789768048061
+        "ts": 1789768162064
       },
       {
         "agent": "main",
@@ -6267,7 +6267,7 @@
         "type": "delta",
         "step": 5,
         "text": "dError",
-        "ts": 1789768048067
+        "ts": 1789768162069
       },
       {
         "agent": "main",
@@ -6275,7 +6275,7 @@
         "type": "delta",
         "step": 5,
         "text": "；GPU 利",
-        "ts": 1789768048073
+        "ts": 1789768162075
       },
       {
         "agent": "main",
@@ -6283,7 +6283,7 @@
         "type": "delta",
         "step": 5,
         "text": "用率骤降\n-",
-        "ts": 1789768048078
+        "ts": 1789768162081
       },
       {
         "agent": "main",
@@ -6291,7 +6291,7 @@
         "type": "delta",
         "step": 5,
         "text": " NCCL ",
-        "ts": 1789768048084
+        "ts": 1789768162087
       },
       {
         "agent": "main",
@@ -6299,7 +6299,7 @@
         "type": "delta",
         "step": 5,
         "text": "网络链路问题",
-        "ts": 1789768048090
+        "ts": 1789768162093
       },
       {
         "agent": "main",
@@ -6307,7 +6307,7 @@
         "type": "delta",
         "step": 5,
         "text": " · 置信度",
-        "ts": 1789768048096
+        "ts": 1789768162098
       },
       {
         "agent": "main",
@@ -6315,7 +6315,7 @@
         "type": "delta",
         "step": 5,
         "text": " 低 · 依",
-        "ts": 1789768048101
+        "ts": 1789768162104
       },
       {
         "agent": "main",
@@ -6323,7 +6323,7 @@
         "type": "delta",
         "step": 5,
         "text": "据：NCCL",
-        "ts": 1789768048107
+        "ts": 1789768162109
       },
       {
         "agent": "main",
@@ -6331,7 +6331,7 @@
         "type": "delta",
         "step": 5,
         "text": " 超时是 X",
-        "ts": 1789768048113
+        "ts": 1789768162115
       },
       {
         "agent": "main",
@@ -6339,7 +6339,7 @@
         "type": "delta",
         "step": 5,
         "text": "id 之后的",
-        "ts": 1789768048118
+        "ts": 1789768162121
       },
       {
         "agent": "main",
@@ -6347,7 +6347,7 @@
         "type": "delta",
         "step": 5,
         "text": "次生现象，无",
-        "ts": 1789768048124
+        "ts": 1789768162127
       },
       {
         "agent": "main",
@@ -6355,7 +6355,7 @@
         "type": "delta",
         "step": 5,
         "text": "独立网络错误",
-        "ts": 1789768048130
+        "ts": 1789768162132
       },
       {
         "agent": "main",
@@ -6363,7 +6363,7 @@
         "type": "delta",
         "step": 5,
         "text": "证据\n\n##",
-        "ts": 1789768048135
+        "ts": 1789768162138
       },
       {
         "agent": "main",
@@ -6371,7 +6371,7 @@
         "type": "delta",
         "step": 5,
         "text": " 处理建议\n",
-        "ts": 1789768048141
+        "ts": 1789768162144
       },
       {
         "agent": "main",
@@ -6379,7 +6379,7 @@
         "type": "delta",
         "step": 5,
         "text": "- cord",
-        "ts": 1789768048147
+        "ts": 1789768162150
       },
       {
         "agent": "main",
@@ -6387,7 +6387,7 @@
         "type": "delta",
         "step": 5,
         "text": "on gpu",
-        "ts": 1789768048152
+        "ts": 1789768162155
       },
       {
         "agent": "main",
@@ -6395,7 +6395,7 @@
         "type": "delta",
         "step": 5,
         "text": "-node-",
-        "ts": 1789768048158
+        "ts": 1789768162161
       },
       {
         "agent": "main",
@@ -6403,7 +6403,7 @@
         "type": "delta",
         "step": 5,
         "text": "1，重置或更",
-        "ts": 1789768048164
+        "ts": 1789768162167
       },
       {
         "agent": "main",
@@ -6411,7 +6411,7 @@
         "type": "delta",
         "step": 5,
         "text": "换故障 GP",
-        "ts": 1789768048170
+        "ts": 1789768162173
       },
       {
         "agent": "main",
@@ -6419,7 +6419,7 @@
         "type": "delta",
         "step": 5,
         "text": "U\n- 从 ",
-        "ts": 1789768048175
+        "ts": 1789768162178
       },
       {
         "agent": "main",
@@ -6427,7 +6427,7 @@
         "type": "delta",
         "step": 5,
         "text": "checkp",
-        "ts": 1789768048181
+        "ts": 1789768162184
       },
       {
         "agent": "main",
@@ -6435,7 +6435,7 @@
         "type": "delta",
         "step": 5,
         "text": "oint s",
-        "ts": 1789768048187
+        "ts": 1789768162190
       },
       {
         "agent": "main",
@@ -6443,7 +6443,7 @@
         "type": "delta",
         "step": 5,
         "text": "tep 12",
-        "ts": 1789768048192
+        "ts": 1789768162195
       },
       {
         "agent": "main",
@@ -6451,7 +6451,7 @@
         "type": "delta",
         "step": 5,
         "text": "00 在健康",
-        "ts": 1789768048198
+        "ts": 1789768162201
       },
       {
         "agent": "main",
@@ -6459,7 +6459,7 @@
         "type": "delta",
         "step": 5,
         "text": "节点恢复训练",
-        "ts": 1789768048204
+        "ts": 1789768162207
       },
       {
         "agent": "main",
@@ -6467,7 +6467,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n- 把该卡",
-        "ts": 1789768048210
+        "ts": 1789768162212
       },
       {
         "agent": "main",
@@ -6475,7 +6475,7 @@
         "type": "delta",
         "step": 5,
         "text": "加入硬件巡检",
-        "ts": 1789768048215
+        "ts": 1789768162218
       },
       {
         "agent": "main",
@@ -6483,7 +6483,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n- 历史 ",
-        "ts": 1789768048221
+        "ts": 1789768162224
       },
       {
         "agent": "main",
@@ -6491,7 +6491,7 @@
         "type": "delta",
         "step": 5,
         "text": "Case C",
-        "ts": 1789768048227
+        "ts": 1789768162229
       },
       {
         "agent": "main",
@@ -6499,7 +6499,7 @@
         "type": "delta",
         "step": 5,
         "text": "ASE-20",
-        "ts": 1789768048232
+        "ts": 1789768162235
       },
       {
         "agent": "main",
@@ -6507,7 +6507,7 @@
         "type": "delta",
         "step": 5,
         "text": "26-077",
-        "ts": 1789768048238
+        "ts": 1789768162241
       },
       {
         "agent": "main",
@@ -6515,7 +6515,7 @@
         "type": "delta",
         "step": 5,
         "text": " 的处理方式",
-        "ts": 1789768048244
+        "ts": 1789768162246
       },
       {
         "agent": "main",
@@ -6523,7 +6523,7 @@
         "type": "delta",
         "step": 5,
         "text": "可参考：co",
-        "ts": 1789768048249
+        "ts": 1789768162252
       },
       {
         "agent": "main",
@@ -6531,7 +6531,7 @@
         "type": "delta",
         "step": 5,
         "text": "rdon g",
-        "ts": 1789768048255
+        "ts": 1789768162258
       },
       {
         "agent": "main",
@@ -6539,7 +6539,7 @@
         "type": "delta",
         "step": 5,
         "text": "pu 节点，",
-        "ts": 1789768048261
+        "ts": 1789768162263
       },
       {
         "agent": "main",
@@ -6547,7 +6547,7 @@
         "type": "delta",
         "step": 5,
         "text": "更换 GPU",
-        "ts": 1789768048267
+        "ts": 1789768162269
       },
       {
         "agent": "main",
@@ -6555,7 +6555,7 @@
         "type": "delta",
         "step": 5,
         "text": "，从 che",
-        "ts": 1789768048272
+        "ts": 1789768162275
       },
       {
         "agent": "main",
@@ -6563,7 +6563,7 @@
         "type": "delta",
         "step": 5,
         "text": "ckpoin",
-        "ts": 1789768048278
+        "ts": 1789768162281
       },
       {
         "agent": "main",
@@ -6571,7 +6571,7 @@
         "type": "delta",
         "step": 5,
         "text": "t 恢复训练",
-        "ts": 1789768048283
+        "ts": 1789768162286
       },
       {
         "agent": "main",
@@ -6579,7 +6579,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n\n## 证",
-        "ts": 1789768048289
+        "ts": 1789768162292
       },
       {
         "agent": "main",
@@ -6587,7 +6587,7 @@
         "type": "delta",
         "step": 5,
         "text": "据不足说明\n",
-        "ts": 1789768048295
+        "ts": 1789768162298
       },
       {
         "agent": "main",
@@ -6595,7 +6595,7 @@
         "type": "delta",
         "step": 5,
         "text": "无",
-        "ts": 1789768048300
+        "ts": 1789768162303
       },
       {
         "agent": "main",
@@ -6608,8 +6608,8 @@
           "inputTokens": 5162,
           "outputTokens": 80
         },
-        "durationMs": 1556,
-        "ts": 1789768048306
+        "durationMs": 1553,
+        "ts": 1789768162309
       },
       {
         "agent": "main",
@@ -6622,7 +6622,7 @@
           "inputTokens": 10472,
           "outputTokens": 400
         },
-        "ts": 1789768048306
+        "ts": 1789768162309
       }
     ],
     "children": []
