@@ -3,6 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createDefaultRegistry } from './tools/index.ts';
 import { JobQueue } from './job-queue.ts';
+import { FLAVOR_DEFAULTS } from './llm/openai.ts';
+import type { LLMConfig } from './llm/index.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '..'); // 项目根目录，与启动 cwd 无关
 const PORT = Number(process.env.PORT ?? 3000);
@@ -22,10 +24,26 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.method === 'GET' && url.pathname === '/api/info') {
-    return json(res, { providers: ['mock', 'anthropic', 'openai'], defaultProvider: process.env.LLM_PROVIDER ?? 'mock', workspace: WORKSPACE, concurrency: CONCURRENCY, tools: createDefaultRegistry().all().map((t) => ({ name: t.name, description: t.description, permission: t.permission, deferred: !!t.deferred })) });
+    return json(res, { providers: ['mock', 'local', 'openai', 'anthropic'], defaultProvider: process.env.LLM_PROVIDER ?? 'mock', flavorDefaults: FLAVOR_DEFAULTS, workspace: WORKSPACE, concurrency: CONCURRENCY, tools: createDefaultRegistry().all().map((t) => ({ name: t.name, description: t.description, permission: t.permission, deferred: !!t.deferred })) });
   }
 
   if (req.method === 'GET' && url.pathname === '/api/jobs') return json(res, queue.snapshot());
+
+  // 代理 GET {baseUrl}/models（Ollama / vLLM / OpenAI 均支持），让前端能拉模型列表而不受浏览器 CORS 限制。
+  // 仅限本地演示：这是一个按用户给的地址发请求的代理，不要暴露到公网。
+  if (req.method === 'GET' && url.pathname === '/api/models') {
+    const base = (url.searchParams.get('baseUrl') ?? '').replace(/\/$/, '');
+    const key = url.searchParams.get('apiKey') ?? '';
+    if (!/^https?:\/\//.test(base)) return json(res, { error: 'baseUrl 必须是 http(s) 地址' }, 400);
+    try {
+      const r = await fetch(base + '/models', { headers: key ? { authorization: `Bearer ${key}` } : {}, signal: AbortSignal.timeout(5000) });
+      if (!r.ok) return json(res, { error: `${r.status} ${await r.text()}`.slice(0, 300) }, 502);
+      const j: any = await r.json();
+      return json(res, { models: (j.data ?? j.models ?? []).map((m: any) => m.id ?? m.name).filter(Boolean) });
+    } catch (e) {
+      return json(res, { error: `无法连接 ${base}: ${(e as Error).message}` }, 502);
+    }
+  }
 
   if (req.method === 'POST' && url.pathname.startsWith('/api/jobs/') && url.pathname.endsWith('/abort')) {
     const id = url.pathname.split('/')[3];
@@ -56,14 +74,15 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'POST' && url.pathname === '/api/run') {
     let body = '';
     for await (const chunk of req) body += chunk;
-    let payload: { task?: string; provider?: string; maxSteps?: number; allowWrite?: boolean };
+    let payload: { task?: string; provider?: string; llm?: LLMConfig; maxSteps?: number; allowWrite?: boolean };
     try { payload = JSON.parse(body || '{}'); } catch { return json(res, { error: 'bad json' }, 400); }
     if (!payload.task?.trim()) return json(res, { error: 'task required' }, 400);
 
     res.writeHead(200, { 'content-type': 'text/event-stream', 'cache-control': 'no-cache', connection: 'keep-alive' });
     const send = (event: string, data: unknown) => { if (!res.writableEnded) res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`); };
 
-    const job = queue.submit({ task: payload.task, provider: payload.provider, maxSteps: payload.maxSteps, allowWrite: payload.allowWrite ?? true, workspace: WORKSPACE, traceDir: TRACE_DIR });
+    const llm: LLMConfig | undefined = payload.llm && { flavor: payload.llm.flavor, baseUrl: payload.llm.baseUrl || undefined, model: payload.llm.model || undefined, apiKey: payload.llm.apiKey || undefined, stream: payload.llm.stream };
+    const job = queue.submit({ task: payload.task, provider: payload.provider, llm, maxSteps: payload.maxSteps, allowWrite: payload.allowWrite ?? true, workspace: WORKSPACE, traceDir: TRACE_DIR });
     send('job', { id: job.id, status: job.status, position: queue.position(job.id) });
 
     job.bus.on('position', (i: number) => send('job', { id: job.id, status: 'queued', position: i }));

@@ -1,7 +1,9 @@
 import { Worker } from 'node:worker_threads';
 import { EventEmitter } from 'node:events';
 
-export interface JobInput { task: string; provider?: string; maxSteps?: number; allowWrite?: boolean; workspace: string; traceDir: string }
+import type { LLMConfig } from './llm/index.ts';
+
+export interface JobInput { task: string; provider?: string; llm?: LLMConfig; maxSteps?: number; allowWrite?: boolean; workspace: string; traceDir: string }
 export type JobStatus = 'queued' | 'running' | 'done' | 'error' | 'aborted';
 
 export interface Job {

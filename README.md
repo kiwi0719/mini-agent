@@ -9,7 +9,7 @@ User → Agent Decision → Tool Call → Tool Result → Agent Decision → …
 - 📄 [设计说明 DESIGN.md](./DESIGN.md)（Agent Loop、Tool 定义、结束判定、防无限循环、失败处理、职责划分、限制）
 - 🤝 [AI_USAGE.md](./AI_USAGE.md)（AI 参与环节、关键设计决策、AI 的错误判断与修正）
 - 💬 [ai-conversation.md](./ai-conversation.md)（与 AI Coding 工具的完整对话过程）
-- 🧩 [DESIGN-EXTENSIONS.md](./DESIGN-EXTENSIONS.md)（扩展方案：日志分析工具包 + K8s 故障诊断工具包，设计稿）
+- 🧩 [DESIGN-EXTENSIONS.md](./DESIGN-EXTENSIONS.md)（扩展：应用日志智能分析 + Kubernetes 故障诊断 SRE Agent，两道题作为工具接入的设计与实现说明）
 - ✅ [examples/](./examples/README.md)（11 个任务的实际执行结果 + 完整 Trace，每个带自动校验）
 
 ## 功能一览
@@ -33,6 +33,13 @@ User → Agent Decision → Tool Call → Tool Result → Agent Decision → …
 
 工具：`read_file` `write_file` `search_text` `calculator` `list_files` `update_plan` `search_tools` `delegate`，以及需 Tool Search 激活的 `csv_parse` `file_info` `current_time`。
 
+两道扩展题直接注册为工具（详见 [DESIGN-EXTENSIONS.md](./DESIGN-EXTENSIONS.md)）：
+
+| 题目 | 工具 | 测试数据 |
+|---|---|---|
+| 应用日志智能分析 | `log_stats` 级别/模块/ERROR 比例/解析质量 · `log_latency` 平均/P50/P95/P99 + Top N 慢请求 · `log_trace` 按 traceId 还原链路 · `log_errors` 相似错误聚类 + 伴随 WARN + 候选原因 · `log_timeline` 时间趋势 + 错误突增 | `node scripts/gen-logs.ts` → `workspace/logs/app.log`（1 万行、8 模块、约 1900 traceId，含慢请求 / timeout / database / network 错误、缺字段与畸形行） |
+| K8s 故障诊断 SRE Agent | 必选 `get_pod` `get_pod_events` `get_node` `get_metrics` `get_logs`；加分 `search_runbook`（知识库）`search_cases`（历史 Case）`propose_fix` → `apply_fix`（写权限 = 人工确认）→ `verify_fix`（修复后复查） | 没有真实集群：`node scripts/gen-k8s.ts` 生成 Mock 集群 `workspace/k8s/`（OOMKilled / Node NotReady / Scheduling Failed / DiskPressure / 连接超时 / GPU Xid+NCCL / 证据不足 7 个场景 + runbook + cases）。数据源抽象为 `ClusterSource`，接真实集群时换实现即可 |
+
 ## 快速开始
 
 要求 Node.js ≥ 22.6（推荐 24，直接运行 TypeScript）。
@@ -44,7 +51,7 @@ pnpm install        # 或 npm install
 ### 1. 用 Mock LLM 跑通（无需任何 API key）
 
 ```bash
-pnpm test           # 重新生成 workspace，运行 11 个任务并自动校验，结果写入 examples/
+pnpm test           # 重新生成 workspace + 日志 + Mock 集群，运行 21 个任务并自动校验，结果写入 examples/
 ```
 
 ```bash
@@ -67,7 +74,31 @@ export OPENAI_MODEL=deepseek-chat
 pnpm agent -- -p openai -s "核对 docs/design.md 中引用的所有文件是否存在且可读，把核对结果写入 docs/check.md。"
 ```
 
-也可以设置 `LLM_PROVIDER=anthropic|openai|mock` 作为默认值。
+```bash
+# 本地模型：Ollama（默认 http://localhost:11434/v1，非流式）
+pnpm agent -- -p local --flavor ollama --model qwen2.5:7b "找出所有 TODO 并生成 todo-report.md"
+```
+
+```bash
+# 本地模型：vLLM（默认 http://localhost:8000/v1，流式）
+# 服务端需 --enable-auto-tool-choice --tool-call-parser hermes（按模型选 parser），否则不会产生 tool call
+pnpm agent -- -p local --flavor vllm --base-url http://localhost:8000/v1 --model Qwen/Qwen2.5-7B-Instruct "…"
+```
+
+也可以设置 `LLM_PROVIDER=anthropic|openai|local|mock`、`LLM_FLAVOR=ollama|vllm|openai`、`OPENAI_BASE_URL`、`OPENAI_MODEL`、`OPENAI_API_KEY` 作为默认值。
+
+三种 OpenAI 兼容口味的请求差异（详见 DESIGN.md §5）：
+
+| | openai / 云端 | vLLM | Ollama `/v1` |
+|---|---|---|---|
+| 默认地址 | api.openai.com/v1 | localhost:8000/v1 | localhost:11434/v1 |
+| `tools` | ✅ | ✅（需启动参数） | ✅ |
+| `tool_choice: auto` | ✅ | ✅ | ❌ 不发送（文档列为不支持） |
+| `stream` 默认 | 开 | 开 | 关（流式 tool call 支持不稳定，可手动开） |
+| `stream_options` | ✅ | ✅ | ❌ 不发送 |
+| API Key | 必填 | 视启动参数 | 任意值，被忽略 |
+
+`pnpm check-schema` 不连任何模型，离线校验三种口味组装出的请求体（tools 形状、tool_choice / stream_options 的有无、arguments 为字符串、tool 消息紧跟 assistant 且 id 对应等）以及全部工具 JSON Schema 的合法性。本地模型未在开发机上实际跑过（性能不足），以此保证 schema 不传错。
 
 ### 3. Web 前端
 
@@ -76,6 +107,8 @@ pnpm web            # http://localhost:3000
 ```
 
 左侧输入任务 / 选择 provider / 是否允许写文件；中间实时时间线展示决策、工具调用、结果、Plan、Context 压缩、子 Agent（缩进紫色）；右侧统计、当前计划、workspace 文件浏览、Trace 保存位置。前端为 Vue 3（CDN 引入，单文件 `web/index.html`），通过 SSE 接收事件。
+
+选择"本地模型 (Ollama / vLLM)"后会出现连接面板：服务类型、API Base URL、模型（可点"获取模型列表"从 `{baseUrl}/models` 拉取）、可选 API Key、流式开关。切换服务类型会填入该类型的默认地址与默认值。
 
 任务进入队列，最多 `AGENT_WORKERS`（默认 2）个并发，每个 Agent 跑在独立 Worker 线程；排队时显示位置。运行中可点“中止”，关闭页面也会中止对应任务。`MOCK_DELAY_MS=400 pnpm web` 可让 mock 变慢以观察排队与中止。
 
@@ -98,7 +131,7 @@ node src/cli.ts [选项] "<任务描述>"
 
 由 `scripts/gen-workspace.ts` 确定性生成（`pnpm test` 自动执行；也可 `node scripts/gen-workspace.ts` 手动重置）。约 20 个文件，刻意包含：多种写法的 TODO/FIXME 与 `todoList`/`TODOS` 假阳性、`node_modules` 干扰、三种格式不一的地区销售数据（¥、千分位、负数退款、脏行）、151KB 的 changelog（读入触发 Context 压缩）、252KB 的日志（超过 read_file 上限）、引用不存在文件与二进制文件的文档、永远不就绪的锁文件、以及“任务需要但 workspace 里没有”的信息（汇率）。详见 [DESIGN.md §7](./DESIGN.md#7-测试-workspace-与任务)。
 
-## 测试任务与结果（11/11 自动校验通过）
+## 测试任务与结果（21/21 自动校验通过）
 
 | # | 任务 | 验证的机制 | 结果 |
 |---|---|---|---|
@@ -113,6 +146,16 @@ node src/cli.ts [选项] "<任务描述>"
 | [09](./examples/09-stuck-loop-detection/README.md) | 等待永不就绪的锁 | 3 轮重复 → 提醒 → 2 轮 → 终止 | ✅ stuck_loop，5 步 |
 | [10](./examples/10-subagent-write-permission/README.md) | 子 Agent 为 5 个源码文件生成摘要 | 子 Agent 默认只读 → 写失败 → 授予 allow_write 并行重派 | ✅ 5 个摘要 |
 | [11](./examples/11-cannot-complete-missing-info/README.md) | 销售额换算美元 | 信息缺失 → 明确拒绝猜测 | ✅ 未生成报告 |
+| [12](./examples/12-log-analysis-report/README.md) | 分析 logs/app.log 生成报告 | 一轮并行 4 个统计工具 → 并行 log_trace → Markdown 报告（统计事实 / 推断原因 / 数据质量分开） | ✅ 含 P95/P99、模块 ERROR 比例、错误聚类、突增时段 |
+| [13](./examples/13-log-trace-restore/README.md) | 还原 traceId=t00002 链路 | log_trace | ✅ 模块顺序 + 各步耗时 + 错误 |
+| [14](./examples/14-log-file-missing/README.md) | 分析不存在的日志 | 4 个并行调用全部失败 → list_files 确认 → 明确终止 | ✅ 未捏造 |
+| [15](./examples/15-k8s-oom-with-fix/README.md) | 分析 job-123 并修复 | get_pod 信号 → 并行 events/node/metrics/previous 日志 → runbook + case → propose_fix → apply_fix（写）→ verify_fix → 复盘报告 | ✅ OOMKilled，recovered=true |
+| [16](./examples/16-k8s-insufficient-evidence/README.md) | 分析 job-128 | Event 已清理、日志空、无指标 | ✅ 明确“证据不足”，不给结论 |
+| [17](./examples/17-k8s-net-timeout-no-write/README.md) | 分析 api-worker-7 并修复（无写权限） | apply_fix 被拒 → 转为“待人工确认执行”的建议 | ✅ dial tcp i/o timeout 证据 |
+| [18](./examples/18-k8s-node-notready/README.md) | 分析 job-124 | 日志取不到 + 指标中断本身作为证据 | ✅ Node NotReady |
+| [19](./examples/19-k8s-scheduling-failed/README.md) | 分析 job-125 | FailedScheduling message 逐节点原因 + 节点容量 | ✅ cpu=6 超过单节点 |
+| [20](./examples/20-k8s-disk-pressure/README.md) | 分析 job-126 | Evicted message + Node DiskPressure + no space left | ✅ |
+| [21](./examples/21-k8s-gpu-xid-nccl/README.md) | 分析 train-job-7 | Xid 79 硬件根因（高）vs NCCL 次生（低） | ✅ |
 
 每个目录含 `README.md`（任务、校验结论、最终答案、统计）、生成的文件、`trace.md` / `trace.json`（完整 Agent Trace，子 Agent 嵌套折叠）。
 
@@ -132,18 +175,21 @@ src/
 ├── worker.ts           Worker 线程入口
 ├── llm/
 │   ├── anthropic.ts    Anthropic Messages API（流式）
-│   ├── openai.ts       OpenAI 兼容接口（流式 SSE 解析）
+│   ├── openai.ts       OpenAI 兼容接口：openai / vllm / ollama 三种 flavor，流式或非流式
 │   ├── mock.ts         规则驱动 Mock LLM
 │   └── index.ts        Provider 工厂
 └── tools/
     ├── registry.ts     注册、schema 输出、参数解析/校验、权限、超时、重试边界、Tool Search
     ├── sandbox.ts      workspace 路径沙箱
+    ├── log-tools.ts    日志分析 5 个工具（流式容错解析）
+    ├── k8s-tools.ts    K8s 诊断 10 个工具
+    ├── k8s/cluster.ts  ClusterSource 接口 + Mock 实现（读 workspace/k8s/cluster.json，修复动作叠加）
     ├── fs-tools.ts     read_file / write_file / list_files / search_text
     ├── calculator.ts   安全表达式求值（递归下降，不用 eval）
     ├── extra-tools.ts  deferred 工具：csv_parse / file_info / current_time
     └── agent-tools.ts  update_plan / search_tools / delegate
 web/index.html          Vue 3 前端
 workspace/              测试材料
-scripts/                gen-workspace.ts（生成测试材料）/ run-examples.ts（跑 11 个任务并校验）/ reset-workspace.ts
+scripts/                gen-workspace.ts（生成测试材料）/ run-examples.ts（跑任务并校验）/ check-request-schema.ts（离线校验请求体）/ reset-workspace.ts
 examples/               任务执行结果与 Trace
 ```

@@ -36,6 +36,14 @@
   .decision { border-left:3px solid var(--accent); }
   .final { border-left:3px solid var(--ok); }
   .final.bad { border-left-color:var(--err); }
+  /* 结构化最终答案（K8s 诊断结果页）：按 ## 区块渲染，证据条目带来源标签 */
+  .diag { display:flex; flex-direction:column; gap:8px; margin-top:6px; }
+  .diag .sec { border:1px solid var(--border,#e5e7eb); border-radius:8px; padding:8px 10px; }
+  .diag .sec-title { font-weight:600; font-size:13px; margin-bottom:4px; }
+  .diag .sec ul { margin:0; padding-left:18px; } .diag .sec li { margin:2px 0; font-size:13px; }
+  .diag .sec.facts { border-color:#16a34a55; } .diag .sec.causes { border-color:#f59e0b88; } .diag .sec.gap { border-color:#ef444488; } .diag .sec.advice { border-color:#3b82f688; }
+  .etag { display:inline-block; font-size:10px; padding:0 5px; border-radius:4px; margin-right:6px; background:#64748b22; color:#475569; font-weight:600; }
+  .etag.event { background:#f59e0b22; color:#b45309; } .etag.metric { background:#3b82f622; color:#1d4ed8; } .etag.log { background:#8b5cf622; color:#6d28d9; } .etag.pod, .etag.node { background:#10b98122; color:#047857; } .etag.runbook, .etag.case { background:#ec489922; color:#be185d; }
   .notice { border-left:3px solid var(--warn); }
   .cursor::after { content:'▍'; animation:blink 1s steps(1) infinite; color:var(--accent); }
   @keyframes blink { 50% { opacity:0; } }
@@ -43,6 +51,8 @@
   .plan .done { color:var(--ok); } .plan .in_progress { color:var(--accent); } .plan .blocked { color:var(--err); } .plan .pending, .plan .skipped { color:var(--muted); }
   .stats { display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:12px; }
   .stats div { background:#0d0f13; border-radius:6px; padding:6px 8px; } .stats b { display:block; font-size:16px; }
+  .local { margin-top:8px; padding:10px; border:1px dashed var(--border); border-radius:8px; }
+  .local code { font-size:11px; background:#0d0f13; padding:1px 4px; border-radius:3px; }
   .files li { list-style:none; cursor:pointer; padding:2px 0; color:var(--accent); font-size:12px; } .files ul { padding:0; margin:0; }
   h3 { font-size:13px; margin:16px 0 8px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
   .empty { color:var(--muted); text-align:center; margin-top:80px; }
@@ -68,8 +78,30 @@
       <textarea v-model="form.task" placeholder="用自然语言描述任务…" :disabled="running"></textarea>
       <div class="row">
         <div style="flex:1"><label>Provider</label>
-          <select v-model="form.provider" :disabled="running"><option v-for="p in (info?.providers||['mock'])" :value="p">{{ p }}</option></select></div>
+          <select v-model="form.provider" :disabled="running"><option v-for="p in (info?.providers||['mock'])" :value="p">{{ providerLabel(p) }}</option></select></div>
         <div style="width:90px"><label>Max steps</label><input type="number" v-model.number="form.maxSteps" min="1" max="50" :disabled="running"></div>
+      </div>
+      <!-- 本地模型 / OpenAI 兼容接口的连接参数 -->
+      <div v-if="form.provider==='local' || form.provider==='openai'" class="local">
+        <div class="row" v-if="form.provider==='local'">
+          <div style="flex:1"><label>服务类型</label>
+            <select v-model="form.llm.flavor" :disabled="running" @change="applyFlavorDefaults">
+              <option value="ollama">Ollama</option>
+              <option value="vllm">vLLM</option>
+              <option value="openai">其他 OpenAI 兼容</option>
+            </select></div>
+        </div>
+        <label>API Base URL</label>
+        <input v-model="form.llm.baseUrl" :placeholder="flavorDefault('baseUrl')" :disabled="running" spellcheck="false">
+        <label>模型 <button class="ghost" style="padding:1px 8px;font-size:11px;margin-left:6px" @click="fetchModels" :disabled="running||modelsLoading">{{ modelsLoading ? '获取中…' : '获取模型列表' }}</button></label>
+        <input v-model="form.llm.model" list="model-list" :placeholder="flavorDefault('model') || '例如 Qwen/Qwen2.5-7B-Instruct'" :disabled="running" spellcheck="false">
+        <datalist id="model-list"><option v-for="m in models" :value="m"></option></datalist>
+        <div v-if="modelsError" style="color:var(--err);font-size:12px;margin-top:4px">{{ modelsError }}</div>
+        <div v-else-if="models.length" style="color:var(--muted);font-size:12px;margin-top:4px">已获取 {{ models.length }} 个模型，可在上方下拉选择</div>
+        <label>API Key <span style="color:var(--muted)">（可选；Ollama 忽略）</span></label>
+        <input v-model="form.llm.apiKey" type="password" :disabled="running" autocomplete="off">
+        <label class="row" style="margin-top:8px"><input type="checkbox" v-model="form.llm.stream" style="width:auto" :disabled="running"> 流式输出 <span style="color:var(--muted)">（Ollama 默认关：其 /v1 层对流式 tool call 支持不稳定）</span></label>
+        <div v-if="form.llm.flavor==='vllm'" style="color:var(--muted);font-size:12px;margin-top:6px">vLLM 需以 <code>--enable-auto-tool-choice --tool-call-parser &lt;hermes|llama3_json|qwen3_xml|…&gt;</code> 启动，否则模型不会发出 tool call。</div>
       </div>
       <label class="row" style="margin-top:10px"><input type="checkbox" v-model="form.allowWrite" style="width:auto" :disabled="running"> 允许 write_file</label>
       <div class="row" style="margin-top:12px">
@@ -125,7 +157,14 @@
         </template>
         <template v-else-if="e.type==='final'">
           <div class="head"><span class="tag" :class="e.reason==='completed'?'ok':'err'">🏁 {{ e.depth>0 ? '子 Agent 结束' : 'Final Answer' }}</span><b>{{ e.reason }}</b><span v-if="e.depth>0" class="tag sub">{{ e.agent }}</span><span style="margin-left:auto">{{ e.steps }} steps · tokens {{ e.usage.inputTokens }}/{{ e.usage.outputTokens }}</span></div>
-          <pre>{{ e.answer }}</pre>
+          <div v-if="e.depth===0 && sections(e.answer).length" class="diag">
+            <div v-for="s in sections(e.answer)" :class="['sec', secClass(s.title)]">
+              <div class="sec-title">{{ s.title }}</div>
+              <ul v-if="s.items.length"><li v-for="it in s.items"><span v-if="it.tag" :class="['etag', it.tag.toLowerCase()]">{{ it.tag }}</span>{{ it.text }}</li></ul>
+              <div v-if="s.text" style="white-space:pre-wrap">{{ s.text }}</div>
+            </div>
+          </div>
+          <pre v-else>{{ e.answer }}</pre>
         </template>
         <template v-else-if="e.type==='error'"><div class="head"><span class="tag err">错误</span></div><pre>{{ e.message }}</pre></template>
       </div>
@@ -167,11 +206,30 @@ createApp({
     const meta = reactive({ provider: '' });
     const job = reactive({ id: null, status: null, position: 0 });
     let controller = null;
-    const form = reactive({ task: '', provider: 'mock', maxSteps: 15, allowWrite: true });
+    const form = reactive({ task: '', provider: 'mock', maxSteps: 15, allowWrite: true, llm: { flavor: 'ollama', baseUrl: '', model: '', apiKey: '', stream: false } });
+    const models = ref([]), modelsLoading = ref(false), modelsError = ref('');
+    const providerLabel = p => ({ mock: 'mock（无需 API）', local: '本地模型 (Ollama / vLLM)', openai: 'OpenAI 兼容云端接口', anthropic: 'Anthropic' }[p] || p);
+    const flavorDefault = k => { const f = form.provider === 'openai' ? 'openai' : form.llm.flavor; return info.value?.flavorDefaults?.[f]?.[k] ?? ''; };
+    // 切换服务类型时把地址 / 模型 / 流式恢复为该类型的默认值
+    function applyFlavorDefaults() { const d = info.value?.flavorDefaults?.[form.llm.flavor]; if (!d) return; form.llm.baseUrl = d.baseUrl; form.llm.model = d.model; form.llm.stream = d.stream; models.value = []; modelsError.value = ''; }
+    async function fetchModels() {
+      modelsLoading.value = true; modelsError.value = ''; models.value = [];
+      const base = form.llm.baseUrl || flavorDefault('baseUrl');
+      try {
+        const r = await fetch('/api/models?baseUrl=' + encodeURIComponent(base) + '&apiKey=' + encodeURIComponent(form.llm.apiKey || ''));
+        const j = await r.json();
+        if (j.error) modelsError.value = j.error; else { models.value = j.models; if (!form.llm.model && j.models.length) form.llm.model = j.models[0]; }
+      } catch (e) { modelsError.value = String(e); }
+      modelsLoading.value = false;
+    }
     const examples = [
       '找出 workspace 目录中所有 TODO，按照文件进行分类并生成 todo-report.md。',
       '读取 data/sales.txt 中的数据，计算所有产品销售额之和，并把计算结果写入 report.md。',
       '核对 docs/design.md 中引用的所有文件是否存在且可读，把核对结果写入 docs/check.md。',
+      '分析 logs/app.log，生成 logs/report.md，重点说明错误和慢请求。',
+      '还原 traceId=t00002 的完整链路（logs/app.log）。',
+      '帮我分析 job-123 为什么失败，并修复它。',
+      '帮我分析 job-128 为什么失败。',
     ];
     const visibleEvents = computed(() => events.value.filter(e => e.type !== 'delta'));
     const main = computed(() => events.value.filter(e => e.depth === 0));
@@ -182,7 +240,7 @@ createApp({
     const usage = computed(() => { const f = main.value.find(e => e.type === 'final'); if (f) return f.usage; return events.value.filter(e => e.type === 'decision').reduce((a, e) => ({ inputTokens: a.inputTokens + e.usage.inputTokens, outputTokens: a.outputTokens + e.usage.outputTokens }), { inputTokens: 0, outputTokens: 0 }); });
     const plan = computed(() => { const p = [...main.value].reverse().find(e => e.type === 'plan'); return p ? p.plan : []; });
 
-    async function loadInfo() { info.value = await (await fetch('/api/info')).json(); form.provider = info.value.defaultProvider; }
+    async function loadInfo() { info.value = await (await fetch('/api/info')).json(); form.provider = info.value.defaultProvider; applyFlavorDefaults(); }
     async function loadFiles() { files.value = await (await fetch('/api/workspace')).json(); }
     async function openFile(p) { viewing.value = await (await fetch('/api/file?path=' + encodeURIComponent(p))).json(); }
     function clear() { events.value = []; lastTrace.value = null; }
@@ -212,7 +270,10 @@ createApp({
       clear(); running.value = true; meta.provider = ''; Object.assign(job, { id: null, status: null, position: 0 });
       controller = new AbortController();
       let res;
-      try { res = await fetch('/api/run', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(form), signal: controller.signal }); }
+      // openai provider 走 flavor=openai；local 用面板里选的 flavor；其余 provider 不带 llm 参数
+      const payload = { task: form.task, provider: form.provider, maxSteps: form.maxSteps, allowWrite: form.allowWrite };
+      if (form.provider === 'local' || form.provider === 'openai') payload.llm = { ...form.llm, flavor: form.provider === 'openai' ? 'openai' : form.llm.flavor };
+      try { res = await fetch('/api/run', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload), signal: controller.signal }); }
       catch (e) { running.value = false; return; }
       const reader = res.body.getReader(); const dec = new TextDecoder(); let buf = '';
       while (true) {
@@ -236,10 +297,21 @@ createApp({
       running.value = false; loadFiles();
     }
     const pretty = v => typeof v === 'string' ? v : JSON.stringify(v, null, 2);
+    // 结构化最终答案：按 "## " 切分为区块，"- [Tag] ..." 条目带来源标签
+    const sections = answer => {
+      if (!answer || !/^## /m.test(answer)) return [];
+      return answer.split(/^(?=## )/m).filter(b => b.startsWith('## ')).map(b => {
+        const [first, ...rest] = b.split('\n');
+        const items = [], text = [];
+        for (const l of rest) { const m = l.match(/^-\s+(?:\[([^\]]+)\]\s*)?(.*)$/); if (m) items.push({ tag: m[1] || '', text: m[2] }); else if (l.trim()) text.push(l); }
+        return { title: first.replace(/^##\s*/, ''), items, text: text.join('\n') };
+      });
+    };
+    const secClass = t => /已确认/.test(t) ? 'facts' : /可能原因|推测/.test(t) ? 'causes' : /不足/.test(t) ? 'gap' : /建议/.test(t) ? 'advice' : '';
     const icon = s => ({ done: '✔', in_progress: '▶', blocked: '✖', skipped: '↷', pending: '·' }[s] || '·');
     const cardClass = e => e.type === 'decision' ? 'decision' : e.type === 'final' ? (e.reason === 'completed' ? 'final' : 'final bad') : e.type === 'notice' ? 'notice' : '';
     onMounted(() => { loadInfo(); loadFiles(); });
-    return { info, events, visibleEvents, running, job, abort, files, viewing, lastTrace, bottom, meta, form, examples, currentStep, toolCalls, failures, subAgents, usage, plan, loadFiles, openFile, clear, run, pretty, icon, cardClass };
+    return { info, events, visibleEvents, running, job, abort, models, modelsLoading, modelsError, providerLabel, flavorDefault, applyFlavorDefaults, fetchModels, files, viewing, lastTrace, bottom, meta, form, examples, currentStep, toolCalls, failures, subAgents, usage, plan, loadFiles, openFile, clear, run, pretty, icon, cardClass, sections, secClass };
   }
 }).mount('#app');
 </script>

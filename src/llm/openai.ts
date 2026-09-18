@@ -1,34 +1,93 @@
 import type { LLMProvider, LLMResponse, Message, ToolSchema } from '../types.ts';
 
 /**
- * OpenAI 兼容的 /v1/chat/completions（DeepSeek、Qwen、Ollama、vLLM 等）。用 fetch 直接调用，
- * 带指数退避重试。
+ * OpenAI 兼容的 /v1/chat/completions。一套代码覆盖三种“口味”(flavor)：
+ *  - openai : OpenAI / DeepSeek / Qwen 等云端兼容接口（默认流式）
+ *  - vllm   : vLLM OpenAI server（默认流式；需服务端 --enable-auto-tool-choice --tool-call-parser <parser>）
+ *  - ollama : Ollama 的 /v1 兼容层（默认非流式；不发 tool_choice / stream_options / parallel_tool_calls，Ollama 文档列为不支持）
+ * 差异全部收敛在 buildRequestBody() 里，便于用 scripts/check-request-schema.ts 做离线校验。
  */
+export type Flavor = 'openai' | 'vllm' | 'ollama';
+
+export interface OpenAICompatOptions {
+  flavor?: Flavor;
+  baseUrl?: string;
+  apiKey?: string;
+  model?: string;
+  /** 是否流式；不传则按 flavor 默认（ollama=false，其余 true） */
+  stream?: boolean;
+}
+
+export const FLAVOR_DEFAULTS: Record<Flavor, { baseUrl: string; model: string; stream: boolean; apiKey: string }> = {
+  openai: { baseUrl: 'https://api.openai.com/v1', model: 'gpt-4o-mini', stream: true, apiKey: '' },
+  vllm: { baseUrl: 'http://localhost:8000/v1', model: '', stream: true, apiKey: '' },
+  // Ollama 要求客户端带一个 key 但会忽略其值
+  ollama: { baseUrl: 'http://localhost:11434/v1', model: 'qwen2.5:7b', stream: false, apiKey: 'ollama' },
+};
+
 export class OpenAICompatProvider implements LLMProvider {
   readonly name: string;
+  readonly flavor: Flavor;
   private baseUrl: string;
   private apiKey: string;
   private model: string;
+  private stream: boolean;
 
-  constructor(opts: { baseUrl?: string; apiKey?: string; model?: string } = {}) {
-    this.baseUrl = (opts.baseUrl ?? process.env.OPENAI_BASE_URL ?? 'https://api.openai.com/v1').replace(/\/$/, '');
-    this.apiKey = opts.apiKey ?? process.env.OPENAI_API_KEY ?? '';
-    this.model = opts.model ?? process.env.OPENAI_MODEL ?? 'gpt-4o-mini';
-    this.name = `openai-compat:${this.model}`;
+  constructor(opts: OpenAICompatOptions = {}) {
+    this.flavor = opts.flavor ?? (process.env.LLM_FLAVOR as Flavor) ?? 'openai';
+    const d = FLAVOR_DEFAULTS[this.flavor];
+    if (!d) throw new Error(`未知 flavor: ${this.flavor} (openai | vllm | ollama)`);
+    this.baseUrl = (opts.baseUrl ?? process.env.OPENAI_BASE_URL ?? d.baseUrl).replace(/\/$/, '');
+    this.apiKey = opts.apiKey ?? process.env.OPENAI_API_KEY ?? d.apiKey;
+    this.model = opts.model ?? process.env.OPENAI_MODEL ?? d.model;
+    this.stream = opts.stream ?? d.stream;
+    if (!this.model) throw new Error(`${this.flavor} 需要指定 model（vLLM 以 --served-model-name 或权重路径为模型名）`);
+    this.name = `${this.flavor}:${this.model}`;
+  }
+
+  /** 组装请求体。纯函数，供离线 schema 校验。 */
+  buildRequestBody(system: string, messages: readonly Message[], tools: ToolSchema[]): Record<string, unknown> {
+    const body: Record<string, unknown> = {
+      model: this.model,
+      messages: [{ role: 'system', content: system }, ...toOpenAI(messages)],
+      stream: this.stream,
+    };
+    if (tools.length) {
+      body.tools = tools.map((t) => ({ type: 'function', function: { name: t.name, description: t.description, parameters: t.input_schema } }));
+      // Ollama 不支持 tool_choice（发了可能被拒或被忽略），其余两种用 auto
+      if (this.flavor !== 'ollama') body.tool_choice = 'auto';
+    }
+    // stream_options 是 OpenAI/vLLM 的扩展字段，Ollama 未列入支持列表，不发
+    if (this.stream && this.flavor !== 'ollama') body.stream_options = { include_usage: true };
+    return body;
   }
 
   async chat(system: string, messages: readonly Message[], tools: ToolSchema[], onDelta?: (t: string) => void, signal?: AbortSignal): Promise<LLMResponse> {
-    const body = {
-      model: this.model,
-      messages: [{ role: 'system', content: system }, ...toOpenAI(messages)],
-      tools: tools.map((t) => ({ type: 'function', function: { name: t.name, description: t.description, parameters: t.input_schema } })),
-      tool_choice: 'auto',
-      stream: true,
-      stream_options: { include_usage: true },
-    };
+    const body = this.buildRequestBody(system, messages, tools);
     const res = await this.post('/chat/completions', body, 0, signal);
+    return this.stream ? this.parseStream(res, onDelta) : this.parseJson(await res.json(), onDelta);
+  }
 
-    // 解析 SSE：拼接文字增量与 tool_calls 参数片段
+  /** 非流式：直接解析 choices[0].message */
+  private parseJson(json: any, onDelta?: (t: string) => void): LLMResponse {
+    const msg = json.choices?.[0]?.message ?? {};
+    const text: string = msg.content ?? '';
+    if (text && onDelta) onDelta(text);
+    const toolCalls = (msg.tool_calls ?? []).map((tc: any, i: number) => ({
+      id: tc.id || `call_${i}_${Math.random().toString(36).slice(2, 8)}`,
+      name: tc.function?.name,
+      input: parseArgs(tc.function?.arguments),
+    }));
+    return {
+      text,
+      toolCalls,
+      stopReason: json.choices?.[0]?.finish_reason,
+      usage: { inputTokens: json.usage?.prompt_tokens ?? 0, outputTokens: json.usage?.completion_tokens ?? 0 },
+    };
+  }
+
+  /** 流式：拼接文字增量与 tool_calls 参数片段 */
+  private async parseStream(res: Response, onDelta?: (t: string) => void): Promise<LLMResponse> {
     let text = '';
     let finish: string | undefined;
     let usage = { inputTokens: 0, outputTokens: 0 };
@@ -44,28 +103,27 @@ export class OpenAICompatProvider implements LLMProvider {
       const d = choice.delta ?? {};
       if (d.content) { text += d.content; onDelta?.(d.content); }
       for (const tc of d.tool_calls ?? []) {
-        const cur = calls.get(tc.index) ?? { id: '', name: '', args: '' };
+        const idx = tc.index ?? 0;
+        const cur = calls.get(idx) ?? { id: '', name: '', args: '' };
         if (tc.id) cur.id = tc.id;
         if (tc.function?.name) cur.name = tc.function.name;
         if (tc.function?.arguments) cur.args += tc.function.arguments;
-        calls.set(tc.index, cur);
+        calls.set(idx, cur);
       }
     }
-    const toolCalls = [...calls.values()].map((c) => {
-      let input: unknown = c.args;
-      try { input = JSON.parse(c.args || '{}'); } catch { /* 保留字符串，registry 会报错给模型 */ }
-      return { id: c.id || `call_${Math.random().toString(36).slice(2)}`, name: c.name, input };
-    });
+    const toolCalls = [...calls.values()].map((c, i) => ({ id: c.id || `call_${i}_${Math.random().toString(36).slice(2, 8)}`, name: c.name, input: parseArgs(c.args) }));
     return { text, toolCalls, stopReason: finish, usage };
   }
 
   private async post(path: string, body: unknown, attempt = 0, signal?: AbortSignal): Promise<Response> {
+    const headers: Record<string, string> = { 'content-type': 'application/json' };
+    if (this.apiKey) headers.authorization = `Bearer ${this.apiKey}`;
     const res = await fetch(this.baseUrl + path, {
       method: 'POST',
-      headers: { 'content-type': 'application/json', authorization: `Bearer ${this.apiKey}` },
+      headers,
       body: JSON.stringify(body),
-      signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(120_000)]) : AbortSignal.timeout(120_000),
-    }).catch((e) => { throw new Error(`LLM 网络错误: ${e.message}`); });
+      signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(300_000)]) : AbortSignal.timeout(300_000), // 本地模型可能很慢
+    }).catch((e) => { throw new Error(`LLM 网络错误 (${this.baseUrl}): ${e.message}`); });
     if (res.ok) return res;
     const text = await res.text();
     if ((res.status === 429 || res.status >= 500) && attempt < 3) {
@@ -76,7 +134,14 @@ export class OpenAICompatProvider implements LLMProvider {
   }
 }
 
-function toOpenAI(messages: readonly Message[]): any[] {
+/** 参数可能是 JSON 字符串（OpenAI/vLLM/Ollama-v1）或已解析的对象（个别实现）；解析失败保留原文让 registry 报错给模型 */
+function parseArgs(a: unknown): unknown {
+  if (a == null || a === '') return {};
+  if (typeof a !== 'string') return a;
+  try { return JSON.parse(a); } catch { return a; }
+}
+
+export function toOpenAI(messages: readonly Message[]): any[] {
   const out: any[] = [];
   for (const m of messages) {
     if (m.role === 'user') out.push({ role: 'user', content: m.content });

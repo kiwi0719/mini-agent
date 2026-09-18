@@ -11,6 +11,11 @@ const { values, positionals } = parseArgs({
   options: {
     workspace: { type: 'string', short: 'w', default: 'workspace' },
     provider: { type: 'string', short: 'p' },
+    flavor: { type: 'string' },
+    'base-url': { type: 'string' },
+    model: { type: 'string' },
+    'api-key': { type: 'string' },
+    'llm-stream': { type: 'boolean' },
     'max-steps': { type: 'string', default: '15' },
     'no-write': { type: 'boolean', default: false },
     'trace-dir': { type: 'string', default: 'traces' },
@@ -26,7 +31,12 @@ if (values.help || !task) {
 
 选项:
   -w, --workspace <dir>   workspace 目录 (默认 workspace)
-  -p, --provider <name>   anthropic | openai | mock (默认取 $LLM_PROVIDER，否则 mock)
+  -p, --provider <name>   anthropic | openai | local | mock (默认取 $LLM_PROVIDER，否则 mock)
+      --flavor <name>     local/openai 的口味: ollama | vllm | openai（local 默认 ollama）
+      --base-url <url>    OpenAI 兼容接口地址，如 http://localhost:11434/v1
+      --model <name>      模型名
+      --api-key <key>     可选；Ollama 忽略，vLLM 视启动参数
+      --llm-stream        强制流式（Ollama 默认非流式）
       --max-steps <n>     最大轮数 (默认 15)
       --no-write          禁止 write_file
       --trace-dir <dir>   trace 输出目录 (默认 traces)
@@ -36,7 +46,13 @@ if (values.help || !task) {
 }
 
 const workspace = path.resolve(values.workspace!);
-const llm = createProvider(values.provider);
+const llm = createProvider(values.provider, {
+  flavor: values.flavor as any,
+  baseUrl: values['base-url'],
+  model: values.model,
+  apiKey: values['api-key'],
+  stream: values['llm-stream'],
+});
 const trace = new Trace({ provider: llm.name, workspace });
 const log = (s: string) => { if (!values.quiet) console.log(s); };
 

@@ -10,7 +10,8 @@ export class AnthropicProvider implements LLMProvider {
   private client: Anthropic;
   private model: string;
 
-  constructor(model = process.env.ANTHROPIC_MODEL ?? 'claude-opus-5') {
+  constructor(model?: string) {
+    model = model || process.env.ANTHROPIC_MODEL || 'claude-opus-5';
     this.client = new Anthropic({ maxRetries: 3, timeout: 120_000 });
     this.model = model;
     this.name = `anthropic:${model}`;

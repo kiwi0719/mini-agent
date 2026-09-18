@@ -9,8 +9,9 @@ import { createDefaultRegistry } from './tools/index.ts';
 import { createProvider } from './llm/index.ts';
 import { Trace } from './trace.ts';
 
-const { task, provider, maxSteps, allowWrite, workspace, traceDir } = workerData as {
-  task: string; provider?: string; maxSteps?: number; allowWrite?: boolean; workspace: string; traceDir: string;
+import type { LLMConfig } from './llm/index.ts';
+const { task, provider, llm: llmCfg, maxSteps, allowWrite, workspace, traceDir } = workerData as {
+  task: string; provider?: string; llm?: LLMConfig; maxSteps?: number; allowWrite?: boolean; workspace: string; traceDir: string;
 };
 
 const ac = new AbortController();
@@ -19,7 +20,7 @@ parentPort!.on('message', (m) => { if (m?.type === 'abort') ac.abort(); });
 parentPort!.unref();
 
 try {
-  const llm = createProvider(provider);
+  const llm = createProvider(provider, llmCfg ?? {});
   const trace = new Trace({ provider: llm.name, workspace });
   parentPort!.postMessage({ type: 'meta', provider: llm.name });
   const agent = new Agent(llm, createDefaultRegistry(), workspace, {

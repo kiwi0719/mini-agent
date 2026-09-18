@@ -131,10 +131,32 @@ interface LLMProvider {
 ```
 实现：
 - `anthropic`：官方 `@anthropic-ai/sdk`，手写 tool-use 循环（作业要求自己实现 loop，因此不用 SDK 的 toolRunner）；
-- `openai-compat`：兼容 DeepSeek / Qwen / Ollama 等 `/v1/chat/completions`；
+- `openai` / `local`：同一个 `OpenAICompatProvider`，按 **flavor** 区分 `openai`（云端兼容接口）、`vllm`、`ollama`；
 - `mock`：基于规则的脚本化 LLM，用于无 API 条件下完成端到端验证与 CI。
 
-通过环境变量选择：`LLM_PROVIDER=anthropic|openai|mock`。
+选择方式：`LLM_PROVIDER=anthropic|openai|local|mock`，CLI `-p/--flavor/--base-url/--model/--api-key`，或 Web 面板。
+
+### 5.1 本地模型（Ollama / vLLM）的兼容设计
+
+两者都提供 OpenAI 兼容的 `/v1/chat/completions`，因此不另写原生 Provider（Ollama 原生 `/api/chat` 的 `arguments` 是对象而非字符串、tool 结果回传格式也不同，多一套协议只会多一处出错）。差异收敛在 `buildRequestBody()`：
+
+| 字段 | openai | vllm | ollama | 依据 |
+|---|---|---|---|---|
+| `tools[].type=function, function.{name,description,parameters}` | ✅ | ✅ | ✅ | 三方一致 |
+| `tool_choice: "auto"` | ✅ | ✅ | **不发** | Ollama OpenAI 兼容文档把 `tool_choice`、`parallel_tool_calls` 列为不支持 |
+| `stream` 默认 | true | true | **false** | Ollama 文档未确认 `/v1` 层流式 tool call；非流式最稳，可手动开 |
+| `stream_options.include_usage` | ✅ | ✅ | **不发** | 非 OpenAI 标准扩展，Ollama 未列入支持 |
+| `Authorization` | 必填 | 视 `--api-key` | 任意值 | Ollama "要求有 key 但忽略其值"，默认填 `ollama` |
+| 默认地址 | api.openai.com/v1 | localhost:8000/v1 | localhost:11434/v1 | |
+| 请求超时 | 300s | 300s | 300s | 本地小机器可能很慢 |
+
+响应解析对两种形态都兼容：`arguments` 为 JSON 字符串（标准）或已是对象（个别实现）；流式按 `tool_calls[].index` 拼接片段；非流式直接取 `choices[0].message`。
+
+**前端字段**：`provider=local` 时提交 `llm: { flavor, baseUrl, model, apiKey?, stream }`，服务端原样传给 worker → `createProvider('local', llm)`；空字符串视为未填，回落到 flavor 默认值。`GET /api/models?baseUrl=` 由服务端代理 `{baseUrl}/models` 拉模型列表，绕开浏览器 CORS（仅限本地演示，它是一个按用户输入地址发请求的代理）。
+
+**vLLM 的前提**：服务端必须以 `--enable-auto-tool-choice --tool-call-parser <parser>` 启动（hermes / llama3_json / qwen3_xml / mistral … 按模型选），否则模型只会输出文本、永远不产生 tool call，Agent 会在第一步就以"最终答案"结束。这一点在 UI 上有提示。
+
+**验证方式**：开发机没有能跑本地模型的性能，因此没有做真实联调。`scripts/check-request-schema.ts` 用真实的工具注册表和一段覆盖全部角色（user / assistant+tool_calls / tool 成功与失败 / system 注入）的历史，离线组装三种 flavor 的请求体并断言：每个工具 schema 在 Ajv strict 模式下可编译、名称满足 `^[a-zA-Z0-9_-]{1,64}$`、`parameters.type=object`、`tool_choice` / `stream_options` 按 flavor 有无、`arguments` 是 JSON 字符串、tool 消息紧跟 assistant 且 `tool_call_id` 一一对应、序列化后无 `undefined`。这能保证"schema 不传错"，但不能保证某个具体本地模型的 tool-call 质量。
 
 ## 6. 可选增强项（全部实现）
 
