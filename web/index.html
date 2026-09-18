@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mini Agent</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.global.prod.js"></script>
+<style>
+  :root { --bg:#0f1115; --panel:#171a21; --border:#2a2f3a; --text:#e6e6e6; --muted:#8b93a5; --accent:#6ea8fe; --ok:#3ddc97; --err:#ff6b6b; --warn:#ffcf5c; --sub:#c08bff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif; }
+  header { display:flex; align-items:center; gap:12px; padding:12px 20px; border-bottom:1px solid var(--border); background:var(--panel); }
+  header h1 { font-size:16px; margin:0; }
+  header .badge { font-size:12px; color:var(--muted); }
+  main { display:grid; grid-template-columns: 340px 1fr 320px; gap:0; height:calc(100vh - 49px); }
+  aside, section { overflow:auto; }
+  aside { border-right:1px solid var(--border); padding:16px; background:var(--panel); }
+  .right { border-left:1px solid var(--border); background:var(--panel); padding:16px; }
+  section.timeline { padding:16px 20px; }
+  label { display:block; font-size:12px; color:var(--muted); margin:10px 0 4px; }
+  textarea, select, input { width:100%; background:#0d0f13; border:1px solid var(--border); color:var(--text); border-radius:6px; padding:8px; font:inherit; }
+  textarea { min-height:110px; resize:vertical; }
+  button { background:var(--accent); color:#000; border:0; border-radius:6px; padding:9px 14px; font:inherit; font-weight:600; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:not-allowed; }
+  button.ghost { background:transparent; color:var(--text); border:1px solid var(--border); }
+  .examples button { display:block; width:100%; text-align:left; margin-top:6px; font-weight:400; font-size:12px; }
+  .row { display:flex; gap:8px; align-items:center; }
+  .card { border:1px solid var(--border); border-radius:8px; padding:10px 12px; margin-bottom:10px; background:var(--panel); }
+  .card.sub { margin-left:28px; border-left:3px solid var(--sub); }
+  .card .head { display:flex; gap:8px; align-items:center; font-size:12px; color:var(--muted); margin-bottom:6px; }
+  .card .head b { color:var(--text); }
+  .tag { padding:1px 6px; border-radius:4px; font-size:11px; background:#232833; }
+  .tag.ok { background:rgba(61,220,151,.15); color:var(--ok); } .tag.err { background:rgba(255,107,107,.15); color:var(--err); }
+  .tag.sub { background:rgba(192,139,255,.15); color:var(--sub); }
+  pre { margin:0; white-space:pre-wrap; word-break:break-all; font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace; color:#cfd6e4; max-height:260px; overflow:auto; background:#0d0f13; padding:8px; border-radius:6px; }
+  .decision { border-left:3px solid var(--accent); }
+  .final { border-left:3px solid var(--ok); }
+  .final.bad { border-left-color:var(--err); }
+  .notice { border-left:3px solid var(--warn); }
+  .cursor::after { content:'▍'; animation:blink 1s steps(1) infinite; color:var(--accent); }
+  @keyframes blink { 50% { opacity:0; } }
+  .plan li { list-style:none; padding:3px 0; } .plan ul { padding:0; margin:0; }
+  .plan .done { color:var(--ok); } .plan .in_progress { color:var(--accent); } .plan .blocked { color:var(--err); } .plan .pending, .plan .skipped { color:var(--muted); }
+  .stats { display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:12px; }
+  .stats div { background:#0d0f13; border-radius:6px; padding:6px 8px; } .stats b { display:block; font-size:16px; }
+  .files li { list-style:none; cursor:pointer; padding:2px 0; color:var(--accent); font-size:12px; } .files ul { padding:0; margin:0; }
+  h3 { font-size:13px; margin:16px 0 8px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+  .empty { color:var(--muted); text-align:center; margin-top:80px; }
+  .modal { position:fixed; inset:0; background:rgba(0,0,0,.6); display:flex; align-items:center; justify-content:center; }
+  .modal .box { width:min(900px,90vw); max-height:85vh; overflow:auto; background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:16px; }
+  .modal pre { max-height:70vh; }
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>🤖 Mini Agent</h1>
+    <span class="badge" v-if="info">provider: <b>{{ meta.provider || form.provider }}</b> · workspace: {{ info.workspace }}</span>
+    <span style="flex:1"></span>
+    <span class="badge" v-if="running">运行中… step {{ currentStep }}</span>
+  </header>
+  <main>
+    <!-- 左：任务输入 -->
+    <aside>
+      <label>任务</label>
+      <textarea v-model="form.task" placeholder="用自然语言描述任务…" :disabled="running"></textarea>
+      <div class="row">
+        <div style="flex:1"><label>Provider</label>
+          <select v-model="form.provider" :disabled="running"><option v-for="p in (info?.providers||['mock'])" :value="p">{{ p }}</option></select></div>
+        <div style="width:90px"><label>Max steps</label><input type="number" v-model.number="form.maxSteps" min="1" max="50" :disabled="running"></div>
+      </div>
+      <label class="row" style="margin-top:10px"><input type="checkbox" v-model="form.allowWrite" style="width:auto" :disabled="running"> 允许 write_file</label>
+      <div class="row" style="margin-top:12px">
+        <button @click="run" :disabled="running || !form.task.trim()">▶ 运行</button>
+        <button class="ghost" @click="clear" :disabled="running">清空</button>
+      </div>
+      <h3>示例任务</h3>
+      <div class="examples"><button class="ghost" v-for="ex in examples" @click="form.task = ex" :disabled="running">{{ ex }}</button></div>
+      <h3>工具 ({{ info?.tools.length }})</h3>
+      <div style="font-size:12px;color:var(--muted)">
+        <div v-for="t in info?.tools" :title="t.description">
+          <span :class="['tag', t.permission==='write' ? 'err' : '']">{{ t.permission }}</span>
+          <span class="tag" v-if="t.deferred">deferred</span> {{ t.name }}
+        </div>
+      </div>
+    </aside>
+
+    <!-- 中：时间线 -->
+    <section class="timeline">
+      <div v-if="!events.length" class="empty">输入任务并点击运行，这里会实时显示<br>User → Agent Decision → Tool Call → Tool Result → … → Final Answer</div>
+      <div v-for="(e, i) in visibleEvents" :key="i" :class="['card', e.depth>0 ? 'sub' : '', cardClass(e)]">
+        <template v-if="e.type==='user'">
+          <div class="head"><span class="tag" :class="e.depth>0?'sub':''">{{ e.depth>0 ? '🤖 '+e.agent+' 子任务' : '👤 User' }}</span></div>
+          <div>{{ e.task }}</div>
+        </template>
+        <template v-else-if="e.type==='decision'">
+          <div class="head"><span class="tag">🧠 Agent Decision</span><b>step {{ e.step }}</b><span v-if="e.depth>0" class="tag sub">{{ e.agent }}</span>
+            <span style="margin-left:auto">⏱ {{ e.durationMs }}ms · tokens {{ e.usage.inputTokens }}/{{ e.usage.outputTokens }}</span></div>
+          <div :class="{cursor: e.streaming}">{{ e.text || (e.streaming ? '' : '(无文字说明)') }}</div>
+          <div v-if="e.toolCalls?.length" style="margin-top:6px;font-size:12px;color:var(--muted)">→ 调用 {{ e.toolCalls.map(c=>c.name).join(', ') }}</div>
+        </template>
+        <template v-else-if="e.type==='tool_call'">
+          <div class="head"><span class="tag">🔧 Tool Call</span><b>{{ e.call.name }}</b><span v-if="e.depth>0" class="tag sub">{{ e.agent }}</span></div>
+          <pre>{{ pretty(e.call.input) }}</pre>
+        </template>
+        <template v-else-if="e.type==='tool_result'">
+          <div class="head"><span :class="['tag', e.result.ok?'ok':'err']">{{ e.result.ok ? '✅' : '❌' }} Tool Result</span><b>{{ e.name }}</b><span v-if="e.depth>0" class="tag sub">{{ e.agent }}</span><span style="margin-left:auto">{{ e.durationMs }}ms</span></div>
+          <pre>{{ e.result.ok ? e.result.output : e.result.error }}</pre>
+        </template>
+        <template v-else-if="e.type==='plan'">
+          <div class="head"><span class="tag">📋 Plan</span><b>step {{ e.step }}</b></div>
+          <div class="plan"><ul><li v-for="p in e.plan" :class="p.status">{{ icon(p.status) }} {{ p.id }}. {{ p.title }} <span v-if="p.note" style="color:var(--muted)">— {{ p.note }}</span></li></ul></div>
+        </template>
+        <template v-else-if="e.type==='tools_activated'">
+          <div class="head"><span class="tag">🔍 Tool Search</span></div><div>激活扩展工具: <b>{{ e.names.join(', ') }}</b></div>
+        </template>
+        <template v-else-if="e.type==='notice'">
+          <div class="head"><span class="tag">⚠️ Notice</span></div><div>{{ e.message }}</div>
+        </template>
+        <template v-else-if="e.type==='final'">
+          <div class="head"><span class="tag" :class="e.reason==='completed'?'ok':'err'">🏁 {{ e.depth>0 ? '子 Agent 结束' : 'Final Answer' }}</span><b>{{ e.reason }}</b><span v-if="e.depth>0" class="tag sub">{{ e.agent }}</span><span style="margin-left:auto">{{ e.steps }} steps · tokens {{ e.usage.inputTokens }}/{{ e.usage.outputTokens }}</span></div>
+          <pre>{{ e.answer }}</pre>
+        </template>
+        <template v-else-if="e.type==='error'"><div class="head"><span class="tag err">错误</span></div><pre>{{ e.message }}</pre></template>
+      </div>
+      <div ref="bottom"></div>
+    </section>
+
+    <!-- 右：状态 -->
+    <aside class="right">
+      <h3>统计</h3>
+      <div class="stats">
+        <div>步数<b>{{ currentStep }}</b></div>
+        <div>工具调用<b>{{ toolCalls }}</b></div>
+        <div>失败<b :style="{color: failures? 'var(--err)':''}">{{ failures }}</b></div>
+        <div>子 Agent<b>{{ subAgents }}</b></div>
+        <div>tokens in<b>{{ usage.inputTokens }}</b></div>
+        <div>tokens out<b>{{ usage.outputTokens }}</b></div>
+      </div>
+      <h3>当前计划</h3>
+      <div class="plan" v-if="plan.length"><ul><li v-for="p in plan" :class="p.status">{{ icon(p.status) }} {{ p.title }}</li></ul></div>
+      <div v-else style="color:var(--muted);font-size:12px">（尚无计划）</div>
+      <h3>Workspace <button class="ghost" style="padding:2px 8px;font-size:11px" @click="loadFiles">刷新</button></h3>
+      <div class="files"><ul><li v-for="f in files" @click="openFile(f.path)">{{ f.path }}</li></ul></div>
+      <h3>Trace</h3>
+      <div style="font-size:12px;color:var(--muted)">{{ lastTrace ? '已保存: traces/' + lastTrace : '运行结束后自动保存到 traces/' }}</div>
+    </aside>
+  </main>
+
+  <div class="modal" v-if="viewing" @click.self="viewing=null">
+    <div class="box"><div class="row" style="justify-content:space-between;margin-bottom:8px"><b>{{ viewing.path }}</b><button class="ghost" @click="viewing=null">关闭</button></div>
+      <pre>{{ viewing.binary ? '(二进制文件)' : viewing.content }}</pre></div>
+  </div>
+</div>
+
+<script>
+const { createApp, reactive, ref, computed, nextTick, onMounted } = Vue;
+createApp({
+  setup() {
+    const info = ref(null), events = ref([]), running = ref(false), files = ref([]), viewing = ref(null), lastTrace = ref(null), bottom = ref(null);
+    const meta = reactive({ provider: '' });
+    const form = reactive({ task: '', provider: 'mock', maxSteps: 15, allowWrite: true });
+    const examples = [
+      '找出 workspace 目录中所有 TODO，按照文件进行分类并生成 todo-report.md。',
+      '读取 data/sales.txt 中的数据，计算所有产品销售额之和，并把计算结果写入 report.md。',
+      '核对 docs/design.md 中引用的所有文件是否存在且可读，把核对结果写入 docs/check.md。',
+    ];
+    const visibleEvents = computed(() => events.value.filter(e => e.type !== 'delta'));
+    const main = computed(() => events.value.filter(e => e.depth === 0));
+    const currentStep = computed(() => Math.max(0, ...main.value.filter(e => e.step).map(e => e.step)));
+    const toolCalls = computed(() => events.value.filter(e => e.type === 'tool_call').length);
+    const failures = computed(() => events.value.filter(e => e.type === 'tool_result' && !e.result.ok).length);
+    const subAgents = computed(() => new Set(events.value.filter(e => e.depth > 0).map(e => e.agent)).size);
+    const usage = computed(() => { const f = main.value.find(e => e.type === 'final'); if (f) return f.usage; return events.value.filter(e => e.type === 'decision').reduce((a, e) => ({ inputTokens: a.inputTokens + e.usage.inputTokens, outputTokens: a.outputTokens + e.usage.outputTokens }), { inputTokens: 0, outputTokens: 0 }); });
+    const plan = computed(() => { const p = [...main.value].reverse().find(e => e.type === 'plan'); return p ? p.plan : []; });
+
+    async function loadInfo() { info.value = await (await fetch('/api/info')).json(); form.provider = info.value.defaultProvider; }
+    async function loadFiles() { files.value = await (await fetch('/api/workspace')).json(); }
+    async function openFile(p) { viewing.value = await (await fetch('/api/file?path=' + encodeURIComponent(p))).json(); }
+    function clear() { events.value = []; lastTrace.value = null; }
+    const scroll = () => nextTick(() => bottom.value?.scrollIntoView({ behavior: 'smooth' }));
+
+    // 流式文本：delta 事件先在时间线上放一张“正在生成”的 decision 卡片，decision 到达后替换
+    function handle(e) {
+      if (e.type === 'delta') {
+        let card = events.value.findLast(x => x.type === 'decision' && x.streaming && x.agent === e.agent && x.step === e.step);
+        if (!card) { card = { type: 'decision', step: e.step, agent: e.agent, depth: e.depth, text: '', toolCalls: [], usage: { inputTokens: 0, outputTokens: 0 }, durationMs: 0, streaming: true }; events.value.push(card); }
+        card.text += e.text; return;
+      }
+      if (e.type === 'decision') {
+        const idx = events.value.findLastIndex(x => x.type === 'decision' && x.streaming && x.agent === e.agent && x.step === e.step);
+        if (idx >= 0) { events.value[idx] = e; return; }
+      }
+      events.value.push(e);
+    }
+
+    async function run() {
+      clear(); running.value = true; meta.provider = '';
+      const res = await fetch('/api/run', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(form) });
+      const reader = res.body.getReader(); const dec = new TextDecoder(); let buf = '';
+      while (true) {
+        const { value, done } = await reader.read(); if (done) break;
+        buf += dec.decode(value, { stream: true });
+        let idx;
+        while ((idx = buf.indexOf('\n\n')) >= 0) {
+          const chunk = buf.slice(0, idx); buf = buf.slice(idx + 2);
+          const ev = /^event: (.*)$/m.exec(chunk)?.[1]; const data = /^data: (.*)$/m.exec(chunk)?.[1];
+          if (!ev || !data) continue;
+          const obj = JSON.parse(data);
+          if (ev === 'meta') meta.provider = obj.provider;
+          else if (ev === 'agent') { handle(obj); scroll(); }
+          else if (ev === 'done') lastTrace.value = obj.trace;
+          else if (ev === 'error') events.value.push({ type: 'error', depth: 0, message: obj.message });
+        }
+      }
+      running.value = false; loadFiles();
+    }
+    const pretty = v => typeof v === 'string' ? v : JSON.stringify(v, null, 2);
+    const icon = s => ({ done: '✔', in_progress: '▶', blocked: '✖', skipped: '↷', pending: '·' }[s] || '·');
+    const cardClass = e => e.type === 'decision' ? 'decision' : e.type === 'final' ? (e.reason === 'completed' ? 'final' : 'final bad') : e.type === 'notice' ? 'notice' : '';
+    onMounted(() => { loadInfo(); loadFiles(); });
+    return { info, events, visibleEvents, running, files, viewing, lastTrace, bottom, meta, form, examples, currentStep, toolCalls, failures, subAgents, usage, plan, loadFiles, openFile, clear, run, pretty, icon, cardClass };
+  }
+}).mount('#app');
+</script>
+</body>
+</html>

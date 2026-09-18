@@ -1,0 +1,22 @@
+{
+  "name": "mini-agent",
+  "version": "1.0.0",
+  "description": "A minimal tool-using AI agent (TypeScript CLI + simple web UI)",
+  "type": "module",
+  "scripts": {
+    "agent": "node src/cli.ts",
+    "web": "node src/server.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node scripts/run-examples.ts",
+    "reset-workspace": "node scripts/reset-workspace.ts"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.126.0",
+    "ajv": "^8.20.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.1",
+    "typescript": "^7.0.2"
+  }
+}

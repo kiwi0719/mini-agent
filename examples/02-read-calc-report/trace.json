@@ -1,0 +1,677 @@
+{
+  "meta": {
+    "provider": "mock",
+    "workspace": "workspace"
+  },
+  "startedAt": 1789763121486,
+  "events": [
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "user",
+      "task": "读取 data/sales.txt 中的数据，计算所有产品销售额之和，并把计算结果写入 report.md。",
+      "ts": 1789763121486
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "制定计划。",
+      "ts": 1789763121487
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 1,
+      "text": "制定计划。",
+      "toolCalls": [
+        {
+          "id": "mock_1",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "解析销售数据文件",
+                "status": "in_progress"
+              },
+              {
+                "id": 2,
+                "title": "计算销售额之和",
+                "status": "pending"
+              },
+              {
+                "id": 3,
+                "title": "写入报告",
+                "status": "pending"
+              }
+            ]
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 28,
+        "outputTokens": 80
+      },
+      "durationMs": 5,
+      "ts": 1789763121492
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_1",
+        "name": "update_plan",
+        "input": {
+          "steps": [
+            {
+              "id": 1,
+              "title": "解析销售数据文件",
+              "status": "in_progress"
+            },
+            {
+              "id": 2,
+              "title": "计算销售额之和",
+              "status": "pending"
+            },
+            {
+              "id": 3,
+              "title": "写入报告",
+              "status": "pending"
+            }
+          ]
+        }
+      },
+      "ts": 1789763121492
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "plan",
+      "step": 1,
+      "plan": [
+        {
+          "id": 1,
+          "title": "解析销售数据文件",
+          "status": "in_progress"
+        },
+        {
+          "id": 2,
+          "title": "计算销售额之和",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "写入报告",
+          "status": "pending"
+        }
+      ],
+      "ts": 1789763121492
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_1",
+      "name": "update_plan",
+      "result": {
+        "ok": true,
+        "output": "计划已更新（0/3 完成）"
+      },
+      "durationMs": 1,
+      "ts": 1789763121493
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "数据是表格格",
+      "ts": 1789763121493
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "式，先看看有",
+      "ts": 1789763121499
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "没有更合适的",
+      "ts": 1789763121505
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "解析工具。",
+      "ts": 1789763121510
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 2,
+      "text": "数据是表格格式，先看看有没有更合适的解析工具。",
+      "toolCalls": [
+        {
+          "id": "mock_2",
+          "name": "search_tools",
+          "input": {
+            "query": "csv 解析"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 150,
+        "outputTokens": 80
+      },
+      "durationMs": 22,
+      "ts": 1789763121515
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_2",
+        "name": "search_tools",
+        "input": {
+          "query": "csv 解析"
+        }
+      },
+      "ts": 1789763121515
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tools_activated",
+      "step": 2,
+      "names": [
+        "csv_parse"
+      ],
+      "ts": 1789763121516
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_2",
+      "name": "search_tools",
+      "result": {
+        "ok": true,
+        "output": "找到并激活 1 个工具，下一轮即可调用:\n- csv_parse: 解析 CSV / 分隔符文本文件为结构化 JSON 行数组。自动跳过注释行(#)与空行，报告无法解析为数字的脏数据行。适合处理销售数据、表格数据。"
+      },
+      "durationMs": 1,
+      "ts": 1789763121516
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "使用 csv",
+      "ts": 1789763121517
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "_parse",
+      "ts": 1789763121522
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": " 解析文件（",
+      "ts": 1789763121527
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "金额列为数字",
+      "ts": 1789763121533
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "）。",
+      "ts": 1789763121538
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 3,
+      "text": "使用 csv_parse 解析文件（金额列为数字）。",
+      "toolCalls": [
+        {
+          "id": "mock_3",
+          "name": "csv_parse",
+          "input": {
+            "path": "data/sales.txt",
+            "numeric_columns": [
+              1
+            ]
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 265,
+        "outputTokens": 80
+      },
+      "durationMs": 28,
+      "ts": 1789763121544
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_3",
+        "name": "csv_parse",
+        "input": {
+          "path": "data/sales.txt",
+          "numeric_columns": [
+            1
+          ]
+        }
+      },
+      "ts": 1789763121544
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_3",
+      "name": "csv_parse",
+      "result": {
+        "ok": true,
+        "output": "{\n \"rows\": [\n  [\n   \"Widget A\",\n   1200\n  ],\n  [\n   \"Widget B\",\n   850.5\n  ],\n  [\n   \"Gadget X\",\n   3200\n  ],\n  [\n   \"Gadget Y\",\n   415.25\n  ],\n  [\n   \"Service Plan\",\n   999\n  ],\n  [\n   \"Bundle Pack\",\n   2750\n  ]\n ],\n \"invalid\": [\n  {\n   \"line\": 7,\n   \"text\": \"Legacy Item, N/A\",\n   \"reason\": \"第 1 列 \\\"N/A\\\" 不是数字\"\n  }\n ],\n \"row_count\": 6\n}"
+      },
+      "durationMs": 2,
+      "ts": 1789763121546
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "解析出 6 ",
+      "ts": 1789763121546
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "条有效记录，",
+      "ts": 1789763121552
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "跳过 1 条",
+      "ts": 1789763121558
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "脏数据。用 ",
+      "ts": 1789763121563
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "calcul",
+      "ts": 1789763121569
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "ator 精",
+      "ts": 1789763121575
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "确求和。",
+      "ts": 1789763121581
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 4,
+      "text": "解析出 6 条有效记录，跳过 1 条脏数据。用 calculator 精确求和。",
+      "toolCalls": [
+        {
+          "id": "mock_4",
+          "name": "calculator",
+          "input": {
+            "expression": "sum(1200, 850.5, 3200, 415.25, 999, 2750)"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 489,
+        "outputTokens": 80
+      },
+      "durationMs": 40,
+      "ts": 1789763121586
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_4",
+        "name": "calculator",
+        "input": {
+          "expression": "sum(1200, 850.5, 3200, 415.25, 999, 2750)"
+        }
+      },
+      "ts": 1789763121586
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_4",
+      "name": "calculator",
+      "result": {
+        "ok": true,
+        "output": "sum(1200, 850.5, 3200, 415.25, 999, 2750) = 9414.75"
+      },
+      "durationMs": 2,
+      "ts": 1789763121588
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "生成报告。",
+      "ts": 1789763121589
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 5,
+      "text": "生成报告。",
+      "toolCalls": [
+        {
+          "id": "mock_5",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "解析销售数据文件",
+                "status": "done"
+              },
+              {
+                "id": 2,
+                "title": "计算销售额之和",
+                "status": "done",
+                "note": "合计 9414.75"
+              },
+              {
+                "id": 3,
+                "title": "写入报告",
+                "status": "in_progress"
+              }
+            ]
+          }
+        },
+        {
+          "id": "mock_6",
+          "name": "write_file",
+          "input": {
+            "path": "report.md",
+            "content": "# 销售报告\n\n| 产品 | 销售额 |\n|---|---|\n| Widget A | 1200 |\n| Widget B | 850.5 |\n| Gadget X | 3200 |\n| Gadget Y | 415.25 |\n| Service Plan | 999 |\n| Bundle Pack | 2750 |\n| **合计** | **9414.75** |\n\n> 跳过 1 条无法解析的记录:\n> - 第 7 行 \"Legacy Item, N/A\"：第 1 列 \"N/A\" 不是数字\n"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 603,
+        "outputTokens": 80
+      },
+      "durationMs": 6,
+      "ts": 1789763121595
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 5,
+      "call": {
+        "id": "mock_5",
+        "name": "update_plan",
+        "input": {
+          "steps": [
+            {
+              "id": 1,
+              "title": "解析销售数据文件",
+              "status": "done"
+            },
+            {
+              "id": 2,
+              "title": "计算销售额之和",
+              "status": "done",
+              "note": "合计 9414.75"
+            },
+            {
+              "id": 3,
+              "title": "写入报告",
+              "status": "in_progress"
+            }
+          ]
+        }
+      },
+      "ts": 1789763121595
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "plan",
+      "step": 5,
+      "plan": [
+        {
+          "id": 1,
+          "title": "解析销售数据文件",
+          "status": "done"
+        },
+        {
+          "id": 2,
+          "title": "计算销售额之和",
+          "status": "done",
+          "note": "合计 9414.75"
+        },
+        {
+          "id": 3,
+          "title": "写入报告",
+          "status": "in_progress"
+        }
+      ],
+      "ts": 1789763121595
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 5,
+      "callId": "mock_5",
+      "name": "update_plan",
+      "result": {
+        "ok": true,
+        "output": "计划已更新（2/3 完成）"
+      },
+      "durationMs": 0,
+      "ts": 1789763121595
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 5,
+      "call": {
+        "id": "mock_6",
+        "name": "write_file",
+        "input": {
+          "path": "report.md",
+          "content": "# 销售报告\n\n| 产品 | 销售额 |\n|---|---|\n| Widget A | 1200 |\n| Widget B | 850.5 |\n| Gadget X | 3200 |\n| Gadget Y | 415.25 |\n| Service Plan | 999 |\n| Bundle Pack | 2750 |\n| **合计** | **9414.75** |\n\n> 跳过 1 条无法解析的记录:\n> - 第 7 行 \"Legacy Item, N/A\"：第 1 列 \"N/A\" 不是数字\n"
+        }
+      },
+      "ts": 1789763121595
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 5,
+      "callId": "mock_6",
+      "name": "write_file",
+      "result": {
+        "ok": true,
+        "output": "已写入 report.md (309 bytes)"
+      },
+      "durationMs": 1,
+      "ts": 1789763121596
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "完成。6 个",
+      "ts": 1789763121597
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "产品销售额之",
+      "ts": 1789763121602
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "和为 941",
+      "ts": 1789763121608
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "4.75（跳",
+      "ts": 1789763121613
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "过 1 条脏",
+      "ts": 1789763121619
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "数据），报告",
+      "ts": 1789763121625
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "已写入 re",
+      "ts": 1789763121630
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "port.m",
+      "ts": 1789763121636
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "d。",
+      "ts": 1789763121641
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 6,
+      "text": "完成。6 个产品销售额之和为 9414.75（跳过 1 条脏数据），报告已写入 report.md。",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 877,
+        "outputTokens": 80
+      },
+      "durationMs": 50,
+      "ts": 1789763121647
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "final",
+      "answer": "完成。6 个产品销售额之和为 9414.75（跳过 1 条脏数据），报告已写入 report.md。",
+      "reason": "completed",
+      "steps": 6,
+      "usage": {
+        "inputTokens": 2412,
+        "outputTokens": 480
+      },
+      "ts": 1789763121647
+    }
+  ]
+}
