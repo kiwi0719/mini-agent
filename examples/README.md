@@ -1,6 +1,6 @@
 # 示例任务执行结果
 
-provider: `mock` · 生成时间: 2026-09-18T21:17:52.613Z
+provider: `mock` · 生成时间: 2026-09-18T21:24:41.573Z
 
 ## [01-search-and-summarize](./01-search-and-summarize/README.md)
 
@@ -169,3 +169,19 @@ provider: `mock` · 生成时间: 2026-09-18T21:17:52.613Z
 - 校验: ✅
 - 结果: **completed**，5 steps，10 tool calls，0 failures，0 sub agents
 - 最终答案: ## 故障现象
+
+## [22-write-conflict-guard](./22-write-conflict-guard/README.md)
+
+- 类型: 并发写冲突：两个任务同时预约同一输出 → 后者在 plan 阶段就被拒 → 换文件名重规划
+- 任务: 并发写冲突演练：把 data/sales.txt 的合计写入 shared-report.md。
+- 校验: ✅
+- 结果: **completed**，6 steps，5 tool calls，1 failures，0 sub agents
+- 最终答案: 完成。合计 9414.75。原计划的输出 shared-report.md 被另一个并发任务预约，已改用 shared-report-2.md 写入——冲突在制定计划时就被发现，没有走到写入才失败。
+
+## [23-delegate-expected-steps](./23-delegate-expected-steps/README.md)
+
+- 类型: delegate 门槛：expected_steps 低于 2 直接拒绝派生，改为自己调用工具
+- 任务: delegate 门槛演练：读取 README.md 并说明它有多少行。
+- 校验: ✅
+- 结果: **completed**，3 steps，2 tool calls，1 failures，0 sub agents
+- 最终答案: 完成。README.md 共 18 行。（最初想派生子 Agent，但 expected_steps=1 低于门槛被拒，改为直接调用 read_file，省下一次子 Agent 的模型调用。）

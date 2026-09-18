@@ -2,13 +2,16 @@ import { createHash } from 'node:crypto';
 import type { AgentEvent, AgentEventBody, AgentOptions, AgentRuntime, AgentState, FinishReason, LLMProvider, PlanStep, ToolCall, ToolResultEntry, Usage } from './types.ts';
 import { ToolRegistry } from './tools/registry.ts';
 import { Context } from './context.ts';
+import { acquire, describeConflicts, makeOwner, releaseAll } from './tools/write-guard.ts';
+import { resolveInWorkspace } from './tools/sandbox.ts';
 
 export const SYSTEM_PROMPT = `你是一个在受限 workspace 中工作的任务型 Agent。
 规则：
 1. 只能通过提供的工具访问文件；所有路径相对于 workspace 根目录（不要加 "workspace/" 前缀）。
 2. 多步任务先用 update_plan 制定计划；每完成一步或需要改变策略（例如工具失败）时用 update_plan 修订计划。
 3. 需要精确数值计算时务必使用 calculator，不要自己心算。
-4. 现有工具不够用时，先用 search_tools 搜索扩展工具；相互独立、可重复的子任务可用 delegate 交给子 Agent（同一轮的多个 delegate 会并行）。
+4. 现有工具不够用时，先用 search_tools 搜索扩展工具；需要多步推理、或会产生大量中间输出而你只要结论的子任务可用 delegate 交给子 Agent（同一轮的多个 delegate 会并行；预计 1 步能做完的事自己直接调工具，不要派生）。
+4.1 若任务会写文件，在第一次 update_plan 时用 writes 一次性声明全部输出路径，避免与其他并发任务写冲突到最后才发现。
 5. 互不依赖的只读调用可以放在同一轮并行发出。
 6. 工具失败时阅读错误信息并调整策略（换路径、先 list_files、跳过坏数据等），不要原样重复同一调用。
 7. 若任务确实无法完成，明确说明原因并停止。
@@ -67,6 +70,9 @@ export class Agent {
       maxDepth: opts.maxDepth ?? 1,
       subAgentAllowWrite: opts.subAgentAllowWrite ?? false,
       signal: opts.signal,
+      // 子 Agent 继承父级 owner：同一任务树共享写预约，不会自锁；不同任务之间才互斥
+      owner: opts.owner ?? makeOwner(meta.id ?? (meta.depth ? `sub${meta.depth}` : 'main')),
+      delegateMinExpectedSteps: opts.delegateMinExpectedSteps ?? 2,
       onEvent: opts.onEvent ?? (() => {}),
     };
     this.state = { id: this.id, depth: this.depth, status: 'idle', step: 0, plan: [], activatedTools: [], usage: { inputTokens: 0, outputTokens: 0 }, consecutiveFailedRounds: 0, failedCallStreak: 0 };
@@ -101,18 +107,36 @@ export class Agent {
         if (fresh.length) emit({ type: 'tools_activated', step: st.step, names: fresh, ts: Date.now() });
         return names;
       },
+      reserveWrites: (paths) => {
+        // 相对路径按 workspace 解析为绝对路径，与 write_file 的 writeTargets 口径一致
+        const targets: string[] = [];
+        for (const p of paths) {
+          try { targets.push(resolveInWorkspace(this.workspace, p)); }
+          catch (e) { return `"${p}" 不在 workspace 内（${(e as Error).message}）`; }
+        }
+        const got = acquire(targets, this.opts.owner);
+        if (!got.ok) return describeConflicts(got.conflicts);
+        emit({ type: 'writes_reserved', step: st.step, targets: paths.slice(), ts: Date.now() });
+        return null;
+      },
       delegate: async (subTask, callId, o = {}) => {
+        // expected_steps 门槛：派生子 Agent 至少要多花两次模型调用（子 Agent 决策 + 收尾），
+        // 预计 1 步能完成的子任务自己直接调工具更快更省。这是事前拦截，不是事后提醒。
+        const expected = o.expectedSteps ?? 0;
+        if (expected < this.opts.delegateMinExpectedSteps) {
+          return { answer: '', steps: 0, reason: 'completed', rejected: `子任务预计只需 ${expected} 步，低于派生门槛 ${this.opts.delegateMinExpectedSteps} 步。派生子 Agent 本身要额外消耗模型调用，这种情况直接自己调用工具更快。请自己执行这个子任务。` };
+        }
         if (this.depth >= this.opts.maxDepth) return { answer: `已达到最大嵌套深度 ${this.opts.maxDepth}，不能再派生子 Agent`, steps: 0, reason: 'max_steps' };
         // 问题 8：子 Agent 权限只能收窄，不能超过父 Agent
         const allowWrite = this.opts.allowWrite && (o.allowWrite ?? this.opts.subAgentAllowWrite);
-        const child = new Agent(this.llm, this.tools, this.workspace, { ...this.opts, maxSteps: this.opts.subAgentMaxSteps, allowWrite }, { depth: this.depth + 1, parent: { id: this.id, callId } });
+        const child = new Agent(this.llm, this.tools, this.workspace, { ...this.opts, maxSteps: this.opts.subAgentMaxSteps, allowWrite, owner: this.opts.owner }, { depth: this.depth + 1, parent: { id: this.id, callId } });
         const r = await child.run(subTask);
         st.usage.inputTokens += r.usage.inputTokens;
         st.usage.outputTokens += r.usage.outputTokens;
         return { answer: r.answer, steps: r.steps, reason: r.reason };
       },
     };
-    const toolCtx = { workspace: this.workspace, allowWrite: this.opts.allowWrite, runtime, signal };
+    const toolCtx = { workspace: this.workspace, allowWrite: this.opts.allowWrite, runtime, signal, owner: this.opts.owner };
 
     ctx.addUser(task);
     emit({ type: 'user', task, ts: Date.now() });
@@ -120,6 +144,8 @@ export class Agent {
     const finish = (answer: string, reason: FinishReason): AgentRunResult => {
       st.status = 'finished';
       st.finishReason = reason;
+      // 只有根 Agent 释放：子 Agent 与父级共享 owner，提前释放会把父级的预约一并撤掉
+      if (this.depth === 0) releaseAll(this.opts.owner);
       emit({ type: 'final', answer, reason, steps: st.step, usage: st.usage, ts: Date.now() });
       return { answer, reason, steps: st.step, usage: st.usage, plan: st.plan };
     };
@@ -199,8 +225,34 @@ export class Agent {
     };
     const isWrite = (c: ToolCall) => this.tools.get(c.name)?.permission === 'write';
     const readResults = await Promise.all(calls.filter((c) => !isWrite(c)).map(run));
+
+    // 同一轮内多个写调用指向同一目标：锁按 owner 判定，自己不会拦自己，这里显式检测。
+    // 后写的会静默覆盖先写的，几乎总是模型自相矛盾，直接报错让它合并成一次写入。
+    const writeCalls = calls.filter(isWrite);
+    const seen = new Map<string, string>();
+    const dupErr = new Map<string, string>();
+    for (const c of writeCalls) {
+      const tool = this.tools.get(c.name)!;
+      const input = typeof c.input === 'string' ? safeParse(c.input) : c.input;
+      for (const t of tool.writeTargets?.(input, toolCtx) ?? []) {
+        const prev = seen.get(t);
+        if (prev) dupErr.set(c.id, `本轮已有另一个调用(${prev})写同一个目标 "${t}"，后写会覆盖先写。请合并成一次写入，或写到不同文件。`);
+        else seen.set(t, c.name);
+      }
+    }
+
     const writeResults: ToolResultEntry[] = [];
-    for (const c of calls.filter(isWrite)) writeResults.push(await run(c));
+    for (const c of writeCalls) {
+      const err = dupErr.get(c.id);
+      if (err) {
+        emit({ type: 'tool_call', step, call: c, ts: Date.now() });
+        const result = { ok: false as const, error: err };
+        emit({ type: 'tool_result', step, callId: c.id, name: c.name, result, durationMs: 0, ts: Date.now() });
+        writeResults.push({ callId: c.id, name: c.name, result });
+        continue;
+      }
+      writeResults.push(await run(c));
+    }
     const byId = new Map([...readResults, ...writeResults].map((r) => [r.callId, r]));
     return calls.map((c) => byId.get(c.id)!);
   }
@@ -210,6 +262,10 @@ export class Agent {
 function callsHash(calls: ToolCall[]): string {
   const canonical = calls.map((c) => `${c.name}:${stableStringify(c.input)}`).sort().join('|');
   return createHash('sha1').update(canonical).digest('hex');
+}
+
+function safeParse(s: string): unknown {
+  try { return JSON.parse(s); } catch { return {}; }
 }
 
 function stableStringify(v: unknown): string {

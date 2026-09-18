@@ -53,6 +53,7 @@ export class Trace {
         case 'plan': lines.push(`### 📋 Plan${tag} (step ${e.step})`, '', ...e.plan.map((p) => `- [${p.status === 'done' ? 'x' : ' '}] ${p.id}. ${p.title} — ${p.status}${p.note ? ` (${p.note})` : ''}`), ''); break;
         case 'tools_activated': lines.push(`> 🔍 Tool Search 激活: ${e.names.join(', ')}`, ''); break;
         case 'compressed': lines.push(`> 🗜 Context 压缩: 节省 ${e.savedChars} 字符，当前 ${e.sizeChars} 字符`, ''); break;
+        case 'writes_reserved': lines.push(`> 🔒 写目标已预约: ${e.targets.join(', ')}`, ''); break;
         case 'decision':
           lines.push(`## 🧠 Agent Decision${tag} (step ${e.step})`, '', e.text || '_(无文字说明)_', '');
           if (e.toolCalls.length) lines.push(`→ 决定调用 ${e.toolCalls.length} 个工具: ${e.toolCalls.map((c) => c.name).join(', ')}`, '');

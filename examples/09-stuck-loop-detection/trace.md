@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:17:55.090Z
+- time: 2026-09-18T21:24:44.201Z
 
 ## 👤 User
 
@@ -16,31 +16,7 @@
 
 → 决定调用 1 个工具: read_file
 
-_LLM 12ms · tokens in 33 / out 80_
-
-### 🔧 Tool Call: `read_file`
-
-```json
-{
-  "path": "data/lock.txt"
-}
-```
-
-### ✅ Tool Result: `read_file` (0ms)
-
-```
-STATUS=PENDING
-# 由外部系统在数据导入完成后改为 READY（本 workspace 中永远不会发生）
-
-```
-
-## 🧠 Agent Decision (step 2)
-
-还没就绪，再检查一次。
-
-→ 决定调用 1 个工具: read_file
-
-_LLM 11ms · tokens in 128 / out 80_
+_LLM 11ms · tokens in 33 / out 80_
 
 ### 🔧 Tool Call: `read_file`
 
@@ -58,13 +34,37 @@ STATUS=PENDING
 
 ```
 
+## 🧠 Agent Decision (step 2)
+
+还没就绪，再检查一次。
+
+→ 决定调用 1 个工具: read_file
+
+_LLM 12ms · tokens in 128 / out 80_
+
+### 🔧 Tool Call: `read_file`
+
+```json
+{
+  "path": "data/lock.txt"
+}
+```
+
+### ✅ Tool Result: `read_file` (0ms)
+
+```
+STATUS=PENDING
+# 由外部系统在数据导入完成后改为 READY（本 workspace 中永远不会发生）
+
+```
+
 ## 🧠 Agent Decision (step 3)
 
 还没就绪，再检查一次。
 
 → 决定调用 1 个工具: read_file
 
-_LLM 11ms · tokens in 225 / out 80_
+_LLM 12ms · tokens in 225 / out 80_
 
 ### 🔧 Tool Call: `read_file`
 
@@ -90,7 +90,7 @@ STATUS=PENDING
 
 → 决定调用 1 个工具: read_file
 
-_LLM 12ms · tokens in 342 / out 80_
+_LLM 11ms · tokens in 342 / out 80_
 
 ### 🔧 Tool Call: `read_file`
 
@@ -100,7 +100,7 @@ _LLM 12ms · tokens in 342 / out 80_
 }
 ```
 
-### ✅ Tool Result: `read_file` (0ms)
+### ✅ Tool Result: `read_file` (1ms)
 
 ```
 STATUS=PENDING
@@ -124,7 +124,7 @@ _LLM 11ms · tokens in 438 / out 80_
 }
 ```
 
-### ✅ Tool Result: `read_file` (1ms)
+### ✅ Tool Result: `read_file` (0ms)
 
 ```
 STATUS=PENDING

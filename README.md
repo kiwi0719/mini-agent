@@ -22,7 +22,7 @@ User → Agent Decision → Tool Call → Tool Result → Agent Decision → …
 | 根据 Tool Result 决定下一步 | ✅ | Agent Trace (JSON + Markdown) | ✅ |
 | 一次任务连续多次调用 | ✅ | Token Usage | ✅ |
 | 最终答案输出 | ✅ | Context Compression | ✅ |
-| 轮数控制防无限循环 | ✅ maxSteps + sha1 重复检测（提醒→终止）+ 双线失败阈值 | Plan + 动态调整计划 | ✅ `update_plan` |
+| 轮数控制防无限循环 | ✅ maxSteps + sha1 重复检测（提醒→终止）+ 双线失败阈值 | Plan + 动态调整计划 + 写目标预算 | ✅ `update_plan`（含 `writes`） |
 | Tool 失败合理处理 | ✅ | Sub Agent（并行、权限收窄、树状 Trace） | ✅ `delegate` |
 | | | Streaming | ✅ CLI `--stream` / Web |
 | | | 防止读取 workspace 之外 | ✅ `sandbox.ts` |
@@ -30,6 +30,8 @@ User → Agent Decision → Tool Call → Tool Result → Agent Decision → …
 | | | 一轮内并行工具调用 | ✅ 只读并行、写串行 |
 | | | 中止（AbortSignal / Ctrl+C / Web 中止 / 断连） | ✅ |
 | | | Web 任务队列 + Worker 线程池 | ✅ `AGENT_WORKERS` |
+| | | 并发写冲突守卫（事前预约） | ✅ `write-guard.ts` |
+| | | 子 Agent 派生门槛 | ✅ `expected_steps` |
 
 工具：`read_file` `write_file` `search_text` `calculator` `list_files` `update_plan` `search_tools` `delegate`，以及需 Tool Search 激活的 `csv_parse` `file_info` `current_time`。
 
@@ -149,7 +151,7 @@ node scripts/gen-k8s.ts         # workspace/k8s/（Mock K8s 集群，故障诊�
 
 生成物已提交进仓库，clone 下来即可直接阅读测试材料，不必先跑脚本。基础材料部分：约 20 个文件，刻意包含：多种写法的 TODO/FIXME 与 `todoList`/`TODOS` 假阳性、`node_modules` 干扰、三种格式不一的地区销售数据（¥、千分位、负数退款、脏行）、151KB 的 changelog（读入触发 Context 压缩）、252KB 的日志（超过 read_file 上限）、引用不存在文件与二进制文件的文档、永远不就绪的锁文件、以及“任务需要但 workspace 里没有”的信息（汇率）。详见 [DESIGN.md §7](./DESIGN.md#7-测试-workspace-与任务)。
 
-## 测试任务与结果（21/21 自动校验通过）
+## 测试任务与结果（23/23 自动校验通过）
 
 | # | 任务 | 验证的机制 | 结果 |
 |---|---|---|---|
@@ -174,6 +176,8 @@ node scripts/gen-k8s.ts         # workspace/k8s/（Mock K8s 集群，故障诊�
 | [19](./examples/19-k8s-scheduling-failed/README.md) | 分析 job-125 | FailedScheduling message 逐节点原因 + 节点容量 | ✅ cpu=6 超过单节点 |
 | [20](./examples/20-k8s-disk-pressure/README.md) | 分析 job-126 | Evicted message + Node DiskPressure + no space left | ✅ |
 | [21](./examples/21-k8s-gpu-xid-nccl/README.md) | 分析 train-job-7 | Xid 79 硬件根因（高）vs NCCL 次生（低） | ✅ |
+| [22](./examples/22-write-conflict-guard/README.md) | 并发写冲突演练 | 另一任务占用输出文件 → plan 阶段即被拒 → 换路径重规划 | ✅ 冲突在计划阶段暴露 |
+| [23](./examples/23-delegate-expected-steps/README.md) | delegate 门槛演练 | `expected_steps=1` 低于门槛被拒 → 改为自己调 read_file | ✅ 省下一次子 Agent 调用 |
 
 每个目录含 `README.md`（任务、校验结论、最终答案、统计）、生成的文件、`trace.md` / `trace.json`（完整 Agent Trace，子 Agent 嵌套折叠）。
 
@@ -204,6 +208,7 @@ src/
     ├── k8s/cluster.ts  ClusterSource 接口 + Mock 实现（读 workspace/k8s/cluster.json，修复动作叠加）
     ├── fs-tools.ts     read_file / write_file / list_files / search_text
     ├── calculator.ts   安全表达式求值（递归下降，不用 eval）
+    ├── write-guard.ts  并发写冲突守卫（事前预约 + 锁文件）
     ├── extra-tools.ts  deferred 工具：csv_parse / file_info / current_time
     └── agent-tools.ts  update_plan / search_tools / delegate
 web/index.html          Vue 3 前端

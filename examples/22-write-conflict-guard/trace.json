@@ -1,0 +1,1420 @@
+{
+  "meta": {
+    "provider": "mock",
+    "workspace": "workspace"
+  },
+  "startedAt": 1789766698837,
+  "events": [
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "user",
+      "task": "并发写冲突演练：把 data/sales.txt 的合计写入 shared-report.md。",
+      "ts": 1789766698838
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "先制定计划并",
+      "ts": 1789766698838
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "预约输出文件",
+      "ts": 1789766698844
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": " share",
+      "ts": 1789766698849
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "d-repo",
+      "ts": 1789766698855
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "rt.md。",
+      "ts": 1789766698861
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 1,
+      "text": "先制定计划并预约输出文件 shared-report.md。",
+      "toolCalls": [
+        {
+          "id": "mock_1",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "读取销售数据",
+                "status": "in_progress"
+              },
+              {
+                "id": 2,
+                "title": "求和",
+                "status": "pending"
+              },
+              {
+                "id": 3,
+                "title": "写入 shared-report.md",
+                "status": "pending"
+              }
+            ],
+            "writes": [
+              "shared-report.md"
+            ]
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 26,
+        "outputTokens": 80
+      },
+      "durationMs": 28,
+      "ts": 1789766698866
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_1",
+        "name": "update_plan",
+        "input": {
+          "steps": [
+            {
+              "id": 1,
+              "title": "读取销售数据",
+              "status": "in_progress"
+            },
+            {
+              "id": 2,
+              "title": "求和",
+              "status": "pending"
+            },
+            {
+              "id": 3,
+              "title": "写入 shared-report.md",
+              "status": "pending"
+            }
+          ],
+          "writes": [
+            "shared-report.md"
+          ]
+        }
+      },
+      "ts": 1789766698866
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_1",
+      "name": "update_plan",
+      "result": {
+        "ok": false,
+        "error": "计划中的写目标存在冲突，计划未更新：\"/Users/kiwi/Desktop/10jqka/mini-agent/workspace/shared-report.md\" 正被另一个任务(other-task.simulated)占用，已持有 0s。请改用其他输出路径后重新提交计划。"
+      },
+      "durationMs": 1,
+      "ts": 1789766698867
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "shared",
+      "ts": 1789766698867
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "-repor",
+      "ts": 1789766698872
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "t.md 已",
+      "ts": 1789766698878
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "被另一个并发",
+      "ts": 1789766698883
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "任务预约，改",
+      "ts": 1789766698889
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "用 shar",
+      "ts": 1789766698895
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "ed-rep",
+      "ts": 1789766698900
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "ort-2.",
+      "ts": 1789766698906
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "md 重新规",
+      "ts": 1789766698911
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "划。",
+      "ts": 1789766698917
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 2,
+      "text": "shared-report.md 已被另一个并发任务预约，改用 shared-report-2.md 重新规划。",
+      "toolCalls": [
+        {
+          "id": "mock_2",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "读取销售数据",
+                "status": "in_progress"
+              },
+              {
+                "id": 2,
+                "title": "求和",
+                "status": "pending"
+              },
+              {
+                "id": 3,
+                "title": "写入 shared-report-2.md",
+                "status": "pending"
+              }
+            ],
+            "reason": " 原输出路径与并发任务冲突",
+            "writes": [
+              "shared-report-2.md"
+            ]
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 212,
+        "outputTokens": 80
+      },
+      "durationMs": 55,
+      "ts": 1789766698922
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_2",
+        "name": "update_plan",
+        "input": {
+          "steps": [
+            {
+              "id": 1,
+              "title": "读取销售数据",
+              "status": "in_progress"
+            },
+            {
+              "id": 2,
+              "title": "求和",
+              "status": "pending"
+            },
+            {
+              "id": 3,
+              "title": "写入 shared-report-2.md",
+              "status": "pending"
+            }
+          ],
+          "reason": " 原输出路径与并发任务冲突",
+          "writes": [
+            "shared-report-2.md"
+          ]
+        }
+      },
+      "ts": 1789766698922
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "writes_reserved",
+      "step": 2,
+      "targets": [
+        "shared-report-2.md"
+      ],
+      "ts": 1789766698923
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "plan",
+      "step": 2,
+      "plan": [
+        {
+          "id": 1,
+          "title": "读取销售数据",
+          "status": "in_progress"
+        },
+        {
+          "id": 2,
+          "title": "求和",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "写入 shared-report-2.md",
+          "status": "pending"
+        }
+      ],
+      "ts": 1789766698923
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_2",
+      "name": "update_plan",
+      "result": {
+        "ok": true,
+        "output": "计划已更新（0/3 完成），已预约 1 个写目标，原因:  原输出路径与并发任务冲突"
+      },
+      "durationMs": 1,
+      "ts": 1789766698923
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "读取销售数据",
+      "ts": 1789766698924
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "。",
+      "ts": 1789766698929
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 3,
+      "text": "读取销售数据。",
+      "toolCalls": [
+        {
+          "id": "mock_3",
+          "name": "read_file",
+          "input": {
+            "path": "data/sales.txt"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 383,
+        "outputTokens": 80
+      },
+      "durationMs": 11,
+      "ts": 1789766698935
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_3",
+        "name": "read_file",
+        "input": {
+          "path": "data/sales.txt"
+        }
+      },
+      "ts": 1789766698935
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_3",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "# 产品销售额（单位：元）\nWidget A, 1200\nWidget B, 850.50\nGadget X, 3200\nGadget Y, 415.25\nService Plan, 999\nLegacy Item, N/A\nBundle Pack, 2750\n"
+      },
+      "durationMs": 1,
+      "ts": 1789766698936
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "解析出 6 ",
+      "ts": 1789766698937
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "条记录，求和",
+      "ts": 1789766698942
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "。",
+      "ts": 1789766698948
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 4,
+      "text": "解析出 6 条记录，求和。",
+      "toolCalls": [
+        {
+          "id": "mock_4",
+          "name": "calculator",
+          "input": {
+            "expression": "sum(1200, 850.50, 3200, 415.25, 999, 2750)"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 504,
+        "outputTokens": 80
+      },
+      "durationMs": 18,
+      "ts": 1789766698954
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_4",
+        "name": "calculator",
+        "input": {
+          "expression": "sum(1200, 850.50, 3200, 415.25, 999, 2750)"
+        }
+      },
+      "ts": 1789766698954
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_4",
+      "name": "calculator",
+      "result": {
+        "ok": true,
+        "output": "sum(1200, 850.50, 3200, 415.25, 999, 2750) = 9414.75"
+      },
+      "durationMs": 0,
+      "ts": 1789766698954
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "写入报告。",
+      "ts": 1789766698954
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 5,
+      "text": "写入报告。",
+      "toolCalls": [
+        {
+          "id": "mock_5",
+          "name": "write_file",
+          "input": {
+            "path": "shared-report-2.md",
+            "content": "# 合计\n\n9414.75\n"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 610,
+        "outputTokens": 80
+      },
+      "durationMs": 6,
+      "ts": 1789766698960
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 5,
+      "call": {
+        "id": "mock_5",
+        "name": "write_file",
+        "input": {
+          "path": "shared-report-2.md",
+          "content": "# 合计\n\n9414.75\n"
+        }
+      },
+      "ts": 1789766698960
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 5,
+      "callId": "mock_5",
+      "name": "write_file",
+      "result": {
+        "ok": true,
+        "output": "已写入 shared-report-2.md (18 bytes)"
+      },
+      "durationMs": 1,
+      "ts": 1789766698961
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "完成。合计 ",
+      "ts": 1789766698961
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "9414.7",
+      "ts": 1789766698967
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "5。原计划的",
+      "ts": 1789766698972
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "输出 sha",
+      "ts": 1789766698978
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "red-re",
+      "ts": 1789766698984
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "port.m",
+      "ts": 1789766698989
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "d 被另一个",
+      "ts": 1789766698995
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "并发任务预约",
+      "ts": 1789766699001
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "，已改用 s",
+      "ts": 1789766699005
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "hared-",
+      "ts": 1789766699011
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "report",
+      "ts": 1789766699017
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "-2.md ",
+      "ts": 1789766699022
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "写入——冲突",
+      "ts": 1789766699028
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "在制定计划时",
+      "ts": 1789766699034
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "就被发现，没",
+      "ts": 1789766699039
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "有走到写入才",
+      "ts": 1789766699045
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 6,
+      "text": "失败。",
+      "ts": 1789766699050
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 6,
+      "text": "完成。合计 9414.75。原计划的输出 shared-report.md 被另一个并发任务预约，已改用 shared-report-2.md 写入——冲突在制定计划时就被发现，没有走到写入才失败。",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 707,
+        "outputTokens": 80
+      },
+      "durationMs": 95,
+      "ts": 1789766699056
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "final",
+      "answer": "完成。合计 9414.75。原计划的输出 shared-report.md 被另一个并发任务预约，已改用 shared-report-2.md 写入——冲突在制定计划时就被发现，没有走到写入才失败。",
+      "reason": "completed",
+      "steps": 6,
+      "usage": {
+        "inputTokens": 2442,
+        "outputTokens": 480
+      },
+      "ts": 1789766699057
+    }
+  ],
+  "tree": {
+    "agent": "main",
+    "depth": 0,
+    "events": [
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "user",
+        "task": "并发写冲突演练：把 data/sales.txt 的合计写入 shared-report.md。",
+        "ts": 1789766698838
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "先制定计划并",
+        "ts": 1789766698838
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "预约输出文件",
+        "ts": 1789766698844
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": " share",
+        "ts": 1789766698849
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "d-repo",
+        "ts": 1789766698855
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "rt.md。",
+        "ts": 1789766698861
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 1,
+        "text": "先制定计划并预约输出文件 shared-report.md。",
+        "toolCalls": [
+          {
+            "id": "mock_1",
+            "name": "update_plan",
+            "input": {
+              "steps": [
+                {
+                  "id": 1,
+                  "title": "读取销售数据",
+                  "status": "in_progress"
+                },
+                {
+                  "id": 2,
+                  "title": "求和",
+                  "status": "pending"
+                },
+                {
+                  "id": 3,
+                  "title": "写入 shared-report.md",
+                  "status": "pending"
+                }
+              ],
+              "writes": [
+                "shared-report.md"
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 26,
+          "outputTokens": 80
+        },
+        "durationMs": 28,
+        "ts": 1789766698866
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 1,
+        "call": {
+          "id": "mock_1",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "读取销售数据",
+                "status": "in_progress"
+              },
+              {
+                "id": 2,
+                "title": "求和",
+                "status": "pending"
+              },
+              {
+                "id": 3,
+                "title": "写入 shared-report.md",
+                "status": "pending"
+              }
+            ],
+            "writes": [
+              "shared-report.md"
+            ]
+          }
+        },
+        "ts": 1789766698866
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 1,
+        "callId": "mock_1",
+        "name": "update_plan",
+        "result": {
+          "ok": false,
+          "error": "计划中的写目标存在冲突，计划未更新：\"/Users/kiwi/Desktop/10jqka/mini-agent/workspace/shared-report.md\" 正被另一个任务(other-task.simulated)占用，已持有 0s。请改用其他输出路径后重新提交计划。"
+        },
+        "durationMs": 1,
+        "ts": 1789766698867
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "shared",
+        "ts": 1789766698867
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "-repor",
+        "ts": 1789766698872
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "t.md 已",
+        "ts": 1789766698878
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "被另一个并发",
+        "ts": 1789766698883
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "任务预约，改",
+        "ts": 1789766698889
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "用 shar",
+        "ts": 1789766698895
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "ed-rep",
+        "ts": 1789766698900
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "ort-2.",
+        "ts": 1789766698906
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "md 重新规",
+        "ts": 1789766698911
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "划。",
+        "ts": 1789766698917
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 2,
+        "text": "shared-report.md 已被另一个并发任务预约，改用 shared-report-2.md 重新规划。",
+        "toolCalls": [
+          {
+            "id": "mock_2",
+            "name": "update_plan",
+            "input": {
+              "steps": [
+                {
+                  "id": 1,
+                  "title": "读取销售数据",
+                  "status": "in_progress"
+                },
+                {
+                  "id": 2,
+                  "title": "求和",
+                  "status": "pending"
+                },
+                {
+                  "id": 3,
+                  "title": "写入 shared-report-2.md",
+                  "status": "pending"
+                }
+              ],
+              "reason": " 原输出路径与并发任务冲突",
+              "writes": [
+                "shared-report-2.md"
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 212,
+          "outputTokens": 80
+        },
+        "durationMs": 55,
+        "ts": 1789766698922
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 2,
+        "call": {
+          "id": "mock_2",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "读取销售数据",
+                "status": "in_progress"
+              },
+              {
+                "id": 2,
+                "title": "求和",
+                "status": "pending"
+              },
+              {
+                "id": 3,
+                "title": "写入 shared-report-2.md",
+                "status": "pending"
+              }
+            ],
+            "reason": " 原输出路径与并发任务冲突",
+            "writes": [
+              "shared-report-2.md"
+            ]
+          }
+        },
+        "ts": 1789766698922
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "writes_reserved",
+        "step": 2,
+        "targets": [
+          "shared-report-2.md"
+        ],
+        "ts": 1789766698923
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "plan",
+        "step": 2,
+        "plan": [
+          {
+            "id": 1,
+            "title": "读取销售数据",
+            "status": "in_progress"
+          },
+          {
+            "id": 2,
+            "title": "求和",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "写入 shared-report-2.md",
+            "status": "pending"
+          }
+        ],
+        "ts": 1789766698923
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 2,
+        "callId": "mock_2",
+        "name": "update_plan",
+        "result": {
+          "ok": true,
+          "output": "计划已更新（0/3 完成），已预约 1 个写目标，原因:  原输出路径与并发任务冲突"
+        },
+        "durationMs": 1,
+        "ts": 1789766698923
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "读取销售数据",
+        "ts": 1789766698924
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "。",
+        "ts": 1789766698929
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 3,
+        "text": "读取销售数据。",
+        "toolCalls": [
+          {
+            "id": "mock_3",
+            "name": "read_file",
+            "input": {
+              "path": "data/sales.txt"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 383,
+          "outputTokens": 80
+        },
+        "durationMs": 11,
+        "ts": 1789766698935
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_3",
+          "name": "read_file",
+          "input": {
+            "path": "data/sales.txt"
+          }
+        },
+        "ts": 1789766698935
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_3",
+        "name": "read_file",
+        "result": {
+          "ok": true,
+          "output": "# 产品销售额（单位：元）\nWidget A, 1200\nWidget B, 850.50\nGadget X, 3200\nGadget Y, 415.25\nService Plan, 999\nLegacy Item, N/A\nBundle Pack, 2750\n"
+        },
+        "durationMs": 1,
+        "ts": 1789766698936
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "解析出 6 ",
+        "ts": 1789766698937
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "条记录，求和",
+        "ts": 1789766698942
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "。",
+        "ts": 1789766698948
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 4,
+        "text": "解析出 6 条记录，求和。",
+        "toolCalls": [
+          {
+            "id": "mock_4",
+            "name": "calculator",
+            "input": {
+              "expression": "sum(1200, 850.50, 3200, 415.25, 999, 2750)"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 504,
+          "outputTokens": 80
+        },
+        "durationMs": 18,
+        "ts": 1789766698954
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_4",
+          "name": "calculator",
+          "input": {
+            "expression": "sum(1200, 850.50, 3200, 415.25, 999, 2750)"
+          }
+        },
+        "ts": 1789766698954
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_4",
+        "name": "calculator",
+        "result": {
+          "ok": true,
+          "output": "sum(1200, 850.50, 3200, 415.25, 999, 2750) = 9414.75"
+        },
+        "durationMs": 0,
+        "ts": 1789766698954
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "写入报告。",
+        "ts": 1789766698954
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 5,
+        "text": "写入报告。",
+        "toolCalls": [
+          {
+            "id": "mock_5",
+            "name": "write_file",
+            "input": {
+              "path": "shared-report-2.md",
+              "content": "# 合计\n\n9414.75\n"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 610,
+          "outputTokens": 80
+        },
+        "durationMs": 6,
+        "ts": 1789766698960
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 5,
+        "call": {
+          "id": "mock_5",
+          "name": "write_file",
+          "input": {
+            "path": "shared-report-2.md",
+            "content": "# 合计\n\n9414.75\n"
+          }
+        },
+        "ts": 1789766698960
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 5,
+        "callId": "mock_5",
+        "name": "write_file",
+        "result": {
+          "ok": true,
+          "output": "已写入 shared-report-2.md (18 bytes)"
+        },
+        "durationMs": 1,
+        "ts": 1789766698961
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "完成。合计 ",
+        "ts": 1789766698961
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "9414.7",
+        "ts": 1789766698967
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "5。原计划的",
+        "ts": 1789766698972
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "输出 sha",
+        "ts": 1789766698978
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "red-re",
+        "ts": 1789766698984
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "port.m",
+        "ts": 1789766698989
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "d 被另一个",
+        "ts": 1789766698995
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "并发任务预约",
+        "ts": 1789766699001
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "，已改用 s",
+        "ts": 1789766699005
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "hared-",
+        "ts": 1789766699011
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "report",
+        "ts": 1789766699017
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "-2.md ",
+        "ts": 1789766699022
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "写入——冲突",
+        "ts": 1789766699028
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "在制定计划时",
+        "ts": 1789766699034
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "就被发现，没",
+        "ts": 1789766699039
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "有走到写入才",
+        "ts": 1789766699045
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 6,
+        "text": "失败。",
+        "ts": 1789766699050
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 6,
+        "text": "完成。合计 9414.75。原计划的输出 shared-report.md 被另一个并发任务预约，已改用 shared-report-2.md 写入——冲突在制定计划时就被发现，没有走到写入才失败。",
+        "toolCalls": [],
+        "usage": {
+          "inputTokens": 707,
+          "outputTokens": 80
+        },
+        "durationMs": 95,
+        "ts": 1789766699056
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "final",
+        "answer": "完成。合计 9414.75。原计划的输出 shared-report.md 被另一个并发任务预约，已改用 shared-report-2.md 写入——冲突在制定计划时就被发现，没有走到写入才失败。",
+        "reason": "completed",
+        "steps": 6,
+        "usage": {
+          "inputTokens": 2442,
+          "outputTokens": 480
+        },
+        "ts": 1789766699057
+      }
+    ],
+    "children": []
+  }
+}

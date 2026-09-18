@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:18:05.774Z
+- time: 2026-09-18T21:24:55.012Z
 
 ## 👤 User
 
@@ -66,7 +66,7 @@ _LLM 28ms · tokens in 16 / out 80_
 
 → 决定调用 1 个工具: get_pod
 
-_LLM 11ms · tokens in 174 / out 80_
+_LLM 12ms · tokens in 174 / out 80_
 
 ### 🔧 Tool Call: `get_pod`
 
@@ -150,7 +150,7 @@ Pod 信号：phase=Failed reason=Evicted；容器 exporter 终止原因=Containe
 
 → 决定调用 5 个工具: update_plan, get_pod_events, get_node, get_metrics, get_logs
 
-_LLM 170ms · tokens in 736 / out 80_
+_LLM 169ms · tokens in 736 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -226,7 +226,7 @@ _LLM 170ms · tokens in 736 / out 80_
 }
 ```
 
-### ✅ Tool Result: `update_plan` (1ms)
+### ✅ Tool Result: `update_plan` (0ms)
 
 ```
 计划已更新（1/4 完成）
@@ -332,7 +332,13 @@ _LLM 170ms · tokens in 736 / out 80_
 …[截断 4001 字符]
 ```
 
-### ✅ Tool Result: `get_node` (2ms)
+### ❌ Tool Result: `get_logs` (2ms)
+
+```
+没有上一个容器实例的日志（容器未重启过）
+```
+
+### ✅ Tool Result: `get_node` (3ms)
 
 ```
 {
@@ -386,13 +392,7 @@ _LLM 170ms · tokens in 736 / out 80_
 }
 ```
 
-### ❌ Tool Result: `get_logs` (2ms)
-
-```
-没有上一个容器实例的日志（容器未重启过）
-```
-
-### ✅ Tool Result: `get_pod_events` (2ms)
+### ✅ Tool Result: `get_pod_events` (3ms)
 
 ```
 {
@@ -449,7 +449,7 @@ _LLM 170ms · tokens in 736 / out 80_
 
 → 决定调用 3 个工具: update_plan, search_runbook, search_cases
 
-_LLM 45ms · tokens in 4122 / out 80_
+_LLM 46ms · tokens in 4122 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -546,7 +546,7 @@ _LLM 45ms · tokens in 4122 / out 80_
 }
 ```
 
-### ✅ Tool Result: `search_runbook` (1ms)
+### ✅ Tool Result: `search_runbook` (2ms)
 
 ```
 {
@@ -604,7 +604,7 @@ Pod job-126 被 kubelet 驱逐（phase=Failed reason=Evicted），节点 node-3 
 ## 证据不足说明
 无
 
-_LLM 1702ms · tokens in 5074 / out 80_
+_LLM 1688ms · tokens in 5074 / out 80_
 
 ## 🏁 Final Answer (completed, 5 steps, tokens in 10122 / out 400)
 

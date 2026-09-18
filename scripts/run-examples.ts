@@ -15,6 +15,7 @@ const OUT = path.join(ROOT, 'examples');
 const provider = process.argv[2] ?? process.env.LLM_PROVIDER ?? 'mock';
 
 import { execFileSync } from 'node:child_process';
+import { acquire, release } from '../src/tools/write-guard.ts';
 import type { Trace as TraceT } from '../src/trace.ts';
 import type { AgentRunResult } from '../src/agent.ts';
 
@@ -22,7 +23,7 @@ const expected = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, '.wor
 const ws = (f: string) => fs.existsSync(path.join(WORKSPACE, f)) ? fs.readFileSync(path.join(WORKSPACE, f), 'utf8') : '';
 type Verify = (r: AgentRunResult, t: TraceT) => string | null; // 返回 null 表示通过，否则是失败原因
 
-const TASKS: { id: string; type: string; task: string; outputs: string[]; allowWrite?: boolean; verify: Verify }[] = [
+const TASKS: { id: string; type: string; task: string; outputs: string[]; allowWrite?: boolean; concurrentTwin?: boolean; verify: Verify }[] = [
   { id: '01-search-and-summarize', type: '搜索并汇总：Plan + 搜索精化（排除假阳性）+ 并行 Sub Agent', task: '找出 workspace 目录中所有 TODO，按照文件进行分类并生成 todo-report.md。', outputs: ['todo-report.md'],
     verify: (r) => { const md = ws('todo-report.md'); if (!md) return '未生成报告'; if (/todoList|TODOS/.test(md)) return '报告包含假阳性'; if (/node_modules/.test(md)) return '扫描了 node_modules'; const n = (md.match(/^- L\d+/gm) ?? []).length; return n === 16 ? null : `期望 16 条，实际 ${n}`; } },
   { id: '02-read-calc-report', type: '读取、计算并生成报告：Tool Search 激活 csv_parse + calculator + 脏数据', task: '读取 data/sales.txt 中的数据，计算所有产品销售额之和，并把计算结果写入 report.md。', outputs: ['report.md'],
@@ -67,6 +68,22 @@ const TASKS: { id: string; type: string; task: string; outputs: string[]; allowW
     verify: (r) => /Evicted/.test(r.answer) && /DiskPressure/.test(r.answer) && /no space left/.test(r.answer) ? null : '未识别磁盘压力' },
   { id: '21-k8s-gpu-xid-nccl', type: 'K8s（AI Infra）：GPU Xid 79 → NCCL timeout，区分硬件根因与次生现象', task: '帮我分析 train-job-7 为什么失败。', outputs: [],
     verify: (r) => /Xid 79/.test(r.answer) && /NCCL/.test(r.answer) && /置信度 低/.test(r.answer) ? null : '未区分 Xid 根因与 NCCL 次生' },
+  // ---- 并发与派生门槛（机制用例，不依赖 workspace 内容） ----
+  { id: '22-write-conflict-guard', type: '并发写冲突：两个任务同时预约同一输出 → 后者在 plan 阶段就被拒 → 换文件名重规划', task: '并发写冲突演练：把 data/sales.txt 的合计写入 shared-report.md。', outputs: [],
+    concurrentTwin: true,
+    verify: (r, t) => {
+      const rejected = t.events.some((e) => e.type === 'tool_result' && e.name === 'update_plan' && !e.result.ok && /写目标存在冲突/.test(e.result.error));
+      if (!rejected) return '第二个任务未在 plan 阶段被拒';
+      if (!t.events.some((e) => e.type === 'writes_reserved')) return '未发出写目标预约事件';
+      return /改用/.test(r.answer) ? null : '被拒后未换输出路径';
+    } },
+  { id: '23-delegate-expected-steps', type: 'delegate 门槛：expected_steps 低于 2 直接拒绝派生，改为自己调用工具', task: 'delegate 门槛演练：读取 README.md 并说明它有多少行。', outputs: [],
+    verify: (r, t) => {
+      const rejected = t.events.some((e) => e.type === 'tool_result' && e.name === 'delegate' && !e.result.ok && /低于派生门槛/.test(e.result.error));
+      if (!rejected) return 'expected_steps=1 的 delegate 未被拒绝';
+      if (!t.events.some((e) => e.type === 'tool_call' && e.call.name === 'read_file')) return '被拒后未改为自己调用工具';
+      return /行/.test(r.answer) ? null : '未给出结论';
+    } },
 ];
 
 // 重新生成 workspace（确定性）
@@ -85,7 +102,14 @@ for (const t of TASKS) {
   const trace = new Trace({ provider: llm.name, workspace: 'workspace' });
   const agent = new Agent(llm, createDefaultRegistry(), WORKSPACE, { allowWrite: t.allowWrite ?? true, onEvent: (e) => trace.push(e) });
   const t0 = Date.now();
+
+  // 模拟"另一个并发任务正占用 shared-report.md"：直接以另一个 owner 持有写锁。
+  // 不用第二个 Agent 跑同一剧本，否则两者会赛跑抢同一路径，冲突窗口不确定、用例不可复现。
+  const TWIN_OWNER = 'other-task.simulated';
+  if (t.concurrentTwin) acquire([path.join(WORKSPACE, 'shared-report.md')], TWIN_OWNER);
+
   const r = await agent.run(t.task);
+  if (t.concurrentTwin) release([path.join(WORKSPACE, 'shared-report.md')], TWIN_OWNER);
   const dir = path.join(OUT, t.id);
   fs.mkdirSync(dir, { recursive: true });
   trace.save(dir, 'trace');

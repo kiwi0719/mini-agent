@@ -172,6 +172,9 @@
         <template v-else-if="e.type==='compressed'">
           <div class="head"><span class="tag">🗜 Context 压缩</span><b>step {{ e.step }}</b></div><div>节省 {{ e.savedChars }} 字符，当前上下文 {{ e.sizeChars }} 字符</div>
         </template>
+        <template v-else-if="e.type==='writes_reserved'">
+          <div class="head"><span class="tag">🔒 写目标预约</span><b>step {{ e.step }}</b></div><div>{{ e.targets.join(', ') }}</div>
+        </template>
         <template v-else-if="e.type==='notice'">
           <div class="head"><span class="tag">⚠️ Notice</span></div><div>{{ e.message }}</div>
         </template>

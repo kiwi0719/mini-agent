@@ -4,7 +4,7 @@ import type { PlanStep, Tool } from '../types.ts';
 export const updatePlan: Tool = {
   name: 'update_plan',
   description:
-    '创建或修订执行计划。多步任务开始前先制定计划；每完成一步或遇到失败需要改变策略时，重新提交完整的计划列表（可增删步骤、更新状态与备注）。status: pending | in_progress | done | blocked | skipped。',
+    '创建或修订执行计划。多步任务开始前先制定计划；每完成一步或遇到失败需要改变策略时，重新提交完整的计划列表（可增删步骤、更新状态与备注）。status: pending | in_progress | done | blocked | skipped。若本次任务会写文件，用 writes 一次性声明全部目标路径，系统会提前预约，冲突会在这一步就暴露而不是等写到一半失败。',
   permission: 'read',
   inputSchema: {
     type: 'object',
@@ -25,15 +25,26 @@ export const updatePlan: Tool = {
         },
       },
       reason: { type: 'string', description: '为什么调整计划（首次制定可省略）' },
+      writes: {
+        type: 'array',
+        items: { type: 'string' },
+        description: '本次任务预计写入的文件路径（相对 workspace）。提前声明可在制定计划时就发现与其他并发任务的写冲突。',
+      },
     },
     required: ['steps'],
     additionalProperties: false,
   },
-  async execute(input: { steps: PlanStep[]; reason?: string }, ctx) {
+  async execute(input: { steps: PlanStep[]; reason?: string; writes?: string[] }, ctx) {
     if (!ctx.runtime) return { ok: false, error: 'update_plan 需要 Agent 运行时' };
+    // 先预约写目标：冲突时不更新计划，让模型带着完整信息重新规划
+    if (input.writes?.length) {
+      const conflict = ctx.runtime.reserveWrites(input.writes);
+      if (conflict) return { ok: false, error: `计划中的写目标存在冲突，计划未更新：${conflict}。请改用其他输出路径后重新提交计划。` };
+    }
     ctx.runtime.setPlan(input.steps);
     const done = input.steps.filter((s) => s.status === 'done').length;
-    return { ok: true, output: `计划已更新（${done}/${input.steps.length} 完成）${input.reason ? `，原因: ${input.reason}` : ''}` };
+    const reserved = input.writes?.length ? `，已预约 ${input.writes.length} 个写目标` : '';
+    return { ok: true, output: `计划已更新（${done}/${input.steps.length} 完成）${reserved}${input.reason ? `，原因: ${input.reason}` : ''}` };
   },
 };
 
@@ -74,20 +85,22 @@ export const searchTools: Tool = {
 export const delegate: Tool = {
   name: 'delegate',
   description:
-    '把一个独立、边界清晰的子任务委派给子 Agent 执行（它拥有同样的文件工具与独立上下文，默认只读），返回子 Agent 的最终答案。同一轮发出的多个 delegate 会并行执行。适合可重复的分析（例如“逐个文件分析”），子任务描述必须自包含。',
+    '把一个独立、边界清晰的子任务委派给子 Agent 执行（它拥有同样的文件工具与独立上下文，默认只读），返回子 Agent 的最终答案。同一轮发出的多个 delegate 会并行执行。适合需要多步推理、或会产生大量中间输出而你只要结论的子任务。必须给出 expected_steps（预计子 Agent 需要几步）：派生一个子 Agent 本身就要额外的模型调用，预计 1 步能做完的事直接自己调工具更快更省，会被拒绝。',
   permission: 'read',
   inputSchema: {
     type: 'object',
     properties: {
       task: { type: 'string', description: '自包含的子任务描述' },
+      expected_steps: { type: 'integer', minimum: 1, description: '预计子 Agent 需要几步工具调用才能完成。低于门槛（默认 2）的子任务不值得派生，自己直接调工具更快。' },
       allow_write: { type: 'boolean', description: '是否允许子 Agent 写文件，默认 false（只读）。仅在子任务确实需要产出文件时开启' },
     },
-    required: ['task'],
+    required: ['task', 'expected_steps'],
     additionalProperties: false,
   },
-  async execute(input: { task: string; allow_write?: boolean }, ctx) {
+  async execute(input: { task: string; expected_steps: number; allow_write?: boolean }, ctx) {
     if (!ctx.runtime) return { ok: false, error: 'delegate 需要 Agent 运行时' };
-    const r = await ctx.runtime.delegate(input.task, ctx.callId ?? '', { allowWrite: input.allow_write });
+    const r = await ctx.runtime.delegate(input.task, ctx.callId ?? '', { allowWrite: input.allow_write, expectedSteps: input.expected_steps });
+    if (r.rejected) return { ok: false, error: r.rejected };
     if (r.reason !== 'completed') return { ok: false, error: `子 Agent 未能完成 (${r.reason}, ${r.steps} steps): ${r.answer}` };
     return { ok: true, output: `[子 Agent 用 ${r.steps} 步完成]\n${r.answer}` };
   },

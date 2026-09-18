@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:18:04.370Z
+- time: 2026-09-18T21:24:53.606Z
 
 ## 👤 User
 
@@ -66,7 +66,7 @@ _LLM 28ms · tokens in 16 / out 80_
 
 → 决定调用 1 个工具: get_pod
 
-_LLM 11ms · tokens in 174 / out 80_
+_LLM 12ms · tokens in 174 / out 80_
 
 ### 🔧 Tool Call: `get_pod`
 
@@ -135,7 +135,7 @@ Pod 信号：phase=Pending；容器 scorer waiting=ContainerCreating；condition
 
 → 决定调用 5 个工具: update_plan, get_pod_events, get_node, get_metrics, get_logs
 
-_LLM 130ms · tokens in 646 / out 80_
+_LLM 131ms · tokens in 646 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -215,16 +215,7 @@ _LLM 130ms · tokens in 646 / out 80_
 计划已更新（1/4 完成）
 ```
 
-### ✅ Tool Result: `get_metrics` (2ms)
-
-```
-{
- "available": false,
- "note": "Pod 处于 Pending，从未运行，没有指标"
-}
-```
-
-### ✅ Tool Result: `get_logs` (2ms)
+### ✅ Tool Result: `get_logs` (1ms)
 
 ```
 {
@@ -232,6 +223,15 @@ _LLM 130ms · tokens in 646 / out 80_
  "lines": 0,
  "note": "日志为空",
  "log": ""
+}
+```
+
+### ✅ Tool Result: `get_metrics` (2ms)
+
+```
+{
+ "available": false,
+ "note": "Pod 处于 Pending，从未运行，没有指标"
 }
 ```
 
@@ -344,7 +344,7 @@ _LLM 130ms · tokens in 646 / out 80_
 
 → 决定调用 3 个工具: update_plan, search_runbook, search_cases
 
-_LLM 44ms · tokens in 1840 / out 80_
+_LLM 46ms · tokens in 1840 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -400,7 +400,7 @@ _LLM 44ms · tokens in 1840 / out 80_
 }
 ```
 
-### ✅ Tool Result: `update_plan` (1ms)
+### ✅ Tool Result: `update_plan` (0ms)
 
 ```
 计划已更新（2/4 完成）
@@ -441,7 +441,7 @@ _LLM 44ms · tokens in 1840 / out 80_
 }
 ```
 
-### ✅ Tool Result: `search_runbook` (2ms)
+### ✅ Tool Result: `search_runbook` (0ms)
 
 ```
 {

@@ -1,0 +1,880 @@
+{
+  "meta": {
+    "provider": "mock",
+    "workspace": "workspace"
+  },
+  "startedAt": 1789766699061,
+  "events": [
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "user",
+      "task": "delegate 门槛演练：读取 README.md 并说明它有多少行。",
+      "ts": 1789766699061
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "这个子任务看",
+      "ts": 1789766699061
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "起来可以交给",
+      "ts": 1789766699067
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "子 Agen",
+      "ts": 1789766699073
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "t。",
+      "ts": 1789766699079
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 1,
+      "text": "这个子任务看起来可以交给子 Agent。",
+      "toolCalls": [
+        {
+          "id": "mock_1",
+          "name": "delegate",
+          "input": {
+            "task": "读取 README.md 并数出行数",
+            "expected_steps": 1
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 22,
+        "outputTokens": 80
+      },
+      "durationMs": 23,
+      "ts": 1789766699084
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_1",
+        "name": "delegate",
+        "input": {
+          "task": "读取 README.md 并数出行数",
+          "expected_steps": 1
+        }
+      },
+      "ts": 1789766699084
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_1",
+      "name": "delegate",
+      "result": {
+        "ok": false,
+        "error": "子任务预计只需 1 步，低于派生门槛 2 步。派生子 Agent 本身要额外消耗模型调用，这种情况直接自己调用工具更快。请自己执行这个子任务。"
+      },
+      "durationMs": 0,
+      "ts": 1789766699084
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "派生被拒（子",
+      "ts": 1789766699085
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "任务预计只需",
+      "ts": 1789766699090
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": " 1 步，低",
+      "ts": 1789766699096
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "于派生门槛 ",
+      "ts": 1789766699102
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "2 步。派生",
+      "ts": 1789766699108
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "子 Agen",
+      "ts": 1789766699113
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "t 本身要额",
+      "ts": 1789766699118
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "外消耗模型调",
+      "ts": 1789766699124
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "用，这种情况",
+      "ts": 1789766699130
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "直接自己调用",
+      "ts": 1789766699136
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "工具更快。请",
+      "ts": 1789766699141
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "自己执行这个",
+      "ts": 1789766699147
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "子任务。）。",
+      "ts": 1789766699153
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "确实只要一次",
+      "ts": 1789766699158
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": " read_",
+      "ts": 1789766699164
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "file，我",
+      "ts": 1789766699169
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "自己来。",
+      "ts": 1789766699175
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 2,
+      "text": "派生被拒（子任务预计只需 1 步，低于派生门槛 2 步。派生子 Agent 本身要额外消耗模型调用，这种情况直接自己调用工具更快。请自己执行这个子任务。）。确实只要一次 read_file，我自己来。",
+      "toolCalls": [
+        {
+          "id": "mock_2",
+          "name": "read_file",
+          "input": {
+            "path": "README.md"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 132,
+        "outputTokens": 80
+      },
+      "durationMs": 96,
+      "ts": 1789766699181
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_2",
+        "name": "read_file",
+        "input": {
+          "path": "README.md"
+        }
+      },
+      "ts": 1789766699181
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_2",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "# Demo Shop\n\n这是一个用于测试 Mini Agent 的示例项目（电商后台的一小部分）。\n\n## 模块\n\n- `src/user.ts` 用户模块\n- `src/order.ts` 订单模块\n- `src/payment.ts` 支付模块\n- `src/utils/` 工具函数\n- `docs/design.md` 设计文档，`docs/adr/` 架构决策记录\n- `data/` 销售数据与日志\n\nTODO: 补充部署说明\nTODO: 添加 CI 配置\n\n注意：本项目的 TODOS 统一在 issue 跟踪，代码里的 TODO 注释仅作临时标记。\n"
+      },
+      "durationMs": 1,
+      "ts": 1789766699182
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "完成。REA",
+      "ts": 1789766699183
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "DME.md",
+      "ts": 1789766699188
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": " 共 18 ",
+      "ts": 1789766699193
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "行。（最初想",
+      "ts": 1789766699199
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "派生子 Ag",
+      "ts": 1789766699205
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "ent，但 ",
+      "ts": 1789766699210
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "expect",
+      "ts": 1789766699216
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "ed_ste",
+      "ts": 1789766699220
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "ps=1 低",
+      "ts": 1789766699226
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "于门槛被拒，",
+      "ts": 1789766699232
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "改为直接调用",
+      "ts": 1789766699237
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": " read_",
+      "ts": 1789766699243
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "file，省",
+      "ts": 1789766699249
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "下一次子 A",
+      "ts": 1789766699254
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "gent 的",
+      "ts": 1789766699260
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "模型调用。）",
+      "ts": 1789766699266
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 3,
+      "text": "完成。README.md 共 18 行。（最初想派生子 Agent，但 expected_steps=1 低于门槛被拒，改为直接调用 read_file，省下一次子 Agent 的模型调用。）",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 336,
+        "outputTokens": 80
+      },
+      "durationMs": 88,
+      "ts": 1789766699271
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "final",
+      "answer": "完成。README.md 共 18 行。（最初想派生子 Agent，但 expected_steps=1 低于门槛被拒，改为直接调用 read_file，省下一次子 Agent 的模型调用。）",
+      "reason": "completed",
+      "steps": 3,
+      "usage": {
+        "inputTokens": 490,
+        "outputTokens": 240
+      },
+      "ts": 1789766699271
+    }
+  ],
+  "tree": {
+    "agent": "main",
+    "depth": 0,
+    "events": [
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "user",
+        "task": "delegate 门槛演练：读取 README.md 并说明它有多少行。",
+        "ts": 1789766699061
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "这个子任务看",
+        "ts": 1789766699061
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "起来可以交给",
+        "ts": 1789766699067
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "子 Agen",
+        "ts": 1789766699073
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "t。",
+        "ts": 1789766699079
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 1,
+        "text": "这个子任务看起来可以交给子 Agent。",
+        "toolCalls": [
+          {
+            "id": "mock_1",
+            "name": "delegate",
+            "input": {
+              "task": "读取 README.md 并数出行数",
+              "expected_steps": 1
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 22,
+          "outputTokens": 80
+        },
+        "durationMs": 23,
+        "ts": 1789766699084
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 1,
+        "call": {
+          "id": "mock_1",
+          "name": "delegate",
+          "input": {
+            "task": "读取 README.md 并数出行数",
+            "expected_steps": 1
+          }
+        },
+        "ts": 1789766699084
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 1,
+        "callId": "mock_1",
+        "name": "delegate",
+        "result": {
+          "ok": false,
+          "error": "子任务预计只需 1 步，低于派生门槛 2 步。派生子 Agent 本身要额外消耗模型调用，这种情况直接自己调用工具更快。请自己执行这个子任务。"
+        },
+        "durationMs": 0,
+        "ts": 1789766699084
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "派生被拒（子",
+        "ts": 1789766699085
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "任务预计只需",
+        "ts": 1789766699090
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": " 1 步，低",
+        "ts": 1789766699096
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "于派生门槛 ",
+        "ts": 1789766699102
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "2 步。派生",
+        "ts": 1789766699108
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "子 Agen",
+        "ts": 1789766699113
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "t 本身要额",
+        "ts": 1789766699118
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "外消耗模型调",
+        "ts": 1789766699124
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "用，这种情况",
+        "ts": 1789766699130
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "直接自己调用",
+        "ts": 1789766699136
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "工具更快。请",
+        "ts": 1789766699141
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "自己执行这个",
+        "ts": 1789766699147
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "子任务。）。",
+        "ts": 1789766699153
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "确实只要一次",
+        "ts": 1789766699158
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": " read_",
+        "ts": 1789766699164
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "file，我",
+        "ts": 1789766699169
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "自己来。",
+        "ts": 1789766699175
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 2,
+        "text": "派生被拒（子任务预计只需 1 步，低于派生门槛 2 步。派生子 Agent 本身要额外消耗模型调用，这种情况直接自己调用工具更快。请自己执行这个子任务。）。确实只要一次 read_file，我自己来。",
+        "toolCalls": [
+          {
+            "id": "mock_2",
+            "name": "read_file",
+            "input": {
+              "path": "README.md"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 132,
+          "outputTokens": 80
+        },
+        "durationMs": 96,
+        "ts": 1789766699181
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 2,
+        "call": {
+          "id": "mock_2",
+          "name": "read_file",
+          "input": {
+            "path": "README.md"
+          }
+        },
+        "ts": 1789766699181
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 2,
+        "callId": "mock_2",
+        "name": "read_file",
+        "result": {
+          "ok": true,
+          "output": "# Demo Shop\n\n这是一个用于测试 Mini Agent 的示例项目（电商后台的一小部分）。\n\n## 模块\n\n- `src/user.ts` 用户模块\n- `src/order.ts` 订单模块\n- `src/payment.ts` 支付模块\n- `src/utils/` 工具函数\n- `docs/design.md` 设计文档，`docs/adr/` 架构决策记录\n- `data/` 销售数据与日志\n\nTODO: 补充部署说明\nTODO: 添加 CI 配置\n\n注意：本项目的 TODOS 统一在 issue 跟踪，代码里的 TODO 注释仅作临时标记。\n"
+        },
+        "durationMs": 1,
+        "ts": 1789766699182
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "完成。REA",
+        "ts": 1789766699183
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "DME.md",
+        "ts": 1789766699188
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": " 共 18 ",
+        "ts": 1789766699193
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "行。（最初想",
+        "ts": 1789766699199
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "派生子 Ag",
+        "ts": 1789766699205
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "ent，但 ",
+        "ts": 1789766699210
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "expect",
+        "ts": 1789766699216
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "ed_ste",
+        "ts": 1789766699220
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "ps=1 低",
+        "ts": 1789766699226
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "于门槛被拒，",
+        "ts": 1789766699232
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "改为直接调用",
+        "ts": 1789766699237
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": " read_",
+        "ts": 1789766699243
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "file，省",
+        "ts": 1789766699249
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "下一次子 A",
+        "ts": 1789766699254
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "gent 的",
+        "ts": 1789766699260
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "模型调用。）",
+        "ts": 1789766699266
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 3,
+        "text": "完成。README.md 共 18 行。（最初想派生子 Agent，但 expected_steps=1 低于门槛被拒，改为直接调用 read_file，省下一次子 Agent 的模型调用。）",
+        "toolCalls": [],
+        "usage": {
+          "inputTokens": 336,
+          "outputTokens": 80
+        },
+        "durationMs": 88,
+        "ts": 1789766699271
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "final",
+        "answer": "完成。README.md 共 18 行。（最初想派生子 Agent，但 expected_steps=1 低于门槛被拒，改为直接调用 read_file，省下一次子 Agent 的模型调用。）",
+        "reason": "completed",
+        "steps": 3,
+        "usage": {
+          "inputTokens": 490,
+          "outputTokens": 240
+        },
+        "ts": 1789766699271
+      }
+    ],
+    "children": []
+  }
+}

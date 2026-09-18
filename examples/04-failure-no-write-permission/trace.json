@@ -3,14 +3,14 @@
     "provider": "mock",
     "workspace": "workspace"
   },
-  "startedAt": 1789766273542,
+  "startedAt": 1789766682568,
   "events": [
     {
       "agent": "main",
       "depth": 0,
       "type": "user",
       "task": "找出所有 TODO 并生成 todo-report.md",
-      "ts": 1789766273542
+      "ts": 1789766682568
     },
     {
       "agent": "main",
@@ -18,7 +18,7 @@
       "type": "delta",
       "step": 1,
       "text": "这是多步任务",
-      "ts": 1789766273542
+      "ts": 1789766682568
     },
     {
       "agent": "main",
@@ -26,22 +26,46 @@
       "type": "delta",
       "step": 1,
       "text": "，先制定计划",
-      "ts": 1789766273548
+      "ts": 1789766682574
     },
     {
       "agent": "main",
       "depth": 0,
       "type": "delta",
       "step": 1,
-      "text": "。",
-      "ts": 1789766273554
+      "text": "，并提前声明",
+      "ts": 1789766682580
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "要写的文件以",
+      "ts": 1789766682585
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "避免与其他并",
+      "ts": 1789766682591
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "发任务冲突。",
+      "ts": 1789766682596
     },
     {
       "agent": "main",
       "depth": 0,
       "type": "decision",
       "step": 1,
-      "text": "这是多步任务，先制定计划。",
+      "text": "这是多步任务，先制定计划，并提前声明要写的文件以避免与其他并发任务冲突。",
       "toolCalls": [
         {
           "id": "mock_1",
@@ -63,6 +87,9 @@
                 "title": "生成分类报告",
                 "status": "pending"
               }
+            ],
+            "writes": [
+              "todo-report.md"
             ]
           }
         }
@@ -71,8 +98,8 @@
         "inputTokens": 19,
         "outputTokens": 80
       },
-      "durationMs": 17,
-      "ts": 1789766273559
+      "durationMs": 34,
+      "ts": 1789766682602
     },
     {
       "agent": "main",
@@ -99,10 +126,23 @@
               "title": "生成分类报告",
               "status": "pending"
             }
+          ],
+          "writes": [
+            "todo-report.md"
           ]
         }
       },
-      "ts": 1789766273559
+      "ts": 1789766682602
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "writes_reserved",
+      "step": 1,
+      "targets": [
+        "todo-report.md"
+      ],
+      "ts": 1789766682603
     },
     {
       "agent": "main",
@@ -126,7 +166,7 @@
           "status": "pending"
         }
       ],
-      "ts": 1789766273559
+      "ts": 1789766682603
     },
     {
       "agent": "main",
@@ -137,10 +177,10 @@
       "name": "update_plan",
       "result": {
         "ok": true,
-        "output": "计划已更新（0/3 完成）"
+        "output": "计划已更新（0/3 完成），已预约 1 个写目标"
       },
-      "durationMs": 0,
-      "ts": 1789766273559
+      "durationMs": 1,
+      "ts": 1789766682603
     },
     {
       "agent": "main",
@@ -148,7 +188,7 @@
       "type": "delta",
       "step": 2,
       "text": "搜索 TOD",
-      "ts": 1789766273560
+      "ts": 1789766682603
     },
     {
       "agent": "main",
@@ -156,7 +196,7 @@
       "type": "delta",
       "step": 2,
       "text": "O 与 FI",
-      "ts": 1789766273565
+      "ts": 1789766682609
     },
     {
       "agent": "main",
@@ -164,7 +204,7 @@
       "type": "delta",
       "step": 2,
       "text": "XME。",
-      "ts": 1789766273571
+      "ts": 1789766682614
     },
     {
       "agent": "main",
@@ -182,11 +222,11 @@
         }
       ],
       "usage": {
-        "inputTokens": 150,
+        "inputTokens": 170,
         "outputTokens": 80
       },
       "durationMs": 17,
-      "ts": 1789766273577
+      "ts": 1789766682620
     },
     {
       "agent": "main",
@@ -200,7 +240,7 @@
           "pattern": "TODO|FIXME"
         }
       },
-      "ts": 1789766273577
+      "ts": 1789766682620
     },
     {
       "agent": "main",
@@ -211,10 +251,10 @@
       "name": "search_text",
       "result": {
         "ok": true,
-        "output": "{\n \"total\": 19,\n \"truncated\": false,\n \"files_scanned\": 25,\n \"matches\": [\n  {\n   \"file\": \"README.md\",\n   \"line\": 14,\n   \"text\": \"TODO: 补充部署说明\"\n  },\n  {\n   \"file\": \"README.md\",\n   \"line\": 15,\n   \"text\": \"TODO: 添加 CI 配置\"\n  },\n  {\n   \"file\": \"README.md\",\n   \"line\": 17,\n   \"text\": \"注意：本项目的 TODOS 统一在 issue 跟踪，代码里的 TODO 注释仅作临时标记。\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 4,\n   \"text\": \"# TODO: 生产环境改成从环境变量读取\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 7,\n   \"text\": \"enabled: false   # FIXME: 缓存开关未接入代码\"\n  },\n  {\n   \"file\": \"docs/adr/001-storage.md\",\n   \"line\": 9,\n   \"text\": \"- TODO: 设计分页接口\"\n  },\n  {\n   \"file\": \"docs/adr/002-cache.md\",\n   \"line\": 8,\n   \"text\": \"FIXME: 配置项 cache.enabled 在 `config/app.yaml` 中存在但代码未读取\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 19,\n   \"text\": \"TODO: 补充部署架构图\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 20,\n   \"text\": \"TODO: 评估是否引入 Redis 缓存（见 002）\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 13,\n   \"text\": \"// FIXME: 浮点运算精度问题，金额应使用整数分\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 22,\n   \"text\": \"/* TODO: 订单状态机校验（pending → paid → shipped） */\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 5,\n   \"text\": \"const todoList: string[] = []; // 待处理的支付回调队列（不是 TODO 注释）\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 8,\n   \"text\": \"// TODO: 幂等键，防止重复扣款\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 9,\n   \"text\": \"todoList.push(order.id);\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 14,\n   \"text\": \"// FIXME: 退款没有校验订单状态是否为 paid\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 12,\n   \"text\": \"// TODO: 接入真实数据库，替换内存数组\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 17,\n   \"text\": \"// FIXME: 没有校验 email 格式\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 24,\n   \"text\": \"// TODO(alice): 实现分页，见 docs/adr/001-storage.md\"\n  },\n  {\n   \"file\": \"src/utils/validate.ts\",\n   \"line\": 5,\n   \"text\": \"// TODO: 手机号校验支持国际区号\"\n  }\n ]\n}"
+        "output": "{\n \"total\": 19,\n \"truncated\": false,\n \"files_scanned\": 26,\n \"matches\": [\n  {\n   \"file\": \"README.md\",\n   \"line\": 14,\n   \"text\": \"TODO: 补充部署说明\"\n  },\n  {\n   \"file\": \"README.md\",\n   \"line\": 15,\n   \"text\": \"TODO: 添加 CI 配置\"\n  },\n  {\n   \"file\": \"README.md\",\n   \"line\": 17,\n   \"text\": \"注意：本项目的 TODOS 统一在 issue 跟踪，代码里的 TODO 注释仅作临时标记。\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 4,\n   \"text\": \"# TODO: 生产环境改成从环境变量读取\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 7,\n   \"text\": \"enabled: false   # FIXME: 缓存开关未接入代码\"\n  },\n  {\n   \"file\": \"docs/adr/001-storage.md\",\n   \"line\": 9,\n   \"text\": \"- TODO: 设计分页接口\"\n  },\n  {\n   \"file\": \"docs/adr/002-cache.md\",\n   \"line\": 8,\n   \"text\": \"FIXME: 配置项 cache.enabled 在 `config/app.yaml` 中存在但代码未读取\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 19,\n   \"text\": \"TODO: 补充部署架构图\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 20,\n   \"text\": \"TODO: 评估是否引入 Redis 缓存（见 002）\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 13,\n   \"text\": \"// FIXME: 浮点运算精度问题，金额应使用整数分\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 22,\n   \"text\": \"/* TODO: 订单状态机校验（pending → paid → shipped） */\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 5,\n   \"text\": \"const todoList: string[] = []; // 待处理的支付回调队列（不是 TODO 注释）\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 8,\n   \"text\": \"// TODO: 幂等键，防止重复扣款\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 9,\n   \"text\": \"todoList.push(order.id);\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 14,\n   \"text\": \"// FIXME: 退款没有校验订单状态是否为 paid\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 12,\n   \"text\": \"// TODO: 接入真实数据库，替换内存数组\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 17,\n   \"text\": \"// FIXME: 没有校验 email 格式\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 24,\n   \"text\": \"// TODO(alice): 实现分页，见 docs/adr/001-storage.md\"\n  },\n  {\n   \"file\": \"src/utils/validate.ts\",\n   \"line\": 5,\n   \"text\": \"// TODO: 手机号校验支持国际区号\"\n  }\n ]\n}"
       },
-      "durationMs": 7,
-      "ts": 1789766273584
+      "durationMs": 13,
+      "ts": 1789766682633
     },
     {
       "agent": "main",
@@ -222,7 +262,7 @@
       "type": "delta",
       "step": 3,
       "text": "结果里混入了",
-      "ts": 1789766273584
+      "ts": 1789766682633
     },
     {
       "agent": "main",
@@ -230,7 +270,7 @@
       "type": "delta",
       "step": 3,
       "text": " 3 条假阳",
-      "ts": 1789766273590
+      "ts": 1789766682639
     },
     {
       "agent": "main",
@@ -238,7 +278,7 @@
       "type": "delta",
       "step": 3,
       "text": "性（如 TO",
-      "ts": 1789766273595
+      "ts": 1789766682645
     },
     {
       "agent": "main",
@@ -246,7 +286,7 @@
       "type": "delta",
       "step": 3,
       "text": "DOS、to",
-      "ts": 1789766273601
+      "ts": 1789766682651
     },
     {
       "agent": "main",
@@ -254,7 +294,7 @@
       "type": "delta",
       "step": 3,
       "text": "doList",
-      "ts": 1789766273607
+      "ts": 1789766682656
     },
     {
       "agent": "main",
@@ -262,7 +302,7 @@
       "type": "delta",
       "step": 3,
       "text": "），用更严格",
-      "ts": 1789766273612
+      "ts": 1789766682661
     },
     {
       "agent": "main",
@@ -270,7 +310,7 @@
       "type": "delta",
       "step": 3,
       "text": "的正则重新搜",
-      "ts": 1789766273618
+      "ts": 1789766682667
     },
     {
       "agent": "main",
@@ -278,7 +318,7 @@
       "type": "delta",
       "step": 3,
       "text": "索。",
-      "ts": 1789766273624
+      "ts": 1789766682673
     },
     {
       "agent": "main",
@@ -296,11 +336,11 @@
         }
       ],
       "usage": {
-        "inputTokens": 957,
+        "inputTokens": 977,
         "outputTokens": 80
       },
-      "durationMs": 46,
-      "ts": 1789766273630
+      "durationMs": 45,
+      "ts": 1789766682678
     },
     {
       "agent": "main",
@@ -314,7 +354,7 @@
           "pattern": "\\b(TODO|FIXME)\\b(\\([^)]*\\))?:"
         }
       },
-      "ts": 1789766273630
+      "ts": 1789766682678
     },
     {
       "agent": "main",
@@ -325,10 +365,10 @@
       "name": "search_text",
       "result": {
         "ok": true,
-        "output": "{\n \"total\": 16,\n \"truncated\": false,\n \"files_scanned\": 25,\n \"matches\": [\n  {\n   \"file\": \"README.md\",\n   \"line\": 14,\n   \"text\": \"TODO: 补充部署说明\"\n  },\n  {\n   \"file\": \"README.md\",\n   \"line\": 15,\n   \"text\": \"TODO: 添加 CI 配置\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 4,\n   \"text\": \"# TODO: 生产环境改成从环境变量读取\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 7,\n   \"text\": \"enabled: false   # FIXME: 缓存开关未接入代码\"\n  },\n  {\n   \"file\": \"docs/adr/001-storage.md\",\n   \"line\": 9,\n   \"text\": \"- TODO: 设计分页接口\"\n  },\n  {\n   \"file\": \"docs/adr/002-cache.md\",\n   \"line\": 8,\n   \"text\": \"FIXME: 配置项 cache.enabled 在 `config/app.yaml` 中存在但代码未读取\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 19,\n   \"text\": \"TODO: 补充部署架构图\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 20,\n   \"text\": \"TODO: 评估是否引入 Redis 缓存（见 002）\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 13,\n   \"text\": \"// FIXME: 浮点运算精度问题，金额应使用整数分\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 22,\n   \"text\": \"/* TODO: 订单状态机校验（pending → paid → shipped） */\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 8,\n   \"text\": \"// TODO: 幂等键，防止重复扣款\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 14,\n   \"text\": \"// FIXME: 退款没有校验订单状态是否为 paid\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 12,\n   \"text\": \"// TODO: 接入真实数据库，替换内存数组\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 17,\n   \"text\": \"// FIXME: 没有校验 email 格式\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 24,\n   \"text\": \"// TODO(alice): 实现分页，见 docs/adr/001-storage.md\"\n  },\n  {\n   \"file\": \"src/utils/validate.ts\",\n   \"line\": 5,\n   \"text\": \"// TODO: 手机号校验支持国际区号\"\n  }\n ]\n}"
+        "output": "{\n \"total\": 16,\n \"truncated\": false,\n \"files_scanned\": 26,\n \"matches\": [\n  {\n   \"file\": \"README.md\",\n   \"line\": 14,\n   \"text\": \"TODO: 补充部署说明\"\n  },\n  {\n   \"file\": \"README.md\",\n   \"line\": 15,\n   \"text\": \"TODO: 添加 CI 配置\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 4,\n   \"text\": \"# TODO: 生产环境改成从环境变量读取\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 7,\n   \"text\": \"enabled: false   # FIXME: 缓存开关未接入代码\"\n  },\n  {\n   \"file\": \"docs/adr/001-storage.md\",\n   \"line\": 9,\n   \"text\": \"- TODO: 设计分页接口\"\n  },\n  {\n   \"file\": \"docs/adr/002-cache.md\",\n   \"line\": 8,\n   \"text\": \"FIXME: 配置项 cache.enabled 在 `config/app.yaml` 中存在但代码未读取\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 19,\n   \"text\": \"TODO: 补充部署架构图\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 20,\n   \"text\": \"TODO: 评估是否引入 Redis 缓存（见 002）\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 13,\n   \"text\": \"// FIXME: 浮点运算精度问题，金额应使用整数分\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 22,\n   \"text\": \"/* TODO: 订单状态机校验（pending → paid → shipped） */\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 8,\n   \"text\": \"// TODO: 幂等键，防止重复扣款\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 14,\n   \"text\": \"// FIXME: 退款没有校验订单状态是否为 paid\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 12,\n   \"text\": \"// TODO: 接入真实数据库，替换内存数组\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 17,\n   \"text\": \"// FIXME: 没有校验 email 格式\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 24,\n   \"text\": \"// TODO(alice): 实现分页，见 docs/adr/001-storage.md\"\n  },\n  {\n   \"file\": \"src/utils/validate.ts\",\n   \"line\": 5,\n   \"text\": \"// TODO: 手机号校验支持国际区号\"\n  }\n ]\n}"
       },
-      "durationMs": 5,
-      "ts": 1789766273635
+      "durationMs": 10,
+      "ts": 1789766682688
     },
     {
       "agent": "main",
@@ -336,7 +376,7 @@
       "type": "delta",
       "step": 4,
       "text": "确认 16 ",
-      "ts": 1789766273635
+      "ts": 1789766682689
     },
     {
       "agent": "main",
@@ -344,7 +384,7 @@
       "type": "delta",
       "step": 4,
       "text": "处，分布在 ",
-      "ts": 1789766273640
+      "ts": 1789766682694
     },
     {
       "agent": "main",
@@ -352,7 +392,7 @@
       "type": "delta",
       "step": 4,
       "text": "9 个文件。",
-      "ts": 1789766273646
+      "ts": 1789766682700
     },
     {
       "agent": "main",
@@ -360,7 +400,7 @@
       "type": "delta",
       "step": 4,
       "text": "其中 4 个",
-      "ts": 1789766273652
+      "ts": 1789766682706
     },
     {
       "agent": "main",
@@ -368,7 +408,7 @@
       "type": "delta",
       "step": 4,
       "text": "源码文件并行",
-      "ts": 1789766273658
+      "ts": 1789766682712
     },
     {
       "agent": "main",
@@ -376,7 +416,7 @@
       "type": "delta",
       "step": 4,
       "text": "委派子 Ag",
-      "ts": 1789766273663
+      "ts": 1789766682717
     },
     {
       "agent": "main",
@@ -384,7 +424,7 @@
       "type": "delta",
       "step": 4,
       "text": "ent 读取",
-      "ts": 1789766273669
+      "ts": 1789766682723
     },
     {
       "agent": "main",
@@ -392,7 +432,7 @@
       "type": "delta",
       "step": 4,
       "text": "上下文。",
-      "ts": 1789766273675
+      "ts": 1789766682729
     },
     {
       "agent": "main",
@@ -405,37 +445,41 @@
           "id": "mock_4",
           "name": "delegate",
           "input": {
-            "task": "分析文件 src/order.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+            "task": "分析文件 src/order.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+            "expected_steps": 2
           }
         },
         {
           "id": "mock_5",
           "name": "delegate",
           "input": {
-            "task": "分析文件 src/payment.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+            "task": "分析文件 src/payment.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+            "expected_steps": 2
           }
         },
         {
           "id": "mock_6",
           "name": "delegate",
           "input": {
-            "task": "分析文件 src/user.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+            "task": "分析文件 src/user.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+            "expected_steps": 2
           }
         },
         {
           "id": "mock_7",
           "name": "delegate",
           "input": {
-            "task": "分析文件 src/utils/validate.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+            "task": "分析文件 src/utils/validate.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+            "expected_steps": 2
           }
         }
       ],
       "usage": {
-        "inputTokens": 1659,
+        "inputTokens": 1680,
         "outputTokens": 80
       },
-      "durationMs": 45,
-      "ts": 1789766273680
+      "durationMs": 46,
+      "ts": 1789766682734
     },
     {
       "agent": "main",
@@ -446,10 +490,11 @@
         "id": "mock_4",
         "name": "delegate",
         "input": {
-          "task": "分析文件 src/order.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+          "task": "分析文件 src/order.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+          "expected_steps": 2
         }
       },
-      "ts": 1789766273680
+      "ts": 1789766682734
     },
     {
       "agent": "sub-1",
@@ -458,7 +503,7 @@
       "parentCallId": "mock_4",
       "type": "user",
       "task": "分析文件 src/order.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
-      "ts": 1789766273680
+      "ts": 1789766682734
     },
     {
       "agent": "sub-1",
@@ -468,7 +513,7 @@
       "type": "delta",
       "step": 1,
       "text": "读取 src",
-      "ts": 1789766273680
+      "ts": 1789766682735
     },
     {
       "agent": "main",
@@ -479,10 +524,11 @@
         "id": "mock_5",
         "name": "delegate",
         "input": {
-          "task": "分析文件 src/payment.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+          "task": "分析文件 src/payment.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+          "expected_steps": 2
         }
       },
-      "ts": 1789766273681
+      "ts": 1789766682735
     },
     {
       "agent": "sub-2",
@@ -491,7 +537,7 @@
       "parentCallId": "mock_5",
       "type": "user",
       "task": "分析文件 src/payment.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
-      "ts": 1789766273681
+      "ts": 1789766682735
     },
     {
       "agent": "sub-2",
@@ -501,7 +547,7 @@
       "type": "delta",
       "step": 1,
       "text": "读取 src",
-      "ts": 1789766273681
+      "ts": 1789766682735
     },
     {
       "agent": "main",
@@ -512,10 +558,11 @@
         "id": "mock_6",
         "name": "delegate",
         "input": {
-          "task": "分析文件 src/user.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+          "task": "分析文件 src/user.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+          "expected_steps": 2
         }
       },
-      "ts": 1789766273681
+      "ts": 1789766682735
     },
     {
       "agent": "sub-3",
@@ -524,7 +571,7 @@
       "parentCallId": "mock_6",
       "type": "user",
       "task": "分析文件 src/user.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
-      "ts": 1789766273681
+      "ts": 1789766682735
     },
     {
       "agent": "sub-3",
@@ -534,7 +581,7 @@
       "type": "delta",
       "step": 1,
       "text": "读取 src",
-      "ts": 1789766273681
+      "ts": 1789766682735
     },
     {
       "agent": "main",
@@ -545,10 +592,11 @@
         "id": "mock_7",
         "name": "delegate",
         "input": {
-          "task": "分析文件 src/utils/validate.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+          "task": "分析文件 src/utils/validate.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+          "expected_steps": 2
         }
       },
-      "ts": 1789766273681
+      "ts": 1789766682735
     },
     {
       "agent": "sub-4",
@@ -557,7 +605,7 @@
       "parentCallId": "mock_7",
       "type": "user",
       "task": "分析文件 src/utils/validate.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
-      "ts": 1789766273681
+      "ts": 1789766682735
     },
     {
       "agent": "sub-4",
@@ -567,7 +615,7 @@
       "type": "delta",
       "step": 1,
       "text": "读取 src",
-      "ts": 1789766273681
+      "ts": 1789766682735
     },
     {
       "agent": "sub-1",
@@ -577,7 +625,7 @@
       "type": "delta",
       "step": 1,
       "text": "/order",
-      "ts": 1789766273686
+      "ts": 1789766682740
     },
     {
       "agent": "sub-2",
@@ -587,7 +635,7 @@
       "type": "delta",
       "step": 1,
       "text": "/payme",
-      "ts": 1789766273686
+      "ts": 1789766682740
     },
     {
       "agent": "sub-3",
@@ -597,7 +645,7 @@
       "type": "delta",
       "step": 1,
       "text": "/user.",
-      "ts": 1789766273686
+      "ts": 1789766682740
     },
     {
       "agent": "sub-4",
@@ -607,7 +655,7 @@
       "type": "delta",
       "step": 1,
       "text": "/utils",
-      "ts": 1789766273686
+      "ts": 1789766682740
     },
     {
       "agent": "sub-1",
@@ -617,7 +665,7 @@
       "type": "delta",
       "step": 1,
       "text": ".ts。",
-      "ts": 1789766273692
+      "ts": 1789766682746
     },
     {
       "agent": "sub-2",
@@ -627,7 +675,7 @@
       "type": "delta",
       "step": 1,
       "text": "nt.ts。",
-      "ts": 1789766273692
+      "ts": 1789766682746
     },
     {
       "agent": "sub-3",
@@ -637,7 +685,7 @@
       "type": "delta",
       "step": 1,
       "text": "ts。",
-      "ts": 1789766273692
+      "ts": 1789766682746
     },
     {
       "agent": "sub-4",
@@ -647,7 +695,7 @@
       "type": "delta",
       "step": 1,
       "text": "/valid",
-      "ts": 1789766273692
+      "ts": 1789766682746
     },
     {
       "agent": "sub-1",
@@ -671,7 +719,7 @@
         "outputTokens": 80
       },
       "durationMs": 18,
-      "ts": 1789766273698
+      "ts": 1789766682752
     },
     {
       "agent": "sub-1",
@@ -687,7 +735,7 @@
           "path": "src/order.ts"
         }
       },
-      "ts": 1789766273698
+      "ts": 1789766682752
     },
     {
       "agent": "sub-2",
@@ -711,7 +759,7 @@
         "outputTokens": 80
       },
       "durationMs": 17,
-      "ts": 1789766273698
+      "ts": 1789766682752
     },
     {
       "agent": "sub-2",
@@ -727,7 +775,7 @@
           "path": "src/payment.ts"
         }
       },
-      "ts": 1789766273698
+      "ts": 1789766682752
     },
     {
       "agent": "sub-3",
@@ -751,7 +799,7 @@
         "outputTokens": 80
       },
       "durationMs": 17,
-      "ts": 1789766273698
+      "ts": 1789766682752
     },
     {
       "agent": "sub-3",
@@ -767,7 +815,7 @@
           "path": "src/user.ts"
         }
       },
-      "ts": 1789766273698
+      "ts": 1789766682752
     },
     {
       "agent": "sub-4",
@@ -777,59 +825,7 @@
       "type": "delta",
       "step": 1,
       "text": "ate.ts",
-      "ts": 1789766273698
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "tool_result",
-      "step": 1,
-      "callId": "mock_8",
-      "name": "read_file",
-      "result": {
-        "ok": true,
-        "output": "import type { User } from './user.ts';\n\nexport interface Order {\n  id: string;\n  user: User;\n  amount: number;\n  status: 'pending' | 'paid' | 'shipped';\n}\n\nconst TAX_RATE = 0.13;\nconst FREE_SHIPPING_THRESHOLD = 500;\n\n// FIXME: 浮点运算精度问题，金额应使用整数分\nexport function totalWithTax(order: Order): number {\n  return order.amount * (1 + TAX_RATE);\n}\n\nexport function shippingFee(order: Order): number {\n  return order.amount >= FREE_SHIPPING_THRESHOLD ? 0 : 20;\n}\n\n/* TODO: 订单状态机校验（pending → paid → shipped） */\nexport function advance(order: Order): Order {\n  return order;\n}\n"
-      },
-      "durationMs": 0,
-      "ts": 1789766273698
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": "src/or",
-      "ts": 1789766273698
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "tool_result",
-      "step": 1,
-      "callId": "mock_9",
-      "name": "read_file",
-      "result": {
-        "ok": true,
-        "output": "import type { Order } from './order.ts';\n\nexport type Provider = 'alipay' | 'wechat' | 'card';\n\nconst todoList: string[] = []; // 待处理的支付回调队列（不是 TODO 注释）\n\nexport async function charge(order: Order, provider: Provider): Promise<boolean> {\n  // TODO: 幂等键，防止重复扣款\n  todoList.push(order.id);\n  return true;\n}\n\nexport function refund(order: Order): number {\n  // FIXME: 退款没有校验订单状态是否为 paid\n  return -order.amount;\n}\n"
-      },
-      "durationMs": 0,
-      "ts": 1789766273698
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "delta",
-      "step": 2,
-      "text": "src/pa",
-      "ts": 1789766273698
+      "ts": 1789766682752
     },
     {
       "agent": "sub-3",
@@ -845,7 +841,7 @@
         "output": "export interface User {\n  id: number;\n  name: string;\n  email: string;\n}\n\nconst users: User[] = [\n  { id: 1, name: 'Alice', email: 'alice@example.com' },\n  { id: 2, name: 'Bob', email: 'bob@example.com' },\n];\n\n// TODO: 接入真实数据库，替换内存数组\nexport function findUser(id: number): User | undefined {\n  return users.find((u) => u.id === id);\n}\n\n// FIXME: 没有校验 email 格式\nexport function createUser(name: string, email: string): User {\n  const user = { id: users.length + 1, name, email };\n  users.push(user);\n  return user;\n}\n\n// TODO(alice): 实现分页，见 docs/adr/001-storage.md\nexport function listUsers(): User[] {\n  return users;\n}\n"
       },
       "durationMs": 0,
-      "ts": 1789766273698
+      "ts": 1789766682752
     },
     {
       "agent": "sub-3",
@@ -855,7 +851,59 @@
       "type": "delta",
       "step": 2,
       "text": "src/us",
-      "ts": 1789766273698
+      "ts": 1789766682752
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_8",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "import type { User } from './user.ts';\n\nexport interface Order {\n  id: string;\n  user: User;\n  amount: number;\n  status: 'pending' | 'paid' | 'shipped';\n}\n\nconst TAX_RATE = 0.13;\nconst FREE_SHIPPING_THRESHOLD = 500;\n\n// FIXME: 浮点运算精度问题，金额应使用整数分\nexport function totalWithTax(order: Order): number {\n  return order.amount * (1 + TAX_RATE);\n}\n\nexport function shippingFee(order: Order): number {\n  return order.amount >= FREE_SHIPPING_THRESHOLD ? 0 : 20;\n}\n\n/* TODO: 订单状态机校验（pending → paid → shipped） */\nexport function advance(order: Order): Order {\n  return order;\n}\n"
+      },
+      "durationMs": 0,
+      "ts": 1789766682752
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": "src/or",
+      "ts": 1789766682752
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_9",
+      "name": "read_file",
+      "result": {
+        "ok": true,
+        "output": "import type { Order } from './order.ts';\n\nexport type Provider = 'alipay' | 'wechat' | 'card';\n\nconst todoList: string[] = []; // 待处理的支付回调队列（不是 TODO 注释）\n\nexport async function charge(order: Order, provider: Provider): Promise<boolean> {\n  // TODO: 幂等键，防止重复扣款\n  todoList.push(order.id);\n  return true;\n}\n\nexport function refund(order: Order): number {\n  // FIXME: 退款没有校验订单状态是否为 paid\n  return -order.amount;\n}\n"
+      },
+      "durationMs": 0,
+      "ts": 1789766682752
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "delta",
+      "step": 2,
+      "text": "src/pa",
+      "ts": 1789766682753
     },
     {
       "agent": "sub-4",
@@ -865,27 +913,7 @@
       "type": "delta",
       "step": 1,
       "text": "。",
-      "ts": 1789766273704
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": "der.ts",
-      "ts": 1789766273704
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "delta",
-      "step": 2,
-      "text": "yment.",
-      "ts": 1789766273704
+      "ts": 1789766682757
     },
     {
       "agent": "sub-3",
@@ -895,7 +923,27 @@
       "type": "delta",
       "step": 2,
       "text": "er.ts ",
-      "ts": 1789766273704
+      "ts": 1789766682757
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": "der.ts",
+      "ts": 1789766682757
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "delta",
+      "step": 2,
+      "text": "yment.",
+      "ts": 1789766682757
     },
     {
       "agent": "sub-4",
@@ -919,7 +967,7 @@
         "outputTokens": 80
       },
       "durationMs": 28,
-      "ts": 1789766273709
+      "ts": 1789766682763
     },
     {
       "agent": "sub-4",
@@ -935,27 +983,7 @@
           "path": "src/utils/validate.ts"
         }
       },
-      "ts": 1789766273709
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": " 中共 2 ",
-      "ts": 1789766273710
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "delta",
-      "step": 2,
-      "text": "ts 中共 ",
-      "ts": 1789766273710
+      "ts": 1789766682763
     },
     {
       "agent": "sub-3",
@@ -965,7 +993,27 @@
       "type": "delta",
       "step": 2,
       "text": "中共 3 项",
-      "ts": 1789766273710
+      "ts": 1789766682763
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": " 中共 2 ",
+      "ts": 1789766682763
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "delta",
+      "step": 2,
+      "text": "ts 中共 ",
+      "ts": 1789766682763
     },
     {
       "agent": "sub-4",
@@ -980,8 +1028,8 @@
         "ok": true,
         "output": "export function isEmail(s: string): boolean {\n  return /^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(s);\n}\n\n// TODO: 手机号校验支持国际区号\nexport function isPhone(s: string): boolean {\n  return /^1\\d{10}$/.test(s);\n}\n"
       },
-      "durationMs": 1,
-      "ts": 1789766273710
+      "durationMs": 0,
+      "ts": 1789766682763
     },
     {
       "agent": "sub-4",
@@ -991,27 +1039,7 @@
       "type": "delta",
       "step": 2,
       "text": "src/ut",
-      "ts": 1789766273710
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": "项:\n- L",
-      "ts": 1789766273715
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "delta",
-      "step": 2,
-      "text": "2 项:\n-",
-      "ts": 1789766273715
+      "ts": 1789766682763
     },
     {
       "agent": "sub-3",
@@ -1021,7 +1049,27 @@
       "type": "delta",
       "step": 2,
       "text": ":\n- L1",
-      "ts": 1789766273715
+      "ts": 1789766682768
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": "项:\n- L",
+      "ts": 1789766682768
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "delta",
+      "step": 2,
+      "text": "2 项:\n-",
+      "ts": 1789766682768
     },
     {
       "agent": "sub-4",
@@ -1031,27 +1079,7 @@
       "type": "delta",
       "step": 2,
       "text": "ils/va",
-      "ts": 1789766273715
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": "13: FI",
-      "ts": 1789766273721
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "delta",
-      "step": 2,
-      "text": " L8: T",
-      "ts": 1789766273721
+      "ts": 1789766682769
     },
     {
       "agent": "sub-3",
@@ -1061,7 +1089,27 @@
       "type": "delta",
       "step": 2,
       "text": "2: TOD",
-      "ts": 1789766273721
+      "ts": 1789766682773
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": "13: FI",
+      "ts": 1789766682773
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "delta",
+      "step": 2,
+      "text": " L8: T",
+      "ts": 1789766682773
     },
     {
       "agent": "sub-4",
@@ -1071,27 +1119,7 @@
       "type": "delta",
       "step": 2,
       "text": "lidate",
-      "ts": 1789766273721
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": "XME: 浮",
-      "ts": 1789766273727
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "delta",
-      "step": 2,
-      "text": "ODO: 幂",
-      "ts": 1789766273727
+      "ts": 1789766682773
     },
     {
       "agent": "sub-3",
@@ -1101,7 +1129,27 @@
       "type": "delta",
       "step": 2,
       "text": "O: 接入真",
-      "ts": 1789766273727
+      "ts": 1789766682779
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": "XME: 浮",
+      "ts": 1789766682779
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "delta",
+      "step": 2,
+      "text": "ODO: 幂",
+      "ts": 1789766682779
     },
     {
       "agent": "sub-4",
@@ -1111,27 +1159,7 @@
       "type": "delta",
       "step": 2,
       "text": ".ts 中共",
-      "ts": 1789766273727
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": "点运算精度问",
-      "ts": 1789766273732
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "delta",
-      "step": 2,
-      "text": "等键，防止重",
-      "ts": 1789766273732
+      "ts": 1789766682779
     },
     {
       "agent": "sub-3",
@@ -1141,7 +1169,27 @@
       "type": "delta",
       "step": 2,
       "text": "实数据库，替",
-      "ts": 1789766273732
+      "ts": 1789766682785
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": "点运算精度问",
+      "ts": 1789766682785
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "delta",
+      "step": 2,
+      "text": "等键，防止重",
+      "ts": 1789766682785
     },
     {
       "agent": "sub-4",
@@ -1151,27 +1199,7 @@
       "type": "delta",
       "step": 2,
       "text": " 1 项:\n",
-      "ts": 1789766273732
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": "题，金额应使",
-      "ts": 1789766273738
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "delta",
-      "step": 2,
-      "text": "复扣款\n- ",
-      "ts": 1789766273738
+      "ts": 1789766682785
     },
     {
       "agent": "sub-3",
@@ -1181,7 +1209,27 @@
       "type": "delta",
       "step": 2,
       "text": "换内存数组\n",
-      "ts": 1789766273738
+      "ts": 1789766682790
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": "题，金额应使",
+      "ts": 1789766682791
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "delta",
+      "step": 2,
+      "text": "复扣款\n- ",
+      "ts": 1789766682791
     },
     {
       "agent": "sub-4",
@@ -1191,27 +1239,7 @@
       "type": "delta",
       "step": 2,
       "text": "- L5: ",
-      "ts": 1789766273738
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": "用整数分\n-",
-      "ts": 1789766273744
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "delta",
-      "step": 2,
-      "text": "L14: F",
-      "ts": 1789766273744
+      "ts": 1789766682791
     },
     {
       "agent": "sub-3",
@@ -1221,7 +1249,27 @@
       "type": "delta",
       "step": 2,
       "text": "- L17:",
-      "ts": 1789766273744
+      "ts": 1789766682795
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": "用整数分\n-",
+      "ts": 1789766682795
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "delta",
+      "step": 2,
+      "text": "L14: F",
+      "ts": 1789766682795
     },
     {
       "agent": "sub-4",
@@ -1231,27 +1279,7 @@
       "type": "delta",
       "step": 2,
       "text": "TODO: ",
-      "ts": 1789766273744
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": " L22: ",
-      "ts": 1789766273750
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "delta",
-      "step": 2,
-      "text": "IXME: ",
-      "ts": 1789766273750
+      "ts": 1789766682795
     },
     {
       "agent": "sub-3",
@@ -1261,7 +1289,27 @@
       "type": "delta",
       "step": 2,
       "text": " FIXME",
-      "ts": 1789766273750
+      "ts": 1789766682801
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": " L22: ",
+      "ts": 1789766682801
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "delta",
+      "step": 2,
+      "text": "IXME: ",
+      "ts": 1789766682801
     },
     {
       "agent": "sub-4",
@@ -1271,27 +1319,7 @@
       "type": "delta",
       "step": 2,
       "text": "手机号校验支",
-      "ts": 1789766273750
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": "/* TOD",
-      "ts": 1789766273755
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "delta",
-      "step": 2,
-      "text": "退款没有校验",
-      "ts": 1789766273755
+      "ts": 1789766682801
     },
     {
       "agent": "sub-3",
@@ -1301,7 +1329,27 @@
       "type": "delta",
       "step": 2,
       "text": ": 没有校验",
-      "ts": 1789766273755
+      "ts": 1789766682807
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": "/* TOD",
+      "ts": 1789766682807
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "delta",
+      "step": 2,
+      "text": "退款没有校验",
+      "ts": 1789766682807
     },
     {
       "agent": "sub-4",
@@ -1311,27 +1359,7 @@
       "type": "delta",
       "step": 2,
       "text": "持国际区号",
-      "ts": 1789766273755
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": "O: 订单状",
-      "ts": 1789766273761
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "delta",
-      "step": 2,
-      "text": "订单状态是否",
-      "ts": 1789766273761
+      "ts": 1789766682807
     },
     {
       "agent": "sub-3",
@@ -1341,7 +1369,27 @@
       "type": "delta",
       "step": 2,
       "text": " email",
-      "ts": 1789766273761
+      "ts": 1789766682813
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": "O: 订单状",
+      "ts": 1789766682813
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "delta",
+      "step": 2,
+      "text": "订单状态是否",
+      "ts": 1789766682813
     },
     {
       "agent": "sub-4",
@@ -1356,8 +1404,8 @@
         "inputTokens": 182,
         "outputTokens": 80
       },
-      "durationMs": 51,
-      "ts": 1789766273761
+      "durationMs": 50,
+      "ts": 1789766682813
     },
     {
       "agent": "sub-4",
@@ -1372,7 +1420,7 @@
         "inputTokens": 211,
         "outputTokens": 160
       },
-      "ts": 1789766273761
+      "ts": 1789766682813
     },
     {
       "agent": "main",
@@ -1385,28 +1433,8 @@
         "ok": true,
         "output": "[子 Agent 用 2 步完成]\nsrc/utils/validate.ts 中共 1 项:\n- L5: TODO: 手机号校验支持国际区号"
       },
-      "durationMs": 80,
-      "ts": 1789766273761
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": "态机校验（p",
-      "ts": 1789766273767
-    },
-    {
-      "agent": "sub-2",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_5",
-      "type": "delta",
-      "step": 2,
-      "text": "为 paid",
-      "ts": 1789766273767
+      "durationMs": 78,
+      "ts": 1789766682813
     },
     {
       "agent": "sub-3",
@@ -1416,7 +1444,37 @@
       "type": "delta",
       "step": 2,
       "text": " 格式\n- ",
-      "ts": 1789766273767
+      "ts": 1789766682819
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": "态机校验（p",
+      "ts": 1789766682819
+    },
+    {
+      "agent": "sub-2",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_5",
+      "type": "delta",
+      "step": 2,
+      "text": "为 paid",
+      "ts": 1789766682819
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_6",
+      "type": "delta",
+      "step": 2,
+      "text": "L24: T",
+      "ts": 1789766682824
     },
     {
       "agent": "sub-1",
@@ -1426,7 +1484,7 @@
       "type": "delta",
       "step": 2,
       "text": "ending",
-      "ts": 1789766273772
+      "ts": 1789766682824
     },
     {
       "agent": "sub-2",
@@ -1441,8 +1499,8 @@
         "inputTokens": 246,
         "outputTokens": 80
       },
-      "durationMs": 74,
-      "ts": 1789766273772
+      "durationMs": 72,
+      "ts": 1789766682824
     },
     {
       "agent": "sub-2",
@@ -1457,7 +1515,7 @@
         "inputTokens": 272,
         "outputTokens": 160
       },
-      "ts": 1789766273772
+      "ts": 1789766682824
     },
     {
       "agent": "main",
@@ -1470,28 +1528,8 @@
         "ok": true,
         "output": "[子 Agent 用 2 步完成]\nsrc/payment.ts 中共 2 项:\n- L8: TODO: 幂等键，防止重复扣款\n- L14: FIXME: 退款没有校验订单状态是否为 paid"
       },
-      "durationMs": 91,
-      "ts": 1789766273772
-    },
-    {
-      "agent": "sub-3",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_6",
-      "type": "delta",
-      "step": 2,
-      "text": "L24: T",
-      "ts": 1789766273772
-    },
-    {
-      "agent": "sub-1",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_4",
-      "type": "delta",
-      "step": 2,
-      "text": " → pai",
-      "ts": 1789766273777
+      "durationMs": 89,
+      "ts": 1789766682824
     },
     {
       "agent": "sub-3",
@@ -1501,7 +1539,7 @@
       "type": "delta",
       "step": 2,
       "text": "ODO(al",
-      "ts": 1789766273778
+      "ts": 1789766682830
     },
     {
       "agent": "sub-1",
@@ -1510,8 +1548,8 @@
       "parentCallId": "mock_4",
       "type": "delta",
       "step": 2,
-      "text": "d → sh",
-      "ts": 1789766273783
+      "text": " → pai",
+      "ts": 1789766682830
     },
     {
       "agent": "sub-3",
@@ -1521,7 +1559,7 @@
       "type": "delta",
       "step": 2,
       "text": "ice): ",
-      "ts": 1789766273783
+      "ts": 1789766682836
     },
     {
       "agent": "sub-1",
@@ -1530,8 +1568,8 @@
       "parentCallId": "mock_4",
       "type": "delta",
       "step": 2,
-      "text": "ipped）",
-      "ts": 1789766273788
+      "text": "d → sh",
+      "ts": 1789766682836
     },
     {
       "agent": "sub-3",
@@ -1541,7 +1579,7 @@
       "type": "delta",
       "step": 2,
       "text": "实现分页，见",
-      "ts": 1789766273788
+      "ts": 1789766682842
     },
     {
       "agent": "sub-1",
@@ -1550,8 +1588,8 @@
       "parentCallId": "mock_4",
       "type": "delta",
       "step": 2,
-      "text": " */",
-      "ts": 1789766273794
+      "text": "ipped）",
+      "ts": 1789766682842
     },
     {
       "agent": "sub-3",
@@ -1561,7 +1599,27 @@
       "type": "delta",
       "step": 2,
       "text": " docs/",
-      "ts": 1789766273794
+      "ts": 1789766682848
+    },
+    {
+      "agent": "sub-1",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_4",
+      "type": "delta",
+      "step": 2,
+      "text": " */",
+      "ts": 1789766682848
+    },
+    {
+      "agent": "sub-3",
+      "depth": 1,
+      "parent": "main",
+      "parentCallId": "mock_6",
+      "type": "delta",
+      "step": 2,
+      "text": "adr/00",
+      "ts": 1789766682853
     },
     {
       "agent": "sub-1",
@@ -1576,8 +1634,8 @@
         "inputTokens": 300,
         "outputTokens": 80
       },
-      "durationMs": 102,
-      "ts": 1789766273800
+      "durationMs": 101,
+      "ts": 1789766682853
     },
     {
       "agent": "sub-1",
@@ -1592,7 +1650,7 @@
         "inputTokens": 326,
         "outputTokens": 160
       },
-      "ts": 1789766273800
+      "ts": 1789766682854
     },
     {
       "agent": "main",
@@ -1606,17 +1664,7 @@
         "output": "[子 Agent 用 2 步完成]\nsrc/order.ts 中共 2 项:\n- L13: FIXME: 浮点运算精度问题，金额应使用整数分\n- L22: /* TODO: 订单状态机校验（pending → paid → shipped） */"
       },
       "durationMs": 120,
-      "ts": 1789766273800
-    },
-    {
-      "agent": "sub-3",
-      "depth": 1,
-      "parent": "main",
-      "parentCallId": "mock_6",
-      "type": "delta",
-      "step": 2,
-      "text": "adr/00",
-      "ts": 1789766273800
+      "ts": 1789766682854
     },
     {
       "agent": "sub-3",
@@ -1626,7 +1674,7 @@
       "type": "delta",
       "step": 2,
       "text": "1-stor",
-      "ts": 1789766273805
+      "ts": 1789766682859
     },
     {
       "agent": "sub-3",
@@ -1636,7 +1684,7 @@
       "type": "delta",
       "step": 2,
       "text": "age.md",
-      "ts": 1789766273811
+      "ts": 1789766682865
     },
     {
       "agent": "sub-3",
@@ -1652,7 +1700,7 @@
         "outputTokens": 80
       },
       "durationMs": 119,
-      "ts": 1789766273817
+      "ts": 1789766682871
     },
     {
       "agent": "sub-3",
@@ -1667,7 +1715,7 @@
         "inputTokens": 342,
         "outputTokens": 160
       },
-      "ts": 1789766273817
+      "ts": 1789766682871
     },
     {
       "agent": "main",
@@ -1681,7 +1729,7 @@
         "output": "[子 Agent 用 2 步完成]\nsrc/user.ts 中共 3 项:\n- L12: TODO: 接入真实数据库，替换内存数组\n- L17: FIXME: 没有校验 email 格式\n- L24: TODO(alice): 实现分页，见 docs/adr/001-storage.md"
       },
       "durationMs": 136,
-      "ts": 1789766273817
+      "ts": 1789766682871
     },
     {
       "agent": "main",
@@ -1689,7 +1737,7 @@
       "type": "delta",
       "step": 5,
       "text": "子 Agen",
-      "ts": 1789766273817
+      "ts": 1789766682871
     },
     {
       "agent": "main",
@@ -1697,7 +1745,7 @@
       "type": "delta",
       "step": 5,
       "text": "t 全部返回",
-      "ts": 1789766273823
+      "ts": 1789766682877
     },
     {
       "agent": "main",
@@ -1705,7 +1753,7 @@
       "type": "delta",
       "step": 5,
       "text": "，更新计划并",
-      "ts": 1789766273829
+      "ts": 1789766682883
     },
     {
       "agent": "main",
@@ -1713,7 +1761,7 @@
       "type": "delta",
       "step": 5,
       "text": "生成报告。",
-      "ts": 1789766273835
+      "ts": 1789766682889
     },
     {
       "agent": "main",
@@ -1756,11 +1804,11 @@
         }
       ],
       "usage": {
-        "inputTokens": 2081,
+        "inputTokens": 2127,
         "outputTokens": 80
       },
-      "durationMs": 24,
-      "ts": 1789766273841
+      "durationMs": 23,
+      "ts": 1789766682894
     },
     {
       "agent": "main",
@@ -1791,7 +1839,7 @@
           ]
         }
       },
-      "ts": 1789766273841
+      "ts": 1789766682895
     },
     {
       "agent": "main",
@@ -1816,7 +1864,7 @@
           "status": "in_progress"
         }
       ],
-      "ts": 1789766273841
+      "ts": 1789766682895
     },
     {
       "agent": "main",
@@ -1830,7 +1878,7 @@
         "output": "计划已更新（2/3 完成）"
       },
       "durationMs": 0,
-      "ts": 1789766273841
+      "ts": 1789766682895
     },
     {
       "agent": "main",
@@ -1845,7 +1893,7 @@
           "content": "# TODO / FIXME 报告\n\n共 16 项，分布在 9 个文件。\n\n## README.md\n\n- L14: TODO: 补充部署说明\n- L15: TODO: 添加 CI 配置\n\n## config/app.yaml\n\n- L4: # TODO: 生产环境改成从环境变量读取\n- L7: enabled: false   # FIXME: 缓存开关未接入代码\n\n## docs/adr/001-storage.md\n\n- L9: - TODO: 设计分页接口\n\n## docs/adr/002-cache.md\n\n- L8: FIXME: 配置项 cache.enabled 在 `config/app.yaml` 中存在但代码未读取\n\n## docs/design.md\n\n- L19: TODO: 补充部署架构图\n- L20: TODO: 评估是否引入 Redis 缓存（见 002）\n\n## src/order.ts\n\n- L13: FIXME: 浮点运算精度问题，金额应使用整数分\n- L22: /* TODO: 订单状态机校验（pending → paid → shipped） */\n\n## src/payment.ts\n\n- L8: TODO: 幂等键，防止重复扣款\n- L14: FIXME: 退款没有校验订单状态是否为 paid\n\n## src/user.ts\n\n- L12: TODO: 接入真实数据库，替换内存数组\n- L17: FIXME: 没有校验 email 格式\n- L24: TODO(alice): 实现分页，见 docs/adr/001-storage.md\n\n## src/utils/validate.ts\n\n- L5: TODO: 手机号校验支持国际区号\n\n"
         }
       },
-      "ts": 1789766273841
+      "ts": 1789766682895
     },
     {
       "agent": "main",
@@ -1859,7 +1907,7 @@
         "error": "工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)"
       },
       "durationMs": 0,
-      "ts": 1789766273841
+      "ts": 1789766682895
     },
     {
       "agent": "main",
@@ -1867,7 +1915,7 @@
       "type": "delta",
       "step": 6,
       "text": "写入报告失败",
-      "ts": 1789766273841
+      "ts": 1789766682895
     },
     {
       "agent": "main",
@@ -1875,7 +1923,7 @@
       "type": "delta",
       "step": 6,
       "text": ": 工具 \"",
-      "ts": 1789766273847
+      "ts": 1789766682901
     },
     {
       "agent": "main",
@@ -1883,7 +1931,7 @@
       "type": "delta",
       "step": 6,
       "text": "write_",
-      "ts": 1789766273852
+      "ts": 1789766682906
     },
     {
       "agent": "main",
@@ -1891,7 +1939,7 @@
       "type": "delta",
       "step": 6,
       "text": "file\" ",
-      "ts": 1789766273858
+      "ts": 1789766682912
     },
     {
       "agent": "main",
@@ -1899,7 +1947,7 @@
       "type": "delta",
       "step": 6,
       "text": "需要写权限，",
-      "ts": 1789766273864
+      "ts": 1789766682917
     },
     {
       "agent": "main",
@@ -1907,7 +1955,7 @@
       "type": "delta",
       "step": 6,
       "text": "当前未授权 ",
-      "ts": 1789766273870
+      "ts": 1789766682923
     },
     {
       "agent": "main",
@@ -1915,7 +1963,7 @@
       "type": "delta",
       "step": 6,
       "text": "(--all",
-      "ts": 1789766273875
+      "ts": 1789766682929
     },
     {
       "agent": "main",
@@ -1923,7 +1971,7 @@
       "type": "delta",
       "step": 6,
       "text": "ow-wri",
-      "ts": 1789766273881
+      "ts": 1789766682935
     },
     {
       "agent": "main",
@@ -1931,7 +1979,7 @@
       "type": "delta",
       "step": 6,
       "text": "te)",
-      "ts": 1789766273886
+      "ts": 1789766682940
     },
     {
       "agent": "main",
@@ -1941,11 +1989,11 @@
       "text": "写入报告失败: 工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)",
       "toolCalls": [],
       "usage": {
-        "inputTokens": 2555,
+        "inputTokens": 2601,
         "outputTokens": 80
       },
       "durationMs": 51,
-      "ts": 1789766273892
+      "ts": 1789766682946
     },
     {
       "agent": "main",
@@ -1955,10 +2003,10 @@
       "reason": "completed",
       "steps": 6,
       "usage": {
-        "inputTokens": 8572,
+        "inputTokens": 8725,
         "outputTokens": 1120
       },
-      "ts": 1789766273892
+      "ts": 1789766682947
     }
   ],
   "tree": {
@@ -1970,7 +2018,7 @@
         "depth": 0,
         "type": "user",
         "task": "找出所有 TODO 并生成 todo-report.md",
-        "ts": 1789766273542
+        "ts": 1789766682568
       },
       {
         "agent": "main",
@@ -1978,7 +2026,7 @@
         "type": "delta",
         "step": 1,
         "text": "这是多步任务",
-        "ts": 1789766273542
+        "ts": 1789766682568
       },
       {
         "agent": "main",
@@ -1986,22 +2034,46 @@
         "type": "delta",
         "step": 1,
         "text": "，先制定计划",
-        "ts": 1789766273548
+        "ts": 1789766682574
       },
       {
         "agent": "main",
         "depth": 0,
         "type": "delta",
         "step": 1,
-        "text": "。",
-        "ts": 1789766273554
+        "text": "，并提前声明",
+        "ts": 1789766682580
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "要写的文件以",
+        "ts": 1789766682585
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "避免与其他并",
+        "ts": 1789766682591
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "发任务冲突。",
+        "ts": 1789766682596
       },
       {
         "agent": "main",
         "depth": 0,
         "type": "decision",
         "step": 1,
-        "text": "这是多步任务，先制定计划。",
+        "text": "这是多步任务，先制定计划，并提前声明要写的文件以避免与其他并发任务冲突。",
         "toolCalls": [
           {
             "id": "mock_1",
@@ -2023,6 +2095,9 @@
                   "title": "生成分类报告",
                   "status": "pending"
                 }
+              ],
+              "writes": [
+                "todo-report.md"
               ]
             }
           }
@@ -2031,8 +2106,8 @@
           "inputTokens": 19,
           "outputTokens": 80
         },
-        "durationMs": 17,
-        "ts": 1789766273559
+        "durationMs": 34,
+        "ts": 1789766682602
       },
       {
         "agent": "main",
@@ -2059,10 +2134,23 @@
                 "title": "生成分类报告",
                 "status": "pending"
               }
+            ],
+            "writes": [
+              "todo-report.md"
             ]
           }
         },
-        "ts": 1789766273559
+        "ts": 1789766682602
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "writes_reserved",
+        "step": 1,
+        "targets": [
+          "todo-report.md"
+        ],
+        "ts": 1789766682603
       },
       {
         "agent": "main",
@@ -2086,7 +2174,7 @@
             "status": "pending"
           }
         ],
-        "ts": 1789766273559
+        "ts": 1789766682603
       },
       {
         "agent": "main",
@@ -2097,10 +2185,10 @@
         "name": "update_plan",
         "result": {
           "ok": true,
-          "output": "计划已更新（0/3 完成）"
+          "output": "计划已更新（0/3 完成），已预约 1 个写目标"
         },
-        "durationMs": 0,
-        "ts": 1789766273559
+        "durationMs": 1,
+        "ts": 1789766682603
       },
       {
         "agent": "main",
@@ -2108,7 +2196,7 @@
         "type": "delta",
         "step": 2,
         "text": "搜索 TOD",
-        "ts": 1789766273560
+        "ts": 1789766682603
       },
       {
         "agent": "main",
@@ -2116,7 +2204,7 @@
         "type": "delta",
         "step": 2,
         "text": "O 与 FI",
-        "ts": 1789766273565
+        "ts": 1789766682609
       },
       {
         "agent": "main",
@@ -2124,7 +2212,7 @@
         "type": "delta",
         "step": 2,
         "text": "XME。",
-        "ts": 1789766273571
+        "ts": 1789766682614
       },
       {
         "agent": "main",
@@ -2142,11 +2230,11 @@
           }
         ],
         "usage": {
-          "inputTokens": 150,
+          "inputTokens": 170,
           "outputTokens": 80
         },
         "durationMs": 17,
-        "ts": 1789766273577
+        "ts": 1789766682620
       },
       {
         "agent": "main",
@@ -2160,7 +2248,7 @@
             "pattern": "TODO|FIXME"
           }
         },
-        "ts": 1789766273577
+        "ts": 1789766682620
       },
       {
         "agent": "main",
@@ -2171,10 +2259,10 @@
         "name": "search_text",
         "result": {
           "ok": true,
-          "output": "{\n \"total\": 19,\n \"truncated\": false,\n \"files_scanned\": 25,\n \"matches\": [\n  {\n   \"file\": \"README.md\",\n   \"line\": 14,\n   \"text\": \"TODO: 补充部署说明\"\n  },\n  {\n   \"file\": \"README.md\",\n   \"line\": 15,\n   \"text\": \"TODO: 添加 CI 配置\"\n  },\n  {\n   \"file\": \"README.md\",\n   \"line\": 17,\n   \"text\": \"注意：本项目的 TODOS 统一在 issue 跟踪，代码里的 TODO 注释仅作临时标记。\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 4,\n   \"text\": \"# TODO: 生产环境改成从环境变量读取\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 7,\n   \"text\": \"enabled: false   # FIXME: 缓存开关未接入代码\"\n  },\n  {\n   \"file\": \"docs/adr/001-storage.md\",\n   \"line\": 9,\n   \"text\": \"- TODO: 设计分页接口\"\n  },\n  {\n   \"file\": \"docs/adr/002-cache.md\",\n   \"line\": 8,\n   \"text\": \"FIXME: 配置项 cache.enabled 在 `config/app.yaml` 中存在但代码未读取\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 19,\n   \"text\": \"TODO: 补充部署架构图\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 20,\n   \"text\": \"TODO: 评估是否引入 Redis 缓存（见 002）\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 13,\n   \"text\": \"// FIXME: 浮点运算精度问题，金额应使用整数分\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 22,\n   \"text\": \"/* TODO: 订单状态机校验（pending → paid → shipped） */\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 5,\n   \"text\": \"const todoList: string[] = []; // 待处理的支付回调队列（不是 TODO 注释）\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 8,\n   \"text\": \"// TODO: 幂等键，防止重复扣款\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 9,\n   \"text\": \"todoList.push(order.id);\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 14,\n   \"text\": \"// FIXME: 退款没有校验订单状态是否为 paid\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 12,\n   \"text\": \"// TODO: 接入真实数据库，替换内存数组\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 17,\n   \"text\": \"// FIXME: 没有校验 email 格式\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 24,\n   \"text\": \"// TODO(alice): 实现分页，见 docs/adr/001-storage.md\"\n  },\n  {\n   \"file\": \"src/utils/validate.ts\",\n   \"line\": 5,\n   \"text\": \"// TODO: 手机号校验支持国际区号\"\n  }\n ]\n}"
+          "output": "{\n \"total\": 19,\n \"truncated\": false,\n \"files_scanned\": 26,\n \"matches\": [\n  {\n   \"file\": \"README.md\",\n   \"line\": 14,\n   \"text\": \"TODO: 补充部署说明\"\n  },\n  {\n   \"file\": \"README.md\",\n   \"line\": 15,\n   \"text\": \"TODO: 添加 CI 配置\"\n  },\n  {\n   \"file\": \"README.md\",\n   \"line\": 17,\n   \"text\": \"注意：本项目的 TODOS 统一在 issue 跟踪，代码里的 TODO 注释仅作临时标记。\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 4,\n   \"text\": \"# TODO: 生产环境改成从环境变量读取\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 7,\n   \"text\": \"enabled: false   # FIXME: 缓存开关未接入代码\"\n  },\n  {\n   \"file\": \"docs/adr/001-storage.md\",\n   \"line\": 9,\n   \"text\": \"- TODO: 设计分页接口\"\n  },\n  {\n   \"file\": \"docs/adr/002-cache.md\",\n   \"line\": 8,\n   \"text\": \"FIXME: 配置项 cache.enabled 在 `config/app.yaml` 中存在但代码未读取\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 19,\n   \"text\": \"TODO: 补充部署架构图\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 20,\n   \"text\": \"TODO: 评估是否引入 Redis 缓存（见 002）\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 13,\n   \"text\": \"// FIXME: 浮点运算精度问题，金额应使用整数分\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 22,\n   \"text\": \"/* TODO: 订单状态机校验（pending → paid → shipped） */\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 5,\n   \"text\": \"const todoList: string[] = []; // 待处理的支付回调队列（不是 TODO 注释）\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 8,\n   \"text\": \"// TODO: 幂等键，防止重复扣款\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 9,\n   \"text\": \"todoList.push(order.id);\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 14,\n   \"text\": \"// FIXME: 退款没有校验订单状态是否为 paid\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 12,\n   \"text\": \"// TODO: 接入真实数据库，替换内存数组\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 17,\n   \"text\": \"// FIXME: 没有校验 email 格式\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 24,\n   \"text\": \"// TODO(alice): 实现分页，见 docs/adr/001-storage.md\"\n  },\n  {\n   \"file\": \"src/utils/validate.ts\",\n   \"line\": 5,\n   \"text\": \"// TODO: 手机号校验支持国际区号\"\n  }\n ]\n}"
         },
-        "durationMs": 7,
-        "ts": 1789766273584
+        "durationMs": 13,
+        "ts": 1789766682633
       },
       {
         "agent": "main",
@@ -2182,7 +2270,7 @@
         "type": "delta",
         "step": 3,
         "text": "结果里混入了",
-        "ts": 1789766273584
+        "ts": 1789766682633
       },
       {
         "agent": "main",
@@ -2190,7 +2278,7 @@
         "type": "delta",
         "step": 3,
         "text": " 3 条假阳",
-        "ts": 1789766273590
+        "ts": 1789766682639
       },
       {
         "agent": "main",
@@ -2198,7 +2286,7 @@
         "type": "delta",
         "step": 3,
         "text": "性（如 TO",
-        "ts": 1789766273595
+        "ts": 1789766682645
       },
       {
         "agent": "main",
@@ -2206,7 +2294,7 @@
         "type": "delta",
         "step": 3,
         "text": "DOS、to",
-        "ts": 1789766273601
+        "ts": 1789766682651
       },
       {
         "agent": "main",
@@ -2214,7 +2302,7 @@
         "type": "delta",
         "step": 3,
         "text": "doList",
-        "ts": 1789766273607
+        "ts": 1789766682656
       },
       {
         "agent": "main",
@@ -2222,7 +2310,7 @@
         "type": "delta",
         "step": 3,
         "text": "），用更严格",
-        "ts": 1789766273612
+        "ts": 1789766682661
       },
       {
         "agent": "main",
@@ -2230,7 +2318,7 @@
         "type": "delta",
         "step": 3,
         "text": "的正则重新搜",
-        "ts": 1789766273618
+        "ts": 1789766682667
       },
       {
         "agent": "main",
@@ -2238,7 +2326,7 @@
         "type": "delta",
         "step": 3,
         "text": "索。",
-        "ts": 1789766273624
+        "ts": 1789766682673
       },
       {
         "agent": "main",
@@ -2256,11 +2344,11 @@
           }
         ],
         "usage": {
-          "inputTokens": 957,
+          "inputTokens": 977,
           "outputTokens": 80
         },
-        "durationMs": 46,
-        "ts": 1789766273630
+        "durationMs": 45,
+        "ts": 1789766682678
       },
       {
         "agent": "main",
@@ -2274,7 +2362,7 @@
             "pattern": "\\b(TODO|FIXME)\\b(\\([^)]*\\))?:"
           }
         },
-        "ts": 1789766273630
+        "ts": 1789766682678
       },
       {
         "agent": "main",
@@ -2285,10 +2373,10 @@
         "name": "search_text",
         "result": {
           "ok": true,
-          "output": "{\n \"total\": 16,\n \"truncated\": false,\n \"files_scanned\": 25,\n \"matches\": [\n  {\n   \"file\": \"README.md\",\n   \"line\": 14,\n   \"text\": \"TODO: 补充部署说明\"\n  },\n  {\n   \"file\": \"README.md\",\n   \"line\": 15,\n   \"text\": \"TODO: 添加 CI 配置\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 4,\n   \"text\": \"# TODO: 生产环境改成从环境变量读取\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 7,\n   \"text\": \"enabled: false   # FIXME: 缓存开关未接入代码\"\n  },\n  {\n   \"file\": \"docs/adr/001-storage.md\",\n   \"line\": 9,\n   \"text\": \"- TODO: 设计分页接口\"\n  },\n  {\n   \"file\": \"docs/adr/002-cache.md\",\n   \"line\": 8,\n   \"text\": \"FIXME: 配置项 cache.enabled 在 `config/app.yaml` 中存在但代码未读取\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 19,\n   \"text\": \"TODO: 补充部署架构图\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 20,\n   \"text\": \"TODO: 评估是否引入 Redis 缓存（见 002）\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 13,\n   \"text\": \"// FIXME: 浮点运算精度问题，金额应使用整数分\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 22,\n   \"text\": \"/* TODO: 订单状态机校验（pending → paid → shipped） */\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 8,\n   \"text\": \"// TODO: 幂等键，防止重复扣款\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 14,\n   \"text\": \"// FIXME: 退款没有校验订单状态是否为 paid\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 12,\n   \"text\": \"// TODO: 接入真实数据库，替换内存数组\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 17,\n   \"text\": \"// FIXME: 没有校验 email 格式\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 24,\n   \"text\": \"// TODO(alice): 实现分页，见 docs/adr/001-storage.md\"\n  },\n  {\n   \"file\": \"src/utils/validate.ts\",\n   \"line\": 5,\n   \"text\": \"// TODO: 手机号校验支持国际区号\"\n  }\n ]\n}"
+          "output": "{\n \"total\": 16,\n \"truncated\": false,\n \"files_scanned\": 26,\n \"matches\": [\n  {\n   \"file\": \"README.md\",\n   \"line\": 14,\n   \"text\": \"TODO: 补充部署说明\"\n  },\n  {\n   \"file\": \"README.md\",\n   \"line\": 15,\n   \"text\": \"TODO: 添加 CI 配置\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 4,\n   \"text\": \"# TODO: 生产环境改成从环境变量读取\"\n  },\n  {\n   \"file\": \"config/app.yaml\",\n   \"line\": 7,\n   \"text\": \"enabled: false   # FIXME: 缓存开关未接入代码\"\n  },\n  {\n   \"file\": \"docs/adr/001-storage.md\",\n   \"line\": 9,\n   \"text\": \"- TODO: 设计分页接口\"\n  },\n  {\n   \"file\": \"docs/adr/002-cache.md\",\n   \"line\": 8,\n   \"text\": \"FIXME: 配置项 cache.enabled 在 `config/app.yaml` 中存在但代码未读取\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 19,\n   \"text\": \"TODO: 补充部署架构图\"\n  },\n  {\n   \"file\": \"docs/design.md\",\n   \"line\": 20,\n   \"text\": \"TODO: 评估是否引入 Redis 缓存（见 002）\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 13,\n   \"text\": \"// FIXME: 浮点运算精度问题，金额应使用整数分\"\n  },\n  {\n   \"file\": \"src/order.ts\",\n   \"line\": 22,\n   \"text\": \"/* TODO: 订单状态机校验（pending → paid → shipped） */\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 8,\n   \"text\": \"// TODO: 幂等键，防止重复扣款\"\n  },\n  {\n   \"file\": \"src/payment.ts\",\n   \"line\": 14,\n   \"text\": \"// FIXME: 退款没有校验订单状态是否为 paid\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 12,\n   \"text\": \"// TODO: 接入真实数据库，替换内存数组\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 17,\n   \"text\": \"// FIXME: 没有校验 email 格式\"\n  },\n  {\n   \"file\": \"src/user.ts\",\n   \"line\": 24,\n   \"text\": \"// TODO(alice): 实现分页，见 docs/adr/001-storage.md\"\n  },\n  {\n   \"file\": \"src/utils/validate.ts\",\n   \"line\": 5,\n   \"text\": \"// TODO: 手机号校验支持国际区号\"\n  }\n ]\n}"
         },
-        "durationMs": 5,
-        "ts": 1789766273635
+        "durationMs": 10,
+        "ts": 1789766682688
       },
       {
         "agent": "main",
@@ -2296,7 +2384,7 @@
         "type": "delta",
         "step": 4,
         "text": "确认 16 ",
-        "ts": 1789766273635
+        "ts": 1789766682689
       },
       {
         "agent": "main",
@@ -2304,7 +2392,7 @@
         "type": "delta",
         "step": 4,
         "text": "处，分布在 ",
-        "ts": 1789766273640
+        "ts": 1789766682694
       },
       {
         "agent": "main",
@@ -2312,7 +2400,7 @@
         "type": "delta",
         "step": 4,
         "text": "9 个文件。",
-        "ts": 1789766273646
+        "ts": 1789766682700
       },
       {
         "agent": "main",
@@ -2320,7 +2408,7 @@
         "type": "delta",
         "step": 4,
         "text": "其中 4 个",
-        "ts": 1789766273652
+        "ts": 1789766682706
       },
       {
         "agent": "main",
@@ -2328,7 +2416,7 @@
         "type": "delta",
         "step": 4,
         "text": "源码文件并行",
-        "ts": 1789766273658
+        "ts": 1789766682712
       },
       {
         "agent": "main",
@@ -2336,7 +2424,7 @@
         "type": "delta",
         "step": 4,
         "text": "委派子 Ag",
-        "ts": 1789766273663
+        "ts": 1789766682717
       },
       {
         "agent": "main",
@@ -2344,7 +2432,7 @@
         "type": "delta",
         "step": 4,
         "text": "ent 读取",
-        "ts": 1789766273669
+        "ts": 1789766682723
       },
       {
         "agent": "main",
@@ -2352,7 +2440,7 @@
         "type": "delta",
         "step": 4,
         "text": "上下文。",
-        "ts": 1789766273675
+        "ts": 1789766682729
       },
       {
         "agent": "main",
@@ -2365,37 +2453,41 @@
             "id": "mock_4",
             "name": "delegate",
             "input": {
-              "task": "分析文件 src/order.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+              "task": "分析文件 src/order.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+              "expected_steps": 2
             }
           },
           {
             "id": "mock_5",
             "name": "delegate",
             "input": {
-              "task": "分析文件 src/payment.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+              "task": "分析文件 src/payment.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+              "expected_steps": 2
             }
           },
           {
             "id": "mock_6",
             "name": "delegate",
             "input": {
-              "task": "分析文件 src/user.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+              "task": "分析文件 src/user.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+              "expected_steps": 2
             }
           },
           {
             "id": "mock_7",
             "name": "delegate",
             "input": {
-              "task": "分析文件 src/utils/validate.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+              "task": "分析文件 src/utils/validate.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+              "expected_steps": 2
             }
           }
         ],
         "usage": {
-          "inputTokens": 1659,
+          "inputTokens": 1680,
           "outputTokens": 80
         },
-        "durationMs": 45,
-        "ts": 1789766273680
+        "durationMs": 46,
+        "ts": 1789766682734
       },
       {
         "agent": "main",
@@ -2406,10 +2498,11 @@
           "id": "mock_4",
           "name": "delegate",
           "input": {
-            "task": "分析文件 src/order.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+            "task": "分析文件 src/order.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+            "expected_steps": 2
           }
         },
-        "ts": 1789766273680
+        "ts": 1789766682734
       },
       {
         "agent": "main",
@@ -2420,10 +2513,11 @@
           "id": "mock_5",
           "name": "delegate",
           "input": {
-            "task": "分析文件 src/payment.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+            "task": "分析文件 src/payment.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+            "expected_steps": 2
           }
         },
-        "ts": 1789766273681
+        "ts": 1789766682735
       },
       {
         "agent": "main",
@@ -2434,10 +2528,11 @@
           "id": "mock_6",
           "name": "delegate",
           "input": {
-            "task": "分析文件 src/user.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+            "task": "分析文件 src/user.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+            "expected_steps": 2
           }
         },
-        "ts": 1789766273681
+        "ts": 1789766682735
       },
       {
         "agent": "main",
@@ -2448,10 +2543,11 @@
           "id": "mock_7",
           "name": "delegate",
           "input": {
-            "task": "分析文件 src/utils/validate.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。"
+            "task": "分析文件 src/utils/validate.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
+            "expected_steps": 2
           }
         },
-        "ts": 1789766273681
+        "ts": 1789766682735
       },
       {
         "agent": "main",
@@ -2464,8 +2560,8 @@
           "ok": true,
           "output": "[子 Agent 用 2 步完成]\nsrc/utils/validate.ts 中共 1 项:\n- L5: TODO: 手机号校验支持国际区号"
         },
-        "durationMs": 80,
-        "ts": 1789766273761
+        "durationMs": 78,
+        "ts": 1789766682813
       },
       {
         "agent": "main",
@@ -2478,8 +2574,8 @@
           "ok": true,
           "output": "[子 Agent 用 2 步完成]\nsrc/payment.ts 中共 2 项:\n- L8: TODO: 幂等键，防止重复扣款\n- L14: FIXME: 退款没有校验订单状态是否为 paid"
         },
-        "durationMs": 91,
-        "ts": 1789766273772
+        "durationMs": 89,
+        "ts": 1789766682824
       },
       {
         "agent": "main",
@@ -2493,7 +2589,7 @@
           "output": "[子 Agent 用 2 步完成]\nsrc/order.ts 中共 2 项:\n- L13: FIXME: 浮点运算精度问题，金额应使用整数分\n- L22: /* TODO: 订单状态机校验（pending → paid → shipped） */"
         },
         "durationMs": 120,
-        "ts": 1789766273800
+        "ts": 1789766682854
       },
       {
         "agent": "main",
@@ -2507,7 +2603,7 @@
           "output": "[子 Agent 用 2 步完成]\nsrc/user.ts 中共 3 项:\n- L12: TODO: 接入真实数据库，替换内存数组\n- L17: FIXME: 没有校验 email 格式\n- L24: TODO(alice): 实现分页，见 docs/adr/001-storage.md"
         },
         "durationMs": 136,
-        "ts": 1789766273817
+        "ts": 1789766682871
       },
       {
         "agent": "main",
@@ -2515,7 +2611,7 @@
         "type": "delta",
         "step": 5,
         "text": "子 Agen",
-        "ts": 1789766273817
+        "ts": 1789766682871
       },
       {
         "agent": "main",
@@ -2523,7 +2619,7 @@
         "type": "delta",
         "step": 5,
         "text": "t 全部返回",
-        "ts": 1789766273823
+        "ts": 1789766682877
       },
       {
         "agent": "main",
@@ -2531,7 +2627,7 @@
         "type": "delta",
         "step": 5,
         "text": "，更新计划并",
-        "ts": 1789766273829
+        "ts": 1789766682883
       },
       {
         "agent": "main",
@@ -2539,7 +2635,7 @@
         "type": "delta",
         "step": 5,
         "text": "生成报告。",
-        "ts": 1789766273835
+        "ts": 1789766682889
       },
       {
         "agent": "main",
@@ -2582,11 +2678,11 @@
           }
         ],
         "usage": {
-          "inputTokens": 2081,
+          "inputTokens": 2127,
           "outputTokens": 80
         },
-        "durationMs": 24,
-        "ts": 1789766273841
+        "durationMs": 23,
+        "ts": 1789766682894
       },
       {
         "agent": "main",
@@ -2617,7 +2713,7 @@
             ]
           }
         },
-        "ts": 1789766273841
+        "ts": 1789766682895
       },
       {
         "agent": "main",
@@ -2642,7 +2738,7 @@
             "status": "in_progress"
           }
         ],
-        "ts": 1789766273841
+        "ts": 1789766682895
       },
       {
         "agent": "main",
@@ -2656,7 +2752,7 @@
           "output": "计划已更新（2/3 完成）"
         },
         "durationMs": 0,
-        "ts": 1789766273841
+        "ts": 1789766682895
       },
       {
         "agent": "main",
@@ -2671,7 +2767,7 @@
             "content": "# TODO / FIXME 报告\n\n共 16 项，分布在 9 个文件。\n\n## README.md\n\n- L14: TODO: 补充部署说明\n- L15: TODO: 添加 CI 配置\n\n## config/app.yaml\n\n- L4: # TODO: 生产环境改成从环境变量读取\n- L7: enabled: false   # FIXME: 缓存开关未接入代码\n\n## docs/adr/001-storage.md\n\n- L9: - TODO: 设计分页接口\n\n## docs/adr/002-cache.md\n\n- L8: FIXME: 配置项 cache.enabled 在 `config/app.yaml` 中存在但代码未读取\n\n## docs/design.md\n\n- L19: TODO: 补充部署架构图\n- L20: TODO: 评估是否引入 Redis 缓存（见 002）\n\n## src/order.ts\n\n- L13: FIXME: 浮点运算精度问题，金额应使用整数分\n- L22: /* TODO: 订单状态机校验（pending → paid → shipped） */\n\n## src/payment.ts\n\n- L8: TODO: 幂等键，防止重复扣款\n- L14: FIXME: 退款没有校验订单状态是否为 paid\n\n## src/user.ts\n\n- L12: TODO: 接入真实数据库，替换内存数组\n- L17: FIXME: 没有校验 email 格式\n- L24: TODO(alice): 实现分页，见 docs/adr/001-storage.md\n\n## src/utils/validate.ts\n\n- L5: TODO: 手机号校验支持国际区号\n\n"
           }
         },
-        "ts": 1789766273841
+        "ts": 1789766682895
       },
       {
         "agent": "main",
@@ -2685,7 +2781,7 @@
           "error": "工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)"
         },
         "durationMs": 0,
-        "ts": 1789766273841
+        "ts": 1789766682895
       },
       {
         "agent": "main",
@@ -2693,7 +2789,7 @@
         "type": "delta",
         "step": 6,
         "text": "写入报告失败",
-        "ts": 1789766273841
+        "ts": 1789766682895
       },
       {
         "agent": "main",
@@ -2701,7 +2797,7 @@
         "type": "delta",
         "step": 6,
         "text": ": 工具 \"",
-        "ts": 1789766273847
+        "ts": 1789766682901
       },
       {
         "agent": "main",
@@ -2709,7 +2805,7 @@
         "type": "delta",
         "step": 6,
         "text": "write_",
-        "ts": 1789766273852
+        "ts": 1789766682906
       },
       {
         "agent": "main",
@@ -2717,7 +2813,7 @@
         "type": "delta",
         "step": 6,
         "text": "file\" ",
-        "ts": 1789766273858
+        "ts": 1789766682912
       },
       {
         "agent": "main",
@@ -2725,7 +2821,7 @@
         "type": "delta",
         "step": 6,
         "text": "需要写权限，",
-        "ts": 1789766273864
+        "ts": 1789766682917
       },
       {
         "agent": "main",
@@ -2733,7 +2829,7 @@
         "type": "delta",
         "step": 6,
         "text": "当前未授权 ",
-        "ts": 1789766273870
+        "ts": 1789766682923
       },
       {
         "agent": "main",
@@ -2741,7 +2837,7 @@
         "type": "delta",
         "step": 6,
         "text": "(--all",
-        "ts": 1789766273875
+        "ts": 1789766682929
       },
       {
         "agent": "main",
@@ -2749,7 +2845,7 @@
         "type": "delta",
         "step": 6,
         "text": "ow-wri",
-        "ts": 1789766273881
+        "ts": 1789766682935
       },
       {
         "agent": "main",
@@ -2757,7 +2853,7 @@
         "type": "delta",
         "step": 6,
         "text": "te)",
-        "ts": 1789766273886
+        "ts": 1789766682940
       },
       {
         "agent": "main",
@@ -2767,11 +2863,11 @@
         "text": "写入报告失败: 工具 \"write_file\" 需要写权限，当前未授权 (--allow-write)",
         "toolCalls": [],
         "usage": {
-          "inputTokens": 2555,
+          "inputTokens": 2601,
           "outputTokens": 80
         },
         "durationMs": 51,
-        "ts": 1789766273892
+        "ts": 1789766682946
       },
       {
         "agent": "main",
@@ -2781,10 +2877,10 @@
         "reason": "completed",
         "steps": 6,
         "usage": {
-          "inputTokens": 8572,
+          "inputTokens": 8725,
           "outputTokens": 1120
         },
-        "ts": 1789766273892
+        "ts": 1789766682947
       }
     ],
     "children": [
@@ -2800,7 +2896,7 @@
             "parentCallId": "mock_4",
             "type": "user",
             "task": "分析文件 src/order.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
-            "ts": 1789766273680
+            "ts": 1789766682734
           },
           {
             "agent": "sub-1",
@@ -2810,7 +2906,7 @@
             "type": "delta",
             "step": 1,
             "text": "读取 src",
-            "ts": 1789766273680
+            "ts": 1789766682735
           },
           {
             "agent": "sub-1",
@@ -2820,7 +2916,7 @@
             "type": "delta",
             "step": 1,
             "text": "/order",
-            "ts": 1789766273686
+            "ts": 1789766682740
           },
           {
             "agent": "sub-1",
@@ -2830,7 +2926,7 @@
             "type": "delta",
             "step": 1,
             "text": ".ts。",
-            "ts": 1789766273692
+            "ts": 1789766682746
           },
           {
             "agent": "sub-1",
@@ -2854,7 +2950,7 @@
               "outputTokens": 80
             },
             "durationMs": 18,
-            "ts": 1789766273698
+            "ts": 1789766682752
           },
           {
             "agent": "sub-1",
@@ -2870,7 +2966,7 @@
                 "path": "src/order.ts"
               }
             },
-            "ts": 1789766273698
+            "ts": 1789766682752
           },
           {
             "agent": "sub-1",
@@ -2886,7 +2982,7 @@
               "output": "import type { User } from './user.ts';\n\nexport interface Order {\n  id: string;\n  user: User;\n  amount: number;\n  status: 'pending' | 'paid' | 'shipped';\n}\n\nconst TAX_RATE = 0.13;\nconst FREE_SHIPPING_THRESHOLD = 500;\n\n// FIXME: 浮点运算精度问题，金额应使用整数分\nexport function totalWithTax(order: Order): number {\n  return order.amount * (1 + TAX_RATE);\n}\n\nexport function shippingFee(order: Order): number {\n  return order.amount >= FREE_SHIPPING_THRESHOLD ? 0 : 20;\n}\n\n/* TODO: 订单状态机校验（pending → paid → shipped） */\nexport function advance(order: Order): Order {\n  return order;\n}\n"
             },
             "durationMs": 0,
-            "ts": 1789766273698
+            "ts": 1789766682752
           },
           {
             "agent": "sub-1",
@@ -2896,7 +2992,7 @@
             "type": "delta",
             "step": 2,
             "text": "src/or",
-            "ts": 1789766273698
+            "ts": 1789766682752
           },
           {
             "agent": "sub-1",
@@ -2906,7 +3002,7 @@
             "type": "delta",
             "step": 2,
             "text": "der.ts",
-            "ts": 1789766273704
+            "ts": 1789766682757
           },
           {
             "agent": "sub-1",
@@ -2916,7 +3012,7 @@
             "type": "delta",
             "step": 2,
             "text": " 中共 2 ",
-            "ts": 1789766273710
+            "ts": 1789766682763
           },
           {
             "agent": "sub-1",
@@ -2926,7 +3022,7 @@
             "type": "delta",
             "step": 2,
             "text": "项:\n- L",
-            "ts": 1789766273715
+            "ts": 1789766682768
           },
           {
             "agent": "sub-1",
@@ -2936,7 +3032,7 @@
             "type": "delta",
             "step": 2,
             "text": "13: FI",
-            "ts": 1789766273721
+            "ts": 1789766682773
           },
           {
             "agent": "sub-1",
@@ -2946,7 +3042,7 @@
             "type": "delta",
             "step": 2,
             "text": "XME: 浮",
-            "ts": 1789766273727
+            "ts": 1789766682779
           },
           {
             "agent": "sub-1",
@@ -2956,7 +3052,7 @@
             "type": "delta",
             "step": 2,
             "text": "点运算精度问",
-            "ts": 1789766273732
+            "ts": 1789766682785
           },
           {
             "agent": "sub-1",
@@ -2966,7 +3062,7 @@
             "type": "delta",
             "step": 2,
             "text": "题，金额应使",
-            "ts": 1789766273738
+            "ts": 1789766682791
           },
           {
             "agent": "sub-1",
@@ -2976,7 +3072,7 @@
             "type": "delta",
             "step": 2,
             "text": "用整数分\n-",
-            "ts": 1789766273744
+            "ts": 1789766682795
           },
           {
             "agent": "sub-1",
@@ -2986,7 +3082,7 @@
             "type": "delta",
             "step": 2,
             "text": " L22: ",
-            "ts": 1789766273750
+            "ts": 1789766682801
           },
           {
             "agent": "sub-1",
@@ -2996,7 +3092,7 @@
             "type": "delta",
             "step": 2,
             "text": "/* TOD",
-            "ts": 1789766273755
+            "ts": 1789766682807
           },
           {
             "agent": "sub-1",
@@ -3006,7 +3102,7 @@
             "type": "delta",
             "step": 2,
             "text": "O: 订单状",
-            "ts": 1789766273761
+            "ts": 1789766682813
           },
           {
             "agent": "sub-1",
@@ -3016,7 +3112,7 @@
             "type": "delta",
             "step": 2,
             "text": "态机校验（p",
-            "ts": 1789766273767
+            "ts": 1789766682819
           },
           {
             "agent": "sub-1",
@@ -3026,7 +3122,7 @@
             "type": "delta",
             "step": 2,
             "text": "ending",
-            "ts": 1789766273772
+            "ts": 1789766682824
           },
           {
             "agent": "sub-1",
@@ -3036,7 +3132,7 @@
             "type": "delta",
             "step": 2,
             "text": " → pai",
-            "ts": 1789766273777
+            "ts": 1789766682830
           },
           {
             "agent": "sub-1",
@@ -3046,7 +3142,7 @@
             "type": "delta",
             "step": 2,
             "text": "d → sh",
-            "ts": 1789766273783
+            "ts": 1789766682836
           },
           {
             "agent": "sub-1",
@@ -3056,7 +3152,7 @@
             "type": "delta",
             "step": 2,
             "text": "ipped）",
-            "ts": 1789766273788
+            "ts": 1789766682842
           },
           {
             "agent": "sub-1",
@@ -3066,7 +3162,7 @@
             "type": "delta",
             "step": 2,
             "text": " */",
-            "ts": 1789766273794
+            "ts": 1789766682848
           },
           {
             "agent": "sub-1",
@@ -3081,8 +3177,8 @@
               "inputTokens": 300,
               "outputTokens": 80
             },
-            "durationMs": 102,
-            "ts": 1789766273800
+            "durationMs": 101,
+            "ts": 1789766682853
           },
           {
             "agent": "sub-1",
@@ -3097,7 +3193,7 @@
               "inputTokens": 326,
               "outputTokens": 160
             },
-            "ts": 1789766273800
+            "ts": 1789766682854
           }
         ],
         "children": []
@@ -3114,7 +3210,7 @@
             "parentCallId": "mock_5",
             "type": "user",
             "task": "分析文件 src/payment.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
-            "ts": 1789766273681
+            "ts": 1789766682735
           },
           {
             "agent": "sub-2",
@@ -3124,7 +3220,7 @@
             "type": "delta",
             "step": 1,
             "text": "读取 src",
-            "ts": 1789766273681
+            "ts": 1789766682735
           },
           {
             "agent": "sub-2",
@@ -3134,7 +3230,7 @@
             "type": "delta",
             "step": 1,
             "text": "/payme",
-            "ts": 1789766273686
+            "ts": 1789766682740
           },
           {
             "agent": "sub-2",
@@ -3144,7 +3240,7 @@
             "type": "delta",
             "step": 1,
             "text": "nt.ts。",
-            "ts": 1789766273692
+            "ts": 1789766682746
           },
           {
             "agent": "sub-2",
@@ -3168,7 +3264,7 @@
               "outputTokens": 80
             },
             "durationMs": 17,
-            "ts": 1789766273698
+            "ts": 1789766682752
           },
           {
             "agent": "sub-2",
@@ -3184,7 +3280,7 @@
                 "path": "src/payment.ts"
               }
             },
-            "ts": 1789766273698
+            "ts": 1789766682752
           },
           {
             "agent": "sub-2",
@@ -3200,7 +3296,7 @@
               "output": "import type { Order } from './order.ts';\n\nexport type Provider = 'alipay' | 'wechat' | 'card';\n\nconst todoList: string[] = []; // 待处理的支付回调队列（不是 TODO 注释）\n\nexport async function charge(order: Order, provider: Provider): Promise<boolean> {\n  // TODO: 幂等键，防止重复扣款\n  todoList.push(order.id);\n  return true;\n}\n\nexport function refund(order: Order): number {\n  // FIXME: 退款没有校验订单状态是否为 paid\n  return -order.amount;\n}\n"
             },
             "durationMs": 0,
-            "ts": 1789766273698
+            "ts": 1789766682752
           },
           {
             "agent": "sub-2",
@@ -3210,7 +3306,7 @@
             "type": "delta",
             "step": 2,
             "text": "src/pa",
-            "ts": 1789766273698
+            "ts": 1789766682753
           },
           {
             "agent": "sub-2",
@@ -3220,7 +3316,7 @@
             "type": "delta",
             "step": 2,
             "text": "yment.",
-            "ts": 1789766273704
+            "ts": 1789766682757
           },
           {
             "agent": "sub-2",
@@ -3230,7 +3326,7 @@
             "type": "delta",
             "step": 2,
             "text": "ts 中共 ",
-            "ts": 1789766273710
+            "ts": 1789766682763
           },
           {
             "agent": "sub-2",
@@ -3240,7 +3336,7 @@
             "type": "delta",
             "step": 2,
             "text": "2 项:\n-",
-            "ts": 1789766273715
+            "ts": 1789766682768
           },
           {
             "agent": "sub-2",
@@ -3250,7 +3346,7 @@
             "type": "delta",
             "step": 2,
             "text": " L8: T",
-            "ts": 1789766273721
+            "ts": 1789766682773
           },
           {
             "agent": "sub-2",
@@ -3260,7 +3356,7 @@
             "type": "delta",
             "step": 2,
             "text": "ODO: 幂",
-            "ts": 1789766273727
+            "ts": 1789766682779
           },
           {
             "agent": "sub-2",
@@ -3270,7 +3366,7 @@
             "type": "delta",
             "step": 2,
             "text": "等键，防止重",
-            "ts": 1789766273732
+            "ts": 1789766682785
           },
           {
             "agent": "sub-2",
@@ -3280,7 +3376,7 @@
             "type": "delta",
             "step": 2,
             "text": "复扣款\n- ",
-            "ts": 1789766273738
+            "ts": 1789766682791
           },
           {
             "agent": "sub-2",
@@ -3290,7 +3386,7 @@
             "type": "delta",
             "step": 2,
             "text": "L14: F",
-            "ts": 1789766273744
+            "ts": 1789766682795
           },
           {
             "agent": "sub-2",
@@ -3300,7 +3396,7 @@
             "type": "delta",
             "step": 2,
             "text": "IXME: ",
-            "ts": 1789766273750
+            "ts": 1789766682801
           },
           {
             "agent": "sub-2",
@@ -3310,7 +3406,7 @@
             "type": "delta",
             "step": 2,
             "text": "退款没有校验",
-            "ts": 1789766273755
+            "ts": 1789766682807
           },
           {
             "agent": "sub-2",
@@ -3320,7 +3416,7 @@
             "type": "delta",
             "step": 2,
             "text": "订单状态是否",
-            "ts": 1789766273761
+            "ts": 1789766682813
           },
           {
             "agent": "sub-2",
@@ -3330,7 +3426,7 @@
             "type": "delta",
             "step": 2,
             "text": "为 paid",
-            "ts": 1789766273767
+            "ts": 1789766682819
           },
           {
             "agent": "sub-2",
@@ -3345,8 +3441,8 @@
               "inputTokens": 246,
               "outputTokens": 80
             },
-            "durationMs": 74,
-            "ts": 1789766273772
+            "durationMs": 72,
+            "ts": 1789766682824
           },
           {
             "agent": "sub-2",
@@ -3361,7 +3457,7 @@
               "inputTokens": 272,
               "outputTokens": 160
             },
-            "ts": 1789766273772
+            "ts": 1789766682824
           }
         ],
         "children": []
@@ -3378,7 +3474,7 @@
             "parentCallId": "mock_6",
             "type": "user",
             "task": "分析文件 src/user.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
-            "ts": 1789766273681
+            "ts": 1789766682735
           },
           {
             "agent": "sub-3",
@@ -3388,7 +3484,7 @@
             "type": "delta",
             "step": 1,
             "text": "读取 src",
-            "ts": 1789766273681
+            "ts": 1789766682735
           },
           {
             "agent": "sub-3",
@@ -3398,7 +3494,7 @@
             "type": "delta",
             "step": 1,
             "text": "/user.",
-            "ts": 1789766273686
+            "ts": 1789766682740
           },
           {
             "agent": "sub-3",
@@ -3408,7 +3504,7 @@
             "type": "delta",
             "step": 1,
             "text": "ts。",
-            "ts": 1789766273692
+            "ts": 1789766682746
           },
           {
             "agent": "sub-3",
@@ -3432,7 +3528,7 @@
               "outputTokens": 80
             },
             "durationMs": 17,
-            "ts": 1789766273698
+            "ts": 1789766682752
           },
           {
             "agent": "sub-3",
@@ -3448,7 +3544,7 @@
                 "path": "src/user.ts"
               }
             },
-            "ts": 1789766273698
+            "ts": 1789766682752
           },
           {
             "agent": "sub-3",
@@ -3464,7 +3560,7 @@
               "output": "export interface User {\n  id: number;\n  name: string;\n  email: string;\n}\n\nconst users: User[] = [\n  { id: 1, name: 'Alice', email: 'alice@example.com' },\n  { id: 2, name: 'Bob', email: 'bob@example.com' },\n];\n\n// TODO: 接入真实数据库，替换内存数组\nexport function findUser(id: number): User | undefined {\n  return users.find((u) => u.id === id);\n}\n\n// FIXME: 没有校验 email 格式\nexport function createUser(name: string, email: string): User {\n  const user = { id: users.length + 1, name, email };\n  users.push(user);\n  return user;\n}\n\n// TODO(alice): 实现分页，见 docs/adr/001-storage.md\nexport function listUsers(): User[] {\n  return users;\n}\n"
             },
             "durationMs": 0,
-            "ts": 1789766273698
+            "ts": 1789766682752
           },
           {
             "agent": "sub-3",
@@ -3474,7 +3570,7 @@
             "type": "delta",
             "step": 2,
             "text": "src/us",
-            "ts": 1789766273698
+            "ts": 1789766682752
           },
           {
             "agent": "sub-3",
@@ -3484,7 +3580,7 @@
             "type": "delta",
             "step": 2,
             "text": "er.ts ",
-            "ts": 1789766273704
+            "ts": 1789766682757
           },
           {
             "agent": "sub-3",
@@ -3494,7 +3590,7 @@
             "type": "delta",
             "step": 2,
             "text": "中共 3 项",
-            "ts": 1789766273710
+            "ts": 1789766682763
           },
           {
             "agent": "sub-3",
@@ -3504,7 +3600,7 @@
             "type": "delta",
             "step": 2,
             "text": ":\n- L1",
-            "ts": 1789766273715
+            "ts": 1789766682768
           },
           {
             "agent": "sub-3",
@@ -3514,7 +3610,7 @@
             "type": "delta",
             "step": 2,
             "text": "2: TOD",
-            "ts": 1789766273721
+            "ts": 1789766682773
           },
           {
             "agent": "sub-3",
@@ -3524,7 +3620,7 @@
             "type": "delta",
             "step": 2,
             "text": "O: 接入真",
-            "ts": 1789766273727
+            "ts": 1789766682779
           },
           {
             "agent": "sub-3",
@@ -3534,7 +3630,7 @@
             "type": "delta",
             "step": 2,
             "text": "实数据库，替",
-            "ts": 1789766273732
+            "ts": 1789766682785
           },
           {
             "agent": "sub-3",
@@ -3544,7 +3640,7 @@
             "type": "delta",
             "step": 2,
             "text": "换内存数组\n",
-            "ts": 1789766273738
+            "ts": 1789766682790
           },
           {
             "agent": "sub-3",
@@ -3554,7 +3650,7 @@
             "type": "delta",
             "step": 2,
             "text": "- L17:",
-            "ts": 1789766273744
+            "ts": 1789766682795
           },
           {
             "agent": "sub-3",
@@ -3564,7 +3660,7 @@
             "type": "delta",
             "step": 2,
             "text": " FIXME",
-            "ts": 1789766273750
+            "ts": 1789766682801
           },
           {
             "agent": "sub-3",
@@ -3574,7 +3670,7 @@
             "type": "delta",
             "step": 2,
             "text": ": 没有校验",
-            "ts": 1789766273755
+            "ts": 1789766682807
           },
           {
             "agent": "sub-3",
@@ -3584,7 +3680,7 @@
             "type": "delta",
             "step": 2,
             "text": " email",
-            "ts": 1789766273761
+            "ts": 1789766682813
           },
           {
             "agent": "sub-3",
@@ -3594,7 +3690,7 @@
             "type": "delta",
             "step": 2,
             "text": " 格式\n- ",
-            "ts": 1789766273767
+            "ts": 1789766682819
           },
           {
             "agent": "sub-3",
@@ -3604,7 +3700,7 @@
             "type": "delta",
             "step": 2,
             "text": "L24: T",
-            "ts": 1789766273772
+            "ts": 1789766682824
           },
           {
             "agent": "sub-3",
@@ -3614,7 +3710,7 @@
             "type": "delta",
             "step": 2,
             "text": "ODO(al",
-            "ts": 1789766273778
+            "ts": 1789766682830
           },
           {
             "agent": "sub-3",
@@ -3624,7 +3720,7 @@
             "type": "delta",
             "step": 2,
             "text": "ice): ",
-            "ts": 1789766273783
+            "ts": 1789766682836
           },
           {
             "agent": "sub-3",
@@ -3634,7 +3730,7 @@
             "type": "delta",
             "step": 2,
             "text": "实现分页，见",
-            "ts": 1789766273788
+            "ts": 1789766682842
           },
           {
             "agent": "sub-3",
@@ -3644,7 +3740,7 @@
             "type": "delta",
             "step": 2,
             "text": " docs/",
-            "ts": 1789766273794
+            "ts": 1789766682848
           },
           {
             "agent": "sub-3",
@@ -3654,7 +3750,7 @@
             "type": "delta",
             "step": 2,
             "text": "adr/00",
-            "ts": 1789766273800
+            "ts": 1789766682853
           },
           {
             "agent": "sub-3",
@@ -3664,7 +3760,7 @@
             "type": "delta",
             "step": 2,
             "text": "1-stor",
-            "ts": 1789766273805
+            "ts": 1789766682859
           },
           {
             "agent": "sub-3",
@@ -3674,7 +3770,7 @@
             "type": "delta",
             "step": 2,
             "text": "age.md",
-            "ts": 1789766273811
+            "ts": 1789766682865
           },
           {
             "agent": "sub-3",
@@ -3690,7 +3786,7 @@
               "outputTokens": 80
             },
             "durationMs": 119,
-            "ts": 1789766273817
+            "ts": 1789766682871
           },
           {
             "agent": "sub-3",
@@ -3705,7 +3801,7 @@
               "inputTokens": 342,
               "outputTokens": 160
             },
-            "ts": 1789766273817
+            "ts": 1789766682871
           }
         ],
         "children": []
@@ -3722,7 +3818,7 @@
             "parentCallId": "mock_7",
             "type": "user",
             "task": "分析文件 src/utils/validate.ts：读取它并列出其中所有 TODO/FIXME 行（含行号）。",
-            "ts": 1789766273681
+            "ts": 1789766682735
           },
           {
             "agent": "sub-4",
@@ -3732,7 +3828,7 @@
             "type": "delta",
             "step": 1,
             "text": "读取 src",
-            "ts": 1789766273681
+            "ts": 1789766682735
           },
           {
             "agent": "sub-4",
@@ -3742,7 +3838,7 @@
             "type": "delta",
             "step": 1,
             "text": "/utils",
-            "ts": 1789766273686
+            "ts": 1789766682740
           },
           {
             "agent": "sub-4",
@@ -3752,7 +3848,7 @@
             "type": "delta",
             "step": 1,
             "text": "/valid",
-            "ts": 1789766273692
+            "ts": 1789766682746
           },
           {
             "agent": "sub-4",
@@ -3762,7 +3858,7 @@
             "type": "delta",
             "step": 1,
             "text": "ate.ts",
-            "ts": 1789766273698
+            "ts": 1789766682752
           },
           {
             "agent": "sub-4",
@@ -3772,7 +3868,7 @@
             "type": "delta",
             "step": 1,
             "text": "。",
-            "ts": 1789766273704
+            "ts": 1789766682757
           },
           {
             "agent": "sub-4",
@@ -3796,7 +3892,7 @@
               "outputTokens": 80
             },
             "durationMs": 28,
-            "ts": 1789766273709
+            "ts": 1789766682763
           },
           {
             "agent": "sub-4",
@@ -3812,7 +3908,7 @@
                 "path": "src/utils/validate.ts"
               }
             },
-            "ts": 1789766273709
+            "ts": 1789766682763
           },
           {
             "agent": "sub-4",
@@ -3827,8 +3923,8 @@
               "ok": true,
               "output": "export function isEmail(s: string): boolean {\n  return /^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(s);\n}\n\n// TODO: 手机号校验支持国际区号\nexport function isPhone(s: string): boolean {\n  return /^1\\d{10}$/.test(s);\n}\n"
             },
-            "durationMs": 1,
-            "ts": 1789766273710
+            "durationMs": 0,
+            "ts": 1789766682763
           },
           {
             "agent": "sub-4",
@@ -3838,7 +3934,7 @@
             "type": "delta",
             "step": 2,
             "text": "src/ut",
-            "ts": 1789766273710
+            "ts": 1789766682763
           },
           {
             "agent": "sub-4",
@@ -3848,7 +3944,7 @@
             "type": "delta",
             "step": 2,
             "text": "ils/va",
-            "ts": 1789766273715
+            "ts": 1789766682769
           },
           {
             "agent": "sub-4",
@@ -3858,7 +3954,7 @@
             "type": "delta",
             "step": 2,
             "text": "lidate",
-            "ts": 1789766273721
+            "ts": 1789766682773
           },
           {
             "agent": "sub-4",
@@ -3868,7 +3964,7 @@
             "type": "delta",
             "step": 2,
             "text": ".ts 中共",
-            "ts": 1789766273727
+            "ts": 1789766682779
           },
           {
             "agent": "sub-4",
@@ -3878,7 +3974,7 @@
             "type": "delta",
             "step": 2,
             "text": " 1 项:\n",
-            "ts": 1789766273732
+            "ts": 1789766682785
           },
           {
             "agent": "sub-4",
@@ -3888,7 +3984,7 @@
             "type": "delta",
             "step": 2,
             "text": "- L5: ",
-            "ts": 1789766273738
+            "ts": 1789766682791
           },
           {
             "agent": "sub-4",
@@ -3898,7 +3994,7 @@
             "type": "delta",
             "step": 2,
             "text": "TODO: ",
-            "ts": 1789766273744
+            "ts": 1789766682795
           },
           {
             "agent": "sub-4",
@@ -3908,7 +4004,7 @@
             "type": "delta",
             "step": 2,
             "text": "手机号校验支",
-            "ts": 1789766273750
+            "ts": 1789766682801
           },
           {
             "agent": "sub-4",
@@ -3918,7 +4014,7 @@
             "type": "delta",
             "step": 2,
             "text": "持国际区号",
-            "ts": 1789766273755
+            "ts": 1789766682807
           },
           {
             "agent": "sub-4",
@@ -3933,8 +4029,8 @@
               "inputTokens": 182,
               "outputTokens": 80
             },
-            "durationMs": 51,
-            "ts": 1789766273761
+            "durationMs": 50,
+            "ts": 1789766682813
           },
           {
             "agent": "sub-4",
@@ -3949,7 +4045,7 @@
               "inputTokens": 211,
               "outputTokens": 160
             },
-            "ts": 1789766273761
+            "ts": 1789766682813
           }
         ],
         "children": []

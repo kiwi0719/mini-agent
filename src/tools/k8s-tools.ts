@@ -177,6 +177,8 @@ export const applyFix: Tool = {
   description: '【写操作，需人工确认】执行 propose_fix 给出的修复动作（Mock 集群中会更新 Pod/Node 状态并记录到 k8s/applied.json）。调用前必须已经在回复中说明将要执行的动作与风险；未授权写权限时会被拒绝，此时把方案写进处理建议即可。',
   permission: 'write',
   inputSchema: { type: 'object', properties: { name: { type: 'string' }, ...NS, action: { type: 'string', description: 'propose_fix 返回的 action 名' }, confirmed_by: { type: 'string', description: '确认人（用户名 / 工单号）' } }, required: ['name', 'action'], additionalProperties: false },
+  // 写的是集群资源而非文件，用逻辑键参与同一套冲突检查
+  writeTargets: (i: { name: string; namespace?: string }) => [`k8s://${i.namespace ?? 'default'}/${i.name}`],
   execute: (i: { name: string; namespace?: string; action: string; confirmed_by?: string }, ctx) => wrap(async () => {
     const r = await src(ctx).applyRemediation(ns(i), i.name, i.action, i.confirmed_by ?? 'operator');
     return { ok: true, output: j({ applied: r.action, command: r.command, description: r.description, note: '已执行（Mock）。请用 verify_fix 检查是否恢复。' }) };

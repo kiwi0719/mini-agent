@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:18:02.874Z
+- time: 2026-09-18T21:24:52.105Z
 
 ## 👤 User
 
@@ -16,7 +16,7 @@
 
 → 决定调用 1 个工具: update_plan
 
-_LLM 28ms · tokens in 16 / out 80_
+_LLM 29ms · tokens in 16 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -66,7 +66,7 @@ _LLM 28ms · tokens in 16 / out 80_
 
 → 决定调用 1 个工具: get_pod
 
-_LLM 11ms · tokens in 174 / out 80_
+_LLM 12ms · tokens in 174 / out 80_
 
 ### 🔧 Tool Call: `get_pod`
 
@@ -77,7 +77,7 @@ _LLM 11ms · tokens in 174 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_pod` (1ms)
+### ✅ Tool Result: `get_pod` (2ms)
 
 ```
 {
@@ -231,7 +231,7 @@ _LLM 118ms · tokens in 670 / out 80_
 计划已更新（1/4 完成）
 ```
 
-### ✅ Tool Result: `get_metrics` (0ms)
+### ✅ Tool Result: `get_metrics` (3ms)
 
 ```
 {
@@ -240,7 +240,50 @@ _LLM 118ms · tokens in 670 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_node` (1ms)
+### ✅ Tool Result: `get_pod_events` (4ms)
+
+```
+{
+ "count": 4,
+ "warnings": 1,
+ "events": [
+  {
+   "time": "2026-09-18T08:00:00.000Z",
+   "type": "Normal",
+   "reason": "Scheduled",
+   "message": "Successfully assigned default/job-124 to node-2",
+   "count": 1,
+   "source": "default-scheduler"
+  },
+  {
+   "time": "2026-09-18T08:01:00.000Z",
+   "type": "Normal",
+   "reason": "Started",
+   "message": "Started container etl",
+   "count": 1,
+   "source": "kubelet"
+  },
+  {
+   "time": "2026-09-18T08:36:00.000Z",
+   "type": "Warning",
+   "reason": "NodeNotReady",
+   "message": "Node is not ready",
+   "count": 1,
+   "source": "node-controller"
+  },
+  {
+   "time": "2026-09-18T08:41:00.000Z",
+   "type": "Normal",
+   "reason": "TaintManagerEviction",
+   "message": "Marking for deletion Pod default/job-124",
+   "count": 1,
+   "source": "taint-controller"
+  }
+ ]
+}
+```
+
+### ✅ Tool Result: `get_node` (4ms)
 
 ```
 {
@@ -297,50 +340,7 @@ _LLM 118ms · tokens in 670 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_pod_events` (1ms)
-
-```
-{
- "count": 4,
- "warnings": 1,
- "events": [
-  {
-   "time": "2026-09-18T08:00:00.000Z",
-   "type": "Normal",
-   "reason": "Scheduled",
-   "message": "Successfully assigned default/job-124 to node-2",
-   "count": 1,
-   "source": "default-scheduler"
-  },
-  {
-   "time": "2026-09-18T08:01:00.000Z",
-   "type": "Normal",
-   "reason": "Started",
-   "message": "Started container etl",
-   "count": 1,
-   "source": "kubelet"
-  },
-  {
-   "time": "2026-09-18T08:36:00.000Z",
-   "type": "Warning",
-   "reason": "NodeNotReady",
-   "message": "Node is not ready",
-   "count": 1,
-   "source": "node-controller"
-  },
-  {
-   "time": "2026-09-18T08:41:00.000Z",
-   "type": "Normal",
-   "reason": "TaintManagerEviction",
-   "message": "Marking for deletion Pod default/job-124",
-   "count": 1,
-   "source": "taint-controller"
-  }
- ]
-}
-```
-
-### ❌ Tool Result: `get_logs` (2ms)
+### ❌ Tool Result: `get_logs` (4ms)
 
 ```
 Error from server: Get "https://10.0.2.12:10250/containerLogs/default/job-124/etl": dial tcp 10.0.2.12:10250: i/o timeout
@@ -414,7 +414,7 @@ _LLM 40ms · tokens in 1858 / out 80_
 计划已更新（2/4 完成）
 ```
 
-### ✅ Tool Result: `search_cases` (0ms)
+### ✅ Tool Result: `search_cases` (1ms)
 
 ```
 {

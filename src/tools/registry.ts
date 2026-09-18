@@ -1,5 +1,6 @@
 import { Ajv } from 'ajv';
 import type { Tool, ToolCall, ToolContext, ToolResult, ToolSchema } from '../types.ts';
+import { acquire, describeConflicts } from './write-guard.ts';
 
 const ajv = new Ajv({ allErrors: true, strict: false });
 
@@ -79,6 +80,17 @@ export class ToolRegistry {
     // 3. 权限
     if (tool.permission === 'write' && !ctx.allowWrite) {
       return { ok: false, error: `工具 "${tool.name}" 需要写权限，当前未授权 (--allow-write)` };
+    }
+
+    // 3.5 并发写冲突：只有声明了 writeTargets 的写工具会走这里，只读工具零开销
+    if (tool.permission === 'write' && tool.writeTargets && ctx.owner) {
+      const targets = tool.writeTargets(input, ctx);
+      if (targets.length) {
+        const got = acquire(targets, ctx.owner);
+        if (!got.ok) {
+          return { ok: false, error: `写目标冲突：${describeConflicts(got.conflicts)}。请改写到其他文件，或先完成/放弃占用方的任务。` };
+        }
+      }
     }
 
     // 4. 超时 + 执行。重试边界（见 DESIGN.md §4）：

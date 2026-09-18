@@ -32,8 +32,8 @@ export class MockLLM implements LLMProvider {
       if (onDelta) for (let i = 0; i < text.length; i += 6) { onDelta(text.slice(i, i + 6)); await sleep(5); }
       return { text, toolCalls, usage, stopReason: toolCalls.length ? 'tool_use' : 'end_turn' };
     };
-    const plan = (steps: [string, PlanStep['status'], string?][], reason?: string) =>
-      call('update_plan', { steps: steps.map(([title, status, note], i) => ({ id: i + 1, title, status, ...(note ? { note } : {}) })), ...(reason ? { reason } : {}) });
+    const plan = (steps: [string, PlanStep['status'], string?][], reason?: string, writes?: string[]) =>
+      call('update_plan', { steps: steps.map(([title, status, note], i) => ({ id: i + 1, title, status, ...(note ? { note } : {}) })), ...(reason ? { reason } : {}), ...(writes?.length ? { writes } : {}) });
     const has = (name: string) => h.some((x) => x.name === name);
     const last = (name: string) => h.filter((x) => x.name === name).at(-1);
 
@@ -68,9 +68,43 @@ export class MockLLM implements LLMProvider {
     const ext = (await logScenario(task, h, helpers)) ?? (await k8sScenario(task, h, helpers));
     if (ext) return ext;
 
+    // ---------- 任务 L：并发写冲突演练（plan 阶段预约 → 冲突 → 换输出路径重规划） ----------
+    if (/并发写冲突演练/.test(task)) {
+      const plans = h.filter((x) => x.name === 'update_plan');
+      if (!plans.length) {
+        return reply('先制定计划并预约输出文件 shared-report.md。',
+          plan([['读取销售数据', 'in_progress'], ['求和', 'pending'], ['写入 shared-report.md', 'pending']], undefined, ['shared-report.md']));
+      }
+      // 第一次 plan 被拒（写目标被另一个任务占用）→ 换一个输出路径
+      if (!plans[0].ok && plans.length === 1) {
+        return reply('shared-report.md 已被另一个并发任务预约，改用 shared-report-2.md 重新规划。',
+          plan([['读取销售数据', 'in_progress'], ['求和', 'pending'], ['写入 shared-report-2.md', 'pending']], ' 原输出路径与并发任务冲突', ['shared-report-2.md']));
+      }
+      const rd = last('read_file');
+      if (!rd) return reply('读取销售数据。', call('read_file', { path: 'data/sales.txt' }));
+      const amounts = rd.ok ? rd.output.split('\n').map((l) => l.match(/,\s*([\d.]+)\s*$/)?.[1]).filter(Boolean) : [];
+      const calc = last('calculator');
+      if (!calc) return reply(`解析出 ${amounts.length} 条记录，求和。`, call('calculator', { expression: `sum(${amounts.join(', ')})` }));
+      const total = calc.ok ? calc.output.split('=').at(-1)!.trim() : '?';
+      const wr = last('write_file');
+      if (!wr) return reply('写入报告。', call('write_file', { path: 'shared-report-2.md', content: `# 合计\n\n${total}\n` }));
+      return reply(`完成。合计 ${total}。原计划的输出 shared-report.md 被另一个并发任务预约，已改用 shared-report-2.md 写入——冲突在制定计划时就被发现，没有走到写入才失败。`);
+    }
+
+    // ---------- 任务 M：delegate 门槛演练（expected_steps 过低被拒 → 自己做） ----------
+    if (/delegate 门槛演练/.test(task)) {
+      const del = last('delegate');
+      if (!del) return reply('这个子任务看起来可以交给子 Agent。', call('delegate', { task: '读取 README.md 并数出行数', expected_steps: 1 }));
+      const rd = last('read_file');
+      if (!rd) return reply(`派生被拒（${del.error}）。确实只要一次 read_file，我自己来。`, call('read_file', { path: 'README.md' }));
+      if (!rd.ok) return reply('读取失败: ' + rd.error);
+      return reply(`完成。README.md 共 ${rd.output.split('\n').length} 行。（最初想派生子 Agent，但 expected_steps=1 低于门槛被拒，改为直接调用 read_file，省下一次子 Agent 的模型调用。）`);
+    }
+
     // ---------- 任务 A：TODO / FIXME 汇总（Plan + search_text 精化 + Sub Agent） ----------
     if (/todo|fixme/i.test(task) && !/摘要/.test(task)) {
-      if (!has('update_plan')) return reply('这是多步任务，先制定计划。', plan([['搜索所有 TODO/FIXME', 'in_progress'], ['逐文件分析（委派子 Agent）', 'pending'], ['生成分类报告', 'pending']]));
+      if (!has('update_plan')) return reply('这是多步任务，先制定计划，并提前声明要写的文件以避免与其他并发任务冲突。',
+        plan([['搜索所有 TODO/FIXME', 'in_progress'], ['逐文件分析（委派子 Agent）', 'pending'], ['生成分类报告', 'pending']], undefined, [outName(task, 'todo-report.md')]));
       const searches = h.filter((x) => x.name === 'search_text');
       const search = searches.at(-1);
       if (!search) return reply('搜索 TODO 与 FIXME。', call('search_text', { pattern: 'TODO|FIXME' }));
@@ -91,7 +125,7 @@ export class MockLLM implements LLMProvider {
       if (pending.length && available.has('delegate')) {
         // 同一轮并行委派全部源码文件
         return reply(`确认 ${hits.length} 处，分布在 ${files.length} 个文件。其中 ${pending.length} 个源码文件并行委派子 Agent 读取上下文。`,
-          ...pending.map((f) => call('delegate', { task: `分析文件 ${f}：读取它并列出其中所有 TODO/FIXME 行（含行号）。` })));
+          ...pending.map((f) => call('delegate', { task: `分析文件 ${f}：读取它并列出其中所有 TODO/FIXME 行（含行号）。`, expected_steps: 2 })));
       }
       const written = last('write_file');
       if (!written) {
@@ -113,7 +147,7 @@ export class MockLLM implements LLMProvider {
 
     // ---------- 任务 F：多地区聚合（list_files + 并行 read_file + 格式归一 + 并行 calculator） ----------
     if (/地区|regions/i.test(task)) {
-      if (!has('update_plan')) return reply('制定计划。', plan([['列出 data/regions 下的文件', 'in_progress'], ['并行读取并归一化金额', 'pending'], ['分地区求和与总计', 'pending'], ['写入报告', 'pending']]));
+      if (!has('update_plan')) return reply('制定计划，并声明输出文件。', plan([['列出 data/regions 下的文件', 'in_progress'], ['并行读取并归一化金额', 'pending'], ['分地区求和与总计', 'pending'], ['写入报告', 'pending']], undefined, [outName(task, 'report-regions.md')]));
       const ls = last('list_files');
       if (!ls) return reply('先看有哪些地区文件。', call('list_files', { path: 'data/regions' }));
       if (!ls.ok) return reply('无法列出目录: ' + ls.error);
@@ -228,16 +262,16 @@ export class MockLLM implements LLMProvider {
       const files = ls.ok ? ls.output.split('\n').filter((f) => f.endsWith('.ts')) : [];
       const dst = (f: string) => `docs/summaries/${f.replace(/^src\//, '').replace(/\//g, '-').replace(/\.ts$/, '.md')}`;
       const dels = h.filter((x) => x.name === 'delegate');
-      if (!dels.length) return reply(`${files.length} 个文件。先委派一个试试。`, call('delegate', { task: `为文件 ${files[0]} 生成摘要并写入 ${dst(files[0])}` }));
+      if (!dels.length) return reply(`${files.length} 个文件。每个子任务要读文件、生成摘要、写文件，预计 3 步，值得派生。先委派一个试试。`, call('delegate', { task: `为文件 ${files[0]} 生成摘要并写入 ${dst(files[0])}`, expected_steps: 3 }));
       const succeeded = new Set(dels.filter((d) => d.ok && !/写入失败/.test(d.output)).map((d) => d.input.task.match(/为文件\s*(\S+)/)![1]));
       const remaining = files.filter((f) => !succeeded.has(f));
       const needWrite = dels.some((d) => /写权限|写入失败/.test(d.ok ? d.output : d.error));
       if (remaining.length && needWrite && dels.length === 1) {
         return reply('子 Agent 报告没有写权限（默认只读）。这个子任务确实需要写文件，重派时授予 allow_write，其余文件同一轮并行委派。',
           plan([['列出 src 下的 ts 文件', 'done'], ['委派子 Agent 生成摘要', 'in_progress', '首个子 Agent 因只读失败，改为授予写权限'], ['汇总', 'pending']], '子 Agent 默认只读，需显式授权'),
-          ...remaining.map((f) => call('delegate', { task: `为文件 ${f} 生成摘要并写入 ${dst(f)}`, allow_write: true })));
+          ...remaining.map((f) => call('delegate', { task: `为文件 ${f} 生成摘要并写入 ${dst(f)}`, expected_steps: 3, allow_write: true })));
       }
-      if (remaining.length) return reply(`仍有 ${remaining.length} 个未完成: ${remaining.join(', ')}。`, ...remaining.map((f) => call('delegate', { task: `为文件 ${f} 生成摘要并写入 ${dst(f)}`, allow_write: true })));
+      if (remaining.length) return reply(`仍有 ${remaining.length} 个未完成: ${remaining.join(', ')}。`, ...remaining.map((f) => call('delegate', { task: `为文件 ${f} 生成摘要并写入 ${dst(f)}`, expected_steps: 3, allow_write: true })));
       return reply(`完成。${files.length} 个源码文件的摘要已由子 Agent 写入 docs/summaries/（首次委派因子 Agent 默认只读失败，授予 allow_write 后重派成功；共 ${dels.length} 次委派）。`);
     }
 
@@ -256,7 +290,7 @@ export class MockLLM implements LLMProvider {
     // ---------- 任务 B：销售数据求和（Plan + Tool Search + calculator） ----------
     if (/销售|sales/i.test(task)) {
       const p = task.match(/([\w\/.-]+\.txt)/)?.[1] ?? 'sales.txt';
-      if (!has('update_plan')) return reply('制定计划。', plan([['解析销售数据文件', 'in_progress'], ['计算销售额之和', 'pending'], ['写入报告', 'pending']]));
+      if (!has('update_plan')) return reply('制定计划，并声明输出文件。', plan([['解析销售数据文件', 'in_progress'], ['计算销售额之和', 'pending'], ['写入报告', 'pending']], undefined, [outName(task, 'report.md')]));
       if (!has('search_tools') && !available.has('csv_parse')) return reply('数据是表格格式，先看看有没有更合适的解析工具。', call('search_tools', { query: 'csv 解析' }));
       const csv = last('csv_parse');
       if (!csv) {

@@ -33,7 +33,9 @@ export interface AgentRuntime {
   searchTools(query: string): { name: string; description: string; activated: boolean }[];
   listDeferredTools(): { name: string; description: string; activated: boolean }[];
   activateTools(names: string[]): string[];
-  delegate(task: string, callId: string, opts?: { allowWrite?: boolean }): Promise<{ answer: string; steps: number; reason: FinishReason }>;
+  delegate(task: string, callId: string, opts?: { allowWrite?: boolean; expectedSteps?: number }): Promise<{ answer: string; steps: number; reason: FinishReason; rejected?: string }>;
+  /** 预约计划中声明的写目标；返回冲突说明（无冲突返回 null） */
+  reserveWrites(paths: readonly string[]): string | null;
 }
 
 export interface ToolContext {
@@ -43,6 +45,8 @@ export interface ToolContext {
   /** 当前正在执行的调用 id（agent 级工具需要它建立父子关系） */
   callId?: string;
   signal?: AbortSignal;
+  /** 写目标预约的归属标识（见 tools/write-guard.ts） */
+  owner?: string;
 }
 
 export interface Tool {
@@ -54,6 +58,11 @@ export interface Tool {
   idempotent?: boolean;
   /** 延迟加载：默认不发给 LLM，需通过 search_tools 激活（Tool Search） */
   deferred?: boolean;
+  /**
+   * 写类工具声明本次调用会修改哪些资源（文件用绝对路径，其他用 `scheme://id` 逻辑键）。
+   * Registry 据此在执行前做并发冲突检查；未声明的写工具不参与检查。
+   */
+  writeTargets?(input: any, ctx: ToolContext): string[];
   execute(input: any, ctx: ToolContext): Promise<ToolResult>;
 }
 
@@ -105,6 +114,7 @@ export type AgentEventBody =
   | { type: 'plan'; step: number; plan: PlanStep[]; ts: number }
   | { type: 'tools_activated'; step: number; names: string[]; ts: number }
   | { type: 'compressed'; step: number; savedChars: number; sizeChars: number; ts: number }
+  | { type: 'writes_reserved'; step: number; targets: string[]; ts: number }
   | { type: 'decision'; step: number; text: string; toolCalls: ToolCall[]; usage: Usage; durationMs: number; ts: number }
   | { type: 'tool_call'; step: number; call: ToolCall; ts: number }
   | { type: 'tool_result'; step: number; callId: string; name: string; result: ToolResult; durationMs: number; ts: number }
@@ -144,5 +154,9 @@ export interface AgentOptions {
   subAgentAllowWrite?: boolean;
   /** 外部中止信号：在步与步之间检查，并传给 LLM / 工具 */
   signal?: AbortSignal;
+  /** 写目标预约的归属标识；子 Agent 继承父级，因此同一任务树内不会自锁。默认自动生成 */
+  owner?: string;
+  /** delegate 的 expected_steps 门槛：低于该值直接拒绝派生子 Agent（默认 2） */
+  delegateMinExpectedSteps?: number;
   onEvent?: (e: AgentEvent) => void;
 }

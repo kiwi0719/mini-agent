@@ -73,6 +73,9 @@ export const writeFile: Tool = {
     required: ['path', 'content'],
     additionalProperties: false,
   },
+  writeTargets(input: { path: string }, ctx) {
+    try { return [resolveInWorkspace(ctx.workspace, input.path)]; } catch { return []; }   // 越界路径交给 execute 报错
+  },
   async execute(input: { path: string; content: string }, ctx) {
     const abs = resolveInWorkspace(ctx.workspace, input.path);
     await fs.mkdir(path.dirname(abs), { recursive: true });
