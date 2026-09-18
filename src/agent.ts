@@ -181,9 +181,16 @@ export class Agent {
 
       // ---- 4. 失败保护（问题 6：轮级多数失败 + 单调用连续失败两条线） ----
       const failed = results.filter((r) => !r.result.ok).length;
-      st.consecutiveFailedRounds = failed >= results.length - failed ? st.consecutiveFailedRounds + 1 : 0; // 失败数 ≥ 成功数即视为失败轮
-      for (const r of results) st.failedCallStreak = r.result.ok ? 0 : st.failedCallStreak + 1;
-      if (st.consecutiveFailedRounds >= this.opts.maxConsecutiveFailures || st.failedCallStreak >= this.opts.maxConsecutiveFailures * 2) {
+      const succeeded = results.length - failed;
+      st.consecutiveFailedRounds = failed >= succeeded ? st.consecutiveFailedRounds + 1 : 0;   // 失败数 ≥ 成功数即视为失败轮
+      // 调用级连续失败：整轮无一成功才累加，有任何成功就清零（与轮内调用顺序无关）
+      st.failedCallStreak = succeeded === 0 ? st.failedCallStreak + failed : 0;
+      // 调用级规则必须跨轮才生效：模型在一轮里并发发错一批调用是常见的（例如拿 list_files 去查文件），
+      // 它拿到错误后通常下一轮就能改对。这种情况代价应该是一轮，而不是整个任务被判死。
+      // 真正该提前收口的是"连着两轮一个都没成功"，此时用调用数把 3 轮的上限缩短到 2 轮。
+      const giveUp = st.consecutiveFailedRounds >= this.opts.maxConsecutiveFailures
+        || (st.consecutiveFailedRounds >= 2 && st.failedCallStreak >= this.opts.maxConsecutiveFailures * 2);
+      if (giveUp) {
         const errs = results.filter((r) => !r.result.ok).map((r) => (r.result as { error: string }).error).join('; ');
         return finish(`工具调用持续失败（连续 ${st.consecutiveFailedRounds} 轮多数失败 / 连续 ${st.failedCallStreak} 次调用失败），任务中止。最后错误: ${errs}`, 'too_many_failures');
       }

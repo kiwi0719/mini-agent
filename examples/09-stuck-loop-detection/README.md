@@ -8,7 +8,7 @@
 
 **校验**: ✅ 通过
 
-**结果**: stuck_loop · 5 steps · 5 tool calls · 0 failures · 0 sub agents · tokens 1166/400 · 63ms
+**结果**: stuck_loop · 5 steps · 5 tool calls · 0 failures · 0 sub agents · tokens 1166/400 · 57ms
 
 **最终答案**:
 

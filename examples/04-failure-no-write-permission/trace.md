@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:24:42.568Z
+- time: 2026-09-18T21:35:28.204Z
 
 ## 👤 User
 
@@ -75,7 +75,7 @@ _LLM 17ms · tokens in 170 / out 80_
 }
 ```
 
-### ✅ Tool Result: `search_text` (13ms)
+### ✅ Tool Result: `search_text` (6ms)
 
 ```
 {
@@ -176,7 +176,7 @@ _LLM 45ms · tokens in 977 / out 80_
 }
 ```
 
-### ✅ Tool Result: `search_text` (10ms)
+### ✅ Tool Result: `search_text` (6ms)
 
 ```
 {
@@ -295,7 +295,7 @@ _LLM 46ms · tokens in 1680 / out 80_
 
 → 决定调用 1 个工具: read_file
 
-_LLM 18ms · tokens in 26 / out 80_
+_LLM 17ms · tokens in 26 / out 80_
 
 ### 🔧 Tool Call [sub-1]: `read_file`
 
@@ -305,7 +305,7 @@ _LLM 18ms · tokens in 26 / out 80_
 }
 ```
 
-### ✅ Tool Result [sub-1]: `read_file` (0ms)
+### ✅ Tool Result [sub-1]: `read_file` (1ms)
 
 ```
 import type { User } from './user.ts';
@@ -385,7 +385,7 @@ _LLM 17ms · tokens in 26 / out 80_
 }
 ```
 
-### ✅ Tool Result [sub-2]: `read_file` (0ms)
+### ✅ Tool Result [sub-2]: `read_file` (1ms)
 
 ```
 import type { Order } from './order.ts';
@@ -413,7 +413,7 @@ src/payment.ts 中共 2 项:
 - L8: TODO: 幂等键，防止重复扣款
 - L14: FIXME: 退款没有校验订单状态是否为 paid
 
-_LLM 72ms · tokens in 246 / out 80_
+_LLM 73ms · tokens in 246 / out 80_
 
 ### 🤖 Sub Agent sub-2 结束 (completed, 2 steps)
 
@@ -456,7 +456,7 @@ _LLM 17ms · tokens in 25 / out 80_
 }
 ```
 
-### ✅ Tool Result [sub-3]: `read_file` (0ms)
+### ✅ Tool Result [sub-3]: `read_file` (1ms)
 
 ```
 export interface User {
@@ -496,7 +496,7 @@ src/user.ts 中共 3 项:
 - L17: FIXME: 没有校验 email 格式
 - L24: TODO(alice): 实现分页，见 docs/adr/001-storage.md
 
-_LLM 119ms · tokens in 317 / out 80_
+_LLM 118ms · tokens in 317 / out 80_
 
 ### 🤖 Sub Agent sub-3 结束 (completed, 2 steps)
 
@@ -530,7 +530,7 @@ src/user.ts 中共 3 项:
 
 → 决定调用 1 个工具: read_file
 
-_LLM 28ms · tokens in 29 / out 80_
+_LLM 29ms · tokens in 29 / out 80_
 
 ### 🔧 Tool Call [sub-4]: `read_file`
 
@@ -559,7 +559,7 @@ export function isPhone(s: string): boolean {
 src/utils/validate.ts 中共 1 项:
 - L5: TODO: 手机号校验支持国际区号
 
-_LLM 50ms · tokens in 182 / out 80_
+_LLM 51ms · tokens in 182 / out 80_
 
 ### 🤖 Sub Agent sub-4 结束 (completed, 2 steps)
 
@@ -568,7 +568,7 @@ src/utils/validate.ts 中共 1 项:
 
 </details>
 
-### ✅ Tool Result: `delegate` (78ms)
+### ✅ Tool Result: `delegate` (80ms)
 
 ```
 [子 Agent 用 2 步完成]
@@ -576,7 +576,7 @@ src/utils/validate.ts 中共 1 项:
 - L5: TODO: 手机号校验支持国际区号
 ```
 
-### ✅ Tool Result: `delegate` (89ms)
+### ✅ Tool Result: `delegate` (91ms)
 
 ```
 [子 Agent 用 2 步完成]
@@ -585,7 +585,7 @@ src/payment.ts 中共 2 项:
 - L14: FIXME: 退款没有校验订单状态是否为 paid
 ```
 
-### ✅ Tool Result: `delegate` (120ms)
+### ✅ Tool Result: `delegate` (119ms)
 
 ```
 [子 Agent 用 2 步完成]
@@ -668,7 +668,7 @@ _LLM 23ms · tokens in 2127 / out 80_
 
 写入报告失败: 工具 "write_file" 需要写权限，当前未授权 (--allow-write)
 
-_LLM 51ms · tokens in 2601 / out 80_
+_LLM 50ms · tokens in 2601 / out 80_
 
 ## 🏁 Final Answer (completed, 6 steps, tokens in 8725 / out 1120)
 

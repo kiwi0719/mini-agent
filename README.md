@@ -10,7 +10,8 @@ User → Agent Decision → Tool Call → Tool Result → Agent Decision → …
 - 🤝 [AI_USAGE.md](./AI_USAGE.md)（AI 参与环节、关键设计决策、AI 的错误判断与修正）
 - 💬 [ai-conversation.md](./ai-conversation.md)（与 AI Coding 工具的完整对话过程）
 - 🧩 [DESIGN-EXTENSIONS.md](./DESIGN-EXTENSIONS.md)（扩展：应用日志智能分析 + Kubernetes 故障诊断 SRE Agent，两道题作为工具接入的设计与实现说明）
-- ✅ [examples/](./examples/README.md)（11 个任务的实际执行结果 + 完整 Trace，每个带自动校验）
+- ✅ [examples/](./examples/README.md)（23 个任务的实际执行结果 + 完整 Trace，每个带自动校验）
+- 🔬 [examples/real-model/](./examples/real-model/README.md)（**真实模型实跑**：两条协议各一个模型 × 4 个任务，含发现的问题）
 
 ## 功能一览
 

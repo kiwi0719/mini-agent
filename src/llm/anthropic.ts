@@ -57,8 +57,16 @@ export class AnthropicProvider implements LLMProvider {
     if (!d) throw new Error(`未知 Anthropic 预设: ${this.preset} (${Object.keys(ANTHROPIC_PRESETS).join(' | ')})`);
     this.baseUrl = normalizeBase(opts.baseUrl ?? process.env.ANTHROPIC_BASE_URL ?? d.baseUrl);
     if (!this.baseUrl) throw new Error('custom 预设需要指定 baseUrl（--base-url 或 ANTHROPIC_BASE_URL）');
-    this.apiKey = opts.apiKey ?? process.env.ANTHROPIC_API_KEY ?? '';
-    this.authToken = opts.authToken ?? process.env.ANTHROPIC_AUTH_TOKEN ?? '';
+    // 凭证：显式传入（CLI / Web 面板）时完全不碰环境变量。
+    // 否则宿主机里残留的 ANTHROPIC_AUTH_TOKEN 会被填进 Authorization 头，
+    // 而用户以为自己用的是刚传进来的 --api-key —— 对只认 Bearer 的网关就是一个很难查的 401。
+    if (opts.apiKey !== undefined || opts.authToken !== undefined) {
+      this.apiKey = opts.apiKey ?? '';
+      this.authToken = opts.authToken ?? '';
+    } else {
+      this.apiKey = process.env.ANTHROPIC_API_KEY ?? '';
+      this.authToken = process.env.ANTHROPIC_AUTH_TOKEN ?? '';
+    }
     if (!this.apiKey && !this.authToken) throw new Error('需要 API key：--api-key / ANTHROPIC_API_KEY（或 ANTHROPIC_AUTH_TOKEN）');
     this.model = opts.model ?? process.env.ANTHROPIC_MODEL ?? d.model;
     if (!this.model) throw new Error('需要指定 model（--model 或 ANTHROPIC_MODEL）');
