@@ -7,6 +7,7 @@ User → Agent Decision → Tool Call → Tool Result → Agent Decision → …
 ```
 
 - ⭐ [**设计说明（七个必答问题）DESIGN-QA.md**](./DESIGN-QA.md)（Agent Loop / Tool 定义 / 结束判定 / 防无限调用 / 失败处理 / 职责划分 / 最大限制，逐条作答）
+- 🧪 [TESTING.md](./TESTING.md)（**测试人员先看这个**：目录与产物路径、API key 的四种填法含 `.env`、各家模型的具体命令、常见问题）
 - 📄 [DESIGN.md](./DESIGN.md)（完整设计，按模块组织：Loop、Tool、Context、失败处理、各增强项的实现与取舍）
 - 🤝 [AI_USAGE.md](./AI_USAGE.md)（AI 参与环节、关键设计决策、AI 的错误判断与修正）
 - 💬 [ai-conversation.md](./ai-conversation.md)（与 AI Coding 工具的完整对话过程）
@@ -48,6 +49,8 @@ User → Agent Decision → Tool Call → Tool Result → Agent Decision → …
 
 要求 Node.js ≥ 22.6（推荐 24，直接运行 TypeScript）。
 
+> 凭证填哪里、产物落在哪、出问题怎么查，见 [TESTING.md](./TESTING.md)；`cp .env.example .env` 是最省事的起点（注意 `.env` 需要用 `node --env-file=.env …` 启动才生效，`pnpm agent` / `pnpm web` 不会自动加载）。
+
 ```bash
 pnpm install        # 或 npm install
 ```
@@ -55,7 +58,7 @@ pnpm install        # 或 npm install
 ### 1. 用 Mock LLM 跑通（无需任何 API key）
 
 ```bash
-pnpm test           # 重新生成 workspace + 日志 + Mock 集群，运行 21 个任务并自动校验，结果写入 examples/
+pnpm test           # 重新生成 workspace + 日志 + Mock 集群，运行 23 个任务并自动校验，结果写入 examples/
 ```
 
 ```bash
