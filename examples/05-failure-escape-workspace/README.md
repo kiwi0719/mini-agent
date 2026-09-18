@@ -8,7 +8,7 @@
 
 **校验**: ✅ 通过
 
-**结果**: completed · 2 steps · 1 tool calls · 0 failures · 0 sub agents · tokens 218/160 · 361ms
+**结果**: completed · 2 steps · 1 tool calls · 0 failures · 0 sub agents · tokens 273/160 · 507ms
 
 **最终答案**:
 
@@ -26,6 +26,14 @@ docs/adr/001-storage.md
 docs/adr/002-cache.md
 docs/changelog.md
 docs/design.md
+k8s/cases.json
+k8s/cluster.json
+k8s/runbooks/gpu.md
+k8s/runbooks/network.md
+k8s/runbooks/node.md
+k8s/runbooks/oom.md
+k8s/runbooks/scheduling.md
+logs/app.log
 src/order.ts
 src/payment.ts
 src/user.ts

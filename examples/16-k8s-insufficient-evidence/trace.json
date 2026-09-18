@@ -1,0 +1,3618 @@
+{
+  "meta": {
+    "provider": "mock",
+    "workspace": "workspace"
+  },
+  "startedAt": 1789765205187,
+  "events": [
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "user",
+      "task": "帮我分析 job-128 为什么失败。",
+      "ts": 1789765205187
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "诊断 job",
+      "ts": 1789765205187
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "-128：先",
+      "ts": 1789765205193
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "看 Pod ",
+      "ts": 1789765205198
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "状态，再决定",
+      "ts": 1789765205204
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "查哪些信息。",
+      "ts": 1789765205210
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 1,
+      "text": "诊断 job-128：先看 Pod 状态，再决定查哪些信息。",
+      "toolCalls": [
+        {
+          "id": "mock_1",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "获取 Pod 状态",
+                "status": "in_progress"
+              },
+              {
+                "id": 2,
+                "title": "按信号收集 Event / Node / Metrics / Logs",
+                "status": "pending"
+              },
+              {
+                "id": 3,
+                "title": "对照知识库与历史 Case",
+                "status": "pending"
+              },
+              {
+                "id": 4,
+                "title": "给出诊断结论",
+                "status": "pending"
+              }
+            ]
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 16,
+        "outputTokens": 80
+      },
+      "durationMs": 29,
+      "ts": 1789765205216
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_1",
+        "name": "update_plan",
+        "input": {
+          "steps": [
+            {
+              "id": 1,
+              "title": "获取 Pod 状态",
+              "status": "in_progress"
+            },
+            {
+              "id": 2,
+              "title": "按信号收集 Event / Node / Metrics / Logs",
+              "status": "pending"
+            },
+            {
+              "id": 3,
+              "title": "对照知识库与历史 Case",
+              "status": "pending"
+            },
+            {
+              "id": 4,
+              "title": "给出诊断结论",
+              "status": "pending"
+            }
+          ]
+        }
+      },
+      "ts": 1789765205216
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "plan",
+      "step": 1,
+      "plan": [
+        {
+          "id": 1,
+          "title": "获取 Pod 状态",
+          "status": "in_progress"
+        },
+        {
+          "id": 2,
+          "title": "按信号收集 Event / Node / Metrics / Logs",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "对照知识库与历史 Case",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "给出诊断结论",
+          "status": "pending"
+        }
+      ],
+      "ts": 1789765205216
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_1",
+      "name": "update_plan",
+      "result": {
+        "ok": true,
+        "output": "计划已更新（0/4 完成）"
+      },
+      "durationMs": 0,
+      "ts": 1789765205216
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "获取 Pod",
+      "ts": 1789765205216
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": " 状态。",
+      "ts": 1789765205222
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 2,
+      "text": "获取 Pod 状态。",
+      "toolCalls": [
+        {
+          "id": "mock_2",
+          "name": "get_pod",
+          "input": {
+            "name": "job-128",
+            "namespace": "default"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 174,
+        "outputTokens": 80
+      },
+      "durationMs": 12,
+      "ts": 1789765205228
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_2",
+        "name": "get_pod",
+        "input": {
+          "name": "job-128",
+          "namespace": "default"
+        }
+      },
+      "ts": 1789765205228
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_2",
+      "name": "get_pod",
+      "result": {
+        "ok": true,
+        "output": "{\n \"namespace\": \"default\",\n \"name\": \"job-128\",\n \"phase\": \"Failed\",\n \"nodeName\": \"node-1\",\n \"startTime\": \"2026-09-18T05:00:00.000Z\",\n \"labels\": {\n  \"app\": \"nightly-sync\",\n  \"job-name\": \"job-128\"\n },\n \"resources\": {\n  \"requests\": {\n   \"cpu\": \"250m\",\n   \"memory\": \"256Mi\"\n  },\n  \"limits\": {\n   \"cpu\": \"500m\",\n   \"memory\": \"512Mi\"\n  }\n },\n \"containers\": [\n  {\n   \"name\": \"sync\",\n   \"image\": \"registry.local/sync:1.4.2\",\n   \"ready\": false,\n   \"restartCount\": 0,\n   \"state\": {\n    \"terminated\": {\n     \"reason\": \"Error\",\n     \"exitCode\": 1,\n     \"startedAt\": \"2026-09-18T05:00:00.000Z\",\n     \"finishedAt\": \"2026-09-18T05:05:00.000Z\"\n    }\n   }\n  }\n ],\n \"conditions\": [\n  {\n   \"type\": \"PodScheduled\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"Initialized\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"ContainersReady\",\n   \"status\": \"False\"\n  },\n  {\n   \"type\": \"Ready\",\n   \"status\": \"False\"\n  }\n ],\n \"signals\": [\n  \"phase=Failed\",\n  \"容器 sync 终止原因=Error exitCode=1\",\n  \"condition ContainersReady=False\",\n  \"condition Ready=False\"\n ]\n}"
+      },
+      "durationMs": 2,
+      "ts": 1789765205230
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "Pod 信号",
+      "ts": 1789765205230
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "：phase",
+      "ts": 1789765205236
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "=Faile",
+      "ts": 1789765205241
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "d；容器 s",
+      "ts": 1789765205247
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "ync 终止",
+      "ts": 1789765205253
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "原因=Err",
+      "ts": 1789765205258
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "or exi",
+      "ts": 1789765205264
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "tCode=",
+      "ts": 1789765205270
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "1；cond",
+      "ts": 1789765205275
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "ition ",
+      "ts": 1789765205281
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "Contai",
+      "ts": 1789765205287
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "nersRe",
+      "ts": 1789765205292
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "ady=Fa",
+      "ts": 1789765205297
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "lse；co",
+      "ts": 1789765205303
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "nditio",
+      "ts": 1789765205308
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "n Read",
+      "ts": 1789765205314
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "y=Fals",
+      "ts": 1789765205320
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "e。并行获取",
+      "ts": 1789765205326
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": " Event",
+      "ts": 1789765205331
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "、节点 no",
+      "ts": 1789765205337
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "de-1、指",
+      "ts": 1789765205343
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "标与上一次崩",
+      "ts": 1789765205349
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "溃前的日志。",
+      "ts": 1789765205354
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 3,
+      "text": "Pod 信号：phase=Failed；容器 sync 终止原因=Error exitCode=1；condition ContainersReady=False；condition Ready=False。并行获取 Event、节点 node-1、指标与上一次崩溃前的日志。",
+      "toolCalls": [
+        {
+          "id": "mock_7",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "获取 Pod 状态",
+                "status": "done"
+              },
+              {
+                "id": 2,
+                "title": "按信号收集 Event / Node / Metrics / Logs",
+                "status": "in_progress"
+              },
+              {
+                "id": 3,
+                "title": "对照知识库与历史 Case",
+                "status": "pending"
+              },
+              {
+                "id": 4,
+                "title": "给出诊断结论",
+                "status": "pending"
+              }
+            ]
+          }
+        },
+        {
+          "id": "mock_3",
+          "name": "get_pod_events",
+          "input": {
+            "name": "job-128",
+            "namespace": "default"
+          }
+        },
+        {
+          "id": "mock_4",
+          "name": "get_node",
+          "input": {
+            "name": "node-1"
+          }
+        },
+        {
+          "id": "mock_5",
+          "name": "get_metrics",
+          "input": {
+            "name": "job-128",
+            "namespace": "default",
+            "window": "60m"
+          }
+        },
+        {
+          "id": "mock_6",
+          "name": "get_logs",
+          "input": {
+            "name": "job-128",
+            "namespace": "default",
+            "previous": true,
+            "tail": 100
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 656,
+        "outputTokens": 80
+      },
+      "durationMs": 130,
+      "ts": 1789765205360
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_7",
+        "name": "update_plan",
+        "input": {
+          "steps": [
+            {
+              "id": 1,
+              "title": "获取 Pod 状态",
+              "status": "done"
+            },
+            {
+              "id": 2,
+              "title": "按信号收集 Event / Node / Metrics / Logs",
+              "status": "in_progress"
+            },
+            {
+              "id": 3,
+              "title": "对照知识库与历史 Case",
+              "status": "pending"
+            },
+            {
+              "id": 4,
+              "title": "给出诊断结论",
+              "status": "pending"
+            }
+          ]
+        }
+      },
+      "ts": 1789765205360
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "plan",
+      "step": 3,
+      "plan": [
+        {
+          "id": 1,
+          "title": "获取 Pod 状态",
+          "status": "done"
+        },
+        {
+          "id": 2,
+          "title": "按信号收集 Event / Node / Metrics / Logs",
+          "status": "in_progress"
+        },
+        {
+          "id": 3,
+          "title": "对照知识库与历史 Case",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "给出诊断结论",
+          "status": "pending"
+        }
+      ],
+      "ts": 1789765205360
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_3",
+        "name": "get_pod_events",
+        "input": {
+          "name": "job-128",
+          "namespace": "default"
+        }
+      },
+      "ts": 1789765205360
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_4",
+        "name": "get_node",
+        "input": {
+          "name": "node-1"
+        }
+      },
+      "ts": 1789765205361
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_5",
+        "name": "get_metrics",
+        "input": {
+          "name": "job-128",
+          "namespace": "default",
+          "window": "60m"
+        }
+      },
+      "ts": 1789765205361
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_6",
+        "name": "get_logs",
+        "input": {
+          "name": "job-128",
+          "namespace": "default",
+          "previous": true,
+          "tail": 100
+        }
+      },
+      "ts": 1789765205361
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_7",
+      "name": "update_plan",
+      "result": {
+        "ok": true,
+        "output": "计划已更新（1/4 完成）"
+      },
+      "durationMs": 1,
+      "ts": 1789765205361
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_5",
+      "name": "get_metrics",
+      "result": {
+        "ok": true,
+        "output": "{\n \"available\": false,\n \"note\": \"该 Pod 没有指标数据（未被采集或未运行）\"\n}"
+      },
+      "durationMs": 1,
+      "ts": 1789765205362
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_6",
+      "name": "get_logs",
+      "result": {
+        "ok": false,
+        "error": "没有上一个容器实例的日志（容器未重启过）"
+      },
+      "durationMs": 2,
+      "ts": 1789765205363
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_4",
+      "name": "get_node",
+      "result": {
+        "ok": true,
+        "output": "{\n \"name\": \"node-1\",\n \"kubeletVersion\": \"v1.31.2\",\n \"allocatable\": {\n  \"cpu\": \"4\",\n  \"memory\": \"16Gi\",\n  \"ephemeral-storage\": \"100Gi\",\n  \"pods\": \"110\"\n },\n \"allocated\": {\n  \"cpu\": \"3200m\",\n  \"memory\": \"9Gi\"\n },\n \"conditions\": [\n  {\n   \"type\": \"Ready\",\n   \"status\": \"True\",\n   \"reason\": \"KubeletReady\",\n   \"lastHeartbeatTime\": \"2026-09-18T08:58:00.000Z\"\n  },\n  {\n   \"type\": \"MemoryPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoMemoryPressure\"\n  },\n  {\n   \"type\": \"DiskPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoDiskPressure\"\n  },\n  {\n   \"type\": \"PIDPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoPIDPressure\"\n  }\n ],\n \"taints\": [],\n \"signals\": []\n}"
+      },
+      "durationMs": 2,
+      "ts": 1789765205363
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_3",
+      "name": "get_pod_events",
+      "result": {
+        "ok": true,
+        "output": "{\n \"count\": 0,\n \"warnings\": 0,\n \"note\": \"没有找到 Event（可能已超过保留期被清理，默认 1 小时）\",\n \"events\": []\n}"
+      },
+      "durationMs": 3,
+      "ts": 1789765205363
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "证据不足以确",
+      "ts": 1789765205364
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "定原因，仍然",
+      "ts": 1789765205370
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "检索知识库看",
+      "ts": 1789765205375
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "是否有类似模",
+      "ts": 1789765205381
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "式。",
+      "ts": 1789765205386
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 4,
+      "text": "证据不足以确定原因，仍然检索知识库看是否有类似模式。",
+      "toolCalls": [
+        {
+          "id": "mock_8",
+          "name": "search_runbook",
+          "input": {
+            "query": "Failed phase=Failed 容器 sync 终止原因=Error exitCode=1 condition ContainersReady=False condition Ready=False",
+            "top": 2
+          }
+        },
+        {
+          "id": "mock_9",
+          "name": "search_cases",
+          "input": {
+            "symptoms": "Failed phase=Failed 容器 sync 终止原因=Error exitCode=1 condition ContainersReady=False condition Ready=False",
+            "top": 2
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 1404,
+        "outputTokens": 80
+      },
+      "durationMs": 28,
+      "ts": 1789765205392
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_8",
+        "name": "search_runbook",
+        "input": {
+          "query": "Failed phase=Failed 容器 sync 终止原因=Error exitCode=1 condition ContainersReady=False condition Ready=False",
+          "top": 2
+        }
+      },
+      "ts": 1789765205392
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_9",
+        "name": "search_cases",
+        "input": {
+          "symptoms": "Failed phase=Failed 容器 sync 终止原因=Error exitCode=1 condition ContainersReady=False condition Ready=False",
+          "top": 2
+        }
+      },
+      "ts": 1789765205392
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_9",
+      "name": "search_cases",
+      "result": {
+        "ok": true,
+        "output": "{\n \"total\": 5,\n \"cases\": [\n  {\n   \"id\": \"CASE-2026-041\",\n   \"date\": \"2026-07-03\",\n   \"symptoms\": \"report job OOMKilled exitCode 137 restartCount 增长 memory 峰值接近 limit 512Mi BackOff\",\n   \"rootCause\": \"月末数据量翻倍，整表加载进内存超过 limit\",\n   \"fix\": \"memory limit 512Mi → 2Gi，并改为分批读取\",\n   \"tags\": [\n    \"OOMKilled\",\n    \"memory\",\n    \"job\"\n   ],\n   \"similarity\": 1\n  },\n  {\n   \"id\": \"CASE-2026-052\",\n   \"date\": \"2026-07-19\",\n   \"symptoms\": \"node Ready Unknown 心跳停止 kubelet 不可达 pod NodeNotReady TaintManagerEviction logs i/o timeout 10250\",\n   \"rootCause\": \"云厂商宿主机故障导致节点失联\",\n   \"fix\": \"cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点\",\n   \"tags\": [\n    \"NodeNotReady\",\n    \"node\"\n   ],\n   \"similarity\": 1\n  }\n ]\n}"
+      },
+      "durationMs": 2,
+      "ts": 1789765205394
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_8",
+      "name": "search_runbook",
+      "result": {
+        "ok": true,
+        "output": "{\n \"query\": \"Failed phase=Failed 容器 sync 终止原因=Error exitCode=1 condition ContainersReady=False condition Ready=False\",\n \"total\": 8,\n \"results\": [\n  {\n   \"file\": \"k8s/runbooks/node.md\",\n   \"title\": \"Node NotReady\",\n   \"score\": 5,\n   \"content\": \"## Node NotReady\\n症状：Node Ready=Unknown/False，lastHeartbeatTime 停止更新超过 40s；节点被打上 node.kubernetes.io/unreachable taint；其上 Pod 出现 NodeNotReady / TaintManagerEviction Event，kubectl logs 报 dial tcp <node-ip>:10250 i/o timeout；指标采集中断。\\n确认方法：get_node 看 Ready 与心跳时间；get_pod_events 看 NodeNotReady；get_logs 报错代表 kubelet 不可达。\\n处理：1) 检查节点 kubelet / 网络 / 云厂商状态；2) cordon 节点；3) 强制删除卡住的 Pod 让 Job 在健康节点重建；4) 节点长期不恢复则 drain + 替换。\\n注意：Pod phase 可能仍显示 Running，这是 API Server 缓存的旧状态，不能作为\\\"应用正常\\\"的证据。\"\n  },\n  {\n   \"file\": \"k8s/runbooks/scheduling.md\",\n   \"title\": \"Scheduling Failed / Pending\",\n   \"score\": 5,\n   \"content\": \"## Scheduling Failed / Pending\\n症状：Pod phase=Pending，PodScheduled=False reason=Unschedulable；Event FailedScheduling 的 message 给出每个节点被排除的原因（Insufficient cpu/memory、untolerated taint、node affinity 不匹配、PVC 未绑定）。\\n确认方法：get_pod_events 读 FailedScheduling message；get_node 逐个核对 allocatable-allocated 与 taints。\\n处理：按 message 对症：降低 request、扩容节点、为 Pod 加 toleration / 修改 nodeSelector、解除节点污点或压力。\\n注意：request 大于任何单节点 allocatable 时无论如何扩容同规格节点都不会成功。\"\n  }\n ]\n}"
+      },
+      "durationMs": 3,
+      "ts": 1789765205395
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "## 故障现",
+      "ts": 1789765205396
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "象\nPod ",
+      "ts": 1789765205402
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "job-12",
+      "ts": 1789765205407
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "8 phas",
+      "ts": 1789765205413
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "e=Fail",
+      "ts": 1789765205419
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ed，容器以",
+      "ts": 1789765205424
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " exitC",
+      "ts": 1789765205429
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ode=1 ",
+      "ts": 1789765205435
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "退出（rea",
+      "ts": 1789765205440
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "son=Er",
+      "ts": 1789765205446
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ror），但",
+      "ts": 1789765205452
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "没有足够证据",
+      "ts": 1789765205458
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "说明原因。\n",
+      "ts": 1789765205463
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "\n## 关键",
+      "ts": 1789765205469
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "证据\n- [",
+      "ts": 1789765205475
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "Pod] 容",
+      "ts": 1789765205480
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "器 sync",
+      "ts": 1789765205485
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " lastS",
+      "ts": 1789765205491
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "tate.t",
+      "ts": 1789765205496
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ermina",
+      "ts": 1789765205502
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ted.re",
+      "ts": 1789765205507
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ason=E",
+      "ts": 1789765205513
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "rror e",
+      "ts": 1789765205519
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "xitCod",
+      "ts": 1789765205525
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "e=1，re",
+      "ts": 1789765205530
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "startC",
+      "ts": 1789765205536
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ount=0",
+      "ts": 1789765205542
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "（get_p",
+      "ts": 1789765205547
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "od）\n- ",
+      "ts": 1789765205553
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "[Metri",
+      "ts": 1789765205559
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "c] 无指标",
+      "ts": 1789765205565
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "：该 Pod",
+      "ts": 1789765205570
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " 没有指标数",
+      "ts": 1789765205576
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "据（未被采集",
+      "ts": 1789765205582
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "或未运行）（",
+      "ts": 1789765205587
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "get_me",
+      "ts": 1789765205592
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "trics）",
+      "ts": 1789765205597
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "\n- [Lo",
+      "ts": 1789765205603
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "g] 取日志",
+      "ts": 1789765205608
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "失败：没有上",
+      "ts": 1789765205614
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "一个容器实例",
+      "ts": 1789765205620
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "的日志（容器",
+      "ts": 1789765205625
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "未重启过）（",
+      "ts": 1789765205631
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "get_lo",
+      "ts": 1789765205637
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "gs）\n- ",
+      "ts": 1789765205642
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "[Runbo",
+      "ts": 1789765205648
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ok/Cas",
+      "ts": 1789765205653
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "e] 仅有弱",
+      "ts": 1789765205659
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "相关匹配（N",
+      "ts": 1789765205665
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ode No",
+      "ts": 1789765205671
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "tReady",
+      "ts": 1789765205676
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " CASE-",
+      "ts": 1789765205682
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "2026-0",
+      "ts": 1789765205687
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "41），不足",
+      "ts": 1789765205693
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "以作为依据\n",
+      "ts": 1789765205699
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "\n## 已确",
+      "ts": 1789765205705
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "认事实\n- ",
+      "ts": 1789765205710
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "Pod de",
+      "ts": 1789765205716
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "fault/",
+      "ts": 1789765205722
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "job-12",
+      "ts": 1789765205728
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "8 phas",
+      "ts": 1789765205733
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "e=Fail",
+      "ts": 1789765205739
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ed，节点 ",
+      "ts": 1789765205745
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "node-1",
+      "ts": 1789765205750
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "\n- 容器上",
+      "ts": 1789765205755
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "次终止原因 ",
+      "ts": 1789765205761
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "Error，",
+      "ts": 1789765205766
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "exitCo",
+      "ts": 1789765205772
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "de 1，已",
+      "ts": 1789765205778
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "重启 0 次",
+      "ts": 1789765205783
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "\n- 节点 ",
+      "ts": 1789765205789
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "node-1",
+      "ts": 1789765205795
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " Ready",
+      "ts": 1789765205800
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "=True，",
+      "ts": 1789765205806
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "无资源压力\n",
+      "ts": 1789765205812
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "\n## 可能",
+      "ts": 1789765205817
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "原因（推测）",
+      "ts": 1789765205823
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "\n- 现有证",
+      "ts": 1789765205829
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "据不足以给出",
+      "ts": 1789765205834
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "原因，见下节",
+      "ts": 1789765205839
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "\n\n## 处",
+      "ts": 1789765205845
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "理建议\n- ",
+      "ts": 1789765205850
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "查看 Job",
+      "ts": 1789765205856
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " 控制器与应",
+      "ts": 1789765205862
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "用侧监控 /",
+      "ts": 1789765205867
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " 集中日志系",
+      "ts": 1789765205873
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "统（Loki",
+      "ts": 1789765205879
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " / ELS",
+      "ts": 1789765205884
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "）中该 Po",
+      "ts": 1789765205890
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "d 的历史日",
+      "ts": 1789765205896
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "志\n- 如为",
+      "ts": 1789765205901
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "定时任务，对",
+      "ts": 1789765205907
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "比上次成功运",
+      "ts": 1789765205913
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "行的配置与输",
+      "ts": 1789765205918
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "入数据\n- ",
+      "ts": 1789765205924
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "增大 Eve",
+      "ts": 1789765205930
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "nt 保留期",
+      "ts": 1789765205935
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "或接入事件持",
+      "ts": 1789765205941
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "久化\n\n##",
+      "ts": 1789765205946
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " 证据不足说",
+      "ts": 1789765205952
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "明\nEven",
+      "ts": 1789765205958
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "t 已被清理",
+      "ts": 1789765205963
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "（没有找到 ",
+      "ts": 1789765205969
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "Event（",
+      "ts": 1789765205975
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "可能已超过保",
+      "ts": 1789765205980
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "留期被清理，",
+      "ts": 1789765205986
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "默认 1 小",
+      "ts": 1789765205992
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "时））、容器",
+      "ts": 1789765205997
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "日志为空、指",
+      "ts": 1789765206003
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "标不可用，节",
+      "ts": 1789765206009
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "点状态正常。",
+      "ts": 1789765206014
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "exitCo",
+      "ts": 1789765206020
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "de=1 只",
+      "ts": 1789765206026
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "能说明应用自",
+      "ts": 1789765206031
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "身退出失败，",
+      "ts": 1789765206037
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "无法区分是代",
+      "ts": 1789765206043
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "码错误、输入",
+      "ts": 1789765206048
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "数据问题还是",
+      "ts": 1789765206054
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "依赖故障。",
+      "ts": 1789765206060
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 5,
+      "text": "## 故障现象\nPod job-128 phase=Failed，容器以 exitCode=1 退出（reason=Error），但没有足够证据说明原因。\n\n## 关键证据\n- [Pod] 容器 sync lastState.terminated.reason=Error exitCode=1，restartCount=0（get_pod）\n- [Metric] 无指标：该 Pod 没有指标数据（未被采集或未运行）（get_metrics）\n- [Log] 取日志失败：没有上一个容器实例的日志（容器未重启过）（get_logs）\n- [Runbook/Case] 仅有弱相关匹配（Node NotReady CASE-2026-041），不足以作为依据\n\n## 已确认事实\n- Pod default/job-128 phase=Failed，节点 node-1\n- 容器上次终止原因 Error，exitCode 1，已重启 0 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 现有证据不足以给出原因，见下节\n\n## 处理建议\n- 查看 Job 控制器与应用侧监控 / 集中日志系统（Loki / ELS）中该 Pod 的历史日志\n- 如为定时任务，对比上次成功运行的配置与输入数据\n- 增大 Event 保留期或接入事件持久化\n\n## 证据不足说明\nEvent 已被清理（没有找到 Event（可能已超过保留期被清理，默认 1 小时））、容器日志为空、指标不可用，节点状态正常。exitCode=1 只能说明应用自身退出失败，无法区分是代码错误、输入数据问题还是依赖故障。",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 2316,
+        "outputTokens": 80
+      },
+      "durationMs": 670,
+      "ts": 1789765206065
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "final",
+      "answer": "## 故障现象\nPod job-128 phase=Failed，容器以 exitCode=1 退出（reason=Error），但没有足够证据说明原因。\n\n## 关键证据\n- [Pod] 容器 sync lastState.terminated.reason=Error exitCode=1，restartCount=0（get_pod）\n- [Metric] 无指标：该 Pod 没有指标数据（未被采集或未运行）（get_metrics）\n- [Log] 取日志失败：没有上一个容器实例的日志（容器未重启过）（get_logs）\n- [Runbook/Case] 仅有弱相关匹配（Node NotReady CASE-2026-041），不足以作为依据\n\n## 已确认事实\n- Pod default/job-128 phase=Failed，节点 node-1\n- 容器上次终止原因 Error，exitCode 1，已重启 0 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 现有证据不足以给出原因，见下节\n\n## 处理建议\n- 查看 Job 控制器与应用侧监控 / 集中日志系统（Loki / ELS）中该 Pod 的历史日志\n- 如为定时任务，对比上次成功运行的配置与输入数据\n- 增大 Event 保留期或接入事件持久化\n\n## 证据不足说明\nEvent 已被清理（没有找到 Event（可能已超过保留期被清理，默认 1 小时））、容器日志为空、指标不可用，节点状态正常。exitCode=1 只能说明应用自身退出失败，无法区分是代码错误、输入数据问题还是依赖故障。",
+      "reason": "completed",
+      "steps": 5,
+      "usage": {
+        "inputTokens": 4566,
+        "outputTokens": 400
+      },
+      "ts": 1789765206065
+    }
+  ],
+  "tree": {
+    "agent": "main",
+    "depth": 0,
+    "events": [
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "user",
+        "task": "帮我分析 job-128 为什么失败。",
+        "ts": 1789765205187
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "诊断 job",
+        "ts": 1789765205187
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "-128：先",
+        "ts": 1789765205193
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "看 Pod ",
+        "ts": 1789765205198
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "状态，再决定",
+        "ts": 1789765205204
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "查哪些信息。",
+        "ts": 1789765205210
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 1,
+        "text": "诊断 job-128：先看 Pod 状态，再决定查哪些信息。",
+        "toolCalls": [
+          {
+            "id": "mock_1",
+            "name": "update_plan",
+            "input": {
+              "steps": [
+                {
+                  "id": 1,
+                  "title": "获取 Pod 状态",
+                  "status": "in_progress"
+                },
+                {
+                  "id": 2,
+                  "title": "按信号收集 Event / Node / Metrics / Logs",
+                  "status": "pending"
+                },
+                {
+                  "id": 3,
+                  "title": "对照知识库与历史 Case",
+                  "status": "pending"
+                },
+                {
+                  "id": 4,
+                  "title": "给出诊断结论",
+                  "status": "pending"
+                }
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 16,
+          "outputTokens": 80
+        },
+        "durationMs": 29,
+        "ts": 1789765205216
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 1,
+        "call": {
+          "id": "mock_1",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "获取 Pod 状态",
+                "status": "in_progress"
+              },
+              {
+                "id": 2,
+                "title": "按信号收集 Event / Node / Metrics / Logs",
+                "status": "pending"
+              },
+              {
+                "id": 3,
+                "title": "对照知识库与历史 Case",
+                "status": "pending"
+              },
+              {
+                "id": 4,
+                "title": "给出诊断结论",
+                "status": "pending"
+              }
+            ]
+          }
+        },
+        "ts": 1789765205216
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "plan",
+        "step": 1,
+        "plan": [
+          {
+            "id": 1,
+            "title": "获取 Pod 状态",
+            "status": "in_progress"
+          },
+          {
+            "id": 2,
+            "title": "按信号收集 Event / Node / Metrics / Logs",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "对照知识库与历史 Case",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "给出诊断结论",
+            "status": "pending"
+          }
+        ],
+        "ts": 1789765205216
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 1,
+        "callId": "mock_1",
+        "name": "update_plan",
+        "result": {
+          "ok": true,
+          "output": "计划已更新（0/4 完成）"
+        },
+        "durationMs": 0,
+        "ts": 1789765205216
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "获取 Pod",
+        "ts": 1789765205216
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": " 状态。",
+        "ts": 1789765205222
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 2,
+        "text": "获取 Pod 状态。",
+        "toolCalls": [
+          {
+            "id": "mock_2",
+            "name": "get_pod",
+            "input": {
+              "name": "job-128",
+              "namespace": "default"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 174,
+          "outputTokens": 80
+        },
+        "durationMs": 12,
+        "ts": 1789765205228
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 2,
+        "call": {
+          "id": "mock_2",
+          "name": "get_pod",
+          "input": {
+            "name": "job-128",
+            "namespace": "default"
+          }
+        },
+        "ts": 1789765205228
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 2,
+        "callId": "mock_2",
+        "name": "get_pod",
+        "result": {
+          "ok": true,
+          "output": "{\n \"namespace\": \"default\",\n \"name\": \"job-128\",\n \"phase\": \"Failed\",\n \"nodeName\": \"node-1\",\n \"startTime\": \"2026-09-18T05:00:00.000Z\",\n \"labels\": {\n  \"app\": \"nightly-sync\",\n  \"job-name\": \"job-128\"\n },\n \"resources\": {\n  \"requests\": {\n   \"cpu\": \"250m\",\n   \"memory\": \"256Mi\"\n  },\n  \"limits\": {\n   \"cpu\": \"500m\",\n   \"memory\": \"512Mi\"\n  }\n },\n \"containers\": [\n  {\n   \"name\": \"sync\",\n   \"image\": \"registry.local/sync:1.4.2\",\n   \"ready\": false,\n   \"restartCount\": 0,\n   \"state\": {\n    \"terminated\": {\n     \"reason\": \"Error\",\n     \"exitCode\": 1,\n     \"startedAt\": \"2026-09-18T05:00:00.000Z\",\n     \"finishedAt\": \"2026-09-18T05:05:00.000Z\"\n    }\n   }\n  }\n ],\n \"conditions\": [\n  {\n   \"type\": \"PodScheduled\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"Initialized\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"ContainersReady\",\n   \"status\": \"False\"\n  },\n  {\n   \"type\": \"Ready\",\n   \"status\": \"False\"\n  }\n ],\n \"signals\": [\n  \"phase=Failed\",\n  \"容器 sync 终止原因=Error exitCode=1\",\n  \"condition ContainersReady=False\",\n  \"condition Ready=False\"\n ]\n}"
+        },
+        "durationMs": 2,
+        "ts": 1789765205230
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "Pod 信号",
+        "ts": 1789765205230
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "：phase",
+        "ts": 1789765205236
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "=Faile",
+        "ts": 1789765205241
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "d；容器 s",
+        "ts": 1789765205247
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "ync 终止",
+        "ts": 1789765205253
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "原因=Err",
+        "ts": 1789765205258
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "or exi",
+        "ts": 1789765205264
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "tCode=",
+        "ts": 1789765205270
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "1；cond",
+        "ts": 1789765205275
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "ition ",
+        "ts": 1789765205281
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "Contai",
+        "ts": 1789765205287
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "nersRe",
+        "ts": 1789765205292
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "ady=Fa",
+        "ts": 1789765205297
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "lse；co",
+        "ts": 1789765205303
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "nditio",
+        "ts": 1789765205308
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "n Read",
+        "ts": 1789765205314
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "y=Fals",
+        "ts": 1789765205320
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "e。并行获取",
+        "ts": 1789765205326
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": " Event",
+        "ts": 1789765205331
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "、节点 no",
+        "ts": 1789765205337
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "de-1、指",
+        "ts": 1789765205343
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "标与上一次崩",
+        "ts": 1789765205349
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "溃前的日志。",
+        "ts": 1789765205354
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 3,
+        "text": "Pod 信号：phase=Failed；容器 sync 终止原因=Error exitCode=1；condition ContainersReady=False；condition Ready=False。并行获取 Event、节点 node-1、指标与上一次崩溃前的日志。",
+        "toolCalls": [
+          {
+            "id": "mock_7",
+            "name": "update_plan",
+            "input": {
+              "steps": [
+                {
+                  "id": 1,
+                  "title": "获取 Pod 状态",
+                  "status": "done"
+                },
+                {
+                  "id": 2,
+                  "title": "按信号收集 Event / Node / Metrics / Logs",
+                  "status": "in_progress"
+                },
+                {
+                  "id": 3,
+                  "title": "对照知识库与历史 Case",
+                  "status": "pending"
+                },
+                {
+                  "id": 4,
+                  "title": "给出诊断结论",
+                  "status": "pending"
+                }
+              ]
+            }
+          },
+          {
+            "id": "mock_3",
+            "name": "get_pod_events",
+            "input": {
+              "name": "job-128",
+              "namespace": "default"
+            }
+          },
+          {
+            "id": "mock_4",
+            "name": "get_node",
+            "input": {
+              "name": "node-1"
+            }
+          },
+          {
+            "id": "mock_5",
+            "name": "get_metrics",
+            "input": {
+              "name": "job-128",
+              "namespace": "default",
+              "window": "60m"
+            }
+          },
+          {
+            "id": "mock_6",
+            "name": "get_logs",
+            "input": {
+              "name": "job-128",
+              "namespace": "default",
+              "previous": true,
+              "tail": 100
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 656,
+          "outputTokens": 80
+        },
+        "durationMs": 130,
+        "ts": 1789765205360
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_7",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "获取 Pod 状态",
+                "status": "done"
+              },
+              {
+                "id": 2,
+                "title": "按信号收集 Event / Node / Metrics / Logs",
+                "status": "in_progress"
+              },
+              {
+                "id": 3,
+                "title": "对照知识库与历史 Case",
+                "status": "pending"
+              },
+              {
+                "id": 4,
+                "title": "给出诊断结论",
+                "status": "pending"
+              }
+            ]
+          }
+        },
+        "ts": 1789765205360
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "plan",
+        "step": 3,
+        "plan": [
+          {
+            "id": 1,
+            "title": "获取 Pod 状态",
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "按信号收集 Event / Node / Metrics / Logs",
+            "status": "in_progress"
+          },
+          {
+            "id": 3,
+            "title": "对照知识库与历史 Case",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "给出诊断结论",
+            "status": "pending"
+          }
+        ],
+        "ts": 1789765205360
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_3",
+          "name": "get_pod_events",
+          "input": {
+            "name": "job-128",
+            "namespace": "default"
+          }
+        },
+        "ts": 1789765205360
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_4",
+          "name": "get_node",
+          "input": {
+            "name": "node-1"
+          }
+        },
+        "ts": 1789765205361
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_5",
+          "name": "get_metrics",
+          "input": {
+            "name": "job-128",
+            "namespace": "default",
+            "window": "60m"
+          }
+        },
+        "ts": 1789765205361
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_6",
+          "name": "get_logs",
+          "input": {
+            "name": "job-128",
+            "namespace": "default",
+            "previous": true,
+            "tail": 100
+          }
+        },
+        "ts": 1789765205361
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_7",
+        "name": "update_plan",
+        "result": {
+          "ok": true,
+          "output": "计划已更新（1/4 完成）"
+        },
+        "durationMs": 1,
+        "ts": 1789765205361
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_5",
+        "name": "get_metrics",
+        "result": {
+          "ok": true,
+          "output": "{\n \"available\": false,\n \"note\": \"该 Pod 没有指标数据（未被采集或未运行）\"\n}"
+        },
+        "durationMs": 1,
+        "ts": 1789765205362
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_6",
+        "name": "get_logs",
+        "result": {
+          "ok": false,
+          "error": "没有上一个容器实例的日志（容器未重启过）"
+        },
+        "durationMs": 2,
+        "ts": 1789765205363
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_4",
+        "name": "get_node",
+        "result": {
+          "ok": true,
+          "output": "{\n \"name\": \"node-1\",\n \"kubeletVersion\": \"v1.31.2\",\n \"allocatable\": {\n  \"cpu\": \"4\",\n  \"memory\": \"16Gi\",\n  \"ephemeral-storage\": \"100Gi\",\n  \"pods\": \"110\"\n },\n \"allocated\": {\n  \"cpu\": \"3200m\",\n  \"memory\": \"9Gi\"\n },\n \"conditions\": [\n  {\n   \"type\": \"Ready\",\n   \"status\": \"True\",\n   \"reason\": \"KubeletReady\",\n   \"lastHeartbeatTime\": \"2026-09-18T08:58:00.000Z\"\n  },\n  {\n   \"type\": \"MemoryPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoMemoryPressure\"\n  },\n  {\n   \"type\": \"DiskPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoDiskPressure\"\n  },\n  {\n   \"type\": \"PIDPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoPIDPressure\"\n  }\n ],\n \"taints\": [],\n \"signals\": []\n}"
+        },
+        "durationMs": 2,
+        "ts": 1789765205363
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_3",
+        "name": "get_pod_events",
+        "result": {
+          "ok": true,
+          "output": "{\n \"count\": 0,\n \"warnings\": 0,\n \"note\": \"没有找到 Event（可能已超过保留期被清理，默认 1 小时）\",\n \"events\": []\n}"
+        },
+        "durationMs": 3,
+        "ts": 1789765205363
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "证据不足以确",
+        "ts": 1789765205364
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "定原因，仍然",
+        "ts": 1789765205370
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "检索知识库看",
+        "ts": 1789765205375
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "是否有类似模",
+        "ts": 1789765205381
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "式。",
+        "ts": 1789765205386
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 4,
+        "text": "证据不足以确定原因，仍然检索知识库看是否有类似模式。",
+        "toolCalls": [
+          {
+            "id": "mock_8",
+            "name": "search_runbook",
+            "input": {
+              "query": "Failed phase=Failed 容器 sync 终止原因=Error exitCode=1 condition ContainersReady=False condition Ready=False",
+              "top": 2
+            }
+          },
+          {
+            "id": "mock_9",
+            "name": "search_cases",
+            "input": {
+              "symptoms": "Failed phase=Failed 容器 sync 终止原因=Error exitCode=1 condition ContainersReady=False condition Ready=False",
+              "top": 2
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 1404,
+          "outputTokens": 80
+        },
+        "durationMs": 28,
+        "ts": 1789765205392
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_8",
+          "name": "search_runbook",
+          "input": {
+            "query": "Failed phase=Failed 容器 sync 终止原因=Error exitCode=1 condition ContainersReady=False condition Ready=False",
+            "top": 2
+          }
+        },
+        "ts": 1789765205392
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_9",
+          "name": "search_cases",
+          "input": {
+            "symptoms": "Failed phase=Failed 容器 sync 终止原因=Error exitCode=1 condition ContainersReady=False condition Ready=False",
+            "top": 2
+          }
+        },
+        "ts": 1789765205392
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_9",
+        "name": "search_cases",
+        "result": {
+          "ok": true,
+          "output": "{\n \"total\": 5,\n \"cases\": [\n  {\n   \"id\": \"CASE-2026-041\",\n   \"date\": \"2026-07-03\",\n   \"symptoms\": \"report job OOMKilled exitCode 137 restartCount 增长 memory 峰值接近 limit 512Mi BackOff\",\n   \"rootCause\": \"月末数据量翻倍，整表加载进内存超过 limit\",\n   \"fix\": \"memory limit 512Mi → 2Gi，并改为分批读取\",\n   \"tags\": [\n    \"OOMKilled\",\n    \"memory\",\n    \"job\"\n   ],\n   \"similarity\": 1\n  },\n  {\n   \"id\": \"CASE-2026-052\",\n   \"date\": \"2026-07-19\",\n   \"symptoms\": \"node Ready Unknown 心跳停止 kubelet 不可达 pod NodeNotReady TaintManagerEviction logs i/o timeout 10250\",\n   \"rootCause\": \"云厂商宿主机故障导致节点失联\",\n   \"fix\": \"cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点\",\n   \"tags\": [\n    \"NodeNotReady\",\n    \"node\"\n   ],\n   \"similarity\": 1\n  }\n ]\n}"
+        },
+        "durationMs": 2,
+        "ts": 1789765205394
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_8",
+        "name": "search_runbook",
+        "result": {
+          "ok": true,
+          "output": "{\n \"query\": \"Failed phase=Failed 容器 sync 终止原因=Error exitCode=1 condition ContainersReady=False condition Ready=False\",\n \"total\": 8,\n \"results\": [\n  {\n   \"file\": \"k8s/runbooks/node.md\",\n   \"title\": \"Node NotReady\",\n   \"score\": 5,\n   \"content\": \"## Node NotReady\\n症状：Node Ready=Unknown/False，lastHeartbeatTime 停止更新超过 40s；节点被打上 node.kubernetes.io/unreachable taint；其上 Pod 出现 NodeNotReady / TaintManagerEviction Event，kubectl logs 报 dial tcp <node-ip>:10250 i/o timeout；指标采集中断。\\n确认方法：get_node 看 Ready 与心跳时间；get_pod_events 看 NodeNotReady；get_logs 报错代表 kubelet 不可达。\\n处理：1) 检查节点 kubelet / 网络 / 云厂商状态；2) cordon 节点；3) 强制删除卡住的 Pod 让 Job 在健康节点重建；4) 节点长期不恢复则 drain + 替换。\\n注意：Pod phase 可能仍显示 Running，这是 API Server 缓存的旧状态，不能作为\\\"应用正常\\\"的证据。\"\n  },\n  {\n   \"file\": \"k8s/runbooks/scheduling.md\",\n   \"title\": \"Scheduling Failed / Pending\",\n   \"score\": 5,\n   \"content\": \"## Scheduling Failed / Pending\\n症状：Pod phase=Pending，PodScheduled=False reason=Unschedulable；Event FailedScheduling 的 message 给出每个节点被排除的原因（Insufficient cpu/memory、untolerated taint、node affinity 不匹配、PVC 未绑定）。\\n确认方法：get_pod_events 读 FailedScheduling message；get_node 逐个核对 allocatable-allocated 与 taints。\\n处理：按 message 对症：降低 request、扩容节点、为 Pod 加 toleration / 修改 nodeSelector、解除节点污点或压力。\\n注意：request 大于任何单节点 allocatable 时无论如何扩容同规格节点都不会成功。\"\n  }\n ]\n}"
+        },
+        "durationMs": 3,
+        "ts": 1789765205395
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "## 故障现",
+        "ts": 1789765205396
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "象\nPod ",
+        "ts": 1789765205402
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "job-12",
+        "ts": 1789765205407
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "8 phas",
+        "ts": 1789765205413
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "e=Fail",
+        "ts": 1789765205419
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ed，容器以",
+        "ts": 1789765205424
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " exitC",
+        "ts": 1789765205429
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ode=1 ",
+        "ts": 1789765205435
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "退出（rea",
+        "ts": 1789765205440
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "son=Er",
+        "ts": 1789765205446
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ror），但",
+        "ts": 1789765205452
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "没有足够证据",
+        "ts": 1789765205458
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "说明原因。\n",
+        "ts": 1789765205463
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "\n## 关键",
+        "ts": 1789765205469
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "证据\n- [",
+        "ts": 1789765205475
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "Pod] 容",
+        "ts": 1789765205480
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "器 sync",
+        "ts": 1789765205485
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " lastS",
+        "ts": 1789765205491
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "tate.t",
+        "ts": 1789765205496
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ermina",
+        "ts": 1789765205502
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ted.re",
+        "ts": 1789765205507
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ason=E",
+        "ts": 1789765205513
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "rror e",
+        "ts": 1789765205519
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "xitCod",
+        "ts": 1789765205525
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "e=1，re",
+        "ts": 1789765205530
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "startC",
+        "ts": 1789765205536
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ount=0",
+        "ts": 1789765205542
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "（get_p",
+        "ts": 1789765205547
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "od）\n- ",
+        "ts": 1789765205553
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "[Metri",
+        "ts": 1789765205559
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "c] 无指标",
+        "ts": 1789765205565
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "：该 Pod",
+        "ts": 1789765205570
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " 没有指标数",
+        "ts": 1789765205576
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "据（未被采集",
+        "ts": 1789765205582
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "或未运行）（",
+        "ts": 1789765205587
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "get_me",
+        "ts": 1789765205592
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "trics）",
+        "ts": 1789765205597
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "\n- [Lo",
+        "ts": 1789765205603
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "g] 取日志",
+        "ts": 1789765205608
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "失败：没有上",
+        "ts": 1789765205614
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "一个容器实例",
+        "ts": 1789765205620
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "的日志（容器",
+        "ts": 1789765205625
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "未重启过）（",
+        "ts": 1789765205631
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "get_lo",
+        "ts": 1789765205637
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "gs）\n- ",
+        "ts": 1789765205642
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "[Runbo",
+        "ts": 1789765205648
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ok/Cas",
+        "ts": 1789765205653
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "e] 仅有弱",
+        "ts": 1789765205659
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "相关匹配（N",
+        "ts": 1789765205665
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ode No",
+        "ts": 1789765205671
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "tReady",
+        "ts": 1789765205676
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " CASE-",
+        "ts": 1789765205682
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "2026-0",
+        "ts": 1789765205687
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "41），不足",
+        "ts": 1789765205693
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "以作为依据\n",
+        "ts": 1789765205699
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "\n## 已确",
+        "ts": 1789765205705
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "认事实\n- ",
+        "ts": 1789765205710
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "Pod de",
+        "ts": 1789765205716
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "fault/",
+        "ts": 1789765205722
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "job-12",
+        "ts": 1789765205728
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "8 phas",
+        "ts": 1789765205733
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "e=Fail",
+        "ts": 1789765205739
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ed，节点 ",
+        "ts": 1789765205745
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "node-1",
+        "ts": 1789765205750
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "\n- 容器上",
+        "ts": 1789765205755
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "次终止原因 ",
+        "ts": 1789765205761
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "Error，",
+        "ts": 1789765205766
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "exitCo",
+        "ts": 1789765205772
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "de 1，已",
+        "ts": 1789765205778
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "重启 0 次",
+        "ts": 1789765205783
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "\n- 节点 ",
+        "ts": 1789765205789
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "node-1",
+        "ts": 1789765205795
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " Ready",
+        "ts": 1789765205800
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "=True，",
+        "ts": 1789765205806
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "无资源压力\n",
+        "ts": 1789765205812
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "\n## 可能",
+        "ts": 1789765205817
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "原因（推测）",
+        "ts": 1789765205823
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "\n- 现有证",
+        "ts": 1789765205829
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "据不足以给出",
+        "ts": 1789765205834
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "原因，见下节",
+        "ts": 1789765205839
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "\n\n## 处",
+        "ts": 1789765205845
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "理建议\n- ",
+        "ts": 1789765205850
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "查看 Job",
+        "ts": 1789765205856
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " 控制器与应",
+        "ts": 1789765205862
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "用侧监控 /",
+        "ts": 1789765205867
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " 集中日志系",
+        "ts": 1789765205873
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "统（Loki",
+        "ts": 1789765205879
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " / ELS",
+        "ts": 1789765205884
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "）中该 Po",
+        "ts": 1789765205890
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "d 的历史日",
+        "ts": 1789765205896
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "志\n- 如为",
+        "ts": 1789765205901
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "定时任务，对",
+        "ts": 1789765205907
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "比上次成功运",
+        "ts": 1789765205913
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "行的配置与输",
+        "ts": 1789765205918
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "入数据\n- ",
+        "ts": 1789765205924
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "增大 Eve",
+        "ts": 1789765205930
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "nt 保留期",
+        "ts": 1789765205935
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "或接入事件持",
+        "ts": 1789765205941
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "久化\n\n##",
+        "ts": 1789765205946
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " 证据不足说",
+        "ts": 1789765205952
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "明\nEven",
+        "ts": 1789765205958
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "t 已被清理",
+        "ts": 1789765205963
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "（没有找到 ",
+        "ts": 1789765205969
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "Event（",
+        "ts": 1789765205975
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "可能已超过保",
+        "ts": 1789765205980
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "留期被清理，",
+        "ts": 1789765205986
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "默认 1 小",
+        "ts": 1789765205992
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "时））、容器",
+        "ts": 1789765205997
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "日志为空、指",
+        "ts": 1789765206003
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "标不可用，节",
+        "ts": 1789765206009
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "点状态正常。",
+        "ts": 1789765206014
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "exitCo",
+        "ts": 1789765206020
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "de=1 只",
+        "ts": 1789765206026
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "能说明应用自",
+        "ts": 1789765206031
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "身退出失败，",
+        "ts": 1789765206037
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "无法区分是代",
+        "ts": 1789765206043
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "码错误、输入",
+        "ts": 1789765206048
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "数据问题还是",
+        "ts": 1789765206054
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "依赖故障。",
+        "ts": 1789765206060
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 5,
+        "text": "## 故障现象\nPod job-128 phase=Failed，容器以 exitCode=1 退出（reason=Error），但没有足够证据说明原因。\n\n## 关键证据\n- [Pod] 容器 sync lastState.terminated.reason=Error exitCode=1，restartCount=0（get_pod）\n- [Metric] 无指标：该 Pod 没有指标数据（未被采集或未运行）（get_metrics）\n- [Log] 取日志失败：没有上一个容器实例的日志（容器未重启过）（get_logs）\n- [Runbook/Case] 仅有弱相关匹配（Node NotReady CASE-2026-041），不足以作为依据\n\n## 已确认事实\n- Pod default/job-128 phase=Failed，节点 node-1\n- 容器上次终止原因 Error，exitCode 1，已重启 0 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 现有证据不足以给出原因，见下节\n\n## 处理建议\n- 查看 Job 控制器与应用侧监控 / 集中日志系统（Loki / ELS）中该 Pod 的历史日志\n- 如为定时任务，对比上次成功运行的配置与输入数据\n- 增大 Event 保留期或接入事件持久化\n\n## 证据不足说明\nEvent 已被清理（没有找到 Event（可能已超过保留期被清理，默认 1 小时））、容器日志为空、指标不可用，节点状态正常。exitCode=1 只能说明应用自身退出失败，无法区分是代码错误、输入数据问题还是依赖故障。",
+        "toolCalls": [],
+        "usage": {
+          "inputTokens": 2316,
+          "outputTokens": 80
+        },
+        "durationMs": 670,
+        "ts": 1789765206065
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "final",
+        "answer": "## 故障现象\nPod job-128 phase=Failed，容器以 exitCode=1 退出（reason=Error），但没有足够证据说明原因。\n\n## 关键证据\n- [Pod] 容器 sync lastState.terminated.reason=Error exitCode=1，restartCount=0（get_pod）\n- [Metric] 无指标：该 Pod 没有指标数据（未被采集或未运行）（get_metrics）\n- [Log] 取日志失败：没有上一个容器实例的日志（容器未重启过）（get_logs）\n- [Runbook/Case] 仅有弱相关匹配（Node NotReady CASE-2026-041），不足以作为依据\n\n## 已确认事实\n- Pod default/job-128 phase=Failed，节点 node-1\n- 容器上次终止原因 Error，exitCode 1，已重启 0 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 现有证据不足以给出原因，见下节\n\n## 处理建议\n- 查看 Job 控制器与应用侧监控 / 集中日志系统（Loki / ELS）中该 Pod 的历史日志\n- 如为定时任务，对比上次成功运行的配置与输入数据\n- 增大 Event 保留期或接入事件持久化\n\n## 证据不足说明\nEvent 已被清理（没有找到 Event（可能已超过保留期被清理，默认 1 小时））、容器日志为空、指标不可用，节点状态正常。exitCode=1 只能说明应用自身退出失败，无法区分是代码错误、输入数据问题还是依赖故障。",
+        "reason": "completed",
+        "steps": 5,
+        "usage": {
+          "inputTokens": 4566,
+          "outputTokens": 400
+        },
+        "ts": 1789765206065
+      }
+    ],
+    "children": []
+  }
+}

@@ -1,0 +1,5590 @@
+{
+  "meta": {
+    "provider": "mock",
+    "workspace": "workspace"
+  },
+  "startedAt": 1789765207983,
+  "events": [
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "user",
+      "task": "帮我分析 job-124 为什么失败。",
+      "ts": 1789765207983
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "诊断 job",
+      "ts": 1789765207983
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "-124：先",
+      "ts": 1789765207989
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "看 Pod ",
+      "ts": 1789765207994
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "状态，再决定",
+      "ts": 1789765208000
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 1,
+      "text": "查哪些信息。",
+      "ts": 1789765208006
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 1,
+      "text": "诊断 job-124：先看 Pod 状态，再决定查哪些信息。",
+      "toolCalls": [
+        {
+          "id": "mock_1",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "获取 Pod 状态",
+                "status": "in_progress"
+              },
+              {
+                "id": 2,
+                "title": "按信号收集 Event / Node / Metrics / Logs",
+                "status": "pending"
+              },
+              {
+                "id": 3,
+                "title": "对照知识库与历史 Case",
+                "status": "pending"
+              },
+              {
+                "id": 4,
+                "title": "给出诊断结论",
+                "status": "pending"
+              }
+            ]
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 16,
+        "outputTokens": 80
+      },
+      "durationMs": 28,
+      "ts": 1789765208011
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 1,
+      "call": {
+        "id": "mock_1",
+        "name": "update_plan",
+        "input": {
+          "steps": [
+            {
+              "id": 1,
+              "title": "获取 Pod 状态",
+              "status": "in_progress"
+            },
+            {
+              "id": 2,
+              "title": "按信号收集 Event / Node / Metrics / Logs",
+              "status": "pending"
+            },
+            {
+              "id": 3,
+              "title": "对照知识库与历史 Case",
+              "status": "pending"
+            },
+            {
+              "id": 4,
+              "title": "给出诊断结论",
+              "status": "pending"
+            }
+          ]
+        }
+      },
+      "ts": 1789765208011
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "plan",
+      "step": 1,
+      "plan": [
+        {
+          "id": 1,
+          "title": "获取 Pod 状态",
+          "status": "in_progress"
+        },
+        {
+          "id": 2,
+          "title": "按信号收集 Event / Node / Metrics / Logs",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "对照知识库与历史 Case",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "给出诊断结论",
+          "status": "pending"
+        }
+      ],
+      "ts": 1789765208011
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 1,
+      "callId": "mock_1",
+      "name": "update_plan",
+      "result": {
+        "ok": true,
+        "output": "计划已更新（0/4 完成）"
+      },
+      "durationMs": 0,
+      "ts": 1789765208011
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": "获取 Pod",
+      "ts": 1789765208012
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 2,
+      "text": " 状态。",
+      "ts": 1789765208017
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 2,
+      "text": "获取 Pod 状态。",
+      "toolCalls": [
+        {
+          "id": "mock_2",
+          "name": "get_pod",
+          "input": {
+            "name": "job-124",
+            "namespace": "default"
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 174,
+        "outputTokens": 80
+      },
+      "durationMs": 10,
+      "ts": 1789765208022
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 2,
+      "call": {
+        "id": "mock_2",
+        "name": "get_pod",
+        "input": {
+          "name": "job-124",
+          "namespace": "default"
+        }
+      },
+      "ts": 1789765208022
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 2,
+      "callId": "mock_2",
+      "name": "get_pod",
+      "result": {
+        "ok": true,
+        "output": "{\n \"namespace\": \"default\",\n \"name\": \"job-124\",\n \"phase\": \"Running\",\n \"nodeName\": \"node-2\",\n \"startTime\": \"2026-09-18T08:00:00.000Z\",\n \"labels\": {\n  \"app\": \"etl\",\n  \"job-name\": \"job-124\"\n },\n \"resources\": {\n  \"requests\": {\n   \"cpu\": \"1\",\n   \"memory\": \"1Gi\"\n  },\n  \"limits\": {\n   \"cpu\": \"2\",\n   \"memory\": \"2Gi\"\n  }\n },\n \"containers\": [\n  {\n   \"name\": \"etl\",\n   \"image\": \"registry.local/etl:1.4.2\",\n   \"ready\": false,\n   \"restartCount\": 0,\n   \"state\": {\n    \"running\": {\n     \"startedAt\": \"2026-09-18T08:00:00.000Z\"\n    }\n   }\n  }\n ],\n \"conditions\": [\n  {\n   \"type\": \"PodScheduled\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"Initialized\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"ContainersReady\",\n   \"status\": \"Unknown\"\n  },\n  {\n   \"type\": \"Ready\",\n   \"status\": \"False\",\n   \"reason\": \"NodeNotReady\",\n   \"message\": \"the node was not ready\"\n  }\n ],\n \"reason\": \"NodeLost\",\n \"message\": \"Node node-2 which was running pod job-124 is unresponsive\",\n \"signals\": [\n  \"容器 etl 未 Ready\",\n  \"condition ContainersReady=Unknown\",\n  \"condition Ready=False (NodeNotReady)\"\n ]\n}"
+      },
+      "durationMs": 1,
+      "ts": 1789765208023
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "Pod 信号",
+      "ts": 1789765208023
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "：容器 et",
+      "ts": 1789765208029
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "l 未 Re",
+      "ts": 1789765208035
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "ady；co",
+      "ts": 1789765208040
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "nditio",
+      "ts": 1789765208046
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "n Cont",
+      "ts": 1789765208052
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "ainers",
+      "ts": 1789765208057
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "Ready=",
+      "ts": 1789765208063
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "Unknow",
+      "ts": 1789765208069
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "n；cond",
+      "ts": 1789765208074
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "ition ",
+      "ts": 1789765208080
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "Ready=",
+      "ts": 1789765208085
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "False ",
+      "ts": 1789765208091
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "(NodeN",
+      "ts": 1789765208097
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "otRead",
+      "ts": 1789765208102
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "y)。并行获",
+      "ts": 1789765208107
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "取 Even",
+      "ts": 1789765208113
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "t、节点 n",
+      "ts": 1789765208119
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "ode-2、",
+      "ts": 1789765208124
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "指标与当前日",
+      "ts": 1789765208130
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 3,
+      "text": "志。",
+      "ts": 1789765208135
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 3,
+      "text": "Pod 信号：容器 etl 未 Ready；condition ContainersReady=Unknown；condition Ready=False (NodeNotReady)。并行获取 Event、节点 node-2、指标与当前日志。",
+      "toolCalls": [
+        {
+          "id": "mock_7",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "获取 Pod 状态",
+                "status": "done"
+              },
+              {
+                "id": 2,
+                "title": "按信号收集 Event / Node / Metrics / Logs",
+                "status": "in_progress"
+              },
+              {
+                "id": 3,
+                "title": "对照知识库与历史 Case",
+                "status": "pending"
+              },
+              {
+                "id": 4,
+                "title": "给出诊断结论",
+                "status": "pending"
+              }
+            ]
+          }
+        },
+        {
+          "id": "mock_3",
+          "name": "get_pod_events",
+          "input": {
+            "name": "job-124",
+            "namespace": "default"
+          }
+        },
+        {
+          "id": "mock_4",
+          "name": "get_node",
+          "input": {
+            "name": "node-2"
+          }
+        },
+        {
+          "id": "mock_5",
+          "name": "get_metrics",
+          "input": {
+            "name": "job-124",
+            "namespace": "default",
+            "window": "60m"
+          }
+        },
+        {
+          "id": "mock_6",
+          "name": "get_logs",
+          "input": {
+            "name": "job-124",
+            "namespace": "default",
+            "previous": false,
+            "tail": 100
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 670,
+        "outputTokens": 80
+      },
+      "durationMs": 118,
+      "ts": 1789765208141
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_7",
+        "name": "update_plan",
+        "input": {
+          "steps": [
+            {
+              "id": 1,
+              "title": "获取 Pod 状态",
+              "status": "done"
+            },
+            {
+              "id": 2,
+              "title": "按信号收集 Event / Node / Metrics / Logs",
+              "status": "in_progress"
+            },
+            {
+              "id": 3,
+              "title": "对照知识库与历史 Case",
+              "status": "pending"
+            },
+            {
+              "id": 4,
+              "title": "给出诊断结论",
+              "status": "pending"
+            }
+          ]
+        }
+      },
+      "ts": 1789765208141
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "plan",
+      "step": 3,
+      "plan": [
+        {
+          "id": 1,
+          "title": "获取 Pod 状态",
+          "status": "done"
+        },
+        {
+          "id": 2,
+          "title": "按信号收集 Event / Node / Metrics / Logs",
+          "status": "in_progress"
+        },
+        {
+          "id": 3,
+          "title": "对照知识库与历史 Case",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "给出诊断结论",
+          "status": "pending"
+        }
+      ],
+      "ts": 1789765208141
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_3",
+        "name": "get_pod_events",
+        "input": {
+          "name": "job-124",
+          "namespace": "default"
+        }
+      },
+      "ts": 1789765208141
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_4",
+        "name": "get_node",
+        "input": {
+          "name": "node-2"
+        }
+      },
+      "ts": 1789765208141
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_5",
+        "name": "get_metrics",
+        "input": {
+          "name": "job-124",
+          "namespace": "default",
+          "window": "60m"
+        }
+      },
+      "ts": 1789765208141
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 3,
+      "call": {
+        "id": "mock_6",
+        "name": "get_logs",
+        "input": {
+          "name": "job-124",
+          "namespace": "default",
+          "previous": false,
+          "tail": 100
+        }
+      },
+      "ts": 1789765208141
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_7",
+      "name": "update_plan",
+      "result": {
+        "ok": true,
+        "output": "计划已更新（1/4 完成）"
+      },
+      "durationMs": 0,
+      "ts": 1789765208141
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_5",
+      "name": "get_metrics",
+      "result": {
+        "ok": true,
+        "output": "{\n \"available\": false,\n \"note\": \"指标采集在 08:35 之后中断（节点 node-2 停止上报）\"\n}"
+      },
+      "durationMs": 1,
+      "ts": 1789765208142
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_3",
+      "name": "get_pod_events",
+      "result": {
+        "ok": true,
+        "output": "{\n \"count\": 4,\n \"warnings\": 1,\n \"events\": [\n  {\n   \"time\": \"2026-09-18T08:00:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Scheduled\",\n   \"message\": \"Successfully assigned default/job-124 to node-2\",\n   \"count\": 1,\n   \"source\": \"default-scheduler\"\n  },\n  {\n   \"time\": \"2026-09-18T08:01:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Started\",\n   \"message\": \"Started container etl\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:36:00.000Z\",\n   \"type\": \"Warning\",\n   \"reason\": \"NodeNotReady\",\n   \"message\": \"Node is not ready\",\n   \"count\": 1,\n   \"source\": \"node-controller\"\n  },\n  {\n   \"time\": \"2026-09-18T08:41:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"TaintManagerEviction\",\n   \"message\": \"Marking for deletion Pod default/job-124\",\n   \"count\": 1,\n   \"source\": \"taint-controller\"\n  }\n ]\n}"
+      },
+      "durationMs": 2,
+      "ts": 1789765208143
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_4",
+      "name": "get_node",
+      "result": {
+        "ok": true,
+        "output": "{\n \"name\": \"node-2\",\n \"kubeletVersion\": \"v1.31.2\",\n \"allocatable\": {\n  \"cpu\": \"4\",\n  \"memory\": \"16Gi\",\n  \"ephemeral-storage\": \"100Gi\",\n  \"pods\": \"110\"\n },\n \"allocated\": {\n  \"cpu\": \"3200m\",\n  \"memory\": \"9Gi\"\n },\n \"conditions\": [\n  {\n   \"type\": \"Ready\",\n   \"status\": \"Unknown\",\n   \"reason\": \"NodeStatusUnknown\",\n   \"lastHeartbeatTime\": \"2026-09-18T08:35:00.000Z\"\n  },\n  {\n   \"type\": \"MemoryPressure\",\n   \"status\": \"Unknown\",\n   \"reason\": \"NodeStatusUnknown\",\n   \"message\": \"Kubelet stopped posting node status.\"\n  },\n  {\n   \"type\": \"DiskPressure\",\n   \"status\": \"Unknown\",\n   \"reason\": \"NodeStatusUnknown\"\n  },\n  {\n   \"type\": \"PIDPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoPIDPressure\"\n  }\n ],\n \"taints\": [\n  {\n   \"key\": \"node.kubernetes.io/unreachable\",\n   \"effect\": \"NoExecute\"\n  },\n  {\n   \"key\": \"node.kubernetes.io/unreachable\",\n   \"effect\": \"NoSchedule\"\n  }\n ],\n \"signals\": [\n  \"Ready=Unknown (NodeStatusUnknown)\",\n  \"taints: node.kubernetes.io/unreachable:NoExecute, node.kubernetes.io/unreachable:NoSchedule\"\n ]\n}"
+      },
+      "durationMs": 2,
+      "ts": 1789765208143
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 3,
+      "callId": "mock_6",
+      "name": "get_logs",
+      "result": {
+        "ok": false,
+        "error": "Error from server: Get \"https://10.0.2.12:10250/containerLogs/default/job-124/etl\": dial tcp 10.0.2.12:10250: i/o timeout"
+      },
+      "durationMs": 2,
+      "ts": 1789765208143
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "初步判断为 ",
+      "ts": 1789765208143
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "Node N",
+      "ts": 1789765208149
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "otRead",
+      "ts": 1789765208155
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "y（节点失联",
+      "ts": 1789765208160
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "）。对照知识",
+      "ts": 1789765208166
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "库与历史 C",
+      "ts": 1789765208172
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 4,
+      "text": "ase。",
+      "ts": 1789765208177
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 4,
+      "text": "初步判断为 Node NotReady（节点失联）。对照知识库与历史 Case。",
+      "toolCalls": [
+        {
+          "id": "mock_8",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "获取 Pod 状态",
+                "status": "done"
+              },
+              {
+                "id": 2,
+                "title": "按信号收集 Event / Node / Metrics / Logs",
+                "status": "done"
+              },
+              {
+                "id": 3,
+                "title": "对照知识库与历史 Case",
+                "status": "in_progress"
+              },
+              {
+                "id": 4,
+                "title": "给出诊断结论",
+                "status": "pending"
+              }
+            ]
+          }
+        },
+        {
+          "id": "mock_9",
+          "name": "search_runbook",
+          "input": {
+            "query": "Node NotReady unreachable kubelet heartbeat",
+            "top": 2
+          }
+        },
+        {
+          "id": "mock_10",
+          "name": "search_cases",
+          "input": {
+            "symptoms": "Node NotReady unreachable kubelet heartbeat",
+            "top": 2
+          }
+        }
+      ],
+      "usage": {
+        "inputTokens": 1858,
+        "outputTokens": 80
+      },
+      "durationMs": 40,
+      "ts": 1789765208183
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_8",
+        "name": "update_plan",
+        "input": {
+          "steps": [
+            {
+              "id": 1,
+              "title": "获取 Pod 状态",
+              "status": "done"
+            },
+            {
+              "id": 2,
+              "title": "按信号收集 Event / Node / Metrics / Logs",
+              "status": "done"
+            },
+            {
+              "id": 3,
+              "title": "对照知识库与历史 Case",
+              "status": "in_progress"
+            },
+            {
+              "id": 4,
+              "title": "给出诊断结论",
+              "status": "pending"
+            }
+          ]
+        }
+      },
+      "ts": 1789765208183
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "plan",
+      "step": 4,
+      "plan": [
+        {
+          "id": 1,
+          "title": "获取 Pod 状态",
+          "status": "done"
+        },
+        {
+          "id": 2,
+          "title": "按信号收集 Event / Node / Metrics / Logs",
+          "status": "done"
+        },
+        {
+          "id": 3,
+          "title": "对照知识库与历史 Case",
+          "status": "in_progress"
+        },
+        {
+          "id": 4,
+          "title": "给出诊断结论",
+          "status": "pending"
+        }
+      ],
+      "ts": 1789765208183
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_9",
+        "name": "search_runbook",
+        "input": {
+          "query": "Node NotReady unreachable kubelet heartbeat",
+          "top": 2
+        }
+      },
+      "ts": 1789765208183
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_call",
+      "step": 4,
+      "call": {
+        "id": "mock_10",
+        "name": "search_cases",
+        "input": {
+          "symptoms": "Node NotReady unreachable kubelet heartbeat",
+          "top": 2
+        }
+      },
+      "ts": 1789765208183
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_8",
+      "name": "update_plan",
+      "result": {
+        "ok": true,
+        "output": "计划已更新（2/4 完成）"
+      },
+      "durationMs": 0,
+      "ts": 1789765208183
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_10",
+      "name": "search_cases",
+      "result": {
+        "ok": true,
+        "output": "{\n \"total\": 1,\n \"cases\": [\n  {\n   \"id\": \"CASE-2026-052\",\n   \"date\": \"2026-07-19\",\n   \"symptoms\": \"node Ready Unknown 心跳停止 kubelet 不可达 pod NodeNotReady TaintManagerEviction logs i/o timeout 10250\",\n   \"rootCause\": \"云厂商宿主机故障导致节点失联\",\n   \"fix\": \"cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点\",\n   \"tags\": [\n    \"NodeNotReady\",\n    \"node\"\n   ],\n   \"similarity\": 3\n  }\n ]\n}"
+      },
+      "durationMs": 0,
+      "ts": 1789765208183
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "tool_result",
+      "step": 4,
+      "callId": "mock_9",
+      "name": "search_runbook",
+      "result": {
+        "ok": true,
+        "output": "{\n \"query\": \"Node NotReady unreachable kubelet heartbeat\",\n \"total\": 5,\n \"results\": [\n  {\n   \"file\": \"k8s/runbooks/node.md\",\n   \"title\": \"Node NotReady\",\n   \"score\": 9,\n   \"content\": \"## Node NotReady\\n症状：Node Ready=Unknown/False，lastHeartbeatTime 停止更新超过 40s；节点被打上 node.kubernetes.io/unreachable taint；其上 Pod 出现 NodeNotReady / TaintManagerEviction Event，kubectl logs 报 dial tcp <node-ip>:10250 i/o timeout；指标采集中断。\\n确认方法：get_node 看 Ready 与心跳时间；get_pod_events 看 NodeNotReady；get_logs 报错代表 kubelet 不可达。\\n处理：1) 检查节点 kubelet / 网络 / 云厂商状态；2) cordon 节点；3) 强制删除卡住的 Pod 让 Job 在健康节点重建；4) 节点长期不恢复则 drain + 替换。\\n注意：Pod phase 可能仍显示 Running，这是 API Server 缓存的旧状态，不能作为\\\"应用正常\\\"的证据。\"\n  },\n  {\n   \"file\": \"k8s/runbooks/node.md\",\n   \"title\": \"node.md\",\n   \"score\": 2,\n   \"content\": \"# 节点类故障\"\n  }\n ]\n}"
+      },
+      "durationMs": 1,
+      "ts": 1789765208184
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "## 故障现",
+      "ts": 1789765208184
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "象\nPod ",
+      "ts": 1789765208190
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "job-12",
+      "ts": 1789765208195
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "4 所在节点",
+      "ts": 1789765208201
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " node-",
+      "ts": 1789765208207
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "2 失去心跳",
+      "ts": 1789765208213
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "，Pod 状",
+      "ts": 1789765208218
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "态 Runn",
+      "ts": 1789765208224
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ing 为过",
+      "ts": 1789765208230
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "期缓存，实际",
+      "ts": 1789765208235
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "不可用。\n\n",
+      "ts": 1789765208241
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "## 关键证",
+      "ts": 1789765208247
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "据\n- [E",
+      "ts": 1789765208253
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "vent] ",
+      "ts": 1789765208258
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "NodeNo",
+      "ts": 1789765208264
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "tReady",
+      "ts": 1789765208270
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": ": Node",
+      "ts": 1789765208275
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " is no",
+      "ts": 1789765208281
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "t read",
+      "ts": 1789765208287
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "y（coun",
+      "ts": 1789765208293
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "t=1，ge",
+      "ts": 1789765208298
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "t_pod_",
+      "ts": 1789765208304
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "events",
+      "ts": 1789765208309
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "）\n- [N",
+      "ts": 1789765208315
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ode] n",
+      "ts": 1789765208321
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ode-2:",
+      "ts": 1789765208327
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " Ready",
+      "ts": 1789765208332
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "=Unkno",
+      "ts": 1789765208338
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "wn (No",
+      "ts": 1789765208344
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "deStat",
+      "ts": 1789765208350
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "usUnkn",
+      "ts": 1789765208355
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "own)；t",
+      "ts": 1789765208361
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "aints:",
+      "ts": 1789765208367
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " node.",
+      "ts": 1789765208372
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "kubern",
+      "ts": 1789765208378
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "etes.i",
+      "ts": 1789765208383
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "o/unre",
+      "ts": 1789765208389
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "achabl",
+      "ts": 1789765208394
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "e:NoEx",
+      "ts": 1789765208400
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ecute,",
+      "ts": 1789765208405
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " node.",
+      "ts": 1789765208411
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "kubern",
+      "ts": 1789765208417
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "etes.i",
+      "ts": 1789765208423
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "o/unre",
+      "ts": 1789765208428
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "achabl",
+      "ts": 1789765208434
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "e:NoSc",
+      "ts": 1789765208440
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "hedule",
+      "ts": 1789765208445
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "（get_n",
+      "ts": 1789765208451
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ode）\n-",
+      "ts": 1789765208456
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " [Metr",
+      "ts": 1789765208462
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ic] 无指",
+      "ts": 1789765208468
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "标：指标采集",
+      "ts": 1789765208473
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "在 08:3",
+      "ts": 1789765208479
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "5 之后中断",
+      "ts": 1789765208485
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "（节点 no",
+      "ts": 1789765208490
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "de-2 停",
+      "ts": 1789765208495
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "止上报）（g",
+      "ts": 1789765208501
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "et_met",
+      "ts": 1789765208506
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "rics）\n",
+      "ts": 1789765208512
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "- [Log",
+      "ts": 1789765208518
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "] 取日志失",
+      "ts": 1789765208524
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "败：Erro",
+      "ts": 1789765208529
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "r from",
+      "ts": 1789765208534
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " serve",
+      "ts": 1789765208539
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "r: Get",
+      "ts": 1789765208545
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " \"http",
+      "ts": 1789765208550
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "s://10",
+      "ts": 1789765208556
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": ".0.2.1",
+      "ts": 1789765208562
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "2:1025",
+      "ts": 1789765208568
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "0/cont",
+      "ts": 1789765208573
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ainerL",
+      "ts": 1789765208579
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ogs/de",
+      "ts": 1789765208585
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "fault/",
+      "ts": 1789765208590
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "job-12",
+      "ts": 1789765208596
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "4/etl\"",
+      "ts": 1789765208602
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": ": dial",
+      "ts": 1789765208607
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " tcp 1",
+      "ts": 1789765208613
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "0.0.2.",
+      "ts": 1789765208618
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "12:102",
+      "ts": 1789765208624
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "50: i/",
+      "ts": 1789765208630
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "o time",
+      "ts": 1789765208635
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "out（ge",
+      "ts": 1789765208640
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "t_logs",
+      "ts": 1789765208646
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "）\n- [R",
+      "ts": 1789765208651
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "unbook",
+      "ts": 1789765208656
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "] Node",
+      "ts": 1789765208662
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " NotRe",
+      "ts": 1789765208667
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ady：症状",
+      "ts": 1789765208673
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "：Node ",
+      "ts": 1789765208679
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "Ready=",
+      "ts": 1789765208684
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "Unknow",
+      "ts": 1789765208690
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "n/Fals",
+      "ts": 1789765208696
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "e，last",
+      "ts": 1789765208701
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "Heartb",
+      "ts": 1789765208707
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "eatTim",
+      "ts": 1789765208713
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "e 停止更新",
+      "ts": 1789765208719
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "超过 40s",
+      "ts": 1789765208724
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "；节点被打上",
+      "ts": 1789765208730
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " node.",
+      "ts": 1789765208736
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "kubern",
+      "ts": 1789765208741
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "etes.i",
+      "ts": 1789765208747
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "o/unre",
+      "ts": 1789765208753
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "achabl",
+      "ts": 1789765208758
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "e tain",
+      "ts": 1789765208764
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "t；其上 P",
+      "ts": 1789765208770
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "od 出现 ",
+      "ts": 1789765208775
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "NodeNo",
+      "ts": 1789765208781
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "tRea…（",
+      "ts": 1789765208787
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "search",
+      "ts": 1789765208792
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "_runbo",
+      "ts": 1789765208798
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ok → k",
+      "ts": 1789765208804
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "8s/run",
+      "ts": 1789765208809
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "books/",
+      "ts": 1789765208815
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "node.m",
+      "ts": 1789765208821
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "d）\n- [",
+      "ts": 1789765208826
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "Case] ",
+      "ts": 1789765208832
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "CASE-2",
+      "ts": 1789765208838
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "026-05",
+      "ts": 1789765208843
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "2（2026",
+      "ts": 1789765208849
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "-07-19",
+      "ts": 1789765208855
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "）根因：云厂",
+      "ts": 1789765208860
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "商宿主机故障",
+      "ts": 1789765208866
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "导致节点失联",
+      "ts": 1789765208872
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "；处理：co",
+      "ts": 1789765208878
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "rdon 节",
+      "ts": 1789765208883
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "点，强制删除",
+      "ts": 1789765208889
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " Pod 让",
+      "ts": 1789765208895
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " Job 在",
+      "ts": 1789765208900
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "其他节点重建",
+      "ts": 1789765208906
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "，随后替换节",
+      "ts": 1789765208912
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "点（sear",
+      "ts": 1789765208917
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ch_cas",
+      "ts": 1789765208923
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "es）\n\n#",
+      "ts": 1789765208929
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "# 已确认事",
+      "ts": 1789765208934
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "实\n- Po",
+      "ts": 1789765208940
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "d defa",
+      "ts": 1789765208946
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ult/jo",
+      "ts": 1789765208951
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "b-124 ",
+      "ts": 1789765208956
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "phase=",
+      "ts": 1789765208962
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "Runnin",
+      "ts": 1789765208968
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "g reas",
+      "ts": 1789765208974
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "on=Nod",
+      "ts": 1789765208979
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "eLost，",
+      "ts": 1789765208985
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "节点 nod",
+      "ts": 1789765208990
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "e-2\n- ",
+      "ts": 1789765208996
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "Event ",
+      "ts": 1789765209002
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "NodeNo",
+      "ts": 1789765209007
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "tReady",
+      "ts": 1789765209013
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " 出现 1 ",
+      "ts": 1789765209019
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "次\n- 节点",
+      "ts": 1789765209024
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " node-",
+      "ts": 1789765209030
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "2 状态异常",
+      "ts": 1789765209036
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "：Ready",
+      "ts": 1789765209042
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "=Unkno",
+      "ts": 1789765209047
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "wn (No",
+      "ts": 1789765209052
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "deStat",
+      "ts": 1789765209058
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "usUnkn",
+      "ts": 1789765209063
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "own)；t",
+      "ts": 1789765209069
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "aints:",
+      "ts": 1789765209074
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " node.",
+      "ts": 1789765209080
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "kubern",
+      "ts": 1789765209086
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "etes.i",
+      "ts": 1789765209091
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "o/unre",
+      "ts": 1789765209097
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "achabl",
+      "ts": 1789765209103
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "e:NoEx",
+      "ts": 1789765209109
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ecute,",
+      "ts": 1789765209114
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " node.",
+      "ts": 1789765209120
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "kubern",
+      "ts": 1789765209126
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "etes.i",
+      "ts": 1789765209131
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "o/unre",
+      "ts": 1789765209137
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "achabl",
+      "ts": 1789765209143
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "e:NoSc",
+      "ts": 1789765209148
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "hedule",
+      "ts": 1789765209154
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "\n\n## 可",
+      "ts": 1789765209160
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "能原因（推测",
+      "ts": 1789765209166
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "）\n- 节点",
+      "ts": 1789765209172
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " node-",
+      "ts": 1789765209177
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "2 的 ku",
+      "ts": 1789765209183
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "belet ",
+      "ts": 1789765209188
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "或宿主机故障",
+      "ts": 1789765209193
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " / 网络隔",
+      "ts": 1789765209199
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "离 · 置信",
+      "ts": 1789765209204
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "度 高 · ",
+      "ts": 1789765209210
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "依据：Rea",
+      "ts": 1789765209216
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "dy=Unk",
+      "ts": 1789765209222
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "nown、心",
+      "ts": 1789765209227
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "跳停止、un",
+      "ts": 1789765209233
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "reacha",
+      "ts": 1789765209239
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ble ta",
+      "ts": 1789765209244
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "int、No",
+      "ts": 1789765209250
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "deNotR",
+      "ts": 1789765209256
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "eady E",
+      "ts": 1789765209262
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "vent、日",
+      "ts": 1789765209267
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "志端口 10",
+      "ts": 1789765209273
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "250 超时",
+      "ts": 1789765209279
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "、指标中断\n",
+      "ts": 1789765209284
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "\n## 处理",
+      "ts": 1789765209290
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "建议\n- 检",
+      "ts": 1789765209296
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "查节点 no",
+      "ts": 1789765209302
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "de-2 的",
+      "ts": 1789765209307
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " kubel",
+      "ts": 1789765209312
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "et 与云厂",
+      "ts": 1789765209318
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "商状态\n- ",
+      "ts": 1789765209323
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "kubect",
+      "ts": 1789765209329
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "l cord",
+      "ts": 1789765209335
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "on nod",
+      "ts": 1789765209340
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "e-2，强制",
+      "ts": 1789765209346
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "删除 Pod",
+      "ts": 1789765209352
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " 让 Job",
+      "ts": 1789765209358
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": " 在健康节点",
+      "ts": 1789765209363
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "重建\n- 长",
+      "ts": 1789765209369
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "期不恢复则 ",
+      "ts": 1789765209375
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "drain ",
+      "ts": 1789765209380
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "并替换节点\n",
+      "ts": 1789765209386
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "- 历史 C",
+      "ts": 1789765209392
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "ase CA",
+      "ts": 1789765209397
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "SE-202",
+      "ts": 1789765209403
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "6-052 ",
+      "ts": 1789765209409
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "的处理方式可",
+      "ts": 1789765209415
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "参考：cor",
+      "ts": 1789765209420
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "don 节点",
+      "ts": 1789765209426
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "，强制删除 ",
+      "ts": 1789765209431
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "Pod 让 ",
+      "ts": 1789765209437
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "Job 在其",
+      "ts": 1789765209443
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "他节点重建，",
+      "ts": 1789765209448
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "随后替换节点",
+      "ts": 1789765209454
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "\n\n## 证",
+      "ts": 1789765209460
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "据不足说明\n",
+      "ts": 1789765209465
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "delta",
+      "step": 5,
+      "text": "无",
+      "ts": 1789765209471
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "decision",
+      "step": 5,
+      "text": "## 故障现象\nPod job-124 所在节点 node-2 失去心跳，Pod 状态 Running 为过期缓存，实际不可用。\n\n## 关键证据\n- [Event] NodeNotReady: Node is not ready（count=1，get_pod_events）\n- [Node] node-2: Ready=Unknown (NodeStatusUnknown)；taints: node.kubernetes.io/unreachable:NoExecute, node.kubernetes.io/unreachable:NoSchedule（get_node）\n- [Metric] 无指标：指标采集在 08:35 之后中断（节点 node-2 停止上报）（get_metrics）\n- [Log] 取日志失败：Error from server: Get \"https://10.0.2.12:10250/containerLogs/default/job-124/etl\": dial tcp 10.0.2.12:10250: i/o timeout（get_logs）\n- [Runbook] Node NotReady：症状：Node Ready=Unknown/False，lastHeartbeatTime 停止更新超过 40s；节点被打上 node.kubernetes.io/unreachable taint；其上 Pod 出现 NodeNotRea…（search_runbook → k8s/runbooks/node.md）\n- [Case] CASE-2026-052（2026-07-19）根因：云厂商宿主机故障导致节点失联；处理：cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点（search_cases）\n\n## 已确认事实\n- Pod default/job-124 phase=Running reason=NodeLost，节点 node-2\n- Event NodeNotReady 出现 1 次\n- 节点 node-2 状态异常：Ready=Unknown (NodeStatusUnknown)；taints: node.kubernetes.io/unreachable:NoExecute, node.kubernetes.io/unreachable:NoSchedule\n\n## 可能原因（推测）\n- 节点 node-2 的 kubelet 或宿主机故障 / 网络隔离 · 置信度 高 · 依据：Ready=Unknown、心跳停止、unreachable taint、NodeNotReady Event、日志端口 10250 超时、指标中断\n\n## 处理建议\n- 检查节点 node-2 的 kubelet 与云厂商状态\n- kubectl cordon node-2，强制删除 Pod 让 Job 在健康节点重建\n- 长期不恢复则 drain 并替换节点\n- 历史 Case CASE-2026-052 的处理方式可参考：cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点\n\n## 证据不足说明\n无",
+      "toolCalls": [],
+      "usage": {
+        "inputTokens": 2560,
+        "outputTokens": 80
+      },
+      "durationMs": 1293,
+      "ts": 1789765209477
+    },
+    {
+      "agent": "main",
+      "depth": 0,
+      "type": "final",
+      "answer": "## 故障现象\nPod job-124 所在节点 node-2 失去心跳，Pod 状态 Running 为过期缓存，实际不可用。\n\n## 关键证据\n- [Event] NodeNotReady: Node is not ready（count=1，get_pod_events）\n- [Node] node-2: Ready=Unknown (NodeStatusUnknown)；taints: node.kubernetes.io/unreachable:NoExecute, node.kubernetes.io/unreachable:NoSchedule（get_node）\n- [Metric] 无指标：指标采集在 08:35 之后中断（节点 node-2 停止上报）（get_metrics）\n- [Log] 取日志失败：Error from server: Get \"https://10.0.2.12:10250/containerLogs/default/job-124/etl\": dial tcp 10.0.2.12:10250: i/o timeout（get_logs）\n- [Runbook] Node NotReady：症状：Node Ready=Unknown/False，lastHeartbeatTime 停止更新超过 40s；节点被打上 node.kubernetes.io/unreachable taint；其上 Pod 出现 NodeNotRea…（search_runbook → k8s/runbooks/node.md）\n- [Case] CASE-2026-052（2026-07-19）根因：云厂商宿主机故障导致节点失联；处理：cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点（search_cases）\n\n## 已确认事实\n- Pod default/job-124 phase=Running reason=NodeLost，节点 node-2\n- Event NodeNotReady 出现 1 次\n- 节点 node-2 状态异常：Ready=Unknown (NodeStatusUnknown)；taints: node.kubernetes.io/unreachable:NoExecute, node.kubernetes.io/unreachable:NoSchedule\n\n## 可能原因（推测）\n- 节点 node-2 的 kubelet 或宿主机故障 / 网络隔离 · 置信度 高 · 依据：Ready=Unknown、心跳停止、unreachable taint、NodeNotReady Event、日志端口 10250 超时、指标中断\n\n## 处理建议\n- 检查节点 node-2 的 kubelet 与云厂商状态\n- kubectl cordon node-2，强制删除 Pod 让 Job 在健康节点重建\n- 长期不恢复则 drain 并替换节点\n- 历史 Case CASE-2026-052 的处理方式可参考：cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点\n\n## 证据不足说明\n无",
+      "reason": "completed",
+      "steps": 5,
+      "usage": {
+        "inputTokens": 5278,
+        "outputTokens": 400
+      },
+      "ts": 1789765209477
+    }
+  ],
+  "tree": {
+    "agent": "main",
+    "depth": 0,
+    "events": [
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "user",
+        "task": "帮我分析 job-124 为什么失败。",
+        "ts": 1789765207983
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "诊断 job",
+        "ts": 1789765207983
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "-124：先",
+        "ts": 1789765207989
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "看 Pod ",
+        "ts": 1789765207994
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "状态，再决定",
+        "ts": 1789765208000
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 1,
+        "text": "查哪些信息。",
+        "ts": 1789765208006
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 1,
+        "text": "诊断 job-124：先看 Pod 状态，再决定查哪些信息。",
+        "toolCalls": [
+          {
+            "id": "mock_1",
+            "name": "update_plan",
+            "input": {
+              "steps": [
+                {
+                  "id": 1,
+                  "title": "获取 Pod 状态",
+                  "status": "in_progress"
+                },
+                {
+                  "id": 2,
+                  "title": "按信号收集 Event / Node / Metrics / Logs",
+                  "status": "pending"
+                },
+                {
+                  "id": 3,
+                  "title": "对照知识库与历史 Case",
+                  "status": "pending"
+                },
+                {
+                  "id": 4,
+                  "title": "给出诊断结论",
+                  "status": "pending"
+                }
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 16,
+          "outputTokens": 80
+        },
+        "durationMs": 28,
+        "ts": 1789765208011
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 1,
+        "call": {
+          "id": "mock_1",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "获取 Pod 状态",
+                "status": "in_progress"
+              },
+              {
+                "id": 2,
+                "title": "按信号收集 Event / Node / Metrics / Logs",
+                "status": "pending"
+              },
+              {
+                "id": 3,
+                "title": "对照知识库与历史 Case",
+                "status": "pending"
+              },
+              {
+                "id": 4,
+                "title": "给出诊断结论",
+                "status": "pending"
+              }
+            ]
+          }
+        },
+        "ts": 1789765208011
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "plan",
+        "step": 1,
+        "plan": [
+          {
+            "id": 1,
+            "title": "获取 Pod 状态",
+            "status": "in_progress"
+          },
+          {
+            "id": 2,
+            "title": "按信号收集 Event / Node / Metrics / Logs",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "对照知识库与历史 Case",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "给出诊断结论",
+            "status": "pending"
+          }
+        ],
+        "ts": 1789765208011
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 1,
+        "callId": "mock_1",
+        "name": "update_plan",
+        "result": {
+          "ok": true,
+          "output": "计划已更新（0/4 完成）"
+        },
+        "durationMs": 0,
+        "ts": 1789765208011
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": "获取 Pod",
+        "ts": 1789765208012
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 2,
+        "text": " 状态。",
+        "ts": 1789765208017
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 2,
+        "text": "获取 Pod 状态。",
+        "toolCalls": [
+          {
+            "id": "mock_2",
+            "name": "get_pod",
+            "input": {
+              "name": "job-124",
+              "namespace": "default"
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 174,
+          "outputTokens": 80
+        },
+        "durationMs": 10,
+        "ts": 1789765208022
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 2,
+        "call": {
+          "id": "mock_2",
+          "name": "get_pod",
+          "input": {
+            "name": "job-124",
+            "namespace": "default"
+          }
+        },
+        "ts": 1789765208022
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 2,
+        "callId": "mock_2",
+        "name": "get_pod",
+        "result": {
+          "ok": true,
+          "output": "{\n \"namespace\": \"default\",\n \"name\": \"job-124\",\n \"phase\": \"Running\",\n \"nodeName\": \"node-2\",\n \"startTime\": \"2026-09-18T08:00:00.000Z\",\n \"labels\": {\n  \"app\": \"etl\",\n  \"job-name\": \"job-124\"\n },\n \"resources\": {\n  \"requests\": {\n   \"cpu\": \"1\",\n   \"memory\": \"1Gi\"\n  },\n  \"limits\": {\n   \"cpu\": \"2\",\n   \"memory\": \"2Gi\"\n  }\n },\n \"containers\": [\n  {\n   \"name\": \"etl\",\n   \"image\": \"registry.local/etl:1.4.2\",\n   \"ready\": false,\n   \"restartCount\": 0,\n   \"state\": {\n    \"running\": {\n     \"startedAt\": \"2026-09-18T08:00:00.000Z\"\n    }\n   }\n  }\n ],\n \"conditions\": [\n  {\n   \"type\": \"PodScheduled\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"Initialized\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"ContainersReady\",\n   \"status\": \"Unknown\"\n  },\n  {\n   \"type\": \"Ready\",\n   \"status\": \"False\",\n   \"reason\": \"NodeNotReady\",\n   \"message\": \"the node was not ready\"\n  }\n ],\n \"reason\": \"NodeLost\",\n \"message\": \"Node node-2 which was running pod job-124 is unresponsive\",\n \"signals\": [\n  \"容器 etl 未 Ready\",\n  \"condition ContainersReady=Unknown\",\n  \"condition Ready=False (NodeNotReady)\"\n ]\n}"
+        },
+        "durationMs": 1,
+        "ts": 1789765208023
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "Pod 信号",
+        "ts": 1789765208023
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "：容器 et",
+        "ts": 1789765208029
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "l 未 Re",
+        "ts": 1789765208035
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "ady；co",
+        "ts": 1789765208040
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "nditio",
+        "ts": 1789765208046
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "n Cont",
+        "ts": 1789765208052
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "ainers",
+        "ts": 1789765208057
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "Ready=",
+        "ts": 1789765208063
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "Unknow",
+        "ts": 1789765208069
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "n；cond",
+        "ts": 1789765208074
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "ition ",
+        "ts": 1789765208080
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "Ready=",
+        "ts": 1789765208085
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "False ",
+        "ts": 1789765208091
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "(NodeN",
+        "ts": 1789765208097
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "otRead",
+        "ts": 1789765208102
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "y)。并行获",
+        "ts": 1789765208107
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "取 Even",
+        "ts": 1789765208113
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "t、节点 n",
+        "ts": 1789765208119
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "ode-2、",
+        "ts": 1789765208124
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "指标与当前日",
+        "ts": 1789765208130
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 3,
+        "text": "志。",
+        "ts": 1789765208135
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 3,
+        "text": "Pod 信号：容器 etl 未 Ready；condition ContainersReady=Unknown；condition Ready=False (NodeNotReady)。并行获取 Event、节点 node-2、指标与当前日志。",
+        "toolCalls": [
+          {
+            "id": "mock_7",
+            "name": "update_plan",
+            "input": {
+              "steps": [
+                {
+                  "id": 1,
+                  "title": "获取 Pod 状态",
+                  "status": "done"
+                },
+                {
+                  "id": 2,
+                  "title": "按信号收集 Event / Node / Metrics / Logs",
+                  "status": "in_progress"
+                },
+                {
+                  "id": 3,
+                  "title": "对照知识库与历史 Case",
+                  "status": "pending"
+                },
+                {
+                  "id": 4,
+                  "title": "给出诊断结论",
+                  "status": "pending"
+                }
+              ]
+            }
+          },
+          {
+            "id": "mock_3",
+            "name": "get_pod_events",
+            "input": {
+              "name": "job-124",
+              "namespace": "default"
+            }
+          },
+          {
+            "id": "mock_4",
+            "name": "get_node",
+            "input": {
+              "name": "node-2"
+            }
+          },
+          {
+            "id": "mock_5",
+            "name": "get_metrics",
+            "input": {
+              "name": "job-124",
+              "namespace": "default",
+              "window": "60m"
+            }
+          },
+          {
+            "id": "mock_6",
+            "name": "get_logs",
+            "input": {
+              "name": "job-124",
+              "namespace": "default",
+              "previous": false,
+              "tail": 100
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 670,
+          "outputTokens": 80
+        },
+        "durationMs": 118,
+        "ts": 1789765208141
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_7",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "获取 Pod 状态",
+                "status": "done"
+              },
+              {
+                "id": 2,
+                "title": "按信号收集 Event / Node / Metrics / Logs",
+                "status": "in_progress"
+              },
+              {
+                "id": 3,
+                "title": "对照知识库与历史 Case",
+                "status": "pending"
+              },
+              {
+                "id": 4,
+                "title": "给出诊断结论",
+                "status": "pending"
+              }
+            ]
+          }
+        },
+        "ts": 1789765208141
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "plan",
+        "step": 3,
+        "plan": [
+          {
+            "id": 1,
+            "title": "获取 Pod 状态",
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "按信号收集 Event / Node / Metrics / Logs",
+            "status": "in_progress"
+          },
+          {
+            "id": 3,
+            "title": "对照知识库与历史 Case",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "给出诊断结论",
+            "status": "pending"
+          }
+        ],
+        "ts": 1789765208141
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_3",
+          "name": "get_pod_events",
+          "input": {
+            "name": "job-124",
+            "namespace": "default"
+          }
+        },
+        "ts": 1789765208141
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_4",
+          "name": "get_node",
+          "input": {
+            "name": "node-2"
+          }
+        },
+        "ts": 1789765208141
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_5",
+          "name": "get_metrics",
+          "input": {
+            "name": "job-124",
+            "namespace": "default",
+            "window": "60m"
+          }
+        },
+        "ts": 1789765208141
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 3,
+        "call": {
+          "id": "mock_6",
+          "name": "get_logs",
+          "input": {
+            "name": "job-124",
+            "namespace": "default",
+            "previous": false,
+            "tail": 100
+          }
+        },
+        "ts": 1789765208141
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_7",
+        "name": "update_plan",
+        "result": {
+          "ok": true,
+          "output": "计划已更新（1/4 完成）"
+        },
+        "durationMs": 0,
+        "ts": 1789765208141
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_5",
+        "name": "get_metrics",
+        "result": {
+          "ok": true,
+          "output": "{\n \"available\": false,\n \"note\": \"指标采集在 08:35 之后中断（节点 node-2 停止上报）\"\n}"
+        },
+        "durationMs": 1,
+        "ts": 1789765208142
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_3",
+        "name": "get_pod_events",
+        "result": {
+          "ok": true,
+          "output": "{\n \"count\": 4,\n \"warnings\": 1,\n \"events\": [\n  {\n   \"time\": \"2026-09-18T08:00:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Scheduled\",\n   \"message\": \"Successfully assigned default/job-124 to node-2\",\n   \"count\": 1,\n   \"source\": \"default-scheduler\"\n  },\n  {\n   \"time\": \"2026-09-18T08:01:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Started\",\n   \"message\": \"Started container etl\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:36:00.000Z\",\n   \"type\": \"Warning\",\n   \"reason\": \"NodeNotReady\",\n   \"message\": \"Node is not ready\",\n   \"count\": 1,\n   \"source\": \"node-controller\"\n  },\n  {\n   \"time\": \"2026-09-18T08:41:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"TaintManagerEviction\",\n   \"message\": \"Marking for deletion Pod default/job-124\",\n   \"count\": 1,\n   \"source\": \"taint-controller\"\n  }\n ]\n}"
+        },
+        "durationMs": 2,
+        "ts": 1789765208143
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_4",
+        "name": "get_node",
+        "result": {
+          "ok": true,
+          "output": "{\n \"name\": \"node-2\",\n \"kubeletVersion\": \"v1.31.2\",\n \"allocatable\": {\n  \"cpu\": \"4\",\n  \"memory\": \"16Gi\",\n  \"ephemeral-storage\": \"100Gi\",\n  \"pods\": \"110\"\n },\n \"allocated\": {\n  \"cpu\": \"3200m\",\n  \"memory\": \"9Gi\"\n },\n \"conditions\": [\n  {\n   \"type\": \"Ready\",\n   \"status\": \"Unknown\",\n   \"reason\": \"NodeStatusUnknown\",\n   \"lastHeartbeatTime\": \"2026-09-18T08:35:00.000Z\"\n  },\n  {\n   \"type\": \"MemoryPressure\",\n   \"status\": \"Unknown\",\n   \"reason\": \"NodeStatusUnknown\",\n   \"message\": \"Kubelet stopped posting node status.\"\n  },\n  {\n   \"type\": \"DiskPressure\",\n   \"status\": \"Unknown\",\n   \"reason\": \"NodeStatusUnknown\"\n  },\n  {\n   \"type\": \"PIDPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoPIDPressure\"\n  }\n ],\n \"taints\": [\n  {\n   \"key\": \"node.kubernetes.io/unreachable\",\n   \"effect\": \"NoExecute\"\n  },\n  {\n   \"key\": \"node.kubernetes.io/unreachable\",\n   \"effect\": \"NoSchedule\"\n  }\n ],\n \"signals\": [\n  \"Ready=Unknown (NodeStatusUnknown)\",\n  \"taints: node.kubernetes.io/unreachable:NoExecute, node.kubernetes.io/unreachable:NoSchedule\"\n ]\n}"
+        },
+        "durationMs": 2,
+        "ts": 1789765208143
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 3,
+        "callId": "mock_6",
+        "name": "get_logs",
+        "result": {
+          "ok": false,
+          "error": "Error from server: Get \"https://10.0.2.12:10250/containerLogs/default/job-124/etl\": dial tcp 10.0.2.12:10250: i/o timeout"
+        },
+        "durationMs": 2,
+        "ts": 1789765208143
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "初步判断为 ",
+        "ts": 1789765208143
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "Node N",
+        "ts": 1789765208149
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "otRead",
+        "ts": 1789765208155
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "y（节点失联",
+        "ts": 1789765208160
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "）。对照知识",
+        "ts": 1789765208166
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "库与历史 C",
+        "ts": 1789765208172
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 4,
+        "text": "ase。",
+        "ts": 1789765208177
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 4,
+        "text": "初步判断为 Node NotReady（节点失联）。对照知识库与历史 Case。",
+        "toolCalls": [
+          {
+            "id": "mock_8",
+            "name": "update_plan",
+            "input": {
+              "steps": [
+                {
+                  "id": 1,
+                  "title": "获取 Pod 状态",
+                  "status": "done"
+                },
+                {
+                  "id": 2,
+                  "title": "按信号收集 Event / Node / Metrics / Logs",
+                  "status": "done"
+                },
+                {
+                  "id": 3,
+                  "title": "对照知识库与历史 Case",
+                  "status": "in_progress"
+                },
+                {
+                  "id": 4,
+                  "title": "给出诊断结论",
+                  "status": "pending"
+                }
+              ]
+            }
+          },
+          {
+            "id": "mock_9",
+            "name": "search_runbook",
+            "input": {
+              "query": "Node NotReady unreachable kubelet heartbeat",
+              "top": 2
+            }
+          },
+          {
+            "id": "mock_10",
+            "name": "search_cases",
+            "input": {
+              "symptoms": "Node NotReady unreachable kubelet heartbeat",
+              "top": 2
+            }
+          }
+        ],
+        "usage": {
+          "inputTokens": 1858,
+          "outputTokens": 80
+        },
+        "durationMs": 40,
+        "ts": 1789765208183
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_8",
+          "name": "update_plan",
+          "input": {
+            "steps": [
+              {
+                "id": 1,
+                "title": "获取 Pod 状态",
+                "status": "done"
+              },
+              {
+                "id": 2,
+                "title": "按信号收集 Event / Node / Metrics / Logs",
+                "status": "done"
+              },
+              {
+                "id": 3,
+                "title": "对照知识库与历史 Case",
+                "status": "in_progress"
+              },
+              {
+                "id": 4,
+                "title": "给出诊断结论",
+                "status": "pending"
+              }
+            ]
+          }
+        },
+        "ts": 1789765208183
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "plan",
+        "step": 4,
+        "plan": [
+          {
+            "id": 1,
+            "title": "获取 Pod 状态",
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "按信号收集 Event / Node / Metrics / Logs",
+            "status": "done"
+          },
+          {
+            "id": 3,
+            "title": "对照知识库与历史 Case",
+            "status": "in_progress"
+          },
+          {
+            "id": 4,
+            "title": "给出诊断结论",
+            "status": "pending"
+          }
+        ],
+        "ts": 1789765208183
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_9",
+          "name": "search_runbook",
+          "input": {
+            "query": "Node NotReady unreachable kubelet heartbeat",
+            "top": 2
+          }
+        },
+        "ts": 1789765208183
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_call",
+        "step": 4,
+        "call": {
+          "id": "mock_10",
+          "name": "search_cases",
+          "input": {
+            "symptoms": "Node NotReady unreachable kubelet heartbeat",
+            "top": 2
+          }
+        },
+        "ts": 1789765208183
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_8",
+        "name": "update_plan",
+        "result": {
+          "ok": true,
+          "output": "计划已更新（2/4 完成）"
+        },
+        "durationMs": 0,
+        "ts": 1789765208183
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_10",
+        "name": "search_cases",
+        "result": {
+          "ok": true,
+          "output": "{\n \"total\": 1,\n \"cases\": [\n  {\n   \"id\": \"CASE-2026-052\",\n   \"date\": \"2026-07-19\",\n   \"symptoms\": \"node Ready Unknown 心跳停止 kubelet 不可达 pod NodeNotReady TaintManagerEviction logs i/o timeout 10250\",\n   \"rootCause\": \"云厂商宿主机故障导致节点失联\",\n   \"fix\": \"cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点\",\n   \"tags\": [\n    \"NodeNotReady\",\n    \"node\"\n   ],\n   \"similarity\": 3\n  }\n ]\n}"
+        },
+        "durationMs": 0,
+        "ts": 1789765208183
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "tool_result",
+        "step": 4,
+        "callId": "mock_9",
+        "name": "search_runbook",
+        "result": {
+          "ok": true,
+          "output": "{\n \"query\": \"Node NotReady unreachable kubelet heartbeat\",\n \"total\": 5,\n \"results\": [\n  {\n   \"file\": \"k8s/runbooks/node.md\",\n   \"title\": \"Node NotReady\",\n   \"score\": 9,\n   \"content\": \"## Node NotReady\\n症状：Node Ready=Unknown/False，lastHeartbeatTime 停止更新超过 40s；节点被打上 node.kubernetes.io/unreachable taint；其上 Pod 出现 NodeNotReady / TaintManagerEviction Event，kubectl logs 报 dial tcp <node-ip>:10250 i/o timeout；指标采集中断。\\n确认方法：get_node 看 Ready 与心跳时间；get_pod_events 看 NodeNotReady；get_logs 报错代表 kubelet 不可达。\\n处理：1) 检查节点 kubelet / 网络 / 云厂商状态；2) cordon 节点；3) 强制删除卡住的 Pod 让 Job 在健康节点重建；4) 节点长期不恢复则 drain + 替换。\\n注意：Pod phase 可能仍显示 Running，这是 API Server 缓存的旧状态，不能作为\\\"应用正常\\\"的证据。\"\n  },\n  {\n   \"file\": \"k8s/runbooks/node.md\",\n   \"title\": \"node.md\",\n   \"score\": 2,\n   \"content\": \"# 节点类故障\"\n  }\n ]\n}"
+        },
+        "durationMs": 1,
+        "ts": 1789765208184
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "## 故障现",
+        "ts": 1789765208184
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "象\nPod ",
+        "ts": 1789765208190
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "job-12",
+        "ts": 1789765208195
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "4 所在节点",
+        "ts": 1789765208201
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " node-",
+        "ts": 1789765208207
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "2 失去心跳",
+        "ts": 1789765208213
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "，Pod 状",
+        "ts": 1789765208218
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "态 Runn",
+        "ts": 1789765208224
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ing 为过",
+        "ts": 1789765208230
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "期缓存，实际",
+        "ts": 1789765208235
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "不可用。\n\n",
+        "ts": 1789765208241
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "## 关键证",
+        "ts": 1789765208247
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "据\n- [E",
+        "ts": 1789765208253
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "vent] ",
+        "ts": 1789765208258
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "NodeNo",
+        "ts": 1789765208264
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "tReady",
+        "ts": 1789765208270
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": ": Node",
+        "ts": 1789765208275
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " is no",
+        "ts": 1789765208281
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "t read",
+        "ts": 1789765208287
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "y（coun",
+        "ts": 1789765208293
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "t=1，ge",
+        "ts": 1789765208298
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "t_pod_",
+        "ts": 1789765208304
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "events",
+        "ts": 1789765208309
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "）\n- [N",
+        "ts": 1789765208315
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ode] n",
+        "ts": 1789765208321
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ode-2:",
+        "ts": 1789765208327
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " Ready",
+        "ts": 1789765208332
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "=Unkno",
+        "ts": 1789765208338
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "wn (No",
+        "ts": 1789765208344
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "deStat",
+        "ts": 1789765208350
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "usUnkn",
+        "ts": 1789765208355
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "own)；t",
+        "ts": 1789765208361
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "aints:",
+        "ts": 1789765208367
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " node.",
+        "ts": 1789765208372
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "kubern",
+        "ts": 1789765208378
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "etes.i",
+        "ts": 1789765208383
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "o/unre",
+        "ts": 1789765208389
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "achabl",
+        "ts": 1789765208394
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "e:NoEx",
+        "ts": 1789765208400
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ecute,",
+        "ts": 1789765208405
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " node.",
+        "ts": 1789765208411
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "kubern",
+        "ts": 1789765208417
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "etes.i",
+        "ts": 1789765208423
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "o/unre",
+        "ts": 1789765208428
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "achabl",
+        "ts": 1789765208434
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "e:NoSc",
+        "ts": 1789765208440
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "hedule",
+        "ts": 1789765208445
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "（get_n",
+        "ts": 1789765208451
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ode）\n-",
+        "ts": 1789765208456
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " [Metr",
+        "ts": 1789765208462
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ic] 无指",
+        "ts": 1789765208468
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "标：指标采集",
+        "ts": 1789765208473
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "在 08:3",
+        "ts": 1789765208479
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "5 之后中断",
+        "ts": 1789765208485
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "（节点 no",
+        "ts": 1789765208490
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "de-2 停",
+        "ts": 1789765208495
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "止上报）（g",
+        "ts": 1789765208501
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "et_met",
+        "ts": 1789765208506
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "rics）\n",
+        "ts": 1789765208512
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "- [Log",
+        "ts": 1789765208518
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "] 取日志失",
+        "ts": 1789765208524
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "败：Erro",
+        "ts": 1789765208529
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "r from",
+        "ts": 1789765208534
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " serve",
+        "ts": 1789765208539
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "r: Get",
+        "ts": 1789765208545
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " \"http",
+        "ts": 1789765208550
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "s://10",
+        "ts": 1789765208556
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": ".0.2.1",
+        "ts": 1789765208562
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "2:1025",
+        "ts": 1789765208568
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "0/cont",
+        "ts": 1789765208573
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ainerL",
+        "ts": 1789765208579
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ogs/de",
+        "ts": 1789765208585
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "fault/",
+        "ts": 1789765208590
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "job-12",
+        "ts": 1789765208596
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "4/etl\"",
+        "ts": 1789765208602
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": ": dial",
+        "ts": 1789765208607
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " tcp 1",
+        "ts": 1789765208613
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "0.0.2.",
+        "ts": 1789765208618
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "12:102",
+        "ts": 1789765208624
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "50: i/",
+        "ts": 1789765208630
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "o time",
+        "ts": 1789765208635
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "out（ge",
+        "ts": 1789765208640
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "t_logs",
+        "ts": 1789765208646
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "）\n- [R",
+        "ts": 1789765208651
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "unbook",
+        "ts": 1789765208656
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "] Node",
+        "ts": 1789765208662
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " NotRe",
+        "ts": 1789765208667
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ady：症状",
+        "ts": 1789765208673
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "：Node ",
+        "ts": 1789765208679
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "Ready=",
+        "ts": 1789765208684
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "Unknow",
+        "ts": 1789765208690
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "n/Fals",
+        "ts": 1789765208696
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "e，last",
+        "ts": 1789765208701
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "Heartb",
+        "ts": 1789765208707
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "eatTim",
+        "ts": 1789765208713
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "e 停止更新",
+        "ts": 1789765208719
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "超过 40s",
+        "ts": 1789765208724
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "；节点被打上",
+        "ts": 1789765208730
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " node.",
+        "ts": 1789765208736
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "kubern",
+        "ts": 1789765208741
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "etes.i",
+        "ts": 1789765208747
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "o/unre",
+        "ts": 1789765208753
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "achabl",
+        "ts": 1789765208758
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "e tain",
+        "ts": 1789765208764
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "t；其上 P",
+        "ts": 1789765208770
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "od 出现 ",
+        "ts": 1789765208775
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "NodeNo",
+        "ts": 1789765208781
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "tRea…（",
+        "ts": 1789765208787
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "search",
+        "ts": 1789765208792
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "_runbo",
+        "ts": 1789765208798
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ok → k",
+        "ts": 1789765208804
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "8s/run",
+        "ts": 1789765208809
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "books/",
+        "ts": 1789765208815
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "node.m",
+        "ts": 1789765208821
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "d）\n- [",
+        "ts": 1789765208826
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "Case] ",
+        "ts": 1789765208832
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "CASE-2",
+        "ts": 1789765208838
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "026-05",
+        "ts": 1789765208843
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "2（2026",
+        "ts": 1789765208849
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "-07-19",
+        "ts": 1789765208855
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "）根因：云厂",
+        "ts": 1789765208860
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "商宿主机故障",
+        "ts": 1789765208866
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "导致节点失联",
+        "ts": 1789765208872
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "；处理：co",
+        "ts": 1789765208878
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "rdon 节",
+        "ts": 1789765208883
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "点，强制删除",
+        "ts": 1789765208889
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " Pod 让",
+        "ts": 1789765208895
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " Job 在",
+        "ts": 1789765208900
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "其他节点重建",
+        "ts": 1789765208906
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "，随后替换节",
+        "ts": 1789765208912
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "点（sear",
+        "ts": 1789765208917
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ch_cas",
+        "ts": 1789765208923
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "es）\n\n#",
+        "ts": 1789765208929
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "# 已确认事",
+        "ts": 1789765208934
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "实\n- Po",
+        "ts": 1789765208940
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "d defa",
+        "ts": 1789765208946
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ult/jo",
+        "ts": 1789765208951
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "b-124 ",
+        "ts": 1789765208956
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "phase=",
+        "ts": 1789765208962
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "Runnin",
+        "ts": 1789765208968
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "g reas",
+        "ts": 1789765208974
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "on=Nod",
+        "ts": 1789765208979
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "eLost，",
+        "ts": 1789765208985
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "节点 nod",
+        "ts": 1789765208990
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "e-2\n- ",
+        "ts": 1789765208996
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "Event ",
+        "ts": 1789765209002
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "NodeNo",
+        "ts": 1789765209007
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "tReady",
+        "ts": 1789765209013
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " 出现 1 ",
+        "ts": 1789765209019
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "次\n- 节点",
+        "ts": 1789765209024
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " node-",
+        "ts": 1789765209030
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "2 状态异常",
+        "ts": 1789765209036
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "：Ready",
+        "ts": 1789765209042
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "=Unkno",
+        "ts": 1789765209047
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "wn (No",
+        "ts": 1789765209052
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "deStat",
+        "ts": 1789765209058
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "usUnkn",
+        "ts": 1789765209063
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "own)；t",
+        "ts": 1789765209069
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "aints:",
+        "ts": 1789765209074
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " node.",
+        "ts": 1789765209080
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "kubern",
+        "ts": 1789765209086
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "etes.i",
+        "ts": 1789765209091
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "o/unre",
+        "ts": 1789765209097
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "achabl",
+        "ts": 1789765209103
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "e:NoEx",
+        "ts": 1789765209109
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ecute,",
+        "ts": 1789765209114
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " node.",
+        "ts": 1789765209120
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "kubern",
+        "ts": 1789765209126
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "etes.i",
+        "ts": 1789765209131
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "o/unre",
+        "ts": 1789765209137
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "achabl",
+        "ts": 1789765209143
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "e:NoSc",
+        "ts": 1789765209148
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "hedule",
+        "ts": 1789765209154
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "\n\n## 可",
+        "ts": 1789765209160
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "能原因（推测",
+        "ts": 1789765209166
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "）\n- 节点",
+        "ts": 1789765209172
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " node-",
+        "ts": 1789765209177
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "2 的 ku",
+        "ts": 1789765209183
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "belet ",
+        "ts": 1789765209188
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "或宿主机故障",
+        "ts": 1789765209193
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " / 网络隔",
+        "ts": 1789765209199
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "离 · 置信",
+        "ts": 1789765209204
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "度 高 · ",
+        "ts": 1789765209210
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "依据：Rea",
+        "ts": 1789765209216
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "dy=Unk",
+        "ts": 1789765209222
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "nown、心",
+        "ts": 1789765209227
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "跳停止、un",
+        "ts": 1789765209233
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "reacha",
+        "ts": 1789765209239
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ble ta",
+        "ts": 1789765209244
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "int、No",
+        "ts": 1789765209250
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "deNotR",
+        "ts": 1789765209256
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "eady E",
+        "ts": 1789765209262
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "vent、日",
+        "ts": 1789765209267
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "志端口 10",
+        "ts": 1789765209273
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "250 超时",
+        "ts": 1789765209279
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "、指标中断\n",
+        "ts": 1789765209284
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "\n## 处理",
+        "ts": 1789765209290
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "建议\n- 检",
+        "ts": 1789765209296
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "查节点 no",
+        "ts": 1789765209302
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "de-2 的",
+        "ts": 1789765209307
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " kubel",
+        "ts": 1789765209312
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "et 与云厂",
+        "ts": 1789765209318
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "商状态\n- ",
+        "ts": 1789765209323
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "kubect",
+        "ts": 1789765209329
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "l cord",
+        "ts": 1789765209335
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "on nod",
+        "ts": 1789765209340
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "e-2，强制",
+        "ts": 1789765209346
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "删除 Pod",
+        "ts": 1789765209352
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " 让 Job",
+        "ts": 1789765209358
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": " 在健康节点",
+        "ts": 1789765209363
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "重建\n- 长",
+        "ts": 1789765209369
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "期不恢复则 ",
+        "ts": 1789765209375
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "drain ",
+        "ts": 1789765209380
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "并替换节点\n",
+        "ts": 1789765209386
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "- 历史 C",
+        "ts": 1789765209392
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "ase CA",
+        "ts": 1789765209397
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "SE-202",
+        "ts": 1789765209403
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "6-052 ",
+        "ts": 1789765209409
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "的处理方式可",
+        "ts": 1789765209415
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "参考：cor",
+        "ts": 1789765209420
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "don 节点",
+        "ts": 1789765209426
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "，强制删除 ",
+        "ts": 1789765209431
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "Pod 让 ",
+        "ts": 1789765209437
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "Job 在其",
+        "ts": 1789765209443
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "他节点重建，",
+        "ts": 1789765209448
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "随后替换节点",
+        "ts": 1789765209454
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "\n\n## 证",
+        "ts": 1789765209460
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "据不足说明\n",
+        "ts": 1789765209465
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "delta",
+        "step": 5,
+        "text": "无",
+        "ts": 1789765209471
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "decision",
+        "step": 5,
+        "text": "## 故障现象\nPod job-124 所在节点 node-2 失去心跳，Pod 状态 Running 为过期缓存，实际不可用。\n\n## 关键证据\n- [Event] NodeNotReady: Node is not ready（count=1，get_pod_events）\n- [Node] node-2: Ready=Unknown (NodeStatusUnknown)；taints: node.kubernetes.io/unreachable:NoExecute, node.kubernetes.io/unreachable:NoSchedule（get_node）\n- [Metric] 无指标：指标采集在 08:35 之后中断（节点 node-2 停止上报）（get_metrics）\n- [Log] 取日志失败：Error from server: Get \"https://10.0.2.12:10250/containerLogs/default/job-124/etl\": dial tcp 10.0.2.12:10250: i/o timeout（get_logs）\n- [Runbook] Node NotReady：症状：Node Ready=Unknown/False，lastHeartbeatTime 停止更新超过 40s；节点被打上 node.kubernetes.io/unreachable taint；其上 Pod 出现 NodeNotRea…（search_runbook → k8s/runbooks/node.md）\n- [Case] CASE-2026-052（2026-07-19）根因：云厂商宿主机故障导致节点失联；处理：cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点（search_cases）\n\n## 已确认事实\n- Pod default/job-124 phase=Running reason=NodeLost，节点 node-2\n- Event NodeNotReady 出现 1 次\n- 节点 node-2 状态异常：Ready=Unknown (NodeStatusUnknown)；taints: node.kubernetes.io/unreachable:NoExecute, node.kubernetes.io/unreachable:NoSchedule\n\n## 可能原因（推测）\n- 节点 node-2 的 kubelet 或宿主机故障 / 网络隔离 · 置信度 高 · 依据：Ready=Unknown、心跳停止、unreachable taint、NodeNotReady Event、日志端口 10250 超时、指标中断\n\n## 处理建议\n- 检查节点 node-2 的 kubelet 与云厂商状态\n- kubectl cordon node-2，强制删除 Pod 让 Job 在健康节点重建\n- 长期不恢复则 drain 并替换节点\n- 历史 Case CASE-2026-052 的处理方式可参考：cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点\n\n## 证据不足说明\n无",
+        "toolCalls": [],
+        "usage": {
+          "inputTokens": 2560,
+          "outputTokens": 80
+        },
+        "durationMs": 1293,
+        "ts": 1789765209477
+      },
+      {
+        "agent": "main",
+        "depth": 0,
+        "type": "final",
+        "answer": "## 故障现象\nPod job-124 所在节点 node-2 失去心跳，Pod 状态 Running 为过期缓存，实际不可用。\n\n## 关键证据\n- [Event] NodeNotReady: Node is not ready（count=1，get_pod_events）\n- [Node] node-2: Ready=Unknown (NodeStatusUnknown)；taints: node.kubernetes.io/unreachable:NoExecute, node.kubernetes.io/unreachable:NoSchedule（get_node）\n- [Metric] 无指标：指标采集在 08:35 之后中断（节点 node-2 停止上报）（get_metrics）\n- [Log] 取日志失败：Error from server: Get \"https://10.0.2.12:10250/containerLogs/default/job-124/etl\": dial tcp 10.0.2.12:10250: i/o timeout（get_logs）\n- [Runbook] Node NotReady：症状：Node Ready=Unknown/False，lastHeartbeatTime 停止更新超过 40s；节点被打上 node.kubernetes.io/unreachable taint；其上 Pod 出现 NodeNotRea…（search_runbook → k8s/runbooks/node.md）\n- [Case] CASE-2026-052（2026-07-19）根因：云厂商宿主机故障导致节点失联；处理：cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点（search_cases）\n\n## 已确认事实\n- Pod default/job-124 phase=Running reason=NodeLost，节点 node-2\n- Event NodeNotReady 出现 1 次\n- 节点 node-2 状态异常：Ready=Unknown (NodeStatusUnknown)；taints: node.kubernetes.io/unreachable:NoExecute, node.kubernetes.io/unreachable:NoSchedule\n\n## 可能原因（推测）\n- 节点 node-2 的 kubelet 或宿主机故障 / 网络隔离 · 置信度 高 · 依据：Ready=Unknown、心跳停止、unreachable taint、NodeNotReady Event、日志端口 10250 超时、指标中断\n\n## 处理建议\n- 检查节点 node-2 的 kubelet 与云厂商状态\n- kubectl cordon node-2，强制删除 Pod 让 Job 在健康节点重建\n- 长期不恢复则 drain 并替换节点\n- 历史 Case CASE-2026-052 的处理方式可参考：cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点\n\n## 证据不足说明\n无",
+        "reason": "completed",
+        "steps": 5,
+        "usage": {
+          "inputTokens": 5278,
+          "outputTokens": 400
+        },
+        "ts": 1789765209477
+      }
+    ],
+    "children": []
+  }
+}

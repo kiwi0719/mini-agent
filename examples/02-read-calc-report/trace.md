@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T20:55:20.470Z
+- time: 2026-09-18T20:59:58.091Z
 
 ## 👤 User
 
@@ -72,7 +72,7 @@ _LLM 23ms · tokens in 150 / out 80_
 
 > 🔍 Tool Search 激活: csv_parse
 
-### ✅ Tool Result: `search_tools` (1ms)
+### ✅ Tool Result: `search_tools` (0ms)
 
 ```
 找到并激活 1 个工具，下一轮即可调用:
@@ -85,7 +85,7 @@ _LLM 23ms · tokens in 150 / out 80_
 
 → 决定调用 1 个工具: csv_parse
 
-_LLM 30ms · tokens in 265 / out 80_
+_LLM 28ms · tokens in 265 / out 80_
 
 ### 🔧 Tool Call: `csv_parse`
 
@@ -98,7 +98,7 @@ _LLM 30ms · tokens in 265 / out 80_
 }
 ```
 
-### ✅ Tool Result: `csv_parse` (1ms)
+### ✅ Tool Result: `csv_parse` (0ms)
 
 ```
 {
@@ -155,7 +155,7 @@ _LLM 40ms · tokens in 489 / out 80_
 }
 ```
 
-### ✅ Tool Result: `calculator` (1ms)
+### ✅ Tool Result: `calculator` (0ms)
 
 ```
 sum(1200, 850.5, 3200, 415.25, 999, 2750) = 9414.75
@@ -167,7 +167,7 @@ sum(1200, 850.5, 3200, 415.25, 999, 2750) = 9414.75
 
 → 决定调用 2 个工具: update_plan, write_file
 
-_LLM 7ms · tokens in 603 / out 80_
+_LLM 6ms · tokens in 603 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 

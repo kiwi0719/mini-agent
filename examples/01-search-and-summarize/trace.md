@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T20:55:20.059Z
+- time: 2026-09-18T20:59:57.658Z
 
 ## 👤 User
 
@@ -70,13 +70,13 @@ _LLM 18ms · tokens in 157 / out 80_
 }
 ```
 
-### ✅ Tool Result: `search_text` (2ms)
+### ✅ Tool Result: `search_text` (19ms)
 
 ```
 {
  "total": 19,
  "truncated": false,
- "files_scanned": 17,
+ "files_scanned": 25,
  "matches": [
   {
    "file": "README.md",
@@ -161,7 +161,7 @@ _LLM 18ms · tokens in 157 / out 80_
 
 → 决定调用 1 个工具: search_text
 
-_LLM 45ms · tokens in 964 / out 80_
+_LLM 47ms · tokens in 964 / out 80_
 
 ### 🔧 Tool Call: `search_text`
 
@@ -177,7 +177,7 @@ _LLM 45ms · tokens in 964 / out 80_
 {
  "total": 16,
  "truncated": false,
- "files_scanned": 17,
+ "files_scanned": 25,
  "matches": [
   {
    "file": "README.md",
@@ -265,7 +265,7 @@ _LLM 45ms · tokens in 964 / out 80_
 
 → 决定调用 4 个工具: delegate, delegate, delegate, delegate
 
-_LLM 45ms · tokens in 1667 / out 80_
+_LLM 46ms · tokens in 1667 / out 80_
 
 ### 🔧 Tool Call: `delegate`
 
@@ -299,7 +299,7 @@ _LLM 17ms · tokens in 26 / out 80_
 }
 ```
 
-### ✅ Tool Result [sub-1]: `read_file` (0ms)
+### ✅ Tool Result [sub-1]: `read_file` (1ms)
 
 ```
 import type { User } from './user.ts';
@@ -336,7 +336,7 @@ src/order.ts 中共 2 项:
 - L13: FIXME: 浮点运算精度问题，金额应使用整数分
 - L22: /* TODO: 订单状态机校验（pending → paid → shipped） */
 
-_LLM 101ms · tokens in 300 / out 80_
+_LLM 102ms · tokens in 300 / out 80_
 
 ### 🤖 Sub Agent sub-1 结束 (completed, 2 steps)
 
@@ -368,7 +368,7 @@ src/order.ts 中共 2 项:
 
 → 决定调用 1 个工具: read_file
 
-_LLM 17ms · tokens in 26 / out 80_
+_LLM 18ms · tokens in 26 / out 80_
 
 ### 🔧 Tool Call [sub-2]: `read_file`
 
@@ -378,7 +378,7 @@ _LLM 17ms · tokens in 26 / out 80_
 }
 ```
 
-### ✅ Tool Result [sub-2]: `read_file` (1ms)
+### ✅ Tool Result [sub-2]: `read_file` (0ms)
 
 ```
 import type { Order } from './order.ts';
@@ -406,7 +406,7 @@ src/payment.ts 中共 2 项:
 - L8: TODO: 幂等键，防止重复扣款
 - L14: FIXME: 退款没有校验订单状态是否为 paid
 
-_LLM 71ms · tokens in 246 / out 80_
+_LLM 73ms · tokens in 246 / out 80_
 
 ### 🤖 Sub Agent sub-2 结束 (completed, 2 steps)
 
@@ -438,7 +438,7 @@ src/payment.ts 中共 2 项:
 
 → 决定调用 1 个工具: read_file
 
-_LLM 17ms · tokens in 25 / out 80_
+_LLM 18ms · tokens in 25 / out 80_
 
 ### 🔧 Tool Call [sub-3]: `read_file`
 
@@ -448,7 +448,7 @@ _LLM 17ms · tokens in 25 / out 80_
 }
 ```
 
-### ✅ Tool Result [sub-3]: `read_file` (1ms)
+### ✅ Tool Result [sub-3]: `read_file` (0ms)
 
 ```
 export interface User {
@@ -488,7 +488,7 @@ src/user.ts 中共 3 项:
 - L17: FIXME: 没有校验 email 格式
 - L24: TODO(alice): 实现分页，见 docs/adr/001-storage.md
 
-_LLM 117ms · tokens in 317 / out 80_
+_LLM 119ms · tokens in 317 / out 80_
 
 ### 🤖 Sub Agent sub-3 结束 (completed, 2 steps)
 
@@ -521,7 +521,7 @@ src/user.ts 中共 3 项:
 
 → 决定调用 1 个工具: read_file
 
-_LLM 29ms · tokens in 29 / out 80_
+_LLM 30ms · tokens in 29 / out 80_
 
 ### 🔧 Tool Call [sub-4]: `read_file`
 
@@ -559,7 +559,7 @@ src/utils/validate.ts 中共 1 项:
 
 </details>
 
-### ✅ Tool Result: `delegate` (79ms)
+### ✅ Tool Result: `delegate` (80ms)
 
 ```
 [子 Agent 用 2 步完成]
@@ -567,7 +567,7 @@ src/utils/validate.ts 中共 1 项:
 - L5: TODO: 手机号校验支持国际区号
 ```
 
-### ✅ Tool Result: `delegate` (90ms)
+### ✅ Tool Result: `delegate` (91ms)
 
 ```
 [子 Agent 用 2 步完成]
@@ -576,7 +576,7 @@ src/payment.ts 中共 2 项:
 - L14: FIXME: 退款没有校验订单状态是否为 paid
 ```
 
-### ✅ Tool Result: `delegate` (119ms)
+### ✅ Tool Result: `delegate` (120ms)
 
 ```
 [子 Agent 用 2 步完成]
@@ -585,7 +585,7 @@ src/order.ts 中共 2 项:
 - L22: /* TODO: 订单状态机校验（pending → paid → shipped） */
 ```
 
-### ✅ Tool Result: `delegate` (135ms)
+### ✅ Tool Result: `delegate` (137ms)
 
 ```
 [子 Agent 用 2 步完成]
@@ -649,7 +649,7 @@ _LLM 23ms · tokens in 2089 / out 80_
 }
 ```
 
-### ✅ Tool Result: `write_file` (2ms)
+### ✅ Tool Result: `write_file` (1ms)
 
 ```
 已写入 todo-report.md (1093 bytes)
@@ -659,7 +659,7 @@ _LLM 23ms · tokens in 2089 / out 80_
 
 完成。严格匹配到 16 处 TODO/FIXME（排除了 todoList/TODOS 等假阳性），分布在 9 个文件，4 个源码文件由子 Agent 并行分析，报告已写入 todo-report.md。
 
-_LLM 95ms · tokens in 2558 / out 80_
+_LLM 97ms · tokens in 2558 / out 80_
 
 ## 🏁 Final Answer (completed, 6 steps, tokens in 8613 / out 1120)
 

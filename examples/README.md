@@ -1,6 +1,6 @@
 # 示例任务执行结果
 
-provider: `mock` · 生成时间: 2026-09-18T20:55:20.056Z
+provider: `mock` · 生成时间: 2026-09-18T20:59:21.271Z
 
 ## [01-search-and-summarize](./01-search-and-summarize/README.md)
 
@@ -89,3 +89,83 @@ provider: `mock` · 生成时间: 2026-09-18T20:55:20.056Z
 - 校验: ✅
 - 结果: **completed**，4 steps，3 tool calls，0 failures，0 sub agents
 - 最终答案: 无法完成：换算成美元需要人民币兑美元汇率，但任务没有提供，workspace 中也没有任何汇率配置（搜索 "汇率|exchange|USD|CNY|rate" 无有效结果）。我不会猜一个汇率写进报告。请提供汇率（例如 "1 USD = 7.2 CNY"）后重试；销售数据本身已读取成功，共 6 条有效记录。
+
+## [12-log-analysis-report](./12-log-analysis-report/README.md)
+
+- 类型: 日志分析：一轮并行 stats/latency/errors/timeline → 并行 log_trace 还原代表链路 → Markdown 报告（区分统计事实与推断）
+- 任务: 分析 logs/app.log，生成 logs/report.md，重点说明错误和慢请求。
+- 校验: ✅
+- 结果: **completed**，5 steps，10 tool calls，0 failures，0 sub agents
+- 最终答案: 完成。分析了 logs/app.log 共 9988 行（2026-08-10 10:00:00.545 ~ 2026-08-10 10:15:27.673）：
+
+## [13-log-trace-restore](./13-log-trace-restore/README.md)
+
+- 类型: 日志分析：按 traceId 还原完整链路
+- 任务: 还原 traceId=t00002 的完整链路（logs/app.log）。
+- 校验: ✅
+- 结果: **completed**，2 steps，1 tool calls，0 failures，0 sub agents
+- 最终答案: traceId=t00002 的链路（6 条日志，状态 FAILED）：
+
+## [14-log-file-missing](./14-log-file-missing/README.md)
+
+- 类型: 日志分析失败路径：文件不存在 → list_files 确认 → 明确终止
+- 任务: 分析 logs/nope.log 并生成 logs/nope-report.md。
+- 校验: ✅
+- 结果: **completed**，4 steps，6 tool calls，4 failures，0 sub agents
+- 最终答案: 无法读取日志文件：文件不存在: logs/nope.log。workspace 中的文件：
+
+## [15-k8s-oom-with-fix](./15-k8s-oom-with-fix/README.md)
+
+- 类型: K8s：OOMKilled → previous 日志 → runbook/case → propose_fix → apply_fix（写）→ verify_fix → 复盘报告
+- 任务: 帮我分析 job-123 为什么失败，并修复它。
+- 校验: ❌ 修复后未确认恢复
+- 结果: **completed**，9 steps，15 tool calls，0 failures，0 sub agents
+- 最终答案: ## 故障现象
+
+## [16-k8s-insufficient-evidence](./16-k8s-insufficient-evidence/README.md)
+
+- 类型: K8s：Event 已清理 / 日志为空 / 无指标 → 不强行下结论，说明还缺什么
+- 任务: 帮我分析 job-128 为什么失败。
+- 校验: ✅
+- 结果: **completed**，5 steps，9 tool calls，1 failures，0 sub agents
+- 最终答案: ## 故障现象
+
+## [17-k8s-net-timeout-no-write](./17-k8s-net-timeout-no-write/README.md)
+
+- 类型: K8s：连接超时诊断 + 修复需人工确认（无写权限 → apply_fix 被拒 → 转为待确认建议）
+- 任务: 帮我分析 api-worker-7 为什么不 ready，并修复。
+- 校验: ✅
+- 结果: **completed**，7 steps，12 tool calls，1 failures，0 sub agents
+- 最终答案: ## 故障现象
+
+## [18-k8s-node-notready](./18-k8s-node-notready/README.md)
+
+- 类型: K8s：Node NotReady（日志取不到、指标中断本身就是证据）
+- 任务: 帮我分析 job-124 为什么失败。
+- 校验: ✅
+- 结果: **completed**，5 steps，10 tool calls，1 failures，0 sub agents
+- 最终答案: ## 故障现象
+
+## [19-k8s-scheduling-failed](./19-k8s-scheduling-failed/README.md)
+
+- 类型: K8s：Scheduling Failed（Pending + FailedScheduling message 逐节点原因）
+- 任务: 帮我分析 job-125 为什么失败。
+- 校验: ✅
+- 结果: **completed**，5 steps，10 tool calls，0 failures，0 sub agents
+- 最终答案: ## 故障现象
+
+## [20-k8s-disk-pressure](./20-k8s-disk-pressure/README.md)
+
+- 类型: K8s：DiskPressure 驱逐（Evicted message + Node condition + 日志 no space left）
+- 任务: 帮我分析 job-126 为什么失败。
+- 校验: ✅
+- 结果: **completed**，5 steps，10 tool calls，1 failures，0 sub agents
+- 最终答案: ## 故障现象
+
+## [21-k8s-gpu-xid-nccl](./21-k8s-gpu-xid-nccl/README.md)
+
+- 类型: K8s（AI Infra）：GPU Xid 79 → NCCL timeout，区分硬件根因与次生现象
+- 任务: 帮我分析 train-job-7 为什么失败。
+- 校验: ✅
+- 结果: **completed**，5 steps，10 tool calls，0 failures，0 sub agents
+- 最终答案: ## 故障现象
