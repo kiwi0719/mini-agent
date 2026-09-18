@@ -196,13 +196,6 @@
 - 流式解析容忍第三方常见偏差（tool_use.input 在 start 里已给全、partial_json 为空、缺 usage、多出 thinking 块、事件名缺失）；也支持 `stream:false` 直接解 JSON。
 - Web 端加 Anthropic 面板：预设切换带出地址 / 模型 / max_tokens。dev server 是改动前启动的进程，预设下拉一度为空，重启后正常；进程里没有 key 时配置错误正确显示在时间线。类型检查通过，真实打一次官方接口验证错误透出。（收尾中：更新文档并重跑测试）
 
-## 12. 交付物复核
-
-**候选人**（重新粘贴完整题目与 9 项交付物要求）：
-> 复核下哪没完成 包括新增的设计
-
-**AI**：（进行中）逐项对照题目复核仓库现状，包括另一个会话新增的日志 / K8s 部分。
-
 ## 11. 本地模型兼容（Ollama / vLLM）
 
 **候选人**：
@@ -215,8 +208,7 @@
 - 按候选人要求不跑本地模型，改写 `scripts/check-request-schema.ts` 离线校验三种 flavor 的请求体与全部 26 个工具 schema，全部通过；浏览器里验证面板切换 flavor 自动填默认值、模型拉取失败时报错清晰、vLLM 提示显示。
 - 只提交自己的文件，并把另一会话在 web/index.html 上的未提交修改恢复回工作区。
 
-
-## 11. Anthropic Provider 兼容第三方
+## 12. Anthropic Provider 兼容第三方
 
 **候选人**：
 > anthropic也别只兼容官方接口了 改吧  要兼容别的
@@ -227,6 +219,23 @@
 - 接线：`createProvider` 透传 preset / authToken / maxTokens；CLI 新增 `--preset --auth-token --max-tokens` 并把配置错误改为友好退出；服务端 `/api/info` 返回预设表、`/api/models` 支持 Anthropic 格式（`/v1/models` + 双头）；Web 面板新增端点预设、地址、模型、Key、流式开关、max_tokens。
 - 验证：假的 Anthropic 兼容服务覆盖 6 组用例全部通过；真实请求官方接口 401 正确透出；浏览器里预设切换带出默认值、缺 key 的错误显示在时间线。`pnpm remove @anthropic-ai/sdk`。
 - 文档：README 用法、DESIGN §5 兼容性规则、AI_USAGE、本文件。
+- 未验证：各厂商预设的默认地址与模型名按公开文档填写，没有对应 key 实测；拿到任一家的 key 跑 `pnpm agent -- -p anthropic --preset kimi --api-key sk-... "…"` 即可确认。
+
+## 13. 交付物复核
+
+**候选人**（重新粘贴完整题目与 9 项交付物要求）：
+> 复核下哪没完成 包括新增的设计
+
+**AI**：逐项对照题目复核后，收口并推送 `1a87094`，把另一线程的全部工作（日志工具包、K8s 工具包、无 SDK 的 Anthropic Provider、Mock 剧本、两个生成脚本）一并入库，消除远端与本地不一致——README 承诺的 21 个任务此前在远端并不存在。修掉四个问题：
+
+1. 远端缺文件：另一线程的工作全部提交，无丢失。
+2. Schema 校验从 3 种 OpenAI 口味扩到 9 种端点配置，新增 Anthropic 格式 6 个厂商预设的断言：顶层 `max_tokens` 必填、`system` 是独立字段而非 messages 角色、`tool_use.input` 必须是对象（与 OpenAI 的字符串相反）、`tool_result` 必须在 user 消息里且 id 配对、两种鉴权头互相兜底、baseUrl 六种写法归一化。写这段时抓到一个真问题：校验器会读取宿主机的 `ANTHROPIC_AUTH_TOKEN`，断言结果依赖环境 → 改为显式传值并补只给 Bearer 的反向用例。
+3. DESIGN.md 与扩展脱节：架构图补四类工具，工具清单列明 26 个工具的来源与接口一致性，说明扩展工具包为何不需要改 Agent 任何一行（K8s 的人工确认直接用现成的 `permission: 'write'` 表达）；限制补两条（扩展包数据是 Mock、工具数量增长后 Tool Search 取舍会失效）。
+4. AI_USAGE 把 schema 校验说成端到端验证 → 改为三档表格，区分端到端验证、仅协议层验证、Mock 数据下的端到端。
+
+**独立验证**：从 GitHub 全新 clone，`pnpm install` → `pnpm typecheck` → `pnpm check-schema` → `pnpm test` 全部通过，21/21 用例校验通过；题目原句任务的 CLI 冒烟 6 步完成、16 处 TODO、排除假阳性。
+
+**仍存在的最大限制**（DESIGN §8 第一条）：四条模型通路从未连过任何真实模型，开发机 key 无效、性能不足以跑本地模型，所有端到端结果来自 Mock；`check-schema` 只能保证字段不传错，不能保证 Agent 可用。
 
 ## 候选人对 AI 的指导方式小结
 
@@ -236,3 +245,7 @@
 - 要求过程可追溯（ai-conversation.md、AI_USAGE.md、examples）。
 - 让 AI 自己先讲架构、自己列问题，再逐条裁决处理方式（修 / 换方案 / 跳过 / 只讨论），而不是逐行看代码。
 - 对“测试是否有说服力”单独把关，而不只看功能是否实现。
+- 在方案有多个可选实现时给出取舍判断而非让 AI 自选（Tool Search"正常要 1/3，但这是 demo，选 2 并在文档里说明"）。
+- 主动限定不值得花的成本（不跑本地模型验证、Context 按字符数估算不重要），把精力留在机制正确性上。
+- 交付前要求 AI 逐项对照题目复核，而不是相信 AI 的"做完了"。
+- 并行开多个会话推进不同方向，并要求其中一个会话专门负责把全过程留档。

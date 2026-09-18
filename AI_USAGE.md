@@ -33,7 +33,7 @@
 15. **两个会话互踩时的处理**：AI 发现自己 `git add -A` 带上了另一个会话的半成品并询问是否回退，候选人决定不回退，"你就 commit 你的就行"。
 16. **本地模型兼容的范围**：要求前端加 provider 选项与 API base URL 输入，兼容 Ollama 与 vLLM，字段由 AI 设计（可检索资料）；明确不做别的，也不在本机跑验证（性能不够），只要保证 schema 不传错。
 17. **Anthropic Provider 也要兼容非官方接口**：候选人要求 Anthropic 通道不只连官方 API，也要支持第三方兼容网关。AI 据此去掉官方 SDK 改为直接 fetch，并加 Kimi / GLM / DeepSeek / MiniMax 预设。
-18. **交付前复核**：候选人重新贴出题目全部交付物要求，要求 AI 逐项复核哪些没完成，包括新增的设计。
+18. **交付前复核**：候选人重新贴出题目全部交付物要求，要求 AI 逐项复核哪些没完成，包括新增的设计。AI 据此发现远端缺失另一线程的全部文件并收口提交。
 
 ## AI 出现过哪些错误判断，如何发现与修正
 
@@ -60,6 +60,9 @@
 | 19 | 提交时用 `git add -A`，把另一个会话正在写的 `log-tools.ts`、`k8s-tools.ts` 等半成品一起推上了远端 | 探针测试的工具列表出现自己没写的工具，追查发现有另一个 Claude 会话 | 改为只暂存自己改的文件，主动向候选人报告并询问处理方式 |
 | 20 | `gen-workspace.ts` 整目录删除 workspace 再重建，`pnpm test` 每跑一次就清掉另一个会话的 `workspace/logs`、`workspace/k8s` | 发现 `workspace/logs` 为空 | 改为只清理自己生成的子树 |
 | 21 | K8s GPU 场景中重启类 Pod 没取 previous 容器日志，证据链缺失 | 跑示例时发现 | get_logs 对重启 Pod 取 previous 日志 |
+| 22 | 只提交自己改的文件，导致远端长期缺少另一线程的全部工作，README 承诺的 21 个任务在远端并不存在 | 候选人要求复核交付物时逐项对照发现 | 收口提交全部文件，并从 GitHub 全新 clone 独立验证 |
+| 23 | `check-request-schema.ts` 会读取宿主机的 `ANTHROPIC_AUTH_TOKEN`，断言结果依赖运行环境 | 扩展 Anthropic 预设校验时发现 | 改为显式传值，并补只给 Bearer 的反向用例 |
+| 24 | AI_USAGE 把 schema 离线校验写成"端到端验证" | 复核时自查发现 | 改为三档表格，区分端到端 / 仅协议层 / Mock 数据下的端到端 |
 
 ## 测试用例从 5 个到 11 个
 
