@@ -2,7 +2,7 @@
 
 - provider: mock
 - workspace: workspace
-- time: 2026-09-18T21:35:32.805Z
+- time: 2026-09-18T21:41:48.122Z
 
 ## 👤 User
 
@@ -16,7 +16,7 @@
 
 → 决定调用 1 个工具: update_plan
 
-_LLM 27ms · tokens in 18 / out 80_
+_LLM 29ms · tokens in 18 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -66,7 +66,7 @@ _LLM 27ms · tokens in 18 / out 80_
 
 → 决定调用 1 个工具: get_pod
 
-_LLM 13ms · tokens in 177 / out 80_
+_LLM 12ms · tokens in 177 / out 80_
 
 ### 🔧 Tool Call: `get_pod`
 
@@ -77,7 +77,7 @@ _LLM 13ms · tokens in 177 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_pod` (1ms)
+### ✅ Tool Result: `get_pod` (2ms)
 
 ```
 {
@@ -160,7 +160,7 @@ Pod 信号：容器 report-builder 终止原因=OOMKilled exitCode=137；容器 
 
 → 决定调用 5 个工具: update_plan, get_pod_events, get_node, get_metrics, get_logs
 
-_LLM 267ms · tokens in 824 / out 80_
+_LLM 268ms · tokens in 824 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -242,7 +242,7 @@ _LLM 267ms · tokens in 824 / out 80_
 计划已更新（1/4 完成）
 ```
 
-### ✅ Tool Result: `get_metrics` (3ms)
+### ✅ Tool Result: `get_metrics` (2ms)
 
 ```
 {
@@ -341,18 +341,7 @@ _LLM 267ms · tokens in 824 / out 80_
 …[截断 1958 字符]
 ```
 
-### ✅ Tool Result: `get_logs` (4ms)
-
-```
-{
- "previous": true,
- "lines": 6,
- "highlights": [],
- "log": "2026-09-18T08:40:02Z INFO  report-builder starting, version 1.4.2\n2026-09-18T08:40:02Z INFO  loading dataset /data/orders-2026-09.parquet (3.9 GB)\n2026-09-18T08:40:21Z INFO  loaded 1200000 rows into memory\n2026-09-18T08:41:30Z INFO  loaded 8400000 rows into memory\n2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit\n2026-09-18T08:44:01Z INFO  building pivot table (this may take a while)"
-}
-```
-
-### ✅ Tool Result: `get_pod_events` (17ms)
+### ✅ Tool Result: `get_pod_events` (16ms)
 
 ```
 {
@@ -403,7 +392,18 @@ _LLM 267ms · tokens in 824 / out 80_
 }
 ```
 
-### ✅ Tool Result: `get_node` (17ms)
+### ✅ Tool Result: `get_logs` (15ms)
+
+```
+{
+ "previous": true,
+ "lines": 6,
+ "highlights": [],
+ "log": "2026-09-18T08:40:02Z INFO  report-builder starting, version 1.4.2\n2026-09-18T08:40:02Z INFO  loading dataset /data/orders-2026-09.parquet (3.9 GB)\n2026-09-18T08:40:21Z INFO  loaded 1200000 rows into memory\n2026-09-18T08:41:30Z INFO  loaded 8400000 rows into memory\n2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit\n2026-09-18T08:44:01Z INFO  building pivot table (this may take a while)"
+}
+```
+
+### ✅ Tool Result: `get_node` (16ms)
 
 ```
 {
@@ -453,7 +453,7 @@ _LLM 267ms · tokens in 824 / out 80_
 
 → 决定调用 3 个工具: update_plan, search_runbook, search_cases
 
-_LLM 46ms · tokens in 3478 / out 80_
+_LLM 47ms · tokens in 3478 / out 80_
 
 ### 🔧 Tool Call: `update_plan`
 
@@ -567,7 +567,7 @@ _LLM 46ms · tokens in 3478 / out 80_
 
 → 决定调用 1 个工具: propose_fix
 
-_LLM 11ms · tokens in 4198 / out 80_
+_LLM 12ms · tokens in 4198 / out 80_
 
 ### 🔧 Tool Call: `propose_fix`
 
@@ -614,7 +614,7 @@ _LLM 11ms · tokens in 4198 / out 80_
 
 → 决定调用 1 个工具: apply_fix
 
-_LLM 204ms · tokens in 4512 / out 80_
+_LLM 202ms · tokens in 4512 / out 80_
 
 ### 🔧 Tool Call: `apply_fix`
 
@@ -644,7 +644,7 @@ _LLM 204ms · tokens in 4512 / out 80_
 
 → 决定调用 1 个工具: verify_fix
 
-_LLM 17ms · tokens in 4771 / out 80_
+_LLM 18ms · tokens in 4771 / out 80_
 
 ### 🔧 Tool Call: `verify_fix`
 
@@ -663,7 +663,7 @@ _LLM 17ms · tokens in 4771 / out 80_
  "appliedActions": [
   {
    "action": "increase_memory_limit",
-   "at": "2026-09-18T21:35:33.400Z",
+   "at": "2026-09-18T21:41:48.719Z",
    "operator": "user"
   }
  ],
@@ -733,7 +733,7 @@ _LLM 12ms · tokens in 4970 / out 80_
 ```json
 {
   "path": "k8s/postmortem-job-123.md",
-  "content": "# 故障复盘：default/job-123\n\n- 时间：2026-09-18T21:35:33.420Z\n- 分类：OOMKilled（容器内存超过 limit）\n- 修复动作：increase_memory_limit（kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi）\n- 复查结果：已恢复\n\n## 故障现象\nPod job-123 反复重启（restartCount=5），容器被内核 OOM Killer 杀死，处于 CrashLoopBackOff。\n\n## 关键证据\n- [Pod] 容器 report-builder lastState.terminated.reason=OOMKilled exitCode=137，restartCount=5（get_pod）\n- [Event] BackOff: Back-off restarting failed container report-builder in pod job-123（count=12，get_pod_events）\n- [Metric] memory 峰值 511MiB / limit 512MiB（100%），cpu 峰值 0.5cores（get_metrics）\n- [Log] 2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit（get_logs previous=true）\n- [Runbook] OOMKilled：症状：容器 lastState.terminated.reason=OOMKilled，exitCode=137，restartCount 持续增长，Event 出现 BackOff；内存指标峰值逼近 limit。…（search_runbook → k8s/runbooks/oom.md）\n- [Case] CASE-2026-041（2026-07-03）根因：月末数据量翻倍，整表加载进内存超过 limit；处理：memory limit 512Mi → 2Gi，并改为分批读取（search_cases）\n- [Pod] 修复后 phase=Running，containersReady=report-builder:true，recovered=true（verify_fix）\n\n## 已确认事实\n- Pod default/job-123 phase=Running，节点 node-1\n- 容器上次终止原因 OOMKilled，exitCode 137，已重启 5 次\n- Event BackOff 出现 12 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 应用工作集超过 memory limit 512Mi · 置信度 高 · 依据：terminated.reason=OOMKilled、内存峰值达 limit 的 100%、崩溃前日志显示在加载大数据集\n- 数据量增长或内存泄漏导致占用持续上升 · 置信度 中 · 依据：内存曲线单调上升而非平台期；需对比历史批次数据量\n\n## 处理建议\n- 已执行 increase_memory_limit 并复查恢复（recovered=true）。\n- 临时：把 memory limit 从 512Mi 提高（如 2Gi）并重建 Pod\n- 根本：分批加载数据 / 排查泄漏；配置 VPA 推荐值\n- 注意 exitCode 137 也可能来自驱逐，此处 reason 明确为 OOMKilled\n- 历史 Case CASE-2026-041 的处理方式可参考：memory limit 512Mi → 2Gi，并改为分批读取\n\n## 证据不足说明\n无\n\n## 改进项\n\n- 为批处理 Job 设置基于数据量的内存预估\n- 增加内存使用率 > 90% 的告警\n"
+  "content": "# 故障复盘：default/job-123\n\n- 时间：2026-09-18T21:41:48.741Z\n- 分类：OOMKilled（容器内存超过 limit）\n- 修复动作：increase_memory_limit（kubectl set resources job/job-123 --limits=memory=2Gi --requests=memory=1Gi）\n- 复查结果：已恢复\n\n## 故障现象\nPod job-123 反复重启（restartCount=5），容器被内核 OOM Killer 杀死，处于 CrashLoopBackOff。\n\n## 关键证据\n- [Pod] 容器 report-builder lastState.terminated.reason=OOMKilled exitCode=137，restartCount=5（get_pod）\n- [Event] BackOff: Back-off restarting failed container report-builder in pod job-123（count=12，get_pod_events）\n- [Metric] memory 峰值 511MiB / limit 512MiB（100%），cpu 峰值 0.5cores（get_metrics）\n- [Log] 2026-09-18T08:43:55Z WARN  heap usage 498 MiB of 512 MiB limit（get_logs previous=true）\n- [Runbook] OOMKilled：症状：容器 lastState.terminated.reason=OOMKilled，exitCode=137，restartCount 持续增长，Event 出现 BackOff；内存指标峰值逼近 limit。…（search_runbook → k8s/runbooks/oom.md）\n- [Case] CASE-2026-041（2026-07-03）根因：月末数据量翻倍，整表加载进内存超过 limit；处理：memory limit 512Mi → 2Gi，并改为分批读取（search_cases）\n- [Pod] 修复后 phase=Running，containersReady=report-builder:true，recovered=true（verify_fix）\n\n## 已确认事实\n- Pod default/job-123 phase=Running，节点 node-1\n- 容器上次终止原因 OOMKilled，exitCode 137，已重启 5 次\n- Event BackOff 出现 12 次\n- 节点 node-1 Ready=True，无资源压力\n\n## 可能原因（推测）\n- 应用工作集超过 memory limit 512Mi · 置信度 高 · 依据：terminated.reason=OOMKilled、内存峰值达 limit 的 100%、崩溃前日志显示在加载大数据集\n- 数据量增长或内存泄漏导致占用持续上升 · 置信度 中 · 依据：内存曲线单调上升而非平台期；需对比历史批次数据量\n\n## 处理建议\n- 已执行 increase_memory_limit 并复查恢复（recovered=true）。\n- 临时：把 memory limit 从 512Mi 提高（如 2Gi）并重建 Pod\n- 根本：分批加载数据 / 排查泄漏；配置 VPA 推荐值\n- 注意 exitCode 137 也可能来自驱逐，此处 reason 明确为 OOMKilled\n- 历史 Case CASE-2026-041 的处理方式可参考：memory limit 512Mi → 2Gi，并改为分批读取\n\n## 证据不足说明\n无\n\n## 改进项\n\n- 为批处理 Job 设置基于数据量的内存预估\n- 增加内存使用率 > 90% 的告警\n"
 }
 ```
 
@@ -778,7 +778,7 @@ Pod job-123 反复重启（restartCount=5），容器被内核 OOM Killer 杀死
 ## 证据不足说明
 无
 
-_LLM 1391ms · tokens in 5770 / out 80_
+_LLM 1393ms · tokens in 5770 / out 80_
 
 ## 🏁 Final Answer (completed, 9 steps, tokens in 28718 / out 720)
 

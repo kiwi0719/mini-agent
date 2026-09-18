@@ -3,14 +3,14 @@
     "provider": "mock",
     "workspace": "workspace"
   },
-  "startedAt": 1789767340566,
+  "startedAt": 1789767715890,
   "events": [
     {
       "agent": "main",
       "depth": 0,
       "type": "user",
       "task": "帮我分析 job-126 为什么失败。",
-      "ts": 1789767340566
+      "ts": 1789767715890
     },
     {
       "agent": "main",
@@ -18,7 +18,7 @@
       "type": "delta",
       "step": 1,
       "text": "诊断 job",
-      "ts": 1789767340566
+      "ts": 1789767715890
     },
     {
       "agent": "main",
@@ -26,7 +26,7 @@
       "type": "delta",
       "step": 1,
       "text": "-126：先",
-      "ts": 1789767340572
+      "ts": 1789767715895
     },
     {
       "agent": "main",
@@ -34,7 +34,7 @@
       "type": "delta",
       "step": 1,
       "text": "看 Pod ",
-      "ts": 1789767340577
+      "ts": 1789767715901
     },
     {
       "agent": "main",
@@ -42,7 +42,7 @@
       "type": "delta",
       "step": 1,
       "text": "状态，再决定",
-      "ts": 1789767340583
+      "ts": 1789767715907
     },
     {
       "agent": "main",
@@ -50,7 +50,7 @@
       "type": "delta",
       "step": 1,
       "text": "查哪些信息。",
-      "ts": 1789767340588
+      "ts": 1789767715912
     },
     {
       "agent": "main",
@@ -93,7 +93,7 @@
         "outputTokens": 80
       },
       "durationMs": 28,
-      "ts": 1789767340594
+      "ts": 1789767715918
     },
     {
       "agent": "main",
@@ -128,7 +128,7 @@
           ]
         }
       },
-      "ts": 1789767340594
+      "ts": 1789767715918
     },
     {
       "agent": "main",
@@ -157,7 +157,7 @@
           "status": "pending"
         }
       ],
-      "ts": 1789767340594
+      "ts": 1789767715918
     },
     {
       "agent": "main",
@@ -171,7 +171,7 @@
         "output": "计划已更新（0/4 完成）"
       },
       "durationMs": 0,
-      "ts": 1789767340594
+      "ts": 1789767715918
     },
     {
       "agent": "main",
@@ -179,7 +179,7 @@
       "type": "delta",
       "step": 2,
       "text": "获取 Pod",
-      "ts": 1789767340595
+      "ts": 1789767715918
     },
     {
       "agent": "main",
@@ -187,7 +187,7 @@
       "type": "delta",
       "step": 2,
       "text": " 状态。",
-      "ts": 1789767340600
+      "ts": 1789767715924
     },
     {
       "agent": "main",
@@ -210,7 +210,7 @@
         "outputTokens": 80
       },
       "durationMs": 12,
-      "ts": 1789767340606
+      "ts": 1789767715930
     },
     {
       "agent": "main",
@@ -225,7 +225,7 @@
           "namespace": "default"
         }
       },
-      "ts": 1789767340606
+      "ts": 1789767715930
     },
     {
       "agent": "main",
@@ -238,8 +238,8 @@
         "ok": true,
         "output": "{\n \"namespace\": \"default\",\n \"name\": \"job-126\",\n \"phase\": \"Failed\",\n \"reason\": \"Evicted\",\n \"message\": \"The node was low on resource: ephemeral-storage. Threshold quantity: 10Gi, available: 2980Mi. Container exporter was using 41Gi, request is 0, has larger consumption of ephemeral-storage.\",\n \"nodeName\": \"node-3\",\n \"startTime\": \"2026-09-18T08:00:00.000Z\",\n \"labels\": {\n  \"app\": \"exporter\",\n  \"job-name\": \"job-126\"\n },\n \"resources\": {\n  \"requests\": {\n   \"cpu\": \"500m\",\n   \"memory\": \"1Gi\"\n  },\n  \"limits\": {\n   \"cpu\": \"1\",\n   \"memory\": \"2Gi\"\n  }\n },\n \"containers\": [\n  {\n   \"name\": \"exporter\",\n   \"image\": \"registry.local/exporter:1.4.2\",\n   \"ready\": false,\n   \"restartCount\": 0,\n   \"state\": {\n    \"terminated\": {\n     \"reason\": \"ContainerStatusUnknown\",\n     \"exitCode\": 137,\n     \"finishedAt\": \"2026-09-18T08:50:00.000Z\"\n    }\n   }\n  }\n ],\n \"conditions\": [\n  {\n   \"type\": \"PodScheduled\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"Initialized\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"ContainersReady\",\n   \"status\": \"False\"\n  },\n  {\n   \"type\": \"Ready\",\n   \"status\": \"False\"\n  }\n ],\n \"signals\": [\n  \"phase=Failed reason=Evicted\",\n  \"容器 exporter 终止原因=ContainerStatusUnknown exitCode=137\",\n  \"condition ContainersReady=False\",\n  \"condition Ready=False\"\n ]\n}"
       },
-      "durationMs": 2,
-      "ts": 1789767340608
+      "durationMs": 1,
+      "ts": 1789767715931
     },
     {
       "agent": "main",
@@ -247,7 +247,7 @@
       "type": "delta",
       "step": 3,
       "text": "Pod 信号",
-      "ts": 1789767340608
+      "ts": 1789767715931
     },
     {
       "agent": "main",
@@ -255,7 +255,7 @@
       "type": "delta",
       "step": 3,
       "text": "：phase",
-      "ts": 1789767340614
+      "ts": 1789767715937
     },
     {
       "agent": "main",
@@ -263,7 +263,7 @@
       "type": "delta",
       "step": 3,
       "text": "=Faile",
-      "ts": 1789767340620
+      "ts": 1789767715943
     },
     {
       "agent": "main",
@@ -271,7 +271,7 @@
       "type": "delta",
       "step": 3,
       "text": "d reas",
-      "ts": 1789767340625
+      "ts": 1789767715949
     },
     {
       "agent": "main",
@@ -279,7 +279,7 @@
       "type": "delta",
       "step": 3,
       "text": "on=Evi",
-      "ts": 1789767340631
+      "ts": 1789767715954
     },
     {
       "agent": "main",
@@ -287,7 +287,7 @@
       "type": "delta",
       "step": 3,
       "text": "cted；容",
-      "ts": 1789767340636
+      "ts": 1789767715960
     },
     {
       "agent": "main",
@@ -295,7 +295,7 @@
       "type": "delta",
       "step": 3,
       "text": "器 expo",
-      "ts": 1789767340642
+      "ts": 1789767715965
     },
     {
       "agent": "main",
@@ -303,7 +303,7 @@
       "type": "delta",
       "step": 3,
       "text": "rter 终",
-      "ts": 1789767340647
+      "ts": 1789767715971
     },
     {
       "agent": "main",
@@ -311,7 +311,7 @@
       "type": "delta",
       "step": 3,
       "text": "止原因=Co",
-      "ts": 1789767340653
+      "ts": 1789767715977
     },
     {
       "agent": "main",
@@ -319,7 +319,7 @@
       "type": "delta",
       "step": 3,
       "text": "ntaine",
-      "ts": 1789767340659
+      "ts": 1789767715983
     },
     {
       "agent": "main",
@@ -327,7 +327,7 @@
       "type": "delta",
       "step": 3,
       "text": "rStatu",
-      "ts": 1789767340664
+      "ts": 1789767715988
     },
     {
       "agent": "main",
@@ -335,7 +335,7 @@
       "type": "delta",
       "step": 3,
       "text": "sUnkno",
-      "ts": 1789767340670
+      "ts": 1789767715993
     },
     {
       "agent": "main",
@@ -343,7 +343,7 @@
       "type": "delta",
       "step": 3,
       "text": "wn exi",
-      "ts": 1789767340675
+      "ts": 1789767715999
     },
     {
       "agent": "main",
@@ -351,7 +351,7 @@
       "type": "delta",
       "step": 3,
       "text": "tCode=",
-      "ts": 1789767340681
+      "ts": 1789767716005
     },
     {
       "agent": "main",
@@ -359,7 +359,7 @@
       "type": "delta",
       "step": 3,
       "text": "137；co",
-      "ts": 1789767340687
+      "ts": 1789767716010
     },
     {
       "agent": "main",
@@ -367,7 +367,7 @@
       "type": "delta",
       "step": 3,
       "text": "nditio",
-      "ts": 1789767340692
+      "ts": 1789767716016
     },
     {
       "agent": "main",
@@ -375,7 +375,7 @@
       "type": "delta",
       "step": 3,
       "text": "n Cont",
-      "ts": 1789767340698
+      "ts": 1789767716022
     },
     {
       "agent": "main",
@@ -383,7 +383,7 @@
       "type": "delta",
       "step": 3,
       "text": "ainers",
-      "ts": 1789767340704
+      "ts": 1789767716028
     },
     {
       "agent": "main",
@@ -391,7 +391,7 @@
       "type": "delta",
       "step": 3,
       "text": "Ready=",
-      "ts": 1789767340710
+      "ts": 1789767716033
     },
     {
       "agent": "main",
@@ -399,7 +399,7 @@
       "type": "delta",
       "step": 3,
       "text": "False；",
-      "ts": 1789767340715
+      "ts": 1789767716039
     },
     {
       "agent": "main",
@@ -407,7 +407,7 @@
       "type": "delta",
       "step": 3,
       "text": "condit",
-      "ts": 1789767340721
+      "ts": 1789767716045
     },
     {
       "agent": "main",
@@ -415,7 +415,7 @@
       "type": "delta",
       "step": 3,
       "text": "ion Re",
-      "ts": 1789767340726
+      "ts": 1789767716050
     },
     {
       "agent": "main",
@@ -423,7 +423,7 @@
       "type": "delta",
       "step": 3,
       "text": "ady=Fa",
-      "ts": 1789767340732
+      "ts": 1789767716056
     },
     {
       "agent": "main",
@@ -431,7 +431,7 @@
       "type": "delta",
       "step": 3,
       "text": "lse。并行",
-      "ts": 1789767340738
+      "ts": 1789767716062
     },
     {
       "agent": "main",
@@ -439,7 +439,7 @@
       "type": "delta",
       "step": 3,
       "text": "获取 Eve",
-      "ts": 1789767340744
+      "ts": 1789767716068
     },
     {
       "agent": "main",
@@ -447,7 +447,7 @@
       "type": "delta",
       "step": 3,
       "text": "nt、节点 ",
-      "ts": 1789767340749
+      "ts": 1789767716073
     },
     {
       "agent": "main",
@@ -455,7 +455,7 @@
       "type": "delta",
       "step": 3,
       "text": "node-3",
-      "ts": 1789767340754
+      "ts": 1789767716079
     },
     {
       "agent": "main",
@@ -463,7 +463,7 @@
       "type": "delta",
       "step": 3,
       "text": "、指标与上一",
-      "ts": 1789767340760
+      "ts": 1789767716085
     },
     {
       "agent": "main",
@@ -471,7 +471,7 @@
       "type": "delta",
       "step": 3,
       "text": "次崩溃前的日",
-      "ts": 1789767340765
+      "ts": 1789767716091
     },
     {
       "agent": "main",
@@ -479,7 +479,7 @@
       "type": "delta",
       "step": 3,
       "text": "志。",
-      "ts": 1789767340771
+      "ts": 1789767716096
     },
     {
       "agent": "main",
@@ -555,8 +555,8 @@
         "inputTokens": 736,
         "outputTokens": 80
       },
-      "durationMs": 168,
-      "ts": 1789767340776
+      "durationMs": 171,
+      "ts": 1789767716102
     },
     {
       "agent": "main",
@@ -591,7 +591,7 @@
           ]
         }
       },
-      "ts": 1789767340776
+      "ts": 1789767716102
     },
     {
       "agent": "main",
@@ -620,7 +620,7 @@
           "status": "pending"
         }
       ],
-      "ts": 1789767340776
+      "ts": 1789767716102
     },
     {
       "agent": "main",
@@ -635,7 +635,7 @@
           "namespace": "default"
         }
       },
-      "ts": 1789767340776
+      "ts": 1789767716102
     },
     {
       "agent": "main",
@@ -649,7 +649,7 @@
           "name": "node-3"
         }
       },
-      "ts": 1789767340777
+      "ts": 1789767716104
     },
     {
       "agent": "main",
@@ -665,7 +665,7 @@
           "window": "60m"
         }
       },
-      "ts": 1789767340777
+      "ts": 1789767716104
     },
     {
       "agent": "main",
@@ -682,7 +682,7 @@
           "tail": 100
         }
       },
-      "ts": 1789767340777
+      "ts": 1789767716104
     },
     {
       "agent": "main",
@@ -695,8 +695,8 @@
         "ok": true,
         "output": "计划已更新（1/4 完成）"
       },
-      "durationMs": 1,
-      "ts": 1789767340777
+      "durationMs": 2,
+      "ts": 1789767716104
     },
     {
       "agent": "main",
@@ -710,7 +710,7 @@
         "output": "{\n \"available\": true,\n \"window\": \"60m\",\n \"summary\": {\n  \"cpu\": {\n   \"unit\": \"cores\",\n   \"peak\": 0.4,\n   \"avg\": 0.4,\n   \"last\": 0.4,\n   \"limit\": 1,\n   \"peakPctOfLimit\": \"40%\",\n   \"samples\": 24\n  },\n  \"memory\": {\n   \"unit\": \"MiB\",\n   \"peak\": 700,\n   \"avg\": 700,\n   \"last\": 700,\n   \"limit\": 2048,\n   \"peakPctOfLimit\": \"34%\",\n   \"samples\": 24\n  },\n  \"disk\": {\n   \"unit\": \"GiB\",\n   \"peak\": 96.4,\n   \"avg\": 75.7,\n   \"last\": 96.4,\n   \"limit\": 100,\n   \"peakPctOfLimit\": \"96%\",\n   \"samples\": 24\n  }\n },\n \"series\": {\n  \"available\": true,\n  \"window\": \"60m\",\n  \"cpu\": {\n   \"unit\": \"cores\",\n   \"limit\": 1,\n   \"request\": 0.5,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:44:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:46:00.000Z\",\n     \"v\": 0.4\n    }\n   ]\n  },\n  \"memory\": {\n   \"unit\": \"MiB\",\n   \"limit\": 2048,\n   \"request\": 1024,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:44:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:46:00.000Z\",\n     \"v\": 700\n    }\n   ]\n  },\n  \"disk\": {\n   \"unit\": \"GiB\",\n   \"capacity\": 100,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 55\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 56.8\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 58.6\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 60.4\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 62.2\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 64\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 65.8\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 67.6\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 69.4\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 71.2\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 73\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 74.8\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 76.6\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 78.4\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 80.2\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 82\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 83.8\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 85.6\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 87.4\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 89.2\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 91\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 92.8\n    },\n    {\n     \"t\": \"2026-09-18T08:44:00.000Z\",\n     \"v\": 94.6\n    },\n    {\n     \"t\": \"2026-09-18T08:46:00.000Z\",\n     \"v\": 96.4\n    }\n   ]\n  }\n }\n}"
       },
       "durationMs": 2,
-      "ts": 1789767340779
+      "ts": 1789767716106
     },
     {
       "agent": "main",
@@ -723,8 +723,8 @@
         "ok": false,
         "error": "没有上一个容器实例的日志（容器未重启过）"
       },
-      "durationMs": 4,
-      "ts": 1789767340781
+      "durationMs": 3,
+      "ts": 1789767716107
     },
     {
       "agent": "main",
@@ -737,8 +737,8 @@
         "ok": true,
         "output": "{\n \"name\": \"node-3\",\n \"kubeletVersion\": \"v1.31.2\",\n \"allocatable\": {\n  \"cpu\": \"4\",\n  \"memory\": \"16Gi\",\n  \"ephemeral-storage\": \"100Gi\",\n  \"pods\": \"110\"\n },\n \"allocated\": {\n  \"cpu\": \"3800m\",\n  \"memory\": \"12Gi\",\n  \"ephemeral-storage\": \"97Gi\"\n },\n \"conditions\": [\n  {\n   \"type\": \"Ready\",\n   \"status\": \"True\",\n   \"reason\": \"KubeletReady\",\n   \"lastHeartbeatTime\": \"2026-09-18T08:58:00.000Z\"\n  },\n  {\n   \"type\": \"MemoryPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoMemoryPressure\"\n  },\n  {\n   \"type\": \"DiskPressure\",\n   \"status\": \"True\",\n   \"reason\": \"KubeletHasDiskPressure\",\n   \"message\": \"kubelet has disk pressure (ephemeral-storage usage 97%, imagefs 91%)\"\n  },\n  {\n   \"type\": \"PIDPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoPIDPressure\"\n  }\n ],\n \"taints\": [\n  {\n   \"key\": \"node.kubernetes.io/disk-pressure\",\n   \"effect\": \"NoSchedule\"\n  }\n ],\n \"signals\": [\n  \"DiskPressure=True (KubeletHasDiskPressure)\",\n  \"taints: node.kubernetes.io/disk-pressure:NoSchedule\"\n ]\n}"
       },
-      "durationMs": 4,
-      "ts": 1789767340781
+      "durationMs": 3,
+      "ts": 1789767716107
     },
     {
       "agent": "main",
@@ -752,7 +752,7 @@
         "output": "{\n \"count\": 5,\n \"warnings\": 2,\n \"events\": [\n  {\n   \"time\": \"2026-09-18T08:00:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Scheduled\",\n   \"message\": \"Successfully assigned default/job-126 to node-3\",\n   \"count\": 1,\n   \"source\": \"default-scheduler\"\n  },\n  {\n   \"time\": \"2026-09-18T08:01:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Started\",\n   \"message\": \"Started container exporter\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:20:00.000Z\",\n   \"type\": \"Warning\",\n   \"reason\": \"DNSConfigForming\",\n   \"message\": \"Nameserver limits were exceeded, some nameservers have been omitted\",\n   \"count\": 3,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:48:00.000Z\",\n   \"type\": \"Warning\",\n   \"reason\": \"Evicted\",\n   \"message\": \"The node was low on resource: ephemeral-storage. Threshold quantity: 10Gi, available: 2980Mi. Container exporter was using 41Gi, request is 0, has larger consumption of ephemeral-storage.\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:48:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Killing\",\n   \"message\": \"Stopping container exporter\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  }\n ]\n}"
       },
       "durationMs": 5,
-      "ts": 1789767340781
+      "ts": 1789767716107
     },
     {
       "agent": "main",
@@ -760,7 +760,7 @@
       "type": "delta",
       "step": 4,
       "text": "初步判断为 ",
-      "ts": 1789767340782
+      "ts": 1789767716108
     },
     {
       "agent": "main",
@@ -768,7 +768,7 @@
       "type": "delta",
       "step": 4,
       "text": "DiskPr",
-      "ts": 1789767340788
+      "ts": 1789767716113
     },
     {
       "agent": "main",
@@ -776,7 +776,7 @@
       "type": "delta",
       "step": 4,
       "text": "essure",
-      "ts": 1789767340793
+      "ts": 1789767716119
     },
     {
       "agent": "main",
@@ -784,7 +784,7 @@
       "type": "delta",
       "step": 4,
       "text": "（节点磁盘不",
-      "ts": 1789767340798
+      "ts": 1789767716125
     },
     {
       "agent": "main",
@@ -792,7 +792,7 @@
       "type": "delta",
       "step": 4,
       "text": "足导致驱逐）",
-      "ts": 1789767340803
+      "ts": 1789767716131
     },
     {
       "agent": "main",
@@ -800,7 +800,7 @@
       "type": "delta",
       "step": 4,
       "text": "。对照知识库",
-      "ts": 1789767340809
+      "ts": 1789767716136
     },
     {
       "agent": "main",
@@ -808,7 +808,7 @@
       "type": "delta",
       "step": 4,
       "text": "与历史 Ca",
-      "ts": 1789767340814
+      "ts": 1789767716142
     },
     {
       "agent": "main",
@@ -816,7 +816,7 @@
       "type": "delta",
       "step": 4,
       "text": "se。",
-      "ts": 1789767340820
+      "ts": 1789767716148
     },
     {
       "agent": "main",
@@ -874,8 +874,8 @@
         "inputTokens": 4122,
         "outputTokens": 80
       },
-      "durationMs": 44,
-      "ts": 1789767340825
+      "durationMs": 45,
+      "ts": 1789767716152
     },
     {
       "agent": "main",
@@ -910,7 +910,7 @@
           ]
         }
       },
-      "ts": 1789767340825
+      "ts": 1789767716152
     },
     {
       "agent": "main",
@@ -939,7 +939,7 @@
           "status": "pending"
         }
       ],
-      "ts": 1789767340825
+      "ts": 1789767716152
     },
     {
       "agent": "main",
@@ -954,7 +954,7 @@
           "top": 2
         }
       },
-      "ts": 1789767340825
+      "ts": 1789767716152
     },
     {
       "agent": "main",
@@ -969,7 +969,7 @@
           "top": 2
         }
       },
-      "ts": 1789767340825
+      "ts": 1789767716153
     },
     {
       "agent": "main",
@@ -983,7 +983,7 @@
         "output": "计划已更新（2/4 完成）"
       },
       "durationMs": 1,
-      "ts": 1789767340826
+      "ts": 1789767716153
     },
     {
       "agent": "main",
@@ -996,8 +996,8 @@
         "ok": true,
         "output": "{\n \"total\": 2,\n \"cases\": [\n  {\n   \"id\": \"CASE-2026-063\",\n   \"date\": \"2026-08-15\",\n   \"symptoms\": \"Evicted ephemeral-storage DiskPressure no space left on device exporter\",\n   \"rootCause\": \"导出任务把 40GiB 中间文件写到容器临时目录\",\n   \"fix\": \"清理节点磁盘，输出改写 PVC，设置 ephemeral-storage limit\",\n   \"tags\": [\n    \"DiskPressure\",\n    \"Evicted\",\n    \"storage\"\n   ],\n   \"similarity\": 7\n  },\n  {\n   \"id\": \"CASE-2026-052\",\n   \"date\": \"2026-07-19\",\n   \"symptoms\": \"node Ready Unknown 心跳停止 kubelet 不可达 pod NodeNotReady TaintManagerEviction logs i/o timeout 10250\",\n   \"rootCause\": \"云厂商宿主机故障导致节点失联\",\n   \"fix\": \"cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点\",\n   \"tags\": [\n    \"NodeNotReady\",\n    \"node\"\n   ],\n   \"similarity\": 1\n  }\n ]\n}"
       },
-      "durationMs": 1,
-      "ts": 1789767340826
+      "durationMs": 0,
+      "ts": 1789767716153
     },
     {
       "agent": "main",
@@ -1011,7 +1011,7 @@
         "output": "{\n \"query\": \"DiskPressure Evicted ephemeral-storage no space left\",\n \"total\": 5,\n \"results\": [\n  {\n   \"file\": \"k8s/runbooks/node.md\",\n   \"title\": \"DiskPressure\",\n   \"score\": 9,\n   \"content\": \"## DiskPressure\\n症状：Node DiskPressure=True；Pod phase=Failed reason=Evicted，message 含 \\\"low on resource: ephemeral-storage\\\"；容器日志出现 no space left on device。\\n确认方法：get_node 看 DiskPressure 与 ephemeral-storage 使用；get_pod 看 Evicted message 里谁用得最多。\\n处理：1) 清理镜像 / 容器日志 / 临时文件；2) 给容器设置 ephemeral-storage limit；3) 大文件输出改用 PVC 或对象存储；4) 扩容节点磁盘。\"\n  },\n  {\n   \"file\": \"k8s/runbooks/node.md\",\n   \"title\": \"Node NotReady\",\n   \"score\": 3,\n   \"content\": \"## Node NotReady\\n症状：Node Ready=Unknown/False，lastHeartbeatTime 停止更新超过 40s；节点被打上 node.kubernetes.io/unreachable taint；其上 Pod 出现 NodeNotReady / TaintManagerEviction Event，kubectl logs 报 dial tcp <node-ip>:10250 i/o timeout；指标采集中断。\\n确认方法：get_node 看 Ready 与心跳时间；get_pod_events 看 NodeNotReady；get_logs 报错代表 kubelet 不可达。\\n处理：1) 检查节点 kubelet / 网络 / 云厂商状态；2) cordon 节点；3) 强制删除卡住的 Pod 让 Job 在健康节点重建；4) 节点长期不恢复则 drain + 替换。\\n注意：Pod phase 可能仍显示 Running，这是 API Server 缓存的旧状态，不能作为\\\"应用正常\\\"的证据。\"\n  }\n ]\n}"
       },
       "durationMs": 2,
-      "ts": 1789767340827
+      "ts": 1789767716154
     },
     {
       "agent": "main",
@@ -1019,7 +1019,7 @@
       "type": "delta",
       "step": 5,
       "text": "## 故障现",
-      "ts": 1789767340828
+      "ts": 1789767716155
     },
     {
       "agent": "main",
@@ -1027,7 +1027,7 @@
       "type": "delta",
       "step": 5,
       "text": "象\nPod ",
-      "ts": 1789767340833
+      "ts": 1789767716160
     },
     {
       "agent": "main",
@@ -1035,7 +1035,7 @@
       "type": "delta",
       "step": 5,
       "text": "job-12",
-      "ts": 1789767340839
+      "ts": 1789767716166
     },
     {
       "agent": "main",
@@ -1043,7 +1043,7 @@
       "type": "delta",
       "step": 5,
       "text": "6 被 ku",
-      "ts": 1789767340845
+      "ts": 1789767716172
     },
     {
       "agent": "main",
@@ -1051,7 +1051,7 @@
       "type": "delta",
       "step": 5,
       "text": "belet ",
-      "ts": 1789767340851
+      "ts": 1789767716177
     },
     {
       "agent": "main",
@@ -1059,7 +1059,7 @@
       "type": "delta",
       "step": 5,
       "text": "驱逐（pha",
-      "ts": 1789767340856
+      "ts": 1789767716183
     },
     {
       "agent": "main",
@@ -1067,7 +1067,7 @@
       "type": "delta",
       "step": 5,
       "text": "se=Fai",
-      "ts": 1789767340862
+      "ts": 1789767716189
     },
     {
       "agent": "main",
@@ -1075,7 +1075,7 @@
       "type": "delta",
       "step": 5,
       "text": "led re",
-      "ts": 1789767340868
+      "ts": 1789767716195
     },
     {
       "agent": "main",
@@ -1083,7 +1083,7 @@
       "type": "delta",
       "step": 5,
       "text": "ason=E",
-      "ts": 1789767340873
+      "ts": 1789767716200
     },
     {
       "agent": "main",
@@ -1091,7 +1091,7 @@
       "type": "delta",
       "step": 5,
       "text": "victed",
-      "ts": 1789767340879
+      "ts": 1789767716206
     },
     {
       "agent": "main",
@@ -1099,7 +1099,7 @@
       "type": "delta",
       "step": 5,
       "text": "），节点 n",
-      "ts": 1789767340884
+      "ts": 1789767716212
     },
     {
       "agent": "main",
@@ -1107,7 +1107,7 @@
       "type": "delta",
       "step": 5,
       "text": "ode-3 ",
-      "ts": 1789767340890
+      "ts": 1789767716218
     },
     {
       "agent": "main",
@@ -1115,7 +1115,7 @@
       "type": "delta",
       "step": 5,
       "text": "处于 Dis",
-      "ts": 1789767340896
+      "ts": 1789767716223
     },
     {
       "agent": "main",
@@ -1123,7 +1123,7 @@
       "type": "delta",
       "step": 5,
       "text": "kPress",
-      "ts": 1789767340902
+      "ts": 1789767716229
     },
     {
       "agent": "main",
@@ -1131,7 +1131,7 @@
       "type": "delta",
       "step": 5,
       "text": "ure。\n\n",
-      "ts": 1789767340907
+      "ts": 1789767716235
     },
     {
       "agent": "main",
@@ -1139,7 +1139,7 @@
       "type": "delta",
       "step": 5,
       "text": "## 关键证",
-      "ts": 1789767340912
+      "ts": 1789767716240
     },
     {
       "agent": "main",
@@ -1147,7 +1147,7 @@
       "type": "delta",
       "step": 5,
       "text": "据\n- [P",
-      "ts": 1789767340918
+      "ts": 1789767716246
     },
     {
       "agent": "main",
@@ -1155,7 +1155,7 @@
       "type": "delta",
       "step": 5,
       "text": "od] 容器",
-      "ts": 1789767340923
+      "ts": 1789767716252
     },
     {
       "agent": "main",
@@ -1163,7 +1163,7 @@
       "type": "delta",
       "step": 5,
       "text": " expor",
-      "ts": 1789767340928
+      "ts": 1789767716258
     },
     {
       "agent": "main",
@@ -1171,7 +1171,7 @@
       "type": "delta",
       "step": 5,
       "text": "ter la",
-      "ts": 1789767340934
+      "ts": 1789767716263
     },
     {
       "agent": "main",
@@ -1179,7 +1179,7 @@
       "type": "delta",
       "step": 5,
       "text": "stStat",
-      "ts": 1789767340939
+      "ts": 1789767716269
     },
     {
       "agent": "main",
@@ -1187,7 +1187,7 @@
       "type": "delta",
       "step": 5,
       "text": "e.term",
-      "ts": 1789767340943
+      "ts": 1789767716275
     },
     {
       "agent": "main",
@@ -1195,7 +1195,7 @@
       "type": "delta",
       "step": 5,
       "text": "inated",
-      "ts": 1789767340949
+      "ts": 1789767716281
     },
     {
       "agent": "main",
@@ -1203,7 +1203,7 @@
       "type": "delta",
       "step": 5,
       "text": ".reaso",
-      "ts": 1789767340955
+      "ts": 1789767716287
     },
     {
       "agent": "main",
@@ -1211,7 +1211,7 @@
       "type": "delta",
       "step": 5,
       "text": "n=Cont",
-      "ts": 1789767340961
+      "ts": 1789767716292
     },
     {
       "agent": "main",
@@ -1219,7 +1219,7 @@
       "type": "delta",
       "step": 5,
       "text": "ainerS",
-      "ts": 1789767340966
+      "ts": 1789767716298
     },
     {
       "agent": "main",
@@ -1227,7 +1227,7 @@
       "type": "delta",
       "step": 5,
       "text": "tatusU",
-      "ts": 1789767340972
+      "ts": 1789767716304
     },
     {
       "agent": "main",
@@ -1235,7 +1235,7 @@
       "type": "delta",
       "step": 5,
       "text": "nknown",
-      "ts": 1789767340978
+      "ts": 1789767716310
     },
     {
       "agent": "main",
@@ -1243,7 +1243,7 @@
       "type": "delta",
       "step": 5,
       "text": " exitC",
-      "ts": 1789767340983
+      "ts": 1789767716315
     },
     {
       "agent": "main",
@@ -1251,7 +1251,7 @@
       "type": "delta",
       "step": 5,
       "text": "ode=13",
-      "ts": 1789767340989
+      "ts": 1789767716321
     },
     {
       "agent": "main",
@@ -1259,7 +1259,7 @@
       "type": "delta",
       "step": 5,
       "text": "7，rest",
-      "ts": 1789767340995
+      "ts": 1789767716327
     },
     {
       "agent": "main",
@@ -1267,7 +1267,7 @@
       "type": "delta",
       "step": 5,
       "text": "artCou",
-      "ts": 1789767341001
+      "ts": 1789767716332
     },
     {
       "agent": "main",
@@ -1275,7 +1275,7 @@
       "type": "delta",
       "step": 5,
       "text": "nt=0（g",
-      "ts": 1789767341006
+      "ts": 1789767716338
     },
     {
       "agent": "main",
@@ -1283,7 +1283,7 @@
       "type": "delta",
       "step": 5,
       "text": "et_pod",
-      "ts": 1789767341012
+      "ts": 1789767716344
     },
     {
       "agent": "main",
@@ -1291,7 +1291,7 @@
       "type": "delta",
       "step": 5,
       "text": "）\n- [E",
-      "ts": 1789767341018
+      "ts": 1789767716350
     },
     {
       "agent": "main",
@@ -1299,7 +1299,7 @@
       "type": "delta",
       "step": 5,
       "text": "vent] ",
-      "ts": 1789767341023
+      "ts": 1789767716355
     },
     {
       "agent": "main",
@@ -1307,7 +1307,7 @@
       "type": "delta",
       "step": 5,
       "text": "DNSCon",
-      "ts": 1789767341029
+      "ts": 1789767716361
     },
     {
       "agent": "main",
@@ -1315,7 +1315,7 @@
       "type": "delta",
       "step": 5,
       "text": "figFor",
-      "ts": 1789767341035
+      "ts": 1789767716367
     },
     {
       "agent": "main",
@@ -1323,7 +1323,7 @@
       "type": "delta",
       "step": 5,
       "text": "ming: ",
-      "ts": 1789767341041
+      "ts": 1789767716372
     },
     {
       "agent": "main",
@@ -1331,7 +1331,7 @@
       "type": "delta",
       "step": 5,
       "text": "Namese",
-      "ts": 1789767341046
+      "ts": 1789767716378
     },
     {
       "agent": "main",
@@ -1339,7 +1339,7 @@
       "type": "delta",
       "step": 5,
       "text": "rver l",
-      "ts": 1789767341051
+      "ts": 1789767716384
     },
     {
       "agent": "main",
@@ -1347,7 +1347,7 @@
       "type": "delta",
       "step": 5,
       "text": "imits ",
-      "ts": 1789767341057
+      "ts": 1789767716389
     },
     {
       "agent": "main",
@@ -1355,7 +1355,7 @@
       "type": "delta",
       "step": 5,
       "text": "were e",
-      "ts": 1789767341062
+      "ts": 1789767716395
     },
     {
       "agent": "main",
@@ -1363,7 +1363,7 @@
       "type": "delta",
       "step": 5,
       "text": "xceede",
-      "ts": 1789767341068
+      "ts": 1789767716401
     },
     {
       "agent": "main",
@@ -1371,7 +1371,7 @@
       "type": "delta",
       "step": 5,
       "text": "d, som",
-      "ts": 1789767341074
+      "ts": 1789767716406
     },
     {
       "agent": "main",
@@ -1379,7 +1379,7 @@
       "type": "delta",
       "step": 5,
       "text": "e name",
-      "ts": 1789767341079
+      "ts": 1789767716412
     },
     {
       "agent": "main",
@@ -1387,7 +1387,7 @@
       "type": "delta",
       "step": 5,
       "text": "server",
-      "ts": 1789767341085
+      "ts": 1789767716417
     },
     {
       "agent": "main",
@@ -1395,7 +1395,7 @@
       "type": "delta",
       "step": 5,
       "text": "s have",
-      "ts": 1789767341091
+      "ts": 1789767716423
     },
     {
       "agent": "main",
@@ -1403,7 +1403,7 @@
       "type": "delta",
       "step": 5,
       "text": " been ",
-      "ts": 1789767341097
+      "ts": 1789767716429
     },
     {
       "agent": "main",
@@ -1411,7 +1411,7 @@
       "type": "delta",
       "step": 5,
       "text": "omitte",
-      "ts": 1789767341102
+      "ts": 1789767716434
     },
     {
       "agent": "main",
@@ -1419,7 +1419,7 @@
       "type": "delta",
       "step": 5,
       "text": "d（coun",
-      "ts": 1789767341108
+      "ts": 1789767716440
     },
     {
       "agent": "main",
@@ -1427,7 +1427,7 @@
       "type": "delta",
       "step": 5,
       "text": "t=3，ge",
-      "ts": 1789767341114
+      "ts": 1789767716446
     },
     {
       "agent": "main",
@@ -1435,7 +1435,7 @@
       "type": "delta",
       "step": 5,
       "text": "t_pod_",
-      "ts": 1789767341119
+      "ts": 1789767716452
     },
     {
       "agent": "main",
@@ -1443,7 +1443,7 @@
       "type": "delta",
       "step": 5,
       "text": "events",
-      "ts": 1789767341125
+      "ts": 1789767716457
     },
     {
       "agent": "main",
@@ -1451,7 +1451,7 @@
       "type": "delta",
       "step": 5,
       "text": "）\n- [E",
-      "ts": 1789767341131
+      "ts": 1789767716463
     },
     {
       "agent": "main",
@@ -1459,7 +1459,7 @@
       "type": "delta",
       "step": 5,
       "text": "vent] ",
-      "ts": 1789767341137
+      "ts": 1789767716469
     },
     {
       "agent": "main",
@@ -1467,7 +1467,7 @@
       "type": "delta",
       "step": 5,
       "text": "Evicte",
-      "ts": 1789767341142
+      "ts": 1789767716475
     },
     {
       "agent": "main",
@@ -1475,7 +1475,7 @@
       "type": "delta",
       "step": 5,
       "text": "d: The",
-      "ts": 1789767341148
+      "ts": 1789767716480
     },
     {
       "agent": "main",
@@ -1483,7 +1483,7 @@
       "type": "delta",
       "step": 5,
       "text": " node ",
-      "ts": 1789767341154
+      "ts": 1789767716486
     },
     {
       "agent": "main",
@@ -1491,7 +1491,7 @@
       "type": "delta",
       "step": 5,
       "text": "was lo",
-      "ts": 1789767341160
+      "ts": 1789767716492
     },
     {
       "agent": "main",
@@ -1499,7 +1499,7 @@
       "type": "delta",
       "step": 5,
       "text": "w on r",
-      "ts": 1789767341165
+      "ts": 1789767716498
     },
     {
       "agent": "main",
@@ -1507,7 +1507,7 @@
       "type": "delta",
       "step": 5,
       "text": "esourc",
-      "ts": 1789767341171
+      "ts": 1789767716504
     },
     {
       "agent": "main",
@@ -1515,7 +1515,7 @@
       "type": "delta",
       "step": 5,
       "text": "e: eph",
-      "ts": 1789767341177
+      "ts": 1789767716509
     },
     {
       "agent": "main",
@@ -1523,7 +1523,7 @@
       "type": "delta",
       "step": 5,
       "text": "emeral",
-      "ts": 1789767341182
+      "ts": 1789767716515
     },
     {
       "agent": "main",
@@ -1531,7 +1531,7 @@
       "type": "delta",
       "step": 5,
       "text": "-stora",
-      "ts": 1789767341188
+      "ts": 1789767716521
     },
     {
       "agent": "main",
@@ -1539,7 +1539,7 @@
       "type": "delta",
       "step": 5,
       "text": "ge. Th",
-      "ts": 1789767341194
+      "ts": 1789767716527
     },
     {
       "agent": "main",
@@ -1547,7 +1547,7 @@
       "type": "delta",
       "step": 5,
       "text": "reshol",
-      "ts": 1789767341200
+      "ts": 1789767716531
     },
     {
       "agent": "main",
@@ -1555,7 +1555,7 @@
       "type": "delta",
       "step": 5,
       "text": "d quan",
-      "ts": 1789767341205
+      "ts": 1789767716537
     },
     {
       "agent": "main",
@@ -1563,7 +1563,7 @@
       "type": "delta",
       "step": 5,
       "text": "tity: ",
-      "ts": 1789767341210
+      "ts": 1789767716543
     },
     {
       "agent": "main",
@@ -1571,7 +1571,7 @@
       "type": "delta",
       "step": 5,
       "text": "10Gi, ",
-      "ts": 1789767341216
+      "ts": 1789767716549
     },
     {
       "agent": "main",
@@ -1579,7 +1579,7 @@
       "type": "delta",
       "step": 5,
       "text": "availa",
-      "ts": 1789767341221
+      "ts": 1789767716554
     },
     {
       "agent": "main",
@@ -1587,7 +1587,7 @@
       "type": "delta",
       "step": 5,
       "text": "ble: 2",
-      "ts": 1789767341227
+      "ts": 1789767716560
     },
     {
       "agent": "main",
@@ -1595,7 +1595,7 @@
       "type": "delta",
       "step": 5,
       "text": "980Mi.",
-      "ts": 1789767341233
+      "ts": 1789767716565
     },
     {
       "agent": "main",
@@ -1603,7 +1603,7 @@
       "type": "delta",
       "step": 5,
       "text": " Conta",
-      "ts": 1789767341238
+      "ts": 1789767716571
     },
     {
       "agent": "main",
@@ -1611,7 +1611,7 @@
       "type": "delta",
       "step": 5,
       "text": "iner e",
-      "ts": 1789767341244
+      "ts": 1789767716577
     },
     {
       "agent": "main",
@@ -1619,7 +1619,7 @@
       "type": "delta",
       "step": 5,
       "text": "xporte",
-      "ts": 1789767341250
+      "ts": 1789767716582
     },
     {
       "agent": "main",
@@ -1627,7 +1627,7 @@
       "type": "delta",
       "step": 5,
       "text": "r was ",
-      "ts": 1789767341256
+      "ts": 1789767716588
     },
     {
       "agent": "main",
@@ -1635,7 +1635,7 @@
       "type": "delta",
       "step": 5,
       "text": "using ",
-      "ts": 1789767341261
+      "ts": 1789767716594
     },
     {
       "agent": "main",
@@ -1643,7 +1643,7 @@
       "type": "delta",
       "step": 5,
       "text": "41Gi, ",
-      "ts": 1789767341267
+      "ts": 1789767716599
     },
     {
       "agent": "main",
@@ -1651,7 +1651,7 @@
       "type": "delta",
       "step": 5,
       "text": "reques",
-      "ts": 1789767341273
+      "ts": 1789767716605
     },
     {
       "agent": "main",
@@ -1659,7 +1659,7 @@
       "type": "delta",
       "step": 5,
       "text": "t is 0",
-      "ts": 1789767341278
+      "ts": 1789767716611
     },
     {
       "agent": "main",
@@ -1667,7 +1667,7 @@
       "type": "delta",
       "step": 5,
       "text": ", has ",
-      "ts": 1789767341284
+      "ts": 1789767716617
     },
     {
       "agent": "main",
@@ -1675,7 +1675,7 @@
       "type": "delta",
       "step": 5,
       "text": "larger",
-      "ts": 1789767341290
+      "ts": 1789767716622
     },
     {
       "agent": "main",
@@ -1683,7 +1683,7 @@
       "type": "delta",
       "step": 5,
       "text": " consu",
-      "ts": 1789767341296
+      "ts": 1789767716628
     },
     {
       "agent": "main",
@@ -1691,7 +1691,7 @@
       "type": "delta",
       "step": 5,
       "text": "m（coun",
-      "ts": 1789767341301
+      "ts": 1789767716634
     },
     {
       "agent": "main",
@@ -1699,7 +1699,7 @@
       "type": "delta",
       "step": 5,
       "text": "t=1，ge",
-      "ts": 1789767341307
+      "ts": 1789767716640
     },
     {
       "agent": "main",
@@ -1707,7 +1707,7 @@
       "type": "delta",
       "step": 5,
       "text": "t_pod_",
-      "ts": 1789767341312
+      "ts": 1789767716645
     },
     {
       "agent": "main",
@@ -1715,7 +1715,7 @@
       "type": "delta",
       "step": 5,
       "text": "events",
-      "ts": 1789767341318
+      "ts": 1789767716651
     },
     {
       "agent": "main",
@@ -1723,7 +1723,7 @@
       "type": "delta",
       "step": 5,
       "text": "）\n- [N",
-      "ts": 1789767341323
+      "ts": 1789767716657
     },
     {
       "agent": "main",
@@ -1731,7 +1731,7 @@
       "type": "delta",
       "step": 5,
       "text": "ode] n",
-      "ts": 1789767341329
+      "ts": 1789767716662
     },
     {
       "agent": "main",
@@ -1739,7 +1739,7 @@
       "type": "delta",
       "step": 5,
       "text": "ode-3:",
-      "ts": 1789767341335
+      "ts": 1789767716667
     },
     {
       "agent": "main",
@@ -1747,7 +1747,7 @@
       "type": "delta",
       "step": 5,
       "text": " DiskP",
-      "ts": 1789767341340
+      "ts": 1789767716673
     },
     {
       "agent": "main",
@@ -1755,7 +1755,7 @@
       "type": "delta",
       "step": 5,
       "text": "ressur",
-      "ts": 1789767341346
+      "ts": 1789767716679
     },
     {
       "agent": "main",
@@ -1763,7 +1763,7 @@
       "type": "delta",
       "step": 5,
       "text": "e=True",
-      "ts": 1789767341352
+      "ts": 1789767716684
     },
     {
       "agent": "main",
@@ -1771,7 +1771,7 @@
       "type": "delta",
       "step": 5,
       "text": " (Kube",
-      "ts": 1789767341358
+      "ts": 1789767716690
     },
     {
       "agent": "main",
@@ -1779,7 +1779,7 @@
       "type": "delta",
       "step": 5,
       "text": "letHas",
-      "ts": 1789767341363
+      "ts": 1789767716696
     },
     {
       "agent": "main",
@@ -1787,7 +1787,7 @@
       "type": "delta",
       "step": 5,
       "text": "DiskPr",
-      "ts": 1789767341369
+      "ts": 1789767716701
     },
     {
       "agent": "main",
@@ -1795,7 +1795,7 @@
       "type": "delta",
       "step": 5,
       "text": "essure",
-      "ts": 1789767341375
+      "ts": 1789767716707
     },
     {
       "agent": "main",
@@ -1803,7 +1803,7 @@
       "type": "delta",
       "step": 5,
       "text": ")；tain",
-      "ts": 1789767341380
+      "ts": 1789767716713
     },
     {
       "agent": "main",
@@ -1811,7 +1811,7 @@
       "type": "delta",
       "step": 5,
       "text": "ts: no",
-      "ts": 1789767341386
+      "ts": 1789767716719
     },
     {
       "agent": "main",
@@ -1819,7 +1819,7 @@
       "type": "delta",
       "step": 5,
       "text": "de.kub",
-      "ts": 1789767341392
+      "ts": 1789767716724
     },
     {
       "agent": "main",
@@ -1827,7 +1827,7 @@
       "type": "delta",
       "step": 5,
       "text": "ernete",
-      "ts": 1789767341398
+      "ts": 1789767716730
     },
     {
       "agent": "main",
@@ -1835,7 +1835,7 @@
       "type": "delta",
       "step": 5,
       "text": "s.io/d",
-      "ts": 1789767341403
+      "ts": 1789767716736
     },
     {
       "agent": "main",
@@ -1843,7 +1843,7 @@
       "type": "delta",
       "step": 5,
       "text": "isk-pr",
-      "ts": 1789767341409
+      "ts": 1789767716742
     },
     {
       "agent": "main",
@@ -1851,7 +1851,7 @@
       "type": "delta",
       "step": 5,
       "text": "essure",
-      "ts": 1789767341414
+      "ts": 1789767716748
     },
     {
       "agent": "main",
@@ -1859,7 +1859,7 @@
       "type": "delta",
       "step": 5,
       "text": ":NoSch",
-      "ts": 1789767341420
+      "ts": 1789767716753
     },
     {
       "agent": "main",
@@ -1867,7 +1867,7 @@
       "type": "delta",
       "step": 5,
       "text": "edule（",
-      "ts": 1789767341426
+      "ts": 1789767716759
     },
     {
       "agent": "main",
@@ -1875,7 +1875,7 @@
       "type": "delta",
       "step": 5,
       "text": "get_no",
-      "ts": 1789767341431
+      "ts": 1789767716764
     },
     {
       "agent": "main",
@@ -1883,7 +1883,7 @@
       "type": "delta",
       "step": 5,
       "text": "de）\n- ",
-      "ts": 1789767341437
+      "ts": 1789767716769
     },
     {
       "agent": "main",
@@ -1891,7 +1891,7 @@
       "type": "delta",
       "step": 5,
       "text": "[Metri",
-      "ts": 1789767341443
+      "ts": 1789767716775
     },
     {
       "agent": "main",
@@ -1899,7 +1899,7 @@
       "type": "delta",
       "step": 5,
       "text": "c] mem",
-      "ts": 1789767341448
+      "ts": 1789767716781
     },
     {
       "agent": "main",
@@ -1907,7 +1907,7 @@
       "type": "delta",
       "step": 5,
       "text": "ory 峰值",
-      "ts": 1789767341454
+      "ts": 1789767716787
     },
     {
       "agent": "main",
@@ -1915,7 +1915,7 @@
       "type": "delta",
       "step": 5,
       "text": " 700Mi",
-      "ts": 1789767341460
+      "ts": 1789767716792
     },
     {
       "agent": "main",
@@ -1923,7 +1923,7 @@
       "type": "delta",
       "step": 5,
       "text": "B / li",
-      "ts": 1789767341466
+      "ts": 1789767716798
     },
     {
       "agent": "main",
@@ -1931,7 +1931,7 @@
       "type": "delta",
       "step": 5,
       "text": "mit 20",
-      "ts": 1789767341471
+      "ts": 1789767716804
     },
     {
       "agent": "main",
@@ -1939,7 +1939,7 @@
       "type": "delta",
       "step": 5,
       "text": "48MiB（",
-      "ts": 1789767341477
+      "ts": 1789767716809
     },
     {
       "agent": "main",
@@ -1947,7 +1947,7 @@
       "type": "delta",
       "step": 5,
       "text": "34%），c",
-      "ts": 1789767341483
+      "ts": 1789767716815
     },
     {
       "agent": "main",
@@ -1955,7 +1955,7 @@
       "type": "delta",
       "step": 5,
       "text": "pu 峰值 ",
-      "ts": 1789767341489
+      "ts": 1789767716821
     },
     {
       "agent": "main",
@@ -1963,7 +1963,7 @@
       "type": "delta",
       "step": 5,
       "text": "0.4cor",
-      "ts": 1789767341494
+      "ts": 1789767716826
     },
     {
       "agent": "main",
@@ -1971,7 +1971,7 @@
       "type": "delta",
       "step": 5,
       "text": "es（get",
-      "ts": 1789767341500
+      "ts": 1789767716832
     },
     {
       "agent": "main",
@@ -1979,7 +1979,7 @@
       "type": "delta",
       "step": 5,
       "text": "_metri",
-      "ts": 1789767341505
+      "ts": 1789767716838
     },
     {
       "agent": "main",
@@ -1987,7 +1987,7 @@
       "type": "delta",
       "step": 5,
       "text": "cs）\n- ",
-      "ts": 1789767341511
+      "ts": 1789767716843
     },
     {
       "agent": "main",
@@ -1995,7 +1995,7 @@
       "type": "delta",
       "step": 5,
       "text": "[Metri",
-      "ts": 1789767341517
+      "ts": 1789767716849
     },
     {
       "agent": "main",
@@ -2003,7 +2003,7 @@
       "type": "delta",
       "step": 5,
       "text": "c] 磁盘使",
-      "ts": 1789767341523
+      "ts": 1789767716855
     },
     {
       "agent": "main",
@@ -2011,7 +2011,7 @@
       "type": "delta",
       "step": 5,
       "text": "用最近 96",
-      "ts": 1789767341528
+      "ts": 1789767716860
     },
     {
       "agent": "main",
@@ -2019,7 +2019,7 @@
       "type": "delta",
       "step": 5,
       "text": ".4GiB ",
-      "ts": 1789767341534
+      "ts": 1789767716866
     },
     {
       "agent": "main",
@@ -2027,7 +2027,7 @@
       "type": "delta",
       "step": 5,
       "text": "/ 100G",
-      "ts": 1789767341540
+      "ts": 1789767716872
     },
     {
       "agent": "main",
@@ -2035,7 +2035,7 @@
       "type": "delta",
       "step": 5,
       "text": "iB（get",
-      "ts": 1789767341545
+      "ts": 1789767716877
     },
     {
       "agent": "main",
@@ -2043,7 +2043,7 @@
       "type": "delta",
       "step": 5,
       "text": "_metri",
-      "ts": 1789767341551
+      "ts": 1789767716883
     },
     {
       "agent": "main",
@@ -2051,7 +2051,7 @@
       "type": "delta",
       "step": 5,
       "text": "cs）\n- ",
-      "ts": 1789767341557
+      "ts": 1789767716889
     },
     {
       "agent": "main",
@@ -2059,7 +2059,7 @@
       "type": "delta",
       "step": 5,
       "text": "[Log] ",
-      "ts": 1789767341563
+      "ts": 1789767716895
     },
     {
       "agent": "main",
@@ -2067,7 +2067,7 @@
       "type": "delta",
       "step": 5,
       "text": "取日志失败：",
-      "ts": 1789767341568
+      "ts": 1789767716900
     },
     {
       "agent": "main",
@@ -2075,7 +2075,7 @@
       "type": "delta",
       "step": 5,
       "text": "没有上一个容",
-      "ts": 1789767341574
+      "ts": 1789767716906
     },
     {
       "agent": "main",
@@ -2083,7 +2083,7 @@
       "type": "delta",
       "step": 5,
       "text": "器实例的日志",
-      "ts": 1789767341580
+      "ts": 1789767716912
     },
     {
       "agent": "main",
@@ -2091,7 +2091,7 @@
       "type": "delta",
       "step": 5,
       "text": "（容器未重启",
-      "ts": 1789767341586
+      "ts": 1789767716917
     },
     {
       "agent": "main",
@@ -2099,7 +2099,7 @@
       "type": "delta",
       "step": 5,
       "text": "过）（get",
-      "ts": 1789767341591
+      "ts": 1789767716923
     },
     {
       "agent": "main",
@@ -2107,7 +2107,7 @@
       "type": "delta",
       "step": 5,
       "text": "_logs）",
-      "ts": 1789767341597
+      "ts": 1789767716929
     },
     {
       "agent": "main",
@@ -2115,7 +2115,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n- [Ru",
-      "ts": 1789767341602
+      "ts": 1789767716935
     },
     {
       "agent": "main",
@@ -2123,7 +2123,7 @@
       "type": "delta",
       "step": 5,
       "text": "nbook]",
-      "ts": 1789767341608
+      "ts": 1789767716941
     },
     {
       "agent": "main",
@@ -2131,7 +2131,7 @@
       "type": "delta",
       "step": 5,
       "text": " DiskP",
-      "ts": 1789767341613
+      "ts": 1789767716946
     },
     {
       "agent": "main",
@@ -2139,7 +2139,7 @@
       "type": "delta",
       "step": 5,
       "text": "ressur",
-      "ts": 1789767341619
+      "ts": 1789767716952
     },
     {
       "agent": "main",
@@ -2147,7 +2147,7 @@
       "type": "delta",
       "step": 5,
       "text": "e：症状：N",
-      "ts": 1789767341625
+      "ts": 1789767716958
     },
     {
       "agent": "main",
@@ -2155,7 +2155,7 @@
       "type": "delta",
       "step": 5,
       "text": "ode Di",
-      "ts": 1789767341631
+      "ts": 1789767716964
     },
     {
       "agent": "main",
@@ -2163,7 +2163,7 @@
       "type": "delta",
       "step": 5,
       "text": "skPres",
-      "ts": 1789767341636
+      "ts": 1789767716969
     },
     {
       "agent": "main",
@@ -2171,7 +2171,7 @@
       "type": "delta",
       "step": 5,
       "text": "sure=T",
-      "ts": 1789767341641
+      "ts": 1789767716975
     },
     {
       "agent": "main",
@@ -2179,7 +2179,7 @@
       "type": "delta",
       "step": 5,
       "text": "rue；Po",
-      "ts": 1789767341647
+      "ts": 1789767716981
     },
     {
       "agent": "main",
@@ -2187,7 +2187,7 @@
       "type": "delta",
       "step": 5,
       "text": "d phas",
-      "ts": 1789767341653
+      "ts": 1789767716987
     },
     {
       "agent": "main",
@@ -2195,7 +2195,7 @@
       "type": "delta",
       "step": 5,
       "text": "e=Fail",
-      "ts": 1789767341658
+      "ts": 1789767716992
     },
     {
       "agent": "main",
@@ -2203,7 +2203,7 @@
       "type": "delta",
       "step": 5,
       "text": "ed rea",
-      "ts": 1789767341664
+      "ts": 1789767716998
     },
     {
       "agent": "main",
@@ -2211,7 +2211,7 @@
       "type": "delta",
       "step": 5,
       "text": "son=Ev",
-      "ts": 1789767341669
+      "ts": 1789767717004
     },
     {
       "agent": "main",
@@ -2219,7 +2219,7 @@
       "type": "delta",
       "step": 5,
       "text": "icted，",
-      "ts": 1789767341675
+      "ts": 1789767717009
     },
     {
       "agent": "main",
@@ -2227,7 +2227,7 @@
       "type": "delta",
       "step": 5,
       "text": "messag",
-      "ts": 1789767341681
+      "ts": 1789767717015
     },
     {
       "agent": "main",
@@ -2235,7 +2235,7 @@
       "type": "delta",
       "step": 5,
       "text": "e 含 \"l",
-      "ts": 1789767341686
+      "ts": 1789767717020
     },
     {
       "agent": "main",
@@ -2243,7 +2243,7 @@
       "type": "delta",
       "step": 5,
       "text": "ow on ",
-      "ts": 1789767341692
+      "ts": 1789767717026
     },
     {
       "agent": "main",
@@ -2251,7 +2251,7 @@
       "type": "delta",
       "step": 5,
       "text": "resour",
-      "ts": 1789767341698
+      "ts": 1789767717032
     },
     {
       "agent": "main",
@@ -2259,7 +2259,7 @@
       "type": "delta",
       "step": 5,
       "text": "ce: ep",
-      "ts": 1789767341703
+      "ts": 1789767717038
     },
     {
       "agent": "main",
@@ -2267,7 +2267,7 @@
       "type": "delta",
       "step": 5,
       "text": "hemera",
-      "ts": 1789767341709
+      "ts": 1789767717043
     },
     {
       "agent": "main",
@@ -2275,7 +2275,7 @@
       "type": "delta",
       "step": 5,
       "text": "l-stor",
-      "ts": 1789767341715
+      "ts": 1789767717049
     },
     {
       "agent": "main",
@@ -2283,7 +2283,7 @@
       "type": "delta",
       "step": 5,
       "text": "age\"；容",
-      "ts": 1789767341720
+      "ts": 1789767717055
     },
     {
       "agent": "main",
@@ -2291,7 +2291,7 @@
       "type": "delta",
       "step": 5,
       "text": "器日志出现 ",
-      "ts": 1789767341726
+      "ts": 1789767717060
     },
     {
       "agent": "main",
@@ -2299,7 +2299,7 @@
       "type": "delta",
       "step": 5,
       "text": "no spa",
-      "ts": 1789767341732
+      "ts": 1789767717066
     },
     {
       "agent": "main",
@@ -2307,7 +2307,7 @@
       "type": "delta",
       "step": 5,
       "text": "ce…（se",
-      "ts": 1789767341738
+      "ts": 1789767717072
     },
     {
       "agent": "main",
@@ -2315,7 +2315,7 @@
       "type": "delta",
       "step": 5,
       "text": "arch_r",
-      "ts": 1789767341743
+      "ts": 1789767717077
     },
     {
       "agent": "main",
@@ -2323,7 +2323,7 @@
       "type": "delta",
       "step": 5,
       "text": "unbook",
-      "ts": 1789767341749
+      "ts": 1789767717083
     },
     {
       "agent": "main",
@@ -2331,7 +2331,7 @@
       "type": "delta",
       "step": 5,
       "text": " → k8s",
-      "ts": 1789767341755
+      "ts": 1789767717089
     },
     {
       "agent": "main",
@@ -2339,7 +2339,7 @@
       "type": "delta",
       "step": 5,
       "text": "/runbo",
-      "ts": 1789767341760
+      "ts": 1789767717095
     },
     {
       "agent": "main",
@@ -2347,7 +2347,7 @@
       "type": "delta",
       "step": 5,
       "text": "oks/no",
-      "ts": 1789767341766
+      "ts": 1789767717100
     },
     {
       "agent": "main",
@@ -2355,7 +2355,7 @@
       "type": "delta",
       "step": 5,
       "text": "de.md）",
-      "ts": 1789767341772
+      "ts": 1789767717106
     },
     {
       "agent": "main",
@@ -2363,7 +2363,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n- [Ca",
-      "ts": 1789767341777
+      "ts": 1789767717112
     },
     {
       "agent": "main",
@@ -2371,7 +2371,7 @@
       "type": "delta",
       "step": 5,
       "text": "se] CA",
-      "ts": 1789767341783
+      "ts": 1789767717117
     },
     {
       "agent": "main",
@@ -2379,7 +2379,7 @@
       "type": "delta",
       "step": 5,
       "text": "SE-202",
-      "ts": 1789767341788
+      "ts": 1789767717123
     },
     {
       "agent": "main",
@@ -2387,7 +2387,7 @@
       "type": "delta",
       "step": 5,
       "text": "6-063（",
-      "ts": 1789767341794
+      "ts": 1789767717129
     },
     {
       "agent": "main",
@@ -2395,7 +2395,7 @@
       "type": "delta",
       "step": 5,
       "text": "2026-0",
-      "ts": 1789767341799
+      "ts": 1789767717135
     },
     {
       "agent": "main",
@@ -2403,7 +2403,7 @@
       "type": "delta",
       "step": 5,
       "text": "8-15）根",
-      "ts": 1789767341805
+      "ts": 1789767717140
     },
     {
       "agent": "main",
@@ -2411,7 +2411,7 @@
       "type": "delta",
       "step": 5,
       "text": "因：导出任务",
-      "ts": 1789767341811
+      "ts": 1789767717146
     },
     {
       "agent": "main",
@@ -2419,7 +2419,7 @@
       "type": "delta",
       "step": 5,
       "text": "把 40Gi",
-      "ts": 1789767341817
+      "ts": 1789767717152
     },
     {
       "agent": "main",
@@ -2427,7 +2427,7 @@
       "type": "delta",
       "step": 5,
       "text": "B 中间文件",
-      "ts": 1789767341822
+      "ts": 1789767717158
     },
     {
       "agent": "main",
@@ -2435,7 +2435,7 @@
       "type": "delta",
       "step": 5,
       "text": "写到容器临时",
-      "ts": 1789767341828
+      "ts": 1789767717163
     },
     {
       "agent": "main",
@@ -2443,7 +2443,7 @@
       "type": "delta",
       "step": 5,
       "text": "目录；处理：",
-      "ts": 1789767341834
+      "ts": 1789767717169
     },
     {
       "agent": "main",
@@ -2451,7 +2451,7 @@
       "type": "delta",
       "step": 5,
       "text": "清理节点磁盘",
-      "ts": 1789767341840
+      "ts": 1789767717175
     },
     {
       "agent": "main",
@@ -2459,7 +2459,7 @@
       "type": "delta",
       "step": 5,
       "text": "，输出改写 ",
-      "ts": 1789767341845
+      "ts": 1789767717180
     },
     {
       "agent": "main",
@@ -2467,7 +2467,7 @@
       "type": "delta",
       "step": 5,
       "text": "PVC，设置",
-      "ts": 1789767341849
+      "ts": 1789767717186
     },
     {
       "agent": "main",
@@ -2475,7 +2475,7 @@
       "type": "delta",
       "step": 5,
       "text": " ephem",
-      "ts": 1789767341855
+      "ts": 1789767717192
     },
     {
       "agent": "main",
@@ -2483,7 +2483,7 @@
       "type": "delta",
       "step": 5,
       "text": "eral-s",
-      "ts": 1789767341861
+      "ts": 1789767717198
     },
     {
       "agent": "main",
@@ -2491,7 +2491,7 @@
       "type": "delta",
       "step": 5,
       "text": "torage",
-      "ts": 1789767341866
+      "ts": 1789767717203
     },
     {
       "agent": "main",
@@ -2499,7 +2499,7 @@
       "type": "delta",
       "step": 5,
       "text": " limit",
-      "ts": 1789767341872
+      "ts": 1789767717209
     },
     {
       "agent": "main",
@@ -2507,7 +2507,7 @@
       "type": "delta",
       "step": 5,
       "text": "（searc",
-      "ts": 1789767341878
+      "ts": 1789767717215
     },
     {
       "agent": "main",
@@ -2515,7 +2515,7 @@
       "type": "delta",
       "step": 5,
       "text": "h_case",
-      "ts": 1789767341884
+      "ts": 1789767717220
     },
     {
       "agent": "main",
@@ -2523,7 +2523,7 @@
       "type": "delta",
       "step": 5,
       "text": "s）\n\n##",
-      "ts": 1789767341889
+      "ts": 1789767717226
     },
     {
       "agent": "main",
@@ -2531,7 +2531,7 @@
       "type": "delta",
       "step": 5,
       "text": " 已确认事实",
-      "ts": 1789767341895
+      "ts": 1789767717232
     },
     {
       "agent": "main",
@@ -2539,7 +2539,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n- Pod",
-      "ts": 1789767341901
+      "ts": 1789767717237
     },
     {
       "agent": "main",
@@ -2547,7 +2547,7 @@
       "type": "delta",
       "step": 5,
       "text": " defau",
-      "ts": 1789767341906
+      "ts": 1789767717243
     },
     {
       "agent": "main",
@@ -2555,7 +2555,7 @@
       "type": "delta",
       "step": 5,
       "text": "lt/job",
-      "ts": 1789767341912
+      "ts": 1789767717249
     },
     {
       "agent": "main",
@@ -2563,7 +2563,7 @@
       "type": "delta",
       "step": 5,
       "text": "-126 p",
-      "ts": 1789767341918
+      "ts": 1789767717254
     },
     {
       "agent": "main",
@@ -2571,7 +2571,7 @@
       "type": "delta",
       "step": 5,
       "text": "hase=F",
-      "ts": 1789767341924
+      "ts": 1789767717260
     },
     {
       "agent": "main",
@@ -2579,7 +2579,7 @@
       "type": "delta",
       "step": 5,
       "text": "ailed ",
-      "ts": 1789767341929
+      "ts": 1789767717265
     },
     {
       "agent": "main",
@@ -2587,7 +2587,7 @@
       "type": "delta",
       "step": 5,
       "text": "reason",
-      "ts": 1789767341934
+      "ts": 1789767717271
     },
     {
       "agent": "main",
@@ -2595,7 +2595,7 @@
       "type": "delta",
       "step": 5,
       "text": "=Evict",
-      "ts": 1789767341940
+      "ts": 1789767717277
     },
     {
       "agent": "main",
@@ -2603,7 +2603,7 @@
       "type": "delta",
       "step": 5,
       "text": "ed，节点 ",
-      "ts": 1789767341946
+      "ts": 1789767717283
     },
     {
       "agent": "main",
@@ -2611,7 +2611,7 @@
       "type": "delta",
       "step": 5,
       "text": "node-3",
-      "ts": 1789767341952
+      "ts": 1789767717288
     },
     {
       "agent": "main",
@@ -2619,7 +2619,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n- 容器上",
-      "ts": 1789767341957
+      "ts": 1789767717294
     },
     {
       "agent": "main",
@@ -2627,7 +2627,7 @@
       "type": "delta",
       "step": 5,
       "text": "次终止原因 ",
-      "ts": 1789767341963
+      "ts": 1789767717300
     },
     {
       "agent": "main",
@@ -2635,7 +2635,7 @@
       "type": "delta",
       "step": 5,
       "text": "Contai",
-      "ts": 1789767341969
+      "ts": 1789767717306
     },
     {
       "agent": "main",
@@ -2643,7 +2643,7 @@
       "type": "delta",
       "step": 5,
       "text": "nerSta",
-      "ts": 1789767341975
+      "ts": 1789767717312
     },
     {
       "agent": "main",
@@ -2651,7 +2651,7 @@
       "type": "delta",
       "step": 5,
       "text": "tusUnk",
-      "ts": 1789767341980
+      "ts": 1789767717317
     },
     {
       "agent": "main",
@@ -2659,7 +2659,7 @@
       "type": "delta",
       "step": 5,
       "text": "nown，e",
-      "ts": 1789767341986
+      "ts": 1789767717323
     },
     {
       "agent": "main",
@@ -2667,7 +2667,7 @@
       "type": "delta",
       "step": 5,
       "text": "xitCod",
-      "ts": 1789767341992
+      "ts": 1789767717329
     },
     {
       "agent": "main",
@@ -2675,7 +2675,7 @@
       "type": "delta",
       "step": 5,
       "text": "e 137，",
-      "ts": 1789767341998
+      "ts": 1789767717335
     },
     {
       "agent": "main",
@@ -2683,7 +2683,7 @@
       "type": "delta",
       "step": 5,
       "text": "已重启 0 ",
-      "ts": 1789767342004
+      "ts": 1789767717340
     },
     {
       "agent": "main",
@@ -2691,7 +2691,7 @@
       "type": "delta",
       "step": 5,
       "text": "次\n- Ev",
-      "ts": 1789767342009
+      "ts": 1789767717346
     },
     {
       "agent": "main",
@@ -2699,7 +2699,7 @@
       "type": "delta",
       "step": 5,
       "text": "ent DN",
-      "ts": 1789767342015
+      "ts": 1789767717351
     },
     {
       "agent": "main",
@@ -2707,7 +2707,7 @@
       "type": "delta",
       "step": 5,
       "text": "SConfi",
-      "ts": 1789767342021
+      "ts": 1789767717357
     },
     {
       "agent": "main",
@@ -2715,7 +2715,7 @@
       "type": "delta",
       "step": 5,
       "text": "gFormi",
-      "ts": 1789767342027
+      "ts": 1789767717363
     },
     {
       "agent": "main",
@@ -2723,7 +2723,7 @@
       "type": "delta",
       "step": 5,
       "text": "ng 出现 ",
-      "ts": 1789767342032
+      "ts": 1789767717369
     },
     {
       "agent": "main",
@@ -2731,7 +2731,7 @@
       "type": "delta",
       "step": 5,
       "text": "3 次\n- ",
-      "ts": 1789767342038
+      "ts": 1789767717374
     },
     {
       "agent": "main",
@@ -2739,7 +2739,7 @@
       "type": "delta",
       "step": 5,
       "text": "Event ",
-      "ts": 1789767342044
+      "ts": 1789767717380
     },
     {
       "agent": "main",
@@ -2747,7 +2747,7 @@
       "type": "delta",
       "step": 5,
       "text": "Evicte",
-      "ts": 1789767342049
+      "ts": 1789767717386
     },
     {
       "agent": "main",
@@ -2755,7 +2755,7 @@
       "type": "delta",
       "step": 5,
       "text": "d 出现 1",
-      "ts": 1789767342055
+      "ts": 1789767717392
     },
     {
       "agent": "main",
@@ -2763,7 +2763,7 @@
       "type": "delta",
       "step": 5,
       "text": " 次\n- 节",
-      "ts": 1789767342061
+      "ts": 1789767717397
     },
     {
       "agent": "main",
@@ -2771,7 +2771,7 @@
       "type": "delta",
       "step": 5,
       "text": "点 node",
-      "ts": 1789767342067
+      "ts": 1789767717403
     },
     {
       "agent": "main",
@@ -2779,7 +2779,7 @@
       "type": "delta",
       "step": 5,
       "text": "-3 状态异",
-      "ts": 1789767342072
+      "ts": 1789767717409
     },
     {
       "agent": "main",
@@ -2787,7 +2787,7 @@
       "type": "delta",
       "step": 5,
       "text": "常：Disk",
-      "ts": 1789767342078
+      "ts": 1789767717414
     },
     {
       "agent": "main",
@@ -2795,7 +2795,7 @@
       "type": "delta",
       "step": 5,
       "text": "Pressu",
-      "ts": 1789767342084
+      "ts": 1789767717420
     },
     {
       "agent": "main",
@@ -2803,7 +2803,7 @@
       "type": "delta",
       "step": 5,
       "text": "re=Tru",
-      "ts": 1789767342089
+      "ts": 1789767717426
     },
     {
       "agent": "main",
@@ -2811,7 +2811,7 @@
       "type": "delta",
       "step": 5,
       "text": "e (Kub",
-      "ts": 1789767342095
+      "ts": 1789767717431
     },
     {
       "agent": "main",
@@ -2819,7 +2819,7 @@
       "type": "delta",
       "step": 5,
       "text": "eletHa",
-      "ts": 1789767342101
+      "ts": 1789767717437
     },
     {
       "agent": "main",
@@ -2827,7 +2827,7 @@
       "type": "delta",
       "step": 5,
       "text": "sDiskP",
-      "ts": 1789767342106
+      "ts": 1789767717443
     },
     {
       "agent": "main",
@@ -2835,7 +2835,7 @@
       "type": "delta",
       "step": 5,
       "text": "ressur",
-      "ts": 1789767342112
+      "ts": 1789767717449
     },
     {
       "agent": "main",
@@ -2843,7 +2843,7 @@
       "type": "delta",
       "step": 5,
       "text": "e)；tai",
-      "ts": 1789767342118
+      "ts": 1789767717454
     },
     {
       "agent": "main",
@@ -2851,7 +2851,7 @@
       "type": "delta",
       "step": 5,
       "text": "nts: n",
-      "ts": 1789767342124
+      "ts": 1789767717460
     },
     {
       "agent": "main",
@@ -2859,7 +2859,7 @@
       "type": "delta",
       "step": 5,
       "text": "ode.ku",
-      "ts": 1789767342129
+      "ts": 1789767717466
     },
     {
       "agent": "main",
@@ -2867,7 +2867,7 @@
       "type": "delta",
       "step": 5,
       "text": "bernet",
-      "ts": 1789767342135
+      "ts": 1789767717472
     },
     {
       "agent": "main",
@@ -2875,7 +2875,7 @@
       "type": "delta",
       "step": 5,
       "text": "es.io/",
-      "ts": 1789767342141
+      "ts": 1789767717477
     },
     {
       "agent": "main",
@@ -2883,7 +2883,7 @@
       "type": "delta",
       "step": 5,
       "text": "disk-p",
-      "ts": 1789767342146
+      "ts": 1789767717483
     },
     {
       "agent": "main",
@@ -2891,7 +2891,7 @@
       "type": "delta",
       "step": 5,
       "text": "ressur",
-      "ts": 1789767342152
+      "ts": 1789767717487
     },
     {
       "agent": "main",
@@ -2899,7 +2899,7 @@
       "type": "delta",
       "step": 5,
       "text": "e:NoSc",
-      "ts": 1789767342157
+      "ts": 1789767717493
     },
     {
       "agent": "main",
@@ -2907,7 +2907,7 @@
       "type": "delta",
       "step": 5,
       "text": "hedule",
-      "ts": 1789767342163
+      "ts": 1789767717499
     },
     {
       "agent": "main",
@@ -2915,7 +2915,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n\n## 可",
-      "ts": 1789767342169
+      "ts": 1789767717504
     },
     {
       "agent": "main",
@@ -2923,7 +2923,7 @@
       "type": "delta",
       "step": 5,
       "text": "能原因（推测",
-      "ts": 1789767342175
+      "ts": 1789767717510
     },
     {
       "agent": "main",
@@ -2931,7 +2931,7 @@
       "type": "delta",
       "step": 5,
       "text": "）\n- 容器",
-      "ts": 1789767342180
+      "ts": 1789767717516
     },
     {
       "agent": "main",
@@ -2939,7 +2939,7 @@
       "type": "delta",
       "step": 5,
       "text": "把大量中间文",
-      "ts": 1789767342186
+      "ts": 1789767717522
     },
     {
       "agent": "main",
@@ -2947,7 +2947,7 @@
       "type": "delta",
       "step": 5,
       "text": "件写入本地临",
-      "ts": 1789767342192
+      "ts": 1789767717528
     },
     {
       "agent": "main",
@@ -2955,7 +2955,7 @@
       "type": "delta",
       "step": 5,
       "text": "时目录，耗尽",
-      "ts": 1789767342197
+      "ts": 1789767717533
     },
     {
       "agent": "main",
@@ -2963,7 +2963,7 @@
       "type": "delta",
       "step": 5,
       "text": "节点 eph",
-      "ts": 1789767342203
+      "ts": 1789767717539
     },
     {
       "agent": "main",
@@ -2971,7 +2971,7 @@
       "type": "delta",
       "step": 5,
       "text": "emeral",
-      "ts": 1789767342209
+      "ts": 1789767717545
     },
     {
       "agent": "main",
@@ -2979,7 +2979,7 @@
       "type": "delta",
       "step": 5,
       "text": "-stora",
-      "ts": 1789767342215
+      "ts": 1789767717551
     },
     {
       "agent": "main",
@@ -2987,7 +2987,7 @@
       "type": "delta",
       "step": 5,
       "text": "ge · 置",
-      "ts": 1789767342221
+      "ts": 1789767717556
     },
     {
       "agent": "main",
@@ -2995,7 +2995,7 @@
       "type": "delta",
       "step": 5,
       "text": "信度 高 ·",
-      "ts": 1789767342226
+      "ts": 1789767717562
     },
     {
       "agent": "main",
@@ -3003,7 +3003,7 @@
       "type": "delta",
       "step": 5,
       "text": " 依据：Ev",
-      "ts": 1789767342232
+      "ts": 1789767717568
     },
     {
       "agent": "main",
@@ -3011,7 +3011,7 @@
       "type": "delta",
       "step": 5,
       "text": "icted ",
-      "ts": 1789767342238
+      "ts": 1789767717573
     },
     {
       "agent": "main",
@@ -3019,7 +3019,7 @@
       "type": "delta",
       "step": 5,
       "text": "messag",
-      "ts": 1789767342243
+      "ts": 1789767717579
     },
     {
       "agent": "main",
@@ -3027,7 +3027,7 @@
       "type": "delta",
       "step": 5,
       "text": "e: 容器使",
-      "ts": 1789767342249
+      "ts": 1789767717584
     },
     {
       "agent": "main",
@@ -3035,7 +3035,7 @@
       "type": "delta",
       "step": 5,
       "text": "用 41Gi",
-      "ts": 1789767342254
+      "ts": 1789767717590
     },
     {
       "agent": "main",
@@ -3043,7 +3043,7 @@
       "type": "delta",
       "step": 5,
       "text": " 且 req",
-      "ts": 1789767342260
+      "ts": 1789767717596
     },
     {
       "agent": "main",
@@ -3051,7 +3051,7 @@
       "type": "delta",
       "step": 5,
       "text": "uest=0",
-      "ts": 1789767342266
+      "ts": 1789767717601
     },
     {
       "agent": "main",
@@ -3059,7 +3059,7 @@
       "type": "delta",
       "step": 5,
       "text": "；节点 Di",
-      "ts": 1789767342272
+      "ts": 1789767717607
     },
     {
       "agent": "main",
@@ -3067,7 +3067,7 @@
       "type": "delta",
       "step": 5,
       "text": "skPres",
-      "ts": 1789767342277
+      "ts": 1789767717613
     },
     {
       "agent": "main",
@@ -3075,7 +3075,7 @@
       "type": "delta",
       "step": 5,
       "text": "sure=T",
-      "ts": 1789767342283
+      "ts": 1789767717619
     },
     {
       "agent": "main",
@@ -3083,7 +3083,7 @@
       "type": "delta",
       "step": 5,
       "text": "rue；日志",
-      "ts": 1789767342289
+      "ts": 1789767717624
     },
     {
       "agent": "main",
@@ -3091,7 +3091,7 @@
       "type": "delta",
       "step": 5,
       "text": " no sp",
-      "ts": 1789767342294
+      "ts": 1789767717630
     },
     {
       "agent": "main",
@@ -3099,7 +3099,7 @@
       "type": "delta",
       "step": 5,
       "text": "ace le",
-      "ts": 1789767342300
+      "ts": 1789767717636
     },
     {
       "agent": "main",
@@ -3107,7 +3107,7 @@
       "type": "delta",
       "step": 5,
       "text": "ft on ",
-      "ts": 1789767342306
+      "ts": 1789767717641
     },
     {
       "agent": "main",
@@ -3115,7 +3115,7 @@
       "type": "delta",
       "step": 5,
       "text": "device",
-      "ts": 1789767342312
+      "ts": 1789767717647
     },
     {
       "agent": "main",
@@ -3123,7 +3123,7 @@
       "type": "delta",
       "step": 5,
       "text": "；磁盘曲线持",
-      "ts": 1789767342317
+      "ts": 1789767717653
     },
     {
       "agent": "main",
@@ -3131,7 +3131,7 @@
       "type": "delta",
       "step": 5,
       "text": "续上升\n\n#",
-      "ts": 1789767342323
+      "ts": 1789767717658
     },
     {
       "agent": "main",
@@ -3139,7 +3139,7 @@
       "type": "delta",
       "step": 5,
       "text": "# 处理建议",
-      "ts": 1789767342329
+      "ts": 1789767717664
     },
     {
       "agent": "main",
@@ -3147,7 +3147,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n- 清理节",
-      "ts": 1789767342334
+      "ts": 1789767717670
     },
     {
       "agent": "main",
@@ -3155,7 +3155,7 @@
       "type": "delta",
       "step": 5,
       "text": "点 node",
-      "ts": 1789767342340
+      "ts": 1789767717675
     },
     {
       "agent": "main",
@@ -3163,7 +3163,7 @@
       "type": "delta",
       "step": 5,
       "text": "-3 的镜像",
-      "ts": 1789767342346
+      "ts": 1789767717681
     },
     {
       "agent": "main",
@@ -3171,7 +3171,7 @@
       "type": "delta",
       "step": 5,
       "text": " / 临时文",
-      "ts": 1789767342351
+      "ts": 1789767717687
     },
     {
       "agent": "main",
@@ -3179,7 +3179,7 @@
       "type": "delta",
       "step": 5,
       "text": "件，等待 D",
-      "ts": 1789767342357
+      "ts": 1789767717693
     },
     {
       "agent": "main",
@@ -3187,7 +3187,7 @@
       "type": "delta",
       "step": 5,
       "text": "iskPre",
-      "ts": 1789767342363
+      "ts": 1789767717698
     },
     {
       "agent": "main",
@@ -3195,7 +3195,7 @@
       "type": "delta",
       "step": 5,
       "text": "ssure ",
-      "ts": 1789767342369
+      "ts": 1789767717704
     },
     {
       "agent": "main",
@@ -3203,7 +3203,7 @@
       "type": "delta",
       "step": 5,
       "text": "解除后重建 ",
-      "ts": 1789767342374
+      "ts": 1789767717710
     },
     {
       "agent": "main",
@@ -3211,7 +3211,7 @@
       "type": "delta",
       "step": 5,
       "text": "Job\n- ",
-      "ts": 1789767342380
+      "ts": 1789767717716
     },
     {
       "agent": "main",
@@ -3219,7 +3219,7 @@
       "type": "delta",
       "step": 5,
       "text": "为容器设置 ",
-      "ts": 1789767342386
+      "ts": 1789767717721
     },
     {
       "agent": "main",
@@ -3227,7 +3227,7 @@
       "type": "delta",
       "step": 5,
       "text": "epheme",
-      "ts": 1789767342391
+      "ts": 1789767717727
     },
     {
       "agent": "main",
@@ -3235,7 +3235,7 @@
       "type": "delta",
       "step": 5,
       "text": "ral-st",
-      "ts": 1789767342397
+      "ts": 1789767717732
     },
     {
       "agent": "main",
@@ -3243,7 +3243,7 @@
       "type": "delta",
       "step": 5,
       "text": "orage ",
-      "ts": 1789767342403
+      "ts": 1789767717738
     },
     {
       "agent": "main",
@@ -3251,7 +3251,7 @@
       "type": "delta",
       "step": 5,
       "text": "reques",
-      "ts": 1789767342409
+      "ts": 1789767717744
     },
     {
       "agent": "main",
@@ -3259,7 +3259,7 @@
       "type": "delta",
       "step": 5,
       "text": "t/limi",
-      "ts": 1789767342414
+      "ts": 1789767717749
     },
     {
       "agent": "main",
@@ -3267,7 +3267,7 @@
       "type": "delta",
       "step": 5,
       "text": "t\n- 大文",
-      "ts": 1789767342419
+      "ts": 1789767717755
     },
     {
       "agent": "main",
@@ -3275,7 +3275,7 @@
       "type": "delta",
       "step": 5,
       "text": "件输出改用 ",
-      "ts": 1789767342425
+      "ts": 1789767717761
     },
     {
       "agent": "main",
@@ -3283,7 +3283,7 @@
       "type": "delta",
       "step": 5,
       "text": "PVC 或对",
-      "ts": 1789767342431
+      "ts": 1789767717766
     },
     {
       "agent": "main",
@@ -3291,7 +3291,7 @@
       "type": "delta",
       "step": 5,
       "text": "象存储\n- ",
-      "ts": 1789767342436
+      "ts": 1789767717772
     },
     {
       "agent": "main",
@@ -3299,7 +3299,7 @@
       "type": "delta",
       "step": 5,
       "text": "历史 Cas",
-      "ts": 1789767342442
+      "ts": 1789767717778
     },
     {
       "agent": "main",
@@ -3307,7 +3307,7 @@
       "type": "delta",
       "step": 5,
       "text": "e CASE",
-      "ts": 1789767342448
+      "ts": 1789767717783
     },
     {
       "agent": "main",
@@ -3315,7 +3315,7 @@
       "type": "delta",
       "step": 5,
       "text": "-2026-",
-      "ts": 1789767342453
+      "ts": 1789767717789
     },
     {
       "agent": "main",
@@ -3323,7 +3323,7 @@
       "type": "delta",
       "step": 5,
       "text": "063 的处",
-      "ts": 1789767342459
+      "ts": 1789767717795
     },
     {
       "agent": "main",
@@ -3331,7 +3331,7 @@
       "type": "delta",
       "step": 5,
       "text": "理方式可参考",
-      "ts": 1789767342465
+      "ts": 1789767717801
     },
     {
       "agent": "main",
@@ -3339,7 +3339,7 @@
       "type": "delta",
       "step": 5,
       "text": "：清理节点磁",
-      "ts": 1789767342470
+      "ts": 1789767717806
     },
     {
       "agent": "main",
@@ -3347,7 +3347,7 @@
       "type": "delta",
       "step": 5,
       "text": "盘，输出改写",
-      "ts": 1789767342476
+      "ts": 1789767717812
     },
     {
       "agent": "main",
@@ -3355,7 +3355,7 @@
       "type": "delta",
       "step": 5,
       "text": " PVC，设",
-      "ts": 1789767342482
+      "ts": 1789767717817
     },
     {
       "agent": "main",
@@ -3363,7 +3363,7 @@
       "type": "delta",
       "step": 5,
       "text": "置 ephe",
-      "ts": 1789767342487
+      "ts": 1789767717823
     },
     {
       "agent": "main",
@@ -3371,7 +3371,7 @@
       "type": "delta",
       "step": 5,
       "text": "meral-",
-      "ts": 1789767342493
+      "ts": 1789767717829
     },
     {
       "agent": "main",
@@ -3379,7 +3379,7 @@
       "type": "delta",
       "step": 5,
       "text": "storag",
-      "ts": 1789767342499
+      "ts": 1789767717834
     },
     {
       "agent": "main",
@@ -3387,7 +3387,7 @@
       "type": "delta",
       "step": 5,
       "text": "e limi",
-      "ts": 1789767342504
+      "ts": 1789767717840
     },
     {
       "agent": "main",
@@ -3395,7 +3395,7 @@
       "type": "delta",
       "step": 5,
       "text": "t\n\n## ",
-      "ts": 1789767342510
+      "ts": 1789767717846
     },
     {
       "agent": "main",
@@ -3403,7 +3403,7 @@
       "type": "delta",
       "step": 5,
       "text": "证据不足说明",
-      "ts": 1789767342516
+      "ts": 1789767717851
     },
     {
       "agent": "main",
@@ -3411,7 +3411,7 @@
       "type": "delta",
       "step": 5,
       "text": "\n无",
-      "ts": 1789767342522
+      "ts": 1789767717857
     },
     {
       "agent": "main",
@@ -3424,8 +3424,8 @@
         "inputTokens": 5074,
         "outputTokens": 80
       },
-      "durationMs": 1700,
-      "ts": 1789767342527
+      "durationMs": 1708,
+      "ts": 1789767717862
     },
     {
       "agent": "main",
@@ -3438,7 +3438,7 @@
         "inputTokens": 10122,
         "outputTokens": 400
       },
-      "ts": 1789767342527
+      "ts": 1789767717863
     }
   ],
   "tree": {
@@ -3450,7 +3450,7 @@
         "depth": 0,
         "type": "user",
         "task": "帮我分析 job-126 为什么失败。",
-        "ts": 1789767340566
+        "ts": 1789767715890
       },
       {
         "agent": "main",
@@ -3458,7 +3458,7 @@
         "type": "delta",
         "step": 1,
         "text": "诊断 job",
-        "ts": 1789767340566
+        "ts": 1789767715890
       },
       {
         "agent": "main",
@@ -3466,7 +3466,7 @@
         "type": "delta",
         "step": 1,
         "text": "-126：先",
-        "ts": 1789767340572
+        "ts": 1789767715895
       },
       {
         "agent": "main",
@@ -3474,7 +3474,7 @@
         "type": "delta",
         "step": 1,
         "text": "看 Pod ",
-        "ts": 1789767340577
+        "ts": 1789767715901
       },
       {
         "agent": "main",
@@ -3482,7 +3482,7 @@
         "type": "delta",
         "step": 1,
         "text": "状态，再决定",
-        "ts": 1789767340583
+        "ts": 1789767715907
       },
       {
         "agent": "main",
@@ -3490,7 +3490,7 @@
         "type": "delta",
         "step": 1,
         "text": "查哪些信息。",
-        "ts": 1789767340588
+        "ts": 1789767715912
       },
       {
         "agent": "main",
@@ -3533,7 +3533,7 @@
           "outputTokens": 80
         },
         "durationMs": 28,
-        "ts": 1789767340594
+        "ts": 1789767715918
       },
       {
         "agent": "main",
@@ -3568,7 +3568,7 @@
             ]
           }
         },
-        "ts": 1789767340594
+        "ts": 1789767715918
       },
       {
         "agent": "main",
@@ -3597,7 +3597,7 @@
             "status": "pending"
           }
         ],
-        "ts": 1789767340594
+        "ts": 1789767715918
       },
       {
         "agent": "main",
@@ -3611,7 +3611,7 @@
           "output": "计划已更新（0/4 完成）"
         },
         "durationMs": 0,
-        "ts": 1789767340594
+        "ts": 1789767715918
       },
       {
         "agent": "main",
@@ -3619,7 +3619,7 @@
         "type": "delta",
         "step": 2,
         "text": "获取 Pod",
-        "ts": 1789767340595
+        "ts": 1789767715918
       },
       {
         "agent": "main",
@@ -3627,7 +3627,7 @@
         "type": "delta",
         "step": 2,
         "text": " 状态。",
-        "ts": 1789767340600
+        "ts": 1789767715924
       },
       {
         "agent": "main",
@@ -3650,7 +3650,7 @@
           "outputTokens": 80
         },
         "durationMs": 12,
-        "ts": 1789767340606
+        "ts": 1789767715930
       },
       {
         "agent": "main",
@@ -3665,7 +3665,7 @@
             "namespace": "default"
           }
         },
-        "ts": 1789767340606
+        "ts": 1789767715930
       },
       {
         "agent": "main",
@@ -3678,8 +3678,8 @@
           "ok": true,
           "output": "{\n \"namespace\": \"default\",\n \"name\": \"job-126\",\n \"phase\": \"Failed\",\n \"reason\": \"Evicted\",\n \"message\": \"The node was low on resource: ephemeral-storage. Threshold quantity: 10Gi, available: 2980Mi. Container exporter was using 41Gi, request is 0, has larger consumption of ephemeral-storage.\",\n \"nodeName\": \"node-3\",\n \"startTime\": \"2026-09-18T08:00:00.000Z\",\n \"labels\": {\n  \"app\": \"exporter\",\n  \"job-name\": \"job-126\"\n },\n \"resources\": {\n  \"requests\": {\n   \"cpu\": \"500m\",\n   \"memory\": \"1Gi\"\n  },\n  \"limits\": {\n   \"cpu\": \"1\",\n   \"memory\": \"2Gi\"\n  }\n },\n \"containers\": [\n  {\n   \"name\": \"exporter\",\n   \"image\": \"registry.local/exporter:1.4.2\",\n   \"ready\": false,\n   \"restartCount\": 0,\n   \"state\": {\n    \"terminated\": {\n     \"reason\": \"ContainerStatusUnknown\",\n     \"exitCode\": 137,\n     \"finishedAt\": \"2026-09-18T08:50:00.000Z\"\n    }\n   }\n  }\n ],\n \"conditions\": [\n  {\n   \"type\": \"PodScheduled\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"Initialized\",\n   \"status\": \"True\"\n  },\n  {\n   \"type\": \"ContainersReady\",\n   \"status\": \"False\"\n  },\n  {\n   \"type\": \"Ready\",\n   \"status\": \"False\"\n  }\n ],\n \"signals\": [\n  \"phase=Failed reason=Evicted\",\n  \"容器 exporter 终止原因=ContainerStatusUnknown exitCode=137\",\n  \"condition ContainersReady=False\",\n  \"condition Ready=False\"\n ]\n}"
         },
-        "durationMs": 2,
-        "ts": 1789767340608
+        "durationMs": 1,
+        "ts": 1789767715931
       },
       {
         "agent": "main",
@@ -3687,7 +3687,7 @@
         "type": "delta",
         "step": 3,
         "text": "Pod 信号",
-        "ts": 1789767340608
+        "ts": 1789767715931
       },
       {
         "agent": "main",
@@ -3695,7 +3695,7 @@
         "type": "delta",
         "step": 3,
         "text": "：phase",
-        "ts": 1789767340614
+        "ts": 1789767715937
       },
       {
         "agent": "main",
@@ -3703,7 +3703,7 @@
         "type": "delta",
         "step": 3,
         "text": "=Faile",
-        "ts": 1789767340620
+        "ts": 1789767715943
       },
       {
         "agent": "main",
@@ -3711,7 +3711,7 @@
         "type": "delta",
         "step": 3,
         "text": "d reas",
-        "ts": 1789767340625
+        "ts": 1789767715949
       },
       {
         "agent": "main",
@@ -3719,7 +3719,7 @@
         "type": "delta",
         "step": 3,
         "text": "on=Evi",
-        "ts": 1789767340631
+        "ts": 1789767715954
       },
       {
         "agent": "main",
@@ -3727,7 +3727,7 @@
         "type": "delta",
         "step": 3,
         "text": "cted；容",
-        "ts": 1789767340636
+        "ts": 1789767715960
       },
       {
         "agent": "main",
@@ -3735,7 +3735,7 @@
         "type": "delta",
         "step": 3,
         "text": "器 expo",
-        "ts": 1789767340642
+        "ts": 1789767715965
       },
       {
         "agent": "main",
@@ -3743,7 +3743,7 @@
         "type": "delta",
         "step": 3,
         "text": "rter 终",
-        "ts": 1789767340647
+        "ts": 1789767715971
       },
       {
         "agent": "main",
@@ -3751,7 +3751,7 @@
         "type": "delta",
         "step": 3,
         "text": "止原因=Co",
-        "ts": 1789767340653
+        "ts": 1789767715977
       },
       {
         "agent": "main",
@@ -3759,7 +3759,7 @@
         "type": "delta",
         "step": 3,
         "text": "ntaine",
-        "ts": 1789767340659
+        "ts": 1789767715983
       },
       {
         "agent": "main",
@@ -3767,7 +3767,7 @@
         "type": "delta",
         "step": 3,
         "text": "rStatu",
-        "ts": 1789767340664
+        "ts": 1789767715988
       },
       {
         "agent": "main",
@@ -3775,7 +3775,7 @@
         "type": "delta",
         "step": 3,
         "text": "sUnkno",
-        "ts": 1789767340670
+        "ts": 1789767715993
       },
       {
         "agent": "main",
@@ -3783,7 +3783,7 @@
         "type": "delta",
         "step": 3,
         "text": "wn exi",
-        "ts": 1789767340675
+        "ts": 1789767715999
       },
       {
         "agent": "main",
@@ -3791,7 +3791,7 @@
         "type": "delta",
         "step": 3,
         "text": "tCode=",
-        "ts": 1789767340681
+        "ts": 1789767716005
       },
       {
         "agent": "main",
@@ -3799,7 +3799,7 @@
         "type": "delta",
         "step": 3,
         "text": "137；co",
-        "ts": 1789767340687
+        "ts": 1789767716010
       },
       {
         "agent": "main",
@@ -3807,7 +3807,7 @@
         "type": "delta",
         "step": 3,
         "text": "nditio",
-        "ts": 1789767340692
+        "ts": 1789767716016
       },
       {
         "agent": "main",
@@ -3815,7 +3815,7 @@
         "type": "delta",
         "step": 3,
         "text": "n Cont",
-        "ts": 1789767340698
+        "ts": 1789767716022
       },
       {
         "agent": "main",
@@ -3823,7 +3823,7 @@
         "type": "delta",
         "step": 3,
         "text": "ainers",
-        "ts": 1789767340704
+        "ts": 1789767716028
       },
       {
         "agent": "main",
@@ -3831,7 +3831,7 @@
         "type": "delta",
         "step": 3,
         "text": "Ready=",
-        "ts": 1789767340710
+        "ts": 1789767716033
       },
       {
         "agent": "main",
@@ -3839,7 +3839,7 @@
         "type": "delta",
         "step": 3,
         "text": "False；",
-        "ts": 1789767340715
+        "ts": 1789767716039
       },
       {
         "agent": "main",
@@ -3847,7 +3847,7 @@
         "type": "delta",
         "step": 3,
         "text": "condit",
-        "ts": 1789767340721
+        "ts": 1789767716045
       },
       {
         "agent": "main",
@@ -3855,7 +3855,7 @@
         "type": "delta",
         "step": 3,
         "text": "ion Re",
-        "ts": 1789767340726
+        "ts": 1789767716050
       },
       {
         "agent": "main",
@@ -3863,7 +3863,7 @@
         "type": "delta",
         "step": 3,
         "text": "ady=Fa",
-        "ts": 1789767340732
+        "ts": 1789767716056
       },
       {
         "agent": "main",
@@ -3871,7 +3871,7 @@
         "type": "delta",
         "step": 3,
         "text": "lse。并行",
-        "ts": 1789767340738
+        "ts": 1789767716062
       },
       {
         "agent": "main",
@@ -3879,7 +3879,7 @@
         "type": "delta",
         "step": 3,
         "text": "获取 Eve",
-        "ts": 1789767340744
+        "ts": 1789767716068
       },
       {
         "agent": "main",
@@ -3887,7 +3887,7 @@
         "type": "delta",
         "step": 3,
         "text": "nt、节点 ",
-        "ts": 1789767340749
+        "ts": 1789767716073
       },
       {
         "agent": "main",
@@ -3895,7 +3895,7 @@
         "type": "delta",
         "step": 3,
         "text": "node-3",
-        "ts": 1789767340754
+        "ts": 1789767716079
       },
       {
         "agent": "main",
@@ -3903,7 +3903,7 @@
         "type": "delta",
         "step": 3,
         "text": "、指标与上一",
-        "ts": 1789767340760
+        "ts": 1789767716085
       },
       {
         "agent": "main",
@@ -3911,7 +3911,7 @@
         "type": "delta",
         "step": 3,
         "text": "次崩溃前的日",
-        "ts": 1789767340765
+        "ts": 1789767716091
       },
       {
         "agent": "main",
@@ -3919,7 +3919,7 @@
         "type": "delta",
         "step": 3,
         "text": "志。",
-        "ts": 1789767340771
+        "ts": 1789767716096
       },
       {
         "agent": "main",
@@ -3995,8 +3995,8 @@
           "inputTokens": 736,
           "outputTokens": 80
         },
-        "durationMs": 168,
-        "ts": 1789767340776
+        "durationMs": 171,
+        "ts": 1789767716102
       },
       {
         "agent": "main",
@@ -4031,7 +4031,7 @@
             ]
           }
         },
-        "ts": 1789767340776
+        "ts": 1789767716102
       },
       {
         "agent": "main",
@@ -4060,7 +4060,7 @@
             "status": "pending"
           }
         ],
-        "ts": 1789767340776
+        "ts": 1789767716102
       },
       {
         "agent": "main",
@@ -4075,7 +4075,7 @@
             "namespace": "default"
           }
         },
-        "ts": 1789767340776
+        "ts": 1789767716102
       },
       {
         "agent": "main",
@@ -4089,7 +4089,7 @@
             "name": "node-3"
           }
         },
-        "ts": 1789767340777
+        "ts": 1789767716104
       },
       {
         "agent": "main",
@@ -4105,7 +4105,7 @@
             "window": "60m"
           }
         },
-        "ts": 1789767340777
+        "ts": 1789767716104
       },
       {
         "agent": "main",
@@ -4122,7 +4122,7 @@
             "tail": 100
           }
         },
-        "ts": 1789767340777
+        "ts": 1789767716104
       },
       {
         "agent": "main",
@@ -4135,8 +4135,8 @@
           "ok": true,
           "output": "计划已更新（1/4 完成）"
         },
-        "durationMs": 1,
-        "ts": 1789767340777
+        "durationMs": 2,
+        "ts": 1789767716104
       },
       {
         "agent": "main",
@@ -4150,7 +4150,7 @@
           "output": "{\n \"available\": true,\n \"window\": \"60m\",\n \"summary\": {\n  \"cpu\": {\n   \"unit\": \"cores\",\n   \"peak\": 0.4,\n   \"avg\": 0.4,\n   \"last\": 0.4,\n   \"limit\": 1,\n   \"peakPctOfLimit\": \"40%\",\n   \"samples\": 24\n  },\n  \"memory\": {\n   \"unit\": \"MiB\",\n   \"peak\": 700,\n   \"avg\": 700,\n   \"last\": 700,\n   \"limit\": 2048,\n   \"peakPctOfLimit\": \"34%\",\n   \"samples\": 24\n  },\n  \"disk\": {\n   \"unit\": \"GiB\",\n   \"peak\": 96.4,\n   \"avg\": 75.7,\n   \"last\": 96.4,\n   \"limit\": 100,\n   \"peakPctOfLimit\": \"96%\",\n   \"samples\": 24\n  }\n },\n \"series\": {\n  \"available\": true,\n  \"window\": \"60m\",\n  \"cpu\": {\n   \"unit\": \"cores\",\n   \"limit\": 1,\n   \"request\": 0.5,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:44:00.000Z\",\n     \"v\": 0.4\n    },\n    {\n     \"t\": \"2026-09-18T08:46:00.000Z\",\n     \"v\": 0.4\n    }\n   ]\n  },\n  \"memory\": {\n   \"unit\": \"MiB\",\n   \"limit\": 2048,\n   \"request\": 1024,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:44:00.000Z\",\n     \"v\": 700\n    },\n    {\n     \"t\": \"2026-09-18T08:46:00.000Z\",\n     \"v\": 700\n    }\n   ]\n  },\n  \"disk\": {\n   \"unit\": \"GiB\",\n   \"capacity\": 100,\n   \"points\": [\n    {\n     \"t\": \"2026-09-18T08:00:00.000Z\",\n     \"v\": 55\n    },\n    {\n     \"t\": \"2026-09-18T08:02:00.000Z\",\n     \"v\": 56.8\n    },\n    {\n     \"t\": \"2026-09-18T08:04:00.000Z\",\n     \"v\": 58.6\n    },\n    {\n     \"t\": \"2026-09-18T08:06:00.000Z\",\n     \"v\": 60.4\n    },\n    {\n     \"t\": \"2026-09-18T08:08:00.000Z\",\n     \"v\": 62.2\n    },\n    {\n     \"t\": \"2026-09-18T08:10:00.000Z\",\n     \"v\": 64\n    },\n    {\n     \"t\": \"2026-09-18T08:12:00.000Z\",\n     \"v\": 65.8\n    },\n    {\n     \"t\": \"2026-09-18T08:14:00.000Z\",\n     \"v\": 67.6\n    },\n    {\n     \"t\": \"2026-09-18T08:16:00.000Z\",\n     \"v\": 69.4\n    },\n    {\n     \"t\": \"2026-09-18T08:18:00.000Z\",\n     \"v\": 71.2\n    },\n    {\n     \"t\": \"2026-09-18T08:20:00.000Z\",\n     \"v\": 73\n    },\n    {\n     \"t\": \"2026-09-18T08:22:00.000Z\",\n     \"v\": 74.8\n    },\n    {\n     \"t\": \"2026-09-18T08:24:00.000Z\",\n     \"v\": 76.6\n    },\n    {\n     \"t\": \"2026-09-18T08:26:00.000Z\",\n     \"v\": 78.4\n    },\n    {\n     \"t\": \"2026-09-18T08:28:00.000Z\",\n     \"v\": 80.2\n    },\n    {\n     \"t\": \"2026-09-18T08:30:00.000Z\",\n     \"v\": 82\n    },\n    {\n     \"t\": \"2026-09-18T08:32:00.000Z\",\n     \"v\": 83.8\n    },\n    {\n     \"t\": \"2026-09-18T08:34:00.000Z\",\n     \"v\": 85.6\n    },\n    {\n     \"t\": \"2026-09-18T08:36:00.000Z\",\n     \"v\": 87.4\n    },\n    {\n     \"t\": \"2026-09-18T08:38:00.000Z\",\n     \"v\": 89.2\n    },\n    {\n     \"t\": \"2026-09-18T08:40:00.000Z\",\n     \"v\": 91\n    },\n    {\n     \"t\": \"2026-09-18T08:42:00.000Z\",\n     \"v\": 92.8\n    },\n    {\n     \"t\": \"2026-09-18T08:44:00.000Z\",\n     \"v\": 94.6\n    },\n    {\n     \"t\": \"2026-09-18T08:46:00.000Z\",\n     \"v\": 96.4\n    }\n   ]\n  }\n }\n}"
         },
         "durationMs": 2,
-        "ts": 1789767340779
+        "ts": 1789767716106
       },
       {
         "agent": "main",
@@ -4163,8 +4163,8 @@
           "ok": false,
           "error": "没有上一个容器实例的日志（容器未重启过）"
         },
-        "durationMs": 4,
-        "ts": 1789767340781
+        "durationMs": 3,
+        "ts": 1789767716107
       },
       {
         "agent": "main",
@@ -4177,8 +4177,8 @@
           "ok": true,
           "output": "{\n \"name\": \"node-3\",\n \"kubeletVersion\": \"v1.31.2\",\n \"allocatable\": {\n  \"cpu\": \"4\",\n  \"memory\": \"16Gi\",\n  \"ephemeral-storage\": \"100Gi\",\n  \"pods\": \"110\"\n },\n \"allocated\": {\n  \"cpu\": \"3800m\",\n  \"memory\": \"12Gi\",\n  \"ephemeral-storage\": \"97Gi\"\n },\n \"conditions\": [\n  {\n   \"type\": \"Ready\",\n   \"status\": \"True\",\n   \"reason\": \"KubeletReady\",\n   \"lastHeartbeatTime\": \"2026-09-18T08:58:00.000Z\"\n  },\n  {\n   \"type\": \"MemoryPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoMemoryPressure\"\n  },\n  {\n   \"type\": \"DiskPressure\",\n   \"status\": \"True\",\n   \"reason\": \"KubeletHasDiskPressure\",\n   \"message\": \"kubelet has disk pressure (ephemeral-storage usage 97%, imagefs 91%)\"\n  },\n  {\n   \"type\": \"PIDPressure\",\n   \"status\": \"False\",\n   \"reason\": \"KubeletHasNoPIDPressure\"\n  }\n ],\n \"taints\": [\n  {\n   \"key\": \"node.kubernetes.io/disk-pressure\",\n   \"effect\": \"NoSchedule\"\n  }\n ],\n \"signals\": [\n  \"DiskPressure=True (KubeletHasDiskPressure)\",\n  \"taints: node.kubernetes.io/disk-pressure:NoSchedule\"\n ]\n}"
         },
-        "durationMs": 4,
-        "ts": 1789767340781
+        "durationMs": 3,
+        "ts": 1789767716107
       },
       {
         "agent": "main",
@@ -4192,7 +4192,7 @@
           "output": "{\n \"count\": 5,\n \"warnings\": 2,\n \"events\": [\n  {\n   \"time\": \"2026-09-18T08:00:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Scheduled\",\n   \"message\": \"Successfully assigned default/job-126 to node-3\",\n   \"count\": 1,\n   \"source\": \"default-scheduler\"\n  },\n  {\n   \"time\": \"2026-09-18T08:01:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Started\",\n   \"message\": \"Started container exporter\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:20:00.000Z\",\n   \"type\": \"Warning\",\n   \"reason\": \"DNSConfigForming\",\n   \"message\": \"Nameserver limits were exceeded, some nameservers have been omitted\",\n   \"count\": 3,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:48:00.000Z\",\n   \"type\": \"Warning\",\n   \"reason\": \"Evicted\",\n   \"message\": \"The node was low on resource: ephemeral-storage. Threshold quantity: 10Gi, available: 2980Mi. Container exporter was using 41Gi, request is 0, has larger consumption of ephemeral-storage.\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  },\n  {\n   \"time\": \"2026-09-18T08:48:00.000Z\",\n   \"type\": \"Normal\",\n   \"reason\": \"Killing\",\n   \"message\": \"Stopping container exporter\",\n   \"count\": 1,\n   \"source\": \"kubelet\"\n  }\n ]\n}"
         },
         "durationMs": 5,
-        "ts": 1789767340781
+        "ts": 1789767716107
       },
       {
         "agent": "main",
@@ -4200,7 +4200,7 @@
         "type": "delta",
         "step": 4,
         "text": "初步判断为 ",
-        "ts": 1789767340782
+        "ts": 1789767716108
       },
       {
         "agent": "main",
@@ -4208,7 +4208,7 @@
         "type": "delta",
         "step": 4,
         "text": "DiskPr",
-        "ts": 1789767340788
+        "ts": 1789767716113
       },
       {
         "agent": "main",
@@ -4216,7 +4216,7 @@
         "type": "delta",
         "step": 4,
         "text": "essure",
-        "ts": 1789767340793
+        "ts": 1789767716119
       },
       {
         "agent": "main",
@@ -4224,7 +4224,7 @@
         "type": "delta",
         "step": 4,
         "text": "（节点磁盘不",
-        "ts": 1789767340798
+        "ts": 1789767716125
       },
       {
         "agent": "main",
@@ -4232,7 +4232,7 @@
         "type": "delta",
         "step": 4,
         "text": "足导致驱逐）",
-        "ts": 1789767340803
+        "ts": 1789767716131
       },
       {
         "agent": "main",
@@ -4240,7 +4240,7 @@
         "type": "delta",
         "step": 4,
         "text": "。对照知识库",
-        "ts": 1789767340809
+        "ts": 1789767716136
       },
       {
         "agent": "main",
@@ -4248,7 +4248,7 @@
         "type": "delta",
         "step": 4,
         "text": "与历史 Ca",
-        "ts": 1789767340814
+        "ts": 1789767716142
       },
       {
         "agent": "main",
@@ -4256,7 +4256,7 @@
         "type": "delta",
         "step": 4,
         "text": "se。",
-        "ts": 1789767340820
+        "ts": 1789767716148
       },
       {
         "agent": "main",
@@ -4314,8 +4314,8 @@
           "inputTokens": 4122,
           "outputTokens": 80
         },
-        "durationMs": 44,
-        "ts": 1789767340825
+        "durationMs": 45,
+        "ts": 1789767716152
       },
       {
         "agent": "main",
@@ -4350,7 +4350,7 @@
             ]
           }
         },
-        "ts": 1789767340825
+        "ts": 1789767716152
       },
       {
         "agent": "main",
@@ -4379,7 +4379,7 @@
             "status": "pending"
           }
         ],
-        "ts": 1789767340825
+        "ts": 1789767716152
       },
       {
         "agent": "main",
@@ -4394,7 +4394,7 @@
             "top": 2
           }
         },
-        "ts": 1789767340825
+        "ts": 1789767716152
       },
       {
         "agent": "main",
@@ -4409,7 +4409,7 @@
             "top": 2
           }
         },
-        "ts": 1789767340825
+        "ts": 1789767716153
       },
       {
         "agent": "main",
@@ -4423,7 +4423,7 @@
           "output": "计划已更新（2/4 完成）"
         },
         "durationMs": 1,
-        "ts": 1789767340826
+        "ts": 1789767716153
       },
       {
         "agent": "main",
@@ -4436,8 +4436,8 @@
           "ok": true,
           "output": "{\n \"total\": 2,\n \"cases\": [\n  {\n   \"id\": \"CASE-2026-063\",\n   \"date\": \"2026-08-15\",\n   \"symptoms\": \"Evicted ephemeral-storage DiskPressure no space left on device exporter\",\n   \"rootCause\": \"导出任务把 40GiB 中间文件写到容器临时目录\",\n   \"fix\": \"清理节点磁盘，输出改写 PVC，设置 ephemeral-storage limit\",\n   \"tags\": [\n    \"DiskPressure\",\n    \"Evicted\",\n    \"storage\"\n   ],\n   \"similarity\": 7\n  },\n  {\n   \"id\": \"CASE-2026-052\",\n   \"date\": \"2026-07-19\",\n   \"symptoms\": \"node Ready Unknown 心跳停止 kubelet 不可达 pod NodeNotReady TaintManagerEviction logs i/o timeout 10250\",\n   \"rootCause\": \"云厂商宿主机故障导致节点失联\",\n   \"fix\": \"cordon 节点，强制删除 Pod 让 Job 在其他节点重建，随后替换节点\",\n   \"tags\": [\n    \"NodeNotReady\",\n    \"node\"\n   ],\n   \"similarity\": 1\n  }\n ]\n}"
         },
-        "durationMs": 1,
-        "ts": 1789767340826
+        "durationMs": 0,
+        "ts": 1789767716153
       },
       {
         "agent": "main",
@@ -4451,7 +4451,7 @@
           "output": "{\n \"query\": \"DiskPressure Evicted ephemeral-storage no space left\",\n \"total\": 5,\n \"results\": [\n  {\n   \"file\": \"k8s/runbooks/node.md\",\n   \"title\": \"DiskPressure\",\n   \"score\": 9,\n   \"content\": \"## DiskPressure\\n症状：Node DiskPressure=True；Pod phase=Failed reason=Evicted，message 含 \\\"low on resource: ephemeral-storage\\\"；容器日志出现 no space left on device。\\n确认方法：get_node 看 DiskPressure 与 ephemeral-storage 使用；get_pod 看 Evicted message 里谁用得最多。\\n处理：1) 清理镜像 / 容器日志 / 临时文件；2) 给容器设置 ephemeral-storage limit；3) 大文件输出改用 PVC 或对象存储；4) 扩容节点磁盘。\"\n  },\n  {\n   \"file\": \"k8s/runbooks/node.md\",\n   \"title\": \"Node NotReady\",\n   \"score\": 3,\n   \"content\": \"## Node NotReady\\n症状：Node Ready=Unknown/False，lastHeartbeatTime 停止更新超过 40s；节点被打上 node.kubernetes.io/unreachable taint；其上 Pod 出现 NodeNotReady / TaintManagerEviction Event，kubectl logs 报 dial tcp <node-ip>:10250 i/o timeout；指标采集中断。\\n确认方法：get_node 看 Ready 与心跳时间；get_pod_events 看 NodeNotReady；get_logs 报错代表 kubelet 不可达。\\n处理：1) 检查节点 kubelet / 网络 / 云厂商状态；2) cordon 节点；3) 强制删除卡住的 Pod 让 Job 在健康节点重建；4) 节点长期不恢复则 drain + 替换。\\n注意：Pod phase 可能仍显示 Running，这是 API Server 缓存的旧状态，不能作为\\\"应用正常\\\"的证据。\"\n  }\n ]\n}"
         },
         "durationMs": 2,
-        "ts": 1789767340827
+        "ts": 1789767716154
       },
       {
         "agent": "main",
@@ -4459,7 +4459,7 @@
         "type": "delta",
         "step": 5,
         "text": "## 故障现",
-        "ts": 1789767340828
+        "ts": 1789767716155
       },
       {
         "agent": "main",
@@ -4467,7 +4467,7 @@
         "type": "delta",
         "step": 5,
         "text": "象\nPod ",
-        "ts": 1789767340833
+        "ts": 1789767716160
       },
       {
         "agent": "main",
@@ -4475,7 +4475,7 @@
         "type": "delta",
         "step": 5,
         "text": "job-12",
-        "ts": 1789767340839
+        "ts": 1789767716166
       },
       {
         "agent": "main",
@@ -4483,7 +4483,7 @@
         "type": "delta",
         "step": 5,
         "text": "6 被 ku",
-        "ts": 1789767340845
+        "ts": 1789767716172
       },
       {
         "agent": "main",
@@ -4491,7 +4491,7 @@
         "type": "delta",
         "step": 5,
         "text": "belet ",
-        "ts": 1789767340851
+        "ts": 1789767716177
       },
       {
         "agent": "main",
@@ -4499,7 +4499,7 @@
         "type": "delta",
         "step": 5,
         "text": "驱逐（pha",
-        "ts": 1789767340856
+        "ts": 1789767716183
       },
       {
         "agent": "main",
@@ -4507,7 +4507,7 @@
         "type": "delta",
         "step": 5,
         "text": "se=Fai",
-        "ts": 1789767340862
+        "ts": 1789767716189
       },
       {
         "agent": "main",
@@ -4515,7 +4515,7 @@
         "type": "delta",
         "step": 5,
         "text": "led re",
-        "ts": 1789767340868
+        "ts": 1789767716195
       },
       {
         "agent": "main",
@@ -4523,7 +4523,7 @@
         "type": "delta",
         "step": 5,
         "text": "ason=E",
-        "ts": 1789767340873
+        "ts": 1789767716200
       },
       {
         "agent": "main",
@@ -4531,7 +4531,7 @@
         "type": "delta",
         "step": 5,
         "text": "victed",
-        "ts": 1789767340879
+        "ts": 1789767716206
       },
       {
         "agent": "main",
@@ -4539,7 +4539,7 @@
         "type": "delta",
         "step": 5,
         "text": "），节点 n",
-        "ts": 1789767340884
+        "ts": 1789767716212
       },
       {
         "agent": "main",
@@ -4547,7 +4547,7 @@
         "type": "delta",
         "step": 5,
         "text": "ode-3 ",
-        "ts": 1789767340890
+        "ts": 1789767716218
       },
       {
         "agent": "main",
@@ -4555,7 +4555,7 @@
         "type": "delta",
         "step": 5,
         "text": "处于 Dis",
-        "ts": 1789767340896
+        "ts": 1789767716223
       },
       {
         "agent": "main",
@@ -4563,7 +4563,7 @@
         "type": "delta",
         "step": 5,
         "text": "kPress",
-        "ts": 1789767340902
+        "ts": 1789767716229
       },
       {
         "agent": "main",
@@ -4571,7 +4571,7 @@
         "type": "delta",
         "step": 5,
         "text": "ure。\n\n",
-        "ts": 1789767340907
+        "ts": 1789767716235
       },
       {
         "agent": "main",
@@ -4579,7 +4579,7 @@
         "type": "delta",
         "step": 5,
         "text": "## 关键证",
-        "ts": 1789767340912
+        "ts": 1789767716240
       },
       {
         "agent": "main",
@@ -4587,7 +4587,7 @@
         "type": "delta",
         "step": 5,
         "text": "据\n- [P",
-        "ts": 1789767340918
+        "ts": 1789767716246
       },
       {
         "agent": "main",
@@ -4595,7 +4595,7 @@
         "type": "delta",
         "step": 5,
         "text": "od] 容器",
-        "ts": 1789767340923
+        "ts": 1789767716252
       },
       {
         "agent": "main",
@@ -4603,7 +4603,7 @@
         "type": "delta",
         "step": 5,
         "text": " expor",
-        "ts": 1789767340928
+        "ts": 1789767716258
       },
       {
         "agent": "main",
@@ -4611,7 +4611,7 @@
         "type": "delta",
         "step": 5,
         "text": "ter la",
-        "ts": 1789767340934
+        "ts": 1789767716263
       },
       {
         "agent": "main",
@@ -4619,7 +4619,7 @@
         "type": "delta",
         "step": 5,
         "text": "stStat",
-        "ts": 1789767340939
+        "ts": 1789767716269
       },
       {
         "agent": "main",
@@ -4627,7 +4627,7 @@
         "type": "delta",
         "step": 5,
         "text": "e.term",
-        "ts": 1789767340943
+        "ts": 1789767716275
       },
       {
         "agent": "main",
@@ -4635,7 +4635,7 @@
         "type": "delta",
         "step": 5,
         "text": "inated",
-        "ts": 1789767340949
+        "ts": 1789767716281
       },
       {
         "agent": "main",
@@ -4643,7 +4643,7 @@
         "type": "delta",
         "step": 5,
         "text": ".reaso",
-        "ts": 1789767340955
+        "ts": 1789767716287
       },
       {
         "agent": "main",
@@ -4651,7 +4651,7 @@
         "type": "delta",
         "step": 5,
         "text": "n=Cont",
-        "ts": 1789767340961
+        "ts": 1789767716292
       },
       {
         "agent": "main",
@@ -4659,7 +4659,7 @@
         "type": "delta",
         "step": 5,
         "text": "ainerS",
-        "ts": 1789767340966
+        "ts": 1789767716298
       },
       {
         "agent": "main",
@@ -4667,7 +4667,7 @@
         "type": "delta",
         "step": 5,
         "text": "tatusU",
-        "ts": 1789767340972
+        "ts": 1789767716304
       },
       {
         "agent": "main",
@@ -4675,7 +4675,7 @@
         "type": "delta",
         "step": 5,
         "text": "nknown",
-        "ts": 1789767340978
+        "ts": 1789767716310
       },
       {
         "agent": "main",
@@ -4683,7 +4683,7 @@
         "type": "delta",
         "step": 5,
         "text": " exitC",
-        "ts": 1789767340983
+        "ts": 1789767716315
       },
       {
         "agent": "main",
@@ -4691,7 +4691,7 @@
         "type": "delta",
         "step": 5,
         "text": "ode=13",
-        "ts": 1789767340989
+        "ts": 1789767716321
       },
       {
         "agent": "main",
@@ -4699,7 +4699,7 @@
         "type": "delta",
         "step": 5,
         "text": "7，rest",
-        "ts": 1789767340995
+        "ts": 1789767716327
       },
       {
         "agent": "main",
@@ -4707,7 +4707,7 @@
         "type": "delta",
         "step": 5,
         "text": "artCou",
-        "ts": 1789767341001
+        "ts": 1789767716332
       },
       {
         "agent": "main",
@@ -4715,7 +4715,7 @@
         "type": "delta",
         "step": 5,
         "text": "nt=0（g",
-        "ts": 1789767341006
+        "ts": 1789767716338
       },
       {
         "agent": "main",
@@ -4723,7 +4723,7 @@
         "type": "delta",
         "step": 5,
         "text": "et_pod",
-        "ts": 1789767341012
+        "ts": 1789767716344
       },
       {
         "agent": "main",
@@ -4731,7 +4731,7 @@
         "type": "delta",
         "step": 5,
         "text": "）\n- [E",
-        "ts": 1789767341018
+        "ts": 1789767716350
       },
       {
         "agent": "main",
@@ -4739,7 +4739,7 @@
         "type": "delta",
         "step": 5,
         "text": "vent] ",
-        "ts": 1789767341023
+        "ts": 1789767716355
       },
       {
         "agent": "main",
@@ -4747,7 +4747,7 @@
         "type": "delta",
         "step": 5,
         "text": "DNSCon",
-        "ts": 1789767341029
+        "ts": 1789767716361
       },
       {
         "agent": "main",
@@ -4755,7 +4755,7 @@
         "type": "delta",
         "step": 5,
         "text": "figFor",
-        "ts": 1789767341035
+        "ts": 1789767716367
       },
       {
         "agent": "main",
@@ -4763,7 +4763,7 @@
         "type": "delta",
         "step": 5,
         "text": "ming: ",
-        "ts": 1789767341041
+        "ts": 1789767716372
       },
       {
         "agent": "main",
@@ -4771,7 +4771,7 @@
         "type": "delta",
         "step": 5,
         "text": "Namese",
-        "ts": 1789767341046
+        "ts": 1789767716378
       },
       {
         "agent": "main",
@@ -4779,7 +4779,7 @@
         "type": "delta",
         "step": 5,
         "text": "rver l",
-        "ts": 1789767341051
+        "ts": 1789767716384
       },
       {
         "agent": "main",
@@ -4787,7 +4787,7 @@
         "type": "delta",
         "step": 5,
         "text": "imits ",
-        "ts": 1789767341057
+        "ts": 1789767716389
       },
       {
         "agent": "main",
@@ -4795,7 +4795,7 @@
         "type": "delta",
         "step": 5,
         "text": "were e",
-        "ts": 1789767341062
+        "ts": 1789767716395
       },
       {
         "agent": "main",
@@ -4803,7 +4803,7 @@
         "type": "delta",
         "step": 5,
         "text": "xceede",
-        "ts": 1789767341068
+        "ts": 1789767716401
       },
       {
         "agent": "main",
@@ -4811,7 +4811,7 @@
         "type": "delta",
         "step": 5,
         "text": "d, som",
-        "ts": 1789767341074
+        "ts": 1789767716406
       },
       {
         "agent": "main",
@@ -4819,7 +4819,7 @@
         "type": "delta",
         "step": 5,
         "text": "e name",
-        "ts": 1789767341079
+        "ts": 1789767716412
       },
       {
         "agent": "main",
@@ -4827,7 +4827,7 @@
         "type": "delta",
         "step": 5,
         "text": "server",
-        "ts": 1789767341085
+        "ts": 1789767716417
       },
       {
         "agent": "main",
@@ -4835,7 +4835,7 @@
         "type": "delta",
         "step": 5,
         "text": "s have",
-        "ts": 1789767341091
+        "ts": 1789767716423
       },
       {
         "agent": "main",
@@ -4843,7 +4843,7 @@
         "type": "delta",
         "step": 5,
         "text": " been ",
-        "ts": 1789767341097
+        "ts": 1789767716429
       },
       {
         "agent": "main",
@@ -4851,7 +4851,7 @@
         "type": "delta",
         "step": 5,
         "text": "omitte",
-        "ts": 1789767341102
+        "ts": 1789767716434
       },
       {
         "agent": "main",
@@ -4859,7 +4859,7 @@
         "type": "delta",
         "step": 5,
         "text": "d（coun",
-        "ts": 1789767341108
+        "ts": 1789767716440
       },
       {
         "agent": "main",
@@ -4867,7 +4867,7 @@
         "type": "delta",
         "step": 5,
         "text": "t=3，ge",
-        "ts": 1789767341114
+        "ts": 1789767716446
       },
       {
         "agent": "main",
@@ -4875,7 +4875,7 @@
         "type": "delta",
         "step": 5,
         "text": "t_pod_",
-        "ts": 1789767341119
+        "ts": 1789767716452
       },
       {
         "agent": "main",
@@ -4883,7 +4883,7 @@
         "type": "delta",
         "step": 5,
         "text": "events",
-        "ts": 1789767341125
+        "ts": 1789767716457
       },
       {
         "agent": "main",
@@ -4891,7 +4891,7 @@
         "type": "delta",
         "step": 5,
         "text": "）\n- [E",
-        "ts": 1789767341131
+        "ts": 1789767716463
       },
       {
         "agent": "main",
@@ -4899,7 +4899,7 @@
         "type": "delta",
         "step": 5,
         "text": "vent] ",
-        "ts": 1789767341137
+        "ts": 1789767716469
       },
       {
         "agent": "main",
@@ -4907,7 +4907,7 @@
         "type": "delta",
         "step": 5,
         "text": "Evicte",
-        "ts": 1789767341142
+        "ts": 1789767716475
       },
       {
         "agent": "main",
@@ -4915,7 +4915,7 @@
         "type": "delta",
         "step": 5,
         "text": "d: The",
-        "ts": 1789767341148
+        "ts": 1789767716480
       },
       {
         "agent": "main",
@@ -4923,7 +4923,7 @@
         "type": "delta",
         "step": 5,
         "text": " node ",
-        "ts": 1789767341154
+        "ts": 1789767716486
       },
       {
         "agent": "main",
@@ -4931,7 +4931,7 @@
         "type": "delta",
         "step": 5,
         "text": "was lo",
-        "ts": 1789767341160
+        "ts": 1789767716492
       },
       {
         "agent": "main",
@@ -4939,7 +4939,7 @@
         "type": "delta",
         "step": 5,
         "text": "w on r",
-        "ts": 1789767341165
+        "ts": 1789767716498
       },
       {
         "agent": "main",
@@ -4947,7 +4947,7 @@
         "type": "delta",
         "step": 5,
         "text": "esourc",
-        "ts": 1789767341171
+        "ts": 1789767716504
       },
       {
         "agent": "main",
@@ -4955,7 +4955,7 @@
         "type": "delta",
         "step": 5,
         "text": "e: eph",
-        "ts": 1789767341177
+        "ts": 1789767716509
       },
       {
         "agent": "main",
@@ -4963,7 +4963,7 @@
         "type": "delta",
         "step": 5,
         "text": "emeral",
-        "ts": 1789767341182
+        "ts": 1789767716515
       },
       {
         "agent": "main",
@@ -4971,7 +4971,7 @@
         "type": "delta",
         "step": 5,
         "text": "-stora",
-        "ts": 1789767341188
+        "ts": 1789767716521
       },
       {
         "agent": "main",
@@ -4979,7 +4979,7 @@
         "type": "delta",
         "step": 5,
         "text": "ge. Th",
-        "ts": 1789767341194
+        "ts": 1789767716527
       },
       {
         "agent": "main",
@@ -4987,7 +4987,7 @@
         "type": "delta",
         "step": 5,
         "text": "reshol",
-        "ts": 1789767341200
+        "ts": 1789767716531
       },
       {
         "agent": "main",
@@ -4995,7 +4995,7 @@
         "type": "delta",
         "step": 5,
         "text": "d quan",
-        "ts": 1789767341205
+        "ts": 1789767716537
       },
       {
         "agent": "main",
@@ -5003,7 +5003,7 @@
         "type": "delta",
         "step": 5,
         "text": "tity: ",
-        "ts": 1789767341210
+        "ts": 1789767716543
       },
       {
         "agent": "main",
@@ -5011,7 +5011,7 @@
         "type": "delta",
         "step": 5,
         "text": "10Gi, ",
-        "ts": 1789767341216
+        "ts": 1789767716549
       },
       {
         "agent": "main",
@@ -5019,7 +5019,7 @@
         "type": "delta",
         "step": 5,
         "text": "availa",
-        "ts": 1789767341221
+        "ts": 1789767716554
       },
       {
         "agent": "main",
@@ -5027,7 +5027,7 @@
         "type": "delta",
         "step": 5,
         "text": "ble: 2",
-        "ts": 1789767341227
+        "ts": 1789767716560
       },
       {
         "agent": "main",
@@ -5035,7 +5035,7 @@
         "type": "delta",
         "step": 5,
         "text": "980Mi.",
-        "ts": 1789767341233
+        "ts": 1789767716565
       },
       {
         "agent": "main",
@@ -5043,7 +5043,7 @@
         "type": "delta",
         "step": 5,
         "text": " Conta",
-        "ts": 1789767341238
+        "ts": 1789767716571
       },
       {
         "agent": "main",
@@ -5051,7 +5051,7 @@
         "type": "delta",
         "step": 5,
         "text": "iner e",
-        "ts": 1789767341244
+        "ts": 1789767716577
       },
       {
         "agent": "main",
@@ -5059,7 +5059,7 @@
         "type": "delta",
         "step": 5,
         "text": "xporte",
-        "ts": 1789767341250
+        "ts": 1789767716582
       },
       {
         "agent": "main",
@@ -5067,7 +5067,7 @@
         "type": "delta",
         "step": 5,
         "text": "r was ",
-        "ts": 1789767341256
+        "ts": 1789767716588
       },
       {
         "agent": "main",
@@ -5075,7 +5075,7 @@
         "type": "delta",
         "step": 5,
         "text": "using ",
-        "ts": 1789767341261
+        "ts": 1789767716594
       },
       {
         "agent": "main",
@@ -5083,7 +5083,7 @@
         "type": "delta",
         "step": 5,
         "text": "41Gi, ",
-        "ts": 1789767341267
+        "ts": 1789767716599
       },
       {
         "agent": "main",
@@ -5091,7 +5091,7 @@
         "type": "delta",
         "step": 5,
         "text": "reques",
-        "ts": 1789767341273
+        "ts": 1789767716605
       },
       {
         "agent": "main",
@@ -5099,7 +5099,7 @@
         "type": "delta",
         "step": 5,
         "text": "t is 0",
-        "ts": 1789767341278
+        "ts": 1789767716611
       },
       {
         "agent": "main",
@@ -5107,7 +5107,7 @@
         "type": "delta",
         "step": 5,
         "text": ", has ",
-        "ts": 1789767341284
+        "ts": 1789767716617
       },
       {
         "agent": "main",
@@ -5115,7 +5115,7 @@
         "type": "delta",
         "step": 5,
         "text": "larger",
-        "ts": 1789767341290
+        "ts": 1789767716622
       },
       {
         "agent": "main",
@@ -5123,7 +5123,7 @@
         "type": "delta",
         "step": 5,
         "text": " consu",
-        "ts": 1789767341296
+        "ts": 1789767716628
       },
       {
         "agent": "main",
@@ -5131,7 +5131,7 @@
         "type": "delta",
         "step": 5,
         "text": "m（coun",
-        "ts": 1789767341301
+        "ts": 1789767716634
       },
       {
         "agent": "main",
@@ -5139,7 +5139,7 @@
         "type": "delta",
         "step": 5,
         "text": "t=1，ge",
-        "ts": 1789767341307
+        "ts": 1789767716640
       },
       {
         "agent": "main",
@@ -5147,7 +5147,7 @@
         "type": "delta",
         "step": 5,
         "text": "t_pod_",
-        "ts": 1789767341312
+        "ts": 1789767716645
       },
       {
         "agent": "main",
@@ -5155,7 +5155,7 @@
         "type": "delta",
         "step": 5,
         "text": "events",
-        "ts": 1789767341318
+        "ts": 1789767716651
       },
       {
         "agent": "main",
@@ -5163,7 +5163,7 @@
         "type": "delta",
         "step": 5,
         "text": "）\n- [N",
-        "ts": 1789767341323
+        "ts": 1789767716657
       },
       {
         "agent": "main",
@@ -5171,7 +5171,7 @@
         "type": "delta",
         "step": 5,
         "text": "ode] n",
-        "ts": 1789767341329
+        "ts": 1789767716662
       },
       {
         "agent": "main",
@@ -5179,7 +5179,7 @@
         "type": "delta",
         "step": 5,
         "text": "ode-3:",
-        "ts": 1789767341335
+        "ts": 1789767716667
       },
       {
         "agent": "main",
@@ -5187,7 +5187,7 @@
         "type": "delta",
         "step": 5,
         "text": " DiskP",
-        "ts": 1789767341340
+        "ts": 1789767716673
       },
       {
         "agent": "main",
@@ -5195,7 +5195,7 @@
         "type": "delta",
         "step": 5,
         "text": "ressur",
-        "ts": 1789767341346
+        "ts": 1789767716679
       },
       {
         "agent": "main",
@@ -5203,7 +5203,7 @@
         "type": "delta",
         "step": 5,
         "text": "e=True",
-        "ts": 1789767341352
+        "ts": 1789767716684
       },
       {
         "agent": "main",
@@ -5211,7 +5211,7 @@
         "type": "delta",
         "step": 5,
         "text": " (Kube",
-        "ts": 1789767341358
+        "ts": 1789767716690
       },
       {
         "agent": "main",
@@ -5219,7 +5219,7 @@
         "type": "delta",
         "step": 5,
         "text": "letHas",
-        "ts": 1789767341363
+        "ts": 1789767716696
       },
       {
         "agent": "main",
@@ -5227,7 +5227,7 @@
         "type": "delta",
         "step": 5,
         "text": "DiskPr",
-        "ts": 1789767341369
+        "ts": 1789767716701
       },
       {
         "agent": "main",
@@ -5235,7 +5235,7 @@
         "type": "delta",
         "step": 5,
         "text": "essure",
-        "ts": 1789767341375
+        "ts": 1789767716707
       },
       {
         "agent": "main",
@@ -5243,7 +5243,7 @@
         "type": "delta",
         "step": 5,
         "text": ")；tain",
-        "ts": 1789767341380
+        "ts": 1789767716713
       },
       {
         "agent": "main",
@@ -5251,7 +5251,7 @@
         "type": "delta",
         "step": 5,
         "text": "ts: no",
-        "ts": 1789767341386
+        "ts": 1789767716719
       },
       {
         "agent": "main",
@@ -5259,7 +5259,7 @@
         "type": "delta",
         "step": 5,
         "text": "de.kub",
-        "ts": 1789767341392
+        "ts": 1789767716724
       },
       {
         "agent": "main",
@@ -5267,7 +5267,7 @@
         "type": "delta",
         "step": 5,
         "text": "ernete",
-        "ts": 1789767341398
+        "ts": 1789767716730
       },
       {
         "agent": "main",
@@ -5275,7 +5275,7 @@
         "type": "delta",
         "step": 5,
         "text": "s.io/d",
-        "ts": 1789767341403
+        "ts": 1789767716736
       },
       {
         "agent": "main",
@@ -5283,7 +5283,7 @@
         "type": "delta",
         "step": 5,
         "text": "isk-pr",
-        "ts": 1789767341409
+        "ts": 1789767716742
       },
       {
         "agent": "main",
@@ -5291,7 +5291,7 @@
         "type": "delta",
         "step": 5,
         "text": "essure",
-        "ts": 1789767341414
+        "ts": 1789767716748
       },
       {
         "agent": "main",
@@ -5299,7 +5299,7 @@
         "type": "delta",
         "step": 5,
         "text": ":NoSch",
-        "ts": 1789767341420
+        "ts": 1789767716753
       },
       {
         "agent": "main",
@@ -5307,7 +5307,7 @@
         "type": "delta",
         "step": 5,
         "text": "edule（",
-        "ts": 1789767341426
+        "ts": 1789767716759
       },
       {
         "agent": "main",
@@ -5315,7 +5315,7 @@
         "type": "delta",
         "step": 5,
         "text": "get_no",
-        "ts": 1789767341431
+        "ts": 1789767716764
       },
       {
         "agent": "main",
@@ -5323,7 +5323,7 @@
         "type": "delta",
         "step": 5,
         "text": "de）\n- ",
-        "ts": 1789767341437
+        "ts": 1789767716769
       },
       {
         "agent": "main",
@@ -5331,7 +5331,7 @@
         "type": "delta",
         "step": 5,
         "text": "[Metri",
-        "ts": 1789767341443
+        "ts": 1789767716775
       },
       {
         "agent": "main",
@@ -5339,7 +5339,7 @@
         "type": "delta",
         "step": 5,
         "text": "c] mem",
-        "ts": 1789767341448
+        "ts": 1789767716781
       },
       {
         "agent": "main",
@@ -5347,7 +5347,7 @@
         "type": "delta",
         "step": 5,
         "text": "ory 峰值",
-        "ts": 1789767341454
+        "ts": 1789767716787
       },
       {
         "agent": "main",
@@ -5355,7 +5355,7 @@
         "type": "delta",
         "step": 5,
         "text": " 700Mi",
-        "ts": 1789767341460
+        "ts": 1789767716792
       },
       {
         "agent": "main",
@@ -5363,7 +5363,7 @@
         "type": "delta",
         "step": 5,
         "text": "B / li",
-        "ts": 1789767341466
+        "ts": 1789767716798
       },
       {
         "agent": "main",
@@ -5371,7 +5371,7 @@
         "type": "delta",
         "step": 5,
         "text": "mit 20",
-        "ts": 1789767341471
+        "ts": 1789767716804
       },
       {
         "agent": "main",
@@ -5379,7 +5379,7 @@
         "type": "delta",
         "step": 5,
         "text": "48MiB（",
-        "ts": 1789767341477
+        "ts": 1789767716809
       },
       {
         "agent": "main",
@@ -5387,7 +5387,7 @@
         "type": "delta",
         "step": 5,
         "text": "34%），c",
-        "ts": 1789767341483
+        "ts": 1789767716815
       },
       {
         "agent": "main",
@@ -5395,7 +5395,7 @@
         "type": "delta",
         "step": 5,
         "text": "pu 峰值 ",
-        "ts": 1789767341489
+        "ts": 1789767716821
       },
       {
         "agent": "main",
@@ -5403,7 +5403,7 @@
         "type": "delta",
         "step": 5,
         "text": "0.4cor",
-        "ts": 1789767341494
+        "ts": 1789767716826
       },
       {
         "agent": "main",
@@ -5411,7 +5411,7 @@
         "type": "delta",
         "step": 5,
         "text": "es（get",
-        "ts": 1789767341500
+        "ts": 1789767716832
       },
       {
         "agent": "main",
@@ -5419,7 +5419,7 @@
         "type": "delta",
         "step": 5,
         "text": "_metri",
-        "ts": 1789767341505
+        "ts": 1789767716838
       },
       {
         "agent": "main",
@@ -5427,7 +5427,7 @@
         "type": "delta",
         "step": 5,
         "text": "cs）\n- ",
-        "ts": 1789767341511
+        "ts": 1789767716843
       },
       {
         "agent": "main",
@@ -5435,7 +5435,7 @@
         "type": "delta",
         "step": 5,
         "text": "[Metri",
-        "ts": 1789767341517
+        "ts": 1789767716849
       },
       {
         "agent": "main",
@@ -5443,7 +5443,7 @@
         "type": "delta",
         "step": 5,
         "text": "c] 磁盘使",
-        "ts": 1789767341523
+        "ts": 1789767716855
       },
       {
         "agent": "main",
@@ -5451,7 +5451,7 @@
         "type": "delta",
         "step": 5,
         "text": "用最近 96",
-        "ts": 1789767341528
+        "ts": 1789767716860
       },
       {
         "agent": "main",
@@ -5459,7 +5459,7 @@
         "type": "delta",
         "step": 5,
         "text": ".4GiB ",
-        "ts": 1789767341534
+        "ts": 1789767716866
       },
       {
         "agent": "main",
@@ -5467,7 +5467,7 @@
         "type": "delta",
         "step": 5,
         "text": "/ 100G",
-        "ts": 1789767341540
+        "ts": 1789767716872
       },
       {
         "agent": "main",
@@ -5475,7 +5475,7 @@
         "type": "delta",
         "step": 5,
         "text": "iB（get",
-        "ts": 1789767341545
+        "ts": 1789767716877
       },
       {
         "agent": "main",
@@ -5483,7 +5483,7 @@
         "type": "delta",
         "step": 5,
         "text": "_metri",
-        "ts": 1789767341551
+        "ts": 1789767716883
       },
       {
         "agent": "main",
@@ -5491,7 +5491,7 @@
         "type": "delta",
         "step": 5,
         "text": "cs）\n- ",
-        "ts": 1789767341557
+        "ts": 1789767716889
       },
       {
         "agent": "main",
@@ -5499,7 +5499,7 @@
         "type": "delta",
         "step": 5,
         "text": "[Log] ",
-        "ts": 1789767341563
+        "ts": 1789767716895
       },
       {
         "agent": "main",
@@ -5507,7 +5507,7 @@
         "type": "delta",
         "step": 5,
         "text": "取日志失败：",
-        "ts": 1789767341568
+        "ts": 1789767716900
       },
       {
         "agent": "main",
@@ -5515,7 +5515,7 @@
         "type": "delta",
         "step": 5,
         "text": "没有上一个容",
-        "ts": 1789767341574
+        "ts": 1789767716906
       },
       {
         "agent": "main",
@@ -5523,7 +5523,7 @@
         "type": "delta",
         "step": 5,
         "text": "器实例的日志",
-        "ts": 1789767341580
+        "ts": 1789767716912
       },
       {
         "agent": "main",
@@ -5531,7 +5531,7 @@
         "type": "delta",
         "step": 5,
         "text": "（容器未重启",
-        "ts": 1789767341586
+        "ts": 1789767716917
       },
       {
         "agent": "main",
@@ -5539,7 +5539,7 @@
         "type": "delta",
         "step": 5,
         "text": "过）（get",
-        "ts": 1789767341591
+        "ts": 1789767716923
       },
       {
         "agent": "main",
@@ -5547,7 +5547,7 @@
         "type": "delta",
         "step": 5,
         "text": "_logs）",
-        "ts": 1789767341597
+        "ts": 1789767716929
       },
       {
         "agent": "main",
@@ -5555,7 +5555,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n- [Ru",
-        "ts": 1789767341602
+        "ts": 1789767716935
       },
       {
         "agent": "main",
@@ -5563,7 +5563,7 @@
         "type": "delta",
         "step": 5,
         "text": "nbook]",
-        "ts": 1789767341608
+        "ts": 1789767716941
       },
       {
         "agent": "main",
@@ -5571,7 +5571,7 @@
         "type": "delta",
         "step": 5,
         "text": " DiskP",
-        "ts": 1789767341613
+        "ts": 1789767716946
       },
       {
         "agent": "main",
@@ -5579,7 +5579,7 @@
         "type": "delta",
         "step": 5,
         "text": "ressur",
-        "ts": 1789767341619
+        "ts": 1789767716952
       },
       {
         "agent": "main",
@@ -5587,7 +5587,7 @@
         "type": "delta",
         "step": 5,
         "text": "e：症状：N",
-        "ts": 1789767341625
+        "ts": 1789767716958
       },
       {
         "agent": "main",
@@ -5595,7 +5595,7 @@
         "type": "delta",
         "step": 5,
         "text": "ode Di",
-        "ts": 1789767341631
+        "ts": 1789767716964
       },
       {
         "agent": "main",
@@ -5603,7 +5603,7 @@
         "type": "delta",
         "step": 5,
         "text": "skPres",
-        "ts": 1789767341636
+        "ts": 1789767716969
       },
       {
         "agent": "main",
@@ -5611,7 +5611,7 @@
         "type": "delta",
         "step": 5,
         "text": "sure=T",
-        "ts": 1789767341641
+        "ts": 1789767716975
       },
       {
         "agent": "main",
@@ -5619,7 +5619,7 @@
         "type": "delta",
         "step": 5,
         "text": "rue；Po",
-        "ts": 1789767341647
+        "ts": 1789767716981
       },
       {
         "agent": "main",
@@ -5627,7 +5627,7 @@
         "type": "delta",
         "step": 5,
         "text": "d phas",
-        "ts": 1789767341653
+        "ts": 1789767716987
       },
       {
         "agent": "main",
@@ -5635,7 +5635,7 @@
         "type": "delta",
         "step": 5,
         "text": "e=Fail",
-        "ts": 1789767341658
+        "ts": 1789767716992
       },
       {
         "agent": "main",
@@ -5643,7 +5643,7 @@
         "type": "delta",
         "step": 5,
         "text": "ed rea",
-        "ts": 1789767341664
+        "ts": 1789767716998
       },
       {
         "agent": "main",
@@ -5651,7 +5651,7 @@
         "type": "delta",
         "step": 5,
         "text": "son=Ev",
-        "ts": 1789767341669
+        "ts": 1789767717004
       },
       {
         "agent": "main",
@@ -5659,7 +5659,7 @@
         "type": "delta",
         "step": 5,
         "text": "icted，",
-        "ts": 1789767341675
+        "ts": 1789767717009
       },
       {
         "agent": "main",
@@ -5667,7 +5667,7 @@
         "type": "delta",
         "step": 5,
         "text": "messag",
-        "ts": 1789767341681
+        "ts": 1789767717015
       },
       {
         "agent": "main",
@@ -5675,7 +5675,7 @@
         "type": "delta",
         "step": 5,
         "text": "e 含 \"l",
-        "ts": 1789767341686
+        "ts": 1789767717020
       },
       {
         "agent": "main",
@@ -5683,7 +5683,7 @@
         "type": "delta",
         "step": 5,
         "text": "ow on ",
-        "ts": 1789767341692
+        "ts": 1789767717026
       },
       {
         "agent": "main",
@@ -5691,7 +5691,7 @@
         "type": "delta",
         "step": 5,
         "text": "resour",
-        "ts": 1789767341698
+        "ts": 1789767717032
       },
       {
         "agent": "main",
@@ -5699,7 +5699,7 @@
         "type": "delta",
         "step": 5,
         "text": "ce: ep",
-        "ts": 1789767341703
+        "ts": 1789767717038
       },
       {
         "agent": "main",
@@ -5707,7 +5707,7 @@
         "type": "delta",
         "step": 5,
         "text": "hemera",
-        "ts": 1789767341709
+        "ts": 1789767717043
       },
       {
         "agent": "main",
@@ -5715,7 +5715,7 @@
         "type": "delta",
         "step": 5,
         "text": "l-stor",
-        "ts": 1789767341715
+        "ts": 1789767717049
       },
       {
         "agent": "main",
@@ -5723,7 +5723,7 @@
         "type": "delta",
         "step": 5,
         "text": "age\"；容",
-        "ts": 1789767341720
+        "ts": 1789767717055
       },
       {
         "agent": "main",
@@ -5731,7 +5731,7 @@
         "type": "delta",
         "step": 5,
         "text": "器日志出现 ",
-        "ts": 1789767341726
+        "ts": 1789767717060
       },
       {
         "agent": "main",
@@ -5739,7 +5739,7 @@
         "type": "delta",
         "step": 5,
         "text": "no spa",
-        "ts": 1789767341732
+        "ts": 1789767717066
       },
       {
         "agent": "main",
@@ -5747,7 +5747,7 @@
         "type": "delta",
         "step": 5,
         "text": "ce…（se",
-        "ts": 1789767341738
+        "ts": 1789767717072
       },
       {
         "agent": "main",
@@ -5755,7 +5755,7 @@
         "type": "delta",
         "step": 5,
         "text": "arch_r",
-        "ts": 1789767341743
+        "ts": 1789767717077
       },
       {
         "agent": "main",
@@ -5763,7 +5763,7 @@
         "type": "delta",
         "step": 5,
         "text": "unbook",
-        "ts": 1789767341749
+        "ts": 1789767717083
       },
       {
         "agent": "main",
@@ -5771,7 +5771,7 @@
         "type": "delta",
         "step": 5,
         "text": " → k8s",
-        "ts": 1789767341755
+        "ts": 1789767717089
       },
       {
         "agent": "main",
@@ -5779,7 +5779,7 @@
         "type": "delta",
         "step": 5,
         "text": "/runbo",
-        "ts": 1789767341760
+        "ts": 1789767717095
       },
       {
         "agent": "main",
@@ -5787,7 +5787,7 @@
         "type": "delta",
         "step": 5,
         "text": "oks/no",
-        "ts": 1789767341766
+        "ts": 1789767717100
       },
       {
         "agent": "main",
@@ -5795,7 +5795,7 @@
         "type": "delta",
         "step": 5,
         "text": "de.md）",
-        "ts": 1789767341772
+        "ts": 1789767717106
       },
       {
         "agent": "main",
@@ -5803,7 +5803,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n- [Ca",
-        "ts": 1789767341777
+        "ts": 1789767717112
       },
       {
         "agent": "main",
@@ -5811,7 +5811,7 @@
         "type": "delta",
         "step": 5,
         "text": "se] CA",
-        "ts": 1789767341783
+        "ts": 1789767717117
       },
       {
         "agent": "main",
@@ -5819,7 +5819,7 @@
         "type": "delta",
         "step": 5,
         "text": "SE-202",
-        "ts": 1789767341788
+        "ts": 1789767717123
       },
       {
         "agent": "main",
@@ -5827,7 +5827,7 @@
         "type": "delta",
         "step": 5,
         "text": "6-063（",
-        "ts": 1789767341794
+        "ts": 1789767717129
       },
       {
         "agent": "main",
@@ -5835,7 +5835,7 @@
         "type": "delta",
         "step": 5,
         "text": "2026-0",
-        "ts": 1789767341799
+        "ts": 1789767717135
       },
       {
         "agent": "main",
@@ -5843,7 +5843,7 @@
         "type": "delta",
         "step": 5,
         "text": "8-15）根",
-        "ts": 1789767341805
+        "ts": 1789767717140
       },
       {
         "agent": "main",
@@ -5851,7 +5851,7 @@
         "type": "delta",
         "step": 5,
         "text": "因：导出任务",
-        "ts": 1789767341811
+        "ts": 1789767717146
       },
       {
         "agent": "main",
@@ -5859,7 +5859,7 @@
         "type": "delta",
         "step": 5,
         "text": "把 40Gi",
-        "ts": 1789767341817
+        "ts": 1789767717152
       },
       {
         "agent": "main",
@@ -5867,7 +5867,7 @@
         "type": "delta",
         "step": 5,
         "text": "B 中间文件",
-        "ts": 1789767341822
+        "ts": 1789767717158
       },
       {
         "agent": "main",
@@ -5875,7 +5875,7 @@
         "type": "delta",
         "step": 5,
         "text": "写到容器临时",
-        "ts": 1789767341828
+        "ts": 1789767717163
       },
       {
         "agent": "main",
@@ -5883,7 +5883,7 @@
         "type": "delta",
         "step": 5,
         "text": "目录；处理：",
-        "ts": 1789767341834
+        "ts": 1789767717169
       },
       {
         "agent": "main",
@@ -5891,7 +5891,7 @@
         "type": "delta",
         "step": 5,
         "text": "清理节点磁盘",
-        "ts": 1789767341840
+        "ts": 1789767717175
       },
       {
         "agent": "main",
@@ -5899,7 +5899,7 @@
         "type": "delta",
         "step": 5,
         "text": "，输出改写 ",
-        "ts": 1789767341845
+        "ts": 1789767717180
       },
       {
         "agent": "main",
@@ -5907,7 +5907,7 @@
         "type": "delta",
         "step": 5,
         "text": "PVC，设置",
-        "ts": 1789767341849
+        "ts": 1789767717186
       },
       {
         "agent": "main",
@@ -5915,7 +5915,7 @@
         "type": "delta",
         "step": 5,
         "text": " ephem",
-        "ts": 1789767341855
+        "ts": 1789767717192
       },
       {
         "agent": "main",
@@ -5923,7 +5923,7 @@
         "type": "delta",
         "step": 5,
         "text": "eral-s",
-        "ts": 1789767341861
+        "ts": 1789767717198
       },
       {
         "agent": "main",
@@ -5931,7 +5931,7 @@
         "type": "delta",
         "step": 5,
         "text": "torage",
-        "ts": 1789767341866
+        "ts": 1789767717203
       },
       {
         "agent": "main",
@@ -5939,7 +5939,7 @@
         "type": "delta",
         "step": 5,
         "text": " limit",
-        "ts": 1789767341872
+        "ts": 1789767717209
       },
       {
         "agent": "main",
@@ -5947,7 +5947,7 @@
         "type": "delta",
         "step": 5,
         "text": "（searc",
-        "ts": 1789767341878
+        "ts": 1789767717215
       },
       {
         "agent": "main",
@@ -5955,7 +5955,7 @@
         "type": "delta",
         "step": 5,
         "text": "h_case",
-        "ts": 1789767341884
+        "ts": 1789767717220
       },
       {
         "agent": "main",
@@ -5963,7 +5963,7 @@
         "type": "delta",
         "step": 5,
         "text": "s）\n\n##",
-        "ts": 1789767341889
+        "ts": 1789767717226
       },
       {
         "agent": "main",
@@ -5971,7 +5971,7 @@
         "type": "delta",
         "step": 5,
         "text": " 已确认事实",
-        "ts": 1789767341895
+        "ts": 1789767717232
       },
       {
         "agent": "main",
@@ -5979,7 +5979,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n- Pod",
-        "ts": 1789767341901
+        "ts": 1789767717237
       },
       {
         "agent": "main",
@@ -5987,7 +5987,7 @@
         "type": "delta",
         "step": 5,
         "text": " defau",
-        "ts": 1789767341906
+        "ts": 1789767717243
       },
       {
         "agent": "main",
@@ -5995,7 +5995,7 @@
         "type": "delta",
         "step": 5,
         "text": "lt/job",
-        "ts": 1789767341912
+        "ts": 1789767717249
       },
       {
         "agent": "main",
@@ -6003,7 +6003,7 @@
         "type": "delta",
         "step": 5,
         "text": "-126 p",
-        "ts": 1789767341918
+        "ts": 1789767717254
       },
       {
         "agent": "main",
@@ -6011,7 +6011,7 @@
         "type": "delta",
         "step": 5,
         "text": "hase=F",
-        "ts": 1789767341924
+        "ts": 1789767717260
       },
       {
         "agent": "main",
@@ -6019,7 +6019,7 @@
         "type": "delta",
         "step": 5,
         "text": "ailed ",
-        "ts": 1789767341929
+        "ts": 1789767717265
       },
       {
         "agent": "main",
@@ -6027,7 +6027,7 @@
         "type": "delta",
         "step": 5,
         "text": "reason",
-        "ts": 1789767341934
+        "ts": 1789767717271
       },
       {
         "agent": "main",
@@ -6035,7 +6035,7 @@
         "type": "delta",
         "step": 5,
         "text": "=Evict",
-        "ts": 1789767341940
+        "ts": 1789767717277
       },
       {
         "agent": "main",
@@ -6043,7 +6043,7 @@
         "type": "delta",
         "step": 5,
         "text": "ed，节点 ",
-        "ts": 1789767341946
+        "ts": 1789767717283
       },
       {
         "agent": "main",
@@ -6051,7 +6051,7 @@
         "type": "delta",
         "step": 5,
         "text": "node-3",
-        "ts": 1789767341952
+        "ts": 1789767717288
       },
       {
         "agent": "main",
@@ -6059,7 +6059,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n- 容器上",
-        "ts": 1789767341957
+        "ts": 1789767717294
       },
       {
         "agent": "main",
@@ -6067,7 +6067,7 @@
         "type": "delta",
         "step": 5,
         "text": "次终止原因 ",
-        "ts": 1789767341963
+        "ts": 1789767717300
       },
       {
         "agent": "main",
@@ -6075,7 +6075,7 @@
         "type": "delta",
         "step": 5,
         "text": "Contai",
-        "ts": 1789767341969
+        "ts": 1789767717306
       },
       {
         "agent": "main",
@@ -6083,7 +6083,7 @@
         "type": "delta",
         "step": 5,
         "text": "nerSta",
-        "ts": 1789767341975
+        "ts": 1789767717312
       },
       {
         "agent": "main",
@@ -6091,7 +6091,7 @@
         "type": "delta",
         "step": 5,
         "text": "tusUnk",
-        "ts": 1789767341980
+        "ts": 1789767717317
       },
       {
         "agent": "main",
@@ -6099,7 +6099,7 @@
         "type": "delta",
         "step": 5,
         "text": "nown，e",
-        "ts": 1789767341986
+        "ts": 1789767717323
       },
       {
         "agent": "main",
@@ -6107,7 +6107,7 @@
         "type": "delta",
         "step": 5,
         "text": "xitCod",
-        "ts": 1789767341992
+        "ts": 1789767717329
       },
       {
         "agent": "main",
@@ -6115,7 +6115,7 @@
         "type": "delta",
         "step": 5,
         "text": "e 137，",
-        "ts": 1789767341998
+        "ts": 1789767717335
       },
       {
         "agent": "main",
@@ -6123,7 +6123,7 @@
         "type": "delta",
         "step": 5,
         "text": "已重启 0 ",
-        "ts": 1789767342004
+        "ts": 1789767717340
       },
       {
         "agent": "main",
@@ -6131,7 +6131,7 @@
         "type": "delta",
         "step": 5,
         "text": "次\n- Ev",
-        "ts": 1789767342009
+        "ts": 1789767717346
       },
       {
         "agent": "main",
@@ -6139,7 +6139,7 @@
         "type": "delta",
         "step": 5,
         "text": "ent DN",
-        "ts": 1789767342015
+        "ts": 1789767717351
       },
       {
         "agent": "main",
@@ -6147,7 +6147,7 @@
         "type": "delta",
         "step": 5,
         "text": "SConfi",
-        "ts": 1789767342021
+        "ts": 1789767717357
       },
       {
         "agent": "main",
@@ -6155,7 +6155,7 @@
         "type": "delta",
         "step": 5,
         "text": "gFormi",
-        "ts": 1789767342027
+        "ts": 1789767717363
       },
       {
         "agent": "main",
@@ -6163,7 +6163,7 @@
         "type": "delta",
         "step": 5,
         "text": "ng 出现 ",
-        "ts": 1789767342032
+        "ts": 1789767717369
       },
       {
         "agent": "main",
@@ -6171,7 +6171,7 @@
         "type": "delta",
         "step": 5,
         "text": "3 次\n- ",
-        "ts": 1789767342038
+        "ts": 1789767717374
       },
       {
         "agent": "main",
@@ -6179,7 +6179,7 @@
         "type": "delta",
         "step": 5,
         "text": "Event ",
-        "ts": 1789767342044
+        "ts": 1789767717380
       },
       {
         "agent": "main",
@@ -6187,7 +6187,7 @@
         "type": "delta",
         "step": 5,
         "text": "Evicte",
-        "ts": 1789767342049
+        "ts": 1789767717386
       },
       {
         "agent": "main",
@@ -6195,7 +6195,7 @@
         "type": "delta",
         "step": 5,
         "text": "d 出现 1",
-        "ts": 1789767342055
+        "ts": 1789767717392
       },
       {
         "agent": "main",
@@ -6203,7 +6203,7 @@
         "type": "delta",
         "step": 5,
         "text": " 次\n- 节",
-        "ts": 1789767342061
+        "ts": 1789767717397
       },
       {
         "agent": "main",
@@ -6211,7 +6211,7 @@
         "type": "delta",
         "step": 5,
         "text": "点 node",
-        "ts": 1789767342067
+        "ts": 1789767717403
       },
       {
         "agent": "main",
@@ -6219,7 +6219,7 @@
         "type": "delta",
         "step": 5,
         "text": "-3 状态异",
-        "ts": 1789767342072
+        "ts": 1789767717409
       },
       {
         "agent": "main",
@@ -6227,7 +6227,7 @@
         "type": "delta",
         "step": 5,
         "text": "常：Disk",
-        "ts": 1789767342078
+        "ts": 1789767717414
       },
       {
         "agent": "main",
@@ -6235,7 +6235,7 @@
         "type": "delta",
         "step": 5,
         "text": "Pressu",
-        "ts": 1789767342084
+        "ts": 1789767717420
       },
       {
         "agent": "main",
@@ -6243,7 +6243,7 @@
         "type": "delta",
         "step": 5,
         "text": "re=Tru",
-        "ts": 1789767342089
+        "ts": 1789767717426
       },
       {
         "agent": "main",
@@ -6251,7 +6251,7 @@
         "type": "delta",
         "step": 5,
         "text": "e (Kub",
-        "ts": 1789767342095
+        "ts": 1789767717431
       },
       {
         "agent": "main",
@@ -6259,7 +6259,7 @@
         "type": "delta",
         "step": 5,
         "text": "eletHa",
-        "ts": 1789767342101
+        "ts": 1789767717437
       },
       {
         "agent": "main",
@@ -6267,7 +6267,7 @@
         "type": "delta",
         "step": 5,
         "text": "sDiskP",
-        "ts": 1789767342106
+        "ts": 1789767717443
       },
       {
         "agent": "main",
@@ -6275,7 +6275,7 @@
         "type": "delta",
         "step": 5,
         "text": "ressur",
-        "ts": 1789767342112
+        "ts": 1789767717449
       },
       {
         "agent": "main",
@@ -6283,7 +6283,7 @@
         "type": "delta",
         "step": 5,
         "text": "e)；tai",
-        "ts": 1789767342118
+        "ts": 1789767717454
       },
       {
         "agent": "main",
@@ -6291,7 +6291,7 @@
         "type": "delta",
         "step": 5,
         "text": "nts: n",
-        "ts": 1789767342124
+        "ts": 1789767717460
       },
       {
         "agent": "main",
@@ -6299,7 +6299,7 @@
         "type": "delta",
         "step": 5,
         "text": "ode.ku",
-        "ts": 1789767342129
+        "ts": 1789767717466
       },
       {
         "agent": "main",
@@ -6307,7 +6307,7 @@
         "type": "delta",
         "step": 5,
         "text": "bernet",
-        "ts": 1789767342135
+        "ts": 1789767717472
       },
       {
         "agent": "main",
@@ -6315,7 +6315,7 @@
         "type": "delta",
         "step": 5,
         "text": "es.io/",
-        "ts": 1789767342141
+        "ts": 1789767717477
       },
       {
         "agent": "main",
@@ -6323,7 +6323,7 @@
         "type": "delta",
         "step": 5,
         "text": "disk-p",
-        "ts": 1789767342146
+        "ts": 1789767717483
       },
       {
         "agent": "main",
@@ -6331,7 +6331,7 @@
         "type": "delta",
         "step": 5,
         "text": "ressur",
-        "ts": 1789767342152
+        "ts": 1789767717487
       },
       {
         "agent": "main",
@@ -6339,7 +6339,7 @@
         "type": "delta",
         "step": 5,
         "text": "e:NoSc",
-        "ts": 1789767342157
+        "ts": 1789767717493
       },
       {
         "agent": "main",
@@ -6347,7 +6347,7 @@
         "type": "delta",
         "step": 5,
         "text": "hedule",
-        "ts": 1789767342163
+        "ts": 1789767717499
       },
       {
         "agent": "main",
@@ -6355,7 +6355,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n\n## 可",
-        "ts": 1789767342169
+        "ts": 1789767717504
       },
       {
         "agent": "main",
@@ -6363,7 +6363,7 @@
         "type": "delta",
         "step": 5,
         "text": "能原因（推测",
-        "ts": 1789767342175
+        "ts": 1789767717510
       },
       {
         "agent": "main",
@@ -6371,7 +6371,7 @@
         "type": "delta",
         "step": 5,
         "text": "）\n- 容器",
-        "ts": 1789767342180
+        "ts": 1789767717516
       },
       {
         "agent": "main",
@@ -6379,7 +6379,7 @@
         "type": "delta",
         "step": 5,
         "text": "把大量中间文",
-        "ts": 1789767342186
+        "ts": 1789767717522
       },
       {
         "agent": "main",
@@ -6387,7 +6387,7 @@
         "type": "delta",
         "step": 5,
         "text": "件写入本地临",
-        "ts": 1789767342192
+        "ts": 1789767717528
       },
       {
         "agent": "main",
@@ -6395,7 +6395,7 @@
         "type": "delta",
         "step": 5,
         "text": "时目录，耗尽",
-        "ts": 1789767342197
+        "ts": 1789767717533
       },
       {
         "agent": "main",
@@ -6403,7 +6403,7 @@
         "type": "delta",
         "step": 5,
         "text": "节点 eph",
-        "ts": 1789767342203
+        "ts": 1789767717539
       },
       {
         "agent": "main",
@@ -6411,7 +6411,7 @@
         "type": "delta",
         "step": 5,
         "text": "emeral",
-        "ts": 1789767342209
+        "ts": 1789767717545
       },
       {
         "agent": "main",
@@ -6419,7 +6419,7 @@
         "type": "delta",
         "step": 5,
         "text": "-stora",
-        "ts": 1789767342215
+        "ts": 1789767717551
       },
       {
         "agent": "main",
@@ -6427,7 +6427,7 @@
         "type": "delta",
         "step": 5,
         "text": "ge · 置",
-        "ts": 1789767342221
+        "ts": 1789767717556
       },
       {
         "agent": "main",
@@ -6435,7 +6435,7 @@
         "type": "delta",
         "step": 5,
         "text": "信度 高 ·",
-        "ts": 1789767342226
+        "ts": 1789767717562
       },
       {
         "agent": "main",
@@ -6443,7 +6443,7 @@
         "type": "delta",
         "step": 5,
         "text": " 依据：Ev",
-        "ts": 1789767342232
+        "ts": 1789767717568
       },
       {
         "agent": "main",
@@ -6451,7 +6451,7 @@
         "type": "delta",
         "step": 5,
         "text": "icted ",
-        "ts": 1789767342238
+        "ts": 1789767717573
       },
       {
         "agent": "main",
@@ -6459,7 +6459,7 @@
         "type": "delta",
         "step": 5,
         "text": "messag",
-        "ts": 1789767342243
+        "ts": 1789767717579
       },
       {
         "agent": "main",
@@ -6467,7 +6467,7 @@
         "type": "delta",
         "step": 5,
         "text": "e: 容器使",
-        "ts": 1789767342249
+        "ts": 1789767717584
       },
       {
         "agent": "main",
@@ -6475,7 +6475,7 @@
         "type": "delta",
         "step": 5,
         "text": "用 41Gi",
-        "ts": 1789767342254
+        "ts": 1789767717590
       },
       {
         "agent": "main",
@@ -6483,7 +6483,7 @@
         "type": "delta",
         "step": 5,
         "text": " 且 req",
-        "ts": 1789767342260
+        "ts": 1789767717596
       },
       {
         "agent": "main",
@@ -6491,7 +6491,7 @@
         "type": "delta",
         "step": 5,
         "text": "uest=0",
-        "ts": 1789767342266
+        "ts": 1789767717601
       },
       {
         "agent": "main",
@@ -6499,7 +6499,7 @@
         "type": "delta",
         "step": 5,
         "text": "；节点 Di",
-        "ts": 1789767342272
+        "ts": 1789767717607
       },
       {
         "agent": "main",
@@ -6507,7 +6507,7 @@
         "type": "delta",
         "step": 5,
         "text": "skPres",
-        "ts": 1789767342277
+        "ts": 1789767717613
       },
       {
         "agent": "main",
@@ -6515,7 +6515,7 @@
         "type": "delta",
         "step": 5,
         "text": "sure=T",
-        "ts": 1789767342283
+        "ts": 1789767717619
       },
       {
         "agent": "main",
@@ -6523,7 +6523,7 @@
         "type": "delta",
         "step": 5,
         "text": "rue；日志",
-        "ts": 1789767342289
+        "ts": 1789767717624
       },
       {
         "agent": "main",
@@ -6531,7 +6531,7 @@
         "type": "delta",
         "step": 5,
         "text": " no sp",
-        "ts": 1789767342294
+        "ts": 1789767717630
       },
       {
         "agent": "main",
@@ -6539,7 +6539,7 @@
         "type": "delta",
         "step": 5,
         "text": "ace le",
-        "ts": 1789767342300
+        "ts": 1789767717636
       },
       {
         "agent": "main",
@@ -6547,7 +6547,7 @@
         "type": "delta",
         "step": 5,
         "text": "ft on ",
-        "ts": 1789767342306
+        "ts": 1789767717641
       },
       {
         "agent": "main",
@@ -6555,7 +6555,7 @@
         "type": "delta",
         "step": 5,
         "text": "device",
-        "ts": 1789767342312
+        "ts": 1789767717647
       },
       {
         "agent": "main",
@@ -6563,7 +6563,7 @@
         "type": "delta",
         "step": 5,
         "text": "；磁盘曲线持",
-        "ts": 1789767342317
+        "ts": 1789767717653
       },
       {
         "agent": "main",
@@ -6571,7 +6571,7 @@
         "type": "delta",
         "step": 5,
         "text": "续上升\n\n#",
-        "ts": 1789767342323
+        "ts": 1789767717658
       },
       {
         "agent": "main",
@@ -6579,7 +6579,7 @@
         "type": "delta",
         "step": 5,
         "text": "# 处理建议",
-        "ts": 1789767342329
+        "ts": 1789767717664
       },
       {
         "agent": "main",
@@ -6587,7 +6587,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n- 清理节",
-        "ts": 1789767342334
+        "ts": 1789767717670
       },
       {
         "agent": "main",
@@ -6595,7 +6595,7 @@
         "type": "delta",
         "step": 5,
         "text": "点 node",
-        "ts": 1789767342340
+        "ts": 1789767717675
       },
       {
         "agent": "main",
@@ -6603,7 +6603,7 @@
         "type": "delta",
         "step": 5,
         "text": "-3 的镜像",
-        "ts": 1789767342346
+        "ts": 1789767717681
       },
       {
         "agent": "main",
@@ -6611,7 +6611,7 @@
         "type": "delta",
         "step": 5,
         "text": " / 临时文",
-        "ts": 1789767342351
+        "ts": 1789767717687
       },
       {
         "agent": "main",
@@ -6619,7 +6619,7 @@
         "type": "delta",
         "step": 5,
         "text": "件，等待 D",
-        "ts": 1789767342357
+        "ts": 1789767717693
       },
       {
         "agent": "main",
@@ -6627,7 +6627,7 @@
         "type": "delta",
         "step": 5,
         "text": "iskPre",
-        "ts": 1789767342363
+        "ts": 1789767717698
       },
       {
         "agent": "main",
@@ -6635,7 +6635,7 @@
         "type": "delta",
         "step": 5,
         "text": "ssure ",
-        "ts": 1789767342369
+        "ts": 1789767717704
       },
       {
         "agent": "main",
@@ -6643,7 +6643,7 @@
         "type": "delta",
         "step": 5,
         "text": "解除后重建 ",
-        "ts": 1789767342374
+        "ts": 1789767717710
       },
       {
         "agent": "main",
@@ -6651,7 +6651,7 @@
         "type": "delta",
         "step": 5,
         "text": "Job\n- ",
-        "ts": 1789767342380
+        "ts": 1789767717716
       },
       {
         "agent": "main",
@@ -6659,7 +6659,7 @@
         "type": "delta",
         "step": 5,
         "text": "为容器设置 ",
-        "ts": 1789767342386
+        "ts": 1789767717721
       },
       {
         "agent": "main",
@@ -6667,7 +6667,7 @@
         "type": "delta",
         "step": 5,
         "text": "epheme",
-        "ts": 1789767342391
+        "ts": 1789767717727
       },
       {
         "agent": "main",
@@ -6675,7 +6675,7 @@
         "type": "delta",
         "step": 5,
         "text": "ral-st",
-        "ts": 1789767342397
+        "ts": 1789767717732
       },
       {
         "agent": "main",
@@ -6683,7 +6683,7 @@
         "type": "delta",
         "step": 5,
         "text": "orage ",
-        "ts": 1789767342403
+        "ts": 1789767717738
       },
       {
         "agent": "main",
@@ -6691,7 +6691,7 @@
         "type": "delta",
         "step": 5,
         "text": "reques",
-        "ts": 1789767342409
+        "ts": 1789767717744
       },
       {
         "agent": "main",
@@ -6699,7 +6699,7 @@
         "type": "delta",
         "step": 5,
         "text": "t/limi",
-        "ts": 1789767342414
+        "ts": 1789767717749
       },
       {
         "agent": "main",
@@ -6707,7 +6707,7 @@
         "type": "delta",
         "step": 5,
         "text": "t\n- 大文",
-        "ts": 1789767342419
+        "ts": 1789767717755
       },
       {
         "agent": "main",
@@ -6715,7 +6715,7 @@
         "type": "delta",
         "step": 5,
         "text": "件输出改用 ",
-        "ts": 1789767342425
+        "ts": 1789767717761
       },
       {
         "agent": "main",
@@ -6723,7 +6723,7 @@
         "type": "delta",
         "step": 5,
         "text": "PVC 或对",
-        "ts": 1789767342431
+        "ts": 1789767717766
       },
       {
         "agent": "main",
@@ -6731,7 +6731,7 @@
         "type": "delta",
         "step": 5,
         "text": "象存储\n- ",
-        "ts": 1789767342436
+        "ts": 1789767717772
       },
       {
         "agent": "main",
@@ -6739,7 +6739,7 @@
         "type": "delta",
         "step": 5,
         "text": "历史 Cas",
-        "ts": 1789767342442
+        "ts": 1789767717778
       },
       {
         "agent": "main",
@@ -6747,7 +6747,7 @@
         "type": "delta",
         "step": 5,
         "text": "e CASE",
-        "ts": 1789767342448
+        "ts": 1789767717783
       },
       {
         "agent": "main",
@@ -6755,7 +6755,7 @@
         "type": "delta",
         "step": 5,
         "text": "-2026-",
-        "ts": 1789767342453
+        "ts": 1789767717789
       },
       {
         "agent": "main",
@@ -6763,7 +6763,7 @@
         "type": "delta",
         "step": 5,
         "text": "063 的处",
-        "ts": 1789767342459
+        "ts": 1789767717795
       },
       {
         "agent": "main",
@@ -6771,7 +6771,7 @@
         "type": "delta",
         "step": 5,
         "text": "理方式可参考",
-        "ts": 1789767342465
+        "ts": 1789767717801
       },
       {
         "agent": "main",
@@ -6779,7 +6779,7 @@
         "type": "delta",
         "step": 5,
         "text": "：清理节点磁",
-        "ts": 1789767342470
+        "ts": 1789767717806
       },
       {
         "agent": "main",
@@ -6787,7 +6787,7 @@
         "type": "delta",
         "step": 5,
         "text": "盘，输出改写",
-        "ts": 1789767342476
+        "ts": 1789767717812
       },
       {
         "agent": "main",
@@ -6795,7 +6795,7 @@
         "type": "delta",
         "step": 5,
         "text": " PVC，设",
-        "ts": 1789767342482
+        "ts": 1789767717817
       },
       {
         "agent": "main",
@@ -6803,7 +6803,7 @@
         "type": "delta",
         "step": 5,
         "text": "置 ephe",
-        "ts": 1789767342487
+        "ts": 1789767717823
       },
       {
         "agent": "main",
@@ -6811,7 +6811,7 @@
         "type": "delta",
         "step": 5,
         "text": "meral-",
-        "ts": 1789767342493
+        "ts": 1789767717829
       },
       {
         "agent": "main",
@@ -6819,7 +6819,7 @@
         "type": "delta",
         "step": 5,
         "text": "storag",
-        "ts": 1789767342499
+        "ts": 1789767717834
       },
       {
         "agent": "main",
@@ -6827,7 +6827,7 @@
         "type": "delta",
         "step": 5,
         "text": "e limi",
-        "ts": 1789767342504
+        "ts": 1789767717840
       },
       {
         "agent": "main",
@@ -6835,7 +6835,7 @@
         "type": "delta",
         "step": 5,
         "text": "t\n\n## ",
-        "ts": 1789767342510
+        "ts": 1789767717846
       },
       {
         "agent": "main",
@@ -6843,7 +6843,7 @@
         "type": "delta",
         "step": 5,
         "text": "证据不足说明",
-        "ts": 1789767342516
+        "ts": 1789767717851
       },
       {
         "agent": "main",
@@ -6851,7 +6851,7 @@
         "type": "delta",
         "step": 5,
         "text": "\n无",
-        "ts": 1789767342522
+        "ts": 1789767717857
       },
       {
         "agent": "main",
@@ -6864,8 +6864,8 @@
           "inputTokens": 5074,
           "outputTokens": 80
         },
-        "durationMs": 1700,
-        "ts": 1789767342527
+        "durationMs": 1708,
+        "ts": 1789767717862
       },
       {
         "agent": "main",
@@ -6878,7 +6878,7 @@
           "inputTokens": 10122,
           "outputTokens": 400
         },
-        "ts": 1789767342527
+        "ts": 1789767717863
       }
     ],
     "children": []

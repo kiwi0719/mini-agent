@@ -3,14 +3,14 @@
     "provider": "mock",
     "workspace": "workspace"
   },
-  "startedAt": 1789767331115,
+  "startedAt": 1789767706440,
   "events": [
     {
       "agent": "main",
       "depth": 0,
       "type": "user",
       "task": "还原 traceId=t00002 的完整链路（logs/app.log）。",
-      "ts": 1789767331116
+      "ts": 1789767706440
     },
     {
       "agent": "main",
@@ -18,7 +18,7 @@
       "type": "delta",
       "step": 1,
       "text": "还原 tra",
-      "ts": 1789767331116
+      "ts": 1789767706440
     },
     {
       "agent": "main",
@@ -26,7 +26,7 @@
       "type": "delta",
       "step": 1,
       "text": "ceId=t",
-      "ts": 1789767331121
+      "ts": 1789767706446
     },
     {
       "agent": "main",
@@ -34,7 +34,7 @@
       "type": "delta",
       "step": 1,
       "text": "00002 ",
-      "ts": 1789767331127
+      "ts": 1789767706451
     },
     {
       "agent": "main",
@@ -42,7 +42,7 @@
       "type": "delta",
       "step": 1,
       "text": "的完整链路。",
-      "ts": 1789767331133
+      "ts": 1789767706457
     },
     {
       "agent": "main",
@@ -67,7 +67,7 @@
         "outputTokens": 80
       },
       "durationMs": 22,
-      "ts": 1789767331138
+      "ts": 1789767706462
     },
     {
       "agent": "main",
@@ -84,7 +84,7 @@
           "trace_id": "t00002"
         }
       },
-      "ts": 1789767331138
+      "ts": 1789767706462
     },
     {
       "agent": "main",
@@ -97,8 +97,8 @@
         "ok": true,
         "output": "{\n \"traceId\": \"t00002\",\n \"summary\": {\n  \"lines\": 6,\n  \"modules\": [\n   \"InventoryService\",\n   \"Database\",\n   \"Notification\",\n   \"Gateway\"\n  ],\n  \"start\": \"2026-08-10 10:00:00.683\",\n  \"end\": \"2026-08-10 10:00:03.942\",\n  \"wallMs\": 3259,\n  \"totalCostMs\": 3256,\n  \"status\": \"FAILED\",\n  \"errors\": [\n   \"[Notification] call timeout after 3000ms target=notification-svc\",\n   \"[InventoryService] request failed error=timeout upstream=Notification\",\n   \"[Gateway] request failed status=504 totalCost=3256ms\"\n  ],\n  \"warnings\": [],\n  \"steps\": [\n   {\n    \"module\": \"Database\",\n    \"ms\": 127,\n    \"message\": \"query ok cost=127ms\"\n   },\n   {\n    \"module\": \"Database\",\n    \"ms\": 116,\n    \"message\": \"query ok cost=116ms\"\n   }\n  ]\n },\n \"lines\": [\n  \"logs/app.log:7 2026-08-10 10:00:00.683 INFO  [InventoryService] [traceId=t00002] request start userId=10849\",\n  \"logs/app.log:8 2026-08-10 10:00:00.810 INFO  [Database] [traceId=t00002] query ok cost=127ms\",\n  \"logs/app.log:9 2026-08-10 10:00:00.926 INFO  [Database] [traceId=t00002] query ok cost=116ms\",\n  \"logs/app.log:10 2026-08-10 10:00:03.926 ERROR [Notification] [traceId=t00002] call timeout after 3000ms target=notification-svc\",\n  \"logs/app.log:11 2026-08-10 10:00:03.929 ERROR [InventoryService] [traceId=t00002] request failed error=timeout upstream=Notification\",\n  \"logs/app.log:12 2026-08-10 10:00:03.942 ERROR [Gateway] [traceId=t00002] request failed status=504 totalCost=3256ms\"\n ]\n}"
       },
-      "durationMs": 22,
-      "ts": 1789767331160
+      "durationMs": 23,
+      "ts": 1789767706485
     },
     {
       "agent": "main",
@@ -106,7 +106,7 @@
       "type": "delta",
       "step": 2,
       "text": "traceI",
-      "ts": 1789767331160
+      "ts": 1789767706485
     },
     {
       "agent": "main",
@@ -114,7 +114,7 @@
       "type": "delta",
       "step": 2,
       "text": "d=t000",
-      "ts": 1789767331166
+      "ts": 1789767706490
     },
     {
       "agent": "main",
@@ -122,7 +122,7 @@
       "type": "delta",
       "step": 2,
       "text": "02 的链路",
-      "ts": 1789767331172
+      "ts": 1789767706496
     },
     {
       "agent": "main",
@@ -130,7 +130,7 @@
       "type": "delta",
       "step": 2,
       "text": "（6 条日志",
-      "ts": 1789767331177
+      "ts": 1789767706502
     },
     {
       "agent": "main",
@@ -138,7 +138,7 @@
       "type": "delta",
       "step": 2,
       "text": "，状态 FA",
-      "ts": 1789767331183
+      "ts": 1789767706506
     },
     {
       "agent": "main",
@@ -146,7 +146,7 @@
       "type": "delta",
       "step": 2,
       "text": "ILED）：",
-      "ts": 1789767331189
+      "ts": 1789767706512
     },
     {
       "agent": "main",
@@ -154,7 +154,7 @@
       "type": "delta",
       "step": 2,
       "text": "\n\n- 模块",
-      "ts": 1789767331195
+      "ts": 1789767706518
     },
     {
       "agent": "main",
@@ -162,7 +162,7 @@
       "type": "delta",
       "step": 2,
       "text": "顺序：Inv",
-      "ts": 1789767331200
+      "ts": 1789767706523
     },
     {
       "agent": "main",
@@ -170,7 +170,7 @@
       "type": "delta",
       "step": 2,
       "text": "entory",
-      "ts": 1789767331206
+      "ts": 1789767706529
     },
     {
       "agent": "main",
@@ -178,7 +178,7 @@
       "type": "delta",
       "step": 2,
       "text": "Servic",
-      "ts": 1789767331212
+      "ts": 1789767706535
     },
     {
       "agent": "main",
@@ -186,7 +186,7 @@
       "type": "delta",
       "step": 2,
       "text": "e → Da",
-      "ts": 1789767331217
+      "ts": 1789767706540
     },
     {
       "agent": "main",
@@ -194,7 +194,7 @@
       "type": "delta",
       "step": 2,
       "text": "tabase",
-      "ts": 1789767331223
+      "ts": 1789767706546
     },
     {
       "agent": "main",
@@ -202,7 +202,7 @@
       "type": "delta",
       "step": 2,
       "text": " → Not",
-      "ts": 1789767331229
+      "ts": 1789767706552
     },
     {
       "agent": "main",
@@ -210,7 +210,7 @@
       "type": "delta",
       "step": 2,
       "text": "ificat",
-      "ts": 1789767331234
+      "ts": 1789767706557
     },
     {
       "agent": "main",
@@ -218,7 +218,7 @@
       "type": "delta",
       "step": 2,
       "text": "ion → ",
-      "ts": 1789767331240
+      "ts": 1789767706563
     },
     {
       "agent": "main",
@@ -226,7 +226,7 @@
       "type": "delta",
       "step": 2,
       "text": "Gatewa",
-      "ts": 1789767331246
+      "ts": 1789767706569
     },
     {
       "agent": "main",
@@ -234,7 +234,7 @@
       "type": "delta",
       "step": 2,
       "text": "y\n- 起止",
-      "ts": 1789767331251
+      "ts": 1789767706574
     },
     {
       "agent": "main",
@@ -242,7 +242,7 @@
       "type": "delta",
       "step": 2,
       "text": "：2026-",
-      "ts": 1789767331257
+      "ts": 1789767706580
     },
     {
       "agent": "main",
@@ -250,7 +250,7 @@
       "type": "delta",
       "step": 2,
       "text": "08-10 ",
-      "ts": 1789767331263
+      "ts": 1789767706585
     },
     {
       "agent": "main",
@@ -258,7 +258,7 @@
       "type": "delta",
       "step": 2,
       "text": "10:00:",
-      "ts": 1789767331269
+      "ts": 1789767706591
     },
     {
       "agent": "main",
@@ -266,7 +266,7 @@
       "type": "delta",
       "step": 2,
       "text": "00.683",
-      "ts": 1789767331274
+      "ts": 1789767706597
     },
     {
       "agent": "main",
@@ -274,7 +274,7 @@
       "type": "delta",
       "step": 2,
       "text": " → 202",
-      "ts": 1789767331280
+      "ts": 1789767706602
     },
     {
       "agent": "main",
@@ -282,7 +282,7 @@
       "type": "delta",
       "step": 2,
       "text": "6-08-1",
-      "ts": 1789767331286
+      "ts": 1789767706608
     },
     {
       "agent": "main",
@@ -290,7 +290,7 @@
       "type": "delta",
       "step": 2,
       "text": "0 10:0",
-      "ts": 1789767331292
+      "ts": 1789767706613
     },
     {
       "agent": "main",
@@ -298,7 +298,7 @@
       "type": "delta",
       "step": 2,
       "text": "0:03.9",
-      "ts": 1789767331297
+      "ts": 1789767706619
     },
     {
       "agent": "main",
@@ -306,7 +306,7 @@
       "type": "delta",
       "step": 2,
       "text": "42（总耗时",
-      "ts": 1789767331303
+      "ts": 1789767706625
     },
     {
       "agent": "main",
@@ -314,7 +314,7 @@
       "type": "delta",
       "step": 2,
       "text": " 3256 ",
-      "ts": 1789767331309
+      "ts": 1789767706630
     },
     {
       "agent": "main",
@@ -322,7 +322,7 @@
       "type": "delta",
       "step": 2,
       "text": "ms）\n- ",
-      "ts": 1789767331315
+      "ts": 1789767706636
     },
     {
       "agent": "main",
@@ -330,7 +330,7 @@
       "type": "delta",
       "step": 2,
       "text": "各步耗时：D",
-      "ts": 1789767331320
+      "ts": 1789767706641
     },
     {
       "agent": "main",
@@ -338,7 +338,7 @@
       "type": "delta",
       "step": 2,
       "text": "atabas",
-      "ts": 1789767331326
+      "ts": 1789767706647
     },
     {
       "agent": "main",
@@ -346,7 +346,7 @@
       "type": "delta",
       "step": 2,
       "text": "e 127m",
-      "ts": 1789767331332
+      "ts": 1789767706653
     },
     {
       "agent": "main",
@@ -354,7 +354,7 @@
       "type": "delta",
       "step": 2,
       "text": "s，Data",
-      "ts": 1789767331338
+      "ts": 1789767706659
     },
     {
       "agent": "main",
@@ -362,7 +362,7 @@
       "type": "delta",
       "step": 2,
       "text": "base 1",
-      "ts": 1789767331344
+      "ts": 1789767706664
     },
     {
       "agent": "main",
@@ -370,7 +370,7 @@
       "type": "delta",
       "step": 2,
       "text": "16ms\n-",
-      "ts": 1789767331350
+      "ts": 1789767706670
     },
     {
       "agent": "main",
@@ -378,7 +378,7 @@
       "type": "delta",
       "step": 2,
       "text": " 错误：[N",
-      "ts": 1789767331356
+      "ts": 1789767706676
     },
     {
       "agent": "main",
@@ -386,7 +386,7 @@
       "type": "delta",
       "step": 2,
       "text": "otific",
-      "ts": 1789767331361
+      "ts": 1789767706681
     },
     {
       "agent": "main",
@@ -394,7 +394,7 @@
       "type": "delta",
       "step": 2,
       "text": "ation]",
-      "ts": 1789767331367
+      "ts": 1789767706687
     },
     {
       "agent": "main",
@@ -402,7 +402,7 @@
       "type": "delta",
       "step": 2,
       "text": " call ",
-      "ts": 1789767331373
+      "ts": 1789767706693
     },
     {
       "agent": "main",
@@ -410,7 +410,7 @@
       "type": "delta",
       "step": 2,
       "text": "timeou",
-      "ts": 1789767331378
+      "ts": 1789767706698
     },
     {
       "agent": "main",
@@ -418,7 +418,7 @@
       "type": "delta",
       "step": 2,
       "text": "t afte",
-      "ts": 1789767331384
+      "ts": 1789767706704
     },
     {
       "agent": "main",
@@ -426,7 +426,7 @@
       "type": "delta",
       "step": 2,
       "text": "r 3000",
-      "ts": 1789767331390
+      "ts": 1789767706710
     },
     {
       "agent": "main",
@@ -434,7 +434,7 @@
       "type": "delta",
       "step": 2,
       "text": "ms tar",
-      "ts": 1789767331395
+      "ts": 1789767706716
     },
     {
       "agent": "main",
@@ -442,7 +442,7 @@
       "type": "delta",
       "step": 2,
       "text": "get=no",
-      "ts": 1789767331401
+      "ts": 1789767706721
     },
     {
       "agent": "main",
@@ -450,7 +450,7 @@
       "type": "delta",
       "step": 2,
       "text": "tifica",
-      "ts": 1789767331407
+      "ts": 1789767706727
     },
     {
       "agent": "main",
@@ -458,7 +458,7 @@
       "type": "delta",
       "step": 2,
       "text": "tion-s",
-      "ts": 1789767331412
+      "ts": 1789767706733
     },
     {
       "agent": "main",
@@ -466,7 +466,7 @@
       "type": "delta",
       "step": 2,
       "text": "vc；[In",
-      "ts": 1789767331418
+      "ts": 1789767706738
     },
     {
       "agent": "main",
@@ -474,7 +474,7 @@
       "type": "delta",
       "step": 2,
       "text": "ventor",
-      "ts": 1789767331424
+      "ts": 1789767706744
     },
     {
       "agent": "main",
@@ -482,7 +482,7 @@
       "type": "delta",
       "step": 2,
       "text": "yServi",
-      "ts": 1789767331430
+      "ts": 1789767706750
     },
     {
       "agent": "main",
@@ -490,7 +490,7 @@
       "type": "delta",
       "step": 2,
       "text": "ce] re",
-      "ts": 1789767331436
+      "ts": 1789767706754
     },
     {
       "agent": "main",
@@ -498,7 +498,7 @@
       "type": "delta",
       "step": 2,
       "text": "quest ",
-      "ts": 1789767331441
+      "ts": 1789767706760
     },
     {
       "agent": "main",
@@ -506,7 +506,7 @@
       "type": "delta",
       "step": 2,
       "text": "failed",
-      "ts": 1789767331447
+      "ts": 1789767706765
     },
     {
       "agent": "main",
@@ -514,7 +514,7 @@
       "type": "delta",
       "step": 2,
       "text": " error",
-      "ts": 1789767331453
+      "ts": 1789767706771
     },
     {
       "agent": "main",
@@ -522,7 +522,7 @@
       "type": "delta",
       "step": 2,
       "text": "=timeo",
-      "ts": 1789767331458
+      "ts": 1789767706777
     },
     {
       "agent": "main",
@@ -530,7 +530,7 @@
       "type": "delta",
       "step": 2,
       "text": "ut ups",
-      "ts": 1789767331464
+      "ts": 1789767706782
     },
     {
       "agent": "main",
@@ -538,7 +538,7 @@
       "type": "delta",
       "step": 2,
       "text": "tream=",
-      "ts": 1789767331470
+      "ts": 1789767706788
     },
     {
       "agent": "main",
@@ -546,7 +546,7 @@
       "type": "delta",
       "step": 2,
       "text": "Notifi",
-      "ts": 1789767331476
+      "ts": 1789767706793
     },
     {
       "agent": "main",
@@ -554,7 +554,7 @@
       "type": "delta",
       "step": 2,
       "text": "cation",
-      "ts": 1789767331481
+      "ts": 1789767706799
     },
     {
       "agent": "main",
@@ -562,7 +562,7 @@
       "type": "delta",
       "step": 2,
       "text": "；[Gate",
-      "ts": 1789767331487
+      "ts": 1789767706805
     },
     {
       "agent": "main",
@@ -570,7 +570,7 @@
       "type": "delta",
       "step": 2,
       "text": "way] r",
-      "ts": 1789767331492
+      "ts": 1789767706811
     },
     {
       "agent": "main",
@@ -578,7 +578,7 @@
       "type": "delta",
       "step": 2,
       "text": "equest",
-      "ts": 1789767331498
+      "ts": 1789767706815
     },
     {
       "agent": "main",
@@ -586,7 +586,7 @@
       "type": "delta",
       "step": 2,
       "text": " faile",
-      "ts": 1789767331504
+      "ts": 1789767706821
     },
     {
       "agent": "main",
@@ -594,7 +594,7 @@
       "type": "delta",
       "step": 2,
       "text": "d stat",
-      "ts": 1789767331510
+      "ts": 1789767706827
     },
     {
       "agent": "main",
@@ -602,7 +602,7 @@
       "type": "delta",
       "step": 2,
       "text": "us=504",
-      "ts": 1789767331516
+      "ts": 1789767706833
     },
     {
       "agent": "main",
@@ -610,7 +610,7 @@
       "type": "delta",
       "step": 2,
       "text": " total",
-      "ts": 1789767331521
+      "ts": 1789767706838
     },
     {
       "agent": "main",
@@ -618,7 +618,7 @@
       "type": "delta",
       "step": 2,
       "text": "Cost=3",
-      "ts": 1789767331527
+      "ts": 1789767706844
     },
     {
       "agent": "main",
@@ -626,7 +626,7 @@
       "type": "delta",
       "step": 2,
       "text": "256ms\n",
-      "ts": 1789767331533
+      "ts": 1789767706850
     },
     {
       "agent": "main",
@@ -634,7 +634,7 @@
       "type": "delta",
       "step": 2,
       "text": "- 告警：无",
-      "ts": 1789767331539
+      "ts": 1789767706856
     },
     {
       "agent": "main",
@@ -642,7 +642,7 @@
       "type": "delta",
       "step": 2,
       "text": "\n\n完整日志",
-      "ts": 1789767331545
+      "ts": 1789767706861
     },
     {
       "agent": "main",
@@ -650,7 +650,7 @@
       "type": "delta",
       "step": 2,
       "text": "：\n  lo",
-      "ts": 1789767331550
+      "ts": 1789767706867
     },
     {
       "agent": "main",
@@ -658,7 +658,7 @@
       "type": "delta",
       "step": 2,
       "text": "gs/app",
-      "ts": 1789767331556
+      "ts": 1789767706873
     },
     {
       "agent": "main",
@@ -666,7 +666,7 @@
       "type": "delta",
       "step": 2,
       "text": ".log:7",
-      "ts": 1789767331562
+      "ts": 1789767706878
     },
     {
       "agent": "main",
@@ -674,7 +674,7 @@
       "type": "delta",
       "step": 2,
       "text": " 2026-",
-      "ts": 1789767331567
+      "ts": 1789767706884
     },
     {
       "agent": "main",
@@ -682,7 +682,7 @@
       "type": "delta",
       "step": 2,
       "text": "08-10 ",
-      "ts": 1789767331573
+      "ts": 1789767706890
     },
     {
       "agent": "main",
@@ -690,7 +690,7 @@
       "type": "delta",
       "step": 2,
       "text": "10:00:",
-      "ts": 1789767331579
+      "ts": 1789767706895
     },
     {
       "agent": "main",
@@ -698,7 +698,7 @@
       "type": "delta",
       "step": 2,
       "text": "00.683",
-      "ts": 1789767331585
+      "ts": 1789767706901
     },
     {
       "agent": "main",
@@ -706,7 +706,7 @@
       "type": "delta",
       "step": 2,
       "text": " INFO ",
-      "ts": 1789767331590
+      "ts": 1789767706907
     },
     {
       "agent": "main",
@@ -714,7 +714,7 @@
       "type": "delta",
       "step": 2,
       "text": " [Inve",
-      "ts": 1789767331596
+      "ts": 1789767706911
     },
     {
       "agent": "main",
@@ -722,7 +722,7 @@
       "type": "delta",
       "step": 2,
       "text": "ntoryS",
-      "ts": 1789767331602
+      "ts": 1789767706917
     },
     {
       "agent": "main",
@@ -730,7 +730,7 @@
       "type": "delta",
       "step": 2,
       "text": "ervice",
-      "ts": 1789767331607
+      "ts": 1789767706923
     },
     {
       "agent": "main",
@@ -738,7 +738,7 @@
       "type": "delta",
       "step": 2,
       "text": "] [tra",
-      "ts": 1789767331613
+      "ts": 1789767706929
     },
     {
       "agent": "main",
@@ -746,7 +746,7 @@
       "type": "delta",
       "step": 2,
       "text": "ceId=t",
-      "ts": 1789767331619
+      "ts": 1789767706934
     },
     {
       "agent": "main",
@@ -754,7 +754,7 @@
       "type": "delta",
       "step": 2,
       "text": "00002]",
-      "ts": 1789767331625
+      "ts": 1789767706940
     },
     {
       "agent": "main",
@@ -762,7 +762,7 @@
       "type": "delta",
       "step": 2,
       "text": " reque",
-      "ts": 1789767331630
+      "ts": 1789767706946
     },
     {
       "agent": "main",
@@ -770,7 +770,7 @@
       "type": "delta",
       "step": 2,
       "text": "st sta",
-      "ts": 1789767331636
+      "ts": 1789767706951
     },
     {
       "agent": "main",
@@ -778,7 +778,7 @@
       "type": "delta",
       "step": 2,
       "text": "rt use",
-      "ts": 1789767331642
+      "ts": 1789767706957
     },
     {
       "agent": "main",
@@ -786,7 +786,7 @@
       "type": "delta",
       "step": 2,
       "text": "rId=10",
-      "ts": 1789767331647
+      "ts": 1789767706963
     },
     {
       "agent": "main",
@@ -794,7 +794,7 @@
       "type": "delta",
       "step": 2,
       "text": "849\n  ",
-      "ts": 1789767331653
+      "ts": 1789767706968
     },
     {
       "agent": "main",
@@ -802,7 +802,7 @@
       "type": "delta",
       "step": 2,
       "text": "logs/a",
-      "ts": 1789767331658
+      "ts": 1789767706974
     },
     {
       "agent": "main",
@@ -810,7 +810,7 @@
       "type": "delta",
       "step": 2,
       "text": "pp.log",
-      "ts": 1789767331664
+      "ts": 1789767706980
     },
     {
       "agent": "main",
@@ -818,7 +818,7 @@
       "type": "delta",
       "step": 2,
       "text": ":8 202",
-      "ts": 1789767331670
+      "ts": 1789767706986
     },
     {
       "agent": "main",
@@ -826,7 +826,7 @@
       "type": "delta",
       "step": 2,
       "text": "6-08-1",
-      "ts": 1789767331675
+      "ts": 1789767706991
     },
     {
       "agent": "main",
@@ -834,7 +834,7 @@
       "type": "delta",
       "step": 2,
       "text": "0 10:0",
-      "ts": 1789767331681
+      "ts": 1789767706997
     },
     {
       "agent": "main",
@@ -842,7 +842,7 @@
       "type": "delta",
       "step": 2,
       "text": "0:00.8",
-      "ts": 1789767331686
+      "ts": 1789767707003
     },
     {
       "agent": "main",
@@ -850,7 +850,7 @@
       "type": "delta",
       "step": 2,
       "text": "10 INF",
-      "ts": 1789767331692
+      "ts": 1789767707009
     },
     {
       "agent": "main",
@@ -858,7 +858,7 @@
       "type": "delta",
       "step": 2,
       "text": "O  [Da",
-      "ts": 1789767331698
+      "ts": 1789767707014
     },
     {
       "agent": "main",
@@ -866,7 +866,7 @@
       "type": "delta",
       "step": 2,
       "text": "tabase",
-      "ts": 1789767331704
+      "ts": 1789767707020
     },
     {
       "agent": "main",
@@ -874,7 +874,7 @@
       "type": "delta",
       "step": 2,
       "text": "] [tra",
-      "ts": 1789767331709
+      "ts": 1789767707026
     },
     {
       "agent": "main",
@@ -882,7 +882,7 @@
       "type": "delta",
       "step": 2,
       "text": "ceId=t",
-      "ts": 1789767331714
+      "ts": 1789767707031
     },
     {
       "agent": "main",
@@ -890,7 +890,7 @@
       "type": "delta",
       "step": 2,
       "text": "00002]",
-      "ts": 1789767331719
+      "ts": 1789767707037
     },
     {
       "agent": "main",
@@ -898,7 +898,7 @@
       "type": "delta",
       "step": 2,
       "text": " query",
-      "ts": 1789767331725
+      "ts": 1789767707043
     },
     {
       "agent": "main",
@@ -906,7 +906,7 @@
       "type": "delta",
       "step": 2,
       "text": " ok co",
-      "ts": 1789767331731
+      "ts": 1789767707049
     },
     {
       "agent": "main",
@@ -914,7 +914,7 @@
       "type": "delta",
       "step": 2,
       "text": "st=127",
-      "ts": 1789767331736
+      "ts": 1789767707054
     },
     {
       "agent": "main",
@@ -922,7 +922,7 @@
       "type": "delta",
       "step": 2,
       "text": "ms\n  l",
-      "ts": 1789767331742
+      "ts": 1789767707060
     },
     {
       "agent": "main",
@@ -930,7 +930,7 @@
       "type": "delta",
       "step": 2,
       "text": "ogs/ap",
-      "ts": 1789767331748
+      "ts": 1789767707066
     },
     {
       "agent": "main",
@@ -938,7 +938,7 @@
       "type": "delta",
       "step": 2,
       "text": "p.log:",
-      "ts": 1789767331754
+      "ts": 1789767707071
     },
     {
       "agent": "main",
@@ -946,7 +946,7 @@
       "type": "delta",
       "step": 2,
       "text": "9 2026",
-      "ts": 1789767331760
+      "ts": 1789767707077
     },
     {
       "agent": "main",
@@ -954,7 +954,7 @@
       "type": "delta",
       "step": 2,
       "text": "-08-10",
-      "ts": 1789767331765
+      "ts": 1789767707083
     },
     {
       "agent": "main",
@@ -962,7 +962,7 @@
       "type": "delta",
       "step": 2,
       "text": " 10:00",
-      "ts": 1789767331771
+      "ts": 1789767707089
     },
     {
       "agent": "main",
@@ -970,7 +970,7 @@
       "type": "delta",
       "step": 2,
       "text": ":00.92",
-      "ts": 1789767331776
+      "ts": 1789767707094
     },
     {
       "agent": "main",
@@ -978,7 +978,7 @@
       "type": "delta",
       "step": 2,
       "text": "6 INFO",
-      "ts": 1789767331782
+      "ts": 1789767707099
     },
     {
       "agent": "main",
@@ -986,7 +986,7 @@
       "type": "delta",
       "step": 2,
       "text": "  [Dat",
-      "ts": 1789767331788
+      "ts": 1789767707105
     },
     {
       "agent": "main",
@@ -994,7 +994,7 @@
       "type": "delta",
       "step": 2,
       "text": "abase]",
-      "ts": 1789767331794
+      "ts": 1789767707111
     },
     {
       "agent": "main",
@@ -1002,7 +1002,7 @@
       "type": "delta",
       "step": 2,
       "text": " [trac",
-      "ts": 1789767331799
+      "ts": 1789767707116
     },
     {
       "agent": "main",
@@ -1010,7 +1010,7 @@
       "type": "delta",
       "step": 2,
       "text": "eId=t0",
-      "ts": 1789767331805
+      "ts": 1789767707122
     },
     {
       "agent": "main",
@@ -1018,7 +1018,7 @@
       "type": "delta",
       "step": 2,
       "text": "0002] ",
-      "ts": 1789767331811
+      "ts": 1789767707128
     },
     {
       "agent": "main",
@@ -1026,7 +1026,7 @@
       "type": "delta",
       "step": 2,
       "text": "query ",
-      "ts": 1789767331817
+      "ts": 1789767707134
     },
     {
       "agent": "main",
@@ -1034,7 +1034,7 @@
       "type": "delta",
       "step": 2,
       "text": "ok cos",
-      "ts": 1789767331823
+      "ts": 1789767707139
     },
     {
       "agent": "main",
@@ -1042,7 +1042,7 @@
       "type": "delta",
       "step": 2,
       "text": "t=116m",
-      "ts": 1789767331829
+      "ts": 1789767707145
     },
     {
       "agent": "main",
@@ -1050,7 +1050,7 @@
       "type": "delta",
       "step": 2,
       "text": "s\n  lo",
-      "ts": 1789767331834
+      "ts": 1789767707151
     },
     {
       "agent": "main",
@@ -1058,7 +1058,7 @@
       "type": "delta",
       "step": 2,
       "text": "gs/app",
-      "ts": 1789767331840
+      "ts": 1789767707155
     },
     {
       "agent": "main",
@@ -1066,7 +1066,7 @@
       "type": "delta",
       "step": 2,
       "text": ".log:1",
-      "ts": 1789767331846
+      "ts": 1789767707161
     },
     {
       "agent": "main",
@@ -1074,7 +1074,7 @@
       "type": "delta",
       "step": 2,
       "text": "0 2026",
-      "ts": 1789767331852
+      "ts": 1789767707167
     },
     {
       "agent": "main",
@@ -1082,7 +1082,7 @@
       "type": "delta",
       "step": 2,
       "text": "-08-10",
-      "ts": 1789767331857
+      "ts": 1789767707172
     },
     {
       "agent": "main",
@@ -1090,7 +1090,7 @@
       "type": "delta",
       "step": 2,
       "text": " 10:00",
-      "ts": 1789767331863
+      "ts": 1789767707178
     },
     {
       "agent": "main",
@@ -1098,7 +1098,7 @@
       "type": "delta",
       "step": 2,
       "text": ":03.92",
-      "ts": 1789767331868
+      "ts": 1789767707184
     },
     {
       "agent": "main",
@@ -1106,7 +1106,7 @@
       "type": "delta",
       "step": 2,
       "text": "6 ERRO",
-      "ts": 1789767331874
+      "ts": 1789767707190
     },
     {
       "agent": "main",
@@ -1114,7 +1114,7 @@
       "type": "delta",
       "step": 2,
       "text": "R [Not",
-      "ts": 1789767331880
+      "ts": 1789767707195
     },
     {
       "agent": "main",
@@ -1122,7 +1122,7 @@
       "type": "delta",
       "step": 2,
       "text": "ificat",
-      "ts": 1789767331885
+      "ts": 1789767707201
     },
     {
       "agent": "main",
@@ -1130,7 +1130,7 @@
       "type": "delta",
       "step": 2,
       "text": "ion] [",
-      "ts": 1789767331891
+      "ts": 1789767707207
     },
     {
       "agent": "main",
@@ -1138,7 +1138,7 @@
       "type": "delta",
       "step": 2,
       "text": "traceI",
-      "ts": 1789767331896
+      "ts": 1789767707212
     },
     {
       "agent": "main",
@@ -1146,7 +1146,7 @@
       "type": "delta",
       "step": 2,
       "text": "d=t000",
-      "ts": 1789767331902
+      "ts": 1789767707218
     },
     {
       "agent": "main",
@@ -1154,7 +1154,7 @@
       "type": "delta",
       "step": 2,
       "text": "02] ca",
-      "ts": 1789767331907
+      "ts": 1789767707224
     },
     {
       "agent": "main",
@@ -1162,7 +1162,7 @@
       "type": "delta",
       "step": 2,
       "text": "ll tim",
-      "ts": 1789767331913
+      "ts": 1789767707229
     },
     {
       "agent": "main",
@@ -1170,7 +1170,7 @@
       "type": "delta",
       "step": 2,
       "text": "eout a",
-      "ts": 1789767331919
+      "ts": 1789767707235
     },
     {
       "agent": "main",
@@ -1178,7 +1178,7 @@
       "type": "delta",
       "step": 2,
       "text": "fter 3",
-      "ts": 1789767331925
+      "ts": 1789767707241
     },
     {
       "agent": "main",
@@ -1186,7 +1186,7 @@
       "type": "delta",
       "step": 2,
       "text": "000ms ",
-      "ts": 1789767331930
+      "ts": 1789767707247
     },
     {
       "agent": "main",
@@ -1194,7 +1194,7 @@
       "type": "delta",
       "step": 2,
       "text": "target",
-      "ts": 1789767331936
+      "ts": 1789767707252
     },
     {
       "agent": "main",
@@ -1202,7 +1202,7 @@
       "type": "delta",
       "step": 2,
       "text": "=notif",
-      "ts": 1789767331942
+      "ts": 1789767707258
     },
     {
       "agent": "main",
@@ -1210,7 +1210,7 @@
       "type": "delta",
       "step": 2,
       "text": "icatio",
-      "ts": 1789767331947
+      "ts": 1789767707264
     },
     {
       "agent": "main",
@@ -1218,7 +1218,7 @@
       "type": "delta",
       "step": 2,
       "text": "n-svc\n",
-      "ts": 1789767331953
+      "ts": 1789767707269
     },
     {
       "agent": "main",
@@ -1226,7 +1226,7 @@
       "type": "delta",
       "step": 2,
       "text": "  logs",
-      "ts": 1789767331959
+      "ts": 1789767707275
     },
     {
       "agent": "main",
@@ -1234,7 +1234,7 @@
       "type": "delta",
       "step": 2,
       "text": "/app.l",
-      "ts": 1789767331964
+      "ts": 1789767707281
     },
     {
       "agent": "main",
@@ -1242,7 +1242,7 @@
       "type": "delta",
       "step": 2,
       "text": "og:11 ",
-      "ts": 1789767331970
+      "ts": 1789767707287
     },
     {
       "agent": "main",
@@ -1250,7 +1250,7 @@
       "type": "delta",
       "step": 2,
       "text": "2026-0",
-      "ts": 1789767331976
+      "ts": 1789767707292
     },
     {
       "agent": "main",
@@ -1258,7 +1258,7 @@
       "type": "delta",
       "step": 2,
       "text": "8-10 1",
-      "ts": 1789767331981
+      "ts": 1789767707298
     },
     {
       "agent": "main",
@@ -1266,7 +1266,7 @@
       "type": "delta",
       "step": 2,
       "text": "0:00:0",
-      "ts": 1789767331987
+      "ts": 1789767707304
     },
     {
       "agent": "main",
@@ -1274,7 +1274,7 @@
       "type": "delta",
       "step": 2,
       "text": "3.929 ",
-      "ts": 1789767331992
+      "ts": 1789767707309
     },
     {
       "agent": "main",
@@ -1282,7 +1282,7 @@
       "type": "delta",
       "step": 2,
       "text": "ERROR ",
-      "ts": 1789767331997
+      "ts": 1789767707315
     },
     {
       "agent": "main",
@@ -1290,7 +1290,7 @@
       "type": "delta",
       "step": 2,
       "text": "[Inven",
-      "ts": 1789767332003
+      "ts": 1789767707321
     },
     {
       "agent": "main",
@@ -1298,7 +1298,7 @@
       "type": "delta",
       "step": 2,
       "text": "torySe",
-      "ts": 1789767332008
+      "ts": 1789767707327
     },
     {
       "agent": "main",
@@ -1306,7 +1306,7 @@
       "type": "delta",
       "step": 2,
       "text": "rvice]",
-      "ts": 1789767332013
+      "ts": 1789767707332
     },
     {
       "agent": "main",
@@ -1314,7 +1314,7 @@
       "type": "delta",
       "step": 2,
       "text": " [trac",
-      "ts": 1789767332019
+      "ts": 1789767707338
     },
     {
       "agent": "main",
@@ -1322,7 +1322,7 @@
       "type": "delta",
       "step": 2,
       "text": "eId=t0",
-      "ts": 1789767332024
+      "ts": 1789767707344
     },
     {
       "agent": "main",
@@ -1330,7 +1330,7 @@
       "type": "delta",
       "step": 2,
       "text": "0002] ",
-      "ts": 1789767332030
+      "ts": 1789767707349
     },
     {
       "agent": "main",
@@ -1338,7 +1338,7 @@
       "type": "delta",
       "step": 2,
       "text": "reques",
-      "ts": 1789767332036
+      "ts": 1789767707355
     },
     {
       "agent": "main",
@@ -1346,7 +1346,7 @@
       "type": "delta",
       "step": 2,
       "text": "t fail",
-      "ts": 1789767332041
+      "ts": 1789767707361
     },
     {
       "agent": "main",
@@ -1354,7 +1354,7 @@
       "type": "delta",
       "step": 2,
       "text": "ed err",
-      "ts": 1789767332047
+      "ts": 1789767707367
     },
     {
       "agent": "main",
@@ -1362,7 +1362,7 @@
       "type": "delta",
       "step": 2,
       "text": "or=tim",
-      "ts": 1789767332053
+      "ts": 1789767707372
     },
     {
       "agent": "main",
@@ -1370,7 +1370,7 @@
       "type": "delta",
       "step": 2,
       "text": "eout u",
-      "ts": 1789767332058
+      "ts": 1789767707378
     },
     {
       "agent": "main",
@@ -1378,7 +1378,7 @@
       "type": "delta",
       "step": 2,
       "text": "pstrea",
-      "ts": 1789767332064
+      "ts": 1789767707383
     },
     {
       "agent": "main",
@@ -1386,7 +1386,7 @@
       "type": "delta",
       "step": 2,
       "text": "m=Noti",
-      "ts": 1789767332069
+      "ts": 1789767707389
     },
     {
       "agent": "main",
@@ -1394,7 +1394,7 @@
       "type": "delta",
       "step": 2,
       "text": "ficati",
-      "ts": 1789767332075
+      "ts": 1789767707395
     },
     {
       "agent": "main",
@@ -1402,7 +1402,7 @@
       "type": "delta",
       "step": 2,
       "text": "on\n  l",
-      "ts": 1789767332081
+      "ts": 1789767707401
     },
     {
       "agent": "main",
@@ -1410,7 +1410,7 @@
       "type": "delta",
       "step": 2,
       "text": "ogs/ap",
-      "ts": 1789767332086
+      "ts": 1789767707406
     },
     {
       "agent": "main",
@@ -1418,7 +1418,7 @@
       "type": "delta",
       "step": 2,
       "text": "p.log:",
-      "ts": 1789767332092
+      "ts": 1789767707412
     },
     {
       "agent": "main",
@@ -1426,7 +1426,7 @@
       "type": "delta",
       "step": 2,
       "text": "12 202",
-      "ts": 1789767332098
+      "ts": 1789767707418
     },
     {
       "agent": "main",
@@ -1434,7 +1434,7 @@
       "type": "delta",
       "step": 2,
       "text": "6-08-1",
-      "ts": 1789767332103
+      "ts": 1789767707423
     },
     {
       "agent": "main",
@@ -1442,7 +1442,7 @@
       "type": "delta",
       "step": 2,
       "text": "0 10:0",
-      "ts": 1789767332109
+      "ts": 1789767707429
     },
     {
       "agent": "main",
@@ -1450,7 +1450,7 @@
       "type": "delta",
       "step": 2,
       "text": "0:03.9",
-      "ts": 1789767332115
+      "ts": 1789767707435
     },
     {
       "agent": "main",
@@ -1458,7 +1458,7 @@
       "type": "delta",
       "step": 2,
       "text": "42 ERR",
-      "ts": 1789767332121
+      "ts": 1789767707440
     },
     {
       "agent": "main",
@@ -1466,7 +1466,7 @@
       "type": "delta",
       "step": 2,
       "text": "OR [Ga",
-      "ts": 1789767332126
+      "ts": 1789767707445
     },
     {
       "agent": "main",
@@ -1474,7 +1474,7 @@
       "type": "delta",
       "step": 2,
       "text": "teway]",
-      "ts": 1789767332132
+      "ts": 1789767707451
     },
     {
       "agent": "main",
@@ -1482,7 +1482,7 @@
       "type": "delta",
       "step": 2,
       "text": " [trac",
-      "ts": 1789767332138
+      "ts": 1789767707457
     },
     {
       "agent": "main",
@@ -1490,7 +1490,7 @@
       "type": "delta",
       "step": 2,
       "text": "eId=t0",
-      "ts": 1789767332143
+      "ts": 1789767707463
     },
     {
       "agent": "main",
@@ -1498,7 +1498,7 @@
       "type": "delta",
       "step": 2,
       "text": "0002] ",
-      "ts": 1789767332149
+      "ts": 1789767707468
     },
     {
       "agent": "main",
@@ -1506,7 +1506,7 @@
       "type": "delta",
       "step": 2,
       "text": "reques",
-      "ts": 1789767332155
+      "ts": 1789767707474
     },
     {
       "agent": "main",
@@ -1514,7 +1514,7 @@
       "type": "delta",
       "step": 2,
       "text": "t fail",
-      "ts": 1789767332161
+      "ts": 1789767707480
     },
     {
       "agent": "main",
@@ -1522,7 +1522,7 @@
       "type": "delta",
       "step": 2,
       "text": "ed sta",
-      "ts": 1789767332166
+      "ts": 1789767707485
     },
     {
       "agent": "main",
@@ -1530,7 +1530,7 @@
       "type": "delta",
       "step": 2,
       "text": "tus=50",
-      "ts": 1789767332172
+      "ts": 1789767707491
     },
     {
       "agent": "main",
@@ -1538,7 +1538,7 @@
       "type": "delta",
       "step": 2,
       "text": "4 tota",
-      "ts": 1789767332178
+      "ts": 1789767707497
     },
     {
       "agent": "main",
@@ -1546,7 +1546,7 @@
       "type": "delta",
       "step": 2,
       "text": "lCost=",
-      "ts": 1789767332184
+      "ts": 1789767707503
     },
     {
       "agent": "main",
@@ -1554,7 +1554,7 @@
       "type": "delta",
       "step": 2,
       "text": "3256ms",
-      "ts": 1789767332189
+      "ts": 1789767707508
     },
     {
       "agent": "main",
@@ -1567,8 +1567,8 @@
         "inputTokens": 629,
         "outputTokens": 80
       },
-      "durationMs": 1035,
-      "ts": 1789767332195
+      "durationMs": 1029,
+      "ts": 1789767707514
     },
     {
       "agent": "main",
@@ -1581,7 +1581,7 @@
         "inputTokens": 652,
         "outputTokens": 160
       },
-      "ts": 1789767332195
+      "ts": 1789767707514
     }
   ],
   "tree": {
@@ -1593,7 +1593,7 @@
         "depth": 0,
         "type": "user",
         "task": "还原 traceId=t00002 的完整链路（logs/app.log）。",
-        "ts": 1789767331116
+        "ts": 1789767706440
       },
       {
         "agent": "main",
@@ -1601,7 +1601,7 @@
         "type": "delta",
         "step": 1,
         "text": "还原 tra",
-        "ts": 1789767331116
+        "ts": 1789767706440
       },
       {
         "agent": "main",
@@ -1609,7 +1609,7 @@
         "type": "delta",
         "step": 1,
         "text": "ceId=t",
-        "ts": 1789767331121
+        "ts": 1789767706446
       },
       {
         "agent": "main",
@@ -1617,7 +1617,7 @@
         "type": "delta",
         "step": 1,
         "text": "00002 ",
-        "ts": 1789767331127
+        "ts": 1789767706451
       },
       {
         "agent": "main",
@@ -1625,7 +1625,7 @@
         "type": "delta",
         "step": 1,
         "text": "的完整链路。",
-        "ts": 1789767331133
+        "ts": 1789767706457
       },
       {
         "agent": "main",
@@ -1650,7 +1650,7 @@
           "outputTokens": 80
         },
         "durationMs": 22,
-        "ts": 1789767331138
+        "ts": 1789767706462
       },
       {
         "agent": "main",
@@ -1667,7 +1667,7 @@
             "trace_id": "t00002"
           }
         },
-        "ts": 1789767331138
+        "ts": 1789767706462
       },
       {
         "agent": "main",
@@ -1680,8 +1680,8 @@
           "ok": true,
           "output": "{\n \"traceId\": \"t00002\",\n \"summary\": {\n  \"lines\": 6,\n  \"modules\": [\n   \"InventoryService\",\n   \"Database\",\n   \"Notification\",\n   \"Gateway\"\n  ],\n  \"start\": \"2026-08-10 10:00:00.683\",\n  \"end\": \"2026-08-10 10:00:03.942\",\n  \"wallMs\": 3259,\n  \"totalCostMs\": 3256,\n  \"status\": \"FAILED\",\n  \"errors\": [\n   \"[Notification] call timeout after 3000ms target=notification-svc\",\n   \"[InventoryService] request failed error=timeout upstream=Notification\",\n   \"[Gateway] request failed status=504 totalCost=3256ms\"\n  ],\n  \"warnings\": [],\n  \"steps\": [\n   {\n    \"module\": \"Database\",\n    \"ms\": 127,\n    \"message\": \"query ok cost=127ms\"\n   },\n   {\n    \"module\": \"Database\",\n    \"ms\": 116,\n    \"message\": \"query ok cost=116ms\"\n   }\n  ]\n },\n \"lines\": [\n  \"logs/app.log:7 2026-08-10 10:00:00.683 INFO  [InventoryService] [traceId=t00002] request start userId=10849\",\n  \"logs/app.log:8 2026-08-10 10:00:00.810 INFO  [Database] [traceId=t00002] query ok cost=127ms\",\n  \"logs/app.log:9 2026-08-10 10:00:00.926 INFO  [Database] [traceId=t00002] query ok cost=116ms\",\n  \"logs/app.log:10 2026-08-10 10:00:03.926 ERROR [Notification] [traceId=t00002] call timeout after 3000ms target=notification-svc\",\n  \"logs/app.log:11 2026-08-10 10:00:03.929 ERROR [InventoryService] [traceId=t00002] request failed error=timeout upstream=Notification\",\n  \"logs/app.log:12 2026-08-10 10:00:03.942 ERROR [Gateway] [traceId=t00002] request failed status=504 totalCost=3256ms\"\n ]\n}"
         },
-        "durationMs": 22,
-        "ts": 1789767331160
+        "durationMs": 23,
+        "ts": 1789767706485
       },
       {
         "agent": "main",
@@ -1689,7 +1689,7 @@
         "type": "delta",
         "step": 2,
         "text": "traceI",
-        "ts": 1789767331160
+        "ts": 1789767706485
       },
       {
         "agent": "main",
@@ -1697,7 +1697,7 @@
         "type": "delta",
         "step": 2,
         "text": "d=t000",
-        "ts": 1789767331166
+        "ts": 1789767706490
       },
       {
         "agent": "main",
@@ -1705,7 +1705,7 @@
         "type": "delta",
         "step": 2,
         "text": "02 的链路",
-        "ts": 1789767331172
+        "ts": 1789767706496
       },
       {
         "agent": "main",
@@ -1713,7 +1713,7 @@
         "type": "delta",
         "step": 2,
         "text": "（6 条日志",
-        "ts": 1789767331177
+        "ts": 1789767706502
       },
       {
         "agent": "main",
@@ -1721,7 +1721,7 @@
         "type": "delta",
         "step": 2,
         "text": "，状态 FA",
-        "ts": 1789767331183
+        "ts": 1789767706506
       },
       {
         "agent": "main",
@@ -1729,7 +1729,7 @@
         "type": "delta",
         "step": 2,
         "text": "ILED）：",
-        "ts": 1789767331189
+        "ts": 1789767706512
       },
       {
         "agent": "main",
@@ -1737,7 +1737,7 @@
         "type": "delta",
         "step": 2,
         "text": "\n\n- 模块",
-        "ts": 1789767331195
+        "ts": 1789767706518
       },
       {
         "agent": "main",
@@ -1745,7 +1745,7 @@
         "type": "delta",
         "step": 2,
         "text": "顺序：Inv",
-        "ts": 1789767331200
+        "ts": 1789767706523
       },
       {
         "agent": "main",
@@ -1753,7 +1753,7 @@
         "type": "delta",
         "step": 2,
         "text": "entory",
-        "ts": 1789767331206
+        "ts": 1789767706529
       },
       {
         "agent": "main",
@@ -1761,7 +1761,7 @@
         "type": "delta",
         "step": 2,
         "text": "Servic",
-        "ts": 1789767331212
+        "ts": 1789767706535
       },
       {
         "agent": "main",
@@ -1769,7 +1769,7 @@
         "type": "delta",
         "step": 2,
         "text": "e → Da",
-        "ts": 1789767331217
+        "ts": 1789767706540
       },
       {
         "agent": "main",
@@ -1777,7 +1777,7 @@
         "type": "delta",
         "step": 2,
         "text": "tabase",
-        "ts": 1789767331223
+        "ts": 1789767706546
       },
       {
         "agent": "main",
@@ -1785,7 +1785,7 @@
         "type": "delta",
         "step": 2,
         "text": " → Not",
-        "ts": 1789767331229
+        "ts": 1789767706552
       },
       {
         "agent": "main",
@@ -1793,7 +1793,7 @@
         "type": "delta",
         "step": 2,
         "text": "ificat",
-        "ts": 1789767331234
+        "ts": 1789767706557
       },
       {
         "agent": "main",
@@ -1801,7 +1801,7 @@
         "type": "delta",
         "step": 2,
         "text": "ion → ",
-        "ts": 1789767331240
+        "ts": 1789767706563
       },
       {
         "agent": "main",
@@ -1809,7 +1809,7 @@
         "type": "delta",
         "step": 2,
         "text": "Gatewa",
-        "ts": 1789767331246
+        "ts": 1789767706569
       },
       {
         "agent": "main",
@@ -1817,7 +1817,7 @@
         "type": "delta",
         "step": 2,
         "text": "y\n- 起止",
-        "ts": 1789767331251
+        "ts": 1789767706574
       },
       {
         "agent": "main",
@@ -1825,7 +1825,7 @@
         "type": "delta",
         "step": 2,
         "text": "：2026-",
-        "ts": 1789767331257
+        "ts": 1789767706580
       },
       {
         "agent": "main",
@@ -1833,7 +1833,7 @@
         "type": "delta",
         "step": 2,
         "text": "08-10 ",
-        "ts": 1789767331263
+        "ts": 1789767706585
       },
       {
         "agent": "main",
@@ -1841,7 +1841,7 @@
         "type": "delta",
         "step": 2,
         "text": "10:00:",
-        "ts": 1789767331269
+        "ts": 1789767706591
       },
       {
         "agent": "main",
@@ -1849,7 +1849,7 @@
         "type": "delta",
         "step": 2,
         "text": "00.683",
-        "ts": 1789767331274
+        "ts": 1789767706597
       },
       {
         "agent": "main",
@@ -1857,7 +1857,7 @@
         "type": "delta",
         "step": 2,
         "text": " → 202",
-        "ts": 1789767331280
+        "ts": 1789767706602
       },
       {
         "agent": "main",
@@ -1865,7 +1865,7 @@
         "type": "delta",
         "step": 2,
         "text": "6-08-1",
-        "ts": 1789767331286
+        "ts": 1789767706608
       },
       {
         "agent": "main",
@@ -1873,7 +1873,7 @@
         "type": "delta",
         "step": 2,
         "text": "0 10:0",
-        "ts": 1789767331292
+        "ts": 1789767706613
       },
       {
         "agent": "main",
@@ -1881,7 +1881,7 @@
         "type": "delta",
         "step": 2,
         "text": "0:03.9",
-        "ts": 1789767331297
+        "ts": 1789767706619
       },
       {
         "agent": "main",
@@ -1889,7 +1889,7 @@
         "type": "delta",
         "step": 2,
         "text": "42（总耗时",
-        "ts": 1789767331303
+        "ts": 1789767706625
       },
       {
         "agent": "main",
@@ -1897,7 +1897,7 @@
         "type": "delta",
         "step": 2,
         "text": " 3256 ",
-        "ts": 1789767331309
+        "ts": 1789767706630
       },
       {
         "agent": "main",
@@ -1905,7 +1905,7 @@
         "type": "delta",
         "step": 2,
         "text": "ms）\n- ",
-        "ts": 1789767331315
+        "ts": 1789767706636
       },
       {
         "agent": "main",
@@ -1913,7 +1913,7 @@
         "type": "delta",
         "step": 2,
         "text": "各步耗时：D",
-        "ts": 1789767331320
+        "ts": 1789767706641
       },
       {
         "agent": "main",
@@ -1921,7 +1921,7 @@
         "type": "delta",
         "step": 2,
         "text": "atabas",
-        "ts": 1789767331326
+        "ts": 1789767706647
       },
       {
         "agent": "main",
@@ -1929,7 +1929,7 @@
         "type": "delta",
         "step": 2,
         "text": "e 127m",
-        "ts": 1789767331332
+        "ts": 1789767706653
       },
       {
         "agent": "main",
@@ -1937,7 +1937,7 @@
         "type": "delta",
         "step": 2,
         "text": "s，Data",
-        "ts": 1789767331338
+        "ts": 1789767706659
       },
       {
         "agent": "main",
@@ -1945,7 +1945,7 @@
         "type": "delta",
         "step": 2,
         "text": "base 1",
-        "ts": 1789767331344
+        "ts": 1789767706664
       },
       {
         "agent": "main",
@@ -1953,7 +1953,7 @@
         "type": "delta",
         "step": 2,
         "text": "16ms\n-",
-        "ts": 1789767331350
+        "ts": 1789767706670
       },
       {
         "agent": "main",
@@ -1961,7 +1961,7 @@
         "type": "delta",
         "step": 2,
         "text": " 错误：[N",
-        "ts": 1789767331356
+        "ts": 1789767706676
       },
       {
         "agent": "main",
@@ -1969,7 +1969,7 @@
         "type": "delta",
         "step": 2,
         "text": "otific",
-        "ts": 1789767331361
+        "ts": 1789767706681
       },
       {
         "agent": "main",
@@ -1977,7 +1977,7 @@
         "type": "delta",
         "step": 2,
         "text": "ation]",
-        "ts": 1789767331367
+        "ts": 1789767706687
       },
       {
         "agent": "main",
@@ -1985,7 +1985,7 @@
         "type": "delta",
         "step": 2,
         "text": " call ",
-        "ts": 1789767331373
+        "ts": 1789767706693
       },
       {
         "agent": "main",
@@ -1993,7 +1993,7 @@
         "type": "delta",
         "step": 2,
         "text": "timeou",
-        "ts": 1789767331378
+        "ts": 1789767706698
       },
       {
         "agent": "main",
@@ -2001,7 +2001,7 @@
         "type": "delta",
         "step": 2,
         "text": "t afte",
-        "ts": 1789767331384
+        "ts": 1789767706704
       },
       {
         "agent": "main",
@@ -2009,7 +2009,7 @@
         "type": "delta",
         "step": 2,
         "text": "r 3000",
-        "ts": 1789767331390
+        "ts": 1789767706710
       },
       {
         "agent": "main",
@@ -2017,7 +2017,7 @@
         "type": "delta",
         "step": 2,
         "text": "ms tar",
-        "ts": 1789767331395
+        "ts": 1789767706716
       },
       {
         "agent": "main",
@@ -2025,7 +2025,7 @@
         "type": "delta",
         "step": 2,
         "text": "get=no",
-        "ts": 1789767331401
+        "ts": 1789767706721
       },
       {
         "agent": "main",
@@ -2033,7 +2033,7 @@
         "type": "delta",
         "step": 2,
         "text": "tifica",
-        "ts": 1789767331407
+        "ts": 1789767706727
       },
       {
         "agent": "main",
@@ -2041,7 +2041,7 @@
         "type": "delta",
         "step": 2,
         "text": "tion-s",
-        "ts": 1789767331412
+        "ts": 1789767706733
       },
       {
         "agent": "main",
@@ -2049,7 +2049,7 @@
         "type": "delta",
         "step": 2,
         "text": "vc；[In",
-        "ts": 1789767331418
+        "ts": 1789767706738
       },
       {
         "agent": "main",
@@ -2057,7 +2057,7 @@
         "type": "delta",
         "step": 2,
         "text": "ventor",
-        "ts": 1789767331424
+        "ts": 1789767706744
       },
       {
         "agent": "main",
@@ -2065,7 +2065,7 @@
         "type": "delta",
         "step": 2,
         "text": "yServi",
-        "ts": 1789767331430
+        "ts": 1789767706750
       },
       {
         "agent": "main",
@@ -2073,7 +2073,7 @@
         "type": "delta",
         "step": 2,
         "text": "ce] re",
-        "ts": 1789767331436
+        "ts": 1789767706754
       },
       {
         "agent": "main",
@@ -2081,7 +2081,7 @@
         "type": "delta",
         "step": 2,
         "text": "quest ",
-        "ts": 1789767331441
+        "ts": 1789767706760
       },
       {
         "agent": "main",
@@ -2089,7 +2089,7 @@
         "type": "delta",
         "step": 2,
         "text": "failed",
-        "ts": 1789767331447
+        "ts": 1789767706765
       },
       {
         "agent": "main",
@@ -2097,7 +2097,7 @@
         "type": "delta",
         "step": 2,
         "text": " error",
-        "ts": 1789767331453
+        "ts": 1789767706771
       },
       {
         "agent": "main",
@@ -2105,7 +2105,7 @@
         "type": "delta",
         "step": 2,
         "text": "=timeo",
-        "ts": 1789767331458
+        "ts": 1789767706777
       },
       {
         "agent": "main",
@@ -2113,7 +2113,7 @@
         "type": "delta",
         "step": 2,
         "text": "ut ups",
-        "ts": 1789767331464
+        "ts": 1789767706782
       },
       {
         "agent": "main",
@@ -2121,7 +2121,7 @@
         "type": "delta",
         "step": 2,
         "text": "tream=",
-        "ts": 1789767331470
+        "ts": 1789767706788
       },
       {
         "agent": "main",
@@ -2129,7 +2129,7 @@
         "type": "delta",
         "step": 2,
         "text": "Notifi",
-        "ts": 1789767331476
+        "ts": 1789767706793
       },
       {
         "agent": "main",
@@ -2137,7 +2137,7 @@
         "type": "delta",
         "step": 2,
         "text": "cation",
-        "ts": 1789767331481
+        "ts": 1789767706799
       },
       {
         "agent": "main",
@@ -2145,7 +2145,7 @@
         "type": "delta",
         "step": 2,
         "text": "；[Gate",
-        "ts": 1789767331487
+        "ts": 1789767706805
       },
       {
         "agent": "main",
@@ -2153,7 +2153,7 @@
         "type": "delta",
         "step": 2,
         "text": "way] r",
-        "ts": 1789767331492
+        "ts": 1789767706811
       },
       {
         "agent": "main",
@@ -2161,7 +2161,7 @@
         "type": "delta",
         "step": 2,
         "text": "equest",
-        "ts": 1789767331498
+        "ts": 1789767706815
       },
       {
         "agent": "main",
@@ -2169,7 +2169,7 @@
         "type": "delta",
         "step": 2,
         "text": " faile",
-        "ts": 1789767331504
+        "ts": 1789767706821
       },
       {
         "agent": "main",
@@ -2177,7 +2177,7 @@
         "type": "delta",
         "step": 2,
         "text": "d stat",
-        "ts": 1789767331510
+        "ts": 1789767706827
       },
       {
         "agent": "main",
@@ -2185,7 +2185,7 @@
         "type": "delta",
         "step": 2,
         "text": "us=504",
-        "ts": 1789767331516
+        "ts": 1789767706833
       },
       {
         "agent": "main",
@@ -2193,7 +2193,7 @@
         "type": "delta",
         "step": 2,
         "text": " total",
-        "ts": 1789767331521
+        "ts": 1789767706838
       },
       {
         "agent": "main",
@@ -2201,7 +2201,7 @@
         "type": "delta",
         "step": 2,
         "text": "Cost=3",
-        "ts": 1789767331527
+        "ts": 1789767706844
       },
       {
         "agent": "main",
@@ -2209,7 +2209,7 @@
         "type": "delta",
         "step": 2,
         "text": "256ms\n",
-        "ts": 1789767331533
+        "ts": 1789767706850
       },
       {
         "agent": "main",
@@ -2217,7 +2217,7 @@
         "type": "delta",
         "step": 2,
         "text": "- 告警：无",
-        "ts": 1789767331539
+        "ts": 1789767706856
       },
       {
         "agent": "main",
@@ -2225,7 +2225,7 @@
         "type": "delta",
         "step": 2,
         "text": "\n\n完整日志",
-        "ts": 1789767331545
+        "ts": 1789767706861
       },
       {
         "agent": "main",
@@ -2233,7 +2233,7 @@
         "type": "delta",
         "step": 2,
         "text": "：\n  lo",
-        "ts": 1789767331550
+        "ts": 1789767706867
       },
       {
         "agent": "main",
@@ -2241,7 +2241,7 @@
         "type": "delta",
         "step": 2,
         "text": "gs/app",
-        "ts": 1789767331556
+        "ts": 1789767706873
       },
       {
         "agent": "main",
@@ -2249,7 +2249,7 @@
         "type": "delta",
         "step": 2,
         "text": ".log:7",
-        "ts": 1789767331562
+        "ts": 1789767706878
       },
       {
         "agent": "main",
@@ -2257,7 +2257,7 @@
         "type": "delta",
         "step": 2,
         "text": " 2026-",
-        "ts": 1789767331567
+        "ts": 1789767706884
       },
       {
         "agent": "main",
@@ -2265,7 +2265,7 @@
         "type": "delta",
         "step": 2,
         "text": "08-10 ",
-        "ts": 1789767331573
+        "ts": 1789767706890
       },
       {
         "agent": "main",
@@ -2273,7 +2273,7 @@
         "type": "delta",
         "step": 2,
         "text": "10:00:",
-        "ts": 1789767331579
+        "ts": 1789767706895
       },
       {
         "agent": "main",
@@ -2281,7 +2281,7 @@
         "type": "delta",
         "step": 2,
         "text": "00.683",
-        "ts": 1789767331585
+        "ts": 1789767706901
       },
       {
         "agent": "main",
@@ -2289,7 +2289,7 @@
         "type": "delta",
         "step": 2,
         "text": " INFO ",
-        "ts": 1789767331590
+        "ts": 1789767706907
       },
       {
         "agent": "main",
@@ -2297,7 +2297,7 @@
         "type": "delta",
         "step": 2,
         "text": " [Inve",
-        "ts": 1789767331596
+        "ts": 1789767706911
       },
       {
         "agent": "main",
@@ -2305,7 +2305,7 @@
         "type": "delta",
         "step": 2,
         "text": "ntoryS",
-        "ts": 1789767331602
+        "ts": 1789767706917
       },
       {
         "agent": "main",
@@ -2313,7 +2313,7 @@
         "type": "delta",
         "step": 2,
         "text": "ervice",
-        "ts": 1789767331607
+        "ts": 1789767706923
       },
       {
         "agent": "main",
@@ -2321,7 +2321,7 @@
         "type": "delta",
         "step": 2,
         "text": "] [tra",
-        "ts": 1789767331613
+        "ts": 1789767706929
       },
       {
         "agent": "main",
@@ -2329,7 +2329,7 @@
         "type": "delta",
         "step": 2,
         "text": "ceId=t",
-        "ts": 1789767331619
+        "ts": 1789767706934
       },
       {
         "agent": "main",
@@ -2337,7 +2337,7 @@
         "type": "delta",
         "step": 2,
         "text": "00002]",
-        "ts": 1789767331625
+        "ts": 1789767706940
       },
       {
         "agent": "main",
@@ -2345,7 +2345,7 @@
         "type": "delta",
         "step": 2,
         "text": " reque",
-        "ts": 1789767331630
+        "ts": 1789767706946
       },
       {
         "agent": "main",
@@ -2353,7 +2353,7 @@
         "type": "delta",
         "step": 2,
         "text": "st sta",
-        "ts": 1789767331636
+        "ts": 1789767706951
       },
       {
         "agent": "main",
@@ -2361,7 +2361,7 @@
         "type": "delta",
         "step": 2,
         "text": "rt use",
-        "ts": 1789767331642
+        "ts": 1789767706957
       },
       {
         "agent": "main",
@@ -2369,7 +2369,7 @@
         "type": "delta",
         "step": 2,
         "text": "rId=10",
-        "ts": 1789767331647
+        "ts": 1789767706963
       },
       {
         "agent": "main",
@@ -2377,7 +2377,7 @@
         "type": "delta",
         "step": 2,
         "text": "849\n  ",
-        "ts": 1789767331653
+        "ts": 1789767706968
       },
       {
         "agent": "main",
@@ -2385,7 +2385,7 @@
         "type": "delta",
         "step": 2,
         "text": "logs/a",
-        "ts": 1789767331658
+        "ts": 1789767706974
       },
       {
         "agent": "main",
@@ -2393,7 +2393,7 @@
         "type": "delta",
         "step": 2,
         "text": "pp.log",
-        "ts": 1789767331664
+        "ts": 1789767706980
       },
       {
         "agent": "main",
@@ -2401,7 +2401,7 @@
         "type": "delta",
         "step": 2,
         "text": ":8 202",
-        "ts": 1789767331670
+        "ts": 1789767706986
       },
       {
         "agent": "main",
@@ -2409,7 +2409,7 @@
         "type": "delta",
         "step": 2,
         "text": "6-08-1",
-        "ts": 1789767331675
+        "ts": 1789767706991
       },
       {
         "agent": "main",
@@ -2417,7 +2417,7 @@
         "type": "delta",
         "step": 2,
         "text": "0 10:0",
-        "ts": 1789767331681
+        "ts": 1789767706997
       },
       {
         "agent": "main",
@@ -2425,7 +2425,7 @@
         "type": "delta",
         "step": 2,
         "text": "0:00.8",
-        "ts": 1789767331686
+        "ts": 1789767707003
       },
       {
         "agent": "main",
@@ -2433,7 +2433,7 @@
         "type": "delta",
         "step": 2,
         "text": "10 INF",
-        "ts": 1789767331692
+        "ts": 1789767707009
       },
       {
         "agent": "main",
@@ -2441,7 +2441,7 @@
         "type": "delta",
         "step": 2,
         "text": "O  [Da",
-        "ts": 1789767331698
+        "ts": 1789767707014
       },
       {
         "agent": "main",
@@ -2449,7 +2449,7 @@
         "type": "delta",
         "step": 2,
         "text": "tabase",
-        "ts": 1789767331704
+        "ts": 1789767707020
       },
       {
         "agent": "main",
@@ -2457,7 +2457,7 @@
         "type": "delta",
         "step": 2,
         "text": "] [tra",
-        "ts": 1789767331709
+        "ts": 1789767707026
       },
       {
         "agent": "main",
@@ -2465,7 +2465,7 @@
         "type": "delta",
         "step": 2,
         "text": "ceId=t",
-        "ts": 1789767331714
+        "ts": 1789767707031
       },
       {
         "agent": "main",
@@ -2473,7 +2473,7 @@
         "type": "delta",
         "step": 2,
         "text": "00002]",
-        "ts": 1789767331719
+        "ts": 1789767707037
       },
       {
         "agent": "main",
@@ -2481,7 +2481,7 @@
         "type": "delta",
         "step": 2,
         "text": " query",
-        "ts": 1789767331725
+        "ts": 1789767707043
       },
       {
         "agent": "main",
@@ -2489,7 +2489,7 @@
         "type": "delta",
         "step": 2,
         "text": " ok co",
-        "ts": 1789767331731
+        "ts": 1789767707049
       },
       {
         "agent": "main",
@@ -2497,7 +2497,7 @@
         "type": "delta",
         "step": 2,
         "text": "st=127",
-        "ts": 1789767331736
+        "ts": 1789767707054
       },
       {
         "agent": "main",
@@ -2505,7 +2505,7 @@
         "type": "delta",
         "step": 2,
         "text": "ms\n  l",
-        "ts": 1789767331742
+        "ts": 1789767707060
       },
       {
         "agent": "main",
@@ -2513,7 +2513,7 @@
         "type": "delta",
         "step": 2,
         "text": "ogs/ap",
-        "ts": 1789767331748
+        "ts": 1789767707066
       },
       {
         "agent": "main",
@@ -2521,7 +2521,7 @@
         "type": "delta",
         "step": 2,
         "text": "p.log:",
-        "ts": 1789767331754
+        "ts": 1789767707071
       },
       {
         "agent": "main",
@@ -2529,7 +2529,7 @@
         "type": "delta",
         "step": 2,
         "text": "9 2026",
-        "ts": 1789767331760
+        "ts": 1789767707077
       },
       {
         "agent": "main",
@@ -2537,7 +2537,7 @@
         "type": "delta",
         "step": 2,
         "text": "-08-10",
-        "ts": 1789767331765
+        "ts": 1789767707083
       },
       {
         "agent": "main",
@@ -2545,7 +2545,7 @@
         "type": "delta",
         "step": 2,
         "text": " 10:00",
-        "ts": 1789767331771
+        "ts": 1789767707089
       },
       {
         "agent": "main",
@@ -2553,7 +2553,7 @@
         "type": "delta",
         "step": 2,
         "text": ":00.92",
-        "ts": 1789767331776
+        "ts": 1789767707094
       },
       {
         "agent": "main",
@@ -2561,7 +2561,7 @@
         "type": "delta",
         "step": 2,
         "text": "6 INFO",
-        "ts": 1789767331782
+        "ts": 1789767707099
       },
       {
         "agent": "main",
@@ -2569,7 +2569,7 @@
         "type": "delta",
         "step": 2,
         "text": "  [Dat",
-        "ts": 1789767331788
+        "ts": 1789767707105
       },
       {
         "agent": "main",
@@ -2577,7 +2577,7 @@
         "type": "delta",
         "step": 2,
         "text": "abase]",
-        "ts": 1789767331794
+        "ts": 1789767707111
       },
       {
         "agent": "main",
@@ -2585,7 +2585,7 @@
         "type": "delta",
         "step": 2,
         "text": " [trac",
-        "ts": 1789767331799
+        "ts": 1789767707116
       },
       {
         "agent": "main",
@@ -2593,7 +2593,7 @@
         "type": "delta",
         "step": 2,
         "text": "eId=t0",
-        "ts": 1789767331805
+        "ts": 1789767707122
       },
       {
         "agent": "main",
@@ -2601,7 +2601,7 @@
         "type": "delta",
         "step": 2,
         "text": "0002] ",
-        "ts": 1789767331811
+        "ts": 1789767707128
       },
       {
         "agent": "main",
@@ -2609,7 +2609,7 @@
         "type": "delta",
         "step": 2,
         "text": "query ",
-        "ts": 1789767331817
+        "ts": 1789767707134
       },
       {
         "agent": "main",
@@ -2617,7 +2617,7 @@
         "type": "delta",
         "step": 2,
         "text": "ok cos",
-        "ts": 1789767331823
+        "ts": 1789767707139
       },
       {
         "agent": "main",
@@ -2625,7 +2625,7 @@
         "type": "delta",
         "step": 2,
         "text": "t=116m",
-        "ts": 1789767331829
+        "ts": 1789767707145
       },
       {
         "agent": "main",
@@ -2633,7 +2633,7 @@
         "type": "delta",
         "step": 2,
         "text": "s\n  lo",
-        "ts": 1789767331834
+        "ts": 1789767707151
       },
       {
         "agent": "main",
@@ -2641,7 +2641,7 @@
         "type": "delta",
         "step": 2,
         "text": "gs/app",
-        "ts": 1789767331840
+        "ts": 1789767707155
       },
       {
         "agent": "main",
@@ -2649,7 +2649,7 @@
         "type": "delta",
         "step": 2,
         "text": ".log:1",
-        "ts": 1789767331846
+        "ts": 1789767707161
       },
       {
         "agent": "main",
@@ -2657,7 +2657,7 @@
         "type": "delta",
         "step": 2,
         "text": "0 2026",
-        "ts": 1789767331852
+        "ts": 1789767707167
       },
       {
         "agent": "main",
@@ -2665,7 +2665,7 @@
         "type": "delta",
         "step": 2,
         "text": "-08-10",
-        "ts": 1789767331857
+        "ts": 1789767707172
       },
       {
         "agent": "main",
@@ -2673,7 +2673,7 @@
         "type": "delta",
         "step": 2,
         "text": " 10:00",
-        "ts": 1789767331863
+        "ts": 1789767707178
       },
       {
         "agent": "main",
@@ -2681,7 +2681,7 @@
         "type": "delta",
         "step": 2,
         "text": ":03.92",
-        "ts": 1789767331868
+        "ts": 1789767707184
       },
       {
         "agent": "main",
@@ -2689,7 +2689,7 @@
         "type": "delta",
         "step": 2,
         "text": "6 ERRO",
-        "ts": 1789767331874
+        "ts": 1789767707190
       },
       {
         "agent": "main",
@@ -2697,7 +2697,7 @@
         "type": "delta",
         "step": 2,
         "text": "R [Not",
-        "ts": 1789767331880
+        "ts": 1789767707195
       },
       {
         "agent": "main",
@@ -2705,7 +2705,7 @@
         "type": "delta",
         "step": 2,
         "text": "ificat",
-        "ts": 1789767331885
+        "ts": 1789767707201
       },
       {
         "agent": "main",
@@ -2713,7 +2713,7 @@
         "type": "delta",
         "step": 2,
         "text": "ion] [",
-        "ts": 1789767331891
+        "ts": 1789767707207
       },
       {
         "agent": "main",
@@ -2721,7 +2721,7 @@
         "type": "delta",
         "step": 2,
         "text": "traceI",
-        "ts": 1789767331896
+        "ts": 1789767707212
       },
       {
         "agent": "main",
@@ -2729,7 +2729,7 @@
         "type": "delta",
         "step": 2,
         "text": "d=t000",
-        "ts": 1789767331902
+        "ts": 1789767707218
       },
       {
         "agent": "main",
@@ -2737,7 +2737,7 @@
         "type": "delta",
         "step": 2,
         "text": "02] ca",
-        "ts": 1789767331907
+        "ts": 1789767707224
       },
       {
         "agent": "main",
@@ -2745,7 +2745,7 @@
         "type": "delta",
         "step": 2,
         "text": "ll tim",
-        "ts": 1789767331913
+        "ts": 1789767707229
       },
       {
         "agent": "main",
@@ -2753,7 +2753,7 @@
         "type": "delta",
         "step": 2,
         "text": "eout a",
-        "ts": 1789767331919
+        "ts": 1789767707235
       },
       {
         "agent": "main",
@@ -2761,7 +2761,7 @@
         "type": "delta",
         "step": 2,
         "text": "fter 3",
-        "ts": 1789767331925
+        "ts": 1789767707241
       },
       {
         "agent": "main",
@@ -2769,7 +2769,7 @@
         "type": "delta",
         "step": 2,
         "text": "000ms ",
-        "ts": 1789767331930
+        "ts": 1789767707247
       },
       {
         "agent": "main",
@@ -2777,7 +2777,7 @@
         "type": "delta",
         "step": 2,
         "text": "target",
-        "ts": 1789767331936
+        "ts": 1789767707252
       },
       {
         "agent": "main",
@@ -2785,7 +2785,7 @@
         "type": "delta",
         "step": 2,
         "text": "=notif",
-        "ts": 1789767331942
+        "ts": 1789767707258
       },
       {
         "agent": "main",
@@ -2793,7 +2793,7 @@
         "type": "delta",
         "step": 2,
         "text": "icatio",
-        "ts": 1789767331947
+        "ts": 1789767707264
       },
       {
         "agent": "main",
@@ -2801,7 +2801,7 @@
         "type": "delta",
         "step": 2,
         "text": "n-svc\n",
-        "ts": 1789767331953
+        "ts": 1789767707269
       },
       {
         "agent": "main",
@@ -2809,7 +2809,7 @@
         "type": "delta",
         "step": 2,
         "text": "  logs",
-        "ts": 1789767331959
+        "ts": 1789767707275
       },
       {
         "agent": "main",
@@ -2817,7 +2817,7 @@
         "type": "delta",
         "step": 2,
         "text": "/app.l",
-        "ts": 1789767331964
+        "ts": 1789767707281
       },
       {
         "agent": "main",
@@ -2825,7 +2825,7 @@
         "type": "delta",
         "step": 2,
         "text": "og:11 ",
-        "ts": 1789767331970
+        "ts": 1789767707287
       },
       {
         "agent": "main",
@@ -2833,7 +2833,7 @@
         "type": "delta",
         "step": 2,
         "text": "2026-0",
-        "ts": 1789767331976
+        "ts": 1789767707292
       },
       {
         "agent": "main",
@@ -2841,7 +2841,7 @@
         "type": "delta",
         "step": 2,
         "text": "8-10 1",
-        "ts": 1789767331981
+        "ts": 1789767707298
       },
       {
         "agent": "main",
@@ -2849,7 +2849,7 @@
         "type": "delta",
         "step": 2,
         "text": "0:00:0",
-        "ts": 1789767331987
+        "ts": 1789767707304
       },
       {
         "agent": "main",
@@ -2857,7 +2857,7 @@
         "type": "delta",
         "step": 2,
         "text": "3.929 ",
-        "ts": 1789767331992
+        "ts": 1789767707309
       },
       {
         "agent": "main",
@@ -2865,7 +2865,7 @@
         "type": "delta",
         "step": 2,
         "text": "ERROR ",
-        "ts": 1789767331997
+        "ts": 1789767707315
       },
       {
         "agent": "main",
@@ -2873,7 +2873,7 @@
         "type": "delta",
         "step": 2,
         "text": "[Inven",
-        "ts": 1789767332003
+        "ts": 1789767707321
       },
       {
         "agent": "main",
@@ -2881,7 +2881,7 @@
         "type": "delta",
         "step": 2,
         "text": "torySe",
-        "ts": 1789767332008
+        "ts": 1789767707327
       },
       {
         "agent": "main",
@@ -2889,7 +2889,7 @@
         "type": "delta",
         "step": 2,
         "text": "rvice]",
-        "ts": 1789767332013
+        "ts": 1789767707332
       },
       {
         "agent": "main",
@@ -2897,7 +2897,7 @@
         "type": "delta",
         "step": 2,
         "text": " [trac",
-        "ts": 1789767332019
+        "ts": 1789767707338
       },
       {
         "agent": "main",
@@ -2905,7 +2905,7 @@
         "type": "delta",
         "step": 2,
         "text": "eId=t0",
-        "ts": 1789767332024
+        "ts": 1789767707344
       },
       {
         "agent": "main",
@@ -2913,7 +2913,7 @@
         "type": "delta",
         "step": 2,
         "text": "0002] ",
-        "ts": 1789767332030
+        "ts": 1789767707349
       },
       {
         "agent": "main",
@@ -2921,7 +2921,7 @@
         "type": "delta",
         "step": 2,
         "text": "reques",
-        "ts": 1789767332036
+        "ts": 1789767707355
       },
       {
         "agent": "main",
@@ -2929,7 +2929,7 @@
         "type": "delta",
         "step": 2,
         "text": "t fail",
-        "ts": 1789767332041
+        "ts": 1789767707361
       },
       {
         "agent": "main",
@@ -2937,7 +2937,7 @@
         "type": "delta",
         "step": 2,
         "text": "ed err",
-        "ts": 1789767332047
+        "ts": 1789767707367
       },
       {
         "agent": "main",
@@ -2945,7 +2945,7 @@
         "type": "delta",
         "step": 2,
         "text": "or=tim",
-        "ts": 1789767332053
+        "ts": 1789767707372
       },
       {
         "agent": "main",
@@ -2953,7 +2953,7 @@
         "type": "delta",
         "step": 2,
         "text": "eout u",
-        "ts": 1789767332058
+        "ts": 1789767707378
       },
       {
         "agent": "main",
@@ -2961,7 +2961,7 @@
         "type": "delta",
         "step": 2,
         "text": "pstrea",
-        "ts": 1789767332064
+        "ts": 1789767707383
       },
       {
         "agent": "main",
@@ -2969,7 +2969,7 @@
         "type": "delta",
         "step": 2,
         "text": "m=Noti",
-        "ts": 1789767332069
+        "ts": 1789767707389
       },
       {
         "agent": "main",
@@ -2977,7 +2977,7 @@
         "type": "delta",
         "step": 2,
         "text": "ficati",
-        "ts": 1789767332075
+        "ts": 1789767707395
       },
       {
         "agent": "main",
@@ -2985,7 +2985,7 @@
         "type": "delta",
         "step": 2,
         "text": "on\n  l",
-        "ts": 1789767332081
+        "ts": 1789767707401
       },
       {
         "agent": "main",
@@ -2993,7 +2993,7 @@
         "type": "delta",
         "step": 2,
         "text": "ogs/ap",
-        "ts": 1789767332086
+        "ts": 1789767707406
       },
       {
         "agent": "main",
@@ -3001,7 +3001,7 @@
         "type": "delta",
         "step": 2,
         "text": "p.log:",
-        "ts": 1789767332092
+        "ts": 1789767707412
       },
       {
         "agent": "main",
@@ -3009,7 +3009,7 @@
         "type": "delta",
         "step": 2,
         "text": "12 202",
-        "ts": 1789767332098
+        "ts": 1789767707418
       },
       {
         "agent": "main",
@@ -3017,7 +3017,7 @@
         "type": "delta",
         "step": 2,
         "text": "6-08-1",
-        "ts": 1789767332103
+        "ts": 1789767707423
       },
       {
         "agent": "main",
@@ -3025,7 +3025,7 @@
         "type": "delta",
         "step": 2,
         "text": "0 10:0",
-        "ts": 1789767332109
+        "ts": 1789767707429
       },
       {
         "agent": "main",
@@ -3033,7 +3033,7 @@
         "type": "delta",
         "step": 2,
         "text": "0:03.9",
-        "ts": 1789767332115
+        "ts": 1789767707435
       },
       {
         "agent": "main",
@@ -3041,7 +3041,7 @@
         "type": "delta",
         "step": 2,
         "text": "42 ERR",
-        "ts": 1789767332121
+        "ts": 1789767707440
       },
       {
         "agent": "main",
@@ -3049,7 +3049,7 @@
         "type": "delta",
         "step": 2,
         "text": "OR [Ga",
-        "ts": 1789767332126
+        "ts": 1789767707445
       },
       {
         "agent": "main",
@@ -3057,7 +3057,7 @@
         "type": "delta",
         "step": 2,
         "text": "teway]",
-        "ts": 1789767332132
+        "ts": 1789767707451
       },
       {
         "agent": "main",
@@ -3065,7 +3065,7 @@
         "type": "delta",
         "step": 2,
         "text": " [trac",
-        "ts": 1789767332138
+        "ts": 1789767707457
       },
       {
         "agent": "main",
@@ -3073,7 +3073,7 @@
         "type": "delta",
         "step": 2,
         "text": "eId=t0",
-        "ts": 1789767332143
+        "ts": 1789767707463
       },
       {
         "agent": "main",
@@ -3081,7 +3081,7 @@
         "type": "delta",
         "step": 2,
         "text": "0002] ",
-        "ts": 1789767332149
+        "ts": 1789767707468
       },
       {
         "agent": "main",
@@ -3089,7 +3089,7 @@
         "type": "delta",
         "step": 2,
         "text": "reques",
-        "ts": 1789767332155
+        "ts": 1789767707474
       },
       {
         "agent": "main",
@@ -3097,7 +3097,7 @@
         "type": "delta",
         "step": 2,
         "text": "t fail",
-        "ts": 1789767332161
+        "ts": 1789767707480
       },
       {
         "agent": "main",
@@ -3105,7 +3105,7 @@
         "type": "delta",
         "step": 2,
         "text": "ed sta",
-        "ts": 1789767332166
+        "ts": 1789767707485
       },
       {
         "agent": "main",
@@ -3113,7 +3113,7 @@
         "type": "delta",
         "step": 2,
         "text": "tus=50",
-        "ts": 1789767332172
+        "ts": 1789767707491
       },
       {
         "agent": "main",
@@ -3121,7 +3121,7 @@
         "type": "delta",
         "step": 2,
         "text": "4 tota",
-        "ts": 1789767332178
+        "ts": 1789767707497
       },
       {
         "agent": "main",
@@ -3129,7 +3129,7 @@
         "type": "delta",
         "step": 2,
         "text": "lCost=",
-        "ts": 1789767332184
+        "ts": 1789767707503
       },
       {
         "agent": "main",
@@ -3137,7 +3137,7 @@
         "type": "delta",
         "step": 2,
         "text": "3256ms",
-        "ts": 1789767332189
+        "ts": 1789767707508
       },
       {
         "agent": "main",
@@ -3150,8 +3150,8 @@
           "inputTokens": 629,
           "outputTokens": 80
         },
-        "durationMs": 1035,
-        "ts": 1789767332195
+        "durationMs": 1029,
+        "ts": 1789767707514
       },
       {
         "agent": "main",
@@ -3164,7 +3164,7 @@
           "inputTokens": 652,
           "outputTokens": 160
         },
-        "ts": 1789767332195
+        "ts": 1789767707514
       }
     ],
     "children": []
