@@ -12,7 +12,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const ROOT = path.resolve(process.argv[2] ?? path.join(import.meta.dirname, '..', 'workspace'));
-fs.rmSync(ROOT, { recursive: true, force: true });
+// 只清理本脚本自己生成的子树，不整目录 rm：workspace 里可能还有其他工具包（如 logs/、k8s/）的材料
+for (const sub of ['README.md', 'config', 'src', 'docs', 'data', 'node_modules', 'todo-report.md', 'report.md', 'report-regions.md', 'breaking-changes.md', 'error-report.md', 'report-usd.md']) {
+  fs.rmSync(path.join(ROOT, sub), { recursive: true, force: true });
+}
 const w = (rel: string, content: string | Buffer) => { const p = path.join(ROOT, rel); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, content); };
 
 // 简单的确定性伪随机

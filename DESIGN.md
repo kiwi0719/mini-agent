@@ -172,7 +172,12 @@ interface LLMProvider {
 
 ### 6.3 Tool Search
 
-Registry 中标记 `deferred: true` 的工具不进入默认 schema 列表，减少每轮 prompt 体积。`search_tools(query)` 对名称/描述做关键词打分，命中后加入本次运行的 `activated` 集合，下一轮 `schemas(activated)` 即包含它们。
+Registry 中标记 `deferred: true` 的工具不进入默认 schema 列表，减少每轮 prompt 体积。`search_tools(query)` 分两级：
+
+1. **关键词打分**：对名称/描述做子串匹配打分（名称命中 2 分、描述命中 1 分），有命中即激活并返回。
+2. **目录回退**：没有任何命中时，返回全部未激活扩展工具的名称与一句描述，让模型自己挑，再用准确名称调用一次即激活。
+
+**为什么是这个方案而不是 embedding / reranker**：正常的生产实现应该是给工具加 tags 做 BM25 之类的词法检索，或者用 embedding 做语义召回再 rerank。这里是 demo，扩展工具只有个位数，而 Anthropic 没有 embedding 接口，接 Voyage / OpenAI embedding 和 reranker 会引入额外的外部依赖、key 和延迟，收益远低于成本。目录回退在工具数量在几十个以内时既准（模型比任何打分都懂语义）又零依赖；代价是工具上百个时兜底一次会占较多 token，那时应换成方案 1 或 3。这是有意识的取舍，不是遗漏。
 
 ### 6.4 Streaming
 
@@ -228,6 +233,6 @@ workspace 由 `scripts/gen-workspace.ts` 确定性生成（`pnpm test` 会先重
 2. **Mock LLM 不泛化**：它是针对 3 类任务的规则脚本，只用于验证 Loop、工具、失败路径与各增强项的机制，不能证明"自主判断"能力。
 3. **Context 压缩粗粒度**：字符数近似 token、简单截断，可能丢关键信息；没有 LLM 摘要。
 4. **子 Agent 深度固定为 1**，没有结果合并策略（同一轮的多个 delegate 已并行）；框架不参与“该不该分”的判断（讨论过三种方案：按上下文大小提示、按子 Agent 实际步数事后提醒、delegate 加 expected_steps 门槛，均未实现）。
-5. **Tool Search 是关键词打分**而非语义检索，工具数量大时召回不稳定。
+5. **Tool Search 是关键词打分 + 目录回退**而非语义检索（见 §6.3 的取舍说明），工具上百个时回退成本会变高。
 6. **无持久化、无鉴权**：任务中断不能恢复；多个任务共享同一个 workspace，写同名文件会互相覆盖（队列只限并发数，不做文件级隔离）。
 7. **计划由模型自觉维护**：框架不校验计划与实际行为是否一致，弱模型可能制定计划后不更新。

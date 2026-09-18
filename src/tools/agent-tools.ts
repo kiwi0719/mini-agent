@@ -40,7 +40,7 @@ export const updatePlan: Tool = {
 /** Tool Search：发现并激活 deferred 工具 */
 export const searchTools: Tool = {
   name: 'search_tools',
-  description: '按关键词搜索当前未加载的扩展工具（例如 "csv 解析"、"文件信息"、"时间"），匹配到的工具会被激活并在下一轮可用。当现有工具不够用时先调用它。',
+  description: '按关键词搜索当前未加载的扩展工具（例如 "csv 解析"、"文件信息"、"时间"），匹配到的工具会被激活并在下一轮可用。关键词没命中时会返回全部扩展工具目录供你挑选，再用准确名称调用一次即可激活。当现有工具不够用时先调用它。',
   permission: 'read',
   idempotent: true,
   inputSchema: {
@@ -52,7 +52,16 @@ export const searchTools: Tool = {
   async execute(input: { query: string }, ctx) {
     if (!ctx.runtime) return { ok: false, error: 'search_tools 需要 Agent 运行时' };
     const found = ctx.runtime.searchTools(input.query);
-    if (!found.length) return { ok: true, output: `没有匹配 "${input.query}" 的工具。` };
+    if (!found.length) {
+      // 关键词未命中 → 回退：把全部未激活的扩展工具目录交给模型自己挑（见 DESIGN.md §6.3）
+      const catalog = ctx.runtime.listDeferredTools().filter((t) => !t.activated);
+      if (!catalog.length) return { ok: true, output: `没有匹配 "${input.query}" 的工具，且所有扩展工具都已激活。` };
+      return {
+        ok: true,
+        output: `关键词 "${input.query}" 没有直接命中。以下是全部可用的扩展工具目录，若其中有合适的，请用它的准确名称再次调用 search_tools 激活:\n` +
+          catalog.map((t) => `- ${t.name}: ${t.description}`).join('\n'),
+      };
+    }
     const activated = ctx.runtime.activateTools(found.map((f) => f.name));
     return {
       ok: true,

@@ -93,6 +93,7 @@ export class Agent {
       getPlan: () => st.plan,
       setPlan: (steps) => { st.plan = steps; emit({ type: 'plan', step: st.step, plan: steps, ts: Date.now() }); },
       searchTools: (q) => this.tools.search(q).filter((t) => t.deferred).map((t) => ({ name: t.name, description: t.description, activated: activated.has(t.name) })),
+      listDeferredTools: () => this.tools.all().filter((t) => t.deferred).map((t) => ({ name: t.name, description: t.description, activated: activated.has(t.name) })),
       activateTools: (names) => {
         const fresh = names.filter((n) => this.tools.get(n)?.deferred && !activated.has(n));
         fresh.forEach((n) => activated.add(n));

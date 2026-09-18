@@ -31,6 +31,7 @@ export interface AgentRuntime {
   getPlan(): PlanStep[];
   setPlan(steps: PlanStep[]): void;
   searchTools(query: string): { name: string; description: string; activated: boolean }[];
+  listDeferredTools(): { name: string; description: string; activated: boolean }[];
   activateTools(names: string[]): string[];
   delegate(task: string, callId: string, opts?: { allowWrite?: boolean }): Promise<{ answer: string; steps: number; reason: FinishReason }>;
 }
